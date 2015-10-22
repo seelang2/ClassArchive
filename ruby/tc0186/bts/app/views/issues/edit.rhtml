@@ -1,0 +1,12 @@
+<h1>Editing issue</h1>
+
+<%= error_messages_for :issue %>
+
+<% form_for(:issue, :url => issue_path(@issue), :html => { :method => :put }) do |f| %>
+  <p>
+    <%= submit_tag "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', issue_path(@issue) %> |
+<%= link_to 'Back', issues_path %>

@@ -1,0 +1,42 @@
+<%= error_messages_for 'issue' %>
+
+<!--[form:issue]-->
+<p><label for="issue_title">Title</label><br/>
+<%= text_field 'issue', 'title'  %></p>
+
+<p><label for="issue_descr">Descr</label><br/>
+<%= text_area 'issue', 'descr'  %></p>
+
+<p><label for="issue_assigned_to">Assigned to</label><br/>
+<%= 
+	form.select(:assigned_to, userlist)
+  %></p>
+
+<p><label for="issue_opened_by">Opened by</label><br/>
+<%= 
+	form.select(:opened_by, userlist)
+%></p>
+
+<p><label for="issue_open_date">Open date</label><br/>
+<%= datetime_select 'issue', 'open_date'  %></p>
+
+<p><label for="issue_due_date">Due date</label><br/>
+<%= datetime_select 'issue', 'due_date'  %></p>
+
+<p><label for="issue_priority">Priority</label><br/>
+<%=
+	form.select :priority, Issue::PRIORITIES, :prompt => "Select Priority"
+%>
+</p>
+
+
+<p><label for="issue_status">Status</label><br/>
+<%= 
+	form.select :status, Issue::STATUS_CODES, :prompt => "Select Status"
+%>
+</p>
+
+<p><label for="issue_status_date">Status date</label><br/>
+<%= datetime_select 'issue', 'status_date'  %></p>
+<!--[eoform:issue]-->
+

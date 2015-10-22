@@ -1,0 +1,69 @@
+
+REST Resources
+http://en.wikipedia.org/wiki/Representational_state_transfer
+http://www.restapitutorial.com/
+http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm
+
+HTTP References
+http://tools.ietf.org/html/rfc2616
+http://tools.ietf.org/html/rfc7231
+http://tools.ietf.org/html/rfc5789
+
+Data Normalization
+http://en.wikipedia.org/wiki/Database_normalization
+
+
+
+Misc
+http://www.htaccessredirect.net/
+http://www.regular-expressions.info/
+http://www.regexlib.com/?AspxAutoDetectCookieSupport=1
+http://www.regexr.com/
+
+https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc/related?hl=en-US
+
+
+REST interface examples
+1) /boats
+2) /boats/21
+3) /boats/21/bookings
+4) /boats/bookings
+5) /boats/21/categories
+6) /boats/categories
+
+Queries for above examples
+1) SELECT * FROM boats
+2) SELECT * FROM boats WHERE id = 21
+3) SELECT * FROM bookings WHERE boat_id = 21
+
+SELECT bookings.* FROM boats INNER JOIN bookings ON boats.id = bookings.boat_id WHERE boat_id = 21
+
+4) SELECT * FROM boats INNER JOIN bookings ON boats.id = bookings.boat_id
+5) SELECT * FROM categories INNER JOIN boatscategories ON categories.id = boatscategories.category_id WHERE boatscategories.boat_id = 21
+
+
+
+
+
+
+Query examples
+
+UPDATE boats SET 
+	location_id = 7,
+	name = 'Spirit of St. Louis',
+	capacity = 350
+WHERE id 17;
+
+
+
+
+
+
+
+
+
+
+
+
+
+

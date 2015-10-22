@@ -1,0 +1,19 @@
+PHP Class Notes
+
+Database Normalization
+1. Avoid redundant data (keep it atomic)
+	- Repeating columns
+	- Repeating rows
+2. One value per field
+3. Group like data together
+4. Use link tables to connect only two tables
+
+Always store currency as integer cents (or more)
+
+
+
+
+
+Resources
+http://jscompress.com/
+http://numeraljs.com/

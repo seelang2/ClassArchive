@@ -1,0 +1,77 @@
+<!doctype HTML>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample form</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+	
+	label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	
+	label span, label input {
+		display: inline-block;
+	}
+	
+	label span {
+		width: 75px;
+	}
+	</style>
+</head>
+<body>
+
+<h2>New Boat</h2>
+<form id="theform" action="/tc7809/api/boats" method="POST">
+	<label>
+		<span>Name:</span>
+		<input name="name" />
+	</label>
+	<label>
+		<span>Capacity:</span>
+		<input name="capacity" />
+	</label>
+	<label>
+		<span>Location:</span>
+		<input name="location_id" />
+	</label>
+	<div>
+		<input type="submit" value="Save" />
+	</div>
+</form>
+
+<div id="results"></div>
+
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+
+$('#theform')
+	.submit(function(e) {
+		e.preventDefault();
+		
+		$.ajax({
+			url:		'/tc7809/api/boats',
+			type:		'POST',
+			dataType:	'json',
+			data: 		$(this).serialize(),
+			success:	function(response) {
+				if (response.status) {
+					alert('Success!');
+				} else {
+					alert('Fail!');
+				}
+			}
+		})
+		
+		
+	 });
+
+
+
+</script>
+</body>
+</html>

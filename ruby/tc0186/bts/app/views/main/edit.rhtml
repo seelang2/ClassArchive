@@ -1,0 +1,9 @@
+<h1>Editing issue</h1>
+
+<% form_for :issue, :url => { :action => 'update', :id => @issue } do |form| %>
+  <%= render :partial => 'form', :locals => { :form => form, :userlist => @userlist } %>
+  <%= submit_tag 'Edit' %>
+<% end %>
+
+<%= link_to 'Show', :action => 'show', :id => @issue %> |
+<%= link_to 'Back', :action => 'list' %>

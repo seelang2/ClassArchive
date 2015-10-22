@@ -1,0 +1,16 @@
+#hide default index listing
+#IndexIgnore *
+
+#redirect to a new location
+Redirect /tc7809/googleit http://www.google.com
+
+# API redirect to single point of entry
+# if the request is not to a valid file or location,
+# redirect the request to requesttest.php
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . requesttest.php [L]
+</IfModule>
+# END

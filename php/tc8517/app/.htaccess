@@ -1,0 +1,10 @@
+#route requests to index.php at this directory level
+#ref: http://httpd.apache.org/docs/current/mod/mod_rewrite.html
+#	  https://codex.wordpress.org/htaccess
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . ./index.php [L,QSA]
+
+

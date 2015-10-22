@@ -1,0 +1,41 @@
+<% for column in Issue.content_columns %>
+<p>
+  <b><%= column.human_name %>:</b> <%=h @issue.send(column.name) %>
+</p>
+<% end %>
+
+<h2>Issue Tags</h2>
+<p>
+<% @tags.each do |tag| %>
+<%= tag.name %>&nbsp;
+<% end %>
+</p>
+
+<h2>Issue Comments</h2>
+
+<table>
+  <tr>
+  <% for column in Comment.content_columns %>
+    <th><%= column.human_name %></th>
+  <% end %>
+  </tr>
+  
+<% for comment in @comments %>
+  <tr>
+  <% for column in Comment.content_columns %>
+    <td><%=h comment.send(column.name) %></td>
+  <% end %>
+    <td><%= link_to 'Show', :controller => 'admin/comments', :action => 'show', :id => comment %></td>
+    <td><%= link_to 'Edit', :controller => 'admin/comments', :action => 'edit', :id => comment %></td>
+    <td><%= link_to 'Destroy', { :action => 'delete_comment', :id => comment }, :confirm => 'Are you sure?', :method => :post %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New comment', :action => 'new' %>
+
+
+<%= link_to 'Edit', :action => 'edit', :id => @issue %> |
+<%= link_to 'Back', :action => 'list' %>

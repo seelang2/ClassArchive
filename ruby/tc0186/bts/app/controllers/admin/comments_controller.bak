@@ -1,0 +1,3 @@
+class Admin::CommentsController < ApplicationController
+	scaffold :comments
+end

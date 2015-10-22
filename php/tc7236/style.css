@@ -1,0 +1,45 @@
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		background: #dfdfdf;
+	}
+	
+	#wrapper {
+		width: 800px;
+		margin: auto;
+		border: 1px solid #7a7a7a;
+	}
+	
+	header {
+		background: #009;
+		color: #fff;
+		height: 80px;
+		padding: 1px 0;
+	}
+	
+	footer {
+		background: #666;
+		color: #efefef;
+		font-size: 90%;
+		height: 125px;
+		padding: 1px 0;
+	}
+	
+	#content {
+		padding: 1px 0;
+		background: #fff;
+		color: #000;
+	}
+	
+	table {
+		width: 80%;
+		margin: auto;
+	}
+	
+	.postbutton {
+		display: inline-block;
+	}
+	
+	td, th {
+		padding: 5px;
+	}
+	
