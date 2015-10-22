@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Ajax Table Demo</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+	
+	tr.hover { background: #FFC; }
+	.evenrow { background: #E6B8DB; }
+	.oddrow { background: #B8E6C3; }
+	
+	</style>
+
+</head>
+<body>
+
+<div id="container">
+	<div id="target">
+	</div>
+	<div>
+		<button class="btnAdd">Add New</button>
+	</div>
+</div><!-- container -->
+
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+// Set up a modular namespace using an IIFE
+(function(App) {
+
+	// create a protected data object inside IIFE
+	// this will hold data 'global' to all App methods
+	var data = {};
+	
+	App.start = function() {
+		// initialize app. Create base table, etc.
+		data.targetElem = $('#target');
+		
+		// load template parts
+		data.contactTemplate =
+		$('<div />')
+			.addClass('contact')
+			.load('contact-template.html');
+		
+		// get contact data
+		App.getContactData();
+		
+	}; // App.start
+
+	App.getContactData = function() {
+		// make Ajax request for contact data
+		$.ajax({
+			url:		'userdata.php?action=getlist',
+			type:		'get',
+			dataType:	'json',
+			success:	App.updateContactTable
+		});
+		
+	}; // App.getContactData
+
+	App.updateContactTable = function(contacts) {
+		// update target
+		data.targetElem.empty();		// get rid of any items
+		
+		// loop through contact objects
+		$.each(
+			contacts,
+			function(index, contact) {
+				
+				data.contactTemplate
+					.clone()				// make copy of template object
+					.each(function(i, template) {
+						// treat this function as 'IFFE-esque
+						var $template = $(template);
+						
+						// loop through contact columns
+						$.each(
+							contact,
+							function(fieldName, fieldVal) {
+								// merge field data into template
+								$template
+									.find('[data-name="'+fieldName+'"]')
+									.html(fieldVal);
+							}
+						);
+					 })
+					.appendTo(data.targetElem);
+				
+				
+			}
+		);
+		
+		
+	}; // App.updateContactTable
+
+
+})(window.App = window.App || {});
+
+// launch app init method on DOM ready
+$(document).ready(App.start);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+// load multiple templates
+
+	// 'scope global' variables to hold templates
+	var $template1 = null;
+	var $template2 = null;
+	var $template3 = null;
+	
+	// get a new Promise
+	templateLoader = $.Deferred();
+	
+	templateLoader.flags = 0;
+	// template 1: 1
+	// template 2: 2
+	// template 3: 4
+	
+	// whenever a template finishes loading, notify loader
+	
+	templateLoader
+		.progress(function(tplVal) {
+			// update flags
+			templateLoader.flags += tplVal;
+			// if all templates have loaded, resolve loader
+			if (templateLoader.flags == 7) {
+				templateLoader.resolve();
+			}
+		 })
+		.done(function() {
+			// all templates are loaded, proceed with App startup
+			nextStep();
+		 });
+	
+	
+	// load template 1
+	$.ajax({
+		url:		'contact-template.html',
+		type:		'get',
+		dataType:	'html',
+		cache:		false
+	}).done(function(template) {
+		$template1 = $(template);
+		templateLoader.notify(1);
+	});
+			
+	// load template 2
+	$.ajax({
+		url:		'contact-template.html',
+		type:		'get',
+		dataType:	'html',
+		cache:		false
+	}).done(function(template) {
+		$template2 = $(template);
+		templateLoader.notify(2);
+	});
+			
+	// load template 3
+	$.ajax({
+		url:		'contact-template.html',
+		type:		'get',
+		dataType:	'html',
+		cache:		false
+	}).done(function(template) {
+		$template3 = $(template);
+		templateLoader.notify(4);
+	});
+			
+			
+	var nextStep = function() {
+		console.log('On to the next step...');
+		console.log($template1);
+		console.log($template2);
+		console.log($template3);
+	};	
+					
+	
+
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

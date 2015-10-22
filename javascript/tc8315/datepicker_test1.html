@@ -1,0 +1,94 @@
+<DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui/ui/jquery-ui.js"></script>
+
+</head>
+<body>
+
+
+<div>
+	<label>Age:</label>
+	<input name="age" size="3" />
+</div>
+
+<div>
+	<label>Date of Birth:</label>
+	<input name="dob" />
+</div>
+
+<div>
+	<label>Text:</label>
+	<input name="text" />
+</div>
+
+
+
+<script type="text/javascript">
+
+var Validator = {};
+Validator.isValidDate = function(data) {
+	if (data.search(/^(0[1-9]|1[012])[- //.](0[1-9]|[12][0-9]|3[01])[- //.](19|20)\d\d$/) > -1) return true;
+	return false;
+
+}; // Validator.isValidDate
+
+Validator.doesDateMatchNumber = function(datestring, value) {
+	// value = value in years
+	var theDate = new Date(datestring);
+	var today = new Date();
+	var years = today.getFullYear() - theDate.getFullYear();
+	
+	return years == value ? true : false;
+	
+} // Validator.doesDateMatchNumber
+
+$(document).ready(function() {
+
+$('[name="dob"]').datepicker();
+
+// do dob validation
+$('[name="dob"]')
+	.on('blur', function(e) {
+		// clear error states and items
+		$(this)
+			.closest('div')
+			.find('.error')
+			.remove();
+		
+		// check for valid date format
+		if (!Validator.isValidDate( $(this).val() )) {
+			// display error 
+			$(this)
+				.after('<span class="error">Date must be MM/DD/YYYY</span>');
+			
+			// return focus to date field and bail
+			$(this).focus();
+			return false;
+		}
+		
+		
+		// does date match age number
+		//console.log( Validator.doesDateMatchNumber($(this).val(), $('[name="age"]').val()) );
+		if (!Validator.doesDateMatchNumber($(this).val(), $('[name="age"]').val())) {
+			// display error 
+			$(this)
+				.after('<span class="error">The date does must match the age given.</span>');
+		}
+	 });
+
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>
+
+
+
+
+

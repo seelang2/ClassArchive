@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<ul>
+	<li data-value="1">Item 1</li>
+	<li data-value="2">Item 2</li>
+	<li data-value="3">Item 3</li>
+	<li data-value="4">Item 4</li>
+	<li data-value="5">Item 5</li>
+</ul>
+
+
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+
+$('li')
+	.each(function(index, element) {
+		
+		$(element).attr('id', 'item-' + (index+1));
+		
+	 });
+
+
+
+</script>
+</body>
+</html>

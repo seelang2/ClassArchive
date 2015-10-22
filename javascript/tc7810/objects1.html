@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+
+var Car = {};
+Car.make = "Cadillac";
+Car.model = "Escalade";
+Car.status = 'off';
+Car.startEngine = function() {
+	this.status = 'on';
+};
+
+
+var myCar = Object.create(Car);
+
+var yourCar = Object.create(Car);
+
+var SUV = Object.create(Car);
+
+SUV.has4WD = true;
+
+var anotherCar = Object.create(SUV);
+
+
+
+</script>
+</body>
+</html>

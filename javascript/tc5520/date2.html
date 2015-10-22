@@ -1,0 +1,71 @@
+﻿<!doctype html>
+<html>
+<head>
+	<title>Page</title>
+	<meta charset="UTF-8" />
+	
+</head>
+<body>
+
+<div id="datetime"></div>
+
+
+<script type="text/javascript" src="jquery-1.8.3.js"></script>
+<script type="text/javascript">
+
+var weekdays = 
+['Sunday','Monday','Tuesday','Wednesday','Thurday','Friday','Saturday'];
+
+var months = 
+[
+	'January',
+	'February',
+	'March',
+	'April',
+	'May',
+	'June',
+	'July',
+	'August',
+	'September',
+	'October',
+	'November',
+	'December'
+];
+
+var today = new Date();
+
+var	d = today.getDate(),
+	r = d % 10;
+
+switch (true)  {
+	case d != 11 && r == 1:
+		var ordinal = 'st';
+	break;
+	
+	case d != 12 && r == 2:
+		var ordinal = 'nd';
+	break;
+	
+	case d != 13 && r == 3:
+		var ordinal = 'rd';
+	break;
+	
+	default:
+		var ordinal = 'th';
+	break;
+}
+	
+$('#datetime')
+	.append('<p>Today is ' +
+		   weekdays[today.getDay()] + ', ' +
+		   months[today.getMonth()] + ' ' +
+		   today.getDate() + ordinal + ', ' +
+		   today.getFullYear() + 
+		   '.</p>');
+
+
+	   
+
+</script>
+</body>
+</html>

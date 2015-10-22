@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery Example 1 Page</title>
+	<meta charset="UTF-8" />
+	
+</head>
+<body>
+
+<div id="target">
+<p>X</p>
+</div>
+
+
+<script type="text/javascript" src="jquery-1.8.2.js"></script>
+<script type="text/javascript">
+
+$selection =
+$('<div><p>Line 1</p><p>Line 2</p></div>')
+	.appendTo('#target');
+
+$selection.prepend('<h1>Welcome!</h1>');
+
+$selection2 =
+$('<div><p>Thing 1</p></div><div><p>Thing 2</p></div>')
+	.appendTo('#target');
+
+$selection2.prepend('<h1>Dobryo Utro</h1>');
+
+$selection2.detach(); // detaches branch from tree but leaves node data intact
+
+console.log($selection2.length);
+
+$selection.remove(); // removes branch from tree and deletes all data (nodes themselves stay intact)
+
+console.log($selection);
+$selection = null;
+
+$target = 
+$('#target')
+	.after('<p id="target2">Some new node</p>');
+
+$target2 = 
+$('#target2')
+	.clone()
+	.appendTo($target)
+	.css(
+		{
+			color: '#ff0000',
+			fontSize: '125%',
+			fontFamily: 'Verdana, Arial, sans-serif'
+		}
+	 );
+
+$target2.attr('id','imitation');
+
+
+</script>
+</body>
+</html>

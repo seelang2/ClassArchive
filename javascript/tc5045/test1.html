@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+/*
+References:
+https://developers.google.com/feed/v1/devguide#resultXml
+http://code.google.com/apis/ajax/playground/#results_in_xml
+*/
+// Load Google API
+google.load("feeds", "1");
+
+function callback(feedData) {
+	// note that the actual XML document is in the feedData.xmlDocument property.
+	alert(feedData.xmlDocument);
+	// now process the feed any way you want...
+}
+
+
+$(document).ready(function() {
+	
+	
+	// Create a feed instance that will grab the XML feed.
+	var feed = new google.feeds.Feed("http://news.google.com/news?ned=us&topic=h&output=rss");
+	
+	// Request the results in XML
+	feed.setResultFormat(google.feeds.Feed.XML_FORMAT);
+	
+	// Calling load sends the request off.  It requires a callback function.
+	feed.load(callback);
+	
+});
+
+
+</script>
+</body>
+</html>

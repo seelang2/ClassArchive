@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Page</title>
+<meta charset="UTF-8" />
+<meta name="description" content="My Sample Page." />
+
+<style type="text/css">
+
+.pretty {
+	width: 40px;
+	height: 40px;
+	background: url(icons.png);
+}
+
+</style>
+
+</head>
+<body>
+
+<button id="thebutton">Click Me!</button>
+<button id="button2" class="pretty"></button>
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+document.getElementById('thebutton').onclick = function() {
+	alert('The Button Was Clicked!');
+};
+
+$('#button2')
+	.on(
+		'click',
+		function(evt) {
+			alert('The truck is moving forward!');
+		}
+	 );
+
+
+
+</script>
+</body>
+</html>

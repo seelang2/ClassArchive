@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Table-less Forms</title>
+		
+	<style type="text/css">
+	
+	form label {
+		display: block;
+		margin-bottom: 0.5em
+	}
+	
+	form label span,
+	form label input,
+	form label select {
+		display: inline-block;
+	}
+	
+	form label span {
+		width: 125px;
+	}
+	
+	</style>
+	
+</head>
+<body>
+
+<form action="#" method="post">
+
+	<label>
+		<span>First Name</span>
+		<input name="firstname" type="text" />
+	</label>
+
+	<label>
+		<span>Last Name</span>
+		<input name="lastname" type="text" />
+	</label>
+
+	<label>
+		<span>Email</span>
+		<input name="email" type="text" />
+	</label>
+
+	<label>
+		<span>Tell us about yourself</span>
+		<textarea name="about"></textarea>
+	</label>
+
+	<div>
+		<input type="submit" value="Continue" />
+	</div>
+</form>
+
+</body>
+</html>
+
+
+
+

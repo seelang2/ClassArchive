@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+	<title>Page</title>
+	<meta charset="UTF-8" />
+	
+</head>
+<body>
+
+<div id="menu">
+	<ul>
+		<li>Item 1</li>
+		<li>Item 2</li>
+		<li>Item 3</li>
+		<li>Item 4</li>
+	</ul>
+</div>
+
+<script type="text/javascript" src="jquery-1.8.3.js"></script>
+<script type="text/javascript">
+
+var $menu = 
+$('#menu') // set collection to #menu
+	.addClass('topmenu')
+	.children('ul') // set collection to UL
+	.attr('id','main')
+	.children('li') // set collection to LIs
+	.addClass('menuitem')
+	.wrapInner('<span />')
+	.attr(
+		{
+			title: "Some useless tooltip value",
+			'data-fuzzynavel': "My data goes here"
+		}
+	 )
+	.css(
+		{
+			backgroundColor: '#f00'
+		}
+	 )
+	.eq(2)
+	.end() // release LI set and revert collection back to UL
+	.end();
+	
+</script>
+</body>
+</html>

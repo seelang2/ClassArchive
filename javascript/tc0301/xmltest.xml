@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<fieldlist>
+	<field>
+		<name>firstname</name>
+		<value>Next</value>
+	</field>
+	<field>
+		<name>lastname</name>
+		<value>Demo</value>
+	</field>
+</fieldlist>

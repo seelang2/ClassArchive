@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="container"></div>
+
+<script type="text/javascript">
+
+// get a reference to working (parent) node
+var parentElem = document.getElementById("container");
+
+// create new element
+var pElem = document.createElement("P"); // tagname is uppercase by standard convention
+// set properties
+pElem.id = 'firstparagraph';
+pElem.style.color = '#ff0000'; // CSS properties uses the .style object inside the element
+// add element to DOM
+parentElem.appendChild(pElem);
+
+// create text node for new paragraph
+var text = document.createTextNode('This is a simple paragraph.');
+// add text node to DOM
+pElem.appendChild(text);
+
+var hElem = document.createElement("H1");
+parentElem.insertBefore(hElem, pElem);
+
+var text = document.createTextNode('Welcome!');
+hElem.appendChild(text);
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,507 @@
+<!doctype html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Title Here</title>
+<style type="text/css" >
+<!--
+html, body { /* Setting a height of 100% forces the browser to calculate the height of the browser window. This is done to push the footer to the bottom of screen when the content of the page is not long enough to fill the screen. This a totally stylistic application and does not otherwise affect the loading or display of the page. If this styling fails the only repurcussion will be that the footer will not display at the bottom of the screen on shorter pages. */
+	height: 100%; 
+}
+body {
+	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;	
+	background-color: #aaa;
+	margin: 0px;
+	padding: 0;
+	color: #000;
+	font-style: normal;
+	font-weight: 400;
+	width: 100%;
+}
+/* ~~ Element/tag selectors ~~ */
+ul, ol, dl { /* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p , blockquote{
+	margin-top: 0px; /* adding the padding to the sides of the elements within the blocks, instead of the block elements themselves, gets rid of any box model math. A nested block with side padding can also be used as an alternate method. */
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-bottom: 0.5em;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+#top-menu {
+	display: none;
+}
+a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+	border: none;
+}
+/* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+a:link {
+	color: #143D9D;
+	text-decoration: underline; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification. Change the color to match your company color standards. */
+}
+a:visited {
+	color: #566884;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+	text-decoration: none;
+	color: rgba(67,144,255,1.00);
+}
+/* ~~ This fixed width container surrounds all other blocks ~~ */
+.container {
+	background-color: #FFFFFF;
+	margin-top: 0;
+	margin-bottom: 0;
+	/* The following settings are designed to push the footer to the bottom of the screen if the content does not fill the column. For longer content, the footer will scroll as expected. */ 
+	height: auto !important; /* the auto value is a hack for IE7 which doesn't understand min-height.*/
+	min-height: 100%;
+	height: 100%; 
+	margin: 0 auto -3em; /* the auto value on the sides, coupled with the width, centers the layout */
+	overflow:auto;
+	width:100%;
+}
+header p {
+	text-align: center;
+	font-size: 120%;
+	text-transform: uppercase;
+	text-shadow: 0px 1px 7px rgba(0,0,0,0.90);
+	letter-spacing: 0.5em;
+	line-height: 0.5em;
+	margin-top: 2em;
+}
+header h1 { /* The header features an h1 element. The company name could also be added to the background image itself, but then it would not be accessible to search engines. */
+	font-size: 400%;
+	font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", sans-serif;
+	color: rgba(0,0,0,1.00);
+	line-height: 1.2em;
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	vertical-align: baseline;
+	padding-top: 0.75em;
+}
+header { /* ~~ The header is not given a width. It will extend the full width of your layout. The height is a different matter. The header features an h1 element and several background effects. Background images do not affect the height of an element automatically. The height must be set to support the dimensions of any background content. ~~ */
+	position:relative
+	background-color: #090;
+	height: 200px;
+	color: #fff;
+	background-color: #aaa;
+	background-repeat: no-repeat;
+}
+.top { /* Nav elements may be used in several places on the page. Create a custom CSS class such as this one for each unique application of a navigation menu. */
+	border-top: 5px solid #FFFFFF;
+	border-bottom-style: none;
+	border-bottom-width: medium;
+	text-shadow: 2px 2px 3px rgba(0,0,0,0.60);
+	-webkit-box-shadow: 0px 3px 3px rgba(0,0,0,0.30);
+	box-shadow: 0px 3px 3px rgba(0,0,0,0.30);
+	margin-bottom: 25px;
+	text-align: center;
+	overflow: auto;
+	width: 100%;
+	background-color: rgba(105,104,104,1.00);
+}
+.top ul {/* The navigation menu is centered in the nav element. To center the menu the left and right margins of the ul are set to auto and the width is set to a fixed measurement. Furthermore, the width of the ul must be at least equal to or greater than the sum of the widths of all its children, plus borders, margins and padding. If you insert additional menu items don't forget to increase the width accordingly.*/
+	list-style: none;
+	margin-top: 0;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 0;
+	padding: 0;
+	position: relative;
+	text-align: center;
+	width: 33em;
+}
+.top ul li {/* There is no width, margin or padding applied to the li element. When an element is floated its width and height will collapse to the extents of its contents. These specifications will be applied to the a element itself, to allow the entire button to be clickable.  */
+	margin: 0px;
+	list-style: none;
+	border-top: 1px solid #B8B8B8;
+	border-right: 1px solid #333333;
+	border-bottom: 1px solid #000000;
+	border-left: 1px solid #9F9F9F;
+	float: left;
+	display: block;
+	overflow: auto;
+}
+.top ul li a:link  , .top ul li a:visited{/* Normally, hyperlinks are inline elements and are only as wide and as tall as the content of the link. To make the entire button an active link the width of each link is set in ems on the "a" tag itself. Since the li element is floated it will automatically collapse to the width and height of its contents. By using ems the width will scale automatically with the font size preventing the button from breaking. By placing the width and padding on the a element the hyperlink behavior is automatically inherited by the entire visible button. This effect is also assisted by applying a block specification. */
+	padding-right: 0.5em;
+	padding-left: 0.5em;
+	color: #ddd;
+	text-decoration: none;
+	vertical-align: middle;
+	height: auto;
+	display: block;
+	width: 7em;
+	line-height: 3em;
+}
+.top ul li a:hover {
+	color: #fff;
+	background-image: -moz-linear-gradient( 270deg, rgb(2,129,166) 0%, rgb(0,97,153) 100%);
+	background-image: -webkit-linear-gradient(270deg,rgba(159,159,159,1.00) 0%,rgba(141,141,141,1.00) 100%);
+	background-image: -ms-linear-gradient( 270deg, rgb(2,129,166) 0%, rgb(0,97,153) 100%);
+	background-image: linear-gradient(180deg,rgba(159,159,159,1.00) 0%,rgba(141,141,141,1.00) 100%);
+}
+.main  {
+	width: 1024px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 20px;
+	clear: both;
+	overflow: auto;
+}
+.main aside {
+	padding-top: 1em;
+	padding-bottom: 1em;
+	border-top: solid 5px #000;
+	border-bottom: solid 3px #000;
+}
+/* ~~ These are the columns for the layout. ~~ 
+
+1) Padding is only placed on the top and/or bottom of the block elements. The elements within these blocks have padding on their sides. This saves you from any "box model math". Keep in mind, if you add any side padding or border to the block itself, it will be added to the width you define to create the *total* width. You may also choose to remove the padding on the element in the block element and place a second block element within it with no width and the padding necessary for your design.
+
+2) No margin has been given to the columns since they are all floated. If you must add margin, avoid placing it on the side you're floating toward (for example: a right margin on a block set to float right). Many times, padding can be used instead. For blocks where this rule must be broken, you should add a "display:inline" declaration to the block element's rule to tame a bug where some versions of Internet Explorer double the margin.
+
+3) Since classes can be used multiple times in a document (and an element can also have multiple classes applied), the columns have been assigned class names instead of IDs. For example, two sidebar blocks could be stacked if necessary. These can very easily be changed to IDs if that's your preference, as long as you'll only be using them once per document.
+
+4) If you prefer your nav on the left instead of the right, simply float these columns the opposite direction (all left instead of all right) and they'll render in reverse order. There's no need to move the blocks around in the HTML source.
+
+*/
+.sidebar1 {
+	float: left;
+	width: 200px;
+	border-radius: 0;
+	position: relative;
+	overflow: auto;
+}
+.content {
+	width: 37em;
+	position: relative;
+	padding-right: 10px;
+	padding-left: 10px;
+	float: left;
+	overflow: auto;
+	margin-bottom: 20px;
+}
+
+/* ~~ This grouped selector gives the lists in the .content area space ~~ */
+.content ul, .content ol {
+	padding: 0 15px 15px 40px; /* this padding mirrors the right padding in the headings and paragraph rule above. Padding was placed on the bottom for space between other elements on the lists and on the left to create the indention. These may be adjusted as you wish. */
+}
+/* ~~ The header is not given a width. It will extend the full width of your layout. ~~ */
+/* ~~ These are the columns for the layout. ~~ 
+
+1) Padding is only placed on the top and/or bottom of the block elements. The elements within these blocks have padding on their sides. This saves you from any "box model math". Keep in mind, if you add any side padding or border to the block itself, it will be added to the width you define to create the *total* width. You may also choose to remove the padding on the element in the block element and place a second block element within it with no width and the padding necessary for your design.
+
+2) No margin has been given to the columns since they are all floated. If you must add margin, avoid placing it on the side you're floating toward (for example: a right margin on a block set to float right). Many times, padding can be used instead. For blocks where this rule must be broken, you should add a "display:inline" declaration to the block element's rule to tame a bug where some versions of Internet Explorer double the margin.
+
+3) Since classes can be used multiple times in a document (and an element can also have multiple classes applied), the columns have been assigned class names instead of IDs. For example, two sidebar blocks could be stacked if necessary. These can very easily be changed to IDs if that's your preference, as long as you'll only be using them once per document.
+
+*/
+.sidebar2 {
+	width: 200px;
+	background-color: #eee;
+	float: left;
+	overflow: auto;
+}
+
+/* ~~ The footer ~~ */
+footer {
+	padding-top: 10px;
+	padding-right: 10%;
+	padding-bottom: 10px;
+	padding-left: 10%;
+	background-color: rgba(104,104,104,1.00);
+	position: relative;/* this gives IE6 hasLayout to properly clear */
+	clear: both; /* this clear property forces the .container to understand where the columns end and contain them */
+	color: #fff;
+	font-size: 95%;
+	margin-top: 20px;
+}
+footer, .push {	/* This rule helps to position the footer at the bottom of the browser window when the page content does not fill the entire height. */
+	min-height:1em; 
+}
+	
+header, section, footer, aside, article, figure { /*This rule is an accommodation for older browser that may not understand HTML5 semantic elements. This rule should remain at the bottom of the style sheeet. */
+	display: block;
+}
+
+@media only screen and (max-width:1023px) {
+.container {
+	width: 100%;
+}
+header { 
+	position:relative
+	background-color: #090;
+	height: 150px;
+}
+header h1 {
+	font-size: 350%;
+	padding-top: 0.5em;
+	line-height: normal;
+}
+header p {
+	text-align: center;
+	font-size: 120%;
+	text-transform: uppercase;
+	text-shadow: 0px 1px 10px rgba(0,0,0,0.93);
+	letter-spacing: 0.5em;
+	line-height: 1em;
+	margin-top: 0em;
+	padding-top: 1em;
+}
+.top ul {
+	width: 28em;
+}
+.top ul li a:link  , .top ul li a:visited{
+	display: block;
+	padding: 0px .2em;
+	width: 7em;
+	font-size: 90%;
+}
+.main  {
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.content {
+	width: 75%;
+	float: none;
+	margin-left: 20%;
+}
+.sidebar1 {
+	width: 20%;
+}
+.sidebar2 {
+	float: none;
+	margin-left: 23%;
+	width: 75%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+}
+@media only screen and (max-width:665px){
+.container {
+	width: 100%;
+}
+header { 
+	position:relative
+	background-color: #090;
+	height: 100px;
+}
+header h1 {
+	font-size: 235%;
+	font-family: "Impact";
+	color: rgba(0,0,0,1.00);
+	line-height: 1em;
+	text-align: center;
+	vertical-align: middle;
+	text-outline: 1px #0F6B00;
+	padding-top: .6em;
+}
+header p {
+	text-align: center;
+	font-size: 100%;
+	text-transform: uppercase;
+	text-shadow: 0px 1px 7px rgba(0,0,0,0.93);
+	letter-spacing: 0.5em;
+	line-height: 1em;
+}
+.main  {
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 18px;
+}
+.content {
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	float: none;
+}
+.sidebar1 {
+	display: none;
+}
+.sidebar2 {
+	float: none;
+	clear: both;
+	margin: 10px 0px;
+	width: 100%;
+}
+.top {
+	height: 40px;
+	background-repeat: no-repeat;
+	background-position: right center;
+	overflow: hidden;
+}
+.top ul {
+	display: block;
+	width: 100%;
+	margin: 0px;
+	text-align: left;
+}
+.top li {
+	display: block;
+	float: none;
+	margin-left: 0px;
+	width: 100%;
+}
+
+.top ul li a:link  , .top ul li a:visited{
+	padding: 0px 2em;
+	width: auto;
+	font-size: 100%;
+	margin: 0px;
+	background-color: rgba(137,137,137,1.00);
+	height: 40px;
+	line-height: 2.5em;
+}
+.top.open {
+	overflow: visible;
+	z-index: 100;
+}
+.top.open .navbar{
+	/* [disabled]top: 40px; */
+	z-index: 100;
+	font-size: medium;
+	max-height: 240px;
+}
+#top-menu {
+	display: block;
+	float: right;
+	background: rgba(255,255,255,1.00);
+	border: 1px solid rgba(255,255,255,1.00);	
+	padding: 7px 10px;
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	height: 20px;
+	z-index: 1000;
+}
+}
+@media screen and (max-width:480px){
+.main {
+	margin: 0px;
+	width: 100%;
+}
+.content section h2 {
+	padding: 0px;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	line-height: 1.4em;
+}
+.main .sidebar2 {
+	width: 100%;
+	margin: 20px 0px;
+	overflow: hidden;
+}
+.main .sidebar2 section {
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+}
+.sidebar2 figure {
+	clear: none;
+}
+.sidebar2 figure img  {
+	max-width: 95%;
+	float: none;
+	clear: both;
+	margin: 5px auto;
+}
+.sidebar2 figure p {
+	width: 90%;
+	float: none;
+	clear: both;
+	margin: 5px auto;
+}
+
+footer {
+	padding-top: 5px;
+	padding-right: 5%;
+	padding-left: 5%;
+	padding-bottom: 5px;
+}
+}
+-->
+</style>
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.--><script>var __adobewebfontsappname__="dreamweaver"</script><script src="http://use.edgefonts.net/source-sans-pro:n2,n4:default;sue-ellen-francisco:n4:default.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+<div class="container">
+  <header>
+<h1>Name or Logo</h1>
+<p>KicKER or motto</p>
+<a href="#"></a>
+  </header>
+<nav class="top open">
+<button id="top-menu">
+</button>
+<ul class="navbar">
+<li><a href="#">Link 1</a></li>
+<li><a href="#">Link 2</a></li>
+<li><a href="#">Link 3</a></li>
+<li><a href="#">link 4</a></li>
+</ul>
+</nav>
+<div class="main">
+<aside class="sidebar1">
+<section>
+<p>Content in an aside element is secondary but related to the main content. </p>
+<p>The content in this sidebar is optional. It will hide on smaller screens.</p>
+</section>
+</aside>
+<!-- end .sidebar1 -->
+
+<article class="content">
+<h1>Instructions</h1>
+<section>
+<h2>How to use this document</h2>
+<p>Be aware that the CSS for these layouts is heavily commented. If you do most of your work in Design view, have a peek at the code to get tips on working with the CSS for the responsive layouts. You can remove these comments before you launch your site.</p>
+</section>
+<section>
+<h2>Semantic Elements</h2>
+<p>This layout uses HTML5 semantic elements such as article, section, aside, header and footer. Content should be divided into distinct groupings and subgroupings and then contained within the appropriate element with headings, as necessary.</p>
+</section>
+<section>
+<h2>Clearing Method</h2>
+<p>This layout uses a <strong>clear:both</strong> declaration in the footer rule and the sidebar 2 rule  in the various media queries.  This &quot;clearing&quot; technique forces the .container to understand where the columns end  to show, in their entirety, any borders or background colors you place on these elements. The .container is set to  a height of 100% with a bottom margin of -3 ems. These two settings    push the footer to the bottom of the browser window regardless of how much content is added to the .container. </p>
+</section>
+<section>
+<h2>Logo Replacement</h2>
+<p>A text placeholder was used in this layout in the header where you'll likely want to place  your company name or logo. It is recommended that you remove the placeholder and replace it with your own company name or logo. Images can be inserted into the header itself but background images applied by CSS are more flexible. </p>
+</section>
+</article>
+<!-- end .content -->
+
+<aside class="sidebar2">
+<section>
+<p>Content in an aside element is secondary to the main content.</p>
+<p>The content in this sidebar is visible at all resolutions. It will reposition below the main article on smaller screens.</p>
+</section>
+</aside>
+<!-- end .sidebar2 -->
+
+<div class="push"></div>
+</div>
+</div>
+<footer>
+<p>Footer content goes here. This footer uses a CSS technique that forces the footer to display at the bottom of the browser window by default.</p>
+</footer>
+  <!-- end .container -->
+<script type="text/javascript" src="js/menu.js"></script>
+</body>
+</html>

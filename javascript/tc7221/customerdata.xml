@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<customerlist>
+	<customer>
+		<id>123</id>
+		<firstname>Peter</firstname>
+		<lastname>Griffin</lastname>
+		<email>pgriffin@mail.com</email>
+	</customer>
+	<customer>
+		<id>123</id>
+		<firstname>Glenn</firstname>
+		<lastname>Quagmire</lastname>
+		<email>giggity@mail.com</email>
+	</customer>
+	<customer>
+		<id>123</id>
+		<firstname>Cleveland</firstname>
+		<lastname>Brown</lastname>
+		<email>cleve@mail.com</email>
+	</customer>
+	<customer>
+		<id>123</id>
+		<firstname>Homer</firstname>
+		<lastname>Simpson</lastname>
+		<email>dohh@mail.com</email>
+	</customer>
+	<customer>
+		<id>123</id>
+		<firstname>Marge</firstname>
+		<lastname>Simpson</lastname>
+		<email>msimpson@mail.com</email>
+	</customer>
+	<customer>
+		<id>123</id>
+		<firstname>Sterling</firstname>
+		<lastname>Archer</lastname>
+		<email>triplezero@mail.com</email>
+	</customer>
+	<customer>
+		<id>123</id>
+		<firstname>Lana</firstname>
+		<lastname>Kane</lastname>
+		<email>dangerzone@mail.com</email>
+	</customer>
+</customerlist>

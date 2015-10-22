@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="description" content="Just a sample page" />
+	
+	<title>Example Page</title>
+	
+	<style type="text/css">
+	fieldset {
+		border-color: #f00;
+	}
+	
+	form label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	
+	label span,
+	label input {
+		display: inline-block;
+	}
+	
+	label span { width: 130px; }
+	</style>
+</head>
+<body >
+
+<form action="#" method="get">
+	<input type="hidden" name="secret1" value="hiddendata" />
+	
+	<label>
+		<span>First Name:</span>
+		<input name="firstname" type="text" />
+	</label>
+
+	<label>
+		<span>Last Name:</span>
+		<input name="lastname" type="text" />
+	</label>
+	
+	<label>
+		<span>Email:</span>
+		<input name="email" type="text" />
+	</label>
+	
+	<label>
+		<span>Department:</span>
+		<input name="dept" type="text" />
+	</label>
+	
+	<hr />
+	
+	<p>Gender:</p>
+	<label>
+		<span>Female:</span>
+		<input name="gender" value="female" type="radio" />
+	</label>
+
+	<label>
+		<span>Male:</span>
+		<input name="gender" value="male" checked type="radio" />
+	</label>
+	
+	
+	<hr />
+	
+	<fieldset>
+		<legend>Select all topics of interest:</legend>
+		<label>
+			<span>Engineering</span>
+			<input name="option1" value="1" checked type="checkbox" />
+		</label>
+		
+		<label>
+			<span>Biology</span>
+			<input name="option2" value="1" type="checkbox" />
+		</label>
+	</fieldset>
+	
+	<hr />
+	
+	<label>
+		<span>Comments:</span>
+		<textarea name="comment">Enter your comments here</textarea>
+	</label>
+
+	<hr />
+	
+	<label>
+		<span>Choose a preferred time:</span>
+		<select name="timeslot">
+			<option value="am">Morning</option>
+			<option value="mid">Midday</option>
+			<option selected="selected" value="pm">Evening</option>
+			<option value="redeye">Overnight</option>
+		</select>
+	</label>
+	
+	<hr />
+	
+	<label>
+		<span>Choose from the set:</span>
+		<select name="cartype" size="6" multiple>
+			<option value="1">Mustang</option>
+			<option value="2">Lexus</option>
+			<option value="3">Camaro</option>
+			<option value="4">Escort</option>
+			<option value="5">Hummer</option>
+			<option value="6">Escalade</option>
+			<option value="7">LeSabre</option>
+			<option value="8">Maverick</option>
+			<option value="9">LeBaron</option>
+			<option value="10">Vega</option>
+			<option value="11">Cutlass</option>
+		</select>
+	</label>
+	
+	<hr />
+	
+	<div>
+		<input type="submit" />
+	</div>
+</form>
+
+
+</body>
+</html>
+
+
+
+

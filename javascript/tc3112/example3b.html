@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Example 3: Tables</title>
+</head>
+
+<body>
+
+<div id="base">
+</div>
+
+
+
+
+<script type="text/javascript">
+var baseDiv = document.getElementById("base");
+
+var tempElem = document.createElement("TABLE");
+baseDiv.appendChild(tempElem);
+
+var tBodyElem = document.createElement("TBODY");
+tempElem.appendChild(tBodyElem);
+
+var day = 1;
+for (var r = 0; r < 4; r++) {
+	var tRowElem = document.createElement("TR");
+	tBodyElem.appendChild(tRowElem);
+	
+	for (var c = 0; c < 7; c++) {
+		tempElem = document.createElement("TD");
+		tRowElem.appendChild(tempElem);
+		tempElem.appendChild(document.createTextNode(day));
+		day++;
+	} // cols
+} // rows
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

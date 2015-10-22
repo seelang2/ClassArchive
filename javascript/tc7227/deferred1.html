@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+test = $.Deferred();
+
+test.done(function() { console.log('done 1'); });
+
+test.resolve();
+
+test.done(function() { console.log('done 2'); });
+
+
+</script>
+</body>
+</html>

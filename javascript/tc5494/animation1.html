@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Animation Demo</title>
+	<meta charset="UTF-8" />
+	
+	<style type="text/css">
+	#boxA, #boxB, #boxC, #boxD {
+		width: 75px;
+		height: 75px;
+		background: #F00;
+		position: absolute;
+		top: 50px;
+		left: 10px;
+	}
+	
+	#boxB { background: #0F0; }
+	#boxC { background: #00F; }
+	#boxD { background: #F0F; }
+	</style>
+	
+</head>
+<body>
+
+<div id="boxA"></div>
+<div id="boxB"></div>
+<div id="boxC"></div>
+<div id="boxD"></div>
+
+<script type="text/javascript" src="jquery-1.8.2.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	$('#boxA')
+		.animate(
+			{
+				left: 600,
+				top: 150
+			},
+			{
+				duration: 2500
+			}
+		 )
+		.animate(
+			{
+				width: '+=150',
+				height: '+=100'
+			},
+			{
+				duration: 2000,
+				queue: false
+			}
+		 )
+		.animate(
+			{
+				left: '-=200',
+				top: '+=100'
+			},
+			{
+				duration: 2500
+			}
+		 );
+
+	$('#boxB')
+		.animate(
+			{
+				left: '+=10',
+				top: '+=300'
+			},
+			{
+				duration: 1000
+			}
+		 );
+
+	$('#boxC')
+		.animate(
+			{
+				left: 800,
+				top: 250
+			},
+			{
+				duration: 3500
+			}
+		 );
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

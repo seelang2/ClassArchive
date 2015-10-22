@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Form Validation</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, sans-serif;
+	}
+		
+	label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	
+	form span, input {
+		display: inline-block;
+	}
+	
+	span.error {
+		color: #f00;
+	}
+	
+	input.error {
+		border-color: #f00;
+		background: #FFD6D6;
+	}
+	</style>
+</head>
+<body>
+
+<div id="status"></div>
+<form action="#" method="get">
+	<label>
+		<span>Enter a value</span>
+		<input name="field1" />
+	</label>
+	
+	<label>
+		<span>Enter at least 5 characters</span>
+		<input name="field2" />
+	</label>
+	
+	<label>
+		<span>Do whatever here</span>
+		<input name="field3" />
+	</label>
+	
+	<div>
+		<input type="submit" />
+	</div>
+</form>
+
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+$('form')
+	.on('submit', function(evt) {
+		// clear out previous error state
+		$(this)
+			.find('input.error')
+			.removeClass('error')
+			.end()
+			.find('span.error')
+			.remove();
+			
+		// basic validation approach is to assume form is valid 
+		// and look for exceptions
+		var formIsValid = true;
+		
+		// apply validation rules
+		$(this)
+			.find(':input')
+			.each(function(index, field) {
+				
+				switch($(field).attr('name')) {
+					case 'field1':
+						// field can't be empty
+						if ($(field).val().length == 0) {
+							// exception found, flag form invalid
+							// and handle user feedback
+							formIsValid = false;
+							$(field)
+								.addClass('error')
+								.after('<span class="error">Field can\'t be blank</span>');
+						}
+					
+					break;
+					
+					case 'field2':
+						// minimum length of 5
+						if ($(field).val().length < 5 ) {
+							formIsValid = false;
+							$(field)
+								.addClass('error')
+								.after('<span class="error">Field must be at least 5 chars</span>');
+						}
+						
+					break;
+				} // switch
+				
+				
+			 });
+		
+		// do we submit the form?
+		/*
+		if (formIsValid) {
+			return true;
+		}
+		return false;
+		*/
+		return formIsValid;
+		
+	 })
+
+
+}); // document.ready
+
+</script>
+</body>
+</html>

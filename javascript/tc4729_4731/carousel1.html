@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+
+#container {
+	background: #7a7a7a;
+	padding: 20px;
+}
+
+#carousel {
+	margin: 10px auto;
+	width: 400px;
+	height: 200px;
+	overflow: hidden;
+	border: 1px solid #7a7a7a;
+	border-radius: 10px;
+	z-index: 10;
+}
+
+#filmstrip {
+	position: relative;
+	width: 1600px;
+	height: 200px;
+	z-index: 1;
+	left: 0;
+}
+
+#carousel img { float: left; }
+
+</style>
+
+</head>
+
+<body>
+
+<div id="container">
+	
+    <div id="carousel">
+        <div id="filmstrip">
+            <img src="car1.jpg" />
+            <img src="car2.jpg" />
+            <img src="car3.jpg" />
+            <img src="car4.jpg" />
+        </div><!-- filmstrip -->
+	</div><!-- carousel -->
+
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+function scrollRight() {
+	$filmStrip.animate({"left":-400},{"duration":300,"complete":resetStrip});
+}
+
+function resetStrip() {
+	$filmStrip.find("img:first")
+		.detach()
+		.appendTo($filmStrip);
+	$filmStrip.css("left",0);
+	startScroll();
+}
+
+function startScroll() { setTimeout(scrollRight, 1500); }
+
+var $filmStrip = $("#filmstrip"); // cache collection to reuse
+
+$(document).ready(startScroll);
+
+</script>
+</body>
+</html>

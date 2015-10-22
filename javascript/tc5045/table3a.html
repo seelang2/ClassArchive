@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Table Demo</title>
+</head>
+
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript">
+var contactList =
+	[
+		{ id: 0, firstname: "John", lastname: "Doe", email: "jdoe@email.com" },
+		{ id: 1, firstname: "Jane", lastname: "Smith", email: "jsmith@email.com" },
+		{ id: 2, firstname: "Peter", lastname: "Jones", email: "pj101@email.com" },
+		{ id: 3, firstname: "Paul", lastname: "Michaels", email: "pmme@email.com" },
+		{ id: 4, firstname: "Frances", lastname: "Peters", email: "frances@email.com" },
+		{ id: 5, firstname: "Amy", lastname: "Gibbons", email: "notthatamy@email.com" },
+		{ id: 6, firstname: "Jean", lastname: "Claude", email: "vd@email.com" }
+	];
+
+
+
+// get reference to DOM node we're manipulating
+var targetElem = document.getElementById("target");
+
+var tableHTML = '<table><tbody>';
+
+// loop through contactList
+for (var c = 0; c < contactList.length; c++) {
+	// create row for contact
+	tableHTML += '<tr>';
+	
+	// create cells for contact fields
+	for (var fieldName in contactList[c]) {
+		tableHTML += '<td>' + contactList[c][fieldName] + '</td>';
+	}
+	
+	tableHTML += '</tr>';
+} // for contactList
+
+tableHTML += '</tbody></table>';
+
+targetElem.innerHTML = tableHTML;
+
+
+
+</script>
+</body>
+</html>

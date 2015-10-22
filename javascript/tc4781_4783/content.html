@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Manipulating the DOM, jQuery style</title>
+</head>
+
+<body>
+
+<div id="target"></div>
+
+
+
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+
+$('#target').append('<p>This space for rent.</p>');
+$('#target').prepend('<h1>Welcome, New User!</h1>');
+
+var $target = $('#target');
+
+$('<p>Another new paragraph</p>').appendTo($target);
+$('<p>Teaser line above headling</p>').prependTo('#target');
+
+$target.before('<div id="firstitem">New Div 1</div>');
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

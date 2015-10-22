@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<contactreq>
+	<requesttimestamp>73826362</requesttimestamp>
+	<token>dkij340f9jh4</token>
+	<columnNames>
+		<label>ID</label>
+		<label>First Name</label>
+		<label>Last Name</label>
+		<label>Login ID</label>
+	</columnNames>
+	<contactlist>
+		<contact>
+			<id>0</id>
+			<firstname>Stella</firstname>
+			<lastname>El Bridget</lastname>
+			<login>satellizer</login>
+		</contact>
+		<contact>
+			<id>0</id>
+			<firstname>Elizabeth</firstname>
+			<lastname>Mably</lastname>
+			<login>emably</login>
+		</contact>
+		<contact>
+			<id>0</id>
+			<firstname>Chiffon</firstname>
+			<lastname>Fairchild</lastname>
+			<login>classprez</login>
+		</contact>
+		<contact>
+			<id>0</id>
+			<firstname>Kazuya</firstname>
+			<lastname>Aoi</lastname>
+			<login>kaoi</login>
+		</contact>
+		<contact>
+			<id>0</id>
+			<firstname>Ticy</firstname>
+			<lastname>Phenyl</lastname>
+			<login>tphenyl</login>
+		</contact>
+		<contact>
+			<id>0</id>
+			<firstname>Rick</firstname>
+			<lastname>Hunter</lastname>
+			<login>skull1</login>
+		</contact>
+		<contact>
+			<id>0</id>
+			<firstname>Eren</firstname>
+			<lastname>Yeager</lastname>
+			<login>titan0</login>
+		</contact>
+		<contact>
+			<id>0</id>
+			<firstname>John</firstname>
+			<lastname>Stewart</lastname>
+			<login>gljohn</login>
+		</contact>
+		<contact>
+			<id>0</id>
+			<firstname>Peter</firstname>
+			<lastname>Griffin</lastname>
+			<login>stewierules</login>
+		</contact>
+		<contact>
+			<id>0</id>
+			<firstname>Shin'ichi</firstname>
+			<lastname>Kano</lastname>
+			<login>moe</login>
+		</contact>
+	</contactlist>
+</contactreq>

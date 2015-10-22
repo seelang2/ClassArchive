@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sample Fixed width layout</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
+	<style type="text/css" media="all">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 85%;
+		color: #000;
+		background-color: #89D3FA;
+		margin: 0;
+		padding: 0;
+	}
+	
+	#wrapper {
+		max-width: 1200px;
+		background-color: #fff;
+		margin: auto;
+	}
+	
+	@media print {
+		body {
+			font-family: Times, "Times New Roman", serif;
+			font-size: 14pt;
+			color: #090;
+		}
+	}
+	
+	@media screen and (max-width: 599px) {
+		body {
+			background-color: #f00;
+		}
+	
+	}
+	
+	@media screen and (min-width: 600px) and (max-width: 849px) {
+		body {
+			background-color: #0f0;
+		}
+	
+	}
+	
+	@media screen and (min-width: 800px) and (max-width: 1199px) {
+		body {
+			background-color: #00f;
+		}
+	
+	}
+	
+	
+	</style>
+</head>
+<body>
+	<div id="wrapper">
+		<h1>Sample Hybrid Layout</h1>
+		
+		<p>This layout stays the same size regardless of the dimension of the
+		screen.</p>
+		
+		<div id="data"></div>
+
+		<p><a href="http://www.lipsum.com">Lorem ipsum</a> dolor sit amet, consectetur adipiscing elit. Sed hendrerit ligula in arcu lacinia luctus. Nam ac hendrerit velit. Aliquam blandit augue non nibh tincidunt ullamcorper scelerisque mauris egestas. Morbi eu condimentum odio. Cras et lacus dolor, ut sollicitudin turpis. Nunc accumsan placerat varius. Mauris scelerisque dictum mauris, ut bibendum tellus faucibus at. Donec suscipit posuere est nec tempus. Nunc in sapien metus. Cras tempor augue at purus facilisis eget imperdiet arcu interdum. Morbi a lectus purus. Donec rhoncus tortor in orci fermentum sit amet sagittis orci placerat.</p>
+
+		<p>Pellentesque habitant morbi tristique <br />
+		senectus et netus et malesuada fames ac <br />
+		turpis egestas. Morbi facilisis, magna </p>
+
+		<p>sit amet tincidunt faucibus, felis diam <br />
+		sollicitudin elit, vitae sagittis purus <br />
+		risus eget magna. </p>
+
+		<p>Phasellus at tellus orci, quis sollicitudin sem. In in tortor magna. Mauris vestibulum risus velit. In varius massa at mauris congue gravida. Proin sed urna et est mollis bibendum sed ut nisl.</p>
+	</div><!-- wrapper -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
+<script type="text/javascript">
+	function updateData(e) {
+		$('#data').html('<p>' +
+						 'Viewport width: ' + $(window).width() + '<br />' +
+						 'Viewport height: ' + $(window).height() +
+						 '</p>');
+	
+	}
+	
+	$(document).ready(function() {
+		$(window).resize(updateData);
+		updateData();
+	});
+</script>
+</body>
+</html>

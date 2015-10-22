@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<input type="button" id="theButton" value="Click Me!" />
+
+<div id="target"></div>
+
+<script type="text/javascript">
+// set up my mockup data
+var contacts = [
+				{"firstname":"John","lastname":"Doe","city":"Dallas","state":"TX","phone":"123-456-7890"},
+				{"firstname":"Alex","lastname":"Smith","city":"Chicago","state":"IL","phone":"123-456-7890"},
+				{"firstname":"Sara","lastname":"Roberts","city":"Dallas","state":"TX","phone":"123-456-7890"},
+				{"firstname":"Peter","lastname":"Williams","city":"Chicago","state":"IL","phone":"123-456-7890"},
+				{"firstname":"Alice","lastname":"Peters","city":"Chicago","state":"IL","phone":"123-456-7890"},
+				{"firstname":"Myrtle","lastname":"Johnson","city":"Chicago","state":"IL","phone":"123-456-7890"},
+				{"firstname":"Bea","lastname":"Fields","city":"Dallas","state":"TX","phone":"123-456-7890"},
+				{"firstname":"Jeff","lastname":"Paulson","city":"Philadelphia","state":"PA","phone":"123-456-7890"},
+				{"firstname":"Paul","lastname":"Jeffries","city":"Portland","state":"OR","phone":"123-456-7890"},
+				{"firstname":"Ringo","lastname":"Starr","city":"Dallas","state":"TX","phone":"123-456-7890"},
+				{"firstname":"Mary","lastname":"Francis","city":"Quahog","state":"RI","phone":"123-456-7890"}
+			   ];
+
+
+//alert(contacts.length);
+
+function gotClicked() {
+	// alert('The button was clicked.');
+	var targetDiv = document.getElementById("target");
+	
+	// remove any nodes already in element
+	while (targetDiv.hasChildNodes()) {
+		targetDiv.removeChild(targetDiv.firstChild); // removes the first child node as long as there are child nodes
+	}
+	
+	var tableElem = document.createElement("TABLE");
+	targetDiv.appendChild(tableElem);
+	
+	var tbodyElem = document.createElement("TBODY");
+	tableElem.appendChild(tbodyElem);
+	
+	
+	for (var c = 0; c < contacts.length; c++) {
+		// ------------ NEXT ROW -------------
+		var trElem = document.createElement("TR");
+		tbodyElem.appendChild(trElem);
+		
+		var tdElem = document.createElement("TD");
+		trElem.appendChild(tdElem);
+		tdElem.appendChild(document.createTextNode(contacts[c].firstname));
+		
+		var tdElem = document.createElement("TD");
+		trElem.appendChild(tdElem);
+		tdElem.appendChild(document.createTextNode(contacts[c].lastname));
+		
+		var tdElem = document.createElement("TD");
+		trElem.appendChild(tdElem);
+		tdElem.appendChild(document.createTextNode(contacts[c].city));
+		
+		var tdElem = document.createElement("TD");
+		trElem.appendChild(tdElem);
+		tdElem.appendChild(document.createTextNode(contacts[c].state));
+		
+		var tdElem = document.createElement("TD");
+		trElem.appendChild(tdElem);
+		tdElem.appendChild(document.createTextNode(contacts[c].phone));
+		
+	} // for each item
+	
+} // gotClicked
+
+// get reference to the button
+var theButton = document.getElementById("theButton");
+// assign function code to the event handler
+theButton.onclick = gotClicked;
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

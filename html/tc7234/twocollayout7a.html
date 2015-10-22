@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Two-Column Layout Demo</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		color: #000;
+		font-size: 100%;
+		background: #E8CE7A;
+	}
+	
+	#wrapper {
+		background: #fff;
+		width: 802px;
+		box-sizing: border-box;
+		border: 1px solid #291108;
+		border-radius: 10px;
+		margin: auto;
+	}
+	
+	#wrapper > header {
+		height: 80px;
+		background: #FF7532;
+		border-radius: 10px 10px 0 0;
+	}
+	
+	#wrapper > footer {
+		height: 125px;
+		background: #4A220F;
+		color: #fff;
+		font-size: 90%;
+		border-radius: 0 0 10px 10px;
+		clear: both; /* force footer below content */
+	}
+	
+	#content {
+		clear: both;
+		background: #FFC;
+		float: left; /* floated parents will enclose floated children */
+	}
+	
+	#primary {
+		float: left;
+		width: 550px;
+		padding: 1px 15px 1px 30px;
+		box-sizing: border-box;
+	}
+	
+	#sidebar {
+		float: right;
+		width: 250px;
+		font-size: 90%;
+		box-sizing: border-box;
+		padding: 1px 30px 1px 15px;
+	}
+	
+	.twocolumn {
+		/* declare the vendor-specific properties before the standard */
+		-webkit-columns: auto 2;
+		-moz-columns: auto 2;
+		columns: auto 2;
+		font-size: 90%;
+	}
+	
+	/* only target the first heading inside the columnar layout */
+	.twocolumn > h2:first-of-type {
+		margin-top: 0;
+	}
+	
+	/* set up clearing shim style */
+	.clearing {
+		clear: both;
+		height: 1px;
+		overflow: hidden;
+	}
+	
+	nav {
+		background: #FF7532;
+		float: left;
+		width: 100%;
+	}
+	
+	nav ul {
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+	}
+	
+	nav li {
+		background: #fff;
+		position: relative;
+	}
+	
+	/* only target top level LIs */
+	nav > ul > li {
+		float: left;
+		margin-left: 5px;
+		border-radius: 10px 10px 0 0;
+	}
+	
+	li ul {
+		position: absolute;
+		z-index: 100;
+		width: 175px;
+		display: none;
+	}
+	
+	/* target the child UL inside the LI being hovered over */
+	li:hover > ul {
+		display: block;
+	}
+	
+	nav span, nav a {
+		text-decoration: none;
+		color: #7a7a7a;
+		display: block; /* convert A to a block instead of inline */
+		padding: 7px 10px;
+	}
+	
+	nav span:hover,
+	nav a:hover {
+		background: #7a7a7a;
+		color: #fff;
+	}
+
+	nav > ul > li > a,
+	nav > ul > li > span {
+		border-radius: 10px 10px 0 0;
+	}
+	
+	ul ul ul {
+		left: 100%;
+		top: 0;
+	}
+	
+	.alignleft { float: left; margin-right: 1em; }
+	.alignright { float: right; margin-left: 1em; }
+	
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<header>
+		<span>Header text.</span>
+	</header>
+	
+	<nav>
+		<ul>
+			<li><a href="#">Link 1</a></li>
+			<li>
+				<span>Link 2</span>
+				<ul>
+					<li><a href="#">Sub Link 1</a></li>
+					<li>
+						<span>Sub Link 2</span>
+						<ul>
+							<li><a href="#">SubSub Link 1</a></li>
+							<li><a href="#">SubSub Link 2</a></li>
+							<li><a href="#">SubSub Link 3</a></li>
+							<li><a href="#">SubSub Link 4</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Sub Link 3</a></li>
+					<li><a href="#">Sub Link 4</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Link 3</a></li>
+			<li><a href="#">Link 4</a></li>
+		</ul>
+	</nav>
+	
+	<div id="content">
+		<section id="primary">
+			<h1><a href="http://www.lipsum.com" target="_blank">Lorem ipsum</a> dolor sit amet</h1>
+			<img src="img1.png" width="128" height="128" class="alignright" />
+			<p>Lorem ipsum dolor sit amet,<br /> consectetur adipiscing elit. Nullam ultricies, neque sed posuere fringilla, nulla risus mollis diam, ac cursus erat turpis a velit. Suspendisse vitae viverra dui.  Morbi non arcu ullamcorper, mattis libero ac, vehicula risus. Duis at placerat lacus. Mauris vel tempus dui. Etiam sollicitudin at neque in aliquam. Etiam in mauris at nulla tempor lacinia a sit amet diam. Morbi id massa eu mauris tincidunt feugiat. </p>
+
+			<blockquote><a href="http://kellyvirginiaoconnell.com" target="_blank">Kelly's blog</a> In erat leo, ultricies id metus vel, egestas venenatis ex. In posuere porttitor blandit. Suspendisse viverra libero at tincidunt facilisis. Vestibulum at convallis metus, id lacinia sem.</blockquote>
+
+			<p><abbr title="No meaning, I just kinda made this up">ABC</abbr> Nullam pellentesque tincidunt dolor id ultricies. Ut interdum risus id orci vestibulum elementum. Cras tortor dolor, venenatis nec congue a, pretium porttitor diam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+		  
+		  <div class="twocolumn">			
+			<h2 id="section1" style="color: red;">Quisque vel gravida est</h2>
+			<p>Maecenas ut eleifend mi, sed finibus nibh. Integer rutrum sodales dolor non sagittis. </p>
+			<p>Cras nibh felis, finibus congue fermentum non, fringilla in massa. Nam fringilla est in orci imperdiet, sed bibendum velit egestas. </p>
+			<p>Quisque vel gravida est. Nunc gravida dui non orci varius feugiat. </p>
+			<p>Quisque tristique nisi ac felis mollis imperdiet. Pellentesque non justo quis ligula aliquet faucibus ac at lorem. </p>
+			<h2>Foo.</h2>
+			<p>In ac scelerisque ligula, a dictum sem. Maecenas eget nulla nec neque fringilla mattis sit amet vel elit. Quisque commodo condimentum est, sed sodales justo consectetur in.</p>
+			<p>Cras venenatis erat nec turpis consectetur, sit amet euismod sem elementum. Cras convallis quam consectetur suscipit pulvinar. </p>
+			<p>Fusce quam lorem, rutrum porta augue id, ornare condimentum justo. Nunc ut est sed ipsum fringilla cursus vel at dui. Ut suscipit eros eu mi facilisis, quis vehicula turpis finibus.</p>
+
+			<p>Maecenas condimentum nunc et nulla imperdiet, sit amet sollicitudin mauris accumsan. Duis eget condimentum felis. Quisque porttitor suscipit lacus, non sagittis nunc accumsan et. </p>
+			<p>Donec nec nunc in lacus fringilla laoreet. Ut facilisis ipsum vulputate nunc pharetra imperdiet. Morbi consequat lectus enim, quis blandit leo porta sed. </p>
+			<p>Proin ultricies, sapien ut facilisis pulvinar, ligula risus semper justo, eget pharetra ex mauris sit amet massa. Etiam pharetra euismod iaculis.</p>
+		  </div><!-- .twocolumn -->
+		  
+			<h2 id="section2">Quisque gravida consectetur rhoncus</h2>
+			<p>Quisque gravida consectetur rhoncus. Integer in leo dignissim leo aliquam dapibus et ac urna. Duis in mauris vitae orci lacinia sagittis. Sed ultricies, ligula eu laoreet bibendum, nulla nibh sollicitudin nisi, et egestas ligula libero at lectus. Aenean ultricies vulputate rutrum. Pellentesque vestibulum, odio eu fermentum dignissim, metus nunc aliquet metus, a hendrerit diam elit non mi. Aliquam et diam scelerisque, gravida ex non, rhoncus metus. Nulla vitae viverra eros.</p>
+
+			<p>Curabitur ut eros fermentum, semper mauris at, dictum augue. Cras sit amet lorem id enim congue convallis sed sit amet ipsum. Mauris suscipit turpis eu mi mattis, nec consequat justo ultricies. Proin sollicitudin ligula vitae justo laoreet condimentum. Sed posuere nulla quis porta commodo. Aenean iaculis tortor purus, sed tristique enim porttitor a. Curabitur non tincidunt eros. Integer efficitur mollis eros non finibus.</p>
+
+		</section><!-- primary -->
+		
+		<section id="sidebar">
+			<h2 id="section3">Vivamus quis nibh finibus</h2>
+			<p>Proin vitae convallis diam. Fusce efficitur diam at risus commodo tincidunt. Maecenas consequat ex arcu. Vestibulum erat mauris, bibendum ut imperdiet nec, vehicula eu felis. Curabitur nec facilisis urna. Suspendisse ut massa egestas, ultrices risus ac, congue metus. Sed in augue urna. Duis a vehicula urna. Vivamus quis nibh finibus, tempus libero et, ullamcorper metus. Vivamus elementum lacus justo, eget semper purus hendrerit vel. Ut iaculis, augue laoreet lacinia hendrerit, mi felis ornare tortor, at auctor tellus velit ac nisl. Duis at tellus sit amet ipsum consequat aliquam nec at neque. Nullam non augue ac velit fringilla consectetur. Donec sagittis dui venenatis placerat scelerisque. Curabitur suscipit accumsan est. In laoreet egestas eros, eget porta odio rhoncus et.</p>
+
+			<p>Nulla molestie nibh ac neque luctus euismod. Suspendisse eget justo sed dolor imperdiet sollicitudin. Proin at mauris tortor. Morbi porttitor tincidunt tempor. Sed tincidunt sed velit in volutpat. Nulla auctor odio tellus, ut bibendum libero condimentum sed. Donec ut lobortis ante. Nam ut nisl tellus. Nunc risus mauris, lobortis sed congue et, porttitor quis elit. Integer nec risus ex. Suspendisse potenti.</p>
+
+			<h2 id="section4">Suspendisse vel leo dapibus</h2>
+			<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras eget metus tincidunt, sollicitudin libero ac, maximus libero. Ut turpis magna, sagittis quis neque et, pharetra convallis massa. Maecenas a nunc eget nisi fermentum lacinia. Fusce dignissim ut nulla sed convallis. Suspendisse vel leo dapibus, aliquam tortor in, porttitor lacus. In ornare vulputate tincidunt. Phasellus dignissim elementum nisl, id pellentesque nunc accumsan id. Vivamus egestas dictum elit ac pharetra. Ut placerat, tellus id semper pharetra, lectus arcu malesuada nisl, id tincidunt est justo eget mi. Maecenas quis enim erat. Ut semper convallis lectus, quis efficitur ligula ultrices in.</p>
+
+		</section><!-- sidebar -->
+	</div><!-- content -->
+	
+	<footer>
+		Copyright &copy; TC Class 7234. Creative Commons Open License.
+	</footer>
+</div><!-- wrapper -->
+
+</body>
+</html>

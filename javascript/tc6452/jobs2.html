@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo</title>
+
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+// ref: https://data.usajobs.gov/Rest
+
+	var processResults = function(data) {
+		console.log('processResults');
+		console.log(data);
+	
+	}; // processResults
+	
+
+$(document).ready(function() {
+	
+	var baseURL = 'http://www.sitebabble.com/files/code/simpleproxy1.php';
+	var MinSalary = 50000;
+	var LocationID = 60610;
+	
+	var requestURL = 
+		baseURL
+		+ '?MinSalary=' + MinSalary
+		+ '&LocationID=' + LocationID;
+	
+	$.ajax({
+		url: 			requestURL,
+		type:			'get',
+		dataType:		'jsonp',
+		jsonpCallback:	'processResults',
+		contentType:	'application/json',
+		success:		function(data) {
+			console.log('success handler');
+			console.log(data);
+		}
+	});
+	
+}); // document.ready;
+
+
+</script>
+</body>
+</html>
+

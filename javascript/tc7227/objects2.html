@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+function Counter() {
+	// properties defined within constructor function are copied to instances
+	this.c = 0;
+	this.update = function() { return ++this.c; }
+
+};
+
+var x = new Counter();
+
+</script>
+</body>
+</html>

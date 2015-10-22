@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Demo 3</title>
+</head>
+<body>
+
+<div id="start"></div>
+
+<script type="text/javascript">
+
+startdiv = document.getElementById("start");
+
+p1 = document.createElement("P");
+
+startdiv.appendChild(p1);
+
+text1 = document.createTextNode("World");
+
+p1.appendChild(text1);
+
+p2 = document.createElement("P");
+text2 = document.createTextNode("Hello");
+
+p2.appendChild(text2);
+
+startdiv.insertBefore(p2, p1);
+
+p2.innerHTML = "This space for rent";
+
+</script>
+
+<div id="test">
+<p>This Space For Rent.</p>
+<p>What do you want this one to say?</p>
+</div>
+
+<script type="text/javascript">
+
+plist = document.getElementByTagName("P");
+
+for (c = 0; c < plist.item.count; c++) {
+	if ( plist.item[c].innerHTML = "This Space For Rent." ) {
+		plist.item[c].innerHTML = "Some new text.";
+	}
+}
+
+
+
+</script>
+
+</body>
+</html>

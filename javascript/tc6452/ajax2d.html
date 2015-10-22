@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>JSON-P Callback Demo</title>
+
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+function myfunction(response) {
+	
+	console.log(response);
+	
+}
+
+$(document).ready(function() {
+	
+	$.ajax({
+		url:		'http://127.0.0.1/tc6452/userdata.php?action=getuser&id=6',
+		type:		'get',
+		dataType:	'jsonp',
+		jsonp:		'callback', // override the default 'callback' param name
+		jsonpCallback: 'myfunction', // override the callback function name
+	});
+	
+	
+	
+}); // document.ready
+
+
+</script>
+</body>
+</html>
+

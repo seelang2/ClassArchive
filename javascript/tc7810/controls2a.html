@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="controls">
+	<div class="contactitem">
+		<p>FirstName</p>
+		<p>Lastname</p>
+		<p>Age</p>
+		<div>
+			<button>Edit</button>
+			<button>Delete</button>
+		</div>
+	</div>
+	<div class="contactitem">
+		<p>FirstName</p>
+		<p>Lastname</p>
+		<p>Age</p>
+		<div>
+			<button>Edit</button>
+			<button>Delete</button>
+		</div>
+	</div>
+	<div>
+		<button>Add</button>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+// Use an IIFE to define a namespace
+(function(App) {
+
+// intializes App
+App.init = function() {
+	// do init
+	// notify watchers of init event
+	$(App).trigger('init');
+
+}; // App.init
+
+})(window.App = window.App || {});
+
+// defers script execution until the DOM is ready
+$(document).ready(App.init); // document.ready
+
+/**
+	Define another module
+ */
+(function(App) {
+
+// intializes App
+App.doStuff = function() {
+	console.log('doing stuff');
+}; // App.init
+
+$(App).on('init', App.doStuff);
+
+})(window.App = window.App || {});
+
+
+
+</script>
+</body>
+</html>

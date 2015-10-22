@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Fun with Twitter</title>
+
+<script type="text/javascript" src="ajax.js"></script>
+
+<style type="text/css">
+body {
+	color: #000000;
+	background: #ffffff;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 85%;
+}
+
+#tweets {
+	width: 300px;
+	margin: auto;
+}
+
+#tweets ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+#tweets li {
+	float: left;
+	width: 100%;
+	padding: 1px 0;
+	clear: both;
+}
+
+#tweets li img {
+	float: left;
+	margin-right: 15px;
+}
+
+#tweets li h2 {
+	margin: 0 0 0.25em 0;
+	font-weight: bold;
+	font-size: 120%;
+}
+
+#tweets li p {
+	margin: 0.25 0;
+	font-size: 90%;
+}
+
+#tweets li span {
+	color: #7a7a7a;
+	font-size: 85%;
+}
+
+#tweets li a {
+	text-decoration: none;
+	color: #000;
+}
+
+#tweets li a:hover {
+	color: #09F;
+}
+</style>
+</head>
+
+<body>
+
+<div id="tweets"></div>
+
+<script type="text/javascript">
+var Debug = {
+	"level": 1,
+	"log": function(msg) {
+		if (Debug.level < 1) return; // don't do anything
+		//alert(msg);
+		console.log(msg);
+	} // log
+}; // Debug
+
+var Registry = {};
+
+var App = {
+	"startup": function() {
+		//Debug.level = 0; // turns off debug logging
+		Registry.tweetDiv = document.getElementById("tweets");
+		App.getTweets();
+	}, // startup
+	
+	"getTweets": function() {
+		// check if script node exists already and remove it if it does
+		if (document.body.firstChild.id == 'apicall') document.body.removeChild(document.body.firstChild);
+		// create script node
+		var scriptNode = document.createElement("SCRIPT");
+		scriptNode.type = 'text/javascript';
+		scriptNode.src = 'http://search.twitter.com/search.json?q=%23trainingconnection&callback=App.showTweets';
+		scriptNode.id = 'apicall';
+		
+		document.body.insertBefore(scriptNode, document.body.firstChild);
+	}, // getTweets
+	
+	"showTweets": function(data) {
+		Debug.log('Callback to App.showTweets initiated.');
+		Debug.log(data.results.length + ' tweets returned.');
+		
+		var content = '<ul>';
+		for (var c = 0; c < data.results.length; c++) {
+			content += '<li>' +
+					   '<img src="' + data.results[c].profile_image_url + '" />' +
+					   '<h2><a href="http://twitter.com/#!/' + data.results[c].from_user + 
+					   '" target="_blank">' + data.results[c].from_user + '</a></h2>' + 
+					   '<p>' + data.results[c].text + '<br />' + 
+					   '<span>' + data.results[c].created_at + '</span></p>' +
+					   '</li>';
+			
+		} // for results
+		content += '</ul>';
+		
+		Registry.tweetDiv.innerHTML = content;
+		
+	} // showTweets
+}; // App
+
+window.onload = App.startup;
+</script>
+</body>
+</html>

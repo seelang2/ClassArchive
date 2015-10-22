@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<form id="theform">
+
+<label>
+	<span>Type only numbers</span>
+	<input type="text" name="field1" />
+</label>
+
+</form>
+
+
+
+
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+
+/*
+	field can't be empty
+	not a number
+	not alphanumeric
+	regular expression catch all
+	minimum length
+	length between
+	
+*/
+
+$('[name="field1"]').on('keydown', function(e) {
+	
+	// codes 48-57 are numeric
+	return e.keyCode > 47 && e.keyCode < 58;
+	
+});
+
+
+</script>
+</body>
+</html>

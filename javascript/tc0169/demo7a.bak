@@ -1,0 +1,176 @@
+
+var pageData = new function() {
+	this.contentDiv = null;
+	this.sidebarDiv = null;
+	this.statusDiv = null;
+	this.hoverDiv = null;
+	this.currentRow = null;
+	this.productFields = Array("name", "size", "color", "type", "price");
+
+}
+
+function init() {
+	pageData.contentDiv = document.getElementById('content');
+	pageData.sidebarDiv = document.getElementById('sidebar');
+	pageData.statusDiv = document.getElementById('statusbar');
+
+
+	pageData.hoverDiv = document.createElement('DIV');
+	document.body.appendChild(pageData.hoverDiv);
+	
+	pageData.hoverDiv.setAttribute('ID','hover');
+	
+	temp = document.createElement('DIV');
+	pageData.hoverDiv.appendChild(temp);
+	temp.setAttribute('ID','hoverdata');
+	
+	temp = document.createElement('INPUT');
+	pageData.hoverDiv.appendChild(temp);
+	temp.setAttribute('ID','hoverbut');
+	temp.setAttribute('NAME','hoverbut');
+	temp.setAttribute('TYPE','button');
+	temp.setAttribute('VALUE','Close Window');
+	temp.onclick = function() { new Effect.SwitchOff(pageData.hoverDiv); }
+
+	// invoke scriptaculous drag and drop
+	new Draggable('hover', {revert:false});
+
+
+	// initial call to retrieve product list
+	getProductList();
+
+} 
+
+function cleanup() {
+	pageData.contentDiv = null;
+	pageData.sidebarDiv = null;
+	pageData.hoverDiv = null;
+	pageData.statusDiv = null;
+}
+
+// Sets the visibility of the user feedback status div
+function toggleStatusbar(targetObj, switchOn) {
+	targetObj.style.visibility = (switchOn) ? 'visible' : 'hidden' ;
+}
+
+function getProductList() {
+
+	// get time to pass on query string to work around IE aggressive caching
+	x = new Date();
+	x = x.getTime();
+
+	ajaxSendReq("GET", 'http://localhost/seriesdata.php?x='+x+'&mode=data&series=all&model=all', displayProductList, null, 'XML');
+
+	// turn on user feedback
+	toggleStatusbar(pageData.statusDiv, true);
+}
+
+function displayProductList(response) {
+
+//	alert ('back from server');
+
+	// turn off user feedback
+	toggleStatusbar(pageData.statusDiv, false);
+
+	productList = XMLParse.xml2ObjArray(response, 'mitem');
+	insertTable(productList, pageData.productFields, pageData.contentDiv, 'producttable', 'name');
+
+}
+
+function doHover(elem) {
+
+	// elem returned will be a cell inside the row, so we want the parent row
+	elem = elem.parentNode;
+	
+	ajaxSendReq("GET", 'http://localhost/seriesdata.php?x='+x+'&mode=data&series=all&model=all&item='+elem.id, showHover, null, 'XML');
+
+	// turn on user feedback
+	toggleStatusbar(pageData.statusDiv, true);
+
+}
+
+function showHover(response) {
+
+	// turn off user feedback
+	toggleStatusbar(pageData.statusDiv, false);
+
+	itemdata = XMLParse.xml2ObjArray(response, 'mitem');
+	
+//	hoverdiv = document.getElementById('hoverdata');
+	hoverdiv = pageData.hoverDiv.firstChild;
+	
+	hoverdiv.innerHTML = '';
+	
+	hoverdiv.appendChild(document.createTextNode(itemdata[0].name));
+	hoverdiv.appendChild(document.createElement('BR'));
+	hoverdiv.appendChild(document.createTextNode(itemdata[0].size));
+	hoverdiv.appendChild(document.createElement('BR'));
+	hoverdiv.appendChild(document.createTextNode(itemdata[0].color));
+	hoverdiv.appendChild(document.createElement('BR'));
+	hoverdiv.appendChild(document.createTextNode(itemdata[0].type));
+	hoverdiv.appendChild(document.createElement('BR'));
+	hoverdiv.appendChild(document.createTextNode(itemdata[0].price));
+
+	toggleStatusbar(pageData.hoverDiv, true);
+	new Effect.Appear('hover');
+
+}
+
+
+
+/*
+    Given an array of objects, create a table inside a target Element
+    where the list of object attributes (fields) is given as an array
+    (each field is a separate table cell in a row)
+*/
+function insertTable(srcArray, srcFields, targetElem, className, idField) {
+	var tableElem = document.createElement('TABLE');
+	targetElem.appendChild(tableElem);
+	tableElem.className = className;
+
+	tbodyElem = document.createElement('TBODY');
+	tableElem.appendChild(tbodyElem);
+
+
+	for (c=0; c < srcArray.length; c++) {
+
+		var temp1 = document.createElement('TR');
+		temp1.setAttribute('ID', srcArray[c][idField]);
+
+		if ((c%2)>0) {
+			temp1.className = className + 'row2';
+		} else {
+			temp1.className = className + 'row1';
+		}
+
+		temp1.onmouseover = function(e) { 
+
+			// get event
+			var targ;
+			if (!e) var e = window.event;
+			if (e.target) targ = e.target;
+			else if (e.srcElement) targ = e.srcElement;
+			if (targ.nodeType == 3) // defeat Safari bug
+				targ = targ.parentNode;
+
+//			alert('Event type: ' + e.type);
+
+			var runTimedHover = function() { doHover(targ) };
+
+			pageData.timer = setTimeout(runTimedHover, 1500);
+		}
+
+		temp1.onmouseout = function() { clearTimeout(pageData.timer); }
+
+		for (d=0; d < srcFields.length; d++) {
+			var temp2 = document.createElement('TD');
+			temp2.appendChild(document.createTextNode(srcArray[c][srcFields[d]]));
+			temp1.appendChild(temp2);
+		}
+		tbodyElem.appendChild(temp1);
+	}
+
+}
+
+window.onload = init;
+window.onunload = cleanup;

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+	
+	<style type="text/css">
+	</style>
+	
+</head>
+<body>
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+
+var contact = { name: 'John' };
+
+(function(c) {
+	
+	var x = 100;
+	
+	c.name += ' Doe';
+	
+	c.getX = function() { return ++x; };  // a closure
+	
+	getX = function() { return ++x; };  // a closure (getX is created in global scope
+	
+	var getX = function() { return ++x; };  // NOT a closure 
+	
+	function getX() { return ++x; };  // NOT a closure 
+	
+	c.getX = function() { var x = 1; return ++x; };  // NOT a closure
+
+	
+})(contact);
+
+console.log(contact);
+
+
+</script>
+</body>
+</html>
+
+
+
+

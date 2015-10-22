@@ -1,0 +1,9 @@
+HTML Email Resources
+
+http://stackoverflow.com/questions/2229822/best-practices-considerations-when-writing-html-emails/21437734#21437734
+
+https://www.campaignmonitor.com/css/
+
+http://www.sitebabble.com/files/tools/html_email_tester.php
+Password: classtest
+

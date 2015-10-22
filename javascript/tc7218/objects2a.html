@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+	
+	<style type="text/css">
+	</style>
+	
+</head>
+<body>
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+var Car = {
+	color: 'black',
+	status: 'off',
+	start: function() {
+		this.status = 'on';
+	}
+};
+
+var SUV = Object.create(Car); // SUV is a derivative of Car
+SUV.color = 'green';
+SUV.has4WD = true;
+
+
+
+var myCar = Object.create(Car);
+myCar.color = 'red';
+
+var yourCar = Object.create(SUV);
+
+
+</script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 85%;
+	color: #000;
+}
+
+h1 {
+	font-size: 2em;
+	margin: 0.5em 0 0.25em 0;
+	color: #990000;
+	font-weight: bold;
+}
+
+h2 {
+	font-size: 1.6em;
+	margin: 0.5em 0 0.25em 0;
+	color: #006;
+	font-weight: normal;
+}
+
+p {
+	margin: 1em 0;
+}
+
+/* header styling */
+#header span {
+	font-weight: bold;
+	font-size: 150%;
+	text-align:center;
+	display: block;
+}
+
+.sidenote {
+	color: #096;
+}
+
+h2.sidenote {
+	color: #FF6;
+}
+
+#sidebar h2 {
+	color: #C0F;
+}
+
+#sidebar {
+	font-size: 90%;
+	color: #000;
+}
+
+
+

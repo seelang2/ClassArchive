@@ -1,0 +1,14 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	background: #7a7a7a;
+	margin: 0;
+	padding: 0;
+}
+
+#wrapper {
+	background: #fff;
+	width: 750px;
+	margin: 0 auto;
+}

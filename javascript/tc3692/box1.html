@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+#box1 {
+	position: absolute;
+	top: 50px;
+	left: 50px;
+	width: 75px;
+	height: 75px;
+	background: #f00;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="box1"></div>
+
+<script type="text/javascript">
+var box = document.getElementById("box1");
+var left = 50; // track horizontal position
+var endLeft = 500; // ending horizontal position
+var delay = 25; // interval delay in milliseconds
+var increment = 5; // movement increment in px
+
+function moveBox() {
+	left += increment; // increment left value
+	
+	if (left >= endLeft) {
+		left = endLeft; // constrain movement to ending position
+		clearInterval(moveInterval); // stop moving
+	}
+	
+	box.style.left = left + 'px'; // apply updated position
+}
+
+var moveInterval = setInterval(moveBox, delay);
+
+</script>
+
+
+</body>
+</html>

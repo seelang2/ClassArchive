@@ -1,0 +1,81 @@
+<!doctype html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div><p>X</p></div>
+
+
+<script type="text/javascript" src="jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+
+/*
+// DON'T DO THIS! VERY INEFFICIENT
+$('div').append('<p>append</p>');
+$('div').prepend('<p>prepend</p>');
+$('div').before('<p>before</p>');
+$('div').after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo('div');
+$('<p>prependTo</p>').prependTo('div');
+$('<p>insertBefore</p>').insertBefore('div');
+$('<p>insertAfter</p>').insertAfter('div');
+*/
+
+/*
+// BETTER - cache selections inside a variable for reuse
+var $target = $('div');
+
+$target.append('<p>append</p>');
+$target.prepend('<p>prepend</p>');
+$target.before('<p>before</p>');
+$target.after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo($target);
+$('<p>prependTo</p>').prependTo($target);
+$('<p>insertBefore</p>').insertBefore($target);
+$('<p>insertAfter</p>').insertAfter($target);
+*/
+
+/*
+// BETTER STILL - make use of chaining
+var $target = $('div');
+
+$('div')
+	.append('<p>append</p>')
+	.prepend('<p>prepend</p>')
+	.before('<p>before</p>')
+	.after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo($target);
+$('<p>prependTo</p>').prependTo($target);
+$('<p>insertBefore</p>').insertBefore($target);
+$('<p>insertAfter</p>').insertAfter($target);
+*/
+
+// BETTER STILL - make use of chaining
+var $target = 
+$('div')
+	.append('<p>append</p>')
+	.prepend('<p>prepend</p>')
+	.before('<p>before</p>')
+	.after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo($target);
+$('<p>prependTo</p>').prependTo($target);
+$('<p>insertBefore</p>').insertBefore($target);
+$('<p>insertAfter</p>').insertAfter($target);
+
+
+
+
+</script>
+</body>
+</html>
+
+

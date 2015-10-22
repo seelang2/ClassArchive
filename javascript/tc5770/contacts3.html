@@ -1,0 +1,66 @@
+<!doctype HTML>
+<html>
+<head>
+	<title>Page Title</title>
+	<meta charset="UTF-8" />
+
+</head>
+<body>
+
+	<div id="content">
+		<h2>Contact data goes here!</h2>
+	</div>
+
+<script type="text/javascript">
+
+var contacts =
+  [
+	{ firstname: 'John', lastname: 'Doe', phone: '(312)588-2300' },
+	{ firstname: 'Mary', lastname: 'Smith', phone: '(312)588-2301' },
+	{ firstname: 'Steven', lastname: 'Peters', phone: '(312)588-2302' },
+	{ firstname: 'Alice', lastname: 'Johnson', phone: '(312)588-2303' },
+	{ firstname: 'Bob', lastname: 'Patrick', phone: '(312)588-2304' },
+	{ firstname: 'Patrick', lastname: 'Roberts', phone: '(312)588-2305' }
+  ];
+
+// Note: Avoid putting getElementById in a loop
+var contentDiv = document.getElementById('content');
+
+// build table
+var tableElem = document.createElement("TABLE");
+contentDiv.appendChild(tableElem);
+
+var tbodyElem = document.createElement("TBODY");
+tableElem.appendChild(tbodyElem);
+
+// for each contact...
+for (var c = 0; c < contacts.length; c++) {
+	// build table row
+	var rowElem = document.createElement("TR");
+	tbodyElem.appendChild(rowElem);
+	
+	// build table cells
+	var tdElem = document.createElement("TD");
+	rowElem.appendChild(tdElem);
+	
+	var cellText = document.createTextNode(contacts[c].firstname);
+	tdElem.appendChild(cellText);
+	
+	var tdElem = document.createElement("TD");
+	rowElem.appendChild(tdElem);
+	
+	var cellText = document.createTextNode(contacts[c].lastname);
+	tdElem.appendChild(cellText);
+	
+	var tdElem = document.createElement("TD");
+	rowElem.appendChild(tdElem);
+	
+	var cellText = document.createTextNode(contacts[c].phone);
+	tdElem.appendChild(cellText);
+	
+}
+
+
+</script>
+</body>
+</html>

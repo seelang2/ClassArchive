@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	</style>
+</head>
+<body>
+
+<p>Select your interests:</p>
+<label>
+	<input type="checkbox" id="checkall" />
+	<span>Check/uncheck All</span>
+</label>
+<fieldset id="interestset">
+	<label>
+		<input type="checkbox" name="interests[]" value="spores" />
+		<span>Spores</span>
+	</label>
+	<label>
+		<input type="checkbox" name="interests[]" value="mold" />
+		<span>Mold</span>
+	</label>
+	<label>
+		<input type="checkbox" name="interests[]" value="fungus" />
+		<span>Fungus</span>
+	</label>
+</fieldset>
+
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+// get collection of checkbox set
+var $interestSet = 
+$('#interestset [type="checkbox"]')
+	.on('click', function(e) {
+		// if any items in checkbox aren't clicked we 
+		// uncheck $checkAll
+		if ( $interestSet.is(":not(:checked)") ) {
+			$checkAll.removeProp('checked');
+		}
+		
+	 });
+
+// set up event handler
+var $checkAll = 
+$('#checkall')
+	.on('click', function(e) {
+		
+		//console.log($(this).prop('checked'));
+		
+		if ( $(this).prop('checked') ) {
+			// check all boxes
+			$interestSet.prop('checked', true);
+			
+		} else {
+			// uncheck all boxes
+			$interestSet.removeProp('checked');
+			
+		}
+	
+	 });
+
+
+
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

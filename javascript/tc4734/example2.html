@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div><button id="button1">Click Me</button></div>
+
+<div id="target"></div>
+
+
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+// define response handler function
+function updateTargetDiv(response) {
+	//alert(response);
+	document.getElementById("target").innerHTML = response;
+} // updateTargetDiv
+
+
+// set up button event handler
+document.getElementById("button1").onclick = function() {
+	// do Ajax call using jQuery
+	$.ajax(
+		{ url: 'testdata.html',
+		  type: 'GET',
+		  dataType: 'html',
+		  success: updateTargetDiv
+		}
+	)
+}; // button1.onclick
+
+</script>
+
+
+
+</body>
+</html>

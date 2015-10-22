@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+</head>
+<body>
+
+<div id="contacttable"></div>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+// create application object singleton (single instance object)
+var App = {
+	data: {}, // app-wide data store
+	
+	start: function() {
+		App.data.contacttableDiv = $('#contacttable');
+		
+		App.buildTable(); // initialize table structure
+		
+		App.getTableData(); // make Ajax request to server
+		
+	}, // App.start
+	
+	buildTable: function() {
+		App.data.tbody =
+			App.data.contacttableDiv
+				.html('<table><thead /><tbody /></table>')
+				.find('tbody');
+	
+	}, // App.buildTable
+	
+	getTableData: function() {
+		$.ajax({
+			url:		'contactreq.json',
+			type:		'GET',
+			dataType:	'json',
+			success:	App.updateTable
+		});
+		
+	}, // App.getTableData
+	
+	updateTable: function(requestData) {
+		//console.log(requestData);
+		
+		App.data.tbody.empty(); // clear all contents of tbody. Same as tbody.html('')
+		
+		// loop through contactList
+		$.each(
+			requestData.contactList, // collection to loop through
+			function(index, contact) {
+				// create new row for contact and add to table
+				var rowHTML = '<tr>';
+					
+				$.each(
+					contact,
+					function(fieldName, fieldValue) {
+						rowHTML += '<td>' + fieldValue + '</td>';
+						console.log(rowHTML); // dump rowHTML to console for observation
+					}
+				);
+				
+				rowHTML += '</tr>';
+				$(rowHTML).appendTo(App.data.tbody);
+			}// function
+		);
+
+		
+	} // App.updateTable
+	
+}; // App
+
+$(document).ready(App.start); // initialize App on DOM ready
+
+
+</script>
+</body>
+</html>

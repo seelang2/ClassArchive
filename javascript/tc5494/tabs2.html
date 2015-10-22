@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Ajax Tabbed Content Demo</title>
+	<meta charset="UTF-8" />
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, snas-serif;
+		font-size: 85%;
+		color: #000;
+		background: #dfdfdf;
+	}
+	
+	#wrapper {
+		margin: auto;
+		width: 500px;
+		height: 400px;
+		/* background: #f00; */
+		position: relative;
+	}
+	
+	.tab {
+		background: #fff;
+		width: 98px;
+		height: 98px;
+		border: 1px solid #7a7a7a;
+		border-radius: 15px 0 0 15px;
+	}
+	
+	#content {
+		background: #fff;
+		height: 378px;
+		width: 359px;
+		border: 1px solid #7a7a7a;
+		border-left: none;
+		position: absolute;
+		left: 100px;
+		top: 0;
+		padding: 10px 20px;
+		overflow-y: scroll;
+	}
+	
+	div.active { border-right-color: #fff; }
+	</style>
+	
+</head>
+<body>
+
+<div id="wrapper">
+	<div class="tab">
+		<h3>Tab 1</h3>
+	</div>
+	<div class="tab">
+		<h3>Tab 2</h3>
+	</div>
+	<div class="tab">
+		<h3>Tab 3</h3>
+	</div>
+	<div class="tab">
+		<h3>Tab 4</h3>
+	</div>
+	<div id="content">
+	
+	</div>
+
+</div>
+
+<script type="text/javascript" src="jquery-1.8.2.js"></script>
+<script type="text/javascript">
+
+var App = {
+	start: function() {
+		$.ajaxSetup(
+			{
+				cache: false
+			}
+		);
+		
+		$('#content').load('content1.html');
+		
+		$('.tab')
+			.each(
+				function(index, divElem) {
+					$(divElem).data('contentIndex', index);
+				}
+			 )
+			.click(App.getContent)
+			.first()
+			.addClass('active');
+	},
+	
+	getContent: function() {
+		var tabIndex = $(this).data('contentIndex');
+		
+		var url = 'content' + (tabIndex + 1) + '.html';
+		
+		$(this).addClass('active');
+		$('.tab')
+			.not(':eq('+tabIndex+')')
+			.removeClass('active');
+		
+		$('#content').load(url);
+		
+	}
+};
+
+$(document).ready(App.start);
+
+
+</script>
+</body>
+</html>

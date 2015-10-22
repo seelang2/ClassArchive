@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Basic 2 Column Layout</title>
+  <link rev="made" href="mailto:" />
+  <meta name="generator" content="NoteTab Light 6.12" />
+  <meta name="author" content="" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+
+<style type="text/css">
+body {
+	background-color: #cccccc;
+	color: rgb(0, 0, 0);
+	font-family: verdana, arial, sans-serif;
+	font-size: 85%;
+	padding: 0;
+	margin: 0;
+}
+
+#wrapper {
+	background-color: #ffffff;
+	width: 750px;
+	margin: auto;
+	border: 1px solid #7a7a7a;
+	margin: 0;
+}
+
+#header, #footer {
+	margin: 0;
+	height: 50px;
+	background-color: #000099;
+	color: #ffffff;
+	overflow: hidden;
+	padding: 10px 15px;
+}
+
+#footer { 
+	height: 30px;
+	padding: 5px 15px;
+}
+
+#content {
+	margin: 0;
+	padding: 0 25px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="wrapper">
+    <div id="header">
+        <span>Basic Layout Example 1</span>
+    </div><!-- header -->
+
+    <div id="content">
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce blandit lacinia quam in gravida. Donec rhoncus dictum est, a dictum justo tempor vitae. Nunc lorem diam, placerat eu condimentum eget, consectetur vitae urna. Vestibulum accumsan fringilla risus, sit amet tempor mi hendrerit ac. Suspendisse et metus erat, nec imperdiet elit.</p>
+
+<p>Proin lobortis sodales nulla sit amet faucibus. Vestibulum at purus luctus ante viverra consequat. Aenean mi tortor, dignissim eget tincidunt in, iaculis accumsan nunc. Etiam ipsum sem, tincidunt id volutpat blandit, varius a est. Morbi nec orci ligula. Proin commodo, sapien eget consequat ultricies, dolor justo vulputate neque, id dapibus mi lacus ac velit. </p>
+
+<p>Praesent ut elementum mi. Curabitur vitae neque elit. Praesent non posuere enim. Integer elementum tempus leo, non sollicitudin quam volutpat et. Donec et quam dolor. Pellentesque tempor orci sapien. In consectetur nibh id ante congue ut tincidunt velit ornare. </p>
+
+<p class="quote">Phasellus nisl turpis, sollicitudin at congue sit amet, ullamcorper vel velit. In ornare lobortis nunc, ut tristique ligula bibendum a.</p>
+
+<p>Donec lacus sapien, cursus nec lacinia non, suscipit sit amet purus. Quisque sed magna viverra nisl bibendum porta. Fusce congue nibh non metus gravida a faucibus neque pharetra. Aliquam mattis libero urna. Nulla eget est ac lectus blandit placerat nec eu mauris. Proin rhoncus tempor rutrum. Nulla accumsan sagittis ullamcorper. Praesent volutpat lacus vel ipsum fermentum rhoncus at et ante. Nulla quis arcu ligula. </p>
+
+<p>Mauris porta dolor ac lorem rutrum sollicitudin. Duis in velit vitae neque scelerisque lacinia et at orci. Nam sagittis euismod orci interdum placerat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec porta ultrices tortor, ac viverra tellus vulputate a. Quisque volutpat velit sit amet eros fringilla tempor. </p>
+
+<p>Maecenas malesuada pretium porta. Vivamus commodo iaculis velit, sit amet interdum leo convallis nec. Phasellus ullamcorper, turpis in tempus porttitor, diam leo blandit nunc, id tincidunt orci libero at mauris. Quisque quis quam in lacus elementum venenatis vel eget est. Aenean ante erat, malesuada id bibendum sed, blandit molestie leo.</p>
+
+<p class="quote">Mauris a nibh dolor, eget malesuada lacus. Donec vitae eleifend enim. </p>
+
+<p>Morbi venenatis justo ac mi consectetur ut volutpat libero pellentesque. Nullam blandit consequat enim, non facilisis ante venenatis quis. Pellentesque nunc lacus, mollis sit amet auctor sed, condimentum quis turpis. </p>
+
+<p>Integer tincidunt iaculis mauris nec congue. Fusce vel libero sit amet metus convallis sollicitudin. Aliquam ut luctus diam. Phasellus ac nibh purus. Morbi vitae ipsum sit amet purus mattis egestas nec vel velit. Quisque nec dolor vitae lorem ornare interdum. Nunc vitae massa in enim mattis vestibulum ac eget nulla. </p>
+
+<p>Nulla facilisi. Fusce faucibus pharetra massa, non convallis est semper ac. Vivamus porta lorem ac metus egestas ut blandit libero adipiscing. Maecenas malesuada feugiat commodo. Aenean sem sem, dignissim sed commodo at, ultrices vel lacus. Donec scelerisque, massa rhoncus scelerisque facilisis, enim elit sollicitudin quam, sed rhoncus elit mi in lacus. </p>
+
+    </div><!-- content -->
+
+    <div id="footer">
+        <span>Copyright &copy; TC Class 2502. Some Rights Reserved.</span>
+    </div><!-- footer -->
+
+</div><!-- wrapper -->
+
+</body>
+</html>

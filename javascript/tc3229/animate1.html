@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+<style type="text/css">
+body {
+}
+
+img {
+	display: block;
+}
+
+</style>
+</head>
+
+<body>
+
+<img id="theimage" src="spire11.jpg" width="100%" />
+
+<script type="text/javascript">
+
+var imgElem = document.getElementById("theimage");
+var maxWidth = 500;
+var currentWidth = 0;
+var stepValue = 50;
+var delay = 100;
+
+imgElem.style.width = '0';
+
+var expand = function() {
+	currentWidth += stepValue;
+	if (currentWidth > maxWidth) {
+		currentWidth = maxWidth;
+		clearInterval(interval1);
+	}
+	
+	imgElem.style.width = currentWidth + 'px';
+};
+
+var interval1 = setInterval(expand, delay);
+
+
+</script>
+
+</body>
+</html>

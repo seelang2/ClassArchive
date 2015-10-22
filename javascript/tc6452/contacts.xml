@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<contactlist>
+	<contact>
+		<firstname>Peter</firstname>
+		<lastname>Griffin</lastname>
+		<age>43</age>
+	</contact>
+	<contact>
+		<firstname>Glen</firstname>
+		<lastname>Quagmire</lastname>
+		<age>47</age>
+	</contact>
+	<contact>
+		<firstname>Cleveland</firstname>
+		<lastname>Brown</lastname>
+		<age>45</age>
+	</contact>
+	<contact>
+		<firstname>Joe</firstname>
+		<lastname>Swanson</lastname>
+		<age>44</age>
+	</contact>
+	<contact>
+		<firstname>Brian</firstname>
+		<lastname>Griffin</lastname>
+		<age>7</age>
+	</contact>
+</contactlist>

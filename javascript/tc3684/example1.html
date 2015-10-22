@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<script type="text/javascript">
+
+document.write('<p>This space for rent.</p>');
+
+var myVariable = 'More space for rent.';
+
+/*
+	Block comment. Any lines between the markers is ignored.
+	Examples of direct output
+*/
+document.write('<p>');
+document.write(myVariable);
+document.write('</p>');
+
+document.write('<p>' + myVariable + '</p>');
+
+var sideA = 5;
+var sideB = 'fluffyhamster';
+
+var perimeter = sideA + sideA + sideB + sideB;
+document.write('<p>Perimeter is ' + perimeter + '</p>');
+
+var area = sideA * sideB;
+document.write('<p>Area is ' + area + '</p>');
+
+var weekDays = new Array('Sun','Mon','Tue');
+var weekDays = ['Sun','Mon','Tue']; // identical to the above statement
+
+document.write('<p>' + weekDays[1] + '</p>');
+
+document.write('<p>Number of elements in weekdays: ' + weekDays.length + '</p>');
+
+weekDays.push('Wed','Thu');
+
+document.write('<p>Number of elements in weekdays: ' + weekDays.length + '</p>');
+
+
+</script>
+
+
+</body>
+</html>

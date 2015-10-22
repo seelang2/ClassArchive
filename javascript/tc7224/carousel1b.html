@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Carousel Demo</title>
+
+	<style type="text/css">
+	#window, #breadcrumb {
+		width: 400px;
+		margin: auto;
+		text-align: center;
+	}
+	
+	#window {
+		height: 300px;
+		border: 2px inset #7a7a7a;
+		overflow: hidden;
+		position: relative;
+	}
+	
+	#filmstrip {
+		width: 1600px;
+		height: 300px;
+		position: absolute;
+	}
+	
+	#filmstrip img {
+		float: left;
+	}
+	</style>
+</head>
+<body>
+
+<div id="window">
+	<div id="filmstrip">
+		<img src="image1.jpg" />
+		<img src="image2.jpg" />
+		<img src="image3.jpg" />
+		<img src="image4.jpg" />
+	</div>
+</div>
+<div id="breadcrumb">
+	<button id="control">Stop</button>
+</div>
+
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+// configuration variables
+var duration = 500;
+var pause = 2000;
+var isRunning = true;
+
+var $filmstrip = $('#filmstrip');
+
+var moveLeft = function() {
+	$filmstrip
+		.animate({
+			left: '-=400'
+		 },{
+			duration: duration,
+			complete: function() {
+				$filmstrip
+					.css('left', 0)
+					.children('img')
+					.first()
+					.detach()
+					.appendTo($filmstrip);
+			}
+		 });
+}; // moveLeft
+
+// set up animation interval
+var intervalID = setInterval(moveLeft, (duration + pause) );
+
+$('#control')
+	.on('click', function() {
+		if (isRunning) {
+			clearInterval(intervalID);
+			isRunning = false; // set running flag to stopped
+		} else {
+			intervalID = setInterval(moveLeft, (duration + pause) );
+			isRunning = true; // reset running flag
+		}
+	 });
+
+
+}); // document.ready
+
+</script>
+</body>
+</html>

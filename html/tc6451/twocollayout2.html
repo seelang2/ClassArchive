@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample 2 column layout demo</title>
+		
+	<style type="text/css">
+	/* A reset stylesheet is used to reset the margin, padding and other
+	 * settings on elements to explicit values instead of relying on the
+	 * browser default settings, which can vary slightly. This means that 
+	 * your stylesheet should explicitly set the values for any elements
+	 * it uses in a typography stylesheet.
+	 */
+	
+	body, div, p, ul, ol, h1, h2, h3 /* ...and so on */ {
+		margin: 0;
+		padding: 0;
+		color: #000;
+		/* ...and other default values */
+	}
+	
+	/* Layout section */
+	
+	body {
+		font-family: Verdana, Geneva, Arial, sans-serif;
+		font-color: #000;
+		font-size: 100%;
+		background: #dedede;
+	}
+	
+	#wrapper {
+		width: 900px;
+		margin: auto;
+		background: #fff;
+	}
+	
+	#wrapper > header {
+		height: 80px;
+		background: #009;
+		color: #fff;
+	}
+	
+	#wrapper > footer {
+		height: 125px;
+		background: #999;
+		color: #efefef;
+		font-size: 90%;
+	}
+	
+	#content {
+		background: #FFC;
+	}
+	
+	#main {
+		float: left;
+		width: 600px;
+	}
+	
+	#secondary {
+		float: right;
+		width: 300px;
+	}
+	
+	.clearing {
+		height: 1px;
+		clear: both;
+		overflow: hidden;
+	}
+	
+	/* Typography section */
+	
+	p {
+		margin: 1.2em 0;
+		line-height: 1.2em;
+	}
+	
+	</style>
+	
+</head>
+<body>
+
+<div id="wrapper">
+	<header>
+	
+	</header>
+	
+	<div id="content">
+		<section id="main">
+			<p>
+			1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor tellus non felis varius, in euismod enim scelerisque. Aenean id neque suscipit, vestibulum metus eu, dictum urna. Aliquam hendrerit scelerisque purus, in egestas lectus hendrerit in. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer ac mi interdum, condimentum ante id, condimentum arcu. Etiam eleifend pharetra tortor in condimentum. Curabitur ut tempus mauris. Phasellus auctor nisi sem, et viverra elit hendrerit sed. Ut pharetra, massa eget pharetra adipiscing, magna metus molestie est, dictum pellentesque eros nisl non nisi.
+			</p>
+			<p>
+			2. Praesent pellentesque nibh sit amet ipsum blandit, sed vulputate velit lacinia. Proin urna est, porta id purus quis, rhoncus bibendum diam. Curabitur sit amet sem enim. Phasellus porta magna odio, non ornare nunc pulvinar sed. Etiam tincidunt odio interdum dolor facilisis, vitae pellentesque urna tempus. Phasellus ac orci sed metus mattis pulvinar. Phasellus eget enim ut nisi dapibus euismod. Fusce tristique turpis ut turpis condimentum porttitor. Pellentesque ultricies, dui eget suscipit aliquet, lacus augue ornare felis, feugiat varius erat lectus facilisis ligula.
+			</p>
+			<p>
+			3. Proin in mauris consectetur, accumsan dui id, porta tellus. Sed rutrum nisi in volutpat aliquam. Vivamus gravida est et tempus consectetur. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque commodo quam turpis, at gravida arcu placerat in. Pellentesque bibendum consectetur vehicula. Vestibulum sit amet sapien nec massa dignissim ultrices. Duis sagittis massa tellus, quis mollis leo mollis id. Curabitur sed consectetur eros.
+			</p>
+			<p>
+			4. Vivamus nec dolor sit amet nisi semper facilisis. Vestibulum vulputate, felis in pellentesque feugiat, eros lorem euismod felis, ut pretium mi velit vel purus. Pellentesque posuere posuere nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam pretium arcu id fringilla scelerisque. Praesent velit est, consectetur vitae magna id, sagittis faucibus velit. Aliquam augue sem, varius ut magna adipiscing, cursus convallis ante. Donec dapibus, ipsum ut adipiscing dignissim, orci risus commodo felis, eget vulputate quam augue id elit.
+			</p>
+		</section>
+		
+		<section id="secondary">
+			<p>
+			5. Etiam vestibulum nunc eget eros lacinia, vel ullamcorper urna semper. Vestibulum porta egestas nibh, eget tincidunt enim placerat id. Vestibulum at mauris et ligula aliquet feugiat. Integer accumsan ut lectus non cursus. Nunc auctor faucibus porta. Aliquam erat volutpat. Suspendisse porta et felis non lobortis. Duis orci eros, luctus sed nulla nec, sagittis hendrerit erat. Fusce non euismod elit. Curabitur dapibus magna eget dolor gravida facilisis.
+			</p>
+			<p style="clear:left;">
+			6. Quisque eu tincidunt enim, vitae fermentum mauris. Phasellus rhoncus faucibus orci, eget varius nulla tincidunt vel. Aliquam orci arcu, vestibulum vitae porttitor sit amet, aliquam id tellus. Etiam nisi ante, vulputate et interdum at, gravida non elit. Pellentesque auctor nisi in semper facilisis. Sed pharetra tortor sed tortor placerat semper. Sed tincidunt vel lectus vitae condimentum. Vestibulum sed erat nisi. Maecenas luctus tincidunt ipsum at rhoncus.
+			</p>
+		</section>
+		
+		<div class="clearing"></div>
+	</div><!-- content -->
+	
+	<footer>
+		<span>TC Class 6451. Creative Commons License.</span>
+	</footer>
+
+</div><!-- wrapper -->
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,286 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+<style type="text/css">
+body {
+	background: #0F69B6 url(companybg1.png) no-repeat bottom left fixed;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 85%;
+	margin-left: 40px;
+}
+
+/* zero out margin and padding for layout components */
+#wrapper, #header, #content, #footer, leftcol, #centercol, #rightcol 
+{
+	margin: 0;
+	padding: 0;
+}
+
+#wrapper {
+	margin: 0 auto;
+	width: 85%;
+	min-width: 800px;
+}
+
+#header, #footer {
+	background: #063;
+	height: 80px;
+	overflow: hidden;
+}
+#footer {
+	height: 35px;
+	clear: both;
+	background: none;
+	font-size: 90%;
+	color: #1594FF;
+}
+#header {
+	background-image: url(companyheader.jpg);	
+}
+
+#content {
+	float: left;
+	width: 100%;
+	background: #ffffff;
+}
+
+#leftcol {
+	float: left;
+	width: 30%;
+	font-size: 90%;
+}
+
+#centercol {
+	float: left;
+	width: 50%;
+}
+
+#rightcol {
+	float: left;
+	width: 18%;
+	margin: 0 1%;
+	font-size: 85%;
+}
+
+
+/* menu styling */
+.menu {
+	float: right;
+}
+
+.menu ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.menu ul li {
+	float: left;
+	padding: 0 0.5em;
+	margin: 0.5em 0;
+	border-left: 1px solid #1594FF;
+}
+
+.menu ul li:first-child { border-left: none; }
+
+#content div.menu {
+	width: 100%;
+	float: 1eft;
+}
+
+#footer .menu a {
+	color: #1594FF;
+}
+
+/* Remember to assign anchor pseudo-classes in order: link, visited, hover, active (think LOve-HAte) */
+#footer .menu a:hover { color: #ffffff; }
+
+/* widget styling */
+.widget {
+	width: 80%;
+	margin: 0 auto 1.5em auto;
+	border: 1px solid #bc9a31;
+}
+
+.widget ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.widget h2 {
+	font-weight: normal;
+	background: #e4bb3b;
+	margin: 0;
+	padding: 0.25em 0 0.25em 0.25em;
+}
+
+.widget li {
+	border-top: 1px solid #bc9a31;
+}
+
+.widget li a {
+	text-decoration: none;
+	padding: 0.25em;
+	display: block;
+}
+
+.widget li a:link {
+	color: #000000;
+	background: #fff7dd;
+}
+
+.widget li a:hover {
+	color: #ffffff;
+	background: #bc9a31;
+}
+
+.alignleft { display:block; float: left; margin-right: 1em; }
+.alignright { display:block; float: right; margin-left: 1em; }
+
+.callout {
+	font-weight: bold;
+	font-size: 140%;
+	background: #F1F484;
+	width: 50%;
+}
+
+#calendar {
+	margin: 0 auto;
+	width: 80%;
+}
+
+#calendar table {
+	border: 1px solid #7a7a7a;
+	border-collapse:collapse;
+}
+
+#calendar thead, #calendar td {
+	text-align: center;
+	border: 1px solid #7a7a7a;
+	padding: 2px;
+}
+
+
+/* Other typography */
+h1 {
+	font-size: 1.7em;
+	font-weight: normal;
+	color: #900;
+	margin-top: 0.75em;
+	margin-bottom: 0.25em;
+}
+
+
+
+</style>
+
+</head>
+
+<body>
+
+<div id="wrapper">
+	<div id="header">
+    </div><!-- header -->
+    
+    <div id="content">
+    	<div class="menu">
+        	<ul>
+            	<li><a href="#">Link 1</a></li>
+            	<li><a href="#">Link 2</a></li>
+            	<li><a href="#">Link 3</a></li>
+            	<li><a href="#">Link 4</a></li>
+            </ul>
+        </div><!-- menu -->
+        
+        <div id="leftcol">
+        	<div class="widget">
+            	<h2>Title 1</h2>
+                <ul>
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
+                    <li><a href="#">Link 4</a></li>
+                </ul>
+            </div><!-- widget -->
+            
+        	<div class="widget">
+            	<h2>Title 1</h2>
+                <ul>
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
+                    <li><a href="#">Link 4</a></li>
+                </ul>
+            </div><!-- widget -->
+            
+            <div id="calendar">
+            	<table>
+                	<thead>
+                    	<tr>
+                        	<td colspan="7">April</td>
+                        </tr>
+                        <tr>
+                        	<td>Sun</td><td>Mon</td><td>Tue</td><td>Wed</td><td>Thu</td><td>Fri</td><td>Sat</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    	<tr>
+                        	<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>1</td><td>2</td><td>3</td>
+                        </tr>
+                    	<tr>
+                        	<td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+                        </tr>
+                    	<tr>
+                        	<td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td>
+                        </tr>
+                    	<tr>
+                        	<td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td>
+                        </tr>
+                    	<tr>
+                        	<td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>&nbsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div><!-- leftcol -->
+        
+        <div id="centercol">
+            <h1>Pellentesque lacinia sagittis</h1>
+            <img src="companybg2.png" width="75" height="200" class="alignright" />
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer imperdiet augue vel orci iaculis posuere varius nisl bibendum. Nam rhoncus odio ut sapien ultricies vitae interdum dui tempus. Quisque mattis ligula non eros condimentum non tristique magna imperdiet. Cras eget scelerisque ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Pellentesque eu libero elit, at malesuada nisl. </p>
+            <p>Duis sit amet lectus porttitor risus euismod tempor quis eget lacus. Fusce egestas sem eu metus accumsan posuere. Fusce vitae velit a tortor ornare auctor sed eget felis. Aliquam faucibus tortor aliquet elit dignissim dignissim. Mauris laoreet iaculis cursus. Etiam ultrices posuere molestie. Maecenas eu ante a massa mattis consectetur scelerisque at felis. Nullam arcu velit, lacinia elementum laoreet a, accumsan sed mi. Donec varius pretium vulputate.</p>
+            <div class="callout alignleft">
+            	<p>Fusce euismod accumsan pulvinar. Nam at bibendum sapien. </p>
+            </div>
+            
+            <p> Curabitur   placerat fringilla lorem sed bibendum. Suspendisse eu purus sapien, at   vehicula odio. Integer sed quam ultrices nunc pretium placerat. Aenean   scelerisque, velit non vehicula facilisis, quam augue ornare dui, id   interdum dolor quam eget magna. Phasellus sit amet mi dolor.   Pellentesque non urna ac enim sagittis euismod. Duis lacinia sem eu elit   egestas id auctor felis egestas. Sed vehicula sapien quis libero   imperdiet interdum. </p>
+            <p>Proin imperdiet eleifend auctor. Donec mauris lorem,   porta eget ullamcorper ut, hendrerit eget elit. Ut ornare sem nec massa   dignissim dapibus mattis et enim. In hac habitasse platea dictumst.   Duis lectus dui, ullamcorper eu egestas a, sodales vitae orci. Integer   nisi sapien, hendrerit et tincidunt in, cursus sit amet est. Morbi   commodo sollicitudin iaculis. Pellentesque lacinia sagittis felis, non   sagittis urna aliquam id. Cras auctor justo non turpis viverra dapibus. </p>
+            <p> Donec ornare, sapien non molestie mollis, justo augue semper velit, id   egestas orci augue quis odio. Mauris sed imperdiet risus. Nulla rutrum   libero at nibh sagittis rutrum rhoncus felis molestie. Donec facilisis   elementum tincidunt. Proin posuere semper turpis, sed semper purus   vestibulum quis. Pellentesque sit amet pulvinar sapien. In convallis   tincidunt lectus pretium dignissim. </p>
+        </div><!-- centercol -->
+        
+        <div id="rightcol">
+            <p>Aliquam gravida tortor nec ligula   dignissim eget lacinia odio commodo. Aenean sodales pretium sapien, vel   cursus dolor vehicula ac. Duis posuere ipsum sed massa scelerisque   tristique ultricies ligula volutpat. Nulla facilisi. Fusce ut sapien   tortor. Nullam non urna diam. Donec quam mauris, adipiscing sed viverra   non, faucibus eu nisi. Mauris velit nisl, volutpat vitae bibendum sed,   molestie non ipsum. </p>
+        </div><!-- rightcol -->
+        
+    </div><!-- content -->
+    
+    <div id="footer">
+    	<div class="menu">
+        	<ul>
+            	<li><a href="#">Link 1</a></li>
+            	<li><a href="#">Link 2</a></li>
+            	<li><a href="#">Link 3</a></li>
+            </ul>
+        </div><!-- menu -->
+        
+        <span>Copyright &copy; The Company.<br />All Rights Reserved.</span>
+    </div>
+</div><!-- wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		color: #000;
+	}
+	
+	table { border-collapse: collapse; }
+	table, th, td {
+		border: 1px solid #7a7a7a;
+	}
+	th, td { padding: 0.5em 1em; }
+	
+	tr.hover { background: #ffc; }
+	.oddrow { background: #3c9fcd; }
+	.evenrow { background: #abcdef; }
+	
+	</style>
+	
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+var contactList =
+[
+	{"firstname":"John","lastname":"Doe","email":"jdoe@email.com"},
+	{"firstname":"Jane","lastname":"Adams","email":"jane.adams123@email.com"},
+	{"firstname":"Peter","lastname":"Thomas","email":"pt3436@email.com"},
+	{"firstname":"Alice","lastname":"Wendell","email":"alice234@email.com"},
+	{"firstname":"Xavier","lastname":"Khan","email":"xxx2342@email.com"}
+];
+
+// create table structure and save reference to TBODY
+var $tbody =
+$('<table><tbody /></table>')
+	.children();
+
+// add header section to table
+$tbody
+	.parent()						// traverse to TABLE
+	.prepend('<thead />')			// add THEAD
+	.children('thead')				// traverse to THEAD
+	.each(							// opening up a function to process on the HEAD
+		function(i, thead) {
+			
+			$tr = 
+			$('<tr />')
+				.appendTo(thead);
+			
+			// loop through contact fields
+			$.each(
+				contactList[0],		// get fields from the first contact row
+				function(fieldName, fieldValue) {
+					
+					$('<th>' + fieldName + '</th>')
+						.appendTo($tr);
+					
+				}
+			); // each
+			
+			
+		} // function
+	 )
+	.addClass('theadclass')
+	.end();
+	
+
+var doHover = function() {
+	// 'this' refers to TR bound to event
+	$(this).addClass('hover');
+}; // doHover
+
+var removeHover = function() {
+	// 'this' refers to TR bound to event
+	$(this).removeClass('hover');
+}; // removeHover
+	
+$.each(
+	contactList,
+	function(index, contact) {
+		
+		$tr = 
+		$('<tr />')
+			.addClass(index % 2 == 0 ? 'oddrow' : 'evenrow')
+			.appendTo($tbody)
+			.on(
+				{
+					mouseover: doHover,
+					mouseout: removeHover
+				}
+			 );
+		
+		// loop through contact fields
+		$.each(
+			contact,
+			function(fieldName, fieldValue) {
+				
+				$('<td>' + fieldValue + '</td>')
+					.appendTo($tr);
+				
+			}
+		); // each
+	}
+); // $.each
+
+$tbody							
+	.parent()					// move up to TABLE
+	.appendTo('#target');		// append TABLE to DIV
+
+</script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,62 @@
+@charset "utf-8";
+/* CSS Document */
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #7a7a7a; /* standard hex format */
+	text-align: center; /* hack for centering in IE 6- */
+}
+
+#wrapper {
+	background-color: white; /* named color format */
+	width: 700px;
+	margin: 0 auto;
+	text-align: left; /* reset text align from body */
+}
+
+#header, #footer {
+	background-color: rgb(0, 0, 102); /* rgb value format */
+	color: #fff; /* shorthand hex format */
+}
+
+#header {
+	background: url(1223680_18544169r.jpg) 0 -50px no-repeat;
+	height: 100px;
+	overflow: hidden;
+}
+
+#maincolumn {
+	padding: 20px;
+	float: left;
+	width: 460px;
+	background: #0F9;
+}
+
+#sidebar {
+	padding: 20px;
+	float: right;
+	width: 160px;
+	background: #FCC;
+}
+
+.clearing {
+	clear: both;
+	height: 1px;
+	overflow: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+

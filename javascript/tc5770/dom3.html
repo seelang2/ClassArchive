@@ -1,0 +1,79 @@
+<!doctype HTML>
+<html>
+<head>
+	<title>Page Title</title>
+	<meta charset="UTF-8" />
+
+</head>
+<body>
+
+
+	<div id="target">
+		<p>X</p>
+	</div>
+
+
+<script type="text/javascript" src="jquery-1.9.0.js"></script>
+<script type="text/javascript">
+
+/*
+// VERY inefficient - don't do this!
+$('#target').append('<p>append</p>');
+$('#target').prepend('<p>prepend</p>');
+$('#target').before('<p>before</p>');
+$('#target').after('<p>after</p>');
+
+*/
+
+/*
+// BETTER, but can still be improved
+
+var $target = $('#target'); // store selection as a variable
+
+$target.append('<p>append</p>');
+$target.prepend('<p>prepend</p>');
+$target.before('<p>before</p>');
+$target.after('<p>after</p>');
+*/
+
+var $target = $('#target'); // store selection as a variable
+
+$target
+	.append('<p>append</p>')
+	.prepend('<p>prepend</p>')
+	.before('<p>before</p>')
+	.after('<p>after</p>');
+
+
+$('<p>appendTo</p>')
+	.addClass('newitem')
+	.appendTo($target);
+	
+$('<p>prependTo</p>')
+	.attr('id','item1')
+	.prependTo($target);
+	
+$('<p>insertBefore</p>')
+	.attr(
+		{
+			id: 'item2',
+			title: 'This will be a useless tooltip'
+		}
+	 )
+	.insertBefore($target);
+	
+$('<p>insertAfter</p>')
+	.attr('id','targetitem')
+	.insertAfter($target)
+	.appendTo($target)			// this will move the node to the new location
+	.clone()					// make a copy of the node
+	.insertAfter($target)		// place the copy in this location
+	.attr('id','cheapimitation')
+	.detach();
+
+
+
+
+</script>
+</body>
+</html>

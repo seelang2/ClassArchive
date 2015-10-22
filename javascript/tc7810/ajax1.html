@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<h1>Static Text</h1>
+<p>This is static content on the page.</p>
+<div id="othercontent"></div>
+
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	/*
+	// sideload additional content
+	$.ajax({
+		url:		'ajax_data.html',
+		type:		'get',
+		dataType:	'html',
+		success: 	function(response) {
+			$('#othercontent').html(response);
+		}
+	});
+	*/
+	
+	$('#othercontent').load('ajax_data.html');
+	
+}); // document.ready
+
+
+</script>
+</body>
+</html>

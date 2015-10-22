@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+// load multiple templates
+
+	var $template1 = null;
+	var $template2 = null;
+
+	// template 1
+	$.ajax({
+		url:		'contact-template.html',
+		type:		'get',
+		dataType:	'html',
+		cache:		false,
+	})
+	.done(function(template1) {
+		
+		$template1 = $(template1);
+		console.log($template1);
+		
+		// load template 2 and return the promise
+		return $.ajax({
+			url:		'contact-template.html',
+			type:		'get',
+			dataType:	'html',
+			cache:		false,
+		});
+	})		
+	.done(function(template2) { // when the template2 promise is done
+			
+		$template2 = $(template2);
+		console.log($template2);
+			
+	});
+			
+			
+					
+					
+	
+
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

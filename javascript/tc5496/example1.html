@@ -1,0 +1,197 @@
+﻿<!doctype html>
+<html>
+<head>
+	<title>Sample Page</title>
+	<meta charset="UTF-8" />
+	
+	<style type="text/css">
+	#wrapper {
+		width: 900px;
+		margin: auto;
+		border: 1px solid #ccc;
+		position: relative;
+	}
+	
+	#cola {
+		position: absolute;
+		width: 500px;
+		left: 0;
+		background: #EFE3FA;
+	}
+	
+	#colb {
+		position: absolute;
+		width: 200px;
+		left: 500px;
+		background: #E3F9FA;
+	}
+	
+	#colc {
+		position: absolute;
+		width: 200px;
+		left: 700px;
+		background: #FAF5E3;
+	}
+	
+	form label {
+		position: relative;
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	
+	form label input {
+		position: absolute;
+		left: 75px;
+	}
+	
+	form div {
+		text-align: center;
+	}
+	
+	#ajaxstatus {
+		position: fixed;
+		width: 66px;
+		height: 66px;
+		top: 50%;
+		left: 50%;
+		background: url(ajax-loader.gif);
+		margin-top: -33px;
+		margin-left: -33px;
+		display: none;
+	}
+	
+	.serverpoll {
+		margin: 15px 0;
+		padding: 0 15px;
+		border: 1px solid #E8954D;
+		background: #F7D8BC;
+	}
+	
+	.results {
+		display: none;
+		background: #B3FCC6;
+		margin: 15px 0;
+		padding: 0 15px;
+		border: 1px solid #6AD484;
+	}
+	</style>
+</head>
+
+<body>
+<div id="ajaxstatus"></div>
+
+<div id="wrapper">
+
+	<div id="cola">
+		<div class="results"></div>
+		<form id="form1" action="userdata.php?action=saveuser" method="post">
+			<label>
+				First Name: 
+				<input name="firstname" />
+			</label>
+			<label>
+				Last Name: 
+				<input name="lastname" />
+			</label>
+			<label>
+				Login: 
+				<input name="login" />
+			</label>
+			<div><input type="submit" /></div>
+		</form>
+	</div><!-- cola -->
+
+	<div id="colb">
+		<h2>Column B</h2>
+		<div class="content"></div>
+	</div><!-- colb -->
+
+	<div id="colc">
+		<h2>Column C</h2>
+		<div class="content"></div>
+	</div><!-- colc -->
+	
+</div><!-- wrapper -->
+
+<script src="jquery-1.8.3.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	var itemcount = 0;
+	
+	// set up column B to poll server time
+	setInterval(
+		function() {
+			itemcount++;
+			
+			$.get(
+				'getservertime.php',
+				function(data) {
+					$('<div><p>Server Response:'+ data.timestamp +'</p></div>')
+						.addClass('serverpoll')
+						.attr('id','item' + itemcount)
+						.hide()
+						.prependTo('#colb .content')
+						.slideDown();
+				}
+			)
+			
+			if (itemcount > 3) {
+				$('#colb .content')
+					.children()
+					.last()
+					.slideUp(
+						function() {
+							$(this).remove();
+						}
+					 );
+			}
+		},
+		5000
+	); // setInterval
+	
+	// set up Column A form and ajax handler
+	$('#form1')
+		.submit(
+			function(e) {
+				e.preventDefault(); // cancel default action
+				
+				//console.log($(this).serialize());
+				
+				$('#ajaxstatus').show();
+				$.ajax(
+					{
+						url: 		'userdata.php?action=saveuser',
+						type:		'POST',
+						dataType:	'json',
+						data:		$(this).serialize(),
+						success:	function(response) {
+							$('#ajaxstatus').hide();
+							$('#cola .results')
+								.html('<p>' + response.message + '</p>')
+								.show();
+						
+							setTimeout(
+								function() {
+									$('#cola .results')
+										.fadeOut();
+								},
+								1500
+							);
+						}
+					}
+				);
+				
+	
+
+			}
+		 );
+	
+	
+	
+}); // document.ready
+
+
+</script>
+</body>
+</html>

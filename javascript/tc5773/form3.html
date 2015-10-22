@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+	
+	form label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	
+	form label span {
+		display: inline-block;
+		width: 250px;
+	}
+	
+	.verror { 
+		width: auto;
+		color: #f00; 
+	}
+	
+	.vhighlight { border: 2px solid #f00; }
+	</style>
+</head>
+<body>
+
+<form id="form1" action="#" method="get">
+	<label>
+		<span>Enter anything:</span>
+		<input name="field1" data-vrule="notempty" />
+		<span class="verror"></span>
+	</label>
+	<label>
+		<span>Enter at least 4 characters:</span>
+		<input name="field2" data-vrule="minlength" data-vminval="4"  />
+		<span class="verror"></span>
+	</label>
+	<label>
+		<span>Enter under 5 characters:</span>
+		<input name="field2" data-vrule="maxlength" data-vmaxval="5"  />
+		<span class="verror"></span>
+	</label>
+	<label>
+		<span>Enter between 4 and 10 characters:</span>
+		<input name="field3" data-vrule="lenbetween" data-vminval="4" data-vmaxval="10" />
+		<span class="verror"></span>
+	</label>
+	<label>
+		<span>Enter a number:</span>
+		<input name="field4" data-vrule="isnumeric" />
+		<span class="verror"></span>
+	</label>
+	<label>
+		<span>Enter a number between 1 and 3:</span>
+		<input name="field5" data-vrule="valbetween" data-vminval="1" data-vmaxval="3" />
+		<span class="verror"></span>
+	</label>
+	<label>
+		<span>Enter letters only:</span>
+		<input name="field6" data-vrule="isalpha" />
+		<span class="verror"></span>
+	</label>
+	<label>
+		<span>Enter letters and numbers only:</span>
+		<input name="field6a" data-vrule="isalphanumeric" />
+		<span class="verror"></span>
+	</label>
+	<label>
+		<span>Enter an email:</span>
+		<input name="field7" data-vrule="isemail" />
+		<span class="verror"></span>
+	</label>
+	<label>
+		<span>Enter a number as xxx-xx-xxxx:</span>
+		<input name="field8" data-vrule="matchregex" data-vregex="^[0-9]{3}-[0-9]{2}-[0-9]{4}$" />
+		<span class="verror"></span>
+	</label>
+	<label>
+		<span>Enter alphanumeric+spaces:</span>
+		<input name="field8" data-vrule="matchregex" data-vregex="^[a-zA-Z0-9 ]+$" />
+		<span class="verror"></span>
+	</label>
+	<div>
+		<input type="submit" value="Continue" />
+	</div>
+</form>
+
+
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript" src="formvalidator-1.0.js"></script>
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+
+	$('#form1')
+		.submit(
+			function(e) {
+				e.preventDefault(); // cancel form submission
+				
+				var $invalidFields = 
+					$(this)
+						.find('.vhighlight')		// find all error highlighted form elements
+						.removeClass('vhighlight')	// and clear the error highlighting
+						.end()						// revert back to form
+						.find('span.verror')		// find the validation error message elements
+						.empty()					// and clear them
+						.end()						// revert selection back to form
+						.getInvalidFields();		// and run the form validator to get set of invalid fields
+				
+				if ($invalidFields.length == 0) { // if there are no invalid fields
+								
+					// submit form via ajax
+					$.ajax({
+						url:		'action1.html',
+						type:		'post',
+						dataType:	'html',
+						data:		$(this).serialize(),
+						success:	function(response) { }
+					 });
+					 
+				} else { // otherwise display validation error messages
+					$invalidFields
+						.each(function(i, field) {
+							$(field)
+								.addClass('vhighlight')
+								.siblings('.verror')
+								.html($(field).attr('data-verror'));
+						 });
+						 
+				} // if $invalidfields.length	
+			}
+		 );
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

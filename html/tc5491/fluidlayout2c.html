@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sample Fluid Multicolumn Layout</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 85%;
+	}
+	
+	#wrapper {
+		max-width: 1300px;
+		margin: auto;
+	}
+	
+	#wrapper > header {
+		height: 200px;
+		color: #fff;
+		background-color: #009;
+		background-image: url(Chicago_skyline_large.jpg);
+		background-position: 0 -40px;
+	}
+	
+	#wrapper > footer {
+		height: 125px;
+		color: #efefef;
+		background-color: #333;
+		clear: both;
+	}
+	
+	#colA, #colB, #colC, #colD {
+		padding: 5px 1%;
+	}
+	
+	@media screen and (max-width: 499px) {
+		#wrapper > header {
+			display: none;
+		}
+	}
+	
+	@media screen and (min-width: 500px) and (max-width: 799px) {
+		#colA, #colB {
+			float: left;
+		}
+		
+		#colA {
+			width: 58%;
+		}
+		
+		#colB {
+			width: 38%;
+		}
+		
+		#colC, #colD {
+			float: none;
+			clear: both;
+			width: auto;
+		}
+		
+	}
+	
+	@media screen and (min-width: 800px) and (max-width: 1099px) {
+		body {
+			font-size: 95%;
+		}
+		
+		#colA, #colB, #colC {
+			float: left;
+			width: 31%;
+		}
+		
+		#colD {
+			float: none;
+			clear: both;
+			width: auto;
+		}
+		
+	}
+	
+	@media screen and (min-width: 1100px) {
+		body {
+			font-size: 115%;
+		}
+		
+		#colA, #colB, #colC {
+			float: left;
+			width: 23%;
+			padding: 5px 1%;
+		}
+		
+		#content { position: relative; }
+		
+		#colD {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 23%;
+		}
+		
+		#colA { margin-left: 25%; }
+	}
+	
+	.alignleft { float: left; margin-right: 15px; }
+	.alignright { float: right; margin-left: 15px; }
+	
+	.scalefloat { width: 40%; }
+	
+	img.scalable {
+		width: 100%;
+	}
+	</style>
+	
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			Sample Responsive Layout
+		</header>
+		
+		<div id="content">
+			
+			<section id="colA">
+				<p>1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed hendrerit ligula in arcu lacinia luctus. Nam ac hendrerit velit. Aliquam blandit augue non nibh tincidunt ullamcorper scelerisque mauris egestas. Morbi eu condimentum odio. Cras et lacus dolor, ut sollicitudin turpis. Nunc accumsan placerat varius. Mauris scelerisque dictum mauris, ut bibendum tellus faucibus at. Donec suscipit posuere est nec tempus. Nunc in sapien metus. Cras tempor augue at purus facilisis eget imperdiet arcu interdum. Morbi a lectus purus. Donec rhoncus tortor in orci fermentum sit amet sagittis orci placerat.</p>
+				
+				<p><img class="scalable" src="chicago-15.jpg" /></p>
+
+				<p>2. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi facilisis, magna sit amet tincidunt faucibus, felis diam sollicitudin elit, vitae sagittis purus risus eget magna. Phasellus at tellus orci, quis sollicitudin sem. In in tortor magna. Mauris vestibulum risus velit. In varius massa at mauris congue gravida. Proin sed urna et est mollis bibendum sed ut nisl.</p>
+				<p>3. Nullam vitae mauris leo. Cras viverra auctor ligula scelerisque viverra. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent ante nulla, molestie et ullamcorper in, luctus et odio. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus laoreet nisl sed sapien mattis ut tempor sem dapibus. Integer tempor ante eleifend purus ullamcorper ac pharetra elit ultricies. </p>
+			</section>
+			
+			<section id="colB">
+				<!--
+				<div class="alignleft scalefloat"><img src="chicagosmall.jpg" class="scalable" /></div>
+				-->
+				<img src="chicagosmall.jpg" class="alignleft scalefloat" />
+				
+				<p>4. Vivamus tristique massa a justo ullamcorper faucibus. Nullam dolor felis, vehicula non vulputate in, dictum id justo. Proin vitae nisi venenatis augue aliquam cursus. Vivamus elementum diam sed velit lobortis rhoncus. Praesent tincidunt, lacus bibendum bibendum semper, sem sapien pellentesque nunc, in faucibus nisi neque placerat nibh. Etiam felis velit, vehicula vel gravida eget, ornare ac elit. Fusce dui nisl, ullamcorper et fermentum eu, suscipit sed metus. Sed pellentesque faucibus sollicitudin. Fusce lobortis arcu at arcu sollicitudin vitae pulvinar lacus suscipit. Praesent pulvinar rutrum orci, ut sodales ipsum tempus pellentesque.</p>
+				<p>5. Etiam ut risus eget diam cursus lobortis sed vitae urna. Sed id nunc quis sapien aliquet viverra ac quis erat. Praesent dapibus dui non orci egestas a tincidunt libero ultricies. Integer sed sem eget sapien consectetur tempus. Praesent arcu neque, dignissim vel tristique sed, faucibus sit amet dui. Aenean ac ipsum sit amet sem interdum volutpat sed et libero. Fusce id leo odio, ac consectetur lacus. Maecenas eu felis dolor.</p>
+
+				<p>6. Mauris sed justo metus, non sodales felis. Nam sit amet nisl sit amet est eleifend malesuada. Praesent sit amet purus arcu, a suscipit lacus. Nulla semper urna non arcu eleifend iaculis. Praesent non est diam, nec aliquam nisl. Fusce egestas tortor ac massa molestie eu eleifend dolor aliquet. Nullam dui elit, molestie a blandit in, pharetra in lorem. Donec risus lacus, lobortis id imperdiet elementum, feugiat vitae ipsum. Integer tempor cursus urna, non volutpat tortor interdum id. Nam luctus tincidunt arcu, et dictum lorem rutrum eget. Quisque quis sapien nibh. Fusce velit metus, feugiat vitae lacinia eu, vestibulum a sapien. Donec ultrices lobortis sem, quis venenatis mi consequat consectetur. Etiam vel orci at lectus iaculis egestas sed a nisi.</p>
+			</section>
+			
+			<section id="colC">
+				<p>7. Cras nec enim vitae nisl ornare sollicitudin. Sed id nisl porta enim vestibulum blandit eu pellentesque libero. Aenean gravida posuere dui vel dapibus. Duis quis orci nisi, non euismod quam. Duis at dolor sed nisi fringilla varius ut in ipsum. Nunc rhoncus, purus eu euismod semper, ligula sapien dignissim tortor, quis suscipit felis tortor vel risus. In rutrum sollicitudin eleifend. Donec cursus facilisis dui at ultricies. Nullam et est sit amet tellus facilisis eleifend. Aliquam elementum tincidunt orci et accumsan. Nulla auctor lacus a elit mattis ullamcorper eleifend ipsum vehicula. Aenean pharetra, sem id congue fermentum, lacus augue tempor lorem, non imperdiet nunc risus a sapien. Sed sollicitudin urna nec sem varius non scelerisque leo ullamcorper. Vivamus ligula arcu, volutpat ut consectetur a, rhoncus nec mi.</p>
+
+				<p>8. Sed eu tortor sapien. Donec quis nisi libero. Quisque purus quam, egestas ac mattis a, varius suscipit nisi. Nulla augue leo, sodales sed sollicitudin at, vulputate at enim. Curabitur sodales congue eros tempor consequat. Morbi sed orci libero. Nam varius accumsan justo, sit amet fermentum ante elementum at. Nam sollicitudin luctus felis at sagittis. Phasellus turpis elit, ullamcorper sit amet fringilla et, ornare nec sapien. Maecenas at ipsum nibh, non blandit elit. Aliquam ullamcorper ultricies convallis. Morbi elementum libero eget neque consectetur condimentum. Praesent bibendum viverra felis, a dictum neque venenatis quis.</p>
+
+				<p>9. Mauris quam ante, rhoncus vitae sodales eget, pretium sit amet mauris. Aliquam erat volutpat. Sed tincidunt neque ac arcu molestie aliquam. Vestibulum viverra massa augue. Ut aliquam sollicitudin enim eget malesuada. Nam vitae justo vitae ligula adipiscing hendrerit at in elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce sed augue velit. Sed varius condimentum ultrices. Donec pharetra ullamcorper mi ac congue. In hac habitasse platea dictumst. Nam enim erat, hendrerit ac molestie sit amet, posuere eu augue. Proin non gravida nisl. Nulla facilisi. Vestibulum rhoncus arcu in nibh auctor ac consectetur neque pellentesque.</p>
+			</section>
+			
+			<section id="colD">
+				<p>10. Vestibulum a neque id lacus volutpat mattis. Suspendisse potenti. Suspendisse pretium consectetur lectus mattis egestas. Vestibulum quis libero non nisl eleifend mattis feugiat quis sem. Integer nec nisl ante. Ut vitae nisi non ante laoreet rutrum a non est. Morbi sed arcu sed mauris rutrum pretium. Vivamus semper volutpat ullamcorper. Cras non mi in lorem eleifend consequat ac quis nibh. Duis quis nulla eu est interdum sagittis sed ut purus. Sed mollis ligula nec purus mollis molestie. Sed vel porta ipsum. Proin eget dolor tellus. Duis vel velit sed velit rutrum semper in sed eros.</p>
+
+				<p>11. Nunc tristique massa quis ligula ornare fermentum. Pellentesque ac velit metus, vitae aliquam lacus. Fusce vel velit quam. Vivamus laoreet, metus ut rhoncus pharetra, ipsum magna pharetra quam, nec aliquet lacus nisl in augue. Nulla pretium convallis consequat. Suspendisse a pulvinar lacus. Pellentesque in urna lorem. Nunc vitae massa gravida odio pulvinar molestie. Ut tempor dictum nisi, eget commodo tellus commodo eu. Praesent dapibus arcu ut turpis egestas vel pretium sem molestie. Ut luctus, leo ut venenatis interdum, nunc augue commodo odio, quis pulvinar diam elit sed sapien. Sed id magna dolor, vitae lacinia sem. Mauris sagittis, tellus sit amet consectetur ullamcorper, velit tortor lacinia nulla, sit amet sagittis augue lectus eu eros.</p>
+			</section>
+		
+		</div><!-- content -->
+		
+		<footer>
+			<span>Copyright &copy; blah blah blah...</span>
+		</footer>
+	</div><!-- wrapper -->
+</body>
+</html>

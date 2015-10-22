@@ -1,0 +1,345 @@
+Notes
+
+HTML - Hyper Text Markup Language
+
+Derived from eXtensible Markup Language (XML)
+
+P = Paragraph element
+
+Elements in XML described as opening and closing tags
+<p> 	- Opening tag
+</p> 	- Closing tag
+
+<p>This is a paragraph.</p>
+
+<element attributename="value"> ... </element>
+
+<p title="Example">Paragraph stuff...</p>
+
+Void or self-closing tags
+- Information is stored in element as attributes
+
+<img src="picture.jpg" width="100" height="150" />
+
+
+3 Layers of the Web
+Content - HTML
+Presentation - CSS (Cascading Style Sheets)
+Behavior - Javascript
+
+Special characters - use UTF-8 character encoding
+£
+HTML character entity - &pound;
+
+< - &lt;
+> - &gt;
+
+Non-breaking space - &nbsp;
+
+Nesting Elements
+
+DON'T DO THIS:
+<b><em>Some text</b></em>
+
+Nest tags instead of crossing them
+<b><em>Some text</em></b>
+
+Block items (H1, UL, LI, etc) can contain other blocks and inline elements.
+
+Inline items (A, STRONG, EM, etc) can contain other inline elements but NEVER block elements.
+
+P elements are inline elements, NOT block elements. You CANNOT put block elements inside P elements!
+
+Links
+
+Links can be absolute or relative
+Absolute links always begin with http:// (or file://, mailto:, etc)
+
+Examples: 
+http://www.google.com
+http://lipsum.com
+http://localhost/tc7822/example1.html
+
+Relative links contain partial information about a resource location.
+
+Examples using A href attribute:
+href="example1.html"
+
+(Assume we're in example1.html trying to link to example2)
+href="http://localhost/tc7822/example2.html" - WORKS
+href="example2.html" - WORKS
+href="/example2.html" - DOESN'T WORK
+href="/tc7822/example2.html" WORKS
+href="http://localhost/example2.html" - DOESN'T WORK 
+
+Hash links allow us to link to specific elements inside a document
+
+Requires the target element to have an id using the 'id' attribute
+
+Link to target using href="#id" where id is the value of the id assigned to the target element
+
+CSS
+Three ways to use CSS on HTML document
+1) Use inline styles via HTML style attribute
+2) Embed stylesheet(s) directly in HTML document
+3) Link external stylesheet(s) to HTML document
+
+Anatomy of a stylesheet rule
+Every rule has a selector and a declaration block
+
+selector {
+	property: value;
+	property: value;
+	...
+}
+
+Ex:
+
+p {
+	color: green;
+}
+
+CSS Selectors
+
+Most basic selector is element - P, LI, H2, etc
+We can reference individual elements by assigning an id and using the id in the selector using #id
+
+element
+#id
+.class
+
+HTML
+	BODY
+		H1
+		P
+		P.highlight
+		H2
+		P 
+		P 
+		DIV#main
+			H2
+			P.highlight 
+			P 
+		DIV.highlight
+			P 
+			P 
+		P 
+ 		
+p:first-child
+p:first-of-type
+
+0,1,0,0 #main
+0,1,0,1 body #main
+0,1,0,1 div#main
+0,1,0,3 html body div#main
+
+.highlight
+div.highlight
+
+0,0,0,1 p { color:red; }
+0,1,0,0 #main {...}
+0,0,1,0 .highlight {...}
+
+p, h2 {...} select all p and all h2
+0,0,0,2 body p { color:green; } select all p that are descendants of body
+0,1,0,1 body #main { color: purple; } 
+0,0,0,2 div p { color: blue; }
+
+0,0,0,2 body > p { color: grey; } select all p that are children of body
+
+
+p { color:#00ff00!important; }
+
+
+
+
+------
+
+DIV - generic block element
+SPAN - generic inline element
+
+<div id="article">Some text in the content that <span>might</span> need to be styled somehow.</div>
+
+------
+
+
+HTML --> DOM <-- CSS
+		  |
+		  |
+		OUTPUT
+
+
+------
+Reference: HTML and DOM diagram
+
+p { color: red; }
+
+body { background-color: black; color: white; font-weight: bold; }
+
+
+------
+
+Color codes
+
+color:	red;
+		#FF0000; (hexadecimal value from 00-FF, which is 0-255 in dec)
+				  #RRGGBB - Red, Green, Blue codes)
+		rgb(255,0,0); (color codes based on decimal values; RGB)
+		rgba(255,0,0,1) (decimal color code plus alpha/transparency
+						 alpha is a value from 0-1)
+						 
+
+------
+
+Standards mode vs "Quirks Mode" in IE
+
+Best practice is to always use a DOCTYPE declaration at the beginning of your HTML document to force the browser (really, just IE) into standards mode.
+
+<!DOCTYPE html>
+
+------
+
+Layout units
+
+px pt - fixed units
+% em  - relative units
+
+DON'T MIX UNITS WHERE YOU CALCULATE THE TOTAL WIDTH!
+
+div {
+	width: 30%;
+	padding: 1.5em;
+	border: 3px;
+}
+
+The only way the above will work out well is if you added:
+
+box-sizing: border-box;
+
+------
+
+margin-left:
+margin-right:
+margin-top:
+margin-bottom:
+
+margin:	25px; sets ALL sides to 25px;
+		
+		10px 25px; sets vertical sides to 10px and horizontal sides to 25px;
+		
+		10px 5px 25px 15px; set all sides clockwise from top: T R B L
+		
+		
+------
+
+HTML
+  BODY
+    DIV#wrapper
+	  HEADER
+	  DIV#content
+	    SECTION#sports
+		  HEADER
+		    ARTICLE
+			  HEADER
+			  DIV.articlecontent
+			  FOOTER
+		    ARTICLE
+			  HEADER
+			  DIV.articlecontent
+			  FOOTER
+		  FOOTER
+		SECTION#entertainment
+		  HEADER
+		  ...
+		  FOOTER
+	  FOOTER
+
+
+------
+
+HTML
+  BODY
+    DIV#wrapper
+	  HEADER
+	  SECTION
+	    H2
+		P
+		P 
+		H2
+		P 
+		...
+	  FOOTER
+	  
+	  
+
+------
+Images in background 
+
+background-image
+background-repeat
+background-position
+background-size
+background-attachment
+background-position
+
+------
+
+Tables
+
+TABLE 
+  THEAD | TFOOT | TBODY
+    TR
+	  TH | TD
+	  
+colspan
+rowspan
+
+
+HTML email
+
+Online tool that converts css3 page to email friendly inline styles:
+http://premailer.dialect.ca/
+
+Other email resources
+https://www.campaignmonitor.com/css/
+
+
+
+------
+Forms
+
+
+form method = get | post, action=URL
+input type= text, password, checkbox, radio, submit
+textarea
+select
+  option
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

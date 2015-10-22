@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+</head>
+<body>
+
+<button id="thebutton">Click Me</button>
+<button id="button2">Click Me Two</button>
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript">
+
+$('#thebutton')	// select the button
+	.on(
+		'click',		// listen for click events
+		function(e) {	
+			alert("I've been clicked!");
+		}
+	 );
+
+$('#button2')
+	.click(
+		function(e) {	
+			alert("I've been clicked!");
+		}
+	 );
+
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+</script>
+</body>
+</html>

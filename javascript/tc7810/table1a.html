@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript">
+
+// get reference to target node
+var targetElem = document.getElementById('target');
+
+// create new element
+var tableElem = document.createElement('TABLE');
+
+// create element
+var tbodyElem = document.createElement('TBODY');
+// attach to parent
+tableElem.appendChild(tbodyElem);
+
+// create row element and attach
+var trElem = document.createElement('TR');
+tbodyElem.appendChild(trElem);
+
+// add column
+var tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('John'));
+// add column
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('Doe'));
+// add column
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('42'));
+
+// wash, rinse, repeat for next row
+// create row element and attach
+var trElem = document.createElement('TR');
+tbodyElem.appendChild(trElem);
+
+// add column
+var tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('Jane'));
+// add column
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('Smith'));
+// add column
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('37'));
+
+// minimize the repaints the browser has to doctype
+// attach to node tree AFTER building the branch
+targetElem.appendChild(tableElem);
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+
+<style type="text/css">
+#slider {
+	position: relative;
+	left: -400px;
+	width: 380px;
+	height: 380px;
+	background-color:#FFFFCC;
+
+}
+
+
+</style>
+
+
+<script type="text/javascript">
+
+slider = document.getElementById("slider");
+slideIncr = -400;
+
+  slideAndHide = function() {
+	slider = document.getElementById("slider");
+	slider.style.left = '-400px';
+    slideInterval = setInterval(doSlide, 20);
+  };
+  
+  doSlide = function() {
+    slider = document.getElementById("slider");
+	if (slideIncr < 380) {
+      slideIncr += 10;
+      slider.style.left = slideIncr + 'px';
+    }
+    else {
+      slideIncr = 380;
+      clearInterval(slideInterval);
+	  clearTimeout(autorun);
+    }
+  };
+
+autorun = setTimeout(slideAndHide, 5000);
+window.onload = autorun;
+
+</script>
+
+</head>
+
+<body>
+
+
+<div id="content">
+<a href="#" onclick="javascript: slideAndHide();">Click Here to Move Window</a>
+
+<div id="slider"><p>This space for rent</p></div>
+
+
+</div>
+
+
+
+</body>
+</html>

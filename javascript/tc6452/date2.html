@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Date Exercise</title>
+
+
+</head>
+<body>
+
+
+<script type="text/javascript" src="mylibrary.js"></script>
+<script type="text/javascript">
+
+var weekdays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+var months = 
+[
+	'January',
+	'February',
+	'March',
+	'April',
+	'May',
+	'June',
+	'July',
+	'August',
+	'September',
+	'October',
+	'November',
+	'December',
+];
+
+
+var today = new Date();
+
+
+document.write('<p>Today is ' + 
+				weekdays[today.getDay()] + ', ' + 
+				months[today.getMonth()] + ' ' +
+				today.getDate() + getOrdinal(today.getDate()) + ', ' +
+				today.getFullYear() + 
+				'</p>');
+
+
+</script>
+</body>
+</html>
+

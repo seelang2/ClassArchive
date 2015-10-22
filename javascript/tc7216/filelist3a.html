@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 100%;
+		color: #000;
+		background: #efefef;
+	}
+	
+	#target {
+		width: 400px;
+		margin: auto;
+	}
+	
+	table {
+		border-collapse: collapse;
+		width: 99%;
+		background: #fff;
+		margin: auto;
+	}
+	
+	table, th, td { 
+		border: 1px solid #7a7a7a;
+	}
+	
+	th, td {
+		padding: 5px;
+	}
+	
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-2.1.1.js"></script>
+<script type="text/javascript">
+
+var dirList =
+[
+	{ filename: 'file1.txt', filesize: 302 },
+	{ filename: 'file2.txt', filesize: 1534 },
+	{ filename: 'file3.txt', filesize: 23425 },
+	{ filename: 'file4.txt', filesize: 198 }
+];
+
+// create empty table and store reference to tbody
+var $tbody = 
+$('#target')
+	.append('<table><tbody /></table>')
+	.find('tbody');
+
+// loop through dirList array
+$.each(
+	dirList,
+	function(index, element) {
+		
+		$('<tr>' + 
+			'<td>' + element.filename + '</td>' +
+			'<td>' + element.filesize + '</td>' +
+		  '</tr>')
+			.appendTo($tbody);
+	
+	}
+);
+
+//stripe the table
+$tbody
+	.children('tr')
+	.filter(':even')
+	.addClass('oddrow')
+	.end()
+	.filter(':odd')
+	.addClass('evenrow')
+	.end()
+	.end();
+	
+
+
+</script>
+</body>
+</html>

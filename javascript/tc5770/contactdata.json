@@ -1,0 +1,12 @@
+{
+  "colLabels": ["ID", "First Name", "Last Name", "Phone #"],
+  "data": 
+  [
+	{ "id": 0, "fname":"John","lname":"Doe","phone":"(312)588-2300"},
+	{ "id": 0, "fname":"Mary","lname":"Smith","phone":"(312)588-2301"},
+	{ "id": 0, "fname":"Steven","lname":"Peters","phone":"(312)588-2302"},
+	{ "id": 0, "fname":"Alice","lname":"Johnson","phone":"(312)588-2303"},
+	{ "id": 0, "fname":"Bob","lname":"Patrick","phone":"(312)588-2304"},
+	{ "id": 0, "fname":"Patrick","lname":"Roberts","phone":"(312)588-2305"}
+  ]
+}

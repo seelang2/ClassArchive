@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="clock"></div>
+
+<script type="text/javascript">
+var weekdays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+var months = ['January',
+			  'February',
+			  'March',
+			  'April',
+			  'May',
+			  'June',
+			  'July',
+			  'August',
+			  'September',
+			  'October',
+			  'November',
+			  'December'
+			  ];
+
+function getDateTime() {
+	var today = new Date();
+	
+	// store hour as variable for manipulation
+	var hour = today.getHours();
+	// convert from 24 to 12 hour time
+	if (hour > 11) {
+		var meridian = 'pm';
+		hour -= 12; // adjust time by 12 hours
+	} else {
+		var meridian = 'am';
+	}
+	// we want to avoid 0 hour when it should be 12
+	if (hour == 0) {
+		hour = 12;
+	}
+	
+	// work out the english ordinal suffix for the date
+	switch(today.getDate())
+	{
+		case '1':
+		case '21':
+		case '31':
+			var suffix = 'st';
+		break;
+		
+		case '2':
+		case '22':
+			var suffix = 'nd';
+		break;
+		
+		case '3':
+		case '23':
+			var suffix = 'rd';
+		break;
+		
+		default:
+			var suffix = 'th';
+		break;
+	} // switch
+	
+   return weekdays[today.getDay()] + ', ' +
+	   months[today.getMonth()] + ' ' +
+	   today.getDate() + 
+	   suffix + ' ' +
+	   hour + ':' +
+	   today.getMinutes() + ':' +
+	   today.getSeconds() +
+	   meridian;
+
+} // getDateTime
+
+//alert(getDateTime());
+
+var clockDiv = document.getElementById("clock");
+
+function updateClock() {
+	clockDiv.innerHTML = '<p>' + getDateTime() + '</p>';
+}
+
+updateClock(); // run first before setting interval to avoid blank screen before update
+var interval = setInterval(updateClock, 1000);
+
+</script>
+
+
+
+</body>
+</html>

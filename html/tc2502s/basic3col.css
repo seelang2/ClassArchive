@@ -1,0 +1,106 @@
+
+#wrapper {
+	background-color: #ffffff;
+}
+
+
+
+Body {
+
+	background-color:#cdcdcd url (tile1.jpg) repeat;
+	background-image: url(tile1.jpg);
+	background-repeat: repeat;
+	font-size: 85%;
+	font-family: Verdana;
+}
+
+
+
+#header, #footer {
+	background: url(fire.jpg) repeat;
+	font-color:#cccccc;
+	font-size: 100%;
+	height: 50px;
+	/*background-color: #cccccc;*/
+	overflow: hidden;
+	padding: 10px 15px;
+
+	
+}
+#header{
+	background-position: 100px 0;
+	height: 50px;
+	/*background-color: #cccccc;*/	
+	overflow: hidden;
+	padding: 10px 15px;
+
+}
+
+
+#content {
+
+}
+
+#rightcolumn {
+	float:right;
+	width:25%;
+	background-color:#ffffff;
+
+
+}
+
+#leftcolumn {
+	float:left;
+	width:25%;
+	background:#ffffff;
+	margin: 0 0 25% 0;
+
+}
+
+#centercolumn {
+	background:#cccccc;
+	width:47%;margin:0 26% 0 26%;
+
+
+}
+
+#Chicagoriverpic {
+	Float: Left;
+	
+
+}
+
+.alignleft {
+	display: block;
+	float: left;
+	margin-right: 1em;
+	margin-bottom: 0.5em;
+}
+ 
+.alignright {
+	display: block;
+	float: right;
+	margin-left: 1em;
+	margin-bottom: 0.5em;
+}
+
+div#centercolumn h1{
+	background: #ffffff;
+	width:100%;
+}
+
+.clearing {
+	clear: both;
+	height: 1px;
+	overflow: hidden;
+
+}
+
+
+#footer {
+	height: 30px
+	
+
+}
+
+</style>

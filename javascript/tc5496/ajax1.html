@@ -1,0 +1,41 @@
+﻿<!doctype html>
+<html>
+<head>
+	<title>Sample Page</title>
+	<meta charset="UTF-8" />
+	
+</head>
+
+<body>
+
+<div id="results"></div>
+
+<script src="jquery-1.8.3.js" type="text/javascript"></script>
+<script src="ajax.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+
+	var ajax = new Ajax();
+	
+	ajax.do(
+		{
+			url:				'snippet.html',
+			method:				'GET',
+			responseType:		'text',
+			responseHandler:	function(response) {
+				
+				document.getElementById("results").innerHTML = response;
+				
+			}
+		}
+	)
+
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

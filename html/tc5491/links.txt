@@ -1,0 +1,9 @@
+https://developer.mozilla.org/en-US/docs/Mobile/Viewport_meta_tag
+https://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariWebContent/UsingtheViewport/UsingtheViewport.html
+
+http://socialdriver.com/2012/07/20-best-responsive-websites/
+
+http://www.w3.org/TR/css3-mediaqueries/
+
+Backbone JS: http://backbonejs.org/
+

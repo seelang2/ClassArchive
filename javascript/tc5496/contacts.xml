@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<contactlist>
+	<contact>
+		<id>0</id>
+		<firstname>John</firstname>
+		<lastname>Doe</lastname>
+	</contact>
+	<contact>
+		<id>0</id>
+		<firstname>Mary</firstname>
+		<lastname>Jane</lastname>
+	</contact>
+	<contact>
+		<id>0</id>
+		<firstname>Peter</firstname>
+		<lastname>Thomas</lastname>
+	</contact>
+	<contact>
+		<id>0</id>
+		<firstname>Gerome</firstname>
+		<lastname>Walker</lastname>
+	</contact>
+	<contact>
+		<id>0</id>
+		<firstname>Alice</firstname>
+		<lastname>Smith</lastname>
+	</contact>
+	<contact>
+		<id>0</id>
+		<firstname>Trish</firstname>
+		<lastname>Daniels</lastname>
+	</contact>
+	<contact>
+		<id>0</id>
+		<firstname>Daniel</firstname>
+		<lastname>McGovern</lastname>
+	</contact>
+	<contact>
+		<id>0</id>
+		<firstname>Jane</firstname>
+		<lastname>Adams</lastname>
+	</contact>
+</contactlist>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contactdata>
+	<requestdate>Date/Time</requestdate>
+	<fieldlabels>
+		<label>ID</label>
+		<label>First Name</label>
+		<label>Last Name</label>
+		<label>Email Address</label>
+	</fieldlabels>
+	<contacts>
+		<contact>
+			<id>10</id>
+			<firstname>John</firstname>
+			<lastname>Allen</lastname>
+			<email>jal@yahoo.com</email>
+		</contact>
+		<contact>
+			<id>123</id>
+			<firstname>Mary</firstname>
+			<lastname>Peters</lastname>
+			<email>mpami@gmail.com</email>
+		</contact>
+		<contact>
+			<id>2</id>
+			<firstname>Jessica</firstname>
+			<lastname>Albert</lastname>
+			<email>who@email.com</email>
+		</contact>
+		<contact>
+			<id>24</id>
+			<firstname>Alexi</firstname>
+			<lastname>Michaels</lastname>
+			<email>am@morning.com</email>
+		</contact>
+		<contact>
+			<id>11</id>
+			<firstname>George</firstname>
+			<lastname>Thomas</lastname>
+			<email>george@thomas.com</email>
+		</contact>
+		<contact>
+			<id>9</id>
+			<firstname>Sybil</firstname>
+			<lastname>Charles</lastname>
+			<email>person1@mail.com</email>
+		</contact>
+		<contact>
+			<id>54</id>
+			<firstname>Frances</firstname>
+			<lastname>Donald</lastname>
+			<email>fhmd@mac.com</email>
+		</contact>
+	</contacts>
+</contactdata>

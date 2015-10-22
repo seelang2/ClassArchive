@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+<script type="text/javascript">
+
+var someVar = 'A Value';
+
+var value1 = 32;
+
+var value2 = '10';
+
+var value3 = value1 + value2;
+
+var someValue = new Array(3, 32, 'text', 'etc');
+
+
+document.write('<link rel="stylesheet" href="' + someValue[2] + '".css />');
+
+/*
+if (value == '10') {
+	
+} else if {
+	
+}
+
+switch (value) {
+	case 'something':
+	
+	case '10':
+		// do stuff
+	break;
+	default:
+		// do this if all else fails
+	break;
+}
+
+for (var c = 0; c < 10; c++) {
+	// do stuff
+}
+*/
+
+for (c in someValue) {
+	document.writeln(c);
+}
+
+
+var text = 'This space for rent.';
+
+document.write(text.toUpperCase())
+
+</script>
+
+</head>
+
+<body>
+</body>
+</html>

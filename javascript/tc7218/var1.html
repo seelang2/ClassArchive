@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+	
+	<style type="text/css">
+	</style>
+	
+</head>
+<body>
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+/*
+	Objects (except primitive types, which are handled a little differently) 
+	in javascript are passed by reference to functions. If a passed object 
+	has its properties changed within a function the original object is 
+	changed.
+*/
+function editContact(contact) {
+	contact.firstname = 'Freddie';
+	contact.lastname = 'Mercury';
+	contact.newproperty = 'whatever';
+	
+	return contact;
+}
+
+/*
+	However, if an object is reassigned the new object is created in the local 
+	scope and the original object is unaltered.
+*/
+function overwriteContact(contact) {
+	contact = {
+		firstname: 'John',
+		lastname: 'Jones'
+	}
+	
+	return contact;
+}
+
+var contactList =
+[
+	{"id":0,"firstname":"John","lastname":"Doe","email":"jdoe@email.com"},
+	{"id":1,"firstname":"Jane","lastname":"Adams","email":"jane.adams123@email.com"},
+	{"id":2,"firstname":"Peter","lastname":"Thomas","email":"pt3436@email.com"},
+	{"id":3,"firstname":"Alice","lastname":"Wendell","email":"alice234@email.com"},
+	{"id":4,"firstname":"Xavier","lastname":"Khan","email":"xxx2342@email.com"}
+];
+
+
+var contact = contactList[0];
+
+console.log(editContact(contact));
+//console.log(overwriteContact(contact));
+
+console.log(contact);
+
+/*
+	Variable assignments do NOT create copies of (non-primitive type) objects. 
+	The variable instead points to the original variable value. If editContact() 
+	is executed both contact AND contactList[0] are changed.
+*/
+console.log(contactList[0]);
+
+
+
+
+</script>
+</body>
+</html>

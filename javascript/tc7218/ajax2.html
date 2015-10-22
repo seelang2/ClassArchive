@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+	
+	<style type="text/css">
+	</style>
+	
+</head>
+<body>
+
+<div id="target"></div>
+
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+
+
+// the code that processes the response from the ajax request should be a callback
+var showData = function(x) {
+	document
+		.getElementById('target')
+		.innerHTML = x;
+}
+
+$.ajax({
+	type:		'get',
+	dataType:	'text',
+	cache:		false,
+	url:		'mfpartial.html',
+	success:	showData
+});
+
+
+</script>
+</body>
+</html>
+
+
+
+

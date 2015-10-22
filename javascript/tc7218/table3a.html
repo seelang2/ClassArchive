@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+	
+	<style type="text/css">
+	</style>
+	
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+var $table = 
+$('<table />')
+	.appendTo('#target');
+
+$('<tbody />')
+	.append('<tr><td>John</td><td>Doe</td></tr>')
+	.append('<tr><td>Jane</td><td>Smith</td></tr>')
+	.appendTo($table);
+
+/*
+$('#target')
+	.append('<table />')
+	.append('<tbody />') // doesn't work because the collection is still #target
+*/	
+
+</script>
+</body>
+</html>
+
+
+
+

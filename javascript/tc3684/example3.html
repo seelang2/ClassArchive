@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<input type="button" id="theButton" value="Click Me!" />
+
+<div id="target"></div>
+
+<script type="text/javascript">
+
+function gotClicked() {
+	// alert('The button was clicked.');
+	var targetDiv = document.getElementById("target");
+	
+	// remove any nodes already in element
+	while (targetDiv.hasChildNodes()) {
+		targetDiv.removeChild(targetDiv.firstChild); // removes the first child node as long as there are child nodes
+	}
+	
+	var tableElem = document.createElement("TABLE");
+	targetDiv.appendChild(tableElem);
+	
+	var tbodyElem = document.createElement("TBODY");
+	tableElem.appendChild(tbodyElem);
+	
+	// ------------ NEXT ROW -------------
+	var trElem = document.createElement("TR");
+	tbodyElem.appendChild(trElem);
+	
+	var tdElem = document.createElement("TH");
+	trElem.appendChild(tdElem);
+	tdElem.appendChild(document.createTextNode('First Name'));
+	
+	var tdElem = document.createElement("TH");
+	trElem.appendChild(tdElem);
+	tdElem.appendChild(document.createTextNode('Last Name'));
+	
+	var tdElem = document.createElement("TH");
+	trElem.appendChild(tdElem);
+	tdElem.appendChild(document.createTextNode('City'));
+	
+	// ------------ NEXT ROW -------------
+	var trElem = document.createElement("TR");
+	tbodyElem.appendChild(trElem);
+	
+	var tdElem = document.createElement("TD");
+	trElem.appendChild(tdElem);
+	tdElem.appendChild(document.createTextNode('John'));
+	
+	var tdElem = document.createElement("TD");
+	trElem.appendChild(tdElem);
+	tdElem.appendChild(document.createTextNode('Doe'));
+	
+	var tdElem = document.createElement("TD");
+	trElem.appendChild(tdElem);
+	tdElem.appendChild(document.createTextNode('Dallas'));
+	
+	// ------------ NEXT ROW -------------
+	var trElem = document.createElement("TR");
+	tbodyElem.appendChild(trElem);
+	
+	var tdElem = document.createElement("TD");
+	trElem.appendChild(tdElem);
+	tdElem.appendChild(document.createTextNode('Jane'));
+	
+	var tdElem = document.createElement("TD");
+	trElem.appendChild(tdElem);
+	tdElem.appendChild(document.createTextNode('Smith'));
+	
+	var tdElem = document.createElement("TD");
+	trElem.appendChild(tdElem);
+	tdElem.appendChild(document.createTextNode('Portland'));
+	
+	// ------------ NEXT ROW -------------
+	var trElem = document.createElement("TR");
+	tbodyElem.appendChild(trElem);
+	
+	var tdElem = document.createElement("TD");
+	trElem.appendChild(tdElem);
+	tdElem.appendChild(document.createTextNode('Albert'));
+	
+	var tdElem = document.createElement("TD");
+	trElem.appendChild(tdElem);
+	tdElem.appendChild(document.createTextNode('Ross'));
+	
+	var tdElem = document.createElement("TD");
+	trElem.appendChild(tdElem);
+	tdElem.appendChild(document.createTextNode('Albequerque'));
+	
+	// ------------ NEXT ROW -------------
+	var trElem = document.createElement("TR");
+	tbodyElem.appendChild(trElem);
+	
+	var tdElem = document.createElement("TD");
+	trElem.appendChild(tdElem);
+	tdElem.appendChild(document.createTextNode('Adrienna'));
+	
+	var tdElem = document.createElement("TD");
+	trElem.appendChild(tdElem);
+	tdElem.appendChild(document.createTextNode('Reaves'));
+	
+	var tdElem = document.createElement("TD");
+	trElem.appendChild(tdElem);
+	tdElem.appendChild(document.createTextNode('Chicago'));
+	
+	
+} // gotClicked
+
+// get reference to the button
+var theButton = document.getElementById("theButton");
+// assign function code to the event handler
+theButton.onclick = gotClicked;
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

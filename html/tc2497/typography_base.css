@@ -1,0 +1,171 @@
+/* CSS Document */
+
+/* typography */
+body {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 76%;/* font sizing in ems, baby. if you want to change anything, just change this.*/
+	/*funny thing happens at 75% and lower. opera goes to a nice small size, but moz and ie pc change almost not at all. seems 76% is as small as you can go and stay the same across browsers. poop.*/
+	color: #000000;
+}
+
+h1 {
+	font-size: 1.8em;
+	font-weight: bold;
+	margin-top: 0em;
+	margin-bottom: 0.25em;/*both set to zero and padding in header div is used intead to deal with compound ie pc problems that are beyound summary in a simple comment.*/
+	letter-spacing: -1px;
+	text-align:left;
+	color: #ff0000;
+}
+
+h1.headline {
+	font-size: 2.5em;
+}
+
+h2 {
+	font-size: 1.5em;
+	font-weight: normal;
+	margin: 1em 0em 0.25em 0em; /* 1.2em 0em 1.2em 0em */
+	letter-spacing: -1px;
+	color: #ce0000; /**/
+	text-align:left;
+}
+
+h2.headline {
+	font-size: 1.7em;
+	color: #000000;
+}
+
+h2.subhead {
+	font-weight:normal;
+	color:#000000;
+	font-family:Georgia, "Times New Roman", Times, serif;
+}
+
+div#sidebar h2 {
+	font-size:1.5em;
+}
+
+div#leftsidebar h2, div#rightsidebar h2 {
+	font-size:1.3em;
+}
+
+h3 {
+	font-size: 1.3em;
+	margin: 1em 0em 0.25em 0em;
+	font-weight: normal;
+	color:#c90000;
+	}
+h4 {
+	font-size: 1.2em;
+	margin: 1em 0em 0.25em 0em;
+	font-weight: bold;
+	}
+
+.headline {
+	text-align:center;
+}
+.subhead2 {
+	font-weight:normal;
+	font-size: 85%;
+}
+
+.subheadline {
+	font-weight:bold;
+	font-size: 76%;
+	color: #000000;
+}
+
+p {
+	font-size: 1.0em;
+	line-height: 1.6em;
+	margin: 1em 0em;
+/*	background-color: #FFFFCC; */
+}
+
+div#sidebar p, div#leftsidebar p, div#rightsidebar p {
+/*	font-size: 0.9em; */
+	line-height: 1.1em;
+}
+
+.emph1 {
+	color:#ff0000;
+}
+
+.emph2 {
+	color:#ff0000;
+	font-style:italic;
+}
+
+.hi {
+	font-weight: bold;
+	color: #ce0000;
+}
+
+.navlinks p {
+	color: #ffffff;
+	padding: 5px;
+}
+
+.navlinks a {
+	color: #ffffff;
+}
+
+sup.ref {
+	font-size:90%;
+}
+
+sup.ref a {
+	text-decoration: none;
+}
+
+div.topic p {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	line-height: 1.3em;
+}
+		
+/*typography*/
+a {
+/*	text-decoration: underline; */
+	}
+a:link {
+	}
+a:visited {
+	}
+a:active {
+	}
+a:hover {
+	}
+.resultitem a {
+	text-decoration:none;
+}
+
+img {
+	border: none;
+	}
+ol, ul, li {
+/*	list-style: none;*/
+	font-size: 1.0em;
+	line-height: 1.8em;
+	margin-top: 0.2em;
+	margin-bottom: 0.5em; 
+	}
+ul {
+	list-style:outside;
+	margin-left: 1em;
+}
+li {
+/*	list-style-type:square; */
+	margin-left: 2em;
+}
+
+li > p {
+	margin-top: 0.2em;
+	}
+pre {
+	font-family: monospace;
+	font-size: 1.0em;
+	}
+/* EOF */

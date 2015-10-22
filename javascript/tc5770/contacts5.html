@@ -1,0 +1,100 @@
+<!doctype HTML>
+<html>
+<head>
+	<title>Page Title</title>
+	<meta charset="UTF-8" />
+	
+	<style type="text/css">
+	
+	.hover { background: #FFC; }
+	
+	</style>
+</head>
+<body>
+
+	<div id="content">
+		<h2>Contact data goes here!</h2>
+	</div>
+
+<script type="text/javascript" src="jquery-1.9.0.js"></script>
+<script type="text/javascript">
+
+var contacts =
+{
+  colLabels: ['ID', 'First Name', 'Last Name', 'Phone #'],
+  data: 
+  [
+	{ id: 0, fname: 'John', lname: 'Doe', phone: '(312)588-2300' },
+	{ id: 0, fname: 'Mary', lname: 'Smith', phone: '(312)588-2301' },
+	{ id: 0, fname: 'Steven', lname: 'Peters', phone: '(312)588-2302' },
+	{ id: 0, fname: 'Alice', lname: 'Johnson', phone: '(312)588-2303' },
+	{ id: 0, fname: 'Bob', lname: 'Patrick', phone: '(312)588-2304' },
+	{ id: 0, fname: 'Patrick', lname: 'Roberts', phone: '(312)588-2305' }
+  ]
+};
+
+
+var $tbody =
+$('#content')
+	.append('<table><thead><tr /></thead><tbody /></table>')
+	.find('tbody');
+
+// create header row
+$.each(
+	contacts.colLabels,
+	function(i, label) {
+		$('#content thead > tr')
+			.append('<th>' + label + '</th>');
+	}
+);
+
+// build body of table
+$.each(
+	contacts.data,
+	function(index, contact) {
+		var rowHTML = '<tr>';
+		
+		$.each(
+			contact,
+			function(fieldname, fieldValue) {
+				rowHTML += '<td>' + fieldValue + '</td>';
+			}
+		)
+		
+		rowHTML += '</tr>';
+		$tbody.append(rowHTML);
+	}
+);
+
+$tbody
+	.children('tr')
+	.each(
+		function(index, element) {
+			//console.log(element.nodeName); // element is actual DOM node
+			//element.id = 'item' + index; // not very jQuery-like
+			
+			$(element)	// put the DOM node into a jQuery object
+				.attr('id','item' + index)
+				.addClass('datarow')
+				//.children().first()
+				.children(':first-child')
+				.html(++index);
+			
+		}
+	 )
+	.on(
+		'mouseover',
+		function() {
+			$(this).addClass('hover');
+		}
+	 )
+	.on(
+		'mouseout',
+		function() {
+			$(this).removeClass('hover');
+		}
+	 );
+
+</script>
+</body>
+</html>

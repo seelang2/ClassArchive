@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+</head>
+<body>
+
+<ul>
+	<li>Link 1</li>
+	<li>Link 2</li>
+	<li>Link 3</li>
+	<li>Link 4</li>
+</ul>
+
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript">
+
+$('<span>New text</span>')
+	.attr(
+		{
+			id: 'span1',
+			title: 'this is a useless tooltip',
+			'data-newatt': 42
+		}
+	 )
+	.appendTo('li:nth-child(3)')
+	.appendTo('li:nth-child(1)');
+
+$('li')
+	.each(
+		function(i, element) {
+			$(this).attr('id', 'item' + i); // this refers to DOM element
+			//$(element).attr('id', 'item' + i);
+		}
+	 )
+	
+
+
+</script>
+</body>
+</html>

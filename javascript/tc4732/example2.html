@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript">
+// get reference to target div element
+var targetElem = document.getElementById("target");
+
+var tableElem = document.createElement("TABLE"); // create new element node
+targetElem.appendChild(tableElem); // add table element to end of table children
+
+var tbodyElem = document.createElement("TBODY"); // create TBODY
+tableElem.appendChild(tbodyElem);
+
+// first row
+var trElem = document.createElement("TR");
+tbodyElem.appendChild(trElem);
+
+var tdElem = document.createElement("TD");
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode("John"));
+
+var tdElem = document.createElement("TD");
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode("Doe"));
+
+var tdElem = document.createElement("TD");
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode("jdoe@email.com"));
+
+// second row
+var trElem = document.createElement("TR");
+tbodyElem.appendChild(trElem);
+
+var tdElem = document.createElement("TD");
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode("Jane"));
+
+var tdElem = document.createElement("TD");
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode("Smith"));
+
+var tdElem = document.createElement("TD");
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode("jsmith@mac.com"));
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+	
+	.error { color: #f00; }
+	.success { color: #0f0; }
+	
+	</style>
+
+</head>
+<body>
+
+<div>
+	<label>
+		<span>Login:</span>
+		<input name="login" />
+		<span></span>
+	</label>
+</div>
+<div>
+	<button>A Button.</button>
+</div>
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+function findField(data, field, value) {
+	// assumes data is a json array of objects
+	// searches objects looking for field = value
+	for (var c = 0; c < data.length; c++) {
+		if (typeof data[c][field] != 'undefined' &&
+			data[c][field] == value) 
+			return true;
+		else 
+			return false;
+	}
+}
+
+
+$('[name="login"]')
+	.on('blur', function(evt) {
+		// 'this' loses its reference when changing contexts
+		var loginField = this;
+		
+		$.ajax({
+			url:		'userdata.php?action=getlist',
+			cache:		false,
+			type:		'get',
+			dataType:	'json',
+			success:	function(data) {				
+				
+				if ( findField( data, 'login', $(loginField).val() ) )  {
+					// if login exists display negative feedback
+					// and put focus back on element
+					$(loginField)
+						.next()
+						.addClass('error')
+						.html('Login name in use')
+						.end()
+						.focus();
+				
+				} else {
+					// else display positive feedback
+					$(loginField)
+						.next()
+						.addClass('success')
+						.html('Login name ok');
+					
+				}
+			}
+		});
+		
+		
+		
+		
+	 });
+	 
+	 
+}); // document.ready
+
+
+
+
+
+</script>
+</body>
+</html>

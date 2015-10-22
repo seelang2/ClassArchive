@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+#wrapper {
+	width: 700px;
+	margin: auto;
+	border: 1px solid #7a7a7a;
+}
+
+#wrapper ul, #wrapper li {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	background-color:#F9F;
+	text-align: center;
+}
+
+#wrapper li {
+	float: left;
+	width: 20%;
+}
+
+/*
+	The following is a variation on the 'Clearfix' clearing method that
+	uses a pure CSS method to clear floated content without adding
+	structural markup.
+*/
+#wrapper ul:after {
+	content: " ";
+	clear: both;
+	display: block;
+	
+}
+
+#wrapper a {
+	text-decoration: none;
+	display: block;
+	border: 2px outset #C06;
+	padding: 5px 10px;
+}
+
+#wrapper a:hover {
+	background-color: #FCF;
+}
+
+#wrapper a:active {
+	border-style: inset;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="wrapper">
+	<ul>
+    	<li><a href="#">Link 1</a></li>
+    	<li><a href="#">Link 2</a></li>
+    	<li><a href="#">Link 3</a></li>
+    	<li><a href="#">Link 4</a></li>
+    	<li><a href="#">Link 5</a></li>
+    </ul>
+	<p>Just a sentence below my menu.</p>
+</div>
+
+
+</body>
+</html>

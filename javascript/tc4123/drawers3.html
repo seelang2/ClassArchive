@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Drawers</title>
+
+<style type="text/css">
+body {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 85%;
+	color: #000;
+}
+
+#container {
+	width: 400px;
+	margin: auto;
+}
+
+h2 {
+	margin: 0 5px;
+	padding: 0.5em 0;
+	font-weight: normal;
+	width: 25%;
+	font-size: 1.3em;
+	background: #BFD5FB;
+}
+h2:first-child { border-top: none; }
+
+.section {
+	height: 250px;
+	overflow: scroll;
+	clear:both;
+	float:right;
+	width: 74%;
+}
+.section:first-child { border-top:none; }
+
+.hovereffect { background: #FFC; }
+
+</style>
+</head>
+
+<body>
+
+<div id="container">
+    <div class="section">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis nibh tortor. Donec ut blandit nisi. 
+    Morbi id placerat massa. Morbi eget purus sed lectus varius lobortis condimentum sed sem. In sit amet 
+    dui non elit imperdiet luctus. Nunc in sapien orci. Sed et ipsum ac lorem malesuada facilisis vitae 
+    non mauris. In euismod sagittis risus eget scelerisque. </p>
+    <p>Maecenas tempus justo vitae arcu tempor quis 
+    aliquet ligula mollis. Sed tellus erat, viverra id consectetur sed, eleifend sed quam. Maecenas 
+    bibendum consectetur justo quis iaculis. </p>
+    <p>Suspendisse fermentum mollis lectus, sed molestie mauris 
+    rhoncus non. Donec malesuada malesuada nunc, quis pulvinar nunc iaculis in. Etiam massa mi, egestas ut 
+    viverra interdum, blandit ut massa. Sed porttitor tincidunt congue. Vestibulum ante ipsum primis in 
+    faucibus orci luctus et ultrices posuere cubilia Curae; Donec scelerisque scelerisque vehicula. 
+    Suspendisse vitae leo et libero luctus tincidunt. </p>
+    <p>Sed ornare, risus at scelerisque varius, diam metus 
+    interdum sapien, in imperdiet ligula mauris eget nunc. Phasellus ut est nibh, laoreet lacinia metus. </p>
+    </div>
+
+    <div class="section">
+    <p>Fusce ullamcorper lorem quis tortor bibendum blandit. Etiam facilisis neque id risus consectetur 
+    in venenatis ipsum tempor. Quisque ac ante et elit ultricies imperdiet. </p>
+    <p>Etiam tincidunt ante in enim sollicitudin elementum eu non erat. Donec nec libero eu mi lobortis 
+    fringilla nec non arcu. Cras convallis vulputate euismod. Vestibulum interdum gravida volutpat. In 
+    hac habitasse platea dictumst. Vestibulum et facilisis turpis. Morbi laoreet, sapien et egestas 
+    suscipit, nulla leo vulputate odio, a porta sem libero ac purus. </p>
+    <p>Nunc leo ipsum, pharetra sit amet adipiscing et, rutrum eu nunc. Nullam vel nisl leo. Quisque 
+    gravida varius magna vitae eleifend. Suspendisse imperdiet sem non odio imperdiet eu suscipit nisi 
+    semper. Nunc tristique sodales blandit. </p>
+    </div>
+
+    <div class="section">
+    <p>Aliquam viverra auctor ligula vitae consectetur. Aliquam eu tempus lacus. Nullam laoreet, risus 
+    et iaculis molestie, dolor felis eleifend lectus, a ultrices arcu tortor quis metus. Aenean ipsum 
+    arcu, sollicitudin sed faucibus eu, adipiscing nec massa. Proin hendrerit mauris et metus laoreet 
+    eu convallis erat commodo. </p>
+    <p>Nunc ultrices lacinia est nec luctus. Donec convallis ornare felis imperdiet suscipit. Quisque 
+    adipiscing lectus ac urna gravida venenatis. Nullam suscipit egestas enim, ut fringilla magna ornare 
+    et. Nullam tristique nulla imperdiet risus porta rhoncus. Phasellus cursus placerat tortor, sit amet 
+    rutrum lacus imperdiet ac. </p>
+    <p>In hac habitasse platea dictumst. Nunc nec metus quis dolor lobortis interdum sit amet ut ligula. 
+    Donec dolor nibh, placerat ut eleifend id, elementum eget nisl. Maecenas ligula leo, venenatis vel 
+    convallis eget, pharetra nec purus. In hac habitasse platea dictumst. Quisque quis leo eget est 
+    ullamcorper consectetur. </p>
+    </div>
+
+    <div class="section">
+    <p>Pellentesque sodales diam vel arcu imperdiet aliquet quis nec dolor. Etiam bibendum est libero. </p>
+    <p>Vestibulum non nulla ut dui congue ullamcorper. Mauris nec placerat purus. Suspendisse potenti. </p>
+    <p>Donec eget iaculis lorem. Donec eget nibh at nibh placerat auctor pretium at metus. Aenean arcu magna, 
+    volutpat nec pretium vitae, consequat sed urna. Nulla non lobortis massa. Fusce vestibulum augue et erat 
+    cursus eleifend. Duis pulvinar, enim dignissim laoreet pulvinar, leo lacus gravida odio, vel aliquam 
+    libero velit eu tortor. Etiam tristique neque et nibh lacinia mattis fermentum orci sodales. </p>
+    <p>Duis nec lectus vel est facilisis auctor a id risus. Nunc in urna lorem, id ullamcorper tortor. Donec 
+    mi dolor, convallis ut vulputate nec, condimentum at metus. In hac habitasse platea dictumst.</p>
+    </div>
+
+    <h2 class="title">Lorem ipsum</h2>
+	<h2 class="title">Etiam tincidunt</h2>
+	<h2 class="title">Aliquam viverra</h2>
+	<h2 class="title">Duis nec lectus</h2>
+</div><!-- container -->
+
+<script type="text/javascript">
+var Registry = {}; // namespace global variable bucket
+
+// main application startup function
+function AppStart() {
+	var containerDiv = document.getElementById("container"); // get reference to #container
+	
+	// sort all .section divs into array
+	Registry.sectionList = [];
+	Registry.titleList = [];
+	/*
+	// get array of all DIVs in #container
+	var tmpList = containerDiv.getElementsByTagName("DIV");
+	// sort the .section into sectionList
+	for (var c = 0; c < tmpList.length; c++) {
+		if (tmpList[c].className == 'section') {
+			Registry.sectionList.push(tmpList[c]);
+		}
+	}
+	*/
+	for (var c = 0; c < containerDiv.childNodes.length; c++) {
+		if (containerDiv.childNodes[c].className == 'section') {
+			containerDiv.childNodes[c].style.display = 'none'; // hide section div
+			Registry.sectionList.push(containerDiv.childNodes[c]);
+		}
+		if (containerDiv.childNodes[c].className == 'title') {
+			containerDiv.childNodes[c].onclick = toggleDisplay; // set up event handler
+			containerDiv.childNodes[c].onmouseover = showHover;
+			containerDiv.childNodes[c].onmouseout = noHover;
+			Registry.titleList.push(containerDiv.childNodes[c]);
+			containerDiv.childNodes[c].appData = {"index":Registry.titleList.length - 1}; // save data object inside element node object
+		}
+	}
+	console.log('# titles: '+ Registry.titleList.length);
+	console.log('# sections: '+ Registry.sectionList.length);
+	
+} // AppStart
+
+// event handlers
+function toggleDisplay() {
+	//alert(this.appData.index);
+	// loop through sections
+	for (var c =0; c < Registry.sectionList.length; c++) {
+		if (c == this.appData.index) { // if the section index matches the clicked title index
+			if (Registry.sectionList[c].style.display == 'block') {
+				Registry.sectionList[c].style.display = 'none'; // if it's already open then close it
+			} else {
+				Registry.sectionList[c].style.display = 'block'; // else open it
+			}
+		} else {
+			Registry.sectionList[c].style.display = 'none'; // hide section
+		}
+	}
+} // toggleDisplay
+
+function showHover() {
+	this.className += ' hovereffect';
+} // showHover
+
+function noHover() {
+	this.className = this.className.replace(/ hovereffect/,'');
+} // noHover
+
+
+window.onload = AppStart; // launch application on window load
+
+</script>
+</body>
+</html>

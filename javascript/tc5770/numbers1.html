@@ -1,0 +1,45 @@
+<!doctype HTML>
+<html>
+<head>
+	<title>Page Title</title>
+	<meta charset="UTF-8" />
+
+</head>
+<body>
+
+<script type="text/javascript">
+/*
+	Recursive function that takes any base 10 number 
+	and returns an array containing the digits in each
+	position from right to left
+	
+	Ex: 12,523 => [3,2,5,2,1]
+*/
+function integerToArray(number, output) {
+	if (typeof output == 'undefined') output = [];
+	
+	// 1. divide number by 10
+	var step1 = number / 10;
+	
+	// 2. store integer from step 1
+	var step2 = Math.floor(step1);
+	
+	// 3. subtract integer from dividend and multiply by 10
+	// rounding is to curb FP math issues. See http://stackoverflow.com/questions/588004/is-javascripts-floating-point-math-broken
+	output.push(Math.round((step1 - step2) * 10));
+	
+	// 4. if integer is > 0, repeat with integer
+	if (step2 > 0) integerToArray(step2, output);
+	
+	// otherwise we're done
+	return output;
+	
+} // integerToArray
+
+
+console.log(integerToArray(123456789));
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+
+#buttons {
+	float: left;
+	width: 125px;
+	margin-right: 20px;
+}
+
+#buttons input {
+	width: 100%;
+}
+
+#content {
+	width: 400px;
+	height: 400px;
+	border: 1px solid #000000;	
+	float: left;
+	overflow: scroll;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="buttons">
+	<input type="button" id="button1" value="Title 1" />
+	<input type="button" id="button2" value="Title 2" />
+	<input type="button" id="button3" value="Title 3" />
+</div>
+
+<div id="content">
+</div>
+
+<script type="text/javascript">
+var button1 = document.getElementById("button1");
+var button2 = document.getElementById("button2");
+var button3 = document.getElementById("button3");
+var content = document.getElementById("content");
+
+button1.onclick = function() {
+	content.innerHTML = '<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et neque   odio. Aenean at libero odio. Donec risus orci, hendrerit eu tristique   quis, aliquet sed nunc. Fusce eleifend orci ac est accumsan nec   condimentum tellus tempus. Pellentesque adipiscing viverra diam, a   posuere diam elementum in. Ut id nulla nisi. Curabitur non orci sem,   eget semper odio. Fusce felis nulla, dictum eu tempus eget, rutrum at   ligula. Sed vel massa aliquet eros semper fringilla eget eu enim. Cras   placerat ultricies nisi, vel iaculis est vestibulum nec. Aliquam eu   vehicula massa. Phasellus vel mauris mi, nec sodales diam. Mauris mattis   leo eu neque tempor sed fringilla augue feugiat. Lorem ipsum dolor sit   amet, consectetur adipiscing elit. Donec mollis pretium cursus. In   laoreet sollicitudin dui, ac elementum velit scelerisque vitae. Maecenas   pharetra nunc sed diam ullamcorper sed mattis nulla sodales. Vivamus   vitae lacus sapien. Nunc ut odio lectus, quis eleifend arcu. </p><p> In lectus libero, tempor eu dignissim a, pulvinar at quam. Praesent   egestas, arcu id porttitor rutrum, purus velit molestie risus, sit amet   imperdiet dolor urna in neque. Sed ullamcorper gravida congue. Nullam   posuere, leo sed ornare tincidunt, eros velit rhoncus odio, ut laoreet   diam ipsum at leo. Nam consectetur rutrum ornare. Vestibulum ante ipsum   primis in faucibus orci luctus et ultrices posuere cubilia Curae;   Vivamus ut libero tellus. Lorem ipsum dolor sit amet, consectetur   adipiscing elit. Nulla facilisi. Morbi posuere ornare purus, non   interdum velit euismod ut. Maecenas rutrum dui id orci pharetra   eleifend. Sed ornare tempor lobortis. Nunc condimentum diam vel justo   adipiscing sed congue lacus sagittis. Suspendisse id dui a est hendrerit   porttitor. Cras lacus metus, vulputate a semper ac, lacinia vitae nunc.   Aliquam et risus massa, id ornare erat. Nam sed nibh at mi varius   bibendum. Sed eget odio sit amet metus viverra dapibus vel at dui. </p>';
+}; // button1
+
+button2.onclick = function() {
+	content.innerHTML = '<p> In lacus ipsum, imperdiet id viverra sed, fermentum quis nunc. Nullam a   ipsum at turpis auctor ullamcorper. Ut tempor purus sed diam semper non   mattis nunc facilisis. Aenean a magna non ligula pellentesque consequat   in quis odio. In id ligula est. Vestibulum id justo id dui sodales   vestibulum. Ut vulputate lectus nec odio commodo suscipit. Aenean varius   molestie pellentesque. Ut eget eros sed libero vestibulum tempor.   Mauris ullamcorper mattis tincidunt. Class aptent taciti sociosqu ad   litora torquent per conubia nostra, per inceptos himenaeos. </p><p> Curabitur dictum velit ornare nisl tristique faucibus. Quisque metus   massa, cursus id rhoncus in, lacinia eget libero. Suspendisse sit amet   arcu vitae erat fermentum mollis. Vivamus varius felis eu nulla suscipit   ultricies. In hac habitasse platea dictumst. Mauris orci leo, iaculis   sit amet iaculis eget, mattis sit amet ipsum. Quisque tincidunt elit   vitae sem dignissim tincidunt. Integer dui eros, hendrerit non semper   id, laoreet ac sem. In at odio libero. Praesent nec eros non orci   placerat pulvinar. Ut hendrerit, lacus sed viverra pharetra, felis nisl   molestie orci, et venenatis ipsum lacus nec mauris. Quisque eu nisl   neque. </p>';
+}; // button2
+
+button3.onclick = function() {
+	content.innerHTML = '<p> Nam consectetur tellus vitae massa pretium consectetur. Aenean leo   nulla, ornare sed sagittis vitae, cursus eu nisl. Sed ultrices placerat   luctus. Praesent et enim vel magna fringilla hendrerit. Nam tempus magna   lacus. Praesent id mauris eu eros egestas dapibus. Fusce sit amet felis   in magna imperdiet euismod sed in magna. Nam id enim tortor, ac mollis   turpis. Phasellus varius elementum vehicula. Morbi tempus elit   vestibulum dolor dictum imperdiet. Nulla interdum odio eget ante   pharetra faucibus. Cras ullamcorper fermentum tellus id interdum. Cras   convallis tristique orci, ac varius tortor ullamcorper convallis.   Curabitur a ligula justo. In ac magna at tellus scelerisque ornare vitae   quis velit. Sed faucibus orci in felis vulputate eget congue massa   rhoncus. Ut at diam laoreet enim mattis luctus in nec odio. Duis augue   lacus, commodo vel porttitor ac, feugiat non libero. Pellentesque dictum   est at justo aliquam posuere. </p>';
+}; // button3
+
+
+</script>
+
+
+
+</body>
+</html>

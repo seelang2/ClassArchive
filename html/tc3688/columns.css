@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* CSS Document */
+
+.onecol {
+	width: 100%;
+}
+
+.twocol {
+	float: left;
+	width: 50%;
+}
+
+.threecol {
+	float: left;
+	width: 33%;
+}
+
+.fourcol {
+	float: left;
+	width: 25%;
+}
+
+.fivecol {
+	float: left;
+	width: 20%;
+}

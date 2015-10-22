@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+body {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 85%;
+}
+
+#container {
+	width: 400px;
+	margin: auto;
+	border: 1px solid #000;
+}
+
+.title {
+	padding: 7px 10px;
+	background: #D7E6FF;
+	border-bottom: 1px solid #000;
+}
+
+.content {
+	padding: 10px;
+	border-bottom: 1px solid #000;
+	height: 200px;
+	overflow: scroll;
+	display: none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="container">
+	<div class="title">
+    	Lorem ipsum dolor sit amet
+    </div>
+    
+    <div class="content">
+    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ornare, lorem a malesuada ultrices, turpis tellus elementum diam, sagittis dignissim metus arcu ut odio. Phasellus non massa massa. Aliquam pulvinar quam in lorem vestibulum elementum. Integer nibh nibh, vehicula sed luctus ac, pellentesque et lacus. Ut tristique eleifend imperdiet. Sed dapibus enim at turpis congue dictum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum id ante sit amet nisi aliquam tincidunt. Mauris sed dolor est. Donec vel elit sed massa malesuada lobortis. Nunc ipsum dui, rhoncus eu lobortis nec, euismod a purus. Mauris quis tortor purus. Maecenas venenatis blandit velit commodo pretium. Nulla molestie enim sed lectus semper nec elementum magna ornare. </p>
+    </div>
+
+	<div class="title">
+    	Nam suscipit euismod elit
+    </div>
+    
+    <div class="content">
+    	<p>Nam suscipit euismod elit, quis dignissim purus rutrum vel. Cras convallis venenatis aliquam. Etiam sit amet purus nec ante accumsan blandit. Mauris ut urna a ante sagittis imperdiet. Etiam sem urna, tincidunt et tempor sed, feugiat nec justo. Suspendisse egestas lobortis nisi vitae auctor. Phasellus ultrices mauris a orci congue blandit. Integer quis enim nunc. Integer facilisis tristique felis eu dictum. Aenean viverra varius sagittis. Donec at lobortis mauris. Vivamus id tellus rutrum velit porttitor sagittis. Maecenas sollicitudin felis at mauris vehicula lobortis. Mauris aliquet libero et odio euismod euismod. Aliquam erat volutpat. Maecenas eget volutpat nisi. Donec et tellus ut velit laoreet fermentum. Cras justo purus, semper vel fringilla at, auctor a ligula. Mauris consectetur nunc eget dolor ultricies nec imperdiet nulla ultrices. Duis gravida quam ac tortor pellentesque venenatis. </p>
+    </div>
+
+	<div class="title">
+    	Nunc quis leo risus
+    </div>
+    
+    <div class="content">
+    	<p>Nunc quis leo risus. Nulla tincidunt consequat venenatis. Morbi non pulvinar elit. Quisque condimentum tempor consectetur. Vestibulum auctor facilisis iaculis. In hac habitasse platea dictumst. Duis lobortis posuere sollicitudin. Mauris vestibulum, tortor a cursus pellentesque, tellus nulla pharetra nisi, id dignissim magna sem et justo. Duis at mattis nisi. Nunc sapien mauris, condimentum ut blandit quis, mollis non felis. Vestibulum et ullamcorper ipsum. Phasellus elementum turpis eu turpis condimentum et elementum eros vulputate. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas a est nibh, id pulvinar magna. Morbi facilisis commodo sollicitudin. Maecenas malesuada consequat luctus. </p>
+    </div>
+
+	<div class="title">
+    	Aliquam rhoncus nulla at diam
+    </div>
+    
+    <div class="content">
+    	<p>Nulla eget metus eget nunc laoreet pretium eu id est. Proin sem tortor, sodales luctus porttitor eu, porttitor nec libero. Suspendisse convallis hendrerit tortor eget pulvinar. Vivamus sollicitudin nibh ut neque aliquam ut porta ligula dictum. Aliquam rhoncus nulla at diam euismod venenatis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur lobortis est quis ante bibendum auctor. Praesent quis tortor sapien. Etiam sit amet ligula ipsum, vitae hendrerit purus. Vivamus dictum, ipsum nec tempus consectetur, orci tortor fermentum quam, ut tempor mauris elit nec orci. Nam eu mauris suscipit nisi laoreet interdum. Pellentesque ornare, quam nec interdum accumsan, magna ipsum posuere orci, vel pretium felis odio ac est. Sed sagittis dolor non ante accumsan ultricies. Phasellus id tristique odio. Sed consectetur quam vitae dolor euismod vel rhoncus quam volutpat. </p>
+    </div>
+
+
+</div>
+
+<script type="text/javascript">
+// get all DIVs inside the container div
+var divList = document.getElementById("container").getElementsByTagName("DIV");
+//alert(divList.length);
+var titleDivs = [];
+var contentDivs = [];
+// loop through divList and sort by class name
+for (var c = 0; c < divList.length; c++) {
+	switch(divList[c].className) {
+		case 'title':
+			titleDivs.push(divList[c]);
+		break;
+		case 'content':
+			contentDivs.push(divList[c]);
+		break;
+	} // switch
+}
+//alert(titleDivs.length + ' ' + contentDivs.length);
+
+var currentOpenDiv = -1; // track currently open content container
+
+// animation vars
+var incrementDelay = 1;
+var incrementStep = 10;
+
+// loop through titleDivs and assign event handlers
+for (var c = 0; c < titleDivs.length; c++) {
+	// store array index as a custom property in the element object
+	titleDivs[c].appData = {index: c}; // use object notation as shortcut to define object and member
+	
+	titleDivs[c].onclick = function() {
+		//alert(this.appData.index);
+		if (currentOpenDiv > -1) {
+			// close currently open container
+			//contentDivs[currentOpenDiv].style.display = 'none';
+			closeDrawer = new Drawer(contentDivs[currentOpenDiv]);
+			closeDrawer.slideClose(200, 1, 10); // initiate close
+		}
+		if (currentOpenDiv != this.appData.index) {
+			currentOpenDiv = this.appData.index;
+			//openSesame(currentOpenDiv);
+			
+			// create instance of Drawer and attach to container to be opened
+			openDrawer = new Drawer(contentDivs[currentOpenDiv]);
+			openDrawer.slideOpen(200, 1, 10); // initiate open
+			
+		} else {
+			currentOpenDiv = -1; // no divs are open at this point
+		}
+		
+	}; // function
+	
+	
+} // for
+
+
+function Drawer(target) {
+	// initial parameters
+	this.currentHeight = 0; // start out closed
+	this.maxHeight = 0; // max height in px
+	this.incrementDelay = 1; // interval delay in ms
+	this.incrementStep = 1; // step value between intervals
+	this.target = target; // reference to container
+	var self = this; // avoid 'this' keyword issues
+	
+	this.slideOpen = function(targetHeight, delay, step) {
+		this.currentHeight = 0; // reset height
+		this.incrementDelay = delay;
+		this.incrementStep = step;
+		this.maxHeight = targetHeight;
+		this.target.style.height = '0';
+		this.target.style.display = 'block';
+		this.interval = setInterval(this.slide, this.incrementDelay);
+	}; // slideOpen
+	
+	this.slideClose = function(currentHeight, delay, step) {
+		this.currentHeight = currentHeight; // reset height
+		this.incrementDelay = delay;
+		this.incrementStep = Math.abs(step) * -1; // insure step is negative
+		this.interval = setInterval(this.slide, this.incrementDelay);
+	}; // slideOpen
+	
+	
+	this.slide = function() {
+		self.currentHeight += self.incrementStep;
+		
+		if (self.incrementStep > 0 && self.currentHeight >= self.maxHeight) {
+			self.currentHeight = self.maxHeight; // constrain height to maximum
+			clearInterval(self.interval); // cancel interval
+		}
+		
+		if (self.incrementStep < 0 && self.currentHeight < 1) {
+			self.currentHeight = 0;
+			clearInterval(self.interval); // cancel interval
+			self.target.style.display = 'none';
+		}
+		
+		self.target.style.height = self.currentHeight + (self.currentHeight != 0 ? 'px' : '');
+		//self.target.style.height = self.currentHeight + 'px';
+	}; // slide
+}
+
+
+
+</script>
+</body>
+</html>

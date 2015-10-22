@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	table { border-collapse: collapse; }
+	td, th { padding: 0.5em 1em; }
+	
+	tr.hover { background: #ffffff; color: #ff6a00; }
+	.evenrow { background: #FFFF00; }
+	.oddrow { background: #FF6A00; }
+	
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script src="jquery-1.11.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+var App = {}; // create empty App object
+
+App.data = {};
+
+
+App.start = function() {
+
+	App.getCustomerData();
+
+}; // App.start
+
+App.exit = function() {
+	// perform housecleaning by removing/clearing elements
+	$(document.body).remove(); // clean up after ourselves
+
+	// also don't forget to clear out any vars that contain DOM nodes
+	//$thisElem.remove();
+	//$thiElem = null;
+	
+}; // App.exit
+
+App.getCustomerData = function() {
+	
+	$.ajax({
+		url:		'customerdata.xml',
+		type:		'get',
+		dataType:	'xml',
+		success:	App.buildTable
+	});
+
+}; // App.getCustomerData
+
+App.handleHover = function(evt) {
+		
+	// when using filters, 'this' is set to the filtered elements
+	$(this).toggleClass('hover');
+	
+	console.log($(this).data('appData'));
+	
+}; // App.handleHover
+
+App.buildTable = function(data) {
+	
+	var $data = $(data);
+	
+	var $tbody = $('<table><tbody /></table>').find('tbody');
+	
+	$data
+		.find('customer')
+		.each(function(index, customer) {
+			
+			var rowHTML = '<tr>';
+			
+			$(customer)
+				.children()
+				.each(function(i, column) {
+					rowHTML += '<td>' + $(column).text() + '</td>';
+				 });
+			
+			rowHTML += '</tr>';
+			
+			$tbody.append(rowHTML);
+			
+		 })
+	
+	$tbody.appendTo('#target');
+	
+	
+	
+	
+
+}; // App.buildTable
+
+$(document).ready(App.start); // document.ready
+
+window.onunload = App.exit;
+
+</script>
+</body>
+</html>

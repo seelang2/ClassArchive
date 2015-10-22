@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	/*
+	$.ajax({
+		url: 		'partial.html',
+		type: 		'get',
+		dataType: 	'html',
+		success: 	function(response) {
+
+			$('#target').html(response);
+
+		}
+	});
+	*/
+
+	$('#target').load('partial.html');
+
+}); // document.ready
+
+/*
+// alternate form of document.ready handler
+$(function() {
+
+});
+*/
+
+</script>
+</body>
+</html>

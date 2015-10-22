@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="seriesdiv"></div>
+
+<div id="modeldiv"></div>
+
+<div id="itemdiv"></div>
+
+
+<script src="ajaxlib.js" type="text/javascript"></script>
+<script src="registry.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+function AjaxStatus() {
+	this.show = function() {
+		this.statusDiv.style.display = 'block';
+	};
+	
+	this.hide = function() {
+		this.statusDiv.style.display = 'none';
+	};
+	
+	this.statusDiv = document.createElement("DIV");
+	this.statusDiv.style.width = '100px';
+	this.statusDiv.style.height = '100px';
+	this.statusDiv.style.position = 'fixed';
+	this.statusDiv.style.top = '50%';
+	this.statusDiv.style.left = '50%';
+	this.statusDiv.style.marginTop = '-50px';
+	this.statusDiv.style.marginLeft = '-50px';
+	this.statusDiv.style.zIndex = 1000;
+	this.statusDiv.style.backgroundImage = 'url(ajax-loader.gif)';
+	this.statusDiv.style.backgroundRepeat = 'no-repeat';
+	this.statusDiv.style.display = 'none';
+	document.body.insertBefore(this.statusDiv, document.body.firstChild);
+}
+
+
+
+var App = {
+	
+	registry: Registry, // decouple Registry object from App object, sort of
+	
+	startup: function() {
+		App.registry.setItem('seriesDiv', document.getElementById("seriesdiv"));
+		App.registry.setItem('modelDiv', document.getElementById("modeldiv"));
+		App.registry.setItem('itemDiv', document.getElementById("itemdiv"));
+		
+		App.registry.setItem('ajax', new Ajax());
+		App.registry.setItem('ajaxstatus', new AjaxStatus());
+		
+		var x = new Date().getTime();
+		App.registry.getItem('ajax').request({url: 'seriesdata3.php?mode=series&x=' + x,
+											  method: 'GET',
+											  type: 'text',
+											  handler: App.updateSeries});
+		App.registry.getItem('ajaxstatus').show();
+	}, // startup
+	
+	updateSeries: function(data) {
+		App.registry.getItem('ajaxstatus').hide();
+		App.registry.getItem('seriesDiv').innerHTML = data;
+		//var seriesMenu = document.getElementById("menu1");
+		//var seriesMenu = App.registry.getItem('seriesDiv').firstChild;
+		//var seriesMenu = App.registry.getItem('seriesDiv').childNodes[0];
+		//alert(seriesMenu.id);
+		App.registry.getItem('seriesDiv').firstChild.size = 1;
+		App.registry.getItem('seriesDiv').firstChild.options[0].defaultSelected = true;
+		
+		App.registry.getItem('seriesDiv').firstChild.onchange = App.getModels;
+	}, // updateSeries
+	
+	getModels: function() {
+		App.registry.getItem('ajax').abort();
+		var x = new Date().getTime();
+		App.registry.getItem('ajax').request({url: 'seriesdata3.php?mode=model&series=' + this.value + '&x=' + x,
+											  method: 'GET',
+											  type: 'text',
+											  handler: App.updateModels});
+		App.registry.getItem('ajaxstatus').show();
+	}, // getModels
+	
+	updateModels: function(data) {
+		App.registry.getItem('ajaxstatus').hide();
+		App.registry.getItem('modelDiv').innerHTML = data;
+		App.registry.getItem('modelDiv').firstChild.size = 1;
+		App.registry.getItem('modelDiv').firstChild.options[0].defaultSelected = true;
+		
+		App.registry.getItem('modelDiv').firstChild.onchange = App.getItems;
+	}, // updateModels
+	
+	getItems: function() {
+		App.registry.getItem('ajax').abort();
+		var x = new Date().getTime();
+		App.registry.getItem('ajax').request({url: 'seriesdata3.php?mode=data&model=' + this.value + '&x=' + x,
+											  method: 'GET',
+											  type: 'xml',
+											  handler: App.updateItems});
+		App.registry.getItem('ajaxstatus').show();
+	}, // getItems
+	
+	updateItems: function(data) {
+		App.registry.getItem('ajaxstatus').hide();
+		
+		var itemList = data.getElementsByTagName("mitem");
+		
+		var tableHTML = '<table><tbody>';
+		for (var c = 0; c < itemList.length; c++) {
+			tableHTML += '<tr>';
+			for (var x = 0; x < itemList[c].childNodes.length; x++) {
+				/*
+				alert("Node Type: " + itemList[c].childNodes[x].nodeType + '\n' +
+					  "Node Name: " + itemList[c].childNodes[x].nodeName + '\n' +
+					  "Node Value: " + itemList[c].childNodes[x].nodeValue + '\n' +
+					  "First Child Value:" + 
+					  (itemList[c].childNodes[x].nodeType == 1 ? 
+					  	itemList[c].childNodes[x].firstChild.nodeValue : ''));
+				if (itemList[c].childNodes[x].nodeType == 1)
+					alert(itemList[c].childNodes[x].firstChild.nodeValue);
+				*/
+				if (itemList[c].childNodes[x].nodeType == 1)
+					tableHTML += '<td>' + itemList[c].childNodes[x].firstChild.nodeValue + '</td>';
+			}
+			tableHTML += '</tr>';
+		}
+		tableHTML += '</tbody></table>';
+		
+		App.registry.getItem('itemDiv').innerHTML = tableHTML;
+	}, // updateItems
+	
+	cleanup: function() {
+		
+	} // cleanup
+}; // App
+
+
+window.onload = App.startup;
+window.onunload = App.cleanup;
+</script>
+</body>
+</html>

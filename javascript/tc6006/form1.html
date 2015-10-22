@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+</head>
+<body>
+
+<select id="select1"></select>
+
+<select id="select2"></select>
+
+
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+	
+	var selectOptions1 =
+	[
+		'Item 1',
+		'Item 2',
+		'Item 3',
+		'Item 4'
+	];
+
+	var selectOptions2 =
+	[
+		['Item 1.1','Item 1.2','Item 1.3','Item 1.4'],
+		['Item 2.1','Item 2.2','Item 2.3','Item 2.4'],
+		['Item 3.1','Item 3.2','Item 3.3','Item 3.4'],
+		['Item 4.1','Item 4.2','Item 4.3','Item 4.4']
+	];
+
+	
+	var $select1 = $('#select1'),
+		$select2 = $('#select2');
+	
+	// use selectoptions1 as source for select1's options
+	
+	// loop through selectoptions1
+	// build new option element for each array element
+	// append option to select1
+	
+	$.each(
+		selectOptions1,
+		function(index, item) {
+			
+			$('<option />')				// create new OPTION element
+				.val(index)				// set option value to array index
+				.html(item)				// set option text to item
+				.appendTo($select1);	// append inside select1
+			
+		}
+	);
+	
+	// when an option in select1 is selected,
+	// use the value as the index for option2's option list
+	
+	$select1
+		.on(
+			'change',
+			function(e) {
+				$select2.empty(); // clear out existing options
+				
+				$.each(
+					selectOptions2[$(this).val()],
+					function(index, item) {
+						
+						$('<option />')				
+							.val(index)				
+							.html(item)				
+							.appendTo($select2);	
+						
+					}
+				);
+							
+				
+				
+			}
+		 );
+	
+	
+});
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	background: #7a7a7a;
+	font-size: 85%;
+	font-family: Verdana, Geneva, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+#wrapper {
+	width: 700px;
+	background: #ffffff;
+	margin: 0 auto;
+	padding: 0;
+}
+
+.item {
+	float: left;
+	width: 31%;
+	margin: 1em 1%;
+	background: #efefef;
+}
+
+.clearing {
+	clear: both;
+	height: 1px;
+	overflow: hidden;
+}
+
+#status {
+	float: right;
+	background: #FFC;
+	color: #999;
+	font-weight: bold;
+	font-size: 90%;
+	padding: 0.5em;
+	visibility: hidden;
+}
+
+#leftside {
+	float: left;
+	width: 66%;
+}
+
+#rightside {
+	float: right;
+	width: 33%;
+}
+
+.readertext {
+	position: absolute;
+	top: -2500px;
+	left: -2500px;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	z-index: -2000;
+}
+
+.followup { background: #FF6; }
+.attention { background: #FF2D2D; }
+
+#content {
+	min-height: 250px;
+	background: #FCF;
+	clear: both;
+}
+
+#tabcontainer {
+	width: 80%;
+	margin: 0 auto;
+	border: 1px solid #7a7a7a;
+}
+
+div#tabcontainer ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	float: left;
+	width: 100%;
+}
+
+.tablink {
+	float: left;
+	width: 24.5%;
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+	border-left: 1px solid #7a7a7a;
+	cursor: pointer;
+	cursor: hand;
+}
+
+li.tablink:first-child { border-left: none; }

@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="customerselect">
+	<p>Select a customer:</p>
+	<select id="customers" name="customers">
+		<option value="">Choose One</option>
+	</select>
+</div>
+<div id="orderselect">
+</div>
+
+
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+var $customerSelectElem = $('#customers');
+var $orderSelectDiv = $('#orderselect');
+
+// retrieve customer data
+$.ajax({
+	url: 		'http://localhost/tc7810/api/customers',
+	type: 		'get',
+	dataType: 	'json'
+}).done(function(customerData) {
+	// populate customer select
+	
+	// loop through customer data
+	$.each(customerData, function(id, customer) {
+		$('<option />')		// create option
+			.val(id)
+			.text(customer.firstname + ' ' + customer.lastname)
+			.appendTo($customerSelectElem);	// append option to select
+	});
+		
+});
+
+$customerSelectElem
+	.on('input', function(e) {
+		
+		var id = $(this).val();
+		var uri = 'http://localhost/tc7810/api/customers/' + id + '/orders';
+		
+		// when customer is selected
+		// get that customer's order
+		$.ajax({
+			url: 		uri,
+			type: 		'get',
+			dataType: 	'json'
+		}).done(function(orderData) {
+			
+			// create order HTML
+			$orderSelectDiv
+				.empty() // empty current contents of div
+				.append('<p>Select order to process:</p>')
+				.append('<select />')
+				.find('select')
+				.each(function(i, selectElem) {
+					// use the each as an IIFE-esque device
+					// to do side processing while in the middle
+					// of a chain
+					$.each(orderData, function(id, order) {
+						$('<option />')		// create option
+							.val(id)
+							.text(order.orderdate)
+							.appendTo(selectElem);	// append option to select
+					 });
+					
+				 })
+				.attr('name', 'orders')
+				.attr('id', 'orders');
+				 
+			
+		}); // .done()
+		
+	 }); // .on()
+
+
+
+$orderSelectDiv
+	.on('click', 'select', function(e) {
+		console.log('select item clicked.');
+	 });
+
+
+
+}); // document.ready
+
+</script>
+</body>
+</html>

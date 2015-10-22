@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Animation Demo</title>
+
+	<style type="text/css">
+	
+	#box1 {
+		position: fixed;
+		width: 50px;
+		height: 50px;
+		background: #f00;
+		top: 300px;
+		left: 450px;
+	}
+	
+	</style>
+</head>
+<body>
+
+<div id="box1"></div>
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+$('#box1')
+	.animate({
+		width: '+=200',
+		height: '+=200'
+	 },{
+		duration: 1600,
+		queue:	false
+	 })
+	.animate({
+		top: 50,
+		left: 50
+	 },{
+		duration: 1000
+	 })
+	.animate({
+		top: '+=300',
+		left: '+=300'
+	 },{
+		duration: 300
+	 })
+	.animate({
+		top: 10,
+		left: '-=100'
+	 },{
+		duration: 300
+	 })
+
+
+</script>
+</body>
+</html>

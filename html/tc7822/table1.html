@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Basic Table Demo</title>
+	
+	<style type="text/css">
+	table, th, td {
+		border: 1px solid #7a7a7a;
+	}
+	
+	table { border-collapse: collapse; }
+	
+	th, td { padding: 4px 10px; }
+	
+	</style>
+
+</head>
+<body>
+
+<table>
+	<thead>
+		<tr>
+			<th>#</th>
+			<th colspan="2">Player Name</th>
+			<th>Age</th>
+			<th> </th>
+		</tr>
+	</thead>
+	<tfoot>
+		<tr>
+			<th colspan="5">March 2015</th>
+		</tr>
+	</tfoot>
+	<tbody>
+		<tr>
+			<th>1</th>
+			<td>John</td>
+			<td>Doe</td>
+			<td>24</td>
+			<th rowspan="2">X</th>
+		</tr>
+		<tr>
+			<th>2</th>
+			<td>Jennifer</td>
+			<td>Smith</td>
+			<td>32</td>
+		</tr>
+	</tbody>
+</table>
+
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+</head>
+<body>
+
+	<div id="target"></div>
+
+<script type="text/javascript">
+// building a table the old school way
+var divElem = document.getElementById('target');
+
+// create a new table element and save it in a variable
+var tableElem = document.createElement('TABLE'); 
+
+// same goes for the tbody since we will need this multiple times
+var tbodyElem = document.createElement('TBODY');
+
+// attach the TBODY to the TABLE
+tableElem.appendChild(tbodyElem);
+
+var trElem = document.createElement('TR');
+
+// attach the TR to the TBODY
+tbodyElem.appendChild(trElem);
+
+// create a table cell node
+var tempElem = document.createElement('TD');
+
+// attach the TD to the TR
+trElem.appendChild(tempElem);
+
+// not using a var for the text node as there's nothing to do to it anyway
+tempElem.appendChild(document.createTextNode('John'));
+
+// now create a new table cell node and reuse the tempElem var
+tempElem = document.createElement('TD');
+
+// attach the TD to the TR
+trElem.appendChild(tempElem);
+
+// not using a var for the text node as there's nothing to do to it anyway
+tempElem.appendChild(document.createTextNode('Doe'));
+
+// wash, rinse, repeat for next row
+
+trElem = document.createElement('TR');
+
+// attach the TR to the TBODY
+tbodyElem.appendChild(trElem);
+
+// create a table cell node
+tempElem = document.createElement('TD');
+
+// attach the TD to the TR
+trElem.appendChild(tempElem);
+
+// not using a var for the text node as there's nothing to do to it anyway
+tempElem.appendChild(document.createTextNode('Jane'));
+
+// now create a new table cell node and reuse the tempElem var
+tempElem = document.createElement('TD');
+
+// attach the TD to the TR
+trElem.appendChild(tempElem);
+
+// not using a var for the text node as there's nothing to do to it anyway
+tempElem.appendChild(document.createTextNode('Smith'));
+
+
+
+
+// then finally attach the completed table to the DOM
+divElem.appendChild(tableElem);
+
+</script>
+</body>
+</html>

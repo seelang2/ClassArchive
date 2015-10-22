@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>jQuery Plugin Demo</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<ul>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+</ul>
+
+
+
+<script src="jquery-1.11.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+// Use an IIFE to create a secure namespace
+(function($) {
+	
+	// anything in this IFFE/closure is protected and only 
+	// accessible by the plugin
+	
+	var defaults = {
+		prefix:		'item-'
+	};
+	
+	
+	$.fn.assignID = function(options) {
+		
+		// merge options with default object
+		options = $.extend({}, defaults, options);
+		
+		// 'this' refers the collection object
+		
+		// always return the collection to maintain chaining
+		// remember the collection can be zero or more items
+		return this.each(function(index, element) {
+			
+			$(element)
+				.attr('id', options.prefix + (index + 1));
+			
+		});
+		
+		
+	}; // assignID
+
+
+})(jQuery);
+
+
+$(document).ready(function() {
+	
+	$('li')
+		.assignID({ prefix: 'cll-' })
+		.addClass('thingy');
+	
+}); // document.ready
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+
+.highlight { font-weight: bold; }
+
+.oddrow { background: #CED8FD; }
+.evenrow { background: #EDF2FE; }
+
+</style>
+</head>
+
+<body>
+
+<ul id="menu">
+	<li><a href="#">Link 1</a></li><!-- a comment. -->
+	<li><a href="#">Link 2</a></li><!-- a comment. -->
+	<li><a href="#">Link 3</a></li><!-- a comment. -->
+	<li><a href="#">Link 4</a></li><!-- a comment. -->
+	<li><a href="#">Link 5</a></li><!-- a comment. -->
+	<li><a href="#">Link 6</a></li><!-- a comment. -->
+</ul>
+
+
+<script type="text/javascript">
+
+var liList = document.getElementById("menu").getElementsByTagName("LI");
+for (var c = 0; c < liList.length; c++) {
+	liList[c].className += c % 2 == 0 ? ' oddrow' : ' evenrow';
+}
+
+
+
+
+</script>
+</body>
+</html>

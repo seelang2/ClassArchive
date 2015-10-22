@@ -1,0 +1,72 @@
+﻿<!doctype html>
+<html>
+<head>
+	<title>Sample Page</title>
+	<meta charset="UTF-8" />
+	
+</head>
+
+<body>
+
+<div id="results"></div>
+
+<script src="jquery-1.8.3.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+var App = {
+	start: function() {
+		App.buildTable('#results');
+		
+	}, // App.start
+	
+	buildTable: function(target) {
+		App.tbody =
+		$(target)
+			.append('<table><tbody /></table>')
+			.find('tbody');
+		
+		App.getTableData();
+	}, // App.buildTable
+
+	getTableData: function() {
+	
+		$.ajax(
+			{
+				url:		'contacts.json',
+				type:		'GET',
+				dataType:	'json',
+				success:	App.updateTableRows
+			}
+		);
+		
+	}, // App.getTableData
+	
+	updateTableRows: function(data) {
+		App.tbody.empty(); // clear out contents of tbody
+		
+		// build row for each contact item
+		$.each(
+			data,
+			function(index, contact) {
+				
+				App.tbody
+					.append('<tr>' + 
+							'<td>' + contact.firstname + '</td>' + 
+							'<td>' + contact.lastname + '</td>' + 
+							'</tr>');
+				
+			}
+		);
+		
+	} // App.updateTableRows
+	
+}; // App
+
+
+$(document).ready(App.start); // document.ready
+
+
+
+</script>
+</body>
+</html>

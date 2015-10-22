@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Form Processing</title>
+</head>
+
+<body>
+<style type="text/css">
+form label { display: block; margin-bottom: 0.25em; position: relative; }
+form div { margin-bottom: 0.25em; }
+form label input { position: absolute; left: 75px; }
+</style>
+<form action="#" method="post">
+	<label>First Name: <input name="firstname" /></label>
+	<label>Last Name: <input name="lastname" /></label>
+	<label>Email: <input name="email" /></label>
+	<div><input type="submit" value="Continue" /></div>
+</form>
+
+
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(
+	function() {
+		$('form')
+			.submit(
+				function(evt) {
+					evt.preventDefault();
+					var formIsValid = true;
+					var validationErrors = '';
+					
+					$(this)
+						.find(':input')
+						.each(
+							function(index, element) {
+								switch(element.name) {
+									case 'firstname':
+										if ($(element).val().length < 1) { // empty string
+											formIsValid = false; // invalidate form
+											validationErrors += 'First Name cannot be blank.\n';
+										}
+									break;
+									
+									case 'lastname':
+										if ($(element).val().length < 2) { // check for minimum length
+											formIsValid = false; // invalidate form
+											validationErrors += 'Last Name must be at least two characters.\n';
+										}
+									break;
+									
+									case 'email':
+										// valid email format
+										if ($(element)
+											.val()
+												.search(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i) < 0 ) { 
+											formIsValid = false; // invalidate form
+											validationErrors += 'Email address appears invalid.\n';
+										}
+									break;
+								} // switch
+							} // function
+						 );
+					
+					if (formIsValid) {
+						$.post(
+							'echopost.php?mode=html',
+							$(this).serialize(),
+							function(response) {
+								// handler for request response
+								alert(response);
+							}
+						);
+					} else {
+						// form invalid
+						alert('The following errors have been found:\n' + validationErrors);
+					}
+				}
+			 );
+	}
+); // document.ready
+</script>
+</body>
+</html>

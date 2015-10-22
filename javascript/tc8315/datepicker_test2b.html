@@ -1,0 +1,170 @@
+<DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui/ui/jquery-ui.js"></script>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 100%;
+	}
+	
+	fieldset {
+		border: none;
+		margin-bottom: 1em;
+	}
+	
+	#ageset .controls { display: inline-block; }
+	
+	</style>
+</head>
+<body>
+
+<fieldset id="ageset">
+	<span>Traveler Age(s):</span>
+	<input name="age" size="3" />
+	<div class="controls">
+		<button class="btnAdd">+</button>
+		<button class="btnRemove">-</button>
+	</div>
+</fieldset>
+
+<div><button id="step2">Next Step</button></div>
+
+<fieldset id="dobset"></fieldset>
+
+<div>
+	<label>Text:</label>
+	<input name="text" />
+</div>
+
+
+
+<script type="text/javascript">
+
+var Validator = {};
+Validator.isValidDate = function(data) {
+	if (data.search(/^(0[1-9]|1[012])[- //.](0[1-9]|[12][0-9]|3[01])[- //.](19|20)\d\d$/) > -1) return true;
+	return false;
+
+}; // Validator.isValidDate
+
+Validator.doesDateMatchNumber = function(datestring, value) {
+	// value = value in years
+	var theDate = new Date(datestring);
+	var today = new Date();
+	var years = today.getFullYear() - theDate.getFullYear();
+	
+	console.log('theDate:',theDate,'today:',today,'years:',years);
+	
+	return years == value ? true : false;
+	
+} // Validator.doesDateMatchNumber
+
+$(document).ready(function() {
+
+
+$('#ageset .controls')
+	.on('click','button', function(e) {
+		var $this = $(this);
+		
+		switch(true) {
+			default:
+				// no soup for you! *snap*
+			break;
+			case $this.hasClass('btnAdd'):
+				$this
+					.closest('div.controls')
+					.before('<input name="age" size="3" />');
+			break;
+			case $this.hasClass('btnRemove'):
+				// bail if there's only one item
+				if ($('[name="age"]').length == 1) {
+					return false;
+				}
+				
+				$this
+					.closest('div.controls')
+					.prev()
+					.remove();
+			break;
+		} // switch
+		
+	 })
+
+$('#step2').on('click', function(e) {
+	var $dobset = $('#dobset');
+	
+	// loop through traveler ages and create DOB fields for each 
+	$('[name="age"]')
+		.each(function(index, elem) {
+			$('<div>' + 
+			    '<label>Traveler '+ (index + 1) +
+				' (Age: '+ $(elem).val() +') Date of Birth:</label>' +
+				'<input id="traveler'+ (index + 1) +'" name="dob" ' +
+				'data-index="'+ index +'" ' + '/>' +
+			  '</div>')
+				.appendTo($dobset);
+						
+			
+		 });
+	
+	$('[name="dob"]').datepicker();
+	
+});	 
+
+	 
+// do dob validation
+$('#dobset')
+	.on('blur', '[name="dob"]', function(e) {
+		// cache collection of ages
+		var $ages = $('[name="age"]');
+		// retrieve dob field index
+		var index = $(this).attr('data-index');
+		
+		// clear error states and items
+		$(this)
+			.closest('div')
+			.find('.error')
+			.remove();
+		
+		// check for valid date format
+		if (!Validator.isValidDate( $(this).val() )) {
+			// display error 
+			$(this)
+				.after('<span class="error">Date must be MM/DD/YYYY</span>');
+			
+			// return focus to date field and bail
+			$(this).focus();
+			return false;
+		}
+		
+		
+		// does date match age number
+		console.log( Validator.doesDateMatchNumber($(this).val(), $ages.eq(index).val()) );
+		if (!Validator.doesDateMatchNumber($(this).val(), $ages.eq(index).val())) {
+			// display error 
+			$(this)
+				.after('<span class="error">The date does must match the age given.</span>');
+			
+			// return focus to date field and bail
+			$(this).focus();
+			return false;
+		}
+	 });
+
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>
+
+
+
+
+

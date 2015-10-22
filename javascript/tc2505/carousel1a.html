@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+<style type="text/css">
+body {
+	background: #ddd;
+}
+
+#container, #window {
+	width: 200px;
+	height: 150px;
+	margin: 0 auto;
+	padding: 0;
+}
+
+#window {
+	overflow: hidden;
+	background: #fff;
+	border: 1px #000;
+}
+
+#filmstrip {
+	width: 1px;
+	height: 150px;
+	position:relative;
+	left: 0;
+}
+
+#filmstrip img {
+	float:left;
+	width: 200px;
+	height: 150px;
+}
+
+</style>
+
+<script type="text/javascript">
+var Registry = new Object(); // container for global vars
+
+function init() {
+	Registry.windowDiv = document.getElementById('window');
+	Registry.filmstripDiv = document.getElementById('filmstrip');
+	Registry.slides = Registry.filmstripDiv.getElementsByTagName("IMG");
+	
+	Registry.currentItem = 2;
+	Registry.itemWidth = 200;
+	Registry.startingOffset = (Registry.currentItem - 1) * Registry.itemWidth;
+	Registry.currentOffset = Registry.startingOffset;
+	Registry.maxStep = 50;
+	Registry.currentStep = 1;
+	
+	Registry.filmstripDiv.style.left = '-' + Registry.startingOffset + 'px';
+	Registry.filmstripDiv.style.width = Registry.slides.length * Registry.itemWidth + 'px';
+	//startSlide();
+} // init
+
+function slide(direction) {
+	// calculate ease-out
+	if (Registry.currentStep < Registry.maxStep) {
+		Registry.currentStep += 0.1;
+		if (Registry.currentStep > Registry.maxStep) Registry.currentStep = Registry.maxStep;
+	}
+	// calculate ease-in
+	if (Registry.currentOffset > (Registry.startingOffset + Registry.itemWidth - 50) ) {
+		Registry.currentStep -= 0.5;
+		if (Registry.currentStep < 1) Registry.currentStep = 1;
+	}
+
+	Registry.currentOffset += Registry.currentStep;
+	if ( Registry.currentOffset >= (Registry.startingOffset + Registry.itemWidth) ) {
+		Registry.currentOffset = Registry.startingOffset + Registry.itemWidth;
+		// reset starting offset for new item
+		Registry.startingOffset = Registry.currentOffset;
+		Registry.currentItem++;
+		
+		if (Registry.currentItem == Registry.slides.length) {
+			var tmpElem = Registry.filmstripDiv.removeChild(Registry.slides[0]);
+			Registry.filmstripDiv.appendChild(tmpElem);
+			Registry.startingOffset -= Registry.itemWidth;
+			Registry.currentOffset -= Registry.itemWidth;
+			Registry.currentItem--;
+		}
+		
+		clearInterval(Registry.timerRepeat);
+	}
+	if (direction == 'right') {
+		var newPos = '-' + Registry.currentOffset + 'px';
+	} else {
+		var newPos = Registry.currentOffset + 'px';
+	}
+	Registry.filmstripDiv.style.left = newPos;
+} // slideRight
+
+function slideLeft() { slide('left'); }
+
+function slideRight() { slide('right'); }
+
+function startSlide() {
+	// clear out any current intervals
+	clearInterval(Registry.timerRepeat);
+	Registry.timerRepeat = setInterval(slideRight, 1);
+} // startSlide
+
+window.onload = init;
+</script>
+
+</head>
+
+<body>
+
+
+<div id="container">
+	<div id="window">
+    	<div id="filmstrip">
+        	<img src="slide1.jpg" />
+        	<img src="slide2.jpg" />
+        	<img src="slide3.jpg" />
+        	<img src="slide4.jpg" />
+        	<img src="slide5.jpg" />
+        	<img src="slide6.jpg" />
+        	<img src="slide7.jpg" />
+        </div>
+    </div><!-- window -->
+    
+    <input type="button" value="Slide Right" onclick="startSlide()" />
+</div><!-- container -->
+
+
+
+</body>
+</html>

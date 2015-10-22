@@ -1,0 +1,70 @@
+/* CSS Document */
+  @import url(/directory.css);
+
+
+body {
+	font-size: 78%;
+	font-family:Geneva, Arial, Helvetica, sans-serif;
+	background: #7a7a7a;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+#wrapper {
+	margin: 0 auto;
+	padding: 0;
+	text-align: left;
+	width: 700px;
+	background: #ffffff;
+}
+
+#header {
+	margin: 0;
+	padding: 0;
+	height: 75px;
+	overflow: hidden;
+	background:#1532F7;
+	color: #ffffff;
+}
+
+#status {
+	float: right;
+	height: 28px;
+	overflow:hidden;
+	font-weight:bold;
+	color: #ffffff;
+	background: #ff0000;
+ 	visibility:hidden;
+/*	display:none; */
+}
+
+#menu {
+	margin: 0;
+	padding: 0;
+	float: left;
+	width: 150px;
+}
+
+#maincontent {
+	margin: 0;
+	padding: 0;
+	float: right;
+	width: 550px;
+}
+
+#footer {
+	margin: 0;
+	padding: 0;
+	height: 30px;
+	overflow: hidden;
+	background:#1532F7;
+	color: #ffffff;
+}
+
+.clearing {
+	clear: both;
+	height: 1px;
+	overflow: hidden;
+}
+

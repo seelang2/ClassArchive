@@ -1,0 +1,76 @@
+<DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui/jquery-1.10.2.js"></script>
+</head>
+<body>
+
+<div id="target"></div>
+
+<div id="template" class="contact">
+	<p>
+		<span>First Name:</span>
+		<span data-name="firstname"></span>
+	</p>
+	<p>
+		<span>Last Name:</span>
+		<span data-name="lastname"></span>
+	</p>
+	<p>
+		<span>Age:</span>
+		<span data-name="age"></span>
+	</p>
+</div>
+
+<script type="text/javascript">
+// test data
+var contacts = [
+	{"firstname":"John","lastname":"Doe","age":42},
+	{"firstname":"Mary","lastname":"Smith","age":34},
+	{"firstname":"Alex","lastname":"Jones","age":22},
+	{"firstname":"Debra","lastname":"Weller","age":54}
+];
+
+$(document).ready(function() {
+
+	var $target = $('#target');
+
+	// load template into var
+	var $template = 
+	$('#template')
+		.removeAttr('id')
+		.detach();
+
+	// loop through contacts and merge into template and display
+	$.each(contacts, function(index, contact) {
+		
+		$template
+			.clone()					// copy template
+			.find('[data-name]')		// collect all merge fields
+			.each(function(i, field) {	// and loop through each field
+				var fieldName = 
+				$(field)
+					.attr('data-name');	// get merge field name
+				
+				$(field)
+					.html(contact[fieldName]); // merge contact
+			
+			 })
+			.end()						// revert to top level of copy
+			.appendTo($target);
+		
+	}); // each
+
+}); // document.ready
+
+</script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Example 3: Tables</title>
+
+<style type="text/css">
+
+.today { 
+	background: #f00;
+	color: #fff;
+	font-weight: bold;
+}
+
+.altrow {
+	background: #E0EFFE;
+}
+
+</style>
+
+
+</head>
+
+<body>
+
+<div id="base">
+</div>
+
+
+
+
+<script type="text/javascript">
+var baseDiv = document.getElementById("base");
+
+var tempElem = document.createElement("TABLE");
+baseDiv.appendChild(tempElem);
+
+var tBodyElem = document.createElement("TBODY");
+tempElem.appendChild(tBodyElem);
+
+// line comment example
+/*
+block comment example
+*/
+
+var weekdays = ['S','M','T','W','T','F','S'];
+var day = 1;
+var daysInMonth = 30;
+var today = 7;
+var rows = 1;
+
+// create header row
+var tRowElem = document.createElement("TR");
+tBodyElem.appendChild(tRowElem);
+for (var c = 0; c < weekdays.length; c++) {
+	tempElem = document.createElement("TH");
+	tRowElem.appendChild(tempElem);
+	tempElem.appendChild(document.createTextNode(weekdays[c]));
+}
+
+while (day <= daysInMonth) {
+	var tRowElem = document.createElement("TR");
+	tBodyElem.appendChild(tRowElem);
+	if (rows % 2 != 0) {
+		// odd row 
+		tRowElem.className = 'altrow';
+	}
+	
+	for (var c = 0; c < 7; c++) {
+		tempElem = document.createElement("TD");
+		if (day == today) {
+			tempElem.className = 'today';
+		}
+		tRowElem.appendChild(tempElem);
+		if (day > daysInMonth) {
+			tempElem.appendChild(document.createTextNode(' '));
+		} else {
+			tempElem.appendChild(document.createTextNode(day));
+		}
+		day++;
+	} // cols
+	rows++;
+} // rows
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

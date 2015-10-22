@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+<script type="text/javascript">
+
+document.write('<p>This space for rent.</p>');
+
+var someValue = 'This is a statement.';
+
+document.write('<p>' + someValue.toUpperCase() + '</p>');
+/* Block comments can take one or more lines. */
+// var sideA = parseInt('10m');
+var sideA = '10';
+var sideB = 5;
+var area = sideA * sideB; // datatypes get cast based on centext
+var perimeter = sideA + sideB + sideA + sideB; // concatenation takes precedence over addition
+document.write('<p>' + area + '</p>');
+document.write('<p>' + perimeter + '</p>');
+
+var weekdays = new Array('Sun', 'Mon', 'Tue');
+document.write('<p>Today is ' + weekdays[1] + '.</p>');
+document.write('<p>There are ' + weekdays.length + ' elements in the array.</p>');
+
+weekdays[weekdays.length] = 'Wed';
+weekdays.push('Thu','Fri','Sat');
+
+/*
+var pillbox = new Object();
+pillbox.Sun = 'white';
+pillbox.Mon = 'yellow';
+pillbox.Tue = 'none';
+*/
+
+var pillbox = {"Sun": "white",
+					"Mon": "yellow",
+					"Tue": "none",
+					"Wed": "purple",
+					"Thu": "orange" };
+
+var contact = {firstname: "John",
+					 lastname: "Doe",
+					 email: "jdoe@email.com"};
+
+document.write('<p>Today\'s pill is ' + pillbox.Mon + '.</p>');
+document.write('<p>Today\'s pill is also ' + pillbox['Mon'] + '.</p>');
+
+var today = new Date();
+
+document.write("<p>Today's pill is still " + pillbox[weekdays[today.getDay()]] + '.</p>');
+
+// create array for weekday labels
+var weekdayNames = [
+	"Sunday",
+	"Monday",
+	"Tuesday",
+	"Wednesday",
+	"Thursday",
+	"Friday",
+	"Saturday"
+];
+
+// create array for month labels
+var monthNames = new Array(
+	'January',
+	'February',
+	'March',
+	'April',
+	'May',
+	'June',
+	'July',
+	'August',
+	'September',
+	'October',
+	'November',
+	'December'
+);
+
+// create an instance of Date object
+var now = new Date();
+
+// determine ordinal suffix
+switch(true) {
+	case now.getDate() == 1 || now.getDate() == 21 || now.getDate() == 31:
+		var ordinal = 'st';
+	break;
+	case now.getDate() == 2 || now.getDate() == 22:
+		var ordinal = 'nd';
+	break;
+	case now.getDate() == 3 || now.getDate() == 23:
+		var ordinal = 'rd';
+	break;
+	default:
+		var ordinal = 'th';
+	break;
+}
+
+// output date as text string
+document.write('<p>Today is ' + 
+					  weekdayNames[now.getDay()] + ', ' + 
+					  monthNames[now.getMonth()] + ' ' + 
+					  now.getDate() + ordinal + ', ' + now.getFullYear() +
+					 '.</p>');
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+<script src="ajax.js" type="text/javascript"></script>
+
+<style type="text/css" media="all">
+
+body {
+	background: #7a7a7a;
+	margin: 0;
+	padding: 0;
+	font-size: 78%;
+	text-align: center;
+}
+
+#wrapper {
+	background: #ffffff;
+	margin: 0 auto;
+	padding: 0;
+	text-align: left;
+	width: 75%;
+}
+
+#leftside {
+	float: left;
+	width: 49%;
+	height: 200px;
+	border: 1px solid #7a7a7a;
+}
+
+#rightside {
+	float: right;
+	width: 49%;
+	height: 200px;
+	border: 1px solid #7a7a7a;
+}
+
+.clearing {
+	clear:both;
+	height: 1px;
+	overflow:hidden;
+}
+
+#footer {
+	clear: both;
+	height: 35px;
+	background: #000099;
+	color: #ffffff;
+	margin-top: 25px;
+}
+
+</style>
+
+<script type="text/javascript">
+var PageData = new function() {
+	this.rightsideDiv = null;
+	this.ajaxobj = null;
+}; // PageData
+
+var App = new function() {
+	
+	// initialization routine
+	this.init = function() {
+		PageData.rightsideDiv = document.getElementById("rightside");
+		menulink = document.getElementById("item1");
+		
+		PageData.ajaxobj = new Ajax();
+		
+		menulink.onclick = function() {
+			PageData.ajaxobj.doGet('echoget.php?firstname=john&lastname=doe&mode=html', App.displayStuff, 'text');
+			return false;
+		}; 
+	}; // init
+	
+	this.displayStuff = function(response) {
+		PageData.rightsideDiv.innerHTML = response;
+	};
+	
+	this.cleanup = function() {
+		PageData.rightsideDiv = null;
+	}; // cleanup
+	
+}; // App
+
+window.onload = App.init;
+window.onunload = App.cleanup;
+</script>
+
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="header">
+    </div> <!-- header -->
+    
+    <div id="content">
+    	<div id="leftside">
+        	<p><a id="item1" href="echoget.php?firstname=john&lastname=doe&mode=html">Click here to continue</a></p>
+        </div> <!-- leftside -->
+        
+        <div id="rightside">
+        </div> <!-- rightside -->
+    </div> <!-- content -->
+    
+    <div id="footer">
+    </div> <!-- footer -->
+</div> <!-- wrapper -->
+
+</body>
+</html>

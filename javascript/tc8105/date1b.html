@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+// define and store labels for days and months
+var weekdays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+// get instance of today's datetime
+var today = new Date();
+
+// determine ordinal
+switch (today.getDate()) {
+	case 1: case 21: case 31:
+		var ordinal = 'st';
+	break;
+	case 2: case 22:
+		var ordinal = 'nd';
+	break;
+	case 3: case 23:
+		var ordinal = 'rd';
+	break;
+	default:
+		var ordinal = 'th';
+	break;
+}
+
+// output HTML of date information
+document.write('<p>Today is ' + weekdays[today.getDay()] + ', ' + 
+			   months[today.getMonth()] + ' ' + 
+			   today.getDate() + ordinal + ', ' +
+			   today.getFullYear() + '</p>');
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Events</title>
+</head>
+
+<body>
+
+<button id="thebutton">Click Me!</button>
+<button id="thebutton2">Click Me Too!</button>
+
+<p><a id="thelink" href="http://www.google.com">Click Me!</a></p>
+
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+function message() {
+	alert('A button has been clicked!');
+}
+
+function messageHandler() {
+	switch(this.id) {
+		case 'thebutton':
+			alert('Message for button 1');
+		break;
+		
+		case 'thebutton2':
+			alert('Message for button 2');
+		break;
+	}
+	/*
+	if (this.id == 'thebutton') {
+		
+	} else if (this.id == 'thebutton2') {
+		
+	}
+	*/
+}
+
+//$('#thebutton').bind('click', messageHandler);
+//$('#thebutton2').bind('click', messageHandler);
+
+//$('button').bind('click', messageHandler);
+//$('button').click(messageHandler);
+/*
+$('button')
+	.bind(
+		{
+			click: messageHandler,
+			mouseover: function() {
+				$(this).css('border', '4px solid #0F0');
+			},
+			mouseout: function() {
+				$(this).css('border', 'none')
+			}
+		}
+	 );
+*/
+$('button')
+	.click(messageHandler)
+	.mouseover(
+		function() {
+			$(this).css('border', '4px solid #0F0');
+		}
+	 )
+	.mouseout(
+		function() {
+			$(this).css('border', 'none');
+		}
+	 );
+
+//document.getElementById('thelink').onclick = function() { return false; };
+
+document.getElementById('thelink').onclick = function() { 
+	return confirm('Are you sure you wish to follow this link?'); 
+};
+
+
+//$('#thelink').click(function(evt) {  evt.preventDefault(); });
+
+
+</script>
+</body>
+</html>

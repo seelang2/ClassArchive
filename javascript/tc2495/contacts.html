@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+
+<script type="text/javascript" src="ajax.js"></script>
+<script type="text/javascript" src="xmlparse.js"></script>
+<script type="text/javascript" src="formdata2querystring.js"></script>
+<script type="text/javascript" src="general_lib.js"></script>
+
+<style type="text/css">
+body {
+	font: 85% normal Verdana, Geneva, sans-serif;
+	background: #dedede;
+}
+
+#wrapper {
+	width: 750px;
+	margin: auto;
+	background: #fff;
+}
+
+#contacts table,
+#contacts table td,
+#contacts table th
+{
+	border: 1px solid #7a7a7a;
+	border-collapse: collapse;
+	padding: 0.25em 0.5em;
+}
+
+#screen {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background: url(screentile.png) repeat;
+	z-index: 99;
+	display: none;
+}
+
+#hoverform {
+	background: #FC9;
+	border: 1px solid #F93;
+	width: 250px;
+	height: 250px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin: -125px 0 0 -125px;
+	z-index: 100;
+	display: none;
+}
+
+#hoverform form {
+	
+}
+
+#hoverform form label {
+	display: block;
+	margin-bottom: 0.5em;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<div id="wrapper">
+
+<div id="controls">
+</div>
+
+<div id="contacts">
+</div>
+
+
+</div><!-- wrapper -->
+
+
+<script type="text/javascript">
+var Registry = new Object();
+
+var App = new function() {
+	this.startup = function() {
+		Registry.contactsDiv = document.getElementById("contacts");
+		Registry.ajax = new Ajax();
+		
+		App.buildHoverForm();
+		
+		var tempElem = document.createElement("INPUT");
+		tempElem.type = 'button';
+		tempElem.value = 'Add New Contact';
+		document.getElementById("controls").appendChild(tempElem);
+		tempElem.onclick = function() {
+			Registry.screenDiv.style.display = 'block';
+			Registry.hoverDiv.style.display = 'block';
+		}; // onclick
+		
+		App.getTable();
+	}; // startup
+	
+	this.buildHoverForm = function() {
+		// build screen
+		Registry.screenDiv = document.createElement("DIV");
+		document.getElementById("wrapper").appendChild(Registry.screenDiv);
+		Registry.screenDiv.id = "screen";
+		
+		// build hover div 
+		Registry.hoverDiv = document.createElement("DIV");
+		document.getElementById("wrapper").appendChild(Registry.hoverDiv);
+		Registry.hoverDiv.id = "hoverform";
+		
+		var tempElem = document.createElement("H2");
+		Registry.hoverDiv.appendChild(tempElem);
+		tempElem.appendChild(document.createTextNode('Add New Contact'));
+		
+		var formElem = document.createElement("FORM");
+		Registry.hoverDiv.appendChild(formElem);
+		formElem.id = 'addform';
+		formElem.action = '#';
+		formElem.method = 'POST';
+		formElem.onsubmit = function() { return false; };
+		
+		formElem.appendChild(this.makeTextField('firstname','First Name'));
+		formElem.appendChild(this.makeTextField('lastname','Last Name'));
+		formElem.appendChild(this.makeTextField('phone','Phone'));
+		formElem.appendChild(this.makeTextField('email','Email'));
+		
+		/*
+		// the verbose method would be to do the following for each item:
+		var labelElem = document.createElement("LABEL");
+		formElem.appendChild(labelElem);
+		labelElem.appendChild(document.createTextNode('First Name'));
+		var inputElem = document.createElement("INPUT");
+		labelElem.appendChild(inputElem);
+		inputElem.name = 'firstname';
+		inputElem.type = 'text';
+		*/
+		
+		var inputElem = document.createElement("INPUT");
+		formElem.appendChild(inputElem);
+		inputElem.type = 'button';
+		inputElem.value = 'Save';
+		
+		inputElem.onclick = function() {
+			// do ajax stuff
+			App.saveData(this.parentNode);
+		}; // onclick
+		
+		var inputElem = document.createElement("INPUT");
+		formElem.appendChild(inputElem);
+		inputElem.type = 'button';
+		inputElem.value = 'Cancel';
+		
+		inputElem.onclick = function() {
+			this.parentNode.reset();
+			Registry.hoverDiv.style.display = 'none';
+			Registry.screenDiv.style.display = 'none';
+		}; // onclick
+	}; // buildHoverForm
+	
+	this.makeTextField = function(name, label) {
+		var labelElem = document.createElement("LABEL");
+		labelElem.appendChild(document.createTextNode(label));
+		var inputElem = document.createElement("INPUT");
+		labelElem.appendChild(inputElem);
+		inputElem.name = name;
+		inputElem.type = 'text';
+		
+		return labelElem;
+	}; // makeTextField
+	
+	this.saveData = function(form) {
+		// get form data
+		Registry.formData = formData2QueryString(form);
+		// do ajax post request
+		var x = new Date();
+		x = x.getTime();
+		Registry.ajax.doPost('contactsave.php?x='+x, Registry.formData, App.checkSave, 'text');
+		
+	}; // saveData
+	
+	this.checkSave = function(response) {
+		// check whether save worked
+		if (response != 'Success') {
+			// error during save (typo, perhaps?)
+			alert('There was an error processing the contact form. Please try again.');
+			return;
+		}
+		// success, continue		
+		alert('The contact has been saved.');
+		
+		Registry.hoverDiv.style.display = 'none';
+		Registry.screenDiv.style.display = 'none';
+		
+		// add form data to table as new row
+		//alert(Registry.formData);
+		var formdata = Registry.formData.split('&');
+		
+		var rowElem = document.createElement("TR");
+		Registry.contactTBody.appendChild(rowElem);
+		
+		for (var c = 0; c < formdata.length; c++) {
+			var fieldValue = unescape(formdata[c].split('=')[1]);
+			
+			var tmpElem = document.createElement("TD");
+			rowElem.appendChild(tmpElem);
+			tmpElem.appendChild(document.createTextNode(fieldValue));
+		}
+	}
+	
+	this.getTable = function() {
+		var x = new Date();
+		x = x.getTime();
+		Registry.ajax.doGet('contactlist.xml?x=' + x, App.displayTable, 'xml');
+	}; // getTable
+	
+	this.displayTable = function(tableData) {
+		var fieldList = XMLParse.xml2ObjArray(tableData, 'contact');
+		
+		var tElem = document.createElement("TABLE");
+		Registry.contactsDiv.appendChild(tElem);
+		
+		var bElem = document.createElement("THEAD");
+		tElem.appendChild(bElem);
+		
+		var rowElem = document.createElement("TR");
+		bElem.appendChild(rowElem);
+		
+		for (var field in fieldList[0]) {
+			var tmpElem = document.createElement("TH");
+			rowElem.appendChild(tmpElem);
+			tmpElem.appendChild(document.createTextNode(field));
+		}
+		
+		bElem = document.createElement("TBODY");
+		tElem.appendChild(bElem);
+		Registry.contactTBody = bElem;
+		
+		for (var c = 0; c < fieldList.length; c++) {
+			var rowElem = document.createElement("TR");
+			bElem.appendChild(rowElem);
+			if (c % 2 == 0) {
+				rowElem.className = 'evenrow';
+			} else {
+				rowElem.className = 'oddrow';
+			}
+			
+			for (var field in fieldList[0]) {
+				var tmpElem = document.createElement("TD");
+				rowElem.appendChild(tmpElem);
+				tmpElem.appendChild(document.createTextNode(fieldList[c][field]));
+			}
+		}
+	}; // displayTable
+}; // App
+
+window.onload = App.startup;
+</script>
+
+</body>
+</html>

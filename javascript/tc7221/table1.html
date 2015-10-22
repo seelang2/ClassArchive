@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript">
+
+var targetElem = document.getElementById('target');
+
+// build a table using DOM methods
+var tableElem = document.createElement('TABLE');
+
+// create new node
+var tBodyElem = document.createElement('TBODY');
+
+//attach node to tree
+tableElem.appendChild(tBodyElem);
+
+// create table row
+var trElem = document.createElement('TR');
+tBodyElem.appendChild(trElem);
+
+//create table cell
+var tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+// create/add text in td
+tdElem.appendChild(document.createTextNode('John'));
+
+//create table cell
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+// create/add text in td
+tdElem.appendChild(document.createTextNode('Doe'));
+
+// ...wash, rinse repeat for second row
+
+// create table row
+var trElem = document.createElement('TR');
+tBodyElem.appendChild(trElem);
+
+//create table cell
+var tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+// create/add text in td
+tdElem.appendChild(document.createTextNode('Jane'));
+
+//create table cell
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+// create/add text in td
+tdElem.appendChild(document.createTextNode('Smith'));
+
+
+// now attach the branch to the tree
+targetElem.appendChild(tableElem);
+
+</script>
+</body>
+</html>

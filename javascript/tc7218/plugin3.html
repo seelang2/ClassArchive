@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+	
+	<style type="text/css">
+	</style>
+	
+</head>
+<body>
+
+<div id="carousel1"></div>
+<div id="carousel2"></div>
+<div id="carousel3"></div>
+
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+// create a simple jquery plugin
+
+// use an IIFE to create the plugin space and pass in the jQuery object
+(function($) {
+
+	var data = {};
+	
+	// default params
+	data.params = {
+		width:			400,
+		height: 		300,
+		direction:		'right',
+		moveDuration:	750,
+		pauseDuration:	2000
+	};
+	
+	data.moveRight = function($filmstrip) {
+		
+		$filmstrip
+			.animate(
+				{
+					left:		'-=' + $filmstrip.data('params').width
+				},
+				{
+					duration:	$filmstrip.data('params').moveDuration,
+					complete:	function() {
+						
+						$filmstrip
+							.children()
+							.first()					// take the first child
+							.appendTo($filmstrip)		// move it to the end
+							.end()
+							.end()
+							.end()						// revert back to div
+							.css('left',0);				// and reset it back to frame 1
+							
+					}
+				}
+			 );
+
+	}; // moveRight
+	
+	data.moveLeft = function($filmstrip) {
+		
+		$filmstrip
+			.children()
+			.last()						// take the last child
+			.prependTo($filmstrip)		// move it to the front
+			.end()
+			.end()
+			.end()						// revert back to div
+			.css('left', '-'+ $filmstrip.data('params').width +'px') // reset back to frame 2
+			.animate(
+				{
+					left:		'+=' + $filmstrip.data('params').width
+				},
+				{
+					duration:	$filmstrip.data('params').moveDuration,
+					complete:	function() {
+						// this space intentionally left blank
+					}
+				}
+			 );
+
+	}; // moveLeft
+	
+	
+	$.fn.insertCarousel = function(params) {
+		// merge defaults with passed params
+		params = $.extend({}, data.params, params);
+		
+		// create window
+		data.windowElem =
+		$('<div />')
+			.css({
+				position:	'relative',
+				overflow:	'hidden',
+				width:		params.width + 'px',
+				height:		params.height + 'px'
+			 });
+			 
+		// create filmstrip
+		data.filmstripElem = 
+		$('<div />')
+			.css({
+				position:	'absolute',
+				width:		params.width * params.slides.length + 'px',
+				height:		params.height + 'px',
+				top:		0,
+				left:		0
+			 })
+			.append(params.slides) // append slide collection to filmstrip
+			.appendTo(data.windowElem); // attach filmstrip to window
+		
+		/*
+		// add images to filmstrip
+		$.each(
+			params.slideArray,
+			function(index, slideURL) {
+				$('<img />')
+					.attr({
+						src:		slideURL,
+					 })
+					.css({
+						'float':	'left'
+					 })
+					.appendTo(data.filmstripElem);
+			}
+		); // .each
+		*/
+		
+		// connect carousel to collection
+		this.each(function(index, elem) {
+			var $window = 
+			data.windowElem
+				.clone()				// make a copy to attach to EACH element
+				.appendTo(elem);
+				
+			$window
+				.children()
+				.data('params', params)	// store params on filmstrip
+
+			
+			// start carousel
+			setInterval(
+				function() {
+					var method = 
+					params.direction.toUpperCase() == 'LEFT' ?
+						'moveLeft' :
+						'moveRight';
+					
+					data[method]($window.children()); 
+				},
+				params.moveDuration + params.pauseDuration
+			);
+				
+			
+		}); // .each
+		
+		return this; // return collection to maintain chaining
+	}; // insertCarousel
+
+})(jQuery);
+
+/*
+var params = {
+	width:			400,
+	height: 		300,
+	slideArray: 	['pic1.jpg','pic2.jpg','pic3.jpg','pic4.jpg'],
+	direction:		'left'
+};
+*/
+
+/*
+var $slides = 
+$('<img src="pic1.jpg" /><img src="pic2.jpg" /><img src="pic3.jpg" /><img src="pic4.jpg" />');
+*/
+
+var $slides =
+$('<div />')
+	.append('<img src="pic1.jpg" />')
+	.append('<img src="pic2.jpg" />')
+	.append('<img src="pic3.jpg" />')
+	.append('<img src="pic4.jpg" />')
+	.children();
+
+
+$('#carousel1').insertCarousel({
+	width:			400,
+	height: 		300,
+	slides: 		$slides,
+	direction:		'left'
+});
+
+$('#carousel2').insertCarousel({
+	width:			400,
+	height: 		300,
+	slides: 		$slides,
+	pauseDuration:	3000
+});
+
+
+</script>
+</body>
+</html>
+
+
+
+

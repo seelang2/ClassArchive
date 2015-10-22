@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+
+</head>
+<body>
+
+<div id="target"><p>X</p></div>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+/*
+// BAD - DON'T DO THIS
+$('#target').append('<p>append</p>');
+$('#target').prepend('<p>prepend</p>');
+$('#target').before('<p>before</p>');
+$('#target').after('<p>after</p>');
+
+
+$('<p>appendTo</p>').appendTo('#target');
+$('<p>prependTo</p>').prependTo('#target');
+$('<p>insertBefore</p>').insertBefore('#target');
+$('<p>insertAfter</p>').insertAfter('#target');
+
+*/
+
+/*
+// BETTER - cache the lookup in a variable to use multiple times
+var $target = $('#target');
+
+$target.append('<p>append</p>');
+$target.prepend('<p>prepend</p>');
+$target.before('<p>before</p>');
+$target.after('<p>after</p>');
+
+*/
+
+/*
+var $target = $('#target');
+
+$target
+	.append('<p>append</p>')
+	.prepend('<p>prepend</p>')
+	.before('<p>before</p>')
+	.after('<p>after</p>');
+
+
+*/
+
+
+var $target =
+$('#target')
+	.append('<p>append</p>')
+	.prepend('<p>prepend</p>')
+	.before('<p>before</p>')
+	.after('<p>after</p>');
+
+
+$('<p>appendTo</p>')
+	.appendTo($target)
+	.clone()
+	.insertBefore($target);
+
+$('<p>prependTo</p>').prependTo($target);
+$('<p>insertBefore</p>').insertBefore($target);
+$('<p>insertAfter</p>').insertAfter($target);
+
+
+
+</script>
+</body>
+</html>
+

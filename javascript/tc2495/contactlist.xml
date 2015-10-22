@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<contactlist>
+	<contact>
+    	<firstname>John</firstname>
+        <lastname>Doe</lastname>
+        <phone>(312) 588-2300</phone>
+        <email>jdoe@email.com</email>
+    </contact>
+	<contact>
+    	<firstname>Jane</firstname>
+        <lastname>Smith</lastname>
+        <phone>(312) 123-4567</phone>
+        <email>jsmith@email.com</email>
+    </contact>
+	<contact>
+    	<firstname>Alex</firstname>
+        <lastname>Ross</lastname>
+        <phone>(773) 202-5862</phone>
+        <email>aross@mail.com</email>
+    </contact>
+	<contact>
+    	<firstname>Pete</firstname>
+        <lastname>Townsend</lastname>
+        <phone>(901) 232-4456</phone>
+        <email>email@domain.com</email>
+    </contact>
+	<contact>
+    	<firstname>John</firstname>
+        <lastname>Assaraf</lastname>
+        <phone>(210) 555-1212</phone>
+        <email>jassaraf@nowhere.com</email>
+    </contact>
+</contactlist>

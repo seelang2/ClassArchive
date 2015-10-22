@@ -1,0 +1,27 @@
+https://www.google.com/webhp?sourceid=chrome-instant&rlz=1C1KMZB_enUS556US556&ion=1&espv=2&ie=UTF-8#q=this%20space%20for%20rent
+
+URI (Uniform Resource Identifier)
+Consists of URL + query string
+
+URL (Uniform Resource Locator)
+Domain/address
+
+Absolute URL: 
+http://www.google.com
+http://lipsum.com
+http://www.mysite.com/mypage.html
+
+Always begins with http://
+MUST be used when referencing an external domain
+
+Relative URL:
+/mypage.html
+someotherpage.html
+
+http://domain is omitted
+Browser assumes link is to current domain
+If path is omitted browser assumes link is to current path
+
+
+
+

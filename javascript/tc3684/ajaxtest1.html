@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript">
+
+function doAjaxRequest(params) {
+	/* params object: 
+		{method: http method get|post, 
+		 url: request target url, 
+		 data: data payload, 
+		 handler: callback function to pass request results to, 
+		 responseType: response type text|xml}
+	*/
+	
+	// create an instance of XHR object
+	var ajaxObj = new XMLHttpRequest;
+	if (!ajaxObj) return false; // if error then bail out
+	
+	// call open method
+	ajaxObj.open(params.method, params.url);
+	
+	// set up onreadystate handler
+	ajaxObj.onreadystatechange = function() {
+		// check readystate and status codes
+		if (this.readyState == 4 && (this.status > 199 && this.status < 300)) {
+			// look for data
+			if (params.responseType == 'text') {
+				var response = this.responseText;
+			} else {
+				var response = this.responseXML;
+			}
+			// pass data to handler function
+			params.handler(response);
+		}
+	}; // onreadystatechange
+	
+	// send the request
+	ajaxObj.send(params.data);
+	
+} // doAjaxRequest
+
+function processResults(data) {
+	// get reference to target container object
+	var targetDiv = document.getElementById("target");
+	// update contents of targetdiv with preformatted data
+	targetDiv.innerHTML = data;
+} // processResults
+
+// make request
+doAjaxRequest({url:"http://localhost/tc3684/text.html",
+			   method:"get",
+			   data:null,
+			   responseType:"text",
+			   handler:processResults});
+
+</script>
+</body>
+</html>

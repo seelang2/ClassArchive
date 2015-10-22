@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Slideshow Demo 1</title>
+
+<style type="text/css">
+#container {
+	width: 300px;
+	height: 250px;
+	margin: auto;
+	border: 1px solid #7a7a7a;
+}
+
+#slideshow {
+	position: relative;
+	width: 300px;
+	height: 200px;
+	overflow: hidden;
+}
+
+#slideshowcontrols {
+	width: 300px;
+	height: 30px;
+	text-align: center;
+	margin: auto;
+	padding: 10px 0;
+}
+
+#slideshowcontrols button {
+	padding: 5px 10px;
+	width: 80px;
+	font-size: 90%;
+}
+
+#slideshowfilmstrip {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 1200px;
+	height: 300px;
+}
+
+#slideshowfilmstrip a,
+#slideshowfilmstrip img {
+	width: 300px;
+	height: 200px;
+	margin: 0;
+	padding: 0;
+	border: none;
+	display: block;
+	text-decoration: none;
+}
+#slideshowfilmstrip a { 	float: left; }
+
+</style>
+</head>
+
+<body>
+
+<div id="container">
+    <div id="slideshow">
+    	<div id="slideshowfilmstrip">
+        	<a href="#"><img src="chicago1.jpg" /></a>
+        	<a href="#"><img src="chicago2.jpg" /></a>
+        	<a href="#"><img src="chicago3.jpg" /></a>
+        	<a href="#"><img src="chicago4.jpg" /></a>
+        </div>
+    </div>
+    <div id="slideshowcontrols">
+        <button id="prev">Previous</button>
+        <button id="next">Next</button>
+    </div>
+</div><!-- container -->
+
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+// create singleton App controller object for namespacing
+var App = {
+	startup: function() {
+		//App.slideShowFilmStripElem = document.getElementById("slideshowfilmstrip");
+		App.slideShowFilmStripJQ = $("#slideshowfilmstrip");
+		App.slideShowNext = $("#next");
+		App.slideShowPrev = $("#prev");
+		
+		App.slideShowNext.click(App.slideLeft);
+		App.slideShowPrev.click(App.slideRight);
+		
+	}, // App.startup
+	
+	slideLeft: function() {
+		App.slideShowNext.attr("disabled","disabled"); // disable button while animation runs
+		// move filmstrip to the left
+		App.slideShowFilmStripJQ
+			.animate(
+				{	left:"-300px"  },
+				{	duration: 1000,
+					complete: function() {
+						App.slideShowFilmStripJQ
+							.children("a:first-child")
+							.appendTo(App.slideShowFilmStripJQ)
+							.parent()
+							.css("left", "0");
+						
+						App.slideShowNext.removeAttr("disabled");
+					}
+				}
+			);
+		
+	}, // App.slideLeft
+
+	slideRight: function() {
+		App.slideShowPrev.attr("disabled","disabled"); // disable button while animation runs
+		// move filmstrip to the right
+		App.slideShowFilmStripJQ
+			.children("a:last-child")
+			.prependTo(App.slideShowFilmStripJQ)
+			.parent()
+			.css("left", "-300px")
+			.animate(
+				{	left: '0'  },
+				{	duration: 1000,
+					complete: function() {
+						App.slideShowPrev.removeAttr("disabled");
+					}
+				}
+			);
+		
+		
+	} // App.slideLeft
+
+}; // App
+
+$(document).ready(App.startup);	// have App.startup execute as soon as DOM is ready
+</script>
+</body>
+</html>

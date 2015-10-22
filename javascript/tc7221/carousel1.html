@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	#carousel {
+		width: 400px;
+		height: 300px;
+		border: 2px solid #ff2344;
+		margin: auto;
+		position: relative;
+		overflow: hidden;
+	}
+	
+	#filmstrip {
+		position: absolute;
+		height: 300px;
+		width: 1600px;
+		left: 0;
+	}
+	
+	#filmstrip img {
+		display: block;
+		float: left;
+		width: 400px;
+		height: 300px;
+	}
+	</style>
+</head>
+<body>
+
+<div id="carousel">
+	<div id="filmstrip">
+		<img src="pic1.jpg" />
+		<img src="pic2.jpg" />
+		<img src="pic3.jpg" />
+		<img src="pic4.jpg" />
+	</div>
+</div>
+
+
+
+<script src="jquery-1.11.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	var $filmstrip = $('#filmstrip');
+	
+	var moveLeft = function() {
+		$filmstrip
+			.animate(
+				{
+					left: '-=400'
+				},
+				{
+					duration: 750,
+					complete: function() {
+						$filmstrip
+							.css('left', 0)
+							.children()
+							.first()
+							.appendTo($filmstrip);
+					}
+				}
+			 );
+	}; // moveLeft	
+	
+	var moveRight = function() {
+		$filmstrip
+			.css('left', '-400px')
+			.children()
+			.last()
+			.prependTo($filmstrip)
+			.end()
+			.end()
+			.end()
+			.animate(
+				{
+					left: '+=400'
+				},
+				{
+					duration: 750,
+				}
+			 );
+	}; // moveLeft
+	
+	
+	setInterval(moveRight, 2750);
+
+	
+	
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

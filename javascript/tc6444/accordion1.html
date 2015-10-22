@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-size: 85%;
+		font-family: Verdana, Geneva, Arial, sans-serif;
+		color: #333;
+		background: #efefef;
+	}
+	
+	#container {
+		width: 400px;
+		margin: auto;
+		background: #fff;
+	}
+	
+	.title {
+		padding: 10px;
+		font-size: 125%;
+		font-weight: bold;
+		border: 1px solid #7a7a7a;
+		border-bottom: none;
+	}
+	
+	.content {
+		padding: 5px 10px;
+		height: 200px;
+		overflow-y: scroll;
+		border: 1px solid #7a7a7a;
+		border-bottom: none;
+	}
+	
+	.content:last-child {
+		border-bottom: 1px solid #7a7a7a;
+	}
+	
+	</style>
+</head>
+<body>
+
+<div id="container">
+	
+	<div class="title">Lorem ipsum dolor sit amet</div>
+	
+	<div class="content">
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut volutpat lectus in dolor volutpat iaculis. Proin ultrices quam vitae eros vestibulum, et bibendum urna elementum. Aliquam tempus tempor sapien. Curabitur sodales erat justo, vitae accumsan augue eleifend eget. Etiam odio elit, cursus ut metus in, interdum luctus turpis. Nullam venenatis placerat urna, vel porta mi venenatis rutrum. Sed nulla arcu, accumsan eget euismod et, auctor in nibh. Sed vehicula adipiscing dolor ac condimentum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+	</div>
+	
+	<div class="title">Curabitur blandit sapien et</div>
+	
+	<div class="content">
+		<p>Phasellus eget condimentum sem. Curabitur at placerat arcu. Aenean elementum tristique ullamcorper. Curabitur blandit sapien et libero hendrerit fermentum. Fusce tempus eget velit quis elementum. Donec cursus diam non metus tempus, in lacinia tortor congue. Aenean velit augue, aliquet quis faucibus a, tempus eu nisl. Proin fermentum libero risus, eu laoreet massa adipiscing consectetur. Cras quis lorem est. Vivamus augue lacus, consequat ut leo id, lacinia pharetra dolor. Fusce sodales ornare urna, sit amet pellentesque lectus suscipit nec. Phasellus venenatis mi facilisis, ultricies urna vitae, consequat velit. Fusce eu tellus sed enim sagittis congue. Duis eget pretium nibh.</p>
+	</div>
+	
+	<div class="title">Quisque elementum luctus</div>
+	
+	<div class="content">
+		<p>Maecenas in est viverra augue gravida blandit. Phasellus nec risus sit amet mi accumsan euismod ornare nec erat. Vivamus rhoncus imperdiet tortor, vel facilisis neque. Suspendisse cursus commodo nisl. Vivamus egestas velit nibh, euismod ultricies arcu porttitor in. Quisque elementum luctus lectus. Mauris ac metus aliquet, egestas augue ut, interdum neque. Aliquam imperdiet fringilla leo. Vestibulum adipiscing justo lacus, ut accumsan nunc ullamcorper sit amet. In sed aliquet metus, ut iaculis leo.</p>
+	</div>
+	
+	<div class="title">Praesent sagittis</div>
+	
+	<div class="content">
+		<p>Praesent sagittis, magna non euismod adipiscing, dui mauris laoreet nisl, non congue sapien lorem sit amet turpis. Etiam rutrum non mi nec tempor. Sed eget suscipit sapien, id fermentum enim. Proin posuere augue non commodo euismod. Ut eget purus lobortis, lacinia magna quis, mattis turpis. Nulla porta in mi id consequat. Aliquam sed feugiat tellus. Donec adipiscing urna tortor, eu congue ante dapibus quis. Proin non libero eu sem mollis suscipit non in sem. Curabitur tortor risus, interdum vel sagittis id, sollicitudin vel elit.</p>
+	</div>
+	
+</div>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	var $contentDivs = $('.content');
+	var $titleDivs = $('.title');
+	
+	$contentDivs.hide(); // hide content initially
+	
+	$titleDivs
+		.click(
+			function(evt) {
+				$contentDivs.hide(); // hide content 
+				
+				// show associated content
+				$(this)
+					.next()			// move to adjacent content div
+					.show();		// and show it
+				
+			}
+		 );
+});
+
+</script>
+</body>
+</html>

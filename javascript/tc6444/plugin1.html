@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Plugin Demo</title>
+	
+</head>
+<body>
+
+<ul>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+</ul>
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+(function($) {
+	/*
+		$.methodName = function() {} creates top-level method - $.methodName()
+		$.fn.methodName = function() {} creates collection method - $().methodName()
+		Always use an IIFE to encapsulate plugin code
+		Only use ONE namespace in jQuery object
+		Preserve chaining by returning the jQuery collection object
+	*/
+	
+	$.fn.setClass = function(className) {
+		// remember a collection has 0 or more objects.
+		
+		return this.each(function(i, element) {
+			// plugin should do stuff to EACH item in the collection
+			
+			$(element).addClass(className);
+		});
+		
+	};
+
+})(jQuery);
+
+
+$(document).ready(function() {
+
+	$('li')
+		.setClass('newclass');
+
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

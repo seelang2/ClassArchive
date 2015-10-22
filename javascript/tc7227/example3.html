@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+function foo(obj) {
+	obj = { newProp: 'Foo' };
+	console.log('Value of obj inside foo:',obj);
+}
+
+function bar(obj) {
+	obj.newProp = 'bar';
+	console.log('Value of obj inside bar:',obj);
+}
+
+var a = 42;
+foo(a);
+console.log('Value of a after foo:',a);
+
+bar(a);
+console.log('Value of a after bar:',a);
+
+var b = { myProp: 'Bee' };
+foo(b);
+console.log('Value of b after foo:',b);
+
+bar(b);
+console.log('Value of b after bar:',b);
+
+
+
+
+</script>
+</body>
+</html>

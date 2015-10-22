@@ -1,0 +1,23 @@
+Notes and references
+
+Chris Langtiw chris@sitebabble.com
+http://www.sitebabble.com
+http://www.sitebabble.com/files/classes/TC/
+
+http://www.w3schools.com/tags/default.asp
+http://www.w3schools.com/cssref/default.asp
+
+http://www.lipsum.com/
+
+https://color.adobe.com/
+
+
+HTML Email Resources
+
+http://www.sitebabble.com/files/tools/email/email2.php
+https://www.campaignmonitor.com/css/
+
+3 Part series
+http://www.sitepoint.com/best-practice-email/
+http://www.sitepoint.com/rules-best-practice-email-design-content/
+http://www.sitepoint.com/rules-best-practice-email-design-coding-practices/

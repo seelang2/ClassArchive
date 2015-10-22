@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>DOM Manipulation using jQuery</title>
+	
+</head>
+<body>
+
+
+<div id="target">
+	<p>X</p>
+</div>
+
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript">
+/*
+// VERY inefficient - DO NOT DO THIS!
+$('#target').append('<p>append</p>');
+$('#target').prepend('<p>prepend</p>');
+$('#target').before('<p>before</p>');
+$('#target').after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo('#target');
+$('<p>prependTo</p>').prependTo('#target');
+$('<p>insertBefore</p>').insertBefore('#target');
+$('<p>insertAfter</p>').insertAfter('#target');
+*/
+
+/*
+// Better
+var $target = $('#target'); // store the selection in a variable to use multiple times
+
+$target.append('<p>append</p>');
+$target.prepend('<p>prepend</p>');
+$target.before('<p>before</p>');
+$target.after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo($target);
+$('<p>prependTo</p>').prependTo($target);
+$('<p>insertBefore</p>').insertBefore($target);
+$('<p>insertAfter</p>').insertAfter($target);
+*/
+
+/*
+// Even better - take advantage of chaining ability
+var $target = $('#target'); // store the selection in a variable to use multiple times
+$target
+	.append('<p>append</p>')
+	.prepend('<p>prepend</p>')
+	.before('<p>before</p>')
+	.after('<p>after</p>');
+*/
+
+// Not necessarily better, but optimized
+var $target =		// the selection will still be saved in the variable
+$('#target')		// make selection
+	.append('<p>append</p>')
+	.prepend('<p>prepend</p>')
+	.before('<p>before</p>')
+	.after('<p>after</p>');
+
+
+
+$('<p>appendTo</p>')
+	.appendTo($target)
+	.attr({
+		id: 'item1',
+		title: 'Some useless tooltip'
+	 })
+	.clone()
+	.attr('id','item2')
+	.insertBefore($target);
+	
+$('<p>prependTo</p>').prependTo($target);
+$('<p>insertBefore</p>').insertBefore($target);
+$('<p>insertAfter</p>').insertAfter($target);
+
+
+
+</script>
+</body>
+</html>

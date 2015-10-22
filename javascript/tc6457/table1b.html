@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+</head>
+<body>
+
+<div id="target"></div>
+
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+var contactList =
+[
+	{ "firstname":"Stella","lastname":"El Bridget","login":"satellizer" },
+	{ "firstname":"Elizabeth","lastname":"Mably","login":"emably" },
+	{ "firstname":"Chiffon","lastname":"Fairchild","login":"classprez" },
+	{ "firstname":"Kazuya","lastname":"Aoi","login":"kaoi" },
+	{ "firstname":"Ticy","lastname":"Phenyl","login":"tphenyl" },
+	{ "firstname":"Rick","lastname":"Hunter","login":"skull1" },
+	{ "firstname":"Eren","lastname":"Yeager","login":"titan0" },
+	{ "firstname":"John","lastname":"Stewart","login":"gljohn" },
+	{ "firstname":"Peter","lastname":"Griffin","login":"stewierules" },
+	{ "firstname":"Shin'ichi","lastname":"Kano","login":"moe" }
+];
+
+$('#target')
+	.append('<table><tbody /></table>');
+
+var $tbody = $('#target tbody');
+
+var rowHTML = '';
+
+$.each(
+	contactList,
+	function(index, contact) {
+		//console.log(index,contact);
+		
+		rowHTML +=
+		  '<tr>' +
+		  '<td>' + contact.firstname + '</td>' + 
+		  '<td>' + contact.lastname + '</td>' + 
+		  '<td>' + contact.login + '</td>' +
+		  '</tr>';
+		
+	}
+);
+
+//console.log(rowHTML);
+
+$tbody.html(rowHTML); // replace contents of tbody with rowHTML
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

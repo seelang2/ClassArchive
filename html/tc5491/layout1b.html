@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sample Fixed width layout</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 85%;
+		color: #000;
+		background-color: #89D3FA;
+		margin: 0;
+		padding: 0;
+	}
+	
+	#wrapper {
+		width: 500px;
+		background-color: #fff;
+		margin: auto;
+	}
+	</style>
+</head>
+<body>
+	<div id="wrapper">
+		<h1>Sample Fixed-width Layout</h1>
+		
+		<p>This box is 500 pixels wide.</p>
+		
+		<p>This layout stays the same size regardless of the dimension of the
+		screen.</p>
+		
+		<div id="data"></div>
+
+	</div><!-- wrapper -->
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
+<script type="text/javascript">
+	function updateData(e) {
+		$('#data').html('<p>' +
+						 'Viewport width: ' + $(window).width() + '<br />' +
+						 'Viewport height: ' + $(window).height() +
+						 '</p>');
+	
+	}
+	
+	$(document).ready(function() {
+		$(window).resize(updateData);
+		updateData();
+	});
+</script>
+</body>
+</html>

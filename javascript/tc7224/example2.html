@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+</head>
+<body>
+
+<ul>
+	<li data-att="1">Item 1</li>
+	<li data-att="2">Item 2</li>
+	<li data-att="3">Item 3</li>
+	<li data-att="4">Item 4</li>
+	<li data-att="5">Item 5</li>
+	<li data-att="6">Item 6</li>
+</ul>
+
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+/*
+$('li')
+	.attr('id','item1')
+	.wrapInner('<span />');
+	
+console.log($('li').attr('data-att'));
+*/
+
+/*
+// brute method
+$liList = $('li');
+
+for (var c = 0; c < $liList.length; c++) {
+	$liList.eq(c).attr('id','item-' + c);
+}
+*/
+
+$('li')
+	.each(function(index, element) {
+		
+		$(element).attr('id','item-' + index);
+		
+	 });
+
+
+
+
+
+</script>
+</body>
+</html>

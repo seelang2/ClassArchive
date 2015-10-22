@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+	
+	table { border-collapse: collapse; }
+	td, th { padding: 0.5em 1em; }
+	
+	.hover { background: #FFC; }
+	
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+var contactList = [
+	{ firstname:"John", lastname:"Doe", age:34 },
+	{ firstname:"Jane", lastname:"Smith", age:38 },
+	{ firstname:"Alex", lastname:"Williams", age:24 },
+	{ firstname:"Sandra", lastname:"Peters", age:55 },
+	{ firstname:"Beth", lastname:"Robbins", age:41 }
+];
+
+// build initial table structure
+var $tbody = 
+$('<table><tbody /></table>')	// build base structure
+	.children('tbody');			// traverse to TBODY and save to variable
+
+// loop through contacts
+$.each(
+	contactList,
+	function(index, contact) {
+		// dump data to console (IE uses console.dir instead)
+		//console.log(contact.firstname, contact.lastname, contact['age']);
+		
+		// build a row for contact data and add to TBODY
+		$('<tr />')
+			.append('<td>' + contact.firstname + '</td>')
+			.append('<td>' + contact.lastname + '</td>')
+			.append('<td>' + contact.age + '</td>')
+			.appendTo($tbody)
+			.on('mouseover', function() {
+				// 'this' refers to element the event is bound to (usually)
+				$(this).addClass('hover');
+				
+			 })
+			.on('mouseout', function() {
+				$(this).removeClass('hover');
+				
+			 });
+	}
+);
+
+// append finished table to DOM
+$tbody
+	.parent()					// traverse up to TABLE
+	.appendTo('#target');		// append TABLE to #target
+
+</script>
+</body>
+</html>

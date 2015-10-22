@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+
+.pagetable-oddrow { background: #A4E8B8; }
+.pagetable-evenrow { background: #DAF1DB; }
+.pagetable-rowhover { background: #FFC; }
+
+</style>
+</head>
+
+<body>
+
+<div id="data"></div>
+
+
+
+
+
+
+<script type="text/javascript" src="pagedtable.js"></script>
+<script type="text/javascript">
+var Registry = new Object();
+
+
+var App = new function() {
+
+	this.init = function() {
+		Registry.dataDiv = document.getElementById("data");
+		// set up sample data
+		Registry.pageData = 
+			[{"firstname":"John", "lastname":"Doe", "email":"jdoe@mail.com"},
+			 {"firstname":"Alex", "lastname":"Smith", "email":"asm101@mail.com"},
+			 {"firstname":"Arnold", "lastname":"Williams", "email":"arnold212@mail.com"},
+			 {"firstname":"Jane", "lastname":"Boss", "email":"noone112@mail.com"},
+			 {"firstname":"Adam", "lastname":"Wright", "email":"aw1@mail.com"},
+			 {"firstname":"Mary", "lastname":"Hurt", "email":"hurtu1@mail.com"},
+			 {"firstname":"Susan", "lastname":"Jamison", "email":"suej@mail.com"},
+			 {"firstname":"George", "lastname":"Hall", "email":"george@mail.com"},
+			 {"firstname":"Regina", "lastname":"Adams", "email":"radams@mail.com"},
+			 {"firstname":"Robert", "lastname":"West", "email":"thewest@mail.com"},
+			 {"firstname":"Donald", "lastname":"Crock", "email":"crockd@mail.com"},
+			 {"firstname":"Agatha", "lastname":"Hearst", "email":"solveit@mail.com"},
+			 {"firstname":"Beth", "lastname":"Jacobs", "email":"bethj@mail.com"},
+			 {"firstname":"Amy", "lastname":"Rose", "email":"justamy@mail.com"},
+			 {"firstname":"Kevin", "lastname":"Taylor", "email":"kt2934@mail.com"},
+			 {"firstname":"Adrian", "lastname":"Hughes", "email":"gesundheit@mail.com"},
+			 {"firstname":"Jack", "lastname":"Wilson", "email":"wilson@mail.com"},
+			 {"firstname":"Betty", "lastname":"Thomas", "email":"beto@mail.com"},
+			 {"firstname":"Gail", "lastname":"Dupree", "email":"dupreeg@mail.com"},
+			 {"firstname":"Peter", "lastname":"Jones", "email":"pjs@mail.com"}
+			 ];
+		
+		App.pageTable = new PagedTable(); // create instance of PagedTable class
+		App.pageTable.display(Registry.dataDiv, Registry.pageData);
+		
+	}; // init
+	
+	this.cleanup = function() {
+		Registry.dataDiv = null;
+	}; // cleanup
+
+
+}; // App
+
+
+
+
+window.onload = App.init;
+window.onunload = App.cleanup;
+</script>
+</body>
+</html>

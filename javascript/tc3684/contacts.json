@@ -1,0 +1,11 @@
+[{"firstname":"John","lastname":"Doe","city":"Dallas","state":"TX","phone":"123-456-7890"},
+{"firstname":"Alex","lastname":"Smith","city":"Chicago","state":"IL","phone":"123-456-7890"},
+{"firstname":"Sara","lastname":"Roberts","city":"Dallas","state":"TX","phone":"123-456-7890"},
+{"firstname":"Peter","lastname":"Williams","city":"Chicago","state":"IL","phone":"123-456-7890"},
+{"firstname":"Alice","lastname":"Peters","city":"Chicago","state":"IL","phone":"123-456-7890"},
+{"firstname":"Myrtle","lastname":"Johnson","city":"Chicago","state":"IL","phone":"123-456-7890"},
+{"firstname":"Bea","lastname":"Fields","city":"Dallas","state":"TX","phone":"123-456-7890"},
+{"firstname":"Jeff","lastname":"Paulson","city":"Philadelphia","state":"PA","phone":"123-456-7890"},
+{"firstname":"Paul","lastname":"Jeffries","city":"Portland","state":"OR","phone":"123-456-7890"},
+{"firstname":"Ringo","lastname":"Starr","city":"Dallas","state":"TX","phone":"123-456-7890"},
+{"firstname":"Mary","lastname":"Francis","city":"Quahog","state":"RI","phone":"123-456-7890"}]

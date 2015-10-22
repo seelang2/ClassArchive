@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Page</title>
+<meta charset="UTF-8" />
+<meta name="description" content="My Sample Page." />
+
+<style type="text/css">
+
+</style>
+
+</head>
+<body>
+
+<script type="text/javascript">
+
+var contactList = 
+[
+	{ id: 0, firstname: "John", lastname: "Doe", age: 42 },
+	{ id: 1, firstname: "Alice", lastname: "Stewart", age: 23 },
+	{ id: 2, firstname: "Mary", lastname: "Jane", age: 62 },
+	{ id: 3, firstname: "Peter", lastname: "Thomas", age: 36 }
+];
+
+// first version
+
+var tableElem = document.createElement("TABLE");
+tableElem.id = 'table1';
+
+document.body.appendChild(tableElem);
+
+var tbodyElem = document.createElement("TBODY");
+
+for (var c = 0; c < contactList.length; c++) {
+	
+	var rowElem = document.createElement("TR");
+	
+	var tdElem = document.createElement("TD");
+	tdElem.appendChild(document.createTextNode(contactList[c].firstname));
+	rowElem.appendChild(tdElem);
+	
+	var tdElem = document.createElement("TD");
+	tdElem.appendChild(document.createTextNode(contactList[c].lastname));
+	rowElem.appendChild(tdElem);
+	
+	var tdElem = document.createElement("TD");
+	tdElem.appendChild(document.createTextNode(contactList[c].age));
+	rowElem.appendChild(tdElem);
+	
+	tbodyElem.appendChild(rowElem);
+	
+}
+
+// it's more efficient to create the entire branch before appending to
+tableElem.appendChild(tbodyElem);
+
+document.body.appendChild(document.createElement("HR"));
+
+// second version
+
+var tableElem = document.createElement("TABLE");
+tableElem.id = 'table1';
+
+document.body.appendChild(tableElem);
+
+// create tbody string
+var tableHTML = '<tbody>';
+
+for (var c = 0; c < contactList.length; c++) {
+
+	tableHTML += '<tr id="row-'+ c +'">' +
+					'<td>' + contactList[c].firstname + '</td>' +
+					'<td>' + contactList[c].lastname + '</td>' +
+					'<td>' + contactList[c].age + '</td>' +
+				 '</tr>';
+	
+}
+
+tableHTML += '</tbody>';
+
+tableElem.innerHTML = tableHTML;
+
+document.body.appendChild(document.createElement("HR"));
+
+// third version
+
+var tableElem = document.createElement("TABLE");
+tableElem.id = 'table3';
+
+document.body.appendChild(tableElem);
+
+var tbodyElem = document.createElement("TBODY");
+
+for (var c = 0; c < contactList.length; c++) {
+	
+	var rowElem = document.createElement("TR");
+	
+	for (field in contactList[c]) {
+		var tdElem = document.createElement("TD");
+		tdElem.appendChild(document.createTextNode(contactList[c][field]));
+		rowElem.appendChild(tdElem);
+		
+	}
+		
+	tbodyElem.appendChild(rowElem);
+	
+}
+
+// it's more efficient to create the entire branch before appending to
+tableElem.appendChild(tbodyElem);
+
+
+</script>
+</body>
+</html>

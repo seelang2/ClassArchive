@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Ajax Request Example 1</title>
+</head>
+
+<body>
+
+<button id="thebutton">Click Here for more information</button>
+
+<div id="info"></div>
+
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(
+	function() {
+		$('#thebutton')
+			.click(
+				function() {
+					$.getJSON(
+						'products.json',
+						function(data) {
+							$('#info')
+								.empty()												// clears contents of element
+								.append(
+									'<table><tbody>' +
+									'</tbody></table>'
+								 )
+								.find('tbody')
+								.each(												// for each tbody...
+									function(index, element) {
+										$tbody = $(element);					// put TBODY back in jQ wrapper
+										$.each(
+											data,
+											function(index, value) {
+												$tbody.append(
+													'<tr>' +
+														'<td>' + value.name + '</td>' +
+														'<td>' + value.qty + '</td>' +
+														'<td>' + value.price + '</td> ' +
+													'</tr>'
+												);
+											} // callback for each
+										); // $.each
+									} // callback
+								 ) // .each
+							; // $('#info')
+						} // callback function
+					); // getJSON
+				} // click handler
+			 ); // click
+		
+		
+	} // function
+); // document.ready
+
+</script>
+</body>
+</html>

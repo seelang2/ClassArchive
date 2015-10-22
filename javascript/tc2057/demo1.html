@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+<script src="app.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<a href="#" onclick="alert('Link clicked');">Click here</a>
+
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+	
+	document.write('<p>This space for rent.</p>');
+	
+	var length = 8;
+	var width = 21;
+	
+	document.write('<p>The area is: ' + (length * width) + '</p>');
+	
+	var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+	var someArray = [];
+	var anotherArray = new Array();
+	
+	document.write('<p>' + days[3] + '</p>');
+	
+	var pillbox = [];
+	pillbox['Sun'] = 'white';
+	pillbox['Mon'] = 'orange';
+	pillbox['Tue'] = 'blue';
+	pillbox['Wed'] = 'purple';
+	pillbox['Thu'] = 'red';
+	
+	if (length < 10) {
+		// do stuff
+	} else {
+		// do this instead
+	}
+	
+	switch(pillbox['Mon']) {
+		case 'green':
+			// do stuff
+		//break;
+		
+		case 'orange':
+			document.write('<p>Rough weekend, eh?</p>');
+		break;
+		
+		default:
+			// catch all else
+		break;
+	}
+	
+	switch(true) {
+		case length < 10:
+			document.write('<p>Small container size</p>');
+		break;
+		
+		case length >= 10 && length < 20:
+			// more stuff
+		break;
+		
+	}
+	
+	function area(l, w) {
+		var area = l * w;
+		//document.write('<p>The area is: ' + area + '</p>');
+		return area; // using the return value is more flexible
+	}
+	
+	area = area(length, width);
+	
+	var someObject = new Object();
+	
+	function geometry() {
+		this.length = 0;
+		this.width = 0;
+		this.areaValue = 0;
+		
+		this.area = function(length, width) {
+			this.areaValue = length * width;
+			return this.areaValue;
+		};
+	}
+	
+	var rectangle = new geometry();
+	
+	document.write('<p>The area is: ' + rectangle.area(10, 20) + '</p>');
+	
+	var circle = new function() {
+		this.circumference = function(diameter) {
+			return diameter * 3.1415927;
+		}
+	};
+	
+	document.write('<p>The area is: ' + circle.circumference(250) + '</p>');
+	
+//--><!]]></script>
+
+
+</body>
+</html>

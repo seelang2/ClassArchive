@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+<style type="text/css">
+#leftside, #rightside {
+	float: left;
+	width: 49%;
+	min-height: 150px;
+	border: 1px solid #cccccc;
+}
+#rightside { float: right; }
+
+.oddrow { background: #9999ff; }
+.evenrow { background: #cdcdff; }
+</style>
+
+<script src="ajax.js" type="text/javascript"></script>
+<script src="formdata2querystring.js" type="text/javascript"></script>
+<script src="xmlparse.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+// singleton registry object
+Registry = new function() {
+	this.ajax = null;
+	this.rightDiv = null;
+}; // Registry object
+
+// singleton application object
+App = new function() {
+	this.init = function() {
+		Registry.ajax = new Ajax;
+		Registry.rightDiv = document.getElementById("rightside");
+		
+		var form1 = document.getElementById("form1");
+		
+		form1.onsubmit = function() {
+			// encode data from form fields
+			var formData = formData2QueryString(this);
+			
+			// workaround for aggressively cacing browsers (IE)
+			var x = new Date();
+			x = x.getTime();
+			
+			Registry.ajax.doPost('echopost.php?mode=xml&x=' + x, formData, App.updateRight, 'xml');
+			
+			return false; // prevents form from being submitted
+		};
+		
+	}; // init
+	
+	this.cleanup = function() {
+		Registry.rightDiv = null;
+	}; // cleanup
+	
+	this.updateRight = function(response) {
+		// clear out div using innerHTML
+		//Registry.rightDiv.innerHTML = '';
+		
+		// clear out div using DOM methods
+		while (Registry.rightDiv.hasChildNodes())
+			Registry.rightDiv.removeChild(Registry.rightDiv.firstChild);
+			
+		
+		// convert DOM object to js object array
+		var fieldList = XMLParse.xml2ObjArray(response, 'field');
+		
+		tempElem = document.createElement("TABLE");
+		Registry.rightDiv.appendChild(tempElem);
+		
+		tempTbody = document.createElement("TBODY");
+		tempElem.appendChild(tempTbody);
+		
+		tempRow = document.createElement("TR");
+		tempTbody.appendChild(tempRow);
+
+		for (fieldName in fieldList[0]) {
+			tempElem = document.createElement("TH");
+			tempRow.appendChild(tempElem);
+			tempElem.appendChild(document.createTextNode(fieldName.toUpperCase()));
+		
+		}
+
+
+		for(var c = 0; c < fieldList.length; c++) {
+			tempRow = document.createElement("TR");
+			tempTbody.appendChild(tempRow);
+			
+			tempRow.id = 'row_' + c;
+			
+			if (c % 2 == 0) {
+				tempRow.className = 'evenrow';
+			} else {
+				tempRow.className = 'oddrow';
+			}
+			
+			/*
+			tempElem = document.createElement("TD");
+			tempRow.appendChild(tempElem);
+			tempElem.appendChild(document.createTextNode(fieldList[c].name));
+			
+			tempElem = document.createElement("TD");
+			tempRow.appendChild(tempElem);
+			tempElem.appendChild(document.createTextNode(fieldList[c].value));
+			*/
+			
+			for (fieldName in fieldList[0]) {
+				tempElem = document.createElement("TD");
+				tempRow.appendChild(tempElem);
+				tempElem.appendChild(document.createTextNode(fieldList[c][fieldName]));
+			
+			}
+			
+		}
+		
+	}; // updateRight
+	
+}; // App object
+
+window.onload = App.init;
+window.onunload = App.cleanup;
+</script>
+
+</head>
+<body>
+
+<div id="leftside">
+	<form id="form1" name="form1" action="echopost.php?mode=xml" method="post">
+    	<div>
+        	<label for="firstname">First Name:</label>
+            <input id="firstname" name="firstname" type="text" />
+        </div>
+    	<div>
+        	<label for="lastname">Last Name:</label>
+            <input id="lastname" name="lastname" type="text" />
+        </div>
+    	<div>
+            <input type="submit" value="Continue" />
+        </div>
+    </form>
+</div>
+
+<div id="rightside">
+
+
+</div>
+
+
+</body>
+</html>

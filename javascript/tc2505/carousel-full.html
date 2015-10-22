@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+<style type="text/css">
+body {
+	background: #ddd;
+}
+
+#container, #window {
+	width: 200px;
+	height: 150px;
+	margin: 0 auto;
+	padding: 0;
+}
+
+#window {
+	overflow: hidden;
+	background: #fff;
+	border: 1px #000;
+}
+
+#filmstrip {
+	width: 800px;
+	height: 150px;
+	position:relative;
+	left: 0;
+}
+
+#filmstrip img {
+	float:left;
+	width: 200px;
+	height: 150px;
+}
+
+</style>
+
+<script type="text/javascript">
+var Registry = new Object(); // container for global vars
+
+function init() {
+	Registry.windowDiv = document.getElementById('window');
+	Registry.filmstripDiv = document.getElementById('filmstrip');
+	Registry.slides = Registry.filmstripDiv.getElementsByTagName("IMG");
+	
+	Registry.currentOffset = 0;
+	Registry.maxFrameStep = 10;
+	Registry.frameStep = 1;
+	Registry.slideWidth = 200;
+	Registry.currentSlide = 0;
+	startSlide();
+} // init
+
+function slideRight() {
+	Registry.currentOffset += Registry.frameStep;
+	if (Registry.currentOffset >= 600) {
+		//Registry.currentOffset = Registry.slideWidth;
+		//clearInterval(Registry.timerRepeat);
+		tmpElem = Registry.filmstripDiv.removeChild(Registry.slides[0]);
+		Registry.filmstripDiv.appendChild(tmpElem);
+		Registry.currentOffset = 400;
+	}
+	Registry.filmstripDiv.style.left = '-' + Registry.currentOffset + 'px';
+} // slideRight
+
+function startSlide() {
+	Registry.timerRepeat = setInterval(slideRight, 1);
+} // startSlide
+
+window.onload = init;
+</script>
+
+</head>
+
+<body>
+
+
+<div id="container">
+	<div id="window">
+    	<div id="filmstrip">
+        	<img src="slide1.jpg" />
+        	<img src="slide2.jpg" />
+        	<img src="slide3.jpg" />
+        	<img src="slide4.jpg" />
+        </div>
+    </div><!-- window -->
+</div><!-- container -->
+
+
+
+</body>
+</html>

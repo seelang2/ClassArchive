@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+#body {
+	margin: 0;
+	padding: 0;
+	background: #dedede;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 85%;
+}
+
+#gallery {
+	width: 600px;
+	background: #FEFBE9;
+	border: 1px solid #E2AC0A;
+	margin: auto;
+}
+
+.item {
+	float: left;
+	width: 31.3%;
+	margin: 10px 1%;
+	text-align: center;
+}
+
+.item h2 {
+	text-align: center;
+}
+
+.clearing {
+	height: 1px;
+	clear: both;
+	overflow: hidden;
+}
+
+
+/* lightbox styles */
+
+#modalscreen {
+	background: #000;
+}
+
+#modalboxcontrol {
+	background: url(images/bigx.png) no-repeat;
+	width: 30px;
+	height: 30px;
+	overflow: hidden;
+	position: absolute;
+	top: -12px;
+	right: -12px;
+	cursor: pointer;
+}
+
+#modalboxcontrol span {
+	position: absolute;
+	top: -2000px;
+	left: -2000px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="gallery"></div>
+
+<script src="jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="modal.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$(document).ready(
+	function() {
+		
+		var galleryItems = {
+			imageList: [
+				{
+				 "name": "Micronauts 1",
+				 "thumbnailSrc": "images/micronauts1_tn.jpg",
+				 "thumbnailWidth": 150,
+				 "thumbnailHeight": 150,
+				 "fullsizeSrc": "images/micronauts1.jpg",
+				 "fullsizeWidth": 500,
+				 "fullsizeHeight": 354
+				},
+				{
+				 "name": "Micronauts 2",
+				 "thumbnailSrc": "images/micronauts2_tn.jpg",
+				 "thumbnailWidth": 150,
+				 "thumbnailHeight": 150,
+				 "fullsizeSrc": "images/micronauts2.jpg",
+				 "fullsizeWidth": 500,
+				 "fullsizeHeight": 448
+				},
+				{
+				 "name": "Micronauts 3",
+				 "thumbnailSrc": "images/micronauts3_tn.jpg",
+				 "thumbnailWidth": 150,
+				 "thumbnailHeight": 150,
+				 "fullsizeSrc": "images/micronauts3.jpg",
+				 "fullsizeWidth": 481,
+				 "fullsizeHeight": 360
+				},
+				{
+				 "name": "Micronauts 4",
+				 "thumbnailSrc": "images/micronauts4_tn.jpg",
+				 "thumbnailWidth": 150,
+				 "thumbnailHeight": 150,
+				 "fullsizeSrc": "images/micronauts4.jpg",
+				 "fullsizeWidth": 543,
+				 "fullsizeHeight": 369
+				},
+				{
+				 "name": "Micronauts 5",
+				 "thumbnailSrc": "images/micronauts5_tn.jpg",
+				 "thumbnailWidth": 150,
+				 "thumbnailHeight": 150,
+				 "fullsizeSrc": "images/micronauts5.jpg",
+				 "fullsizeWidth": 614,
+				 "fullsizeHeight": 307
+				},
+				{
+				 "name": "Micronauts 6",
+				 "thumbnailSrc": "images/micronauts6_tn.jpg",
+				 "thumbnailWidth": 150,
+				 "thumbnailHeight": 150,
+				 "fullsizeSrc": "images/micronauts6.jpg",
+				 "fullsizeWidth": 434,
+				 "fullsizeHeight": 323
+				},
+				{
+				 "name": "Micronauts 7",
+				 "thumbnailSrc": "images/micronauts7_tn.jpg",
+				 "thumbnailWidth": 150,
+				 "thumbnailHeight": 150,
+				 "fullsizeSrc": "images/micronauts7.jpg",
+				 "fullsizeWidth": 289,
+				 "fullsizeHeight": 279
+				},
+				{
+				 "name": "Micronauts 8",
+				 "thumbnailSrc": "images/micronauts8_tn.jpg",
+				 "thumbnailWidth": 150,
+				 "thumbnailHeight": 150,
+				 "fullsizeSrc": "images/micronauts8.jpg",
+				 "fullsizeWidth": 500,
+				 "fullsizeHeight": 375
+				},
+				{
+				 "name": "Micronauts 9",
+				 "thumbnailSrc": "images/micronauts9_tn.jpg",
+				 "thumbnailWidth": 150,
+				 "thumbnailHeight": 150,
+				 "fullsizeSrc": "images/micronauts9.jpg",
+				 "fullsizeWidth": 500,
+				 "fullsizeHeight": 375
+				},
+			]
+			
+		}; // galleryItems
+		
+		
+		// create gallery
+		$('#gallery')
+			.each(
+				function(i, elem) {
+					var $gallery = $(elem);
+					
+					$.each(
+						galleryItems.imageList,
+						function(index, imageData) {
+							$gallery
+							   .append('<div id="item-'+ index +'" class="item">' +
+										'<h2>' + imageData.name + '</h2>' +
+										'<a href="'+ imageData.fullsizeSrc +'">' +
+										'<img src="'+ imageData.thumbnailSrc +
+										  '" width="'+ imageData.thumbnailWidth +
+										  '" height="'+ imageData.thumbnailHeight +'" />' +
+										'</a>' +
+										'</div>')
+							   .children('div:last-child')
+							   .click(
+							       function(evt) {
+									   evt.preventDefault();
+									   var i = this.id.split('-')[1];
+									   var content = 
+									   		'<img src="'+galleryItems.imageList[i].fullsizeSrc+
+											'" height="'+galleryItems.imageList[i].fullsizeHeight+
+											'" width="'+galleryItems.imageList[i].fullsizeWidth+'" />';
+								   	   
+									   modal.createBox(
+									       { width: galleryItems.imageList[i].fullsizeWidth,
+										     height: galleryItems.imageList[i].fullsizeHeight,
+											 content: content }
+									   );
+								   }
+							    )
+							   
+						}
+					)
+				}
+			 )
+		
+		
+		
+	} // function
+); // document.ready
+
+
+</script>
+</body>
+</html>

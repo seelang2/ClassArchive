@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Form Demo</title>
+</head>
+
+<body>
+
+<div id="container">
+	<form id="form1" action="#" method="get">
+    	<div>
+        	<label>First Name: <input id="firstname" name="firstname" /></label>
+        </div>
+    	<div>
+        	<label>Last Name: <input name="lastname" /></label>
+        </div>
+    	<div>
+        	<label>Email: <input name="email" /></label>
+        </div>
+    	<div>
+        	<input type="submit" />
+        </div>
+    </form>
+</div>
+
+<div id="result"></div>
+
+<script src="jquery-1.7.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+var AjaxStatus = {
+	
+	display: function() {
+		$(document.body)
+		   .prepend('<div id="ajaxstatus"></div>')
+		   .find('#ajaxstatus')
+		   .css(
+		      {
+			    position: "fixed",
+				top: "50%",
+				left: "50%",
+				margin: "-50px 0 0 -50px",
+				background: "url(images/ajax-loader.gif) no-repeat",
+				height: "100px",
+				width: "100px",
+				zIndex: 10000
+			  }
+		    )
+	}, // display
+	
+	hide: function() {
+		$('#ajaxstatus').remove();
+	} // hide
+	
+};
+
+
+var Validator = {
+	
+	is_blank: function(subject) {
+		if (subject.length < 1) return true;
+		return false;
+	},
+	
+	is_min_length: function(subject, length) {
+		if (subject.length < length) return false;
+		return true;
+	},
+	
+	is_max_length: function(subject, length) {
+		if (subject.length > length) return false;
+		return true;
+	},
+	
+	is_email: function(subject) {
+		if (subject.search(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i) < 0) return false;
+		return true;
+	}
+	
+};
+
+
+document.forms[0].onsubmit = function() {
+	// form validation - innocent until proven guilty approach
+	var isValid = true; // assume form data is valid
+	var errorMessages = '';
+	
+	// loop through elements array
+	for (var c = 0; c < document.forms[0].elements.length; c++) {
+		
+		switch(document.forms[0].elements[c].name) {
+			case 'firstname':
+				if (Validator.is_blank(document.forms[0].elements[c].value)) {
+					// rule fail
+					isValid = false; // invalidate form
+					errorMessages += '\nFirst name cannot be blank.';
+				}
+				
+			break;
+			
+			case 'lastname':
+				if (!Validator.is_min_length(document.forms[0].elements[c].value, 2)) {
+					// rule fail
+					isValid = false; // invalidate form
+					errorMessages += '\nLast name must be at least 2 characters.';
+				}
+			break;
+			
+			case 'email':
+				if (Validator.is_blank(document.forms[0].elements[c].value)) {
+					// rule fail
+					isValid = false; // invalidate form
+					errorMessages += '\nEmail cannot be blank.';
+				}
+				
+				if (!Validator.is_email(document.forms[0].elements[c].value)) {
+					// rule fail
+					isValid = false; // invalidate form
+					errorMessages += '\nEmail appears invalid.';
+				}
+			break;
+			
+		} // switch
+		
+	} // for
+	
+	if(!isValid) {
+		// form invalid, don't continue processing
+		alert('The following errors were found:\n' + errorMessages);
+		return false; // don't continue with form submission or whatever
+	}
+	
+	// continue processing
+	//alert('Form is good, carry on');
+	
+	$.ajax(
+	  {
+		url: "echopost.php?mode=json",
+		type: "POST",
+		dataType: "JSON",
+		data: $(this).serialize(),
+		success: showResult
+	  }
+	);
+	
+	AjaxStatus.display();
+	
+	return false; // prevent browser from submitting form
+}; // onsubmit
+
+
+function showResult(response) {
+	
+	//alert(response);
+	//return;
+	//document.getElementById('result').innerHTML = response;
+	// OR
+	//$('#result').html(response);
+	AjaxStatus.hide();
+	
+	$('#result')
+		.empty()
+		.append('<h2>Results:</h2>')
+		.append(
+			'<div>' +
+				'<p>First Name: ' + response.firstname + '</p>' +
+				'<p>Last Name: ' + response.lastname + '</p>' +
+				'<p>Email: ' + response.email + '</p>' +
+			'</div>'
+		 )
+		.hide()
+		.fadeIn(100);
+}
+
+
+
+
+
+</script>
+</body>
+</html>

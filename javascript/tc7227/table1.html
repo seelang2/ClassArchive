@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+// non-traversal method (messy)
+
+var $table = $('<table />'); // create and get reference to table element
+
+var $tbody = 
+$('<tbody />')			// create TBODY element
+	.appendTo($table);	// and attach to TABLE
+
+// create row
+$('<tr />')							// create TR
+	.append('<td>John</td>')		// add columns
+	.append('<td>Doe</td>')
+	.append('<td>32</td>')
+	.appendTo($tbody)				// and append to TBODY
+
+// create next row (wash, rinse, repeat)
+$('<tr />')							// create TR
+	.append('<td>Jane</td>')		// add columns
+	.append('<td>Smith</td>')
+	.append('<td>36</td>')
+	.appendTo($tbody)				// and append to TBODY
+
+// lastly, attach completed TABLE to live DOM
+$table.appendTo('#target');
+
+</script>
+</body>
+</html>

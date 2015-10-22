@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="target"><p>X</p></div>
+
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+
+/*
+// DON'T DO THIS
+$('#target').append('<p>append</p>');
+$('#target').prepend('<p>prepend</p>');
+$('#target').before('<p>before</p>');
+$('#target').after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo('#target');
+$('<p>prependTo</p>').prependTo('#target');
+$('<p>insertBefore</p>').insertBefore('#target');
+$('<p>insertAfter</p>').insertAfter('#target');
+*/
+
+// Better - take advantage of chaining
+// always cache a collection if it needs to be used more than once
+var $target = 
+$('#target')
+	.append('<p>append</p>')
+	.prepend('<p>prepend</p>')
+	.before('<p>before</p>')
+	.after('<p>after</p>');
+
+$('<p>appendTo</p>')
+	.attr('id','newitem')
+	.appendTo($target)
+	.clone()
+	.attr('id','clonedItem')
+	.insertBefore($target);
+$('<p>prependTo</p>').prependTo($target);
+$('<p>insertBefore</p>')
+	.insertBefore($target)
+	.detach()
+	.appendTo($target);
+$('<p>insertAfter</p>').insertAfter($target);
+
+
+</script>
+</body>
+</html>

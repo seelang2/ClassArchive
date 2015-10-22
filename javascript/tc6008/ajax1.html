@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+
+
+<div id="target"></div>
+
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	$.ajax(
+		{
+			url: 'testpage.php',
+			cache: false,
+			type: 'get',
+			dataType: 'html',
+			success: function(response) {
+				$('#target').html(response);
+			}
+		}
+	);
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

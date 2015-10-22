@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo</title>
+
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$.ajax({
+		url:		'htmldata.html',
+		type:		'get',
+		dataType:	'html',
+		success:	function(response) {
+			
+			$('#target').html(response);
+			
+		}
+	});
+	
+	
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>
+

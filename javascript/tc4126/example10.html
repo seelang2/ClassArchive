@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" action="#" method="get">
+
+<div id="example1">
+	<p>What kind of widget are you looking for?</p>
+    <div>
+    	<label><input type="radio" name="question1" value="1"> Business</label>
+    </div>
+    <div>
+    	<label><input type="radio" name="question1" value="2"> Personal</label>
+    </div>
+    <div>
+    	<label><input type="radio" name="question1" value="3"> Other</label>
+    	<label> Please indicate: <input type="text" name="question1other" readonly="readonly"></label>
+    </div>
+</div>
+
+<div id="example3">
+	<label>
+    	<select name="select1">
+        	<option value="">Select a Set</option>
+        	<option value="0">Set 1</option>
+        	<option value="1">Set 2</option>
+        	<option value="2">Set 3</option>
+        </select>
+    </label>
+	<label>
+    	<select name="select2">
+        	<option value="">&nbsp;</option>
+        </select>
+    </label>
+    
+</div>
+
+</form>
+
+
+<script type="text/javascript">
+//alert(document.forms[0].elements.question1.value);
+function checkReadOnly() {
+	//alert(this.value);
+	if (this.value == 3) {
+		document.forms[0].elements.question1other.removeAttribute('readonly');
+	} else {
+		document.forms[0].elements.question1other.readOnly = 'readonly';
+		document.forms[0].elements.question1other.value = '';
+	}
+
+}
+
+document.forms[0].elements[0].onchange = checkReadOnly;
+document.forms[0].elements[1].onchange = checkReadOnly;
+document.forms[0].elements[2].onchange = checkReadOnly;
+
+// Example 3
+var setItems = [['One','Two','Three'],
+					    ['Four','Five','Six'],
+					    ['Seven','Eight','Nine']];
+
+document.forms[0].elements.select1.onchange = function() {
+	document.forms[0].elements.select2.innerHTML = '';
+	for (var c = 0; c < setItems[document.forms[0].elements.select1.value].length; c++) {
+		document.forms[0].elements.select2.innerHTML += '<option value="'+ c +'">'+ 
+			setItems[document.forms[0].elements.select1.value][c] +'</option>';
+	}
+};
+
+</script>
+</body>
+</html>

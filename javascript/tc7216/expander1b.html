@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+
+<ul>
+	<li><span>List Item 1</span></li>
+	<li><span>List Item 2</span></li>
+	<li>
+		<span class="submenutitle">List Item 3</span>
+		<ul class="submenu">
+			<li><span>List Item 1</span></li>
+			<li><span>List Item 2</span></li>
+			<li>
+				<span class="submenutitle">List Item 3</span>
+				<ul class="submenu">
+					<li><span>List Item 1</span></li>
+					<li><span>List Item 2</span></li>
+					<li><span>List Item 3</span></li>
+					<li><span>List Item 4</span></li>
+				</ul>
+			</li>
+			<li><span>List Item 4</span></li>
+		</ul>
+	</li>
+	<li><span>List Item 4</span></li>
+</ul>
+
+
+<script type="text/javascript" src="jquery-2.1.1.js"></script>
+<script type="text/javascript">
+
+// hide sublists
+$('li ul').hide();
+
+$('li')
+	.has('ul')
+	.on(
+		'click',
+		'span.submenutitle',
+		function(evt) {
+			console.log(evt.target);
+			
+			evt.stopPropagation(); // prevent event from bubbling further
+			
+			// 'this' refers to LI
+			$(this)
+				.siblings('.submenu')
+				.toggle();
+		}
+	 )
+
+
+
+
+
+
+</script>
+</body>
+</html>

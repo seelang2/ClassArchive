@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="target"></div>
+
+
+<script type="text/javascript">
+var targetElem = document.getElementById("target");
+
+var tmpElem = document.createElement("TABLE");
+targetElem.appendChild(tmpElem);
+
+var tBodyElem = document.createElement("TBODY");
+tmpElem.appendChild(tBodyElem);
+
+// first row
+var trElem = document.createElement("TR");
+tBodyElem.appendChild(trElem);
+
+tmpElem = document.createElement("TD");
+trElem.appendChild(tmpElem);
+tmpElem.appendChild(document.createTextNode('John'));
+
+tmpElem = document.createElement("TD");
+trElem.appendChild(tmpElem);
+tmpElem.appendChild(document.createTextNode('Doe'));
+
+// second row
+trElem = document.createElement("TR");
+tBodyElem.appendChild(trElem);
+
+tmpElem = document.createElement("TD");
+trElem.appendChild(tmpElem);
+tmpElem.appendChild(document.createTextNode('Jane'));
+
+tmpElem = document.createElement("TD");
+trElem.appendChild(tmpElem);
+tmpElem.appendChild(document.createTextNode('Smith'));
+
+</script>
+</body>
+</html>

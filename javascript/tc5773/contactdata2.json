@@ -1,0 +1,11 @@
+{
+	"requestdate": "xxx",
+	"columnLabels": ["ID","First Name", "Last Name", "Email Address"],
+	"contacts": [
+		{"id":0,"firstname":"John","lastname":"Doe","email":"jdoe@email.com"},
+		{"id":0,"firstname":"Mary","lastname":"Jane","email":"mj@lucyinthesky.com"},
+		{"id":0,"firstname":"Peter","lastname":"Williams","email":"peter.williams@email.com"},
+		{"id":0,"firstname":"Sue","lastname":"Foster","email":"sfoster111@yahoo.com"},
+		{"id":0,"firstname":"Alex","lastname":"Jones","email":"aj@somedomain.com"}
+	]
+}

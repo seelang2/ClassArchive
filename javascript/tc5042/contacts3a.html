@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+
+.oddrow { background-color: #ACF9AE; }
+.evenrow { background-color: #DFFED8; }
+table .hover { background-color: #FFC; }
+
+</style>
+</head>
+
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript">
+
+function addHoverClass() {
+	this.className += ' hover';
+}
+
+function removeHoverClass() {
+	this.className = this.className.replace(/ hover/, '');
+}
+
+var contactData = 
+  {
+	contacts: 
+	[
+		{id: 0, firstName: "John", lastname: "Doe", email: "jdoe@email.com" },
+		{id: 1, firstName: "Alan", lastname: "Smith", email: "ams@email.com" },
+		{id: 2, firstName: "Peter", lastname: "Connor", email: "pc101@email.com" },
+		{id: 3, firstName: "Francis", lastname: "Geraci", email: "cheap@lawyer.com" },
+		{id: 4, firstName: "Paulette", lastname: "Jones", email: "star@view.com" },
+		{id: 5, firstName: "Donna", lastname: "Adller", email: "anon284872@hotmail.com" },
+		{id: 6, firstName: "Adam", lastname: "Thomas", email: "Adam.Thomas@pretentious.com" },
+		{id: 7, firstName: "Janet", lastname: "Riley", email: "justjanet@mac.com" },
+		{id: 8, firstName: "Christine", lastname: "Adams", email: "ca27@email.com" },
+		{id: 9, firstName: "Bruce", lastname: "Davis", email: "mynameisbruce@gmail.com" },
+		{id: 10, firstName: "Chase", lastname: "Bradley", email: "banker7@email.com" },
+		{id: 11, firstName: "Amanda", lastname: "Doe", email: "adoe@yahoo.com" },
+		{id: 12, firstName: "Bradley", lastname: "Chase", email: "youreadingthis@question.com" },
+		{id: 13, firstName: "Thomas", lastname: "Peters", email: "me@tompeters.com" }
+	],
+	
+	contactHeaderRow: 
+	[
+		'ID', 'First Name', 'Last Name', 'Email Address'
+	]
+  };
+
+var contactList = contactData.contacts;
+
+var targetElem = document.getElementById("target");
+
+var tableHTML = '<table>'; // add opening table tag
+
+tableHTML += '<thead><tr>';
+
+for (var c = 0; c < contactData.contactHeaderRow.length; c++) {
+	tableHTML += '<th>' + contactData.contactHeaderRow[c] + '</th>';
+}
+
+tableHTML += '</tr></thead>';
+
+tableHTML += '<tbody>';
+
+for (var c = 0; c < contactList.length; c++) {
+	tableHTML += '<tr id="row-' + c + '" ';
+	
+	tableHTML += c % 2 ==0 ? 'class="oddrow"' : 'class="evenrow"';
+	
+	tableHTML += '>'; // close opening TR tag
+	
+	for (colName in contactList[c]) {
+		tableHTML += '<td>' + contactList[c][colName] + '</td>';
+	}
+	
+	tableHTML += '</tr>';
+}
+
+tableHTML += '</tbody></table>';
+
+//alert(tableHTML);
+targetElem.innerHTML = tableHTML;
+//alert(targetElem.innerHTML);
+
+var rowList = targetElem.getElementsByTagName("TR");
+
+for (var c = 0; c < rowList.length; c++) {
+	rowList[c].onmouseover = addHoverClass;
+	rowList[c].onmouseout = removeHoverClass;
+}
+
+
+</script>
+</body>
+</html>

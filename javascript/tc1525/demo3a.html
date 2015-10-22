@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style type="text/css" media="all">
+#leftside {
+	clear: both;
+	float: left;
+	width: 49%;
+	border: 1px solid #999999;
+}
+
+#rightside {
+	float: right;
+	width: 49%;
+	border: 1px solid #999999;
+	height: 100px;
+}
+
+.evenrow {
+	background: #03F;
+}
+
+.oddrow {
+	background: #0CF;
+}
+
+
+#statusdiv {
+	float: right;
+	color: #ffffff;
+	background: #F00;
+	visibility: hidden;
+}
+
+.header {
+	
+}
+
+.footer {
+	clear:both;
+}
+
+
+.readertext {
+	position: absolute;
+	height: 1px;
+	overflow: hidden;
+	width: 1px;
+	top: -2000px;
+	left: -2000px;
+	z-index: -999;
+}
+
+
+
+
+</style>
+
+<script src="ajax.js"></script>
+<script src="formdata2querystring.js"></script>
+<script src="xmlparse.js"></script>
+
+<script type="text/javascript">
+// create singleton data registry object
+AppData = new function() {
+	this.ajax = null;
+	this.rightDiv=null;
+	this.statusdiv = null;
+	
+}; // AppData
+
+DemoApp = new function() {
+	this.init = function() {
+		AppData.ajax = new Ajax();
+		AppData.rightDiv = document.getElementById("rightside");
+		AppData.statusdiv = document.getElementById("statusdiv");
+		
+		var doc = document.getElementById("form1");
+		doc.onsubmit = function() {
+			AppData.statusdiv.style.visibility="visible";
+			
+			var data = formData2QueryString(this);
+			var url = doc.action + "&t=" + new Date().getTime();
+			AppData.ajax.doPost(url, data, DemoApp.showRecord, 'xml');
+
+			return false;
+		};
+		
+	}; // init
+	
+	this.cleanup = function() {
+			AppData.rightDiv = null;
+			AppData.statusdiv = null;
+	};
+		
+	this.showRecord = function(data) {
+		
+		
+		var fieldlist = XMLParse.xml2ObjArray(data, "field");
+		
+			
+		var s = "<table border=1><tbody><tr><th>Name</th><th>Value</th></tr>";
+		
+		for (var i = 0; i < fieldlist.length; i++) {
+			s += "<tr><td>";
+			s += fieldlist[i].name;
+			s += "</td><td>";
+			s += fieldlist[i].value;
+			s += "</td></tr>";
+		}
+		s += "</tbody></table>";
+		
+		
+			//AppData.rightDiv.innerHTML = s;
+		
+		
+		
+		table = document.createElement("table");
+		table.setAttribute("border", "1");
+		tbody = document.createElement("tbody");
+		table.appendChild(tbody);
+		tr = document.createElement("tr");
+		
+		for (field in fieldlist[0]) {
+			th = document.createElement("th");
+			th.appendChild(document.createTextNode(field.toUpperCase()));
+			tr.appendChild(th);
+		}
+		
+		
+		tbody.appendChild(tr);
+		
+		
+		for (var i = 0; i < fieldlist.length; i++) {
+			tr = document.createElement("tr");
+			if (i % 2 == 0) 
+				tr.className = "evenrow";
+			else
+				tr.className = "oddrow";
+			
+			for (field in fieldlist[0]) {
+				td = document.createElement("td");
+				txt = document.createTextNode(fieldlist[i][field]);
+				td.appendChild(txt);
+			
+				tr.appendChild(td);
+			
+			}
+			
+			tbody.appendChild(tr);
+			
+	
+		}
+		//AppData.rightDiv.innerHTML = "";
+		if (AppData.rightDiv.firstChild)
+			AppData.rightDiv.removeChild(AppData.rightDiv.firstChild);
+
+		AppData.statusdiv.style.visibility = "hidden";
+
+		AppData.rightDiv.appendChild(table);
+		
+		
+	}; // showRecord
+	
+		
+}; // DemoApp
+
+window.onload = DemoApp.init;
+window.unload = DemoApp.cleanup;
+
+
+</script>
+
+</head>
+
+<body>
+<div id="wrapper">
+    <div id="header" class="header">
+    	<div class="readertext">
+        	<a name="top"></a>
+        	<h1>TC App Demo</h1>
+            <p>Information presented to screenreaders only</p>
+        </div>
+		<div id="statusdiv">
+        	Loading, please wait&nbsp;
+        	<img src="ajax-loader.gif" />
+        </div>        
+    </div>
+    
+    <div id="leftside">
+    <form id="form1" action="echopost.php?mode=xml" method="post">
+        <div>
+            <label for="firstname">First name:</label>
+            <input id="firstname" type="text" name="firstname" />
+        </div>
+            <div>
+            <label for="lastname">last name:</label>
+            <input id="lastname" type="text" name="lastname" />
+        </div>
+        <div>
+            <input type="submit" value="Continue" />
+        </div>
+    
+    </form>
+    
+    </div>
+    
+    <div id="rightside">
+    
+    </div>
+    
+    <div id="footer" class="footer">
+    TC1525 Demo
+    <div class="readertext">
+    	<a href="#top">Back to top</a>
+    </div>
+    </div>
+</div>
+
+</body>
+</html>

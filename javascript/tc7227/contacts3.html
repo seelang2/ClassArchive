@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="controller">
+	<div id="itemlist">
+		<!-- <div class="item" data-index="2">
+
+			<button class="btnEdit">Edit</button>
+			<button class="btnDelete">Delete</button>
+		</div>item -->
+	</div><!-- itemlist -->
+	<div class="controls">
+		<button class="btnAdd">Add New Item</button>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+var contactList =
+[
+	{ "firstname":"John", "lastname":"Doe", "age":42 },
+	{ "firstname":"Alex", "lastname":"Doe", "age":42 },
+	{ "firstname":"Jane", "lastname":"Doe", "age":42 },
+	{ "firstname":"Michael", "lastname":"Doe", "age":42 },
+	{ "firstname":"Trish", "lastname":"Doe", "age":42 },
+	{ "firstname":"Becky", "lastname":"Doe", "age":42 },
+	{ "firstname":"Peter", "lastname":"Doe", "age":42 },
+	{ "firstname":"John", "lastname":"Doe", "age":42 }
+];
+
+
+// set up application namespace within IIFE
+(function(App, undefined) {
+
+var data = {};
+
+App.init = function() {
+	// init vars
+	data.itemlistElem = $('#itemlist');
+
+	// set up button handler
+	$('#controller')
+		.on('click', 'button, input[type="button"]', App.buttonController);
+
+	var x = $.ajax({
+		url: 		'contact_template.html	',
+		type: 		'get',
+		dataType: 	'html'
+	 })
+	.fail(function(req) {
+		console.log('Error in request:',req);
+	 })
+	.done(function(pageData) {
+		console.log('first item complete');
+	})
+	.done(function(pageData) {
+		console.log('second item complete');
+
+		data.tplContact =
+		$('<div />').html(pageData);	
+
+		App.displayItems(contactList);
+	});
+
+
+}; // App.init
+
+App.displayItems = function(itemData) {
+	data.itemlistElem.empty();
+
+	$.each(itemData, function(index, item) {
+
+		var $template = data.tplContact.clone()
+
+		$.each(item, function(fieldName, fieldValue) {
+			$template
+				.find('[data-name="'+ fieldName +'"]')
+				.html(fieldValue);
+		});
+
+		$template.appendTo(data.itemlistElem);
+
+
+	});
+
+}; // App.displayitems
+
+App.buttonController = function(e) {
+
+	switch(true) {
+		case $(this).hasClass('btnEdit'):
+			App.editItem( $(this).closest('.item') );
+		break;
+		case $(this).hasClass('btnDelete'):
+			App.deleteItem( $(this).closest('.item') );
+		break;
+		case $(this).hasClass('btnAdd'):
+			App.addNewItem();
+		break;
+	}
+
+}; // App.buttonController
+
+App.addNewItem = function() {
+	console.log('Adding new item');
+}; // App.addNewItem
+
+App.editItem = function(item) {
+	item = $(item); // wrap element in jquery wrapper
+	console.log('editing item ',item.data('item'));
+}; // App.addNewItem
+
+App.deleteItem = function(item) {
+	item = $(item); // wrap element in jquery wrapper
+	console.log('deleting item ',item.data('item'));
+}; // App.addNewItem
+
+})(window.App = window.App || {});
+// attach App init to DOM ready handler
+$(document).ready(App.init);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="registry2.js"></script>
+<script type="text/javascript" src="app_module1.js"></script>
+<script type="text/javascript" src="app_module2.js"></script>
+<script type="text/javascript" src="app_module3.js"></script>
+<script type="text/javascript">
+
+// set up namespacing IIFE
+(function(App) {
+	
+	App.data = App.data || {}; // public
+	var registry = Registry.makeRegistry(); // private
+
+	App.init = function() {
+		console.log(App);
+
+		App.module3();
+	};
+
+})(window.App = window.App || {});
+
+$(document).ready(App.init);
+
+
+</script>
+</body>
+</html>

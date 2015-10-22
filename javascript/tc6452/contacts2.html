@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+
+</head>
+<body>
+
+<div id="contacts"></div>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+var contactList =
+[
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27}
+];
+
+
+$('#contacts')
+	.append('<table><tbody /></table>');
+
+var $tbody = $('#contacts tbody');
+
+
+$.each(
+	contactList, // collection to loop through
+	function(index, contact) {
+		$('<tr />')
+			.attr('id', 'row-' + index)
+			.append('<td>' + contact.firstname + '</td>' +
+					'<td>' + contact.lastname + '</td>' + 
+					'<td>' + contact.age + '</td>')
+			.appendTo($tbody);
+		
+	}
+); // $.each
+
+
+</script>
+</body>
+</html>
+

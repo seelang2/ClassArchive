@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+	
+	<style type="text/css">
+	</style>
+	
+</head>
+<body>
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+
+var Car = function() {}; // create empty constructor
+// inherited properties are added to the prototype
+Car.prototype.color = 'black';
+Car.prototype.status = 'off';
+Car.prototype.start = function() { this.status = 'on'; };
+
+var SUV = function() {};
+SUV.prototype = new Car(); // connect the SUV to inherit from Car
+SUV.prototype.has4WD = true;
+SUV.prototype.color = 'green';
+
+var myCar = new Car();
+myCar.color = 'red';
+
+var yourCar = new SUV();
+
+
+</script>
+</body>
+</html>
+
+
+
+

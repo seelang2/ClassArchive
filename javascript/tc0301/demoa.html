@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+
+<script src="ajaxlib.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<script type="text/javascript">
+
+
+function doSend() {
+	x = new Date();
+	x = x.getTime();
+
+	ajaxSendReq('GET', 'echoget.php?firstname=John&lastname=Doe&x='+x, processData, null, 'TEXT', true);
+}
+
+function processData(response) {
+	targetdiv = document.getElementById("target");
+
+	targetdiv.innerHTML = response;
+
+}
+
+</script>
+
+
+<div id="target" style="float:right;width:250px;height:250px;overflow:hidden;border:1px solid #7a7a7a">
+</div>
+
+<p><a href="#" onClick="doSend();">Click Here</a></p>
+
+</body>
+</html>

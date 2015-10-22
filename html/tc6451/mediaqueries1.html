@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Media Query Demo</title>
+	
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	
+	<style type="text/css">
+	/* global css setup */
+	
+	body {
+		margin: 0;
+		font-family: Verdana, Arial, sans-serif;
+		color: #009;
+	}
+	
+	#target {
+		width: 80%;
+		margin: auto;
+		background: #fff;
+		padding: 10px 20px;
+	}
+	
+	/* use media query to define sub-stylesheet */
+	
+	@media screen and (min-width: 490px) {
+		/* begin stylesheet section */
+		
+		#target {
+			font-weight: bold;
+			background: #F5D398;
+		}
+	
+	}
+	
+	@media screen and (min-width: 700px) {
+		
+		#target {
+			background: #E9F598;
+		}
+		
+	}
+	
+	
+	
+	</style>
+	
+</head>
+<body>
+
+
+<div id="target">
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque adipiscing a est vel facilisis. Ut suscipit rhoncus leo eu suscipit. Vestibulum augue arcu, elementum eget neque et, luctus sagittis enim. Quisque nec porttitor tortor, quis vehicula nisl. Quisque ullamcorper elit eleifend libero mattis, eget lacinia felis blandit. Aenean ultricies elit sed felis hendrerit viverra. Nam purus sapien, varius vitae nisl quis, lobortis pharetra augue. Sed ultricies facilisis pharetra. Donec imperdiet commodo ipsum vel congue. Nullam placerat dolor semper nisi tincidunt, eget dictum dolor dictum.</p>
+</div>
+
+
+
+</body>
+</html>
+
+
+
+

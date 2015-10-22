@@ -1,0 +1,48 @@
+<!doctype HTML>
+<html>
+<head>
+	<title>Page Title</title>
+	<meta charset="UTF-8" />
+
+</head>
+<body>
+
+	<div id="target">
+		<ul>
+			<li>List Item</li>
+			<li>List Item</li>
+			<li>List Item</li>
+			<li>List Item</li>
+			<li>List Item</li>
+		</ul>
+	</div>
+	
+	<button id="thebutton">Click Me</button>
+
+<script type="text/javascript" src="jquery-1.9.0.js"></script>
+<script type="text/javascript">
+
+// use IIFE to encapsulate plugin functionality
+(function($) {
+	
+	$.fn.doStuff = function() {
+		return this.each( // 'this' refers to collection
+			function(i, elem) {
+				$(elem).attr('data-test', i);
+			}
+		)
+	}
+
+})(jQuery);
+
+</script>
+<script type="text/javascript">
+
+$('#target li')
+	.doStuff()
+	.addClass('test');
+
+
+</script>
+</body>
+</html>

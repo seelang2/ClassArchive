@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo</title>
+
+	<style type="text/css">
+	
+	#wrapper {
+		margin: auto;
+		width: 410px;
+	}
+	
+	#window {
+		width: 400px;
+		height: 300px;
+		border: 5px solid #000;
+		position: relative;
+		overflow: hidden;
+	}
+	
+	#filmstrip {
+		width: 1600px;
+		height: 300px;
+		position: absolute;
+		left: -400px;
+	}
+	
+	.slide {
+		float: left;
+		width: 398px;
+		height: 298px;
+		padding: 1px;
+	}
+	</style>
+
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="window">
+		<div id="filmstrip">
+			<div class="slide" style="background:#f00;">
+				<h1>Slide 1</h1>
+				<p>This space for rent.</p>
+			</div>
+			<div class="slide" style="background:#0f0;">
+				<h1>Slide 2</h1>
+				<p>This space for rent.</p>
+			</div>
+			<div class="slide" style="background:#00f;">
+				<h1>Slide 3</h1>
+				<p>This space for rent.</p>
+			</div>
+			<div class="slide" style="background:#ff0;">
+				<h1>Slide 4</h1>
+				<p>This space for rent.</p>
+			</div>
+		</div>
+	</div><!-- window -->
+</div><!-- wrapper -->
+
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	function startMove() {
+		moveLeft($filmstrip);
+	}
+	
+	var moveTimer = null;
+	
+	function moveLeft($filmstrip) {
+		// 1. animate from second to third slide
+		// 2. take first slide and move to end of filmstrip
+		// 3. reset filmstrip position to second slide
+		
+		$filmstrip
+			.animate({								// 1
+				left: '-=400'
+			 },{
+				duration: 500,
+				complete: function() {
+					$filmstrip
+						.css('left','-400px')		// 3
+						.children(':first-child')	// 2
+						.appendTo($filmstrip)		// 2 cont'd
+						.mouseover(function() { 
+							clearTimeout(moveTimer); 
+						 })
+						.mouseout(function() {
+							moveTimer = setTimeout(startMove, 2000);
+						 });
+				
+					moveTimer = setTimeout(startMove, 2000);
+				}
+			 })
+	} // moveLeft
+	
+	$filmstrip = $('#filmstrip');
+	
+	moveLeft($filmstrip);
+
+	
+})
+
+
+</script>
+</body>
+</html>
+

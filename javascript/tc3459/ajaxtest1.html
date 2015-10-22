@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="response"></div>
+
+<script type="text/javascript" src="xmlparse.js" ></script>
+<script type="text/javascript" src="ajaxlib.js" ></script>
+<script type="text/javascript">
+
+var ajax = new Ajax();
+
+ajax.doRequest(
+			   {method: 'GET',
+			    url: 'http://localhost/tc3459/people.xml',
+				resptype: 'xml',
+				resphandler: updatePage}
+			   );
+
+function updatePage(response) {
+	document.getElementById("response").innerHTML = '';
+	
+	var people = XMLParse.xml2ObjArray(response, 'person');
+	//alert (people.length);
+/*	
+	for (var c = 0; c < people.length; c++) {
+		
+	}
+*/
+
+	for (var i in people[0].emails) {
+		alert(people[0].emails[i]);
+	}
+}
+
+</script>
+</body>
+</html>

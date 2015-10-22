@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+
+.evenrow {
+	background-color: #EDEDFE;
+}
+
+.oddrow {
+	background-color: #B5B7FD;
+}
+
+tr:hover {
+	background-color: #FFC;	
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="contactlist">
+</div>
+
+
+<script type="text/javascript">
+
+var contactList = 
+	[{"name":"John Doe","email":"jdoe@email.com","phone":"(773)588-2300"},
+     {"name":"Jane Smith","email":"jmsmith@homemakers.com","phone":"(773)123-4567"},
+     {"name":"Peter Griffin","email":"peter@famguy.com","phone":"(710)555-8147"},
+     {"name":"Alex Ross","email":"alex@alexross.com","phone":"(224)538-4367"},
+     {"name":"Betty Rubble","email":"brubble@h-b.com","phone":"(918)555-1234"},
+     {"name":"Harry Lewis","email":"random@gmail.com","phone":"(454)564-3463"}];
+
+// get reference to where I'm building the table
+var divElem = document.getElementById("contactlist");
+
+// create and add table element to page
+var tElem = document.createElement("TABLE");
+divElem.appendChild(tElem);
+
+// create thead element and make header row
+var tHeadElem = document.createElement("THEAD");
+tElem.appendChild(tHeadElem);
+var trElem = document.createElement("TR");
+tHeadElem.appendChild(trElem);
+for (var fieldName in contactList[0]) {
+	// create table cell and add to row
+	var tdElem = document.createElement("TH");
+	trElem.appendChild(tdElem);
+	// create text from contact field and add to cell
+	var text = document.createTextNode(fieldName.toUpperCase());
+	tdElem.appendChild(text);
+}
+
+// create and add tbody element to table
+var tBodyElem = document.createElement("TBODY");
+tElem.appendChild(tBodyElem);
+// loop through contactList and create data rows
+for (var c = 0; c < contactList.length; c++) {
+	// create row and add to tbody
+	var trElem = document.createElement("TR");
+	tBodyElem.appendChild(trElem);
+	// apply class name to row
+	if (c % 2 == 0) {
+		// ODD row because numbering starts at 0 instead of 1
+		trElem.className = 'oddrow';
+		//trElem.style.backgroundColor = '#E3032A';
+	} else {
+		trElem.className = 'evenrow';
+	}
+	// apply id to row
+	trElem.id = 'contact-' + c;
+	
+	// loop through contact fields and create table cells
+	for (var fieldName in contactList[c]) {
+		// create table cell and add to row
+		var tdElem = document.createElement("TD");
+		trElem.appendChild(tdElem);
+		// create text from contact field and add to cell
+		var text = document.createTextNode(contactList[c][fieldName]);
+		tdElem.appendChild(text);
+	}
+}
+
+
+</script>
+
+</body>
+</html>

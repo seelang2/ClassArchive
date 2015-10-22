@@ -1,0 +1,78 @@
+/* CSS Document */
+body {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	background: #7a7a7a;
+}
+
+#wrapper {
+	margin: 0 auto;
+	background:#FFCCFF;
+	width: 750px;
+	text-align:left;
+}
+
+#header {
+	margin: 0;
+	padding: 0;
+	background: #00FF00;
+	height: 75px;
+	overflow:hidden;
+}
+
+#leftcolumn {
+	margin: 0;
+	padding: 0;
+	background:#FFFF00;
+	width: 150px;
+	float:left;
+}
+
+#centercolumn {
+	margin: 0;
+	padding: 0;
+	background: #ffffff;
+	width: 448px;
+	margin-left: 150px;
+}
+
+#rightcolumn {
+	margin: 0;
+	padding: 0;
+	background: #FF9933;
+	width: 150px;
+	float: right;
+}
+
+#footer {
+	margin: 0;
+	padding: 0;
+	background: #00FFFF;
+	border-top:1px solid #00ffff;
+	height: 30px;
+	overflow:hidden;
+}
+
+.emph {
+	font-weight:bold;
+	color: #ff0000;
+}
+
+.productdiv {
+	float:left;
+	width: 125px;
+	text-align:center;
+	border: 1px solid #7a7a7a;
+}
+
+.clearing {
+	clear:both;
+	height:1px;
+	overflow:hidden;
+}
+
+#results {
+	height: 400px;
+	overflow:auto;
+}

@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 85%;
+	}
+	
+	</style>
+</head>
+<body>
+
+<ul>
+	<li>Item 1</li>
+	<li>Item 2</li>
+	<li>Item 3</li>
+	<li>Item 4</li>
+</ul>
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript">
+
+// use an Immediately-Invoked Function Expression (IIFE) to enclose our plugin code
+(function($) {
+
+	$.fn.addUniqueId = function(prefix) {
+		// 'this' is already the jQuery collection - no need to do $(this)
+		//return this.each(function(index, elem) {  }); // basic framework for handling each node
+		
+		return this.each(function(index, elem) {  
+			
+			$(elem).attr('id',prefix + index);
+			
+		}); // basic framework for handling each node
+		
+	}; // addUniqueId
+
+})(jQuery); // the jQuery object gets passed into the IIFE
+
+</script>
+<script type="text/javascript">
+
+$('ul li')
+	.addUniqueId('myprefix')
+	.addClass('test');
+
+</script>
+</body>
+</html>

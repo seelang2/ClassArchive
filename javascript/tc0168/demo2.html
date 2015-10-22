@@ -1,0 +1,110 @@
+<html>
+<head>
+
+<script type="text/javascript" src="ajax.js"></script>
+<script type="text/javascript" src="formdata2querystring.js"></script>
+<script type="text/javascript" src="xmlparse.js"></script>
+
+<style type="text/css">
+#dataentry, #result {
+	border: 1px solid #000000;
+	padding: 25px;
+}
+
+#dataentry {
+	float: left;
+	width: 40%;
+}
+
+#result {
+	float: right;
+	width: 40%;
+}
+</style>
+
+<script type="text/javascript">
+
+
+var ajax = new Ajax();
+var formdiv = null;
+var resultdiv = null;
+var form = null;
+
+function init() {
+	formdiv = document.getElementById('dataentry');
+	resultdiv = document.getElementById('result');
+	form = document.getElementById('dataform');
+	form.onsubmit = function() { submitform(); return false; }
+}
+
+function cleanup() {
+	formdiv = null;
+	resultdiv = null;
+	form = null;
+}
+
+function submitform() {
+    postData = formData2QueryString(form);
+    ajax.doPost('echopost.php?mode=xml', postData, handleresp, 'xml');
+
+
+}
+
+function handleresp(data) {
+
+/*
+	while(resultdiv.hasChildNodes()) {
+		resultdiv.removeChild(resultdiv.firstChild);
+	}
+*/
+
+/*
+	if(resultdiv.firstChild) {
+		resultdiv.removeChild(resultdiv.firstChild);
+	}
+*/
+
+	resultdiv.innerHTML = '<h2>Field Values</h2>';
+
+	contacts = XMLParse.xml2ObjArray(data, 'field');
+	for (c=0; c < contacts.length; c++) {
+		var contactdiv = document.createElement('DIV');
+		contactdiv.appendChild(document.createTextNode(contacts[c].name));
+		contactdiv.appendChild(document.createElement('BR'));
+		contactdiv.appendChild(document.createTextNode(contacts[c].value));
+		contactdiv.setAttribute('ID','contact_' + c);
+		resultdiv.appendChild(contactdiv);
+	}
+
+}
+
+
+// window.onload = init();
+
+</script>
+
+
+</head>
+
+<body onload="init();">
+
+<div id="dataentry">
+<form name="dataform" id="dataform" action="echopost.php?mode=xml" method="post">
+First Name: <input type="text" name="firstname" /><br />
+Last Name: <input type="text" name="lastname" /><br />
+Address: <input type="text" name="address" /><br />
+Phone Number: <input type="text" name="phone" /><br />
+
+<input type="submit" value="Enter Contact Info" />
+</form>
+
+
+</div>
+
+<div id="result">
+<h2>Field Values</h2>
+
+</div>
+
+</body>
+</html>

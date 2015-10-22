@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Example 6: Animations</title>
+
+<style type="text/css">
+
+#box {
+	background: #f00;
+	width: 100px;
+	height: 100px;
+	position: relative;
+}
+
+</style>
+</head>
+
+<body>
+
+<input id="startbutton" type="button" value="Start" />
+
+<div id="box"></div>
+
+<script type="text/javascript">
+var box = document.getElementById("box");
+
+function moveBox() {
+	box.style.position = 'relative';
+	for (var c = 0; c < 500; c++) {
+		box.style.left = c + 'px';
+		for (var d = 0; d < 100000; d++) {}	
+	}
+}
+
+document.getElementById("startbutton").onclick = moveBox;
+
+</script>
+</body>
+</html>

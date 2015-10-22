@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript">
+
+/*****
+ *	The Array object's built-in sort method allows you to pass in a function to perform
+ *	custom numeric-based sorting routines. The return value of the function must be -1, 
+ *	0, or 1. Here we use that function to sort based on a property in the element object.
+ */
+function doSort(srcArray, columnName) {
+	srcArray.sort(
+		function(a, b) {
+			//console.log(a[columnName],b[columnName],a[columnName] > b[columnName]);
+			if (a[columnName] > b[columnName]) {
+				return 1; // a comes first
+			} else {
+				return -1; // b comes first
+			}
+		}
+	);
+}
+
+
+// set up some mock contact data using JSON (www.json.org)
+var contactList = 
+[
+	{"firstname":"John","lastname":"Doe","email":"jdoe@email.com"},
+	{"firstname":"Mary","lastname":"Jane","email":"mj@lucyinthesky.com"},
+	{"firstname":"Peter","lastname":"Williams","email":"peter.williams@email.com"},
+	{"firstname":"Sue","lastname":"Foster","email":"sfoster111@yahoo.com"},
+	{"firstname":"Alex","lastname":"Jones","email":"aj@somedomain.com"}
+];
+
+doSort(contactList, 'firstname');
+
+// take contact data and display in a table
+
+// build base table structure
+$('#target')
+	.append('<table><tbody></tbody></table>');
+
+// store tbody reference in a variable to be used in the loop later
+var $tbody = $('#target tbody');
+
+// for every contact... 
+$.each(
+  contactList,
+  function(c, contact) {
+	// create a table row
+	// add the contact fields to TDs
+	$('<tr>' +
+		'<td>' + contact.firstname + '</td>' + 
+		'<td>' + contact.lastname + '</td>' + 
+		'<td>' + contact.email + '</td>' + 
+	  '</tr>')
+		.appendTo($tbody); // add row to the table
+  } // function
+); // $.each
+
+</script>
+</body>
+</html>

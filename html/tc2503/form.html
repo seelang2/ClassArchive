@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<form action="http://localhost/tc2503/form.html" method="get">
+	<p><label>
+    	First Name: 
+    	<input type="text" name="firstname" size="10" maxlength="35" value="Your First Name" />
+    </label></p>
+
+	<p><label>
+    	Last Name: 
+    	<input type="text" name="lastname" size="10" maxlength="35" value="Your Last Name" />
+    </label></p>
+    
+    <p><label>Enter your birth month: 
+    	<select name="dobmonth">
+        	<option value="1">January</option>
+        	<option value="2">February</option>
+        	<option value="3">March</option>
+        	<option value="4">April</option>
+        	<option value="5">May</option>
+        </select>
+        </label>
+    </p>
+    
+	<p>
+    	Gender: 
+        <input type="radio" name="gender" value="male" /> Male 
+        <input type="radio" name="gender" value="female" /> Female
+    </p>
+    
+    <p>
+    	Select all that apply:<br />
+        <input type="checkbox" name="hobbies" value="Baseball" /> Baseball<br /> 
+        <input type="checkbox" name="hobbies" value="Football" /> Football<br /> 
+        <input type="checkbox" name="hobbies" value="Baseketball" /> Baseketball<br /> 
+        <input type="checkbox" name="hobbies" value="Futbol" /> Futbol<br /> 
+    </p>
+    
+    <p>
+    	Comments:<br />
+        <textarea name="comments" rows="4" cols="40">Enter your comments here</textarea>
+    </p>
+    
+	<p><input type="submit" value="Continue" /></p>
+</form>
+
+</body>
+</html>

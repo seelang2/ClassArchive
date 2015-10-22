@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Events</title>
+</head>
+
+<body>
+
+<button id="thebutton">Click Me!</button>
+<button id="thebutton2">Click Me Too!</button>
+
+<script type="text/javascript">
+function message() {
+	alert('A button has been clicked!');
+}
+
+function messageHandler() {
+	switch(this.id) {
+		case 'thebutton':
+			alert('Message for button 1');
+		break;
+		
+		case 'thebutton2':
+			alert('Message for button 2');
+		break;
+	}
+	/*
+	if (this.id == 'thebutton') {
+		
+	} else if (this.id == 'thebutton2') {
+		
+	}
+	*/
+}
+
+/*
+document.getElementById("thebutton").onclick = function() {
+	alert(this.id + " has been clicked.");
+};
+*/
+document.getElementById("thebutton").onclick = messageHandler;
+
+//document.getElementById("thebutton2").onclick = message;
+document.getElementById("thebutton2").onclick = messageHandler;
+
+</script>
+</body>
+</html>

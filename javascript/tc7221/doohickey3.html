@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 100%;
+		color: #000000;
+		background: #dedede;
+	}
+	
+	#wrapper {
+		width: 800px;
+		margin: auto;
+		background: #ffffff;
+		box-sizing: border-box;
+		padding: 20px 30px;
+		border: 1px solid #7a7a7a;
+	}
+	
+	.customeritem {
+		border: 1px solid #cccccc;
+		padding: 20px 30px;
+		margin: 20px;
+	}
+	
+	.customeritem label {
+		display: block;
+		margin: 0.5em 0;
+	}
+	
+	.customeritem .labeltext::after {
+		content: ':';
+		margin-right: 1em;
+	}
+	
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="itemlist">
+		<div class="openpage">
+			<p>Fetching data...</p>
+		</div>
+	</div><!-- itemlist -->
+	<div>
+		<button class="btnAdd" data-action="add">Add New Item</button>
+	</div>
+</div><!-- wrapper -->
+
+
+
+<script src="jquery-1.11.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+
+var App = {};
+App.data = {}; // namespace-global data
+
+/***
+
+ **/
+App.start = function() {
+
+	// get reference to #itemlist for use later
+	App.data.itemlistElem = $('#itemlist');
+	App.data.wrapperElem = $('#wrapper');
+	
+	// load in page template files
+	App.data.addForm = $('<div />').load('doohickey-add-template.html');
+	App.data.customerItemTemplate = 
+	$('<div />').load('doohickey-customeritem-template.html');
+	
+	// set up button controller
+	App.data.wrapperElem
+		.on('click', 'button', App.buttonController);
+	
+	// get initial data list
+	App.getList();
+	
+}; // App.start
+
+/***
+
+ **/
+App.exit = function() {
+
+}; // App.exit
+
+/***
+	Retrieve the user list
+ **/
+App.getList = function() {
+	
+	$.ajax({
+		url:		'userdata.php?action=getlist&type=json',
+		type:		'get',
+		dataType:	'json',
+		success:	App.displayItems
+	})
+	
+}; // App.getList
+
+
+/***
+
+ **/
+App.displayItems = function(items) {
+	
+	App.data.itemlistElem
+		.empty() 		// clear out contents of #itemlist
+		.detach();		// temporarily disconnect div while adding children
+	
+	// loop through items and create customeritem divs
+	// and put them in #itemlist
+	
+	$.each(
+		items,
+		function(index, item) {
+			
+			App.data.customerItemTemplate
+				.clone()							// copy template
+				.children()							// navigate to .customeritem
+				.find('[data-field="firstname"]')	// find first field
+				.html(item.firstname)				// populate data
+				.end()								// revert back to customeritem
+				.find('[data-field="lastname"]')	// find first field
+				.html(item.lastname)				// populate data
+				.end()								// revert back to customeritem
+				.find('[data-field="login"]')		// find first field
+				.html(item.login)					// populate data
+				.end()								// revert back to customeritem
+				.appendTo(App.data.itemlistElem);
+			
+		}
+	);
+	
+	// now reconnect the node back to the DOM and redraw
+	App.data.itemlistElem.prependTo(App.data.wrapperElem);
+	
+}; // App.displayItems
+
+/***
+
+ **/
+App.buttonController = function(evt) {
+	// 'this' points to button because of the selector filter
+	
+	// which customer item is this?
+	var id = $(this).closest('.customeritem').attr('data-id');
+	
+	// what button was clicked?
+	switch(true) {
+		
+		case $(this).hasClass('btnEdit'):
+			console.log('Edit button clicked on item',id);
+		break;
+		
+		case $(this).attr('data-action') == 'delete':
+			console.log('Delete button clicked on item',id);
+		break;
+		
+		case $(this).attr('data-action') == 'add':
+			
+			App.data.addForm
+				.clone()
+				.appendTo(App.data.itemlistElem);
+			
+		break;
+		
+		
+	} // switch
+	
+}; // App.buttonController
+
+
+/***
+
+ **/
+$(document).ready(App.start); // init App
+window.onunload = App.exit; // clean up
+
+
+
+
+/*
+// these are equivalent, btw
+$(document).ready( function() {} );
+$( function() {} );
+*/
+
+
+
+</script>
+</body>
+</html>

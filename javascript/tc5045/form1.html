@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Forms</title>
+</head>
+
+<body>
+
+<div id="wrapper">
+	<form id="form1" action="#" method="get">
+		<div id="branch1" role="testing">
+        	<p>Do you currently own a widget?
+            <label>
+            	Yes
+                <input type="radio" name="havewidget" value="1" />
+            </label>
+
+            <label for="q1b">
+            	No
+                <input type="radio" name="havewidget" value="0" />
+            </label>
+            </p>
+        </div>
+        
+        <div id="subform">
+            <div>
+            <label for="q2">Widget Name:</label>
+            <input id="q2" type="text" name="widgetname" />
+            </div>
+
+            <div>
+            <label for="q3">Widget Color:</label>
+            <input id="q3" type="text" name="widgetcolor" />
+            </div>
+        </div>
+
+        <div>
+        <label for="q4">Your Location:</label>
+        <input id="q4" type="text" name="location" />
+        </div>
+        
+        <div>
+        	<input type="submit" />
+        </div>
+	</form>
+</div><!-- wrapper -->
+
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+
+//var $inputs = $(':input');
+//alert($inputs.length);
+
+//alert($('#branch1').attr('role'));
+
+$('#subform') // hide subform at load
+	.hide()
+	.find(':input')
+	.attr('disabled', 'disabled');
+
+
+$('#branch1')
+	.change(
+		function(e) {
+			//alert($(':checked').val());
+			if ($('#branch1 :checked').val() == 1) {
+				$('#subform')
+					.show()
+					.find(':input')
+					.removeAttr('disabled');
+			} else {
+				$('#subform')
+					.hide()
+					.find(':input')
+					.attr('disabled', 'disabled');
+			}
+		}
+	 );
+
+
+</script>
+</body>
+</html>

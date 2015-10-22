@@ -1,0 +1,395 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+<style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+	
+}
+
+body {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 14px;
+	color: #000;
+	background: #dedede url(background2.jpg) bottom left fixed;
+}
+
+#wrapper {
+	margin: auto;
+	width: 800px;
+	background: #fff;
+}
+
+#header, #footer {
+	overflow: hidden;
+	height: 75px;
+	background: #060;
+	color: #fff;
+}
+#footer { height: 35px; }
+#header { 
+	background: #060 url(background1.jpg) right -700px no-repeat;
+	color: #060;
+	font-weight: bold;
+	font-size: 1.4em;
+}
+
+#content {
+
+}
+
+#maincolumn {
+	width: 570px;
+	float: right;
+	margin: 0 20px 0 10px;
+}
+
+#maincolumn p {
+	margin: 1em 0;
+}
+
+#sidebar {
+	width: 200px;
+	float: left;
+}
+
+/* top navigation menu */
+#navigation {
+/*	background:#0C0;
+	float: left;
+	width: 100%; */
+}
+
+#navigation ul {
+	list-style-type: none;
+}
+
+#navigation ul li {
+	float: left;
+	width: 199px;
+	border-left: 1px solid #fff;
+	height:30px;
+}
+
+#navigation ul li:first-child {
+	width: 200px;
+	border-left: none;
+}
+
+#navigation a {
+	display: block;
+	/*padding: 0.5em 1em;*/
+	width: 100%;
+	height: 30px;
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+	background: url(rollover1.jpg) no-repeat;
+}
+
+#navigation a span {
+	position: absolute;
+	left: -3500px;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+
+#navigation a:link {
+	background-position: left 0;
+}
+
+#navigation a:hover {
+	background-position: left -30px;
+}
+
+#navigation a:active {
+	background-position: left -60px;
+}
+
+/* topic navigation */
+.topic ul {
+	list-style-type: none; /* removes bullet */
+}
+
+.topic ul li {
+	background: #CDE6FE;
+	border-bottom: 1px solid #006;
+}
+
+.topic ul li:last-child {
+	border-bottom: none;
+}
+
+.topic ul li a {
+	display: block;
+	text-decoration: none;
+	padding: 0.5em 1em;
+}
+
+/* Be sure to follow the LoVe/HAte sequence */
+.topic ul li a:link {
+	color: #F3C;
+}
+.topic ul li a:visited {
+	color: #006;
+}
+.topic ul li a:hover {
+	background: #5370F4;
+	color: #fff;
+}
+.topic ul li a:active {
+	background: #5370F4;
+	color: #fff;
+	text-decoration: underline;
+}
+
+.clearing {
+	clear: both;
+	height: 1px;
+	overflow: hidden;
+}
+
+.clearboth { clear: both; }
+
+.alignleft { display:block; float:left; margin-right: 1em; }
+.alignright { display:block; float:right; margin-left: 1em; }
+
+.topic {
+	width: 90%;
+	margin: 15px auto;
+	border: 1px solid #006;
+}
+
+img.thumbnail {
+	width: 100px;
+	height: 100px;
+}
+
+/* typography */
+#maincolumn h1 {
+	font-size: 1.8em;
+	font-weight: normal;
+	color: #900;
+	margin: 1.2em 0;
+}
+
+h2 {
+	font-size: 1.6em;
+	font-weight: normal;
+	margin: 1em 0 0.5em 0;
+}
+
+.topic h2 {
+	font-size: 1.2em;
+	font-weight: bold;
+	background: #006 url(bggradient1.jpg) bottom left repeat-x;
+	color: #fff;
+	margin: 0;
+	padding: 0.5em;
+}
+
+.topic p {
+	margin: 0.75em 1em;
+}
+
+#sidebar {
+	font-size: 85%;
+}
+
+.dropcap {
+	float:left;
+	font-size:2.5em;
+	font-weight:bold;
+	font-family:"Times New Roman", Times, serif;
+	line-height:0.75em;
+}
+
+/* calendar styling */
+#calendar table {
+	width: 90%;
+	margin: 1em auto;
+	border: 1px solid #7a7a7a;
+	border-collapse: collapse;
+}
+
+#calendar td, #calendar th {
+	border: 1px solid #7a7a7a;
+	padding: 1%;
+	width: 12.29%;
+}
+
+#calendar th {
+	font-size: 1.3em;
+	text-align: center;
+	font-weight: bold;
+}
+
+#calendar td {
+	text-align: center;	
+}
+
+#calendar .oddrow {
+	background: #F3EAFF;
+}
+
+#calendar .evenrow {
+	background: #FCF;
+}
+
+#calendar .today {
+	font-weight: bold;
+	background: #F0C;
+	color: #fff;
+}
+
+#calendar .inactive {
+	border: none;
+	background: #efefef;
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+<div id="wrapper">
+	<div id="header">
+    	<span>2-Column Layout Demo</span>
+    </div><!-- header -->
+    
+    <div id="content">
+		<div id="navigation">
+        	<ul>
+            	<li><a href="#"><span>Link 1</span></a></li>
+            	<li><a href="#"><span>Link 2</span></a></li>
+            	<li><a href="#"><span>Link 3</span></a></li>
+            	<li><a href="#"><span>Link 4</span></a></li>
+            </ul>
+            <div class="clearing"></div>
+        </div>
+        
+        <div id="maincolumn">
+            <h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h1>
+            <p><div class="dropcap">N</div>ulla aliquet, dui fermentum auctor euismod, ligula velit cursus elit,   sit amet dapibus massa dolor at magna. Nulla eleifend eleifend leo a   mollis. Pellentesque vel libero sed libero accumsan lobortis non in   tortor. Nunc id neque leo, aliquam dictum lectus. </p>
+            <p>Fusce eros felis,   egestas sit amet pulvinar eget, rutrum nec orci. Nam hendrerit semper   porttitor. Aliquam erat volutpat. Morbi vehicula mauris ut enim   ullamcorper porta. </p>
+            
+            <h2>Etiam odio lectus</h2>
+            <p><img src="white_and_lavender_columbine.jpg" class="alignleft thumbnail" />Phasellus porttitor hendrerit urna non euismod. Etiam   odio lectus, auctor quis semper quis, gravida quis nunc. Phasellus   ligula sem, sollicitudin in tristique vel, volutpat nec nisi. </p>
+            <p> Curabitur ultricies, sapien id iaculis imperdiet, lectus mi pulvinar   lectus, et condimentum eros lacus id ante. Sed non sapien et lectus   adipiscing pulvinar. Suspendisse ut risus id ligula ultrices semper.   Donec fermentum ipsum at erat ornare nec ultricies nunc posuere.   </p>
+   	  </div><!-- maincolumn -->
+
+        <div id="sidebar">    
+            <div class="topic">
+            	<h2>Topic 1</h2>
+                <ul>
+                	<li><a href="#">Some random item</a></li>
+                    <li><a href="#">Another item</a></li>
+                    <li><a href="#">Something else</a></li>
+                    <li><a href="#">Seriously now</a></li>
+                    <li><a href="#">Ok you get the idea</a></li>
+                </ul>
+            </div>
+            
+            <div class="topic">
+            	<h2>Topic 2</h2>
+                <div id="calendar">
+                    <table>
+                        <thead>
+                            <tr><th colspan="7">May</th></tr>
+                            <tr><th>S</th><th>M</th><th>T</th><th>W</th>
+                            <th>T</th><th>F</th><th>S</th></tr>
+                        </thead>
+                        <tfoot>
+                            <tr><th colspan="7">2010</th></tr>
+                        </tfoot>
+                        <tbody>
+                            <tr class="oddrow">
+                                <td class="inactive"> </td>
+                                <td class="inactive"> </td>
+                                <td class="inactive"> </td>
+                                <td class="inactive"> </td>
+                                <td class="inactive"> </td>
+                                <td class="inactive"> </td>
+                                <td>1</td>
+                            </tr>
+                            <tr class="evenrow">
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>5</td>
+                                <td>6</td>
+                                <td>7</td>
+                                <td>8</td>
+                            </tr>
+                            <tr class="oddrow">
+                                <td>9</td>
+                                <td>10</td>
+                                <td>11</td>
+                                <td>12</td>
+                                <td>13</td>
+                                <td class="today">14</td>
+                                <td>15</td>
+                            </tr>
+                            <tr class="evenrow">
+                                <td>16</td>
+                                <td>17</td>
+                                <td>18</td>
+                                <td>19</td>
+                                <td>20</td>
+                                <td>21</td>
+                                <td>22</td>
+                            </tr>
+                            <tr class="oddrow">
+                                <td>23</td>
+                                <td>24</td>
+                                <td>25</td>
+                                <td>26</td>
+                                <td>27</td>
+                                <td>28</td>
+                                <td>29</td>
+                            </tr>
+                            <tr class="evenrow">
+                                <td>30</td>
+                                <td>31</td>
+                                <td class="inactive"> </td>
+                                <td class="inactive"> </td>
+                                <td class="inactive"> </td>
+                                <td class="inactive"> </td>
+                                <td class="inactive"> </td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div><!-- calendar -->
+            </div>
+            
+            <div class="topic">
+            	<h2>Topic 3</h2>
+            	<p>Quisque tortor augue,   dictum non egestas nec, ornare a arcu. Mauris ac ipsum at tortor   rhoncus suscipit. </p>
+            </div>
+        </div><!-- div -->
+        
+        <div class="clearing"></div>
+  </div><!-- content -->
+    
+    <div id="footer">
+    	<span>Copyright &copy; TC Class 2500. Some Rights Reserved.</span>
+    </div><!-- footer -->
+</div><!-- wrapper -->
+
+
+
+
+
+
+
+
+
+</body>
+</html>

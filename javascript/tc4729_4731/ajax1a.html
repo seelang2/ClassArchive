@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="target"></div>
+
+
+
+
+<script src="ajax.js"></script>
+<script type="text/javascript">
+
+function updateTarget(response) {
+	document.getElementById("target").innerHTML = response;
+}
+
+var ajaxObj = new Ajax();
+
+var firstname = "John";
+var lastname = "Doe";
+var email = "jdoe@email.com";
+
+var formData = 'firstname=' + escape(firstname) + '&' + 
+			   'lastname=' + escape(lastname) + '&' + 
+			   'email=' + escape(email);
+
+//alert(formData);
+
+
+ajaxObj.send({"method": "POST",
+			  "url": "echopost.php?mode=html",
+			  "callback": updateTarget,
+			  "respType": 'TEXT',
+			  "data": formData
+			  });
+
+</script>
+</body>
+</html>

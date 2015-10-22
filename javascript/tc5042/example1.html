@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<script type="text/javascript">
+
+document.write("<p>This space for rent.</p>");
+
+var someValue = 'Just some text.'.toUpperCase();
+
+//document.write("<p>" + someValue.toUpperCase() + "</p>");
+document.write("<p>" + someValue + "</p>");
+
+var sideA = 5;
+var sideB = parseInt('10inches');
+
+var perimeter = sideA + sideB + sideA + sideB;
+//var perimeter = (sideA * 2) + (sideB * 2);
+
+document.write('<p>The perimeter is ' + perimeter + '</p>');
+
+//var weekdays = new Array('Sun','Mon','Tue');
+var weekdays = ['Sun','Mon','Tue'];
+
+document.write('<p>' + weekdays[1] + '</p>');
+
+//var pillbox = new Object;
+var pillbox = {Sun: 'white',
+			    Mon: 'none',
+				Tue: 'none',
+				Wed: 'purple',
+				Thu: 'orange',
+				Fri: 'red',
+				Sat: 'green'
+			   };
+
+//pillbox.Sun = 'white';
+
+document.write('<p>' + pillbox.Mon + '</p>');
+document.write('<p>' + pillbox['Mon'] + '</p>');
+
+
+var weekdays = [
+				 'Sunday',
+				 'Monday',
+				 'Tuesday',
+				 'Wednesday',
+				 'Thursday',
+				 'Friday',
+				 'Saturday'
+				];
+
+var months = [
+				 'January',
+				 'February',
+				 'March',
+				 'April',
+				 'May',
+				 'June',
+				 'July',
+				 'August',
+				 'September',
+				 'October',
+				 'November',
+				 'December'
+				];
+
+
+var today = new Date(); // create instance of Date object
+
+switch(today.getDate()) {
+	case 1:
+	case 21:
+	case 31:
+		var ordSuffix = 'st';
+	break;
+	
+	case 2:
+	case 22:
+		var ordSuffix = 'nd';
+	break;
+	
+	case 3:
+	case 23:
+		var ordSuffix = 'rd';
+	break;
+	
+	default:
+		var ordSuffix = 'th';
+	break;
+}
+
+
+document.write('<p>Today is ' +
+				weekdays[today.getDay()] + ', ' +
+				months[today.getMonth()] + ' ' +
+				today.getDate() + ordSuffix + ', ' + today.getFullYear() +
+				'</p>');
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

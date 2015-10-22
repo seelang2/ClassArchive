@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="description" content="Just a sample page" />
+	
+	<title>Two Column Fixed Layout Demo</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Geneva, Arial, sans-serif;
+		color: #473F57;
+		background-color: #C9B0FF;
+	}
+	
+	#wrapper {
+		width: 800px;
+		background-color: #fff;
+		margin: auto;
+		border: 1px solid #7C6F96;
+	}
+	
+	#wrapper > header {
+		height: 80px;
+		background-color: #bffc44;
+	}
+	
+	#wrapper > footer {
+		height: 125px;
+		background-color: #5F596B;
+		color: #fff;
+		clear: both;
+	}
+	
+	#content {
+		background-color: #fcc;
+		float:left;
+	}
+	
+	#maincolumn {
+		float: left;
+		width: 510px;
+		padding: 1px 10px 1px 30px;
+	}
+	
+	#secondary {
+		float: right;
+		width: 225px;
+		padding: 1px 15px 1px 10px;
+		font-size: 90%;
+	}
+	
+	h2 {
+		margin-bottom: 0.25em;
+		font-weight: normal;
+	}
+	
+	h2 + p {
+		margin-top: 0;
+	}
+	
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+  <header>
+  
+  </header>
+  <div id="content">
+	<div id="maincolumn">
+		<h1 id="top">Lorem ipsum dolor sit amet</h1>
+
+		<h2 style="color:red;">Contents</h2>
+		<ol>
+			<li><a href="#section1">Section One</a></li>
+			<li><a href="#section2">Section Two</a></li>
+			<li><a class="highlight" href="#section3">Section Three</a></li>
+			<li><a href="#section4">Section Four</a></li>
+		</ol>
+
+		<p><a href="http://www.lipsum.com" target="_blank">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Aliquam neque lorem, feugiat eget sem quis, tincidunt porta felis. Etiam non nunc sollicitudin, <span class="highlight">tincidunt risus in, aliquam neque.</span> Praesent suscipit semper metus, ut luctus mi faucibus id. Proin posuere mi in sapien ullamcorper, vel ullamcorper turpis tristique. </p><p>Duis sed enim iaculis tortor pulvinar porta a eget nunc. In sed sollicitudin dui. Donec pulvinar, purus id feugiat venenatis, nulla est faucibus lorem, quis feugiat felis nibh a turpis. Curabitur fringilla velit massa, at sagittis massa semper sed. Etiam lacinia fermentum est, quis dapibus est lobortis et. Vestibulum in porttitor orci. Sed bibendum arcu eget vulputate fringilla.</p>
+
+		<h2 id="section1">Nam eget libero felis</h2>
+		<p>Nulla facilisi. Suspendisse fringilla justo non mauris fringilla vulputate. In eu metus sem. Mauris auctor tortor sit amet erat venenatis, scelerisque laoreet odio porta. Nam eget libero felis. Quisque mi eros, tincidunt at diam sed, imperdiet aliquam elit. Vestibulum sodales orci dictum orci dignissim ullamcorper. Nam nec mi facilisis, accumsan tellus et, aliquet orci. Suspendisse quis eleifend orci, congue varius purus. Duis a suscipit nulla.</p>
+
+		<!-- A comment.  -->
+		<!-- 
+			Lists use either OL or UL containers with one or more LIs inside
+		-->
+		<ol>
+			<li>Ut rhoncus lorem in vulputate gravida.</li>
+			<li>Phasellus iaculis ligula hendrerit lacinia cursus.</li>
+			<li>Praesent a ipsum ultrices, turpis non, imperdiet arcu.</li>
+			<li>Vivamus luctus lacus a odio vestibulum, ac eros varius.</li>
+			<li>Aliquam in sem sit amet nulla cursus eleifend.</li>
+			<li>Phasellus eu turpis in augue ultrices ullamcorper.</li>
+		</ol>
+
+		<p>Aliquam ut cursus mauris, non fringilla odio. Vestibulum in justo posuere, sagittis est vel, cursus velit. Cras luctus condimentum metus in accumsan. In pulvinar hendrerit nunc tincidunt viverra. Mauris sagittis turpis lacus, sed gravida tellus convallis eget. Nulla interdum malesuada sem vel accumsan. Etiam consequat quis tellus eget tempus. Fusce sodales orci et elementum pretium. Aenean id urna sit amet mi viverra tincidunt. Etiam pretium felis ante, quis consectetur risus elementum et. Nulla et tincidunt nibh. Cras at placerat lorem. Duis massa felis, porttitor vitae faucibus eget, pharetra nec lacus. Sed in neque nulla.</p>
+
+		<h2 id="section2">Donec vitae sem quis nisi</h2>
+		<p>Integer interdum quis quam a consequat. Pellentesque erat ligula, sodales quis fringilla vitae, consequat in nisi. Vestibulum eu lacus augue. Donec vitae sem quis nisi euismod scelerisque mollis eget lacus. In auctor leo non quam sodales mollis eu vitae justo. Donec dapibus purus volutpat, feugiat sapien non, commodo orci. Aenean mauris ipsum, pretium nec ipsum a, commodo mollis arcu.</p>
+
+		<h2 id="section3">Integer consectetur</h2>
+		<p>Integer consectetur, libero nec aliquam imperdiet, turpis neque pulvinar elit, ac sollicitudin orci urna in felis. Duis scelerisque risus nunc, id fringilla metus dictum ornare. Proin rhoncus molestie odio, vitae aliquet quam scelerisque ut.</p>
+
+		<h3>Proin lobortis magna vitae velit</h3>
+		<p>Ut convallis purus ac dolor fermentum ultricies. Nunc malesuada malesuada tortor, in feugiat nisi suscipit non. In pellentesque dignissim diam, eget consectetur arcu tempus in. Pellentesque in facilisis diam, ut sodales arcu. Proin lobortis magna vitae velit mattis, in faucibus magna adipiscing. </p>
+
+		<h3>Nulla in massa sit amet tellus</h3>
+		<p>Nulla in massa sit amet tellus rutrum tempus at et nisi. Maecenas vulputate justo sit amet sapien pharetra, vitae rutrum sem congue. Pellentesque iaculis lacinia risus, a imperdiet quam faucibus ac. Sed convallis pellentesque tempor. Curabitur ut tortor justo. Duis accumsan congue massa, non ultricies massa gravida et.</p>
+	</div><!-- maincolumn -->
+	
+	<div id="secondary">
+		<h2 id="section4">Ut euismod metus eget ligula pharetra</h2>
+		<p>Ut euismod metus eget ligula pharetra, nec aliquet odio feugiat. Duis faucibus turpis a odio pharetra, sit amet condimentum ipsum suscipit. Praesent in molestie metus, in viverra turpis. Quisque vehicula metus erat, in lacinia erat mollis nec. In non vestibulum nisl, non convallis eros. Morbi ut gravida est, sed condimentum purus. Praesent auctor nec lectus quis suscipit. Vivamus enim ligula, rutrum eu congue sed, auctor sit amet sapien. Curabitur accumsan sed magna in hendrerit. Nam varius gravida tempor. Praesent fringilla, turpis non posuere ultrices, tellus diam ultricies erat, vel tincidunt diam elit ac mi. Duis sollicitudin nunc a nisl placerat, quis aliquam turpis vehicula. Pellentesque massa nunc, fringilla a dictum vel, tempor sed neque. Suspendisse ultrices tincidunt lobortis. Maecenas gravida, elit sit amet ornare lobortis, odio augue pulvinar enim, vitae feugiat ante massa vel tellus.</p>
+
+		<p><a href="#top">Back to top</a></p>
+	</div><!-- secondary -->
+  </div><!-- content -->
+  <footer>
+	<span>Copyright &copy; TC Class 6444. Creative Commons License.</span>
+  </footer>
+</div><!-- wrapper -->
+
+</body>
+</html>
+
+
+
+

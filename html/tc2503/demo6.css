@@ -1,0 +1,74 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	background: #006;
+	margin: 0;
+	padding: 0;
+	text-align:center;
+	font-size: 85%;
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+#wrapper {
+	width: 900px;
+	text-align: left;
+	padding: 0;
+	margin: 0 auto;
+	background: #ffffff;
+}
+
+#top {
+	height: 50px;
+	overflow: hidden;
+}
+
+#content {
+	float: left;
+	width: 100%;
+}
+
+#bottom {
+	clear: both;
+}
+
+#widecol {
+	float: left;
+	width: 600px;
+}
+
+#narrowcol, #leftsubcol, #rightsubcol {
+	float: left;
+}
+
+#narrowcol {
+	font-size: 90%;
+	width: 300px;
+}
+
+#maintopic {
+	border-bottom: 1px solid #cccccc;
+}
+
+#leftsubcol {
+	width: 300px;
+}
+#rightsubcol {
+	width: 300px;
+}
+
+.alignleft {
+	float: left;
+	margin-right: 1em;
+}
+
+.alignright {
+	float: right;
+	margin-left: 1em;
+}
+
+.callout {
+	background: #FC6;
+	padding: 0.25em 1em;
+	width: 45%;
+}

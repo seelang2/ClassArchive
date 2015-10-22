@@ -1,0 +1,29 @@
+<html>
+<head>
+
+<script type="text/javascript" src="ajaxlib.js"></script>
+
+
+<script type="text/javascript">
+
+function sendResp() {
+	ajaxSendReq("GET", '/fakeserver.php', processResp, null, 'TEXT', true);
+}
+
+function processResp(resp) {
+	resultdiv = document.getElementById('results');
+	resultdiv.innerHTML = resp;
+}
+
+</script>
+
+</head>
+<body>
+
+<p><a href="#" onclick="sendResp();">Click Here</a></p>
+
+<div id="results"></div>
+
+</body>
+</html>
+

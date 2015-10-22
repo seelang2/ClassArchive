@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Basic Single Column Layout</title>
+
+<style type="text/css">
+/* Layout */
+body {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 85%;
+	color: #000000;
+	background-color: #cecece;
+}
+
+#container {
+	width: 800px;
+	background-color: #ffffff;
+	margin: auto;
+	padding: 0;
+	border: 5px solid #7a7a7a;
+}
+
+#header {
+	background-color: #C9F;
+	height: 80px;
+}
+
+#footer {
+	background-color: #3FC;
+	height: 125px;
+	clear: both;
+}
+
+#content {
+	background-color: #FCC;
+	float: left;
+}
+
+#maincolumn {
+	float: left;
+	width: 550px;
+	background-color: #FFC;
+}
+
+#sidebar {
+	float: right;
+	width: 250px;
+	background-color: #3F0;
+}
+
+/* Typography */
+
+h2 {
+	margin-bottom: 0.25em;
+	font-weight: normal;
+	color: #009;
+}
+
+h2 + p {
+	margin-top: 0;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<div id="container">
+    <div id="header">
+    	
+    </div><!-- header -->
+    
+    <div id="content">
+        <div id="maincolumn">
+        
+            <h1 id="top">Lorem ipsum dolor sit amet</h1>
+            
+            <p>
+                <a href="#top">Top</a><br />
+                <a href="#section1">First Section</a><br />
+                <a href="#section2">Second Section</a><br />
+                <a href="#section3">Third Section</a><br />
+                <a href="#section4">Fourth Section</a>
+            </p>
+            
+            <p><a href="/tc4148/example1.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Praesent 
+            eget <cite>sem felis</cite>, vitae ultrices eros. 
+            Pellentesque mollis, augue sed gravida dignissim, felis lectus sodales massa, sit amet gravida est metus 
+            vel nulla. Nullam porta tincidunt justo, ultricies consequat nisi lacinia ac. Nulla tempor metus sed diam 
+            faucibus viverra. Cras sodales erat ut dolor laoreet in consequat velit faucibus. Duis quis sapien sit 
+            amet leo consectetur pellentesque. Donec volutpat congue lacus, eu porttitor arcu gravida quis. Nam at 
+            condimentum felis. Aliquam erat volutpat. Aliquam erat volutpat. Etiam bibendum lectus sapien, ac commodo 
+            felis.</p>
+            
+            <h2 id="section1">Vivamus eleifend dolor purus</h2>
+            <p>Vestibulum tempor, nisl vitae rutrum semper, dui risus tincidunt sem, at suscipit risus massa quis nunc. 
+            Aenean nec lectus id dolor scelerisque mollis. Mauris eu dolor leo, vel suscipit mi. Vivamus felis tellus, 
+            semper quis iaculis non, scelerisque sit amet lorem. Vivamus pulvinar diam eget nibh auctor eu ullamcorper 
+            massa euismod. Vivamus eleifend dolor purus. In hac habitasse platea dictumst. Morbi in quam vel lectus 
+            imperdiet congue. Pellentesque eu mauris erat. Etiam non augue ut ante congue pharetra. Nam tempor sem at 
+            libero pellentesque ornare.</p>
+            
+            <ul>
+                <li class="hilight">Etiam aliquam massa in tortor bibendum egestas.</li>
+                <li>Suspendisse id diam velit, vitae rutrum sapien.</li>
+                <li class="hilight">Quisque ut felis sapien, nec porta elit.</li>
+                <li>Nunc ornare ornare neque, ac varius tellus facilisis eget.</li>
+                <li class="hilight">Nam venenatis libero et nisi accumsan aliquet.</li>
+                <li>Morbi non erat quis dui mattis dignissim at fringilla ligula.</li>
+                <li class="hilight">Sed luctus rhoncus libero, at consectetur justo dictum ut.</li>
+                <li>Aenean id lorem a urna gravida cursus.</li>
+                <li class="hilight">Donec id sem aliquam sem tristique auctor.</li>
+            </ul>
+            
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce urna 
+            velit, mollis sit amet aliquam a, imperdiet a velit. Ut lacinia tincidunt nibh, non pulvinar odio mattis id. 
+            Vestibulum ante odio, sodales fermentum mattis eu, luctus ac nunc. Aliquam dapibus neque vel libero tincidunt 
+            sed tempor erat lobortis. Integer feugiat risus quis arcu volutpat non venenatis lorem interdum. Morbi vel 
+            urna odio, venenatis condimentum leo. Aenean venenatis, risus a porta luctus, nulla eros egestas erat, sit 
+            amet tristique lectus erat blandit risus. Sed in nibh in nisl molestie tincidunt.</p>
+            
+            <h2 id="section2">Morbi at risus nec erat porta ultrices</h2>
+            <p>Praesent lacinia ultricies augue vitae bibendum. Curabitur mi felis, blandit lacinia sagittis id, 
+            condimentum ut metus. Morbi at risus nec erat porta ultrices. Integer eu erat augue, ut tincidunt urna. Cras 
+            placerat faucibus pretium. Donec varius libero eget mauris varius eu placerat dolor ullamcorper. Aliquam 
+            tincidunt arcu in tellus rhoncus scelerisque. Fusce bibendum pretium ante, ac semper metus venenatis 
+            elementum. Nunc sed mauris ipsum, in vehicula purus. Quisque vitae urna urna. Etiam sed elit tellus. Praesent 
+            ac neque turpis, in ultricies elit. Vivamus dapibus orci commodo turpis tincidunt vehicula.</p>
+            
+            <p>Aenean aliquam nisl quis sapien vestibulum id gravida ante facilisis. Cras commodo convallis odio, vel 
+            accumsan erat mattis ut. Phasellus elementum cursus ante, non eleifend nulla consectetur id. Suspendisse 
+            tincidunt laoreet tortor vel euismod. Phasellus vulputate diam at velit scelerisque eleifend. Praesent 
+            porttitor dapibus dui, nec convallis libero dapibus sit amet. Ut quis blandit sem. Nullam interdum ipsum 
+            vitae turpis venenatis aliquet.</p>
+            
+            <h2 id="section3">Vestibulum at eros sem</h2>
+            <p>Ut libero velit, tristique elementum imperdiet eget, malesuada id purus. Integer dignissim tortor 
+            dignissim dui fermentum facilisis. Nam cursus nisl non leo viverra vulputate. Donec congue, nisi non tempus 
+            fermentum, lectus sem suscipit quam, vitae imperdiet lacus quam at nulla. Praesent diam neque, aliquam eget 
+            imperdiet nec, cursus non orci. Nam quis diam leo. Donec sed sapien in lacus euismod molestie a eget sapien. 
+            Aliquam elementum viverra erat. Vestibulum at eros sem, ac tempus orci. Sed nec lacus lectus, non laoreet 
+            eros. Aenean iaculis laoreet pharetra. Fusce bibendum fermentum vestibulum. Sed neque justo, mollis eu 
+            vehicula quis, accumsan in nulla. Mauris augue eros, ullamcorper ac ornare eget, luctus vel dolor. Duis 
+            tempus fermentum dui, quis gravida metus laoreet et. Sed et dolor purus.</p>
+            
+            <p><a href="#top">Back to top</a></p>
+		</div><!-- maincolumn -->
+        
+        <div id="sidebar">
+            <h2 id="section4">Integer semper ipsum eu nulla placerat</h2>
+            <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Lorem ipsum 
+            dolor sit amet, consectetur adipiscing elit. Integer semper ipsum eu nulla placerat vitae convallis lorem 
+            aliquet. Sed velit nunc, rutrum id tincidunt vel, porta eget leo. Donec mattis ultrices sapien, at tincidunt 
+            ante sagittis quis. Praesent felis arcu, gravida malesuada auctor commodo, aliquam in metus. Nunc gravida 
+            leo at quam elementum cursus. Mauris vitae metus felis, ac pellentesque purus. </p>
+        
+        </div><!-- sidebar -->
+    </div><!-- content -->
+    
+    <div id="footer">
+    	<div>copyright &copy; 2011 TC Class 4148. Some Rights Reserved.</div>
+    </div><!-- footer -->
+</div><!-- container -->
+
+</body>
+</html>

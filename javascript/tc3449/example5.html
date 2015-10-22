@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<input id="button1" type="button" value="Click Here to View">
+<input id="button2" type="button" value="Clear Output" style="visibility:hidden">
+
+<div id="output"></div>
+
+<script type="text/javascript">
+
+var content = '<h1>Welcome Message</h1>' +
+			  '<p>This is just some sample HTML content that is being placed ' +
+			  'in a string for ease of use and to <b>demonstrate</b> the use ' +
+			  'of the innerHTML property.</p>' +
+			  '<p>Coming up with this sort of content on the fly is <strong>' +
+			  'PRECISELY</strong> why I go to <a href="http://www.lipsum.com">' +
+			  'lipsum.com</a> for this so that I do not get distracted.</p>';
+
+var outputDiv = document.getElementById("output");
+var theButton = document.getElementById("button1");
+var btnClear = document.getElementById("button2");
+
+theButton.onclick = function() {
+	outputDiv.innerHTML = content; // display content
+	btnClear.style.visibility = 'visible'; // display clear button
+}; // theButton.onclick
+
+btnClear.onclick = function() {
+	//outputDiv.innerHTML = '';
+	// DOM method for clearing an element
+	while(outputDiv.hasChildNodes()) {
+		outputDiv.removeChild(outputDiv.firstChild);
+	}
+	btnClear.style.visibility = 'hidden'; // display clear button
+}; // btnClear.onclick
+
+</script>
+</body>
+</html>

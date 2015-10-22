@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+
+<script type="text/javascript">
+
+document.write('<p>This space for rent.</p>');
+
+var myVariable = 'Just another text line.';
+
+document.write('<p>');
+document.write(myVariable);
+document.write('</p>');
+
+document.write('<p>' + myVariable + '</p>');
+
+var sideA = 32;
+var sideB = 'fuzzy hamster';
+var area = sideA * sideB;
+var perimeter = sideA + sideB + sideA + sideB;
+document.write('<p>' + area + ', ' + perimeter + '</p>');
+
+var weekdays = new Array('Sun','Mon','Tue','Wed','Thu','Fri','Sat');
+weekdays[2] = weekdays[2].toUpperCase();
+document.write('<p>' + weekdays[2] + '</p>');
+
+var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul"];
+months.push("Aug","Sep","Oct","Nov","Dec");
+
+alert(months.length);
+
+
+</script>
+
+</body>
+</html>

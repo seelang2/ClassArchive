@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+
+var $target = $('#target');
+
+// better approach, minimizes redraws to only one
+// by building the branch offline then appending the whole
+// lot to the live DOM at the end
+
+$('<table></table>')
+	.append('<tbody />')
+	.children()
+		.append('<tr />')
+		.children()
+			.append('<td>John</td>')
+			.append('<td>Doe</td>')
+			.append('<td>32</td>')
+			.end()
+		.append('<tr />')
+		.children(':last-child')
+			.append('<td>Jane</td>')
+			.append('<td>smith</td>')
+			.append('<td>44</td>')
+			.end()
+		.end()
+	.appendTo($target);
+
+
+</script>
+</body>
+</html>

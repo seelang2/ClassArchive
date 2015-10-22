@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>List Expander</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana;
+		font-size: 100%;
+	}
+	
+	ul {
+		list-style-type: none;
+	}
+	
+	span { position: relative; }
+	
+	span.open:before {
+		content: '[-]';
+		font-size: 75%;
+		position: absolute;
+		left: -25px;
+	}
+	
+	span.closed:before {
+		content: '[+]';
+		font-size: 75%;
+		position: absolute;
+		left: -25px;
+	}
+	
+	</style>
+</head>
+<body>
+
+<div id="target">
+	<ul>
+		<li><span>Item 1</span></li>
+		<li><span>Item 2</span></li>
+		<li><span>Item 3</span></li>
+		<li>
+			<span>Item 4</span>
+			<ul>
+				<li><span>Item 1</span></li>
+				<li><span>Item 2</span></li>
+				<li><span>Item 3</span></li>
+				<li>
+					<span>Item 4</span>
+					<ul>
+						<li><span>Item 1</span></li>
+						<li><span>Item 2</span></li>
+						<li><span>Item 3</span></li>
+						<li><span>Item 4</span></li>
+						<li><span>Item 5</span></li>
+					</ul>
+				</li>
+				<li><span>Item 5</span></li>
+			</ul>
+		</li>
+		<li><span>Item 5</span></li>
+	</ul>
+</div>
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$('li > ul')				// select any child ULs inside of LIs
+		.hide()					// ...and hide them
+		.prev()					// traverse to the SPAN sibling
+		.addClass('closed')
+		.on(
+			'click',
+			function(e) {
+				
+				$(this)			// put a jQuery wrapper around the SPAN
+					.toggleClass('open closed')
+					.next()		// traverse to the UL sibling
+					.toggle();	// and toggle it
+				
+			}
+		 )
+	
+	
+	
+	
+}); // document.ready
+
+
+
+
+</script>
+</body>
+</html>
+

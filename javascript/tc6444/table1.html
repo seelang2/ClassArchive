@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Table Demo using InnerHTML</title>
+	
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript">
+
+// get reference to DOM node to manipulate
+var targetElem = document.getElementById("target");
+
+targetElem.innerHTML = 
+	'<table><tbody>' +
+		'<tr><td>John</td><td>Doe</td></tr>' +
+		'<tr><td>Jane</td><td>Smith</td></tr>' +
+	'</tbody></table>';
+
+
+
+</script>
+</body>
+</html>

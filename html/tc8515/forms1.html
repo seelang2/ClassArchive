@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Layout Demo</title>
+	
+	<style type="text/css">
+	/* set up tableless form layout */
+	label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	
+	label span, label input {
+		display: inline-block;
+	}
+	
+	label span {
+		width: 115px;
+		text-align: right;
+		margin-right: 0.5em;
+	}
+	
+	[type="radio"]+span,
+	[type="checkbox"]+span {
+		text-align: left;
+		margin-left: 0.5em;
+		margin-right: 0;
+	}
+	
+	fieldset { margin-bottom: 1em; }
+	
+	textarea {
+		width: 400px;
+		height: 200px;
+	}
+	</style>
+	
+</head>
+<body>
+
+<form action="#" method="get">
+	<!--
+	<label for="field1">Text field 1:</label>
+	<input id="field1" type="text" name="field1" />
+	-->
+	
+	<!-- hidden fields don't get rendered but the data is included when
+	the form is submitted -->
+	<input name="data1" type="hidden" value="somedata" />
+	
+	<label>
+		<span>Text field 1:</span>
+		<input type="text" name="field1" />
+	</label>
+	
+	<label>
+		<span>Text field 2:</span>
+		<input type="text" name="field2" />
+	</label>
+	
+	<label>
+		<span>Hidden field 3:</span>
+		<input type="password" name="field3" />
+	</label>
+	
+	<fieldset>
+		<legend>Select your Interests</legend>
+		<p>Choose all that apply:</p>
+		<label>
+			<input type="checkbox" name="interests[]" value="spores" />
+			<span>Spores</span>
+		</label>
+		<label>
+			<input type="checkbox" name="interests[]" value="mold" />
+			<span>Mold</span>
+		</label>
+		<label>
+			<input type="checkbox" name="interests[]" value="fungus" />
+			<span>Fungus</span>
+		</label>
+	</fieldset>
+	
+	<fieldset>
+		<legend>Gender</legend>
+		<p>Select one:</p>
+		<label>
+			<input type="radio" name="gender" value="cismale" />
+			<span>Cis Male</span>
+		</label>
+		<label>
+			<input type="radio" name="gender" value="cisfemale" />
+			<span>Cis Female</span>
+		</label>
+		<label>
+			<input type="radio" name="gender" value="transmale" />
+			<span>Trans Male</span>
+		</label>
+		<label>
+			<input type="radio" name="gender" value="transfemale" />
+			<span>Trans Female</span>
+		</label>
+		<label>
+			<input type="radio" name="gender" value="nongender" />
+			<span>Non gendered</span>
+		</label>
+		<label>
+			<input type="radio" name="gender" value="unspecified" />
+			<span>Prefer not to say</span>
+		</label>
+	</fieldset>
+	
+	<label>
+		<span>Choose a region:</span>
+		<select name="region">
+			<option value="">Select One</option>
+			<option value="us">US and territories</option>
+			<option value="eu">Europe</option>
+			<option value="asia">Asia</option>
+		</select>
+	</label>
+	
+	<label>
+		<span>Choose a category:</span>
+		<select name="category" size="4" multiple>
+			<option value="">Select One</option>
+			<option value="leisure">Leisure</option>
+			<option value="business">Business</option>
+			<option value="academic">Academic</option>
+			<option value="scientific">Scientific</option>
+			<option value="industrial">Industrial</option>
+			<option value="cultural">Cultural</option>
+			<option value="other">Other Pursuit</option>
+		</select>
+	</label>
+	
+	<label>
+		<span>Enter any comments:</span>
+		<textarea name="comments">Enter comments here</textarea>
+	</label>
+	
+	<div>
+		<input type="submit" value="GO" />
+	</div>
+	
+</form>
+
+
+
+</body>
+</html>

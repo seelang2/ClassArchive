@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>TC Class #467 (Ajax): Contact Database Application</title>
+
+<link rel="stylesheet" href="/contactdb.css" media="all" type="text/css" />
+
+<script src="/ajax.js" type="text/javascript"></script>
+<script src="/formdata2querystring.js" type="text/javascript"></script>
+<script src="/xmlparse.js" type="text/javascript"></script>
+<script src="/general_lib.js" type="text/javascript"></script>
+<script src="/scripts/prototype.js" type="text/javascript"></script>
+<script src="/scripts/scriptaculous.js" type="text/javascript"></script>
+
+<script src="/contactdb1a.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="header">
+		<div id="statusbox">Loading... <img src="ajax-loader.gif" width="31" height="31" /></div>
+	</div>
+
+	<p><a id="tbFields" href="#">Show/Hide field list</a></p>
+	<div id="fieldlist">
+	  <select id="fieldselect" name="fieldselect" multiple="multiple" size="6">
+        <option value="firstname">First Name</option>
+        <option value="lastname">Last Name</option>
+        <option value="addr1">Address 1</option>
+        <option value="addr2">Address 2</option>
+        <option value="city">City</option>
+        <option value="st">State</option>
+        <option value="zip">Zip</option>
+        <option value="phone1">Phone 1</option>
+        <option value="phone2">Phone 2</option>
+        <option value="email">Email</option>
+        <option value="url">Website URL</option>
+      </select>
+	</div>
+	<div id="contacttable">
+	</div>
+	<div id="contactcard">
+		<div id="cc_close" class="flushright"><a id="test" href="#">Close Window</a></div>
+		<form id="contactform" name="contactform" action="dancinghamster" method="post">
+			<div class="label"><label for="firstname">First Name: </label><span id="firstname">This is a test.</span></div>
+			<div class="label"><label for="lastname">Last Name: </label><span id="lastname">This is a test.</span></div>
+			<div class="label"><label for="addr1">Address 1:</label><span id="addr1">This is a test.</span></div>
+			<div class="label"><label for="addr2">Address 1:</label><span id="addr2">This is a test.</span></div>
+			<div class="label"><label for="city">City:</label><span id="city">This is a test.</span></div>
+			<div class="label"><label for="st">State:</label><span id="st">This is a test.</span></div>
+			<div class="label"><label for="zip">Zip:</label><span id="zip">This is a test.</span></div>
+			<div class="label"><label for="phone1">Phone 1:</label><span id="phone1">This is a test.</span></div>
+			<div class="label"><label for="phone2">Phone 2:</label><span id="phone2">This is a test.</span></div>
+			<div class="label"><label for="email">Email:</label><span id="email">This is a test.</span></div>
+			<div class="label"><label for="url">Site URL:</label><span id="url">This is a test.</span></div>
+		</form>
+		<div id="cc_save" class="flushright"><input class="flushright" type="button" id="ccSave" disabled="disabled" value="Save Changes" /></div>
+		<br />
+	</div>
+
+	<div id="footer">
+	</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Modal Box Demo</title>
+	<meta charset="UTF-8" />
+	
+	<style type="text/css">
+	body {
+		margin: 0;
+		padding: 0;
+	}
+	
+	#wrapper {
+		padding: 1px;
+	}
+	
+	#modalscreen {
+		background: #efefef;
+		opacity: 0.7;
+	}
+	
+	#modalbox {
+		background: #7a7a7a;
+		overflow: hidden;
+	}
+	
+	#modalboxcontrol {
+	
+	}
+	
+	#modalboxcontent {
+		height: 100%;
+		overflow: scroll;
+	}
+	
+	</style>
+	
+</head>
+<body>
+<!--
+<div id="modalscreen"></div>
+<div id="modalbox">
+	<div id="modalboxcontrol">
+		<span><a href="#">[X]</a></span>
+	</div>
+	<div id="modalboxcontent">
+	
+	</div>
+</div>
+-->
+
+<div id="wrapper">
+	<h1>Headline!</h1>
+	<p><a id="link1" href="#">Click Me</a></p>
+
+
+</div>
+
+<script type="text/javascript" src="jquery-1.8.2.js"></script>
+<script type="text/javascript">
+
+var Modal = {
+	screenElem: null,
+	boxElem: null,
+	
+	createScreen: function() {
+		Modal.screenElem =
+		$('<div></div>')
+			.attr('id','modalscreen')
+			.css(
+				{
+					position: 'fixed',
+					width: '100%',
+					height: '100%',
+					zIndex: 1000
+				}
+			 );
+	}, // createScreen
+	
+	showScreen: function() {
+		Modal.screenElem.prependTo(document.body);
+	}, // showScreen
+	
+	hideScreen: function() {
+		Modal.screenElem.detach();
+	},
+	
+	createBox: function() {
+		Modal.boxElem =
+		$('<div></div>')
+			.attr('id','modalbox')
+			.css(
+				{
+					position:	'fixed',
+					width: 		'300px',
+					height: 	'200px',
+					zIndex: 	1001,
+					top: 		'50%',
+					left: 		'50%',
+					marginTop:	'-100px',
+					marginLeft:	'-150px'
+				}
+			 )
+			.append('<div></div>')
+			.children('div')
+			.attr('id','modalboxcontrol')
+			.append('<span><a href="#">[X]</a></span>')
+			.on(
+				'click',
+				function(e) {
+				
+				}
+			 )
+			.end()
+			.append('<div></div>')
+			.children('div:last-child')
+			.attr('id','modalboxcontent')
+			.end();
+	},
+	
+	init: function() {
+		Modal.createScreen();
+	},
+	
+	makeModal: function(content) {
+		Modal.createBox();
+		Modal.boxElem.find('#modalboxcontent').append(content);
+		Modal.showScreen();
+		Modal.boxElem.prependTo(document.body);
+	}
+	
+};
+
+
+$(document).ready(function() {
+	Modal.init();
+	
+	$('#link1')
+		.click(
+			function(e) {
+				$content = 
+				$('<div></div>').load('content1.html');
+				
+				Modal.makeModal($content);
+			}
+		 );
+});
+
+
+</script>
+</body>
+</html>

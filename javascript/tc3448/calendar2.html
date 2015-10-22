@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Calendar Demo</title>
+
+<style type="text/css">
+
+div#calendar {
+	width: 400px;
+	margin: auto;
+}
+
+#calendar table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#calendar table, #calendar th, #calendar td {
+	border: 1px solid #7a7a7a;
+}
+
+#calendar th, #calendar td {
+	width: 12%;
+	padding: 3px 1%;
+}
+
+#calendar .today {
+	background-color: #F03;
+	color: #fff;
+	font-weight: bold;
+}
+
+#calendar .hover { background-color: #FFC; }
+
+</style>
+
+</head>
+
+<body>
+
+<div id="calendar">
+</div>
+
+
+<script type="text/javascript">
+
+var weekDays = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+var months = ['January',
+			  'February',
+			  'March',
+			  'April',
+			  'May',
+			  'June',
+			  'July',
+			  'August',
+			  'September',
+			  'October',
+			  'November',
+			  'December'];
+
+// work with date object
+var todaysDate = new Date();
+//alert(todaysDate.getMonth());
+var currentMonth = months[todaysDate.getMonth()];
+var currentYear = todaysDate.getFullYear();
+
+// figure out total days of month
+var newDate = new Date(currentYear, todaysDate.getMonth() + 1, 0);
+var totalDays = newDate.getDate(); // total days in month
+
+newDate.setDate(1);
+//alert(newDate.toDateString());
+//alert(weekDays[newDate.getDay()]);
+
+var calendarDiv = document.getElementById("calendar");
+
+var tableElem = document.createElement("TABLE");
+calendarDiv.appendChild(tableElem);
+
+var tbodyElem = document.createElement("TBODY");
+tableElem.appendChild(tbodyElem);
+
+trElem = document.createElement("TR");
+tbodyElem.appendChild(trElem);
+
+thElem = document.createElement("TH");
+trElem.appendChild(thElem);
+thElem.colSpan = '7';
+thElem.appendChild(document.createTextNode(currentMonth + ' ' + currentYear));
+
+trElem = document.createElement("TR");
+tbodyElem.appendChild(trElem);
+
+for (var c = 0; c < weekDays.length; c++) {
+	thElem = document.createElement("TH");
+	trElem.appendChild(thElem);
+	thElem.appendChild(document.createTextNode(weekDays[c]));
+}
+
+currentDay = 1;
+while (currentDay <= totalDays) {
+	trElem = document.createElement("TR");
+	tbodyElem.appendChild(trElem);
+	
+	for (var c = 0; c < 7; c++) {
+		tdElem = document.createElement("TD");
+		trElem.appendChild(tdElem);
+		if (currentDay == todaysDate.getDate()) {
+			tdElem.className = 'today';
+		}
+		
+		// add custom data to object instance
+		tdElem.appData = new Object();
+		tdElem.appData.id = currentDay;
+		
+		if (currentDay <= totalDays) {
+			if (currentDay == 1 && c < newDate.getDay()) {
+				var dayDisplay = ' ';
+			} else {
+				var dayDisplay = currentDay;
+				currentDay++;
+				
+				// place event handler code inside if statement so that
+				// non-calendar cells do not have events associated
+				tdElem.onmouseover = applyHoverStyle;
+				tdElem.onmouseout = removeHoverStyle;
+				tdElem.ondblclick = dblClickDay;
+				
+			}
+		} else {
+			var dayDisplay = ' ';
+		}
+		
+		tdElem.appendChild(document.createTextNode(dayDisplay));
+	}
+}
+
+
+function applyHoverStyle() {
+	// 'this' refers to object that fired the event that called the function
+	//this.style.backgroundColor = '#FFC';
+	this.className += ' hover';
+}
+
+function removeHoverStyle() {
+	// 'this' refers to object that fired the event that called the function
+	//this.style.backgroundColor = '#FFF';
+	// use regular expression to pattern match and remove the class
+	this.className = this.className.replace(/ hover/, '');
+}
+
+function dblClickDay() {
+	var tempDate = new Date(currentYear, todaysDate.getMonth(), this.appData.id);
+	//alert(tempDate.toDateString());
+	
+	theFullDate = weekDays[tempDate.getDay()] + ', ' + 
+				  currentMonth + ' ' + 
+				  this.appData.id + ', ' + 
+				  currentYear;
+	
+	alert(theFullDate);
+}
+
+</script>
+
+
+
+
+
+</body>
+</html>

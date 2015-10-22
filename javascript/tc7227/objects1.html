@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+// define base object
+var Counter = {};
+Counter.c = 0;
+Counter.update = function() {
+	return ++this.c;
+}
+
+var x = Object.create(Counter);
+
+
+
+</script>
+</body>
+</html>

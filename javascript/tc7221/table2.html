@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script src="jquery-1.11.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$('<table />')
+	.append('<tbody>' + 
+				'<tr><td>John</td><td>Doe</td></tr>' + 
+				'<tr><td>Jane</td><td>Smith</td></tr>' +
+			'</tbody>')
+	.appendTo('#target');
+
+
+</script>
+</body>
+</html>

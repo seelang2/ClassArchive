@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<input id="button1" type="button" value="Abort Timeout" />
+<input id="button2" type="button" value="Stop Clock" />
+<div id="clock"></div>
+
+<script type="text/javascript">
+function sayHello() {
+	alert('Hello!');
+}
+
+function updateClock() {
+	var currentTime = new Date();
+	clockDiv.innerHTML = '<h1>The time is now: ' + currentTime.toTimeString() + '</h1>';
+}
+
+document.getElementById("button1").onclick = function() {
+	clearTimeout(timeout);
+}
+
+document.getElementById("button2").onclick = function() {
+	clearInterval(clockInterval);
+}
+
+var timeout = setTimeout(sayHello, 5000);
+var clockDiv = document.getElementById("clock");
+var clockInterval = setInterval(updateClock, 1000);
+
+
+
+
+
+</script>
+</body>
+</html>

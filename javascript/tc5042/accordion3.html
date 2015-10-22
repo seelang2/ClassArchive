@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Accordion</title>
+
+<style type="text/css">
+body {
+	background: #efefef;
+	color: #000;
+	font: 85% normal Verdana, Geneva, sans-serif;
+}
+
+#container {
+	width: 600px;
+	margin: auto;
+	border: 1px solid #7a7a7a;
+	background: #fff;
+}
+
+.title {
+	background: #36F;
+	color: #fff;
+	font-weight: bold;
+	font-size: 115%;
+	padding: 5px 10px;
+	border-top: 1px solid #009;
+}
+
+.title:first-child { border-top: none; }
+
+.content {
+	padding: 5px 10px;
+	border-top: 1px solid #009;
+	height: 100px;
+	overflow: scroll;
+	/* display: none; */
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="container">
+	<div class="title">Lorem ipsum dolor sit amet</div>
+    <div class="content">
+    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut odio orci, 
+        iaculis at blandit id, venenatis non ligula. Pellentesque ante nisl, 
+        euismod non eleifend nec, posuere eu ipsum. Duis vel erat a nibh iaculis 
+        gravida quis in urna. Phasellus eu orci in magna interdum vehicula. Sed 
+        sed lectus vitae ante accumsan rutrum non in ipsum. Duis eu magna massa. 
+        Donec et tincidunt eros. Donec a mi est. Proin ultrices ante at justo 
+        dignissim a bibendum velit adipiscing. Curabitur vitae egestas neque. 
+        Sed aliquet mauris vel quam dapibus at rhoncus est cursus. Aenean in 
+        lorem urna, at pharetra mauris.</p>
+    </div>
+
+	<div class="title">Phasellus porttitor elementum interdum</div>
+    <div class="content">
+    	<p>Mauris massa neque, gravida vel tristique sit amet, dictum faucibus 
+        diam. Donec vel augue sit amet quam sollicitudin elementum eget nec 
+        magna. Phasellus porttitor elementum interdum. Suspendisse vel 
+        consectetur ligula. Aenean dui erat, facilisis sit amet vehicula non, 
+        pretium a justo. Sed id posuere nibh. Vivamus mollis, magna vestibulum 
+        sodales hendrerit, lectus risus placerat urna, eu ultrices enim elit non 
+        metus. Donec congue tincidunt ipsum, quis ullamcorper neque lobortis eu. 
+        Vestibulum augue orci, vestibulum sit amet ultricies sed, lobortis in 
+        augue. Mauris porttitor est id nunc porta semper iaculis elit egestas. 
+        Vivamus orci erat, molestie mattis mattis vel, dapibus quis sem. Aliquam 
+        quis nulla orci, non tempus ipsum. Nunc eleifend pharetra turpis non 
+        rutrum. Nulla facilisi. Quisque sollicitudin odio non urna condimentum 
+        sagittis.</p>
+    </div>
+
+	<div class="title">Pellentesque turpis urna</div>
+    <div class="content">
+    	<p>Pellentesque turpis urna, ullamcorper vel ullamcorper in, scelerisque 
+        id felis. Etiam sed eros nisi. Aenean molestie suscipit est, et viverra 
+        lacus ornare vitae. In sollicitudin, quam at pulvinar ullamcorper, nibh 
+        dui cursus nibh, sit amet consectetur magna risus ornare eros. Nam 
+        hendrerit volutpat cursus. Integer sed luctus enim. Vestibulum euismod 
+        neque ac elit bibendum euismod.</p>
+    </div>
+
+	<div class="title">Mauris eget nunc tortor</div>
+    <div class="content">
+    	<p>Mauris eget nunc tortor, pellentesque mattis dolor. Curabitur ut odio 
+        a orci bibendum tempor. Nam lectus mi, eleifend id euismod quis, egestas 
+        nec libero. Aliquam porta hendrerit turpis eu tincidunt. Pellentesque 
+        consectetur nunc non nisl pulvinar eu mollis ipsum dictum. Ut nec 
+        convallis tortor. Cras nec mi quis mi hendrerit pharetra. Aenean non 
+        lacus lectus, quis commodo purus. Proin sodales cursus odio laoreet 
+        feugiat.</p>
+    </div>
+</div><!-- container -->
+
+
+<script src="jquery-1.7.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	var $content = $('.content');
+	
+	$content.hide();
+	
+	$('.title')
+		.each(
+			function(index, element) {
+				$(element).data('index',index);
+			}
+		 )
+		.click(
+			function(evt) {
+				var $this = $(this);
+				
+				$content
+					.not(':eq('+ $this.data('index') +')')
+					.hide()
+					.end()
+					.eq($this.data('index'))
+					.toggle();
+			}
+		 );
+	
+}); // $document.ready
+
+</script>
+</body>
+</html>

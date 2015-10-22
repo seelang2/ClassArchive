@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Date Demo Page</title>
+	
+	<style type="text/css">
+	</style>
+	
+</head>
+<body>
+
+<script type="text/javascript" src="getordinal1.js"></script>
+<script type="text/javascript">
+
+
+
+// create weekday and month labels
+var weekdays = 
+	[
+		'Sunday',
+		'Monday',
+		'Tuesday',
+		'Wednesday',
+		'Thursday',
+		'Friday',
+		'Saturday'
+	];
+
+var months = 
+	[
+		'January',
+		'February',
+		'March',
+		'April',
+		'May',
+		'June',
+		'July',
+		'August',
+		'September',
+		'October',
+		'November',
+		'December'
+	];
+	
+// get current date (make instance of Date object)
+var today = new Date();
+
+// output date information
+document.write('<p>Today is ' + weekdays[today.getDay()] + ', ' +
+				months[today.getMonth()] + ' ' + 
+				today.getDate() + getOrdinal(today.getDate()) + ', ' +
+				today.getFullYear() + '.</p>');
+
+
+
+</script>
+</body>
+</html>
+
+
+
+

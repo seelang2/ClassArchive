@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+
+	}
+
+	.column { float: left; }
+
+	#columnA {
+		width: 30%;
+		margin-right: 3%;
+	}
+
+	#columnB {
+		width: 25%;
+	}
+
+	#columnC {
+		width: 30%;
+		margin-left: 3%;
+	}
+
+	#columnB button {
+		display: block;
+	}
+
+	.group {
+		border: 1px solid #7a7a7a;
+		height: 200px;
+		overflow-y: scroll;
+	}
+
+	.group select {
+		width: 100%;
+		height: 200px;
+	}
+
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	li {
+		padding: 0.5em;
+		border-top: 1px solid #ababab;
+	}
+
+	li:first-child { border-top: none; }
+
+	.selected {
+		background: #00C;
+		color: #fff;
+	}
+
+	</style>
+</head>
+<body>
+
+<div id="controller">
+	<form id="form1" action="#" method="get">
+	<div class="column" id="columnA">
+		<h2>Source List</h2>
+		<div id="itemlist" class="group">
+			<ul>
+			</ul>
+		</div><!-- itemlist -->
+	</div><!-- columnA -->
+	<div class="controls column" id="columnB">
+		<button class="btnAddA">Add to A</button>
+		<button class="btnDelA">Remove from A</button>
+		<button class="btnAddB">Add to B</button>
+		<button class="btnDelB">Remove from B</button>
+	</div>
+	<div class="column" id="columnC">
+		<h2>Group A</h2>
+		<div id="groupA" class="group">
+			<ul>
+			</ul>
+		</div>
+		<h2>Group B</h2>
+		<div id="groupB" class="group">
+			<ul>
+			</ul>
+		</div>
+	</div><!-- columnC -->
+	<input type="submit" value="Save" />
+	</form>
+</div><!-- controller -->
+
+
+<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+var contactList =
+[
+	{ "firstname":"John", "lastname":"Doe", "age":42 },
+	{ "firstname":"Alex", "lastname":"Doe", "age":42 },
+	{ "firstname":"Jane", "lastname":"Doe", "age":42 },
+	{ "firstname":"Michael", "lastname":"Doe", "age":42 },
+	{ "firstname":"Trish", "lastname":"Doe", "age":42 },
+	{ "firstname":"Becky", "lastname":"Doe", "age":42 },
+	{ "firstname":"Peter", "lastname":"Doe", "age":42 },
+	{ "firstname":"John", "lastname":"Doe", "age":42 }
+];
+
+// set up application namespace within IIFE
+(function(App, undefined) {
+
+var data = {};
+
+App.init = function() {
+	// init vars
+	data.itemlistElem = $('#itemlist');
+	data.groupAElem = $('#groupA');
+	data.groupBElem = $('#groupB');
+
+	// set up button handler
+	$('#controller')
+		.on('click', 
+			'button, input[type="button"]', 
+			App.buttonController)
+		.on('click',
+			'li',
+			App.liClick);
+
+
+
+	$('#form1').on('submit', function(e){
+		e.preventDefault();
+
+		var dataList = {};
+
+		dataList.groupA = App.getArrayofIndexes(data.groupAElem);
+		dataList.groupB = App.getArrayofIndexes(data.groupBElem);
+
+		console.log(dataList);
+
+		console.log($.param(dataList));
+
+		// do an ajax POST to server
+		$.ajax({
+			url: 		'#',
+			type: 		'post',
+			dataType: 	'json',
+			data: 		$.param(dataList)
+		 })
+		.done(function(response) {
+			// handle server response
+		});
+		
+	});
+
+	//update Page
+	App.displayItems(contactList);
+}; // App.init
+
+App.displayItems = function(itemData) {
+	var $srcSelect =
+	data.itemlistElem
+		.find('ul')
+		.empty();
+
+	$.each(itemData, function(index, item) {
+
+		$('<li />')
+			.data('value', item)
+			.attr('data-index', index)
+			.append(item.firstname + ' ' + item.lastname)
+			.appendTo($srcSelect);
+
+	});
+
+}; // App.displayitems
+
+App.buttonController = function(e) {
+	//return false; // prevent default action
+	e.preventDefault(); // also prevents default action
+
+	switch(true) {
+		case $(this).hasClass('btnAddA'):
+			App.addToA();
+		break;
+		case $(this).hasClass('btnDelA'):
+		break;
+		case $(this).hasClass('btnAddB'):
+		break;
+		case $(this).hasClass('btnDelB'):
+		break;
+	}
+
+}; // App.buttonController
+
+App.liClick = function(e) {
+
+	$(this).toggleClass('selected');
+
+}; // App.liClick
+
+App.getArrayofIndexes = function(elem) {
+	var indexList = [];
+	elem
+		.find('li')
+		.each(function(index, elem) {
+			indexList.push($(elem).attr('data-index'));
+		 });
+
+	return indexList;
+
+}; // App.getArrayofIndexes
+
+App.addToA = function() {
+
+	var indexList = App.getArrayofIndexes(data.groupAElem);
+
+	// get list of all indexes currently in group A
+	data.itemlistElem
+		.find('.selected')
+		.filter(function(index, element) {
+			if ( indexList.indexOf($(element).attr('data-index')) > -1 ) return false;
+			return true;
+		 })
+		.clone()
+		.removeClass('selected')
+		.appendTo(data.groupAElem.find('ul'));
+
+}; // App.addNewItem
+
+App.editItem = function(item) {
+	item = $(item); // wrap element in jquery wrapper
+	console.log('editing item ',item.data('item'));
+}; // App.addNewItem
+
+App.deleteItem = function(item) {
+	item = $(item); // wrap element in jquery wrapper
+	console.log('deleting item ',item.data('item'));
+}; // App.addNewItem
+
+})(window.App = window.App || {});
+// attach App init to DOM ready handler
+$(document).ready(App.init);
+
+
+</script>
+</body>
+</html>

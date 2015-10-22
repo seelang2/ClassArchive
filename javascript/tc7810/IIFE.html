@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>IIFE Examples</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+
+var x = 'foo';
+
+(function() {
+
+	var x = 'bar';
+	
+	var y = 'zzzz';
+	
+	console.log(x,y);
+
+})();
+
+// console.log(x,y); // exception because y is undefined
+
+var obj = { foo: 'bar' };
+
+console.log(obj);
+
+// objects can be passed into an IIFE 
+(function(o) {
+	
+	var x = 'blah';
+
+	o.newPro = 'bar2';
+
+})(obj);
+
+console.log(obj);
+
+// IIFEs can become closures
+(function(o) {
+
+	var count = 0;
+	o.increment = function() {
+		return ++count;
+	};
+
+})(obj);
+
+console.log(obj.increment()); // 1
+console.log(obj.increment()); // 2
+
+// console.log(count); // exception - count not defined
+
+delete obj.increment; // destroy increment method and also the closure
+//delete obj; // not valid - use delete window.obj
+obj = null; // also would remove closure - usually
+
+
+</script>
+</body>
+</html>

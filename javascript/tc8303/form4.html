@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	
+	label span, label input { display: inline-block; }
+	label span { width: 100px; }
+	label input { width: 50px; }
+	
+	fieldset { border: none; }
+	
+	</style>
+</head>
+<body>
+
+<fieldset id="itemlist">
+	<label>
+		<span>A</span>
+		<input type="text" name="itema" />
+	</label>
+	<label>
+		<span>B</span>
+		<input type="text" name="itemb" />
+	</label>
+	<label>
+		<span>C</span>
+		<input type="text" name="itemc" />
+	</label>
+</fieldset>
+<fieldset id="totals">
+	<label>
+		<span>Total</span>
+		<input type="text" name="total" />
+	</label>
+</fieldset>
+
+
+
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+var $totalField = $('[name="total"]');
+var $itemListElem = $('#itemlist');
+
+$itemListElem
+	.on('blur', 'input', function(e) {
+		var total = 0;
+		
+		$itemListElem
+			.find('input')
+			.each(function (index, field) {
+				var val = $(field).val();
+				
+				// if the field doesn't contain a number skip this item
+				if ( isNaN(parseInt(val)) ) {
+					// display user feedback on the way out
+					// ONLY if the field is not empty
+					if (val != '') {
+						alert('Please enter a numeric value.');
+						
+						$(this)			// select the current field
+							.val('')	// empty the value
+							.focus();	// and return focus to it
+					}
+					return;
+				}
+				
+				// if the value is less than 1 display user feedback and
+				// skip this item
+				if ( val < 1 ) {
+					alert('Please enter a value greater than 0.');
+					$(this)
+						.val('')
+						.focus();
+					return;
+				}
+				
+				total += parseInt(val);
+			 });
+		
+		// update total field
+		$totalField.val(total);
+		
+	 });
+
+ 
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

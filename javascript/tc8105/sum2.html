@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+	
+	#wrapper {
+		width: 250px;
+	}
+	
+	#wrapper label {
+		display: block;
+		margin-bottom: 0.25em;
+	}
+	
+	#wrapper label span,
+	#wrapper label input {
+		display: inline-block;
+	}
+	
+	#wrapper label span {
+		width: 50%;
+		text-align: right;
+	}
+	
+	#wrapper label span:after {
+		content: ':';
+	}
+	
+	#wrapper label input {
+		width: 75px;
+	}
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<fieldset id="items">
+		<label class="lineitem">
+			<span>Cost</span>
+			<input name="lineitems[]" />
+		</label>
+	</fieldset>
+	<div id="controls">
+		<button id="additem">Add item</button>
+		<button id="delitem">Remove item</button>
+	</div>
+	<fieldset id="totals">
+		<label class="totals">
+			<span>Subtotal</span>
+			<input name="subtotal" value="0" readonly />
+		</label>
+		<label class="totals">
+			<span>Tax</span>
+			<input name="tax" value="0" readonly />
+		</label>
+		<label class="totals">
+			<span>Total</span>
+			<input name="total" value="0" readonly />
+		</label>
+	</fieldset>
+
+</div><!-- wrapper -->
+
+
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+
+// defer script execution to after the DOM is initialized
+$(document).ready(function() {
+
+
+/* Settings */
+var taxRate = 0.09;
+
+
+/*
+var $lineitem = 
+$('<label class="lineitem"><span>Cost</span><input name="lineitems[]" /></label>');
+*/
+
+// store reference to line item fieldset
+var $itemset = $('#items');
+
+// use the existing empty field as a template
+var $lineitem = 
+$('#items .lineitem')
+	.first()
+	.clone()
+	.find('input')
+	.val('')
+	.end();
+
+$('#additem')
+	.on('click', function() {
+		
+		$lineitem
+			.clone()
+			.appendTo($itemset);
+		
+	 });
+
+$('#delitem')
+	.on('click', function() {
+		
+		/*
+		$itemset
+			.children()
+			.last()
+		*/
+		
+		if ($itemset.children().length == 1) return; // do nothing if there's only one item
+		
+		$itemset
+			.children(':last-child')
+			.remove();
+		
+		recalculateTotals();
+	 });
+
+
+/*
+*/
+$itemset
+	.on('blur', 'input', function(evt) {
+		recalculateTotals();
+	 });
+	 
+var recalculateTotals = function() {
+	// because of the selector filter, 'this' refers to the
+	// filtered element
+	
+	// recalculate totals based on all lineitems
+	var subTotal = 0;
+	
+	$itemset
+		.find('.lineitem input')
+		.each(function (index, field) {
+			
+			// because this is a money field, we MUST ALWAYS 
+			// convert it to an integer before doing calculations
+			// to avoid base 2 rounding issues
+			// (think Office Space)
+			subTotal += ($(field).val() * 100);
+		 });
+	
+	console.log(subTotal);
+	
+	// update subtotal field
+	// (don't forget to convert it back to dollars and cents)
+	$('[name=subtotal]').val( (subTotal / 100) );
+	
+	var tax = subTotal * taxRate;
+	$('[name=tax]').val( (tax / 100) );
+	
+	var total = subTotal + tax;
+	$('[name=total]').val( (total / 100) );
+
+}; // recalculateTotals
+	
+
+}); // document.ready
+
+</script>
+</body>
+</html>

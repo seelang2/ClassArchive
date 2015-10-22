@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="target"></div>
+<div id="target2"></div>
+
+<script type="text/javascript">
+// get reference to the element to manipulate
+var targetElem = document.getElementById("target");
+
+var hElem = document.createElement("H1");
+targetElem.appendChild(hElem);
+hElem.appendChild(document.createTextNode('Welcome'));
+
+var pElem1 = document.createElement("P");
+var pText1 = document.createTextNode('Paragraph 1.');
+pElem1.appendChild(pText1);
+targetElem.appendChild(pElem1);
+
+var pElem2 = document.createElement("P");
+targetElem.insertBefore(pElem2, hElem);
+pElem2.appendChild(document.createTextNode('Paragraph 2'));
+
+var target2Elem = document.getElementById("target2");
+
+target2Elem.innerHTML = 
+	'<h2>InnerHTML Example</h2>' +
+	'<p>This is an example of using the innerHTML property to add elements to the DOM.</p>' +
+	'<p>While it is an easier and faster way to add content to the DOM, it does have its pitfalls as well.</p>' +
+	'<p>Do not rely on innerHTML only as there are times using the DOM methods are better.</p>';
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Cascading Menu, Take 2</title>
+
+<style type="text/css">
+/*
+#menu ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#menu li {
+	float: left;
+	border: 1px solid #7a7a7a;
+	border-left: none;
+}
+
+#menu li:first-child { border-left: 1px solid #7a7a7a; }
+
+#menu li ul {
+	position: absolute;
+	z-index: 100;
+	border: 1px solid #7a7a7a;
+}
+
+#menu li li {
+	float: none;
+	border: none;
+	border-top: 1px solid #7a7a7a;
+}
+
+#menu li li:first-child { border: none; }
+
+#menu a, 
+#menu li span {
+	display: block;
+	padding: 5px 10px;
+}
+*/
+</style>
+</head>
+
+<body>
+
+<div id="menu" class="horizmenu">
+	<ul>
+    	<li><a href="#">Link 1</a></li>
+    	<li><a href="#">Link 2</a></li>
+    	<li><a href="#">Link 3</a></li>
+        <li><span>Submenu 1</span>
+        	<ul>
+            	<li><a href="#">Really Long Link 1</a></li>
+            	<li><a href="#">Link 2</a></li>
+            	<li><a href="#">Link 3</a></li>
+                <li><span>Submenu 1</span>
+                    <ul>
+                        <li><a href="#">Really Long Link 1</a></li>
+                        <li><a href="#">Link 2</a></li>
+                        <li><a href="#">Link 3</a></li>
+                        <li><a href="#">Link 4</a></li>
+                    </ul>
+                </li>
+            	<li><a href="#">Link 4</a></li>
+            </ul>
+        </li>
+    	<li><a href="#">Link 4</a></li>
+    	<li><a href="#">Link 5</a></li>
+    </ul>
+</div><!-- menu -->
+
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+
+$('#menu')							// select the menu div
+	.find('li')							// get all LIs inside #menu
+	.css(								// set CSS properties
+	 	{float: 'left',
+		  border: '1px solid #7a7a7a',
+		  borderLeft: 'none'
+		}
+	 )
+	.has('ul') 						// filters collection to LIs that have ULs as descendants
+	.mouseover(					// set up mouseover event listener
+		function() { 				// event behavior handler
+			$(this)					// put a jQuery wrapper around the LI
+				.children('ul') 		// find the child UL for the LI
+				.show(); 			// display the UL
+		}
+	 )
+	.mouseout(						// set up mouseout listener
+		function() { 				// event behavior handler as anonymous function
+			$(this)					// put a jQuery wrapper around the LI
+				.children('ul') 		// find the child UL for the LI
+				.hide(); 				// hide the UL
+		}
+	 )
+	.end() 							// reverts collection to previous selection set of all LIs
+	.filter(':first-child')				// filters collection based on :first-child selector
+	.css(								// set CSS properties
+		{borderLeft: '1px solid #7a7a7a'}
+	 )
+	.end()							// reverts collection to previous selection set of all LIs
+	.find('ul')						// get all ULs inside LIs (submenus)
+	.css( 								// assign css properties for submenus
+	 	{position: 'absolute',
+		  border: '1px solid #7a7a7a',
+		  zIndex: 100
+		}
+	 )
+	.addClass('submenu') 		// add submenu class 
+	.hide()							// hide menus from view
+	.end()							// reverts collection to previous selection set of all LIs
+	.find('li')							// find all LIs inside LIs
+	.css(								// set CSS properties
+	 	{float: 'none',
+		  border: 'none',
+		  borderTop: '1px solid #7a7a7a'
+		}
+	 )
+	.filter(':first-child')				// filters collection based on :first-child selector
+	.css(								// set CSS properties
+	 	{border: 'none'}
+	 )
+	.end()							// reverts collection to all LIs inside LIs
+	.end()							// reverts collection to previous selection set of all LIs
+	.end()							// reverts collection back to #menu
+	.find('ul')						// get all ULs inside #menu
+	.css(								// set CSS properties
+	 	{listStyleType: 'none',
+		  margin: 0,
+		  padding: 0
+		}
+	 )
+	.end()							// reverts collection back to #menu
+	.find('a')							// get all As inside #menu	
+	.add('#menu li span')		// add SPAN elements to collection
+	.css(
+		{display: 'block',
+		  padding: '5px 10px'
+		}
+	 );									// and now we're done
+	
+
+
+</script>
+</body>
+</html>
+
+
+
+
+

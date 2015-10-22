@@ -1,0 +1,35 @@
+<!doctype HTML>
+<html>
+<head>
+	<title>Page Title</title>
+	<meta charset="UTF-8" />
+
+</head>
+<body>
+
+<script type="text/javascript">
+
+var contacts =
+  [
+	{ firstname: 'John', lastname: 'Doe', phone: '(312)588-2300' },
+	{ firstname: 'Mary', lastname: 'Doe', phone: '(312)588-2301' },
+	{ firstname: 'Steven', lastname: 'Doe', phone: '(312)588-2302' },
+	{ firstname: 'Alice', lastname: 'Doe', phone: '(312)588-2303' },
+	{ firstname: 'Bob', lastname: 'Doe', phone: '(312)588-2304' },
+	{ firstname: 'Patrick', lastname: 'Doe', phone: '(312)588-2305' }
+  ];
+
+// for each contact...
+for (var c = 0; c < contacts.length; c++) {
+	// make a paragraph and display contact properties
+	document.write('<p>' + 
+				   contacts[c].firstname + ' ' +
+				   contacts[c].lastname + ' ' + 
+				   contacts[c].phone +
+				   '</p>');
+}
+
+
+</script>
+</body>
+</html>

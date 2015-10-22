@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<meta name="description" content="This is a sample web page." />
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<style type="text/css">
+	body {
+		background: #f00;
+	}
+	
+	/* define media query sections. Breaks at 560, 760 and 900px */
+	@media screen and (min-width:560px) and (max-width:759px) {
+		/* treat like an embedded stylesheet */
+		
+		body {
+			background: #0f0;
+		}
+	}
+	
+	@media screen and (min-width:760px) and (max-width:899px) {
+		/* treat like an embedded stylesheet */
+		
+		body {
+			background: #00f;
+		}
+	}
+	
+	@media screen and (min-width:900px) {
+		/* treat like an embedded stylesheet */
+		
+		body {
+			background: #ffc;
+		}
+	}	
+	</style>
+</head>
+<body>
+
+<h1>Foo.</h1>
+<p>Just text.</p>
+
+</body>
+</html>

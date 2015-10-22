@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Example 1</title>
+	
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+document.write('<p>This is some text</p>');
+
+var someText = 'This space for rent.';
+
+document.write('<p>' + someText.toUpperCase() + '</p>');
+
+var sideA = 3,
+	sideB = '10',
+	area = sideA * sideB,
+	perimeter = sideA + sideB + sideA + sideB;
+
+console.log(typeof sideA, typeof sideB);
+
+document.write('<p>The area is ' + area + ' and the perimeter is ' + perimeter + '</p>');
+
+// var weekdays = new Array('Mon','Tue');
+var weekdays = ['Mon','Tue']; // use Object literal
+
+document.write('<p>The total elements in weekdays is ' + weekdays.length + '</p>');
+document.write('<p>The second element is ' + weekdays[1] + '</p>');
+
+weekdays.push('Wed','Thu','Fri'); // add values to the end of the array
+
+document.write('<p>The total elements in weekdays is ' + weekdays.length + '</p>');
+console.log(weekdays);
+
+weekdays.unshift('Sun'); // add values to beginning of array
+
+document.write('<p>The total elements in weekdays is ' + weekdays.length + '</p>');
+console.log(weekdays);
+
+/*
+// longhand object declaration
+var pillbox = new Object();
+pillbox.Sun = 'white';
+*/
+
+/*
+// JSON object declaration
+var pillbox = {
+	"Sun":"white"
+};
+*/
+
+// object literal declaration
+var pillbox = {
+	Sun: 'white',
+	Mon: 'none',
+	Tue: 'none',
+	Wed: 'blue',
+	Thu: 'orange'
+}
+pillbox.Fri = 'red';
+pillbox.Sat = 'green';
+
+document.write('<p>Wednesday\'s pill is ' + pillbox.Wed + '</p>');
+document.write('<p>Wednesday\'s pill is ' + pillbox['Wed'] + '</p>');
+
+
+
+</script>
+</body>
+</html>

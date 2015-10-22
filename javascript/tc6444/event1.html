@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Event Demo 1</title>
+	
+</head>
+<body>
+
+<button id="theButton">Click Me</button>
+
+<button id="button2">Click Me 2</button>
+
+<button id="button3">Click Me 3</button>
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+document.getElementById("theButton").onclick = function() {
+	alert("I've been clicked!");
+}
+
+$('#button2')
+	.on(
+		'click',
+		function() {
+			alert("I've been clicked too!");
+		}
+	 );
+
+$('#button3')
+	.click(
+		function() {
+			alert("I've been clicked too!");
+		}
+	 );
+
+ 
+	 
+</script>
+</body>
+</html>

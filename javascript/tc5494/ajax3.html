@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo</title>
+	<meta charset="UTF-8" />
+	
+	<style type="text/css">
+	</style>
+	
+</head>
+<body>
+
+<div id="contacts"></div>
+
+<script type="text/javascript" src="jquery-1.8.2.js"></script>
+<script type="text/javascript">
+
+var App = {
+	start: function() {
+		
+		$.ajax(
+			{
+				url:		'contactdata.xml',
+				type:		'GET',
+				dataType:	'xml',
+				cache:		false,
+				success:	App.processContacts,
+				error:		App.handleError
+			}
+		);
+		
+	}, // App.start
+	
+	handleError: function(rqObj, txtStatus, errExp) {
+		console.log('Error');
+		console.log(txtStatus);
+		console.log(errExp);
+	},
+	
+	processContacts: function(contactData) {
+		console.log(contactData);
+		
+		$tbody = 
+		$('<table><tbody></tbody></table>')
+			.appendTo('#contacts')
+			.children('tbody');
+		
+		$(contactData)
+			.find('contact')
+			.each(
+				function(contactIndex, contact) {
+					//console.log(contact.childNodes.length);
+					//console.log($(contact).children().length);
+					var rowHTML = '<tr>';
+					$(contact)
+						.children()
+						.each(
+							function(fieldIndex, field) {
+								rowHTML += '<td>' + $(field).text() + '</td>';
+							}
+						 );
+					rowHTML += '</tr>';
+					$(rowHTML)
+						.appendTo($tbody);
+				}
+			 )
+	
+	} // App.processContacts
+}; // App
+
+$(document).ready(App.start);
+
+</script>
+</body>
+</html>

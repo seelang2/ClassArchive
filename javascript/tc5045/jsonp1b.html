@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Ajax JSONP callback demo</title>
+</head>
+
+<body>
+
+<button id="button1">Click Me</button>
+
+<div id="data"></div>
+
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+
+// Ajax status object
+var AjaxStatus = {
+	init: function(params) {
+		AjaxStatus.div = 
+			$('<div id="ajaxstatus"></div>')
+				.css({
+					position: 'fixed',
+					height: params.height + 'px',
+					width: params.width + 'px',
+					zIndex: 1000,
+					background: 'url(' +  params.imageUrl + ') no-repeat',
+					top: '50%',
+					left: '50%',
+					marginTop: '-' + (params.height / 2) + 'px',
+					marginLeft: '-' + (params.width / 2) + 'px',
+					display: 'none'
+				 })
+				.prependTo(document.body)
+	}, // AjaxStatus.init
+	
+	show: function() {
+		AjaxStatus.div.show();
+	}, // AjaxStatus.show
+	
+	hide: function() {
+		AjaxStatus.div.hide();
+	} // AjaxStatus.hide
+}; // AjaxStatus
+
+// create application controller object
+var App = {
+	start: function() {
+		AjaxStatus.init( { imageUrl: 'ajax-loader.gif', height: 100, width: 100 } );
+		
+		$('#button1')
+			.click(function() {
+				// get data from server as callback (JSONP)
+				$.getScript('http://10.6.10.100/tc5045/echodata.php' +
+								  '?callback=App.showdata&firstname=John&lastname=Doe');
+			 	AjaxStatus.show(); // please wait...
+			 });
+	}, // App.start
+	
+	// define callback method to handle return data
+	showdata: function(data) {
+		AjaxStatus.hide(); // aaaand we're back
+		var $dataDiv = 
+			$('#data')
+				.html('');	// empties contents of div
+		
+		$.each(
+			data,
+			function(keyName, value) {
+				$('<div>' + keyName + ' => ' + value + '</div>').appendTo($dataDiv);
+			}
+		);
+		
+	}	// App.showdata
+
+}; // App
+
+$(document).ready(App.start); // launch App.start on DOM ready
+
+
+
+</script>
+</body>
+</html>

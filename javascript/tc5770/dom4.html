@@ -1,0 +1,35 @@
+<!doctype HTML>
+<html>
+<head>
+	<title>Page Title</title>
+	<meta charset="UTF-8" />
+
+</head>
+<body>
+
+
+	<div id="target">
+		<p>X</p>
+	</div>
+
+
+<script type="text/javascript" src="jquery-1.9.0.js"></script>
+<script type="text/javascript">
+
+$('#target').append('<p>append</p>');
+$('#target').prepend('<p>prepend</p>');
+$('#target').before('<p>before</p>');
+$('#target').after('<p>after</p>');
+
+
+$('<p>appendTo</p>').appendTo('#target');
+$('<p>prependTo</p>').prependTo('#target');
+$('<p>insertBefore</p>').insertBefore('#target');
+$('<p>insertAfter</p>').insertAfter('#target');
+
+
+
+
+</script>
+</body>
+</html>

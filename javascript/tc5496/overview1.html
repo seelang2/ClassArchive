@@ -1,0 +1,38 @@
+﻿<!doctype html>
+<html>
+<head>
+	<title>Sample Page</title>
+	<meta charset="UTF-8" />
+	
+</head>
+
+<body>
+
+<div id="target">
+	<p>X</p>
+</div>
+
+
+<script src="jquery-1.8.3.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+var targetElem = document.getElementById("target");
+
+var pElem = document.createElement("P");
+pElem.appendChild(document.createTextNode("Append"));
+
+targetElem.appendChild(pElem);
+
+pElem = document.createElement("P");
+pElem.appendChild(document.createTextNode("Prepend"));
+
+targetElem.insertBefore(pElem, targetElem.firstChild);
+
+pElem = document.createElement("P");
+pElem.appendChild(document.createTextNode("PrevSibling"));
+
+targetElem.parentNode.insertBefore(pElem, targetElem);
+
+</script>
+</body>
+</html>

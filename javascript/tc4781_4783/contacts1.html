@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Ajax Request Example 1</title>
+</head>
+
+<body>
+
+<button id="thebutton">Click Here for more information</button>
+
+<div id="info"></div>
+
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(
+	function() {
+		$('#thebutton')
+			.click(
+				function() {
+					$.getJSON(
+						'getnames.php?page=1&range=10',
+						function(data) {
+							//alert(data.length);
+							var $infoDiv = $('#info');
+							$infoDiv
+								.empty() // also clears contents of element
+								.append('<table><tbody></tbody></table>');
+							var $tbodyElem = $infoDiv.find('tbody');
+							
+							$.each(
+								data.names,
+								function(index, value) {
+									$tbodyElem
+										.append('<tr></tr>');
+									
+									var $trElem = $tbodyElem.find('tr:last-child');
+									
+									for(var c = 0; c < data.columnNames.length; c++) {
+										$trElem.append('<td>'+ value[data.columnNames[c]] +'</td>');
+									}
+									
+								} // callback for each
+							); // each
+							
+						} // callback function
+					); // getJSON
+				} // click handler
+			 ); // click
+		
+		
+	} // function
+); // document.ready
+
+</script>
+</body>
+</html>

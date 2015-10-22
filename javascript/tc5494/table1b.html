@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Sample Table Demo</title>
+	<meta charset="UTF-8" />
+	
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.8.2.js"></script>
+<script type="text/javascript">
+
+var contactData =
+{
+	"requestdate": "Date/Time",
+	
+	"fieldLabels": ['ID', 'First Name', 'Last Name', 'Email Address'],
+	
+	"data": 
+		[
+			 { "id":10,"firstname":"John","lastname":"Allen","email":"jal@yahoo.com" },
+			 { "id":123,"firstname":"Mary","lastname":"Peters","email":"mpami@gmail.com" },
+			 { "id":2,"firstname":"Jessica","lastname":"Albert","email":"who@email.com" },
+			 { "id":24,"firstname":"Alexi","lastname":"Michaels","email":"am@morning.com" },
+			 { "id":11,"firstname":"George","lastname":"Thomas","email":"george@thomas.com" },
+			 { "id":9,"firstname":"Sybil","lastname":"Charles","email":"person1@mail.com" },
+			 { "id":54,"firstname":"Frances","lastname":"Donald","email":"fhmd@mac.com" }
+		]
+
+};
+
+var $tbody =
+$('<table><tbody></tbody></table>')
+	.appendTo('#target')
+	.children('tbody');
+
+$.each(
+	contactData.data,
+	function(index, contact) {
+		var rowHTML = '<tr>';
+		
+		$.each(
+			contact,
+			function(colName, colValue) {
+				rowHTML += '<td>' + colValue + '</td>';
+			}
+		);
+		
+		rowHTML += '</tr>';
+		
+		$(rowHTML).appendTo($tbody);
+	} // function
+); // $.each contactList
+
+
+
+
+</script>
+</body>
+</html>

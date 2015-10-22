@@ -1,0 +1,35 @@
+-- phpMyAdmin SQL Dump
+-- version 2.10.1
+-- http://www.phpmyadmin.net
+-- 
+-- Host: localhost
+-- Generation Time: Sep 11, 2007 at 11:41 AM
+-- Server version: 5.0.16
+-- PHP Version: 5.1.6
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+-- 
+-- Database: `ajax320`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `products`
+-- 
+
+CREATE TABLE `products` (
+  `id` int(10) unsigned NOT NULL default '0',
+  `name` varchar(50) default NULL,
+  `price` float unsigned default NULL,
+  `qty` int(10) unsigned default NULL,
+  `image_url` varchar(75) default NULL,
+  `description` varchar(150) default 'No description available',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- 
+-- Dumping data for table `products`
+-- 
+

@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<script type="text/javascript">
+
+function Ajax() {
+	this.req = null;
+	this.responseType = 'text'; // text or xml
+	this.async = true;
+	this.handler = null;
+	
+	var self = this;
+	
+	this.init = function() {
+		try {
+			this.req = new XMLHttpRequest();
+		} catch(e) {
+			try {
+				this.req = new ActiveXObject('Msxml2.XMLHTTP');
+			} catch(e) {
+				try {
+					this.req = new ActiveXObject('Microsoft.XMLHTTP' );
+				} catch(e) {
+					
+				}
+			}
+		}
+		return true;
+	}; // init
+	
+	this.request = function(params) {
+		// Params: method, url, async, data, handler, type
+		this.init();
+		if (!this.req) {
+			alert('Request is not supported'); // doesn't support XHR object
+			return false;
+		}
+		
+		
+		this.async = params.async || this.async;
+		this.responseType = params.type || this.responseType;
+		this.handler = params.handler;
+		
+		this.req.open(params.method, params.url, this.async);
+		
+		this.req.onreadystatechange = function() {
+			if (this.readyState == 4) {
+				// request is done
+				if (this.status > 199 && this.status < 300) {
+					// good data returned from server
+					if (self.responseType == 'text') {
+						var response = this.responseText;
+					} else {
+						var response = this.responseXML;
+					}
+					
+					self.handler(response);
+					
+				} else {
+					// error handling goes here
+				} // if status
+			} // if readyState
+		}; // onreadystatechange
+		
+		if (params.method.toUpperCase() == 'POST') {
+			this.req.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+		}
+		
+		var data = params.data || null;
+		
+		this.req.send(data);
+		
+	}; // request
+	
+}
+
+</script>
+
+<p><input type="button" id="button1" value="Click Me!" /></p>
+
+<div id="results"></div>
+
+<script type="text/javascript" src="xmlparse.js"></script>
+<script type="text/javascript">
+var ajax = new Ajax();
+
+document.getElementById("button1").onclick = function() {
+	
+	ajax.request( {"method":"GET",
+				   "url":"test1.json",
+				   "type":"text",
+				   "handler":handleResponse} );
+	
+	
+	return false; // prevent the browser from performing the default action for the element
+}; // onclick
+
+function handleResponse(response) {
+	var contactList = JSON.parse(response);
+	
+	var tableHTML = '<table><tbody>';
+	
+	for (var c = 0; c < contactList.length; c++) {
+		tableHTML += '<tr><td>' + contactList[c].firstname + '</td><td>' + contactList[c].lastname + '</td></tr>';
+	} // for
+	
+	tableHTML += '</tbody></table>';
+	
+	document.getElementById("results").innerHTML = tableHTML;
+} // handleresponse
+
+
+</script>
+
+</body>
+</html>

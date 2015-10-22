@@ -1,0 +1,125 @@
+/* CSS Document */
+body {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	background: #7a7a7a;
+	font-size: 76%;
+}
+
+#wrapper {
+	margin: 0 auto;
+	background:#FFCCFF url(img/bg1.gif) repeat-y;
+	width: 750px;
+	text-align:left;
+}
+
+#header {
+	margin: 0;
+	padding: 0;
+	background:#000099;
+	color: #ffffff;
+	height: 75px;
+	overflow:hidden;
+}
+
+#leftcolumn {
+	margin: 0;
+	padding: 0;
+/*	background:#FFFF00; */
+	width: 150px;
+	float:left;
+}
+
+#centercolumn {
+	margin: 0;
+	padding: 0;
+/*	background: #ffffff; */
+	width: 448px;
+	margin-left: 150px;
+}
+
+#rightcolumn {
+	margin: 0;
+	padding: 0;
+/*	background: #FF9933; */
+	width: 150px;
+	float: right;
+}
+
+#footer {
+	margin: 0;
+	padding: 0;
+	background:#000099;
+	color: #ffffff;
+/*	border-top:1px solid #00ffff; */
+	height: 30px;
+	overflow:hidden;
+}
+
+.emph {
+	font-weight:bold;
+	color: #ff0000;
+}
+
+.productdiv {
+	float:left;
+	width: 125px;
+	text-align:center;
+	border: 1px solid #7a7a7a;
+	margin: 10px 5px;
+	padding: 5px 2px;
+}
+
+.clearing {
+	clear:both;
+	height:1px;
+	overflow:hidden;
+}
+
+#results {
+	height: 400px;
+	overflow:auto;
+}
+
+#status {
+	background: #ff0000;
+	color: #ffffff;
+	font-weight: bold;
+/*	visibility:hidden; */
+	display: none;
+	padding: 10px;
+	position:fixed;
+	top: 0;
+	right: 0;
+	z-index: 999;
+	width: 174px;
+	height: 52px;
+}
+
+#dimmer {
+	background: transparent url(img/dimbg1.png) repeat;
+	width: 100%;
+	height: 100%;
+	position:absolute;
+	display: none;
+	top: 0;
+	left: 0;
+	z-index: 500;
+	
+}
+
+.prevresult {
+	float:left;
+}
+
+.nextresult {
+	float:right;
+}
+
+/* Typography */
+body, td {
+	font-family:Geneva, Arial, Helvetica, sans-serif;
+}
+
+

@@ -1,0 +1,217 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+/* basic style reset */
+* {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+}
+
+/* layout */
+body {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 85%;
+	color: #000000;
+	background-color: #dedede;
+	padding: 20px 0;
+}
+
+#wrapper {
+	background-color: #ffffff;
+	width: 800px;
+	margin: auto;
+	border: 1px #7a7a7a solid;
+}
+
+#header, #footer {
+	height: 75px;
+	background-color: #7a7a7a;
+	color: #ffffff;
+	overflow: hidden;
+}
+
+#footer {
+	height: 140px;
+}
+
+#content {
+	/* padding: 25px 50px; */
+	background-color: #0F9;
+	clear: both;
+}
+
+#maincontent {
+	float: left;
+	width: 550px;
+}
+
+#sidebar {
+	float: right;
+	width: 250px;
+}
+
+.clearing {
+	height: 1px;
+	overflow: hidden;
+	clear: both;
+}
+
+/* typography */
+h1 {
+	font-size: 2em;
+	margin: 1em 0;
+	font-weight: normal;
+	letter-spacing: -1px;
+}
+
+h2 {
+	font-size: 1.7em;
+	margin: 1em 0 0.25em 0;
+	font-weight: normal;
+}
+
+h2 + p { margin-top: 0; }
+
+p {
+	margin: 1em 0;
+}
+
+/* menu styling */
+#menu {
+	float: left;
+	background: #7a7a7a;
+	width: 100%;
+}
+
+#menu ul {
+	list-style-type: none;
+}
+
+#menu li {
+	float: left;
+	background: #dedede;
+	/* border-left: 10px solid #7a7a7a; */
+	margin-left: 10px;
+	position: relative;
+}
+
+#menu li:first-child { margin-left: 0; }
+
+#menu li ul {
+	position: absolute;
+	z-index: 100;
+}
+
+#menu li li ul {
+	top: 0;
+	left: 100px;
+}
+
+#menu li ul,
+#menu li:hover li ul {
+	display: none;
+}
+
+#menu li:hover ul,
+#menu li li:hover ul {
+	display: block;
+}
+
+#menu li li {
+	float: none;
+	margin: 0;
+	width: 100px;
+}
+
+#menu a, #menu div { padding: 5px 20px; }
+
+#menu a {
+	display: block;
+	text-decoration: none;
+}
+
+#menu a, menu a:visited { color: #900; }
+
+#menu li:hover li div { background: none; }
+
+#menu a:hover, 
+#menu li:hover div,
+#menu li li:hover div {
+	background: #F9F;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+	<div id="header">
+    	This space for rent
+    </div><!-- header -->
+    
+    <div id="menu">
+    	<ul>
+        	<li><a href="#">A Link</a></li>
+        	<li><div>Submenu</div>
+            	<ul>
+                    <li><a href="#">A Link</a></li>
+                    <li><a href="#">A Link</a></li>
+                    <li><a href="#">A Link</a></li>
+                    <li><div>Submenu</div>
+                        <ul>
+                            <li><a href="#">sA Link</a></li>
+                            <li><a href="#">sA Link</a></li>
+                            <li><a href="#">sA Link</a></li>
+                            <li><a href="#">sA Link</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">A Link</a></li>
+                </ul>
+            </li>
+        	<li><a href="#">A Link</a></li>
+        	<li><a href="#">A Link</a></li>
+        	<li><a href="#">A Link</a></li>
+        </ul>
+    </div>
+    
+    <div id="content">
+		<div id="maincontent">
+            <h1>Lorem ipsum dolor sit amet</h1>
+            
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet, dui eu tincidunt egestas, ligula massa porttitor nunc, at posuere libero elit vel mauris. Phasellus volutpat molestie mi, id venenatis ligula pulvinar ut. Cras at pulvinar tortor. Etiam vel enim augue, nec lacinia velit. Quisque nec elementum felis. Mauris justo augue, aliquet lacinia consectetur id, accumsan eu erat. Donec semper ultricies erat id ornare. Mauris blandit accumsan justo ut vehicula. Nunc nec fermentum neque. Suspendisse vitae ipsum sed est vehicula placerat. Suspendisse vel est diam, eget tristique tortor.</p>
+            
+            <h2>Morbi nunc felis, pharetra eget facilisis et</h2>
+            
+            <p>Morbi nunc felis, pharetra eget facilisis et, aliquet vel tortor. Sed felis metus, tempor id consequat a, suscipit et justo. Curabitur quis dui in mauris bibendum dignissim malesuada a augue. Nullam sed odio ut nibh bibendum vestibulum. Phasellus enim ligula, feugiat sit amet malesuada ut, fringilla ac ante. Integer molestie tortor ultrices lectus tempus faucibus. Maecenas auctor tortor quis augue mollis venenatis. </p>
+            
+            <p>Nulla mattis suscipit sem a imperdiet. Nunc in ante dolor. Integer iaculis tortor ac enim aliquam auctor. Aliquam adipiscing leo accumsan eros malesuada cursus at imperdiet nisi. Pellentesque vitae ante ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+            
+        </div><!-- maincontent -->
+        <div id="sidebar">
+            <h2>Aenean non eros nisi</h2>
+            
+            <p>Aenean non eros nisi. Nunc rhoncus, neque eget aliquam hendrerit, odio mi tempus est, vel interdum mi magna et urna. Proin dapibus erat vel erat luctus ac tincidunt nulla pulvinar. Aliquam erat volutpat. Morbi tempus mi non lorem convallis sit amet porttitor libero posuere. Vestibulum sodales dui felis, tempus luctus ante. Ut imperdiet tellus vel libero rhoncus sed faucibus sapien pharetra. Maecenas elementum fringilla lorem eu pellentesque. </p>
+            
+            <p>Vivamus quis aliquam eros. Quisque interdum, massa sit amet malesuada ornare, elit augue tristique quam, ac dignissim lectus mi ut nisi. Duis sollicitudin ultrices sapien, suscipit pretium tellus gravida volutpat. Donec tellus leo, sodales non vehicula vel, interdum eu nibh. Etiam sit amet varius eros. Quisque at orci purus, non euismod quam. Praesent at est orci, vitae ornare mi. Nam porttitor commodo placerat. Donec ut felis luctus elit posuere vehicula. Cras pretium, massa eu tincidunt vestibulum, dolor velit iaculis neque, nec adipiscing nulla lorem quis velit.</p>
+    
+    	</div><!-- sidebar -->
+        
+        <div class="clearing"></div>    
+	</div><!-- content -->
+    
+    <div id="footer">
+    	<span>Copyright &copy; Training Connection Class 4138. Some Rights Reserved.</span>
+    </div>
+</div><!-- wrapper -->
+
+
+</body>
+</html>

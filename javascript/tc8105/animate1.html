@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Simple Animation Demo</title>
+	
+	<style type="text/css">
+	
+	#box1 {
+		width: 75px;
+		height: 75px;
+		background: red;
+		position: fixed;
+		top: 50px;
+		left: 100px;
+	}
+	
+	#box2 {
+		width: 75px;
+		height: 75px;
+		background: blue;
+		position: fixed;
+		top: 5px;
+		left: 10px;
+	}
+	
+	</style>
+</head>
+<body>
+
+
+<div id="box1"></div>
+<div id="box2"></div>
+
+
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+$('#box1')
+	.animate({
+		width: '+=250',
+		height: '+=250'
+	 }, {
+		duration: 1500,
+		queue: false
+	 })
+	.animate({
+		left: 900,
+		top: 300
+	 }, {
+		duration: 1000
+	 })
+	.animate({
+		left: '-=300',
+		top: '+=100'
+	 }, {
+		duration: 500
+	 })
+
+$('#box2')
+	.animate({
+		left: '+=300',
+		top: '+=300'
+	 }, {
+		duration: 2500
+	 })
+
+
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

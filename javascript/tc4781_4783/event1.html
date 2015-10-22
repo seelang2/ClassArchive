@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Events and Functions</title>
+</head>
+
+<body>
+
+<button id="button1">Click Me!</button>
+<button id="button2">Click Me Too!</button>
+
+<p><a id="link1" href="http://www.google.com">Go to Google</a></p>
+
+<script type="text/javascript">
+function clickMe() {
+	alert('Thank You!');
+} // clickMe
+
+document.getElementById("link1").onclick = function() { return false; };
+
+
+
+var buttonElem = document.getElementById("button1");
+
+buttonElem.onclick = function() {
+	alert('Hooray!');
+}; // buttonElem.onclick
+
+var buttonElem2 = document.getElementById("button2");
+
+buttonElem2.onclick = clickMe; // remember to leave the parens OFF when referencing the function itself
+
+
+</script>
+</body>
+</html>

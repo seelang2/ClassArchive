@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Page</title>
+<meta charset="UTF-8" />
+<meta name="description" content="My Sample Page." />
+
+<style type="text/css">
+
+#form1 label {
+	display: block;
+	margin-bottom: 0.5em;
+}
+
+#form1 label span,
+#form1 label input {
+	display: inline-block;
+}
+
+#form1 label span {
+	width: 90px;
+	text-align: right;
+	margin-right: 1em;
+}
+
+#form1 label span:after {
+	content: '->';
+	font-size: 90%;
+	color: red;
+}
+
+/* absolutely-positioned form */
+#apform {
+	position: relative; 
+	width: 600px;
+	height: 300px;
+	border: 1px solid #ccc;
+	margin: auto;
+	 /* background: url('tile1.jpg'); */
+}
+
+.ap { position: absolute; }
+
+</style>
+
+</head>
+<body>
+
+<form id="form1" action="#" method="get">
+
+	<label>
+		<span>First Name</span>
+		<input name="firstname" />
+	</label>
+
+	<label>
+		<span>Last Name</span>
+		<input name="lastname" />
+	</label>
+
+	<label>
+		<span>Email</span>
+		<input name="email" />
+	</label>
+
+</form>
+
+<hr />
+
+<form id="apform" action="#" method="get">
+
+	<label class="ap" style="top:10px;left:10px;" for="field1">First Name</label>
+	<input class="ap" style="top:10px;left:150px;" id="field1" name="firstname" />
+
+	<label class="ap" style="top:50px;left:10px;" for="field2">Last Name</label>
+	<input class="ap" style="top:50px;left:150px;" id="field2" name="lastname" />
+
+	<label class="ap" style="top:90px;left:10px;" for="field3">Email</label>
+	<input class="ap" style="top:90px;left:150px;" id="field3" name="email" />
+
+	
+	<span class="ap" style="top:10px;left:350px;">Your Favorite Color:</span>
+	<label class="ap" style="top:50px;left:405px;" for="field1">Red</label>
+	<input class="ap" style="top:50px;left:375px;" id="field1" type="radio" name="color" />
+
+	<label class="ap" style="top:90px;left:405px;" for="field1">Green</label>
+	<input class="ap" style="top:90px;left:375px;" id="field1" type="radio" name="color" />
+
+	<label class="ap" style="top:130px;left:405px;" for="field1">Blue</label>
+	<input class="ap" style="top:130px;left:375px;" id="field1" type="radio" name="color" />
+
+	<label class="ap" style="top:170px;left:405px;" for="field1">Fuschia</label>
+	<input class="ap" style="top:170px;left:375px;" id="field1" type="radio" name="color" />
+
+	<label class="ap" style="top:210px;left:405px;" for="field1">Aquamarine</label>
+	<input class="ap" style="top:210px;left:375px;" id="field1" type="radio" name="color" />
+
+</form>
+
+
+
+</body>
+</html>

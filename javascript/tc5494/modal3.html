@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Modal Box Demo</title>
+	<meta charset="UTF-8" />
+	
+	<style type="text/css">
+	body {
+		margin: 0;
+		padding: 0;
+	}
+	
+	#wrapper {
+		padding: 1px;
+	}
+	
+	#modalscreen {
+		background: #efefef;
+		opacity: 0.7;
+	}
+	
+	#modalbox {
+		background: #7a7a7a;
+		overflow: hidden;
+	}
+	
+	#modalboxcontrol {
+	
+	}
+	
+	#modalboxcontent {
+	
+	}
+	
+	</style>
+	
+</head>
+<body>
+<!--
+<div id="modalscreen"></div>
+<div id="modalbox">
+	<div id="modalboxcontrol">
+		<span><a href="#">[X]</a></span>
+	</div>
+	<div id="modalboxcontent">
+	
+	</div>
+</div>
+-->
+
+<div id="wrapper">
+	<h1>Headline!</h1>
+	<p><a id="link1" href="#">Click Me</a></p>
+	<p><a id="link2" href="#">Click Me Too</a></p>
+
+
+</div>
+
+<script type="text/javascript">
+	$ = document.getElementById;
+	
+</script>
+<script type="text/javascript" src="jquery-1.8.2.js"></script>
+<script type="text/javascript" src="modalbox.js"></script>
+<script type="text/javascript">
+
+jQuery.noConflict();
+
+var J = jQuery;
+
+J(document).ready(function() {
+	
+	J('#link1')
+		.click(
+			function(e) {
+				e.preventDefault();
+				
+				J('<p>This space for rent.</p>')
+					.makeModal({ width: '350px', height: '200px' });
+			}
+		 );
+
+	J('#link2')
+		.click(
+			function(e) {
+				e.preventDefault();
+
+				J('<div></div>')
+					.load('content1.html')
+					.makeModal({ width: 350, height: 200 })
+					.addClass('justCauseICan');
+			}
+		 );
+
+});
+
+
+</script>
+</body>
+</html>

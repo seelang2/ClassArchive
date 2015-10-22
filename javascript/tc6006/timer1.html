@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Timer Demo</title>
+	
+	<style type="text/css">
+		div.timer {
+			border: 1px solid #7a7a7a;
+			padding: 10px 25px;
+		}
+	</style>
+</head>
+<body>
+
+<div id="app">
+	<div id="timerlist">
+	<!--
+	<div data-itemid="123" class="timer">
+		<p>Elapsed time: <span>TIME</span>
+		<button class="btnStart">Start</button>
+		<button class="btnStop">Stop</button>
+		<button class="btnDelete">Delete</button>
+	</div> 
+	-->
+	</div><!-- timerlist -->
+	<div class="control">
+		<button class="btnAdd">Add Timer</button>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	var timers = []; // track timers
+	
+	var $timerDivTemplate = 
+	$('<div class="timer">' +
+		'<p>Start time: <span>TIME</span></p>' +
+		'<button class="btnStart">Start</button>' +
+		'<button class="btnStop">Stop</button>' +
+		'<button class="btnDelete">Delete</button>' +
+	'</div>');
+
+	
+	$('#app')
+		.on(
+			'click',
+			'button',
+			function(e) {
+				
+				switch(true) {
+					case $(this).hasClass('btnStart'):
+						var itemID = 
+							$(this)
+								.closest('.timer')
+								.attr('data-itemid');
+						
+						console.log('Start button clicked on item',itemID);
+					break;
+					case $(this).hasClass('btnStop'):
+						console.log('Stop button clicked.');
+					break;
+					case $(this).hasClass('btnDelete'):
+						console.log('Delete button clicked.');
+					break;
+					case $(this).hasClass('btnAdd'):
+						console.log('Add button clicked.');
+						
+						var timer = new Date();
+						
+						timers.push(timer);
+						
+						$timerDivTemplate
+							.clone()
+							.attr('data-itemid',timers.length -1)
+							.find('span')
+							.html(timer.getHours() + ':' + timer.getMinutes())
+							.end() // revert to previous selection
+							.appendTo('#timerlist');
+						
+					break;
+				}
+				
+			}
+		 );
+	
+
+}); // document.ready
+
+
+
+
+</script>
+</body>
+</html>

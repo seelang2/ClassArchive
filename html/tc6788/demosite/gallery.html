@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Gallery Site</title>
+	<!-- viewport meta tag is REQUIRED for responsive design on mobile devices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+	
+	<style type="text/css">
+	body {
+		color: #000;
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 100%;
+		background-color: #CECAE0;
+		margin: 0;
+	}
+		
+	#container {
+		max-width: 1200px;
+		background: #fff;
+		margin: 0 auto;
+	}
+	
+	
+	aside div {
+		width: 80%;
+		margin: auto;
+		margin-bottom: 20px;
+	}
+	
+	img.scalable {
+		width: 100%; /* height will scale to maintain image proportion */
+	}
+	
+	.fullwidth {
+		width: 80%;
+		margin: auto;
+		float: none;
+	}
+	
+	.gallerygrid {
+		float: left;
+		width: 31.3%;
+		margin: 25px 1%;
+	}
+	
+	
+	/* clearing shim class to force an element to enclose floated children */
+	.clearing {
+		height: 1px;
+		clear: both;
+	}
+	
+	
+	
+	/* Responsive break point at 520px */
+	@media screen and (min-width: 520px) {
+		
+		/* Set up simply two-column layout */
+		main {
+			float: left;
+			width: 60%;
+		}
+		
+		aside {
+			float: right;
+			width: 40%;
+		}
+	
+	} /* @media 520+ */
+	
+	</style>
+	
+</head>
+<body>
+
+<div id="container">
+	
+	<header>
+		<h1>My Demo Site</h1>
+	</header>
+	
+	<div id="content">
+		<!-- main column -->
+		<main class="fullwidth">
+			
+			<h1>Photo Gallery</h1>
+			
+			<div class="gallerygrid">
+				<a href="images/11eyes.jpg">
+					<img class="scalable" src="images/11eyes.jpg" alt="11 Eyes Main Cast" />
+				</a>
+			</div>
+			
+			<div class="gallerygrid">
+				<a href="images/fmp.jpg">
+					<img class="scalable" src="images/fmp.jpg" alt="Full Metal Panic" />
+				</a>
+			</div>
+			
+			<div class="gallerygrid">
+				<a href="images/sebastian.png">
+					<img class="scalable" src="images/sebastian.png" alt="Black Butler" />
+				</a>
+			</div>
+			
+			<div class="gallerygrid">
+				<a href="images/belldandy.jpg">
+					<img class="scalable" src="images/belldandy.jpg" alt="Black Butler" />
+				</a>
+			</div>
+			
+			<div class="gallerygrid">
+				<a href="images/gsg.jpg">
+					<img class="scalable" src="images/gsg.jpg" alt="Black Butler" />
+				</a>
+			</div>
+			
+			<div class="gallerygrid">
+				<a href="images/inuyasha.jpg">
+					<img class="scalable" src="images/inuyasha.jpg" alt="Black Butler" />
+				</a>
+			</div>
+			
+			<div class="gallerygrid">
+				<a href="images/katawa.png">
+					<img class="scalable" src="images/katawa.png" alt="Black Butler" />
+				</a>
+			</div>
+			
+			<div class="gallerygrid">
+				<a href="images/kirito.jpg">
+					<img class="scalable" src="images/kirito.jpg" alt="Black Butler" />
+				</a>
+			</div>
+			
+			<div class="gallerygrid">
+				<a href="images/l.jpg">
+					<img class="scalable" src="images/l.jpg" alt="Black Butler" />
+				</a>
+			</div>
+			
+			<div class="gallerygrid">
+				<a href="images/samurai.jpg">
+					<img class="scalable" src="images/samurai.jpg" alt="Black Butler" />
+				</a>
+			</div>
+			
+			<div class="gallerygrid">
+				<a href="images/yuuko.jpg">
+					<img class="scalable" src="images/yuuko.jpg" alt="Black Butler" />
+				</a>
+			</div>
+			
+			<div class="gallerygrid">
+				<a href="images/fma1.jpg">
+					<img class="scalable" src="images/fma1.jpg" alt="Black Butler" />
+				</a>
+			</div>
+			
+		</main>
+		
+		<div class="clearing"></div>
+		
+	</div><!-- content -->
+	
+	<footer>
+		<span>Released under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+	</footer>
+
+</div><!-- container -->
+
+</body>
+</html>

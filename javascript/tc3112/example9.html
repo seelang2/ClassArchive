@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Forms: jump menus</title>
+
+<style type="text/css">
+.demo {
+	margin: 1.5em 0;
+	border: 1px solid #ccc;
+	padding: 1em 1.5em;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<div class="demo">
+<select id="jumpmenu">
+	<option value="">Please select a link</option>
+	<option value="http://www.google.com">Google</option>
+	<option value="http://www.yahoo.com">Yahoo</option>
+	<option value="http://www.youtube.com">YouTube</option>
+	<option value="http://www.flickr.com">Flickr</option>
+</select>
+</div>
+
+<div class="demo">
+Type something:<br />
+<textarea id="textbox" cols="60" rows="6">
+</textarea><br />
+<span id="chardisplay">150 characters left</span>
+</div>
+
+<div class="demo">
+<form id="form1" name="form1">
+<p>Name: <input id="name" name="name" /></p>
+<p>Email: <input id="email" name="email" /></p>
+<p><input id="submit" type="submit" value="Continue" /></p>
+</form>
+</div>
+
+<div class="demo">
+<form id="form2" action="#" method="get" name="form2">
+<p>Name: <input name="name" /></p>
+<p>Email: <input name="email" /></p>
+<p>Phone: <input name="phone" /></p>
+<p><input type="submit" value="Continue" /></p>
+</form>
+</div>
+
+<script type="text/javascript" src="functions.js"></script>
+<script type="text/javascript">
+document.getElementById("jumpmenu").onchange = function() {
+	//alert(this.value);
+	if (this.value != '') {
+		// confirm with visitor that they are leaving site
+		if (confirm('Are you sure you want to leave this site?')) {
+			// redirect browser location
+			//window.location = this.value;
+			// open in a new window instead
+			window.open(this.value);
+		}
+	}
+};
+
+///////////////////////////////////////////////////////////////////////////
+
+var charCount = 150;
+var textBox = document.getElementById("textbox");
+var charDisplay = document.getElementById("chardisplay");
+
+textBox.onkeypress = function(e) {
+	if (!e) var e = window.event; // retrieve event object if not passed (IE)
+	// trap appropriate keycode location
+	var keyCode = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
+	
+	if (charCount == 0) {
+		// if not a special char like arrows, backspace, enter, etc then suppress
+		if (keyCode > 31 && keyCode < 127) {
+			return false; // suppress keystroke
+		}
+	}
+};
+
+textBox.onkeydown = function(e) {
+	if (!e) var e = window.event; // retrieve event object if not passed (IE)
+	
+	charCount = 150 - textBox.value.length;
+	/*
+	// use DOM method to change text display
+	// remove all children from target element
+	while (charDisplay.hasChildNodes()) { charDisplay.removeChild(charDisplay.firstChild); }
+	charDisplay.appendChild(document.createTextNode(charCount + ' characters left'));
+	*/
+	// use innerHTML to update text display
+	charDisplay.innerHTML = charCount + ' characters left';
+};
+
+///////////////////////////////////////////////////////////////////////////
+
+var field1 = document.getElementById("name");
+var field2 = document.getElementById("email");
+var submitButton = document.getElementById("submit");
+submitButton.disabled = true;
+
+function checkFields() {
+		//alert('go');
+	if (field1.value.length > 0 && field2.value.length > 0) {
+		submitButton.disabled = false;
+	} else {
+		submitButton.disabled = true;
+	}
+}
+var form1 = document.getElementById("form1")
+
+//field1.onchange = checkFields;
+//field2.onchange = checkFields;
+//field1.onpropertychange = checkFields; // IE only
+//field2.onpropertychange = checkFields; // IE only
+
+// set up polling mechanism to check field status
+var fieldCheck = setInterval(checkFields, 250);
+
+///////////////////////////////////////////////////////////////////////////
+
+var form2 = document.getElementById("form2");
+//alert(form2.elements.length);
+//alert(document.forms[1].elements[0].name);
+
+form2.onsubmit = function() {
+	var validated = true; // innocent until proven guilty
+	// loop through form fields
+	for (var c = 0; c < form2.elements.length; c++) {
+		//alert(form2.elements[c].name);
+		/*
+		*/
+		switch(form2.elements[c].name) {
+			case 'name':
+				// field can't be blank
+				if (form2.elements[c].value.length == 0) {
+					validated = false; // invalidate form
+					alert('Name field cannot be blank.');
+				}
+				// field needs minimum length
+				if (form2.elements[c].value.length < 4) {
+					validated = false; // invalidate form
+					alert('Name field must be more than 4 characters.');
+				}
+			break;
+			case 'email':
+				// pattern matching email via regular expression
+				if (form2.elements[c].value.search(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i) < 0) {
+					validated = false;
+					alert('Email appears to be invalid.');
+				}
+			break;
+		} // switch
+	}
+	return validated;
+};
+
+</script>
+
+</body>
+</html>

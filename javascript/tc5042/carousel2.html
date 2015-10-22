@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>EXCITING carousel demo. Yay.</title>
+
+<style type="text/css">
+
+#carouselwindow { }
+#carouselfilmstrip { }
+
+
+</style>
+</head>
+
+<body>
+
+
+<div id="container">
+
+	<div id="carousel"></div>
+
+</div>
+
+
+
+<script src="jquery-1.7.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+
+var carousel = {
+	params: {}, 
+	
+	init: function(params) {
+		carousel.params = params; // copy over parameters
+		
+		$(params.target)
+			.append('<div id="carouselwindow"></div>')
+			.children('#carouselwindow')
+			.css(
+			   {
+				position: 'relative',
+				width: params.slideWidth + 'px',
+				height: params.slideHeight + 'px',
+				overflow: 'hidden',
+				margin: 'auto'
+			   }
+			 )
+			.append('<div id="carouselfilmstrip"></div>')
+			.children('#carouselfilmstrip')
+			.css(
+			   {
+				height: (params.slides.length * params.slideHeight) + 'px',
+				width: params.slideWidth + 'px',
+				overflow: 'hidden',
+				margin: 'auto',
+				position: 'absolute',
+				left: 0
+			   }
+			 )
+			.each(
+			   function(i, elem) {
+			      var $filmstrip = $(elem);
+				  
+				  $.each(
+				     params.slides,
+					 function(index, slide) {
+					    $filmstrip.append('<img style="display:block" src="'+ slide +'" />');
+					 }
+				  ) // $.each
+			   }
+			 );
+		
+		if (params.autostart) carousel.start();
+		
+	}, // init
+	
+	moveDown: function() {
+		$('#carouselfilmstrip')
+			.animate(
+			   {
+				 top: carousel.params.slideHeight * -1
+			   }, 
+			   carousel.params.moveDuration, 
+			   'swing',
+			   function() {
+				  $('#carouselfilmstrip img:first-child')
+					 .detach()
+					 .appendTo('#carouselfilmstrip')
+					 .parent()
+					 .css( {top: 0} );
+			   }
+			 );
+	}, // moveDown
+	
+	start: function() {
+		setInterval(carousel.moveDown, carousel.params.intervalDuration);
+	} // start
+	
+}; // carousel
+
+
+
+$(document).ready(function() {
+	
+	carousel.init(
+	   {
+	     target: $('#carousel'),
+		 slides: ['images/exite1.jpg',
+		 		  'images/exite2.jpg',
+		 		  'images/exite3.jpg',
+		 		  'images/exite4.jpg'
+				 ],
+		 slideWidth: 300,
+		 slideHeight: 200,
+		 moveDuration: 750,
+		 intervalDuration: 1750,
+		 autostart: true
+	   }
+	);
+	
+}); // document.ready
+
+</script>
+</body>
+</html>

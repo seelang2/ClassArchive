@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="menu">
+	<ul>
+		<li><a href="http://www.google.com">Click me!</a></li>
+		<li><a href="http://www.yahoo.com">Click me!</a></li>
+		<li><a href="http://www.flickr.com">Click me!</a></li>
+		<li><a href="http://www.microsoft.com">Click me!</a></li>
+	</ul>
+</div>
+<script type="text/javascript">
+
+function confirmFollow() {
+	return confirm('You are about to leave this page. Click Ok to proceed or Cancel to stay.');
+};
+
+var menuDiv = document.getElementById("menu");
+
+var linkList = menuDiv.getElementsByTagName("A");
+
+for (var c = 0; c < linkList.length; c++) {
+	linkList[c].onclick = confirmFollow;
+}
+
+</script>
+</body>
+</html>

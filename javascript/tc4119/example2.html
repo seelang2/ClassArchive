@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<script type="text/javascript" src="ajaxlib.js"></script>
+<style type="text/css">
+form label {
+	display: block;
+	margin-bottom: 0.5em;
+	position: relative;
+}
+
+label input {
+	position: absolute;	
+	left: 100px;
+}
+
+</style>
+</head>
+
+<body>
+
+<form id="form1" action="#" method="post">
+	<label>First Name: <input name="firstname" /></label>
+	<label>Last Name: <input name="lastname" /></label>
+	<label>Email: <input name="email" /></label>
+	<input type="submit" value="Continue" />
+</form>
+
+<div id="results"></div>
+
+<script type="text/javascript">
+document.getElementById("form1").onsubmit = function() {
+	// preprocess form fields
+	
+	var someObj = {prop1:"val1",prop2:"val2"};
+	
+	// package fields
+	var dataString = '';
+	for (var c = 0; c < this.elements.length; c++) {
+		if (c > 0) dataString += '&';
+		if (this.elements[c].name.length > 0) dataString += this.elements[c].name + '=' + escape(this.elements[c].value);
+	}
+	
+	// send request to server
+	var ajax = new Ajax();
+	
+	ajax.request( {"method":"POST",
+				   "url":"echopost.php?mode=html",
+				   "type":"text",
+				   "handler":showResults,
+				   "data":dataString} );
+	
+	return false;
+}; // onsubmit
+
+function showResults(response) {
+	document.getElementById("results").innerHTML = response;
+} // showResults
+
+</script>
+</body>
+</html>

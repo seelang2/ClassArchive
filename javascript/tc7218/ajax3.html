@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+	
+	<style type="text/css">
+	</style>
+	
+</head>
+<body>
+
+<div id="target"></div>
+<button id="thebutton">Add new snippet</button>
+
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+var $snippet = $('<div />').load('template-part1.html');
+
+var snippetCount = 0;
+
+$('#thebutton')
+	.on(
+		'click',
+		function(e) {
+			
+			$snippet
+				.clone()
+				.attr('id','snippet-' + (++snippetCount))
+				.appendTo('#target');
+			
+		}
+	 );
+
+
+}); // document.ready
+
+</script>
+</body>
+</html>
+
+
+
+

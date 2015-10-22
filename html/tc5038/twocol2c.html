@@ -1,0 +1,186 @@
+<html>
+<head>
+	<title>Single Column With Header and Footer</title>
+	<meta name="description" content="Our first web page" />
+	<meta charset="utf-8" />
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	
+	<!-- <link href="style1.css" rel="stylesheet" type="text/css" /> -->
+	
+	<style type="text/css">
+		/* Layout */
+		body {
+			font-family: Verdana, Helvetica, Arial, sans-serif;
+			font-size: 85%; /* approximately 14px with verdana */
+			background-color: #C0C7FC;
+			margin: 0;
+			padding: 0;
+		}
+		
+		#wrapper {
+			width: 800px;
+			margin: 0 auto; /* auto will center the element within its parent */
+			background: #fff;
+			border: 1px solid #8088C2;
+		}
+		
+		#masthead {
+			background-color: #3264FA;
+			height: 80px;
+		}
+		
+		#content {
+			/* padding: 1px 50px; */
+			background: #F9FCAE;
+			clear: both; /* content should appear below topnav */
+		}
+		
+		#footer {
+			background: #999999;
+			color: #fff;
+			height: 125px;
+		}
+		
+		#maincolumn {
+			width: 550px;
+			float: left;
+		}
+		
+		#sidebar {
+			width: 250px;
+			float: right;
+		}
+		
+		.clearing { /* shim container to clear floats */
+			clear: both;
+			height: 1px;
+			overflow: hidden;
+		}
+		
+		/* Menu styling */
+		#topnav ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			width: 500px;
+			margin: auto;
+			background: #FFC9FF;
+		}
+		
+		#topnav li {
+			float: left;
+			border: 1px solid #009;
+			border-left: none;
+			width: 99px;
+		}
+		
+		#topnav li:first-child {
+			border-left: 1px solid #009;
+			width: 98px;
+		}
+		
+		#topnav a {
+			text-decoration: none; /* remove underline */
+			display: block; /* convert to a block so we can attach padding */
+			text-align: center;
+			padding: 5px 15px;
+		}
+		
+		#topnav a:hover {
+			background: #C9FBFF;
+		}
+		
+		/* Typography */
+		h1 { 
+			font-size: 2em;
+			font-weight: normal;
+			color: #900;
+		}
+		
+		h2 {
+			font-size: 1.7em;
+			font-weight: normal;
+			color: #000;
+			margin: 0.8em 0 0.25em 0;
+		}
+		
+		h2 + p {
+			margin-top: 0;
+		}
+	</style>
+	
+</head>
+
+<body id="top">
+
+<div id="wrapper">
+	<div id="masthead"></div><!-- masthead -->
+	
+	<div id="topnav">
+		<ul>
+			<li><a href="#">Menu item 1</a></li>
+			<li><a href="#">Menu item 2</a></li>
+			<li><a href="#">Menu item 3</a></li>
+			<li><a href="#">Menu item 4</a></li>
+			<li><a href="#">Menu item 5</a></li>
+		</ul>
+	</div>
+	
+	<div id="content">
+		<div id="maincolumn">
+			
+			<!-- HTML comment. Ignored by browser -->
+
+			<h1 id="section1" title="strange place for a popup">Lorem ipsum dolor sit amet</h1>
+
+			<h2>Contents</h2>
+
+			<ol>
+				<li><a href="#section1">Section 1</a></li>
+				<li><a href="#section2">Section 2</a></li>
+				<li><a href="#section3">Section 3</a></li>
+				<li><a href="#section4">Section 4</a></li>
+			</ol>
+
+			<p><a href="http://www.lipsum.com" target="_blank">Lorem ipsum</a> dolor sit amet, consectetur adipiscing elit. Vestibulum id posuere velit. Cras adipiscing purus vitae sem lobortis semper. <span class="emph">Aliquam malesuada scelerisque felis.</span> Suspendisse potenti. Mauris a lacus vel enim dignissim imperdiet in sit amet mauris. Donec gravida sem venenatis leo vestibulum elementum. Etiam fringilla, libero a sagittis dignissim, metus quam laoreet lorem, nec ornare tortor turpis a orci. Mauris congue arcu ac lectus fringilla id tempus velit adipiscing. Vestibulum congue ante ac libero interdum fermentum. Sed malesuada tempor est. Aenean vitae enim elit. Maecenas at erat eget magna ornare blandit at ut magna. Ut sollicitudin diam elementum metus interdum luctus. Cras ut dapibus turpis.</p>
+
+			<h2 id="section2" title="new popup">Proin vitae ligula felis, at blandit eros</h2>
+
+			<p>Proin vitae ligula felis, at blandit eros. Suspendisse potenti. In blandit sodales felis in ullamcorper. Suspendisse sapien elit, dapibus eget tristique vitae, gravida vel turpis. Nulla feugiat interdum consectetur. Curabitur sed ligula augue. Ut ac condimentum nibh. Sed tempor nisi at massa iaculis ut porta dolor lobortis. Vivamus lobortis justo vitae libero volutpat et cursus dolor convallis.</p>
+
+			<ul>
+				<li class="emph">Duis commodo sodales metus, vel vehicula nulla fringilla eu.</li>
+				<li>Pellentesque at ligula dui, facilisis ultricies neque.</li>
+				<li class="emph">Vestibulum sit amet nibh a eros venenatis facilisis non nisl.</li>
+				<li>Aliquam viverra nisl eleifend nisl suscipit dapibus.</li>
+				<li class="emph">Duis ut quam quis tortor vestibulum tempor.</li>
+				<li>Integer rutrum diam ac erat lacinia ullamcorper.</li>
+			</ul>
+
+			<h3>Duis quis est odio, et suscipit eros</h3>
+
+			<p>Aliquam sed lorem nisl. Duis quis est odio, et suscipit eros. Praesent id ante mi. Phasellus iaculis auctor fringilla. Etiam pulvinar mattis suscipit. Suspendisse potenti. Vestibulum id ligula sed libero adipiscing egestas nec vel metus. Duis augue sem, semper non sodales quis, convallis nec felis. Sed blandit lacinia nisi ut cursus.</p>
+
+			<h2 id="section3">Suspendisse at neque ipsum</h2>
+
+			<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus pellentesque orci non diam porttitor consequat. Donec vehicula elit eu massa sollicitudin egestas. Proin eu nibh vel leo tincidunt ultricies. Nunc sit amet est nisi. Aenean viverra leo molestie justo aliquam euismod. Suspendisse at neque ipsum. Phasellus mauris erat, egestas et posuere ut, aliquam vitae eros. Suspendisse viverra condimentum placerat. Donec eu enim eu urna lobortis posuere non non mi. Vestibulum lectus turpis, accumsan vestibulum scelerisque vel, dictum ut erat.</p>
+			
+			<p><a href="#top">Back to top</a></p>
+		</div><!-- maincolumn -->
+		
+		<div id="sidebar">
+			<h2 id="section4">Etiam vitae odio eleifend ante eleifend</h2>
+
+			<p>Fusce lacinia metus quis massa dignissim porta ut ut turpis. Praesent et lectus sit amet nibh ullamcorper ullamcorper ac in orci. Nunc sit amet quam nec purus malesuada pulvinar. Integer et dui est. Etiam vitae odio eleifend ante eleifend faucibus at quis velit. Etiam odio dolor, viverra vitae dictum vitae, luctus eu lorem. Ut ligula lorem, interdum feugiat feugiat non, porttitor et nisi. Morbi posuere, urna in consectetur fringilla, metus sem lacinia nisi, sit amet consequat ipsum enim sed dui. Aliquam erat volutpat. Morbi et enim vel lectus facilisis facilisis a non enim. Nunc eget augue augue.</p>
+		</div><!-- sidebar -->
+		
+		<div class="clearing"></div><!-- clearing shim -->
+	</div><!-- content -->
+	
+	<div id="footer">
+		<span>Copyright &copy; 2012 TC Class 5038. Some Rights Reserved.</span>
+	</div><!-- footer -->
+</div><!-- wrapper -->
+
+</body>
+</html>

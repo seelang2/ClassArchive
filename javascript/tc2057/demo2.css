@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* CSS Document */
+
+.calendar {
+	
+}
+
+.calendar td {
+
+}
+
+.calendar-oddrow {
+	
+}
+
+.calendar-evenrow {
+	
+}
+
+.calendar-oddcol {
+	
+}
+
+.calendar-evencol {
+	background: #dedede;
+}
+
+.calendar-currentday {
+	font-weight: bold;
+	border: 1px solid #ff0000;
+}

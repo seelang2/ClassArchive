@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body { font-family: Verdana, Arial, sans-serif;	}
+
+	table { border-collapse: collapse; }
+	
+	table, td, th {	border: 1px solid #7a7a7a; }
+
+	td, th { padding: 0.5em; }
+
+	tr.hover { background: #FFC; }
+	.oddrow { background: #FA69CA; }
+	.evenrow { background: #F7C3E6; }
+
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+
+var doHover = function(e, extraParam) {
+
+	//±console.log(e);
+
+	$(this).toggleClass('hover');
+
+};
+
+$.ajax({
+	url: 		'userdata.php?action=getlist&type=xml',
+	type: 		'get',
+	dataType: 	'xml'
+})
+.done(function(contactXML) {
+
+	$('<table><tbody /></table>')
+		.find('tbody')
+		.each(function(index, tbody) {
+
+			$(contactXML)
+				.find('contact')
+				.each(function( i, contact) {
+
+					var rowHTML = '<tr>';
+
+					$(contact)
+						.children()
+						.each(function(c, fieldName) {
+							//console.log(fieldName.nodeName);
+							rowHTML += '<td>' + $(fieldName).text() +'</td>';
+						});
+
+					rowHTML += '</tr>';
+					$(rowHTML)
+						.addClass( i % 2 == 0 ? 'oddrow' : 'evenrow' )
+						.appendTo(tbody);
+				 });
+
+		 })
+		.on('mouseover mouseout', 'tr', doHover)
+		.parent()
+		.appendTo('#target');
+
+	})
+
+}); // document.ready
+
+</script>
+</body>
+</html>

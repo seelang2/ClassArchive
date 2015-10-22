@@ -1,0 +1,48 @@
+<!doctype HTML>
+<html>
+<head>
+	<title>Page Title</title>
+	<meta charset="UTF-8" />
+
+</head>
+<body>
+
+	<div id="target">
+		<ul>
+			<li>List Item</li>
+			<li>List Item</li>
+			<li>List Item</li>
+			<li>List Item</li>
+			<li>List Item</li>
+		</ul>
+	</div>
+	
+	<button id="thebutton">Click Me</button>
+
+<script type="text/javascript" src="jquery-1.9.0.js"></script>
+<script type="text/javascript">
+
+// use IIFE to encapsulate plugin functionality
+(function($) {
+	
+	var c = 0;
+	
+	var stuffToDo = function() {
+		alert("I'm doing STUFF " + ++c + " times!");
+	}
+	
+	$.doStuff = function() {
+		stuffToDo();
+	}
+
+})(jQuery);
+
+</script>
+<script type="text/javascript">
+
+$('#thebutton').click(function(e) { $.doStuff(); });
+
+
+</script>
+</body>
+</html>

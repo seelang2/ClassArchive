@@ -1,0 +1,41 @@
+/* CSS Document - demo_f.css */
+
+body {
+	text-align:center;
+	background:#CCCCCC;
+	font-size: 76%;
+	font-family:Geneva, Arial, Helvetica, sans-serif;
+	color: #000000;
+}
+
+#body {
+	margin: 0 auto;
+	padding: 25px;
+	text-align:left;
+	background: #FFFFFF;
+	width: 80%;
+}
+
+#body div { 
+	margin: 25px;
+	border: 1px solid #cccccc; 
+}
+
+#series {
+	float:left;
+	width: 40%;
+	height: 100px;
+}
+
+#model {
+	float:right;
+	width: 40%;
+	height: 100px;
+}
+
+#results {
+	clear:both;
+	height: 250px;
+	overflow: scroll;
+}
+

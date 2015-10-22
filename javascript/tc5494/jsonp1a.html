@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>JSONP Demo</title>
+	<meta charset="UTF-8" />
+	
+	<style type="text/css">
+	</style>
+	
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.8.2.js"></script>
+<script type="text/javascript">
+
+function process(data) {
+	console.log(data);
+	$.each(
+		data,
+		function(i, field) {
+			$('#target')
+				.append('<p>' + field.name + ' => ' + field.value + '</p>');
+		}
+	);
+}
+
+$(document).ready(function() {
+	$.getScript('http://10.6.10.123/tc5494/echoget.php?mode=jsonp&firstname=John&lastname=Doe&callback=process');
+	
+	/*
+	$.ajax(
+		{
+			url: 'http://10.6.10.123/tc5494/echoget.php?mode=jsonp&firstname=John&lastname=Doe&callback=process',
+			type: 'get',
+			dataType: 'script',
+			success: process
+		}
+	);
+	*/
+	
+	/*
+	var scriptElem = document.createElement("SCRIPT");
+	scriptElem.type = 'text/javascript';
+	scriptElem.src = 'http://10.6.10.123/tc5494/echoget.php?mode=jsonp&firstname=John&lastname=Doe&callback=process';
+	document.body.appendChild(scriptElem);
+	
+	*/
+	/*
+	$(document.createElement("SCRIPT"))
+		.attr(
+			{
+				type: 'text/javascript',
+				//src: 'http://10.6.10.123/tc5494/echoget.php?mode=jsonp&firstname=John&lastname=Doe&callback=process'
+				src: 'http://10.6.10.123/tc5494/test.js'
+			}
+		 )
+		.appendTo(document.body);
+	*/
+});
+
+</script>
+</body>
+</html>

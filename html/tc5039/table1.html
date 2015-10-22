@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Table Demo</title>
+	
+	<style type="text/css">
+	table { border-collapse: collapse; }
+	
+	table, td, th {
+		border: 1px solid #000;
+	}
+	
+	td, th { padding: 5px 10px; }
+	
+	</style>
+</head>
+<body>
+
+	<table>
+		<thead>
+			<tr>
+				<th colspan="2">Visitor Name</th>
+				<th>#</th>
+				<th> </th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<th colspan="4">2012</th>
+			</tr>
+		</tfoot>
+		<tbody>
+			<tr>
+				<td>John</td>
+				<td>Doe</td>
+				<td>7</td>
+				<th rowspan="2">X</th>
+			</tr>
+			<tr>
+				<td>Jane</td>
+				<td>Smith</td>
+				<td>6</td>
+			</tr>
+			<tr>
+				<td>X</td>
+				<td colspan="3">X</td>
+			</tr>
+		</tbody>
+	</table>
+
+
+</body>
+</html>

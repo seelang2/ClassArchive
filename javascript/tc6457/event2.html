@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Event Example</title>
+	
+</head>
+<body>
+
+<button id="thebutton">Click Me</button>
+<button id="thebutton2">Click Me 2</button>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+document
+	.getElementById("thebutton")
+	.onclick = function() {
+		console.log("I've been clicked!");
+	};
+
+
+$('#thebutton2')
+	.on(
+		'click',
+		function(e) {
+			e.stopPropagation(); // prevent event from bubbling further
+			console.log("I've been clicked 2!");
+		}
+	 );
+
+$(document.body)
+	.on(
+		'click',
+		function() {
+			console.log('Body click detected.');
+		}
+	 );
+	 
+	 
+	 
+</script>
+</body>
+</html>

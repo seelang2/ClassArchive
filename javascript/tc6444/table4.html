@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Table Demo using jQuery</title>
+	
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+var contactList =
+	[
+		{"firstname":"John","lastname":"Doe","empnum":42},
+		{"firstname":"Jane","lastname":"Smith","empnum":12},
+		{"firstname":"Mary","lastname":"Thompson","empnum":65},
+		{"firstname":"Steven","lastname":"Pierce","empnum":2},
+		{"firstname":"Beverly","lastname":"Jones","empnum":17},
+		{"firstname":"Alex","lastname":"Reid","empnum":21}
+	];
+
+// create base table structure
+$('#target').append('<table><tbody /></table>');
+
+var $tbody = $('#target tbody');
+
+// loop through contactList
+for (var c = 0; c < contactList.length; c++) {
+
+	// create new row for contact and add to table
+	$('<tr>' +
+		  '<td>' + contactList[c].firstname + '</td>' + 
+		  '<td>' + contactList[c].lastname + '</td>' + 
+		  '<td>' + contactList[c].empnum + '</td>' + 
+	  '</tr>').appendTo($tbody);
+
+} // for
+
+</script>
+</body>
+</html>

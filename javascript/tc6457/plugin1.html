@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Plugin Demo</title>
+	
+</head>
+<body>
+
+	<ul>
+		<li>An Item</li>
+		<li>An Item</li>
+		<li>An Item</li>
+		<li>An Item</li>
+		<li>An Item</li>
+		<li>An Item</li>
+		<li>An Item</li>
+	</ul>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+// Use an IIFE to define the plugin
+(function($) {
+	
+	// private functions and data can go here
+	
+	// $().method is defined using $.fn.method = function...
+	$.fn.giveUniqueId = function() {
+		
+		// 'this' refers to jQuery collection object
+		this.each(function(index, element) {
+			
+			$(element).attr('id','item-' + index);
+			
+		});
+		
+		// always return the jQuery collection to maintain chaining
+		return this;
+		
+	}; // giveUniqueID
+	
+	
+})(jQuery);
+
+</script>
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+	
+	$('ul li')
+		.giveUniqueId()
+		.addClass('listitem');
+	
+	
+}); // document.ready
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

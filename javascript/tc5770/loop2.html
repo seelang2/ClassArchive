@@ -1,0 +1,49 @@
+<!doctype HTML>
+<html>
+<head>
+	<title>Page Title</title>
+	<meta charset="UTF-8" />
+
+</head>
+<body>
+
+<script type="text/javascript">
+
+for (var c = 1; c < 201; c++) {
+	
+	var m = c % 10;
+	
+	// 1. divide number by 100
+	var dividend = c / 100;
+	
+	// 2. store integer from step 1
+	var integer = parseInt(dividend);
+	
+	// 3. subtract integer from dividend and multiply by 100
+	var result = (dividend - integer) * 100;
+	
+	switch(m) {
+		case 1:
+			var ordinal = 'st';
+		break;
+		
+		case 2:
+			var ordinal = 'nd';
+		break;
+		
+		case 3:
+			var ordinal = 'rd';
+		break;
+		
+		default:
+			var ordinal = 'th';
+		break;
+	}
+	
+	console.log(c + ordinal + ' (m = '+ m + ') ' + result);
+}
+
+
+</script>
+</body>
+</html>

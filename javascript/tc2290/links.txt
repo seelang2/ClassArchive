@@ -1,0 +1,8 @@
+http://www.wix.com/start/wfree?utm_campaign=w3&experiment_id=w430
+http://www.altova.com/downloadxmltools.html
+http://programming.top54u.com/post/Javascript-Window-Location-Replace-Function.aspx
+http://snook.ca/archives/javascript/testing_for_a_v
+
+http://ejohn.org/blog/how-javascript-timers-work/
+http://ejohn.org/blog/accuracy-of-javascript-time/
+http://stackoverflow.com/questions/985670/will-setinterval-drift

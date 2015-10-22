@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Date Example</title>
+</head>
+
+<body>
+
+<script type="text/javascript">
+// create instance of Date object
+var now = new Date();
+
+/*
+switch(now.getDate()) {
+	case 1: case 21: case 31:
+		var ordinal = 'st';
+	break;
+	
+	case 2: case 22:
+		var ordinal = 'nd';
+	break;
+	
+	case 3: case 23:
+		var ordinal = 'rd';
+	break;
+
+	default:
+		var ordinal = 'th';
+	break;
+}
+*/
+switch(true) {
+	case now.getDate() == 1 || now.getDate() == 21 || now.getDate() == 31:
+		var ordinal = 'st';
+	break;
+
+	case now.getDate() == 2 || now.getDate() == 22:
+		var ordinal = 'nd';
+	break;
+
+	case now.getDate() == 3 || now.getDate() == 23:
+		var ordinal = 'rd';
+	break;
+	
+	default:
+		var ordinal = 'th';
+	break;
+}
+
+// define arrays for days and months
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August','September', 'October', 'November', 'December'];
+
+var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+// output formatted date string message
+document.write(	'<p>Today is ' +
+						  	days[now.getDay()] + ', ' +
+							months[now.getMonth()] + ' ' +
+							now.getDate() +  ordinal + ', ' +
+							now.getFullYear() +
+							'</p>'	);
+
+</script>
+
+
+</body>
+</html>

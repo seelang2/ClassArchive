@@ -1,0 +1,95 @@
+/* CSS Document */
+body {
+	margin: 0;
+	padding: 0;
+	background: #7a7a7a;
+}
+#wrapper {
+	margin: 25px auto;
+	width: 700px;
+}
+#header {
+	height: 75px;
+	overflow: hidden;
+	background: #ffffff;
+}
+#content {
+	background: #ffffff;
+	clear: both;
+}
+
+#menu {
+	background: #ffffff;
+	float: left;
+	width: 100%;
+}
+
+div#menu ul {
+	list-style:none;
+	margin: 0;
+	padding: 0;
+}
+div#menu li {
+	float: left;
+	width: 33%;
+	text-align: center;
+	border: 1px solid #7a7a7a;
+}
+
+div#menu li a {
+	text-decoration: none;
+	display: block;
+	width: 100%;
+}
+
+.tabitem {
+	display: none;
+}
+
+#statusdiv {
+	font-weight: bold;
+	color: #ff0000;
+	visibility: hidden;
+	float: right;
+}
+
+#tabcontent {
+	padding: 25px;
+}
+
+#seriesdata {
+	float: left;
+	width: 30%;
+}
+
+#modeldata {
+	float: right;
+	width: 30%;
+}
+
+#itemdata {
+	clear: both;
+	float: left;
+	width: 49%;
+}
+
+#itemdetail {
+	float: right;
+	width: 49%;
+	border: 1px solid #000000;
+}
+
+.clearing {
+	clear: both;
+	height: 1px;
+	overflow: hidden;
+}
+
+.oddrow { background-color: #aaaaff; }
+.evenrow { background-color: #eeeeff; }
+
+#itemdata table {
+	border: 1px solid #000000;
+	width: 95%;
+	margin: 10px auto;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="content"></div>
+
+<script type="text/javascript">
+
+/*
+// get reference to target node
+var target = document.getElementById('content');
+
+// create new element node
+var pElem = document.createElement("P");
+
+// add node to target elem in tree
+target.appendChild(pElem);
+
+// create text node
+var text = document.createTextNode('Hello World!');
+
+// add node to tree
+pElem.appendChild(text);
+*/
+
+var contentDiv = document.getElementById('content');
+
+var tempElem = document.createElement("TABLE");
+contentDiv.appendChild(tempElem);
+
+var tBodyElem = document.createElement("TBODY");
+tempElem.appendChild(tBodyElem);
+
+var tRowElem = document.createElement("TR");
+tBodyElem.appendChild(tRowElem);
+
+tempElem = document.createElement("TH");
+tRowElem.appendChild(tempElem);
+tempElem.appendChild(document.createTextNode('Firstname'));
+
+tempElem = document.createElement("TH");
+tRowElem.appendChild(tempElem);
+tempElem.appendChild(document.createTextNode('Lastname'));
+
+var tRowElem = document.createElement("TR");
+tBodyElem.appendChild(tRowElem);
+
+tempElem = document.createElement("TD");
+tRowElem.appendChild(tempElem);
+tempElem.appendChild(document.createTextNode('John'));
+
+tempElem = document.createElement("TD");
+tRowElem.appendChild(tempElem);
+tempElem.appendChild(document.createTextNode('Doe'));
+
+var tRowElem = document.createElement("TR");
+tBodyElem.appendChild(tRowElem);
+
+tempElem = document.createElement("TD");
+tRowElem.appendChild(tempElem);
+tempElem.appendChild(document.createTextNode('Jimmy'));
+
+tempElem = document.createElement("TD");
+tRowElem.appendChild(tempElem);
+tempElem.appendChild(document.createTextNode('Stewart'));
+
+
+</script>
+
+</body>
+</html>

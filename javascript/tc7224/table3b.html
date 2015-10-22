@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Table Demo</title>
+	
+	<style type="text/css">
+	
+	.evenrow { background: #E6B8DB; }
+	.oddrow { background: #B8E6C3; }
+	
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+var contactData =
+[
+	{"firstname":"John","lastname":"Doe","DOB":"10/12/1969"},
+	{"firstname":"John","lastname":"Doe","DOB":"10/12/1969"},
+	{"firstname":"John","lastname":"Doe","DOB":"10/12/1969"},
+	{"firstname":"John","lastname":"Doe","DOB":"10/12/1969"}
+];
+
+// set up table
+
+var $tbody =
+$('<table><tbody /></table>')
+	.children('tbody');
+
+// loop through contacts and build table rows
+$.each(
+	contactData,
+	function(index, contact) {
+		// create table rows
+		// attach to tbody
+		$('<tr>' +
+			'<td>' + contact.firstname + '</td>' + 
+			'<td>' + contact.lastname + '</td>' + 
+			'<td>' + contact.DOB + '</td>' + 
+		 '</tr>')
+			.attr('id','row-' + index)
+			.addClass( index % 2 == 0? 'oddrow': 'evenrow' )
+			.appendTo($tbody);
+	}
+);
+
+// attach table to DOM
+$tbody
+	.parent()				// navigate up to TABLE
+	.appendTo('#target');	// and attach to DOM
+
+	
+</script>
+</body>
+</html>

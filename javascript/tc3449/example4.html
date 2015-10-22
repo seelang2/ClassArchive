@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+#menu {
+	
+}
+
+#menu ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#menu ul li {
+	float: left;
+	border: 1px solid #7a7a7a;
+	position: relative;
+	height: 20px;
+	padding: 5px 5px;
+}
+
+#menu li ul {
+	position: absolute;
+	top: 30px;
+	left: -1px;
+	z-index: 100;
+	display: none;
+	width: 100px;
+}
+
+#menu li li {
+	float: none;
+	
+}
+
+#menu li li ul {
+	position: absolute;
+	top: 0;
+	left: 98px;
+}
+
+#menu .hover { background: #0F0; }
+
+</style>
+</head>
+
+<body>
+
+
+<div id="menu">
+	<ul>
+    	<li>Item 1</li>
+    	<li>Item 2
+        	<ul>
+            	<li>Subitem&nbsp;1</li>
+            	<li>Subitem 2</li>
+            	<li>Subitem 3</li>
+            	<li>Subitem 4
+                	<ul>
+                        <li>Subitem&nbsp;1</li>
+                        <li>Subitem&nbsp;2</li>
+                        <li>Subitem&nbsp;3</li>
+                        <li>Subitem&nbsp;4</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    	<li>Item 3</li>
+    	<li>Item 4</li>
+	</ul>
+</div><!-- menu -->
+
+<script type="text/javascript">
+
+function getSubMenu(target) {
+	for(var c = 0; c < target.childNodes.length; c++) {
+		if (target.childNodes[c].nodeName == 'UL') {
+			return target.childNodes[c]; // found submenu, return
+		}
+	}
+	return false; // didn't find a menu, return false
+} // getSubMenu
+
+
+var menuDiv = document.getElementById("menu"); // get ref to menu node
+var listItems = menuDiv.getElementsByTagName("LI"); // get LIs inside menu;
+
+//var listItems = document.getElementById("menu").getElementsByTagName("LI");
+
+// alert(listItems.length);
+// loop through LIs and set event handlers
+for(var c = 0; c < listItems.length; c++) {
+	
+	listItems[c].onmouseover = function() {
+		this.className += ' hover';
+		
+		// check for submenu
+		var subMenu = null; // make empty variable in local scope
+		if (subMenu = getSubMenu(this)) {
+			//alert('Found a menu!');
+			subMenu.style.display = 'block'; // show menu
+		}
+	}; // onmouseover
+	
+	listItems[c].onmouseout = function() {
+		this.className = this.className.replace(/ hover/, '');
+		
+		// check for submenu
+		var subMenu = null; // make empty variable in local scope
+		if (subMenu = getSubMenu(this)) {
+			//alert('Found a menu!');
+			subMenu.style.display = 'none'; // show menu
+		}
+	}; // onmouseout
+	
+	
+	
+}
+
+
+
+
+</script>
+</body>
+</html>

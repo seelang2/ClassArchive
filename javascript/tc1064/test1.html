@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+
+<script type="text/javascript">
+var testdiv = null;
+
+function init() {
+	testdiv = document.getElementById("testdiv");
+
+		formElem = document.createElement("FORM");
+		formElem.action = '#';
+		formElem.method = 'get';
+		formElem.name = 'test';
+		
+		testdiv.appendChild(formElem);
+		
+		tempElem = document.createElement("TABLE");
+		formElem.appendChild(tempElem);
+		//tempElem.style.width = '99%';
+		
+		tBodyElem = document.createElement("TBODY");
+		tempElem.appendChild(tBodyElem);
+
+			tempRow = document.createElement("TR");
+			tBodyElem.appendChild(tempRow);
+			
+		tdElem = document.createElement("TD");
+		tempRow.appendChild(tdElem);
+			inputElem = document.createElement("INPUT");
+			inputElem.type = 'text';
+			inputElem.value = 'test1';
+			inputElem.name = 'field1';
+			tdElem.appendChild(inputElem);
+
+		tdElem = document.createElement("TD");
+		tempRow.appendChild(tdElem);
+			inputElem = document.createElement("INPUT");
+			inputElem.type = 'text';
+			inputElem.value = 'test2';
+			inputElem.name = 'field2';
+			tdElem.appendChild(inputElem);
+
+		tdElem = document.createElement("TD");
+		tempRow.appendChild(tdElem);
+		inputElem = document.createElement("INPUT");
+		tdElem.appendChild(inputElem);
+		inputElem.type = 'submit';
+		inputElem.value = 'Update';
+
+		
+	
+}
+
+function cleanup() {
+	testdiv = null;
+}
+
+window.onload = init;
+
+window.onunload = cleanup;
+
+
+</script>
+</head>
+<body>
+<!--
+<table>
+<tr>
+	<form action="#" method="get">
+	<td><input name="p1" /></td>
+	<td><input name="p2" /></td>
+	<td><input type="submit" /></td>
+	</form>
+</tr>
+</table>
+-->
+<div id="testdiv">
+</div>
+
+</body>
+</html>

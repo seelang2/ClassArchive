@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 100%;
+		color: #000;
+	}
+	
+	table { 
+		border-collapse: collapse;
+	}
+	
+	td, th { padding: 5px; }
+	
+	.oddrow { background: #F3FFED; }
+	.evenrow { background: #DBFFC9; }
+	
+	
+	</style>
+
+</head>
+<body>
+
+<div id="contacts"></div>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+var contactList =
+[
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27}
+];
+
+
+var $tbody = 
+$('#contacts')
+	.append('<table><tbody /></table>')
+	.find('tbody');
+
+
+$.each(
+	contactList, // collection to loop through
+	function(index, contact) {
+		$('<tr />')
+			.attr('id', 'row-' + index)
+			.append('<td>' + contact.firstname + '</td>' +
+					'<td>' + contact.lastname + '</td>' + 
+					'<td>' + contact.age + '</td>')
+			.appendTo($tbody);
+		
+	}
+); // $.each
+
+$tbody
+	.children('tr:odd')
+	.addClass('evenrow')
+	.end()					// revert collection back to tbody
+	.children('tr:even')
+	.addClass('oddrow');
+
+
+</script>
+</body>
+</html>
+

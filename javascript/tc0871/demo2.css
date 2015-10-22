@@ -1,0 +1,46 @@
+/* CSS Document */
+body {
+	margin: 0;
+	padding: 0;
+	background: #7a7a7a;
+}
+#wrapper {
+	margin: 25px auto;
+	width: 700px;
+}
+#header {
+	height: 75px;
+	overflow: hidden;
+	background: #ffffff;
+}
+#content {
+	background: #ffffff;
+	clear: both;
+}
+
+#menu {
+	background: #ffffff;
+	float: left;
+	width: 100%;
+}
+
+div#menu ul {
+	list-style:none;
+}
+div#menu li {
+	float: left;
+	width: 33%;
+	text-align: center;
+	border: 1px solid #7a7a7a;
+}
+
+div#menu li a {
+	text-decoration: none;
+	display: block;
+	width: 100%;
+}
+
+.tabitem {
+	display: none;
+}
+

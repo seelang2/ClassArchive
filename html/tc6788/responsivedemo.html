@@ -1,0 +1,234 @@
+<!-- Note that the javascript has been omitted from this version of the demo.
+     Go to http://www.sitebabble.com/test/sitebabble-test.html for the full demo. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <title>Page Mockup</title>
+    <link href='http://fonts.googleapis.com/css?family=Averia+Sans+Libre:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+    
+    <style type="text/css">
+        /* Reset styles */
+        html, body { margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Open Sans', Verdana, sans-serif;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        header {
+            background: #fff;
+        }
+        
+        body > header {
+            padding: 1px 0;
+        }
+        
+        body > header hgroup {
+            margin: 0 1em 0.1em 1em;
+        }
+        
+        body > header h1 {
+            font-family: 'Averia Sans Libre', cursive;
+            font-size: 250%;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+            
+        body > header h2 {
+            font-size: 90%;
+            font-style: italic;
+            font-weight: normal;
+            letter-spacing: 1px;
+            margin: 0;
+            color: #000;
+        }
+        
+        .blue { color: #5B5FFF; }
+        .orange { color: #FF945B; }
+        .lime { color: #87FF4E; }
+        
+        #content {
+            position: relative;
+        }
+
+        #section1,
+        #section2,
+        #section3,
+        #section4,
+        #section5 {
+             padding: 1px 0;
+        }
+        
+        #section1 {
+            background: #5B5FFF; /* 3f90fd */
+            color: #fff;
+            font-size: 140%;
+        }
+        
+        #section1 > div {
+            max-width: 1200px;
+            margin: auto;
+        }
+        
+        #section1 h1 {
+            color: #87FF4E;
+            font-weight: bold;
+        }
+
+        body > footer {
+            background: #5f5f5f;
+            color: #fff;
+            font-size: 90%;
+            padding: 1px 1em;
+            clear: both;
+        }
+        
+        /* Breakpoints at 520, 960, and 1400 px */
+        @media screen and (min-width: 520px) and (max-width: 959px) {
+            
+            body > header hgroup {
+                font-size: 120%;
+            }
+        
+            body > header hgroup h1, 
+            body > header hgroup h2 
+            { display: inline-block; }
+           
+            #section2,
+            #section3,
+            #section4 
+            {
+                float: right;
+                width: 66.6%;
+            }
+
+            #section5 
+            {
+                margin-right: 66.6%;
+            }
+
+        } /* @media */
+        
+        @media screen and (min-width: 960px) and (max-width: 1399px) {
+            
+            body > header hgroup {
+                font-size: 150%;
+            }
+        
+            body > header hgroup h1, 
+            body > header hgroup h2 
+            { display: inline-block; }
+           
+            
+            #section2 { /* w 41.6 */
+                float: left;    
+                width: 49.98%;
+                margin-left: 24.99%;
+            }
+
+            #section3, 
+            #section4 
+            {
+                float: left;
+                width: 24.99%;
+                /* margin-left: 58.2% ; */
+            }
+    
+            #section5 { /* w 16.6 */
+                width: 24.99%;
+                position: absolute;
+            }
+
+        } /* @media */
+        
+        
+        @media screen and (min-width: 1400px) {
+            
+            body > header hgroup {
+                font-size: 180%;
+            }
+        
+            body > header hgroup h1, 
+            body > header hgroup h2 
+            { display: inline-block; }
+           
+            
+            #section2 { /* w 41.6 */
+                float: left;    
+                width: 41.6%;
+                margin-left: 16.6%;
+            }
+
+            #section3, 
+            #section4 
+            {
+                float: left;
+                width: 41.6%;
+                /* margin-left: 58.2% ; */
+            }
+    
+            #section5 { /* w 16.6 */
+                width: 16.6%;
+                position: absolute;
+            }
+
+        } /* @media */
+        
+        
+    </style>
+</head>
+<body>
+    <header>
+        <hgroup>
+            <h1><span class="orange">Site</span><span class="lime">Babble</span></h1>
+            <h2><span>Webspeak Made Easy.</span></h2>
+        </hgroup>
+        
+        
+    </header>
+    
+    <div id="content">
+        <section id="section1">
+            <div>
+            
+                <h1>Section 1</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at interdum elit. Duis tellus augue, mattis at porttitor at, molestie sed tellus. In ac ipsum ultricies, commodo mauris vitae, elementum magna. Vivamus feugiat mauris odio, at fringilla velit porttitor sit amet. Praesent at sagittis lacus. In sit amet adipiscing eros. Nullam fermentum libero nec odio hendrerit dignissim. Aliquam et odio tortor. Maecenas lobortis ipsum eu turpis auctor mollis.</p>
+            </div>
+        </section>
+        
+        <section id="section2" class="flowtype">
+            <h1>Section 2</h1>
+            <p>Mauris dignissim cursus nisl, nec vestibulum arcu venenatis non. Cras dolor purus, elementum et dolor et, euismod porttitor diam. Fusce suscipit mi id tempus elementum. Vivamus dictum, leo vitae tincidunt facilisis, lorem nisi lacinia dui, quis volutpat diam nulla vitae nisl. Donec molestie tellus non turpis venenatis luctus. Sed tincidunt luctus nibh vel pulvinar. Donec vehicula vehicula lorem eu accumsan. Mauris vel eleifend nunc. Aenean varius molestie purus vitae ornare.</p>
+        </section>
+        
+        <section id="section3" class="flowtype">
+            <h1>Section 3</h1>
+            <p>Pellentesque eu magna quis augue tempor vestibulum ac sed sapien. Sed tristique ante sapien, ac porta leo congue id. Nam ipsum nibh, pharetra ut tellus non, viverra pretium nisi. Ut ultrices tellus vel eros posuere luctus. Aenean fermentum vestibulum adipiscing. Vivamus porttitor libero eu suscipit elementum. Morbi mattis ultrices elit, at pulvinar dolor porttitor at. Proin sagittis vel quam in mollis. Vestibulum scelerisque mi quis tempus volutpat.</p>
+        </section>
+        
+        <section id="section4" class="flowtype">
+            <h1>Section 4</h1>
+            <p>Duis ac cursus neque. Praesent rutrum egestas mi, a interdum est. Vestibulum quis odio consectetur, tincidunt diam vel, condimentum turpis. Aenean mollis, ipsum sed euismod consectetur, elit ante facilisis nibh, in congue leo quam consequat felis. Vivamus libero leo, adipiscing sit amet dui sed, blandit tincidunt lectus. Vivamus leo urna, dictum non blandit id, elementum sit amet lacus. Pellentesque ut lectus a augue consectetur eleifend. Fusce auctor leo et mi bibendum, ut tempor lacus porttitor. Integer quis sodales dui. Donec nunc elit, malesuada nec fermentum ac, tincidunt nec libero.</p>
+        </section>
+        
+        <section id="section5" class="flowtype">
+            <h1>Section 5</h1>
+            <p>Duis ac cursus neque. Praesent rutrum egestas mi, a interdum est. Vestibulum quis odio consectetur, tincidunt diam vel, condimentum turpis. Aenean mollis, ipsum sed euismod consectetur, elit ante facilisis nibh, in congue leo quam consequat felis. Vivamus libero leo, adipiscing sit amet dui sed, blandit tincidunt lectus. Vivamus leo urna, dictum non blandit id, elementum sit amet lacus. Pellentesque ut lectus a augue consectetur eleifend. Fusce auctor leo et mi bibendum, ut tempor lacus porttitor. Integer quis sodales dui. Donec nunc elit, malesuada nec fermentum ac, tincidunt nec libero.</p>
+        </section>
+    
+    </div>
+    
+    <footer>
+        <div>Copyright &copy; Crhsi Innovations LLC.</div>
+        <div>
+            <span>More stuff</span>
+        </div>
+    
+    </footer>
+
+</body>
+</html>

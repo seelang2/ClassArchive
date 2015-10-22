@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+#container {
+	text-align: center;
+}
+
+#window {
+	position: relative;
+	width: 400px;
+	height: 300px;
+	border: 2px solid #f00;
+	overflow: hidden;
+	margin: auto;
+}
+
+#filmstrip {
+	position: absolute;
+	width: 2000px;
+	height: 300px;
+	left: -400px;
+}
+
+#filmstrip img {
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<div id="container">
+	<div id="window">
+    	<div id="filmstrip">
+        	<img src="chicago1.jpg" width="400" height="300" />
+        	<img src="chicago2.jpg" width="400" height="300" />
+        	<img src="chicago3.jpg" width="400" height="300" />
+        	<img src="chicago4.jpg" width="400" height="300" />
+        	<img src="chicago5.jpg" width="400" height="300" />
+        </div><!-- filmstrip -->
+    </div><!-- window -->
+    <input id="butLeft" type="button" value="Left">
+    <input id="butRight" type="button" value="Right">
+</div><!-- container -->
+
+<script type="text/javascript">
+var filmstrip = document.getElementById("filmstrip");
+
+var endPos = 0;
+var currPos = 0;
+var width = 400;
+
+var increment = 10;
+var delay = 25;
+
+function moveLeft() {
+	// update position 
+	currPos -= increment;
+	
+	if (currPos <= endPos) {
+		currPos = endPos; // constrain movement
+		clearInterval(moveLeftInterval); // stop moving
+		var node = filmstrip.removeChild(filmstrip.firstChild); // removing firstChild and save it in node
+		filmstrip.appendChild(node); // add removed node to end of strip
+	}
+	filmstrip.style.left = currPos + 'px'; // update actual position
+	
+} // moveLeft
+
+
+// set up event handler
+document.getElementById("butLeft").onclick = function() {
+	endPos = currPos - width; // calculate ending position
+	moveLeftInterval = setInterval(moveLeft, delay);
+}; // onclick butLeft
+
+// set up initial position of filmstrip based on currPos
+filmstrip.style.left = currPos + 'px';
+
+</script>
+</body>
+</html>

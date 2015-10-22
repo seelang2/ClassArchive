@@ -1,0 +1,234 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Single Column with Header and Footer</title>
+
+<style type="text/css">
+/* Layout */
+body {
+	color: #000000;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 85%;
+	background-color: #dfdfdf;
+	background-image: url(Chicago-Skyline-1.jpeg);
+	background-repeat: no-repeat;
+	background-position: -bottom right;
+	background-attachment: fixed;
+}
+
+#wrapper {
+	width: 960px;
+	background: #ffffff;
+	margin: 0 auto;
+	border: 1px solid #7a7a7a;
+}
+
+#header {
+	height: 80px;
+	background: #F96;
+}
+
+#content {
+	background: #CFF;
+	padding: 1px 0; /* removed horizontal padding to make room for columns */
+	clear: both;
+}
+
+#footer {
+	height: 125px;
+	background: #0F3;
+}
+
+#maincolumn {
+	float: left;
+	width: 59%;
+	padding: 0 1% 0 5%;
+}
+
+#sidebar {
+	float: right;
+	width: 32%;
+	padding: 0 2% 0 1%;
+}
+
+/* class used to clear floated content */
+.clearing {
+	clear: both;
+	height: 1px;
+	overflow: hidden;
+}
+
+/* Horizontal menu styling */
+#topmenu {
+	background: #F96;
+	float: left;
+	width: 100%;
+}
+
+#topmenu ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#topmenu li {
+	border-left: 10px solid #F96;
+	float: left;
+	text-align: center;
+	background: #fff;
+}
+
+#topmenu li:first-child {
+	border: none;
+}
+
+#topmenu a {
+	text-decoration: none;
+	color: #900;
+}
+
+#topmenu a,
+#topmenu span {
+	display: block;
+	padding: 7px 5px;
+}
+
+#topmenu a:hover {
+	background: #FFC;
+}
+
+#topmenu li li {
+	float: none;
+	border-left: none;
+	border-top: 1px solid #7a7a7a;
+}
+
+#topmenu li ul {
+	position: absolute;
+	border: 1px solid #7a7a7a;
+	display: none;
+}
+
+#topmenu li:hover ul {
+	display: block;
+}
+
+
+/* Vertical menu styling */
+
+#sidemenu {
+	width: 90%;
+	margin: 10px auto;
+}
+
+#sidemenu ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	border: 1px solid #7a7a7a;
+}
+
+#sidemenu li {
+	border-top: 1px solid #7a7a7a;
+}
+
+#sidemenu li:first-child {
+	border-top: none;
+}
+
+#sidemenu a {
+	text-decoration: none;
+	color: #900;
+	display: block;
+	padding: 7px 5px;
+}
+
+#sidemenu a:hover {
+	background: #FFC;
+}
+
+
+/* Typography */
+
+h2 {
+	margin-bottom: 0.25em;
+}
+
+h2 + p {
+	margin-top: 0;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="wrapper">
+    <div id="header">
+    
+    </div><!-- header -->
+    <div id="topmenu">
+        <ul>
+            <li><a href="#">Link Item</a></li>
+            <li>
+            	<span>Link Item</span>
+            	<ul>
+		            <li><a href="#">Link Sub Item</a></li>
+		            <li><a href="#">Link Sub Item</a></li>
+		            <li><a href="#">Link Sub Item</a></li>
+		            <li><a href="#">Link Sub Item</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Link Item</a></li>
+            <li><a href="#">Link Item</a></li>
+            <li><a href="#">Link Item</a></li>
+        </ul>
+    </div>
+    <div id="content">
+    	<div id="maincolumn">
+            <h1>Lorem ipsum dolor sit amet</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque luctus tristique dui sed egestas. Fusce luctus velit ut lectus pulvinar sagittis. Morbi ut tellus vel arcu ultricies semper. Morbi ac ante eu erat hendrerit pellentesque sit amet vel quam. Integer placerat ante sit amet turpis blandit blandit. Sed ornare commodo nisi nec pharetra. Fusce tincidunt metus a tellus dignissim blandit. Duis eleifend rutrum venenatis. Ut eu metus a sem tempor malesuada ac ac risus. In hac habitasse platea dictumst. Curabitur tincidunt tempor lorem scelerisque dapibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam erat volutpat. Mauris fermentum, massa eu congue laoreet, felis mauris molestie tortor, a pulvinar tortor purus in metus. Mauris eu lectus diam. Pellentesque condimentum sodales dolor ut sollicitudin.</p>
+            
+            <h2>Praesent vitae nulla erat</h2>
+            <p>Curabitur sodales rhoncus neque, ac vestibulum lectus faucibus sit amet. Sed ut ante nisl, eget lobortis lectus. Maecenas et cursus felis. Cras fermentum velit nec justo suscipit egestas. Ut quam arcu, porta ac ornare vitae, porttitor sit amet diam. Praesent vitae nulla erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vulputate vehicula purus, auctor consequat libero pellentesque sit amet. Aliquam lacinia porta fringilla. Donec imperdiet, quam eu molestie posuere, ante velit aliquet ligula, non ullamcorper quam dui ut dui. Fusce aliquam volutpat vehicula. Morbi non neque at est cursus imperdiet eget quis nunc.</p>
+            
+            <ul>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>Pellentesque id neque id dui euismod malesuada.</li>
+                <li>Phasellus lobortis egestas magna, eu facilisis orci volutpat et.</li>
+                <li>In consequat consectetur libero, ut volutpat lectus faucibus bibendum.</li>
+                <li>Praesent scelerisque tempor erat, vitae gravida nunc ultricies ornare.</li>
+            </ul>
+            
+            <p>Aliquam ut enim massa. Aenean id mauris nisl. Donec nec nisl non nisl fringilla placerat a vitae nisl. Fusce rutrum suscipit purus et condimentum. Integer quis justo sed urna malesuada venenatis. Vivamus lacus tellus, molestie eget dictum in, accumsan ut felis. Pellentesque rhoncus, odio viverra dignissim porttitor, lorem arcu adipiscing justo, at feugiat diam magna vitae dolor. Duis facilisis felis aliquet odio pretium ultrices. Fusce et dui eu dui ornare tincidunt a a turpis. Donec vehicula bibendum augue convallis placerat. Vestibulum velit turpis, ullamcorper vel condimentum congue, rhoncus nec lectus. Proin mattis purus vel nisi pretium mollis. Pellentesque nec ipsum turpis. Duis purus nulla, dapibus in lobortis sit amet, pellentesque eget sem. Integer adipiscing fringilla orci at gravida. Morbi vitae dui nisi, a vehicula mi.</p>
+            
+            <h2>Curabitur et enim quam, et consectetur urna</h2>
+            <p>Proin ullamcorper ornare risus, consectetur tincidunt ante iaculis ac. Sed sed adipiscing urna. Pellentesque condimentum convallis pulvinar. Curabitur et enim quam, et consectetur urna. Duis elementum porta est nec aliquet. Praesent accumsan, enim eget interdum malesuada, justo nunc scelerisque justo, id lacinia libero augue sit amet felis. Nam ac sem quis nibh vulputate porttitor a eu risus. Vivamus porta tellus vitae ipsum ultricies feugiat. Aliquam orci justo, luctus id aliquet ut, laoreet vel nulla. Sed interdum mi imperdiet leo tempus ullamcorper. Curabitur sem arcu, malesuada in ornare consequat, ullamcorper sit amet odio. Curabitur ac lectus lectus, pretium gravida turpis. Morbi lacinia pulvinar felis id tempus. Sed porttitor, orci eget mollis rhoncus, libero nulla vestibulum est, eu volutpat sapien mi at sapien. Quisque scelerisque nisi euismod mi gravida non fringilla velit commodo. Integer malesuada orci in nibh adipiscing vestibulum.</p>
+            
+            <p>Nulla vel fringilla eros. Suspendisse vitae dui nisl, id volutpat nisi. Donec vehicula lacinia purus laoreet suscipit. Donec id dolor tempor purus vehicula dignissim. Maecenas libero purus, pretium vitae imperdiet quis, fringilla dapibus mauris. Donec laoreet posuere mauris, ut accumsan odio molestie ac. Etiam et felis lorem. Vivamus quis nibh nec sapien pretium dignissim quis sit amet ligula. Nam imperdiet velit nec nisi elementum adipiscing at vitae enim. Integer gravida auctor est vitae euismod. Sed orci dolor, tincidunt vitae consequat nec, consequat et massa. Etiam dapibus, quam eget feugiat sollicitudin, felis orci malesuada metus, non faucibus tortor purus nec risus. Morbi lobortis, metus et eleifend lobortis, nisl elit molestie tellus, a mollis nibh arcu a enim. Nunc ac enim ut nulla adipiscing dictum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div><!-- maincolumn -->
+        <div id="sidebar">
+            
+            <div id="sidemenu">
+            	<ul>
+                	<li><a href="#">Link Item</a></li>
+                	<li><a href="#">Link Item</a></li>
+                	<li><a href="#">Link Item</a></li>
+                	<li><a href="#">Link Item</a></li>
+                	<li><a href="#">Link Item</a></li>
+                </ul>
+            </div>
+            
+            <h2>Etiam laoreet placerat porta</h2>
+            <p>Etiam laoreet placerat porta. Donec consequat fringilla bibendum. Vestibulum consequat erat in nibh volutpat consequat. Mauris sapien enim, tristique id vestibulum in, aliquam quis dui. Aliquam erat volutpat. Phasellus vel odio libero, sed gravida est. Integer eu sem non tellus tincidunt condimentum. Maecenas iaculis felis nec dui placerat ut iaculis nulla accumsan. Quisque a commodo ante. Curabitur sit amet tortor dictum lorem venenatis venenatis sed vitae nunc. Quisque eu felis est. Morbi tincidunt gravida leo sed malesuada. Pellentesque pulvinar, sem sit amet iaculis vestibulum, quam massa lacinia ligula, sed fermentum sapien erat non libero. Morbi dapibus aliquet massa nec interdum. Nullam sed pharetra arcu. </p>
+        </div><!-- sidebar -->
+        <div class="clearing"></div><!-- clearing div -->
+	</div><!-- content -->
+    <div id="footer">
+    	<div>Copyright &copy; 2011 TC Class 4141. Some Rights Reserved.</div>
+    </div><!-- footer -->
+</div><!-- wrapper -->
+
+</body>
+</html>

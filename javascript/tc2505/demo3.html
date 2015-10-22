@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Demo 3: DOM DOM DOM!</title>
+</head>
+
+<body>
+
+<div id="stockticker">
+</div>
+
+
+
+<script type="text/javascript">
+// use JSON notation to create multidimensional array
+var tickerData = [['NT'		,5.25	,4.32	,2.15],
+				  ['MSFT'	,115.21	,110.11	,112.37],
+				  ['AAPL'	,121.71	,102.07	,99.11]];
+
+
+// get reference to parent container
+var tickerElem = document.getElementById("stockticker");
+
+var tempElem = document.createElement("TABLE");
+// add node to container
+tickerElem.appendChild(tempElem);
+
+var tBodyElem = document.createElement("TBODY");
+tempElem.appendChild(tBodyElem);
+
+var tRowElem = document.createElement("TR");
+tBodyElem.appendChild(tRowElem);
+
+tempElem = document.createElement("TH");
+tRowElem.appendChild(tempElem);
+tempElem.appendChild(document.createTextNode('SYM'));
+
+tempElem = document.createElement("TH");
+tRowElem.appendChild(tempElem);
+tempElem.appendChild(document.createTextNode('1:00'));
+
+tempElem = document.createElement("TH");
+tRowElem.appendChild(tempElem);
+tempElem.appendChild(document.createTextNode('2:00'));
+
+tempElem = document.createElement("TH");
+tRowElem.appendChild(tempElem);
+tempElem.appendChild(document.createTextNode('3:00'));
+
+tRowElem = document.createElement("TR");
+tBodyElem.appendChild(tRowElem);
+
+tempElem = document.createElement("TD");
+tRowElem.appendChild(tempElem);
+tempElem.appendChild(document.createTextNode('NT'));
+
+tempElem = document.createElement("TD");
+tRowElem.appendChild(tempElem);
+tempElem.appendChild(document.createTextNode('5.25'));
+
+tempElem = document.createElement("TD");
+tRowElem.appendChild(tempElem);
+tempElem.appendChild(document.createTextNode('4.32'));
+
+tempElem = document.createElement("TD");
+tRowElem.appendChild(tempElem);
+tempElem.appendChild(document.createTextNode('2.15'));
+
+tRowElem = document.createElement("TR");
+tBodyElem.appendChild(tRowElem);
+
+tempElem = document.createElement("TD");
+tRowElem.appendChild(tempElem);
+tempElem.appendChild(document.createTextNode('MSFT'));
+
+tempElem = document.createElement("TD");
+tRowElem.appendChild(tempElem);
+tempElem.appendChild(document.createTextNode('115.21'));
+
+tempElem = document.createElement("TD");
+tRowElem.appendChild(tempElem);
+tempElem.appendChild(document.createTextNode('110.11'));
+
+tempElem = document.createElement("TD");
+tRowElem.appendChild(tempElem);
+tempElem.appendChild(document.createTextNode('112.37'));
+
+tRowElem = document.createElement("TR");
+tBodyElem.appendChild(tRowElem);
+
+tempElem = document.createElement("TD");
+tRowElem.appendChild(tempElem);
+tempElem.appendChild(document.createTextNode('AAPL'));
+
+tempElem = document.createElement("TD");
+tRowElem.appendChild(tempElem);
+tempElem.appendChild(document.createTextNode('121.71'));
+
+tempElem = document.createElement("TD");
+tRowElem.appendChild(tempElem);
+tempElem.appendChild(document.createTextNode('102.07'));
+
+tempElem = document.createElement("TD");
+tRowElem.appendChild(tempElem);
+tempElem.appendChild(document.createTextNode('99.11'));
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

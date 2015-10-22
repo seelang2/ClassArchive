@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>List Demos</title>
+	<style type="text/css">
+	ul.collapsible,
+	.collapsible ul {
+		list-style-type: none;
+		margin: 0 0 0 10px;
+		padding: 0;
+	}
+	
+	.collapsible li ul {
+		margin-left: 40px;
+	}
+	
+	
+	</style>
+</head>
+<body>
+
+<div>
+	<ul class="collapsible">
+		<li>List Item 1</li>
+		<li>List Item 2</li>
+		<li>List Item 3</li>
+		<li>
+			<span>List Item 4</span>
+			<ul>
+				<li>SubList Item 1</li>
+				<li>SubList Item 2</li>
+				<li>SubList Item 3</li>
+				<li>
+					<span>SubList Item 4</span>
+					<ul>
+						<li>SubList Item 1</li>
+						<li>SubList Item 2</li>
+						<li>SubList Item 3</li>
+						<li>SubList Item 4</li>
+						<li>SubList Item 5</li>
+					</ul>
+				</li>
+				<li>SubList Item 5</li>
+			</ul>
+		</li>
+		<li>List Item 5</li>
+	</ul>
+</div>
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	// hide sublists
+	$('.collapsible li ul').hide();
+	
+	$('.collapsible li')
+		.click(
+			function(e) {
+				e.stopPropagation(); // prevent event from bubbling
+				// if there is a sublist in this li, toggle it
+				$(this).children('ul').toggle();
+			}
+		 )
+}); // document.ready
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<script type="text/javascript">
+
+document.write('<p>This space for rent.</p>');
+
+var someVariable = 'Yet more space for rent.';
+
+document.write('<p>' + someVariable.toUpperCase() + '</p>');
+
+var sideA = 10;
+var sideB = parseInt('5');
+
+var area = sideA * sideB;
+var perimeter = sideA + sideB + sideA + sideB;
+
+document.write('<p>The area of the box is ' + area + '</p>');
+document.write('<p>The perimeter of the box is ' + perimeter + '</p>');
+
+var weekdays = new Array('Sunday','Monday','Tuesday','Wednesday');
+
+document.write('<p>Today is ' + weekdays[2] + '</p>');
+document.write('<p>There are ' + weekdays.length + ' elements in the weekdays array.</p>');
+
+weekdays.push('Thursday','Friday','Saturday');
+document.write('<p>There are ' + weekdays.length + ' elements in the weekdays array.</p>');
+
+var months = ["January",
+			  "February",
+			  "March",
+			  "April",
+			  "May",
+			  "June",
+			  "July",
+			  "August",
+			  "September",
+			  "October",
+			  "November",
+			  "December"];
+
+var pillbox = {"Mon": "white",
+			   "Tue": "none",
+			   "Wed": "purple",
+			   "Thu": "orange",
+			   "Fri": "red",
+			   "Sat": "green",
+			   "Sun": "pink"
+			   }
+
+document.write('<p>Today\'s pill is the ' + pillbox['Wed'] + ' pill.</p>');
+
+/* 
+	Make the script more dynamic, responding to current date
+*/
+var today = new Date(); // create instance of new date object
+
+document.write('<p>Today is ' + 
+			   weekdays[today.getDay()] + ', ' + 
+			   months[today.getMonth()] + ' ' + 
+			   today.getDate() + ', ' + 
+			   today.getFullYear() +
+			   '.</p>');
+
+document.write("<p>Today's pill is the " +  pillbox[weekdays[today.getDay()].substr(0,3)] + " pill.</p>");
+</script>
+
+
+</body>
+</html>

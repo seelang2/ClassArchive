@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body { font-family: Verdana, Arial, sans-serif;	}
+
+	table { border-collapse: collapse; }
+	
+	table, td, th {	border: 1px solid #7a7a7a; }
+
+	td, th { padding: 0.5em; }
+
+	tr.hover { background: #FFC; }
+	.oddrow { background: #FA69CA; }
+	.evenrow { background: #F7C3E6; }
+
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+var contactList =
+[
+	{ "firstname":"John", "lastname":"Doe", "age":42 },
+	{ "firstname":"Alex", "lastname":"Doe", "age":42 },
+	{ "firstname":"Jane", "lastname":"Doe", "age":42 },
+	{ "firstname":"Michael", "lastname":"Doe", "age":42 },
+	{ "firstname":"Trish", "lastname":"Doe", "age":42 },
+	{ "firstname":"Becky", "lastname":"Doe", "age":42 },
+	{ "firstname":"Peter", "lastname":"Doe", "age":42 },
+	{ "firstname":"John", "lastname":"Doe", "age":42 }
+];
+
+
+$(document).ready(function() {
+
+var doHover = function(e, extraParam) {
+
+	console.log(e.data);
+	console.log(extraParam);
+
+	$(this).toggleClass('hover');
+
+};
+
+$('<table><tbody /></table>')
+	.find('tbody')
+	.each(function(index, tbody) {
+
+		var stuff = { data: 'xxx'};
+		var xxx = 'xxx';
+
+		$.each(
+			contactList,
+			function(index, contact) {
+
+				$('<tr />')
+					.addClass( index % 2 == 0 ? 'oddrow' : 'evenrow' )
+					.append('<td>' + contact.firstname + '</td>')
+					.append('<td>' + contact.lastname + '</td>')
+					.append('<td>' + contact.age + '</td>')
+					.appendTo(tbody)
+					.on('mouseover mouseout', stuff, doHover);
+			}
+		);
+
+	 })
+	.parent()
+	.appendTo('#target');
+
+}); // document.ready
+
+</script>
+</body>
+</html>

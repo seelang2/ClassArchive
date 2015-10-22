@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+
+<input id="button1" type="button" value="Click Me!">
+
+<p><a id="link1" href="http://www.google.com">No, click Me!</a></p>
+
+<p><a id="link2" href="http://www.google.com">Psst, I actually work!</a></p>
+
+<script type="text/javascript">
+
+function getClicked() {
+	alert("I've been clicked!");
+} // getClicked
+
+var theButton = document.getElementById("button1"); // get reference to button
+
+// attach event handler to element
+theButton.onclick = getClicked;
+
+var link1 = document.getElementById("link1");
+
+link1.onclick = function() {
+	return false; // overrides default click action for link
+	
+}; // onclick
+
+var link2 = document.getElementById("link2");
+link2.onclick = function() {
+	// use the confirm dialog to conditionally return/override the default click action
+	return confirm('Are you sure you want to follow this link and leave this page?');
+}; // onclick
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

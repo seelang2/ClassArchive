@@ -1,0 +1,71 @@
+/* CSS Document */
+body {
+	background: #ababab;
+	font-size: 78%;
+	font-family:Geneva, Arial, Helvetica, sans-serif;
+	text-align: center;
+}
+
+#wrapper {
+	margin 20px auto;
+	padding: 0;
+	text-align: left;
+	background: #efefef;
+	width: 800px;
+}
+
+#header {
+	height: 80px;
+	overflow: hidden;
+}
+
+#footer {
+	height: 40px;
+	overflow: hidden;
+}
+
+#contactcard {
+	width: 300px;
+	background: #FFFFCC;
+	border: 1px solid #B8910A;
+/*	height: 200px; */
+	padding: 15px 25px;
+/*	display: none; */
+	position:absolute;
+	top: -1000;
+	left: -1000;
+	z-index:10;
+}
+
+
+
+form { clear: both; }
+
+form div.label { 
+	clear: left;
+	margin: 5px 0;
+}
+
+form div label { 
+	float:left; 
+	width: 22%;
+	text-align:right;
+	margin-right:0.75em;
+}
+
+form span {
+}
+
+.flushright { 
+	float:right; 
+	font-size: 90%;
+}
+
+#statusbox {
+	float: right;
+	background: #ff0000;
+	color: #ffffff;
+	font-weight: bold;
+	display:none;
+}
+

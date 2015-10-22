@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+<style type="text/css">
+
+.oddtablerow { background: #B3FFB3; }
+.eventablerow { background: #ECFFEC; }
+.rowhover { background:#FFC; }
+
+</style>
+
+</head>
+
+<body>
+
+<div id="content"></div>
+
+<script type="text/javascript">
+
+var firstNames = ['John','Jane','Tracy','Peter','Janet','Billy'];
+var lastNames = ['Doe','Smith','Walker','Johnson','Adams','Stewart'];
+
+var contentDiv = document.getElementById('content');
+
+var tempElem = document.createElement("TABLE");
+contentDiv.appendChild(tempElem);
+tempElem.id = 'table1';
+
+var tBodyElem = document.createElement("TBODY");
+tempElem.appendChild(tBodyElem);
+
+// create header row
+var tRowElem = document.createElement("TR");
+tBodyElem.appendChild(tRowElem);
+
+tempElem = document.createElement("TH");
+tRowElem.appendChild(tempElem);
+tempElem.appendChild(document.createTextNode('Firstname'));
+
+tempElem = document.createElement("TH");
+tRowElem.appendChild(tempElem);
+tempElem.appendChild(document.createTextNode('Lastname'));
+
+// loop through each person and create a table row
+for (var c = 0; c < firstNames.length; c++) {
+	tRowElem = document.createElement("TR");
+	tBodyElem.appendChild(tRowElem);
+	tRowElem.data = c;
+	
+	tRowElem.onmouseover = function() {
+		this.className = 'rowhover';
+	}
+	
+	tRowElem.onmouseout = function() {
+		this.className = '';
+	}
+	
+	tRowElem.ondblclick = function() {
+		alert(firstNames[this.data] + ' ' + lastNames[this.data]);
+	}
+	
+	/*
+	Temporarily disable alternating row colors
+	if (c % 2 == 0) {
+		// even index number, so it's an ODD row
+		tRowElem.className = 'oddtablerow';
+	} else {
+		tRowElem.className = 'eventablerow';
+	}
+	*/
+	tempElem = document.createElement("TD");
+	tRowElem.appendChild(tempElem);
+	tempElem.appendChild(document.createTextNode(firstNames[c]));
+	
+	tempElem = document.createElement("TD");
+	tRowElem.appendChild(tempElem);
+	tempElem.appendChild(document.createTextNode(lastNames[c]));
+}
+
+</script>
+
+</body>
+</html>

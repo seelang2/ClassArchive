@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Closure Demo</title>
+	
+</head>
+<body>
+
+<button>Click Me</button>
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+function makeCounter() {
+
+	var c = 0;
+
+	var x = function() {
+		
+		alert("I've been clicked " + (++c) + ' times.');
+		
+	};
+	
+	return x;
+}
+
+var y = makeCounter();
+
+
+</script>
+</body>
+</html>

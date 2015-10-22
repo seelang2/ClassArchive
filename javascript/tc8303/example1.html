@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+var sideA = 10;
+var sideB = parseFloat('sdfsdf5.232sdfgdfsg');
+
+var area = sideA * sideB;
+var perimeter = sideA + sideB + sideA + sideB;
+
+document.write('<p>The area is ' + area + ' and the perimeter is ' + perimeter + '</p>');
+
+var pillbox = {
+	Sun: 'white',
+	Mon: 'white',
+	Tue: 'none',
+	Wed: 'blue',
+	Thu: 'Orange',
+	Fri: 'red',
+	Sat: 'green'
+};
+
+
+
+
+
+var weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+var today = new Date('4/3/1971'); // creates an instance of Date
+
+var dayNum = today.getDate(); // get day of month
+
+// determine ordinal
+
+/*
+if (dayNum % 10 == 1 && dayNum % 100 != 11) {
+	var ordinal = 'st';
+} else if (dayNum % 10 == 2 && dayNum % 100 != 12) {
+	var ordinal = 'nd';
+} else if (dayNum % 10 == 3 && dayNum % 100 != 13) {
+	var ordinal = 'rd';
+} else {
+	var ordinal = 'th';
+}
+
+*/
+
+switch (true) {
+	case dayNum % 10 == 1 && dayNum % 100 != 11:
+		var ordinal = 'st';
+	break;
+	case dayNum % 10 == 2 && dayNum % 100 != 12):
+		var ordinal = 'nd';
+	break;
+	case dayNum % 10 == 3 && dayNum % 100 != 13:
+		var ordinal = 'rd';
+	break;
+	default:
+		var ordinal = 'th';
+	break;
+}
+
+
+
+
+document.write('<p>Today is ' + 
+			   weekdays[today.getDay()] + ', ' +
+			   months[today.getMonth()] + ' ' + 
+			   today.getDate() + ordinal + ', ' +
+			   today.getFullYear() +
+			   '</p>');
+
+
+
+
+</script>
+</body>
+</html>

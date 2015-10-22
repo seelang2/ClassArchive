@@ -1,0 +1,79 @@
+/* This is a CSS comment. */
+body {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 18px;
+	color: #000000;
+	background-color: #cccccc;
+	background-image: url('wade_gully_tippie_fatbike.jpg');
+	background-repeat: no-repeat;
+	background-size: 150%;
+	background-attachment: fixed;
+}
+
+#wrapper {
+	background-color: rgba(255, 255, 255, 0.85);
+	/*
+	  The max-width property allows the element width to be fluid.
+	  If the available space is less than the max width, the element 
+	  will be 100% of the width of the containing element. If the 
+	  container is greater than the max width, the element will stay
+	  fixed to the max width setting.
+	*/
+	max-width: 800px;
+	margin: auto;
+}
+
+#wrapper > header {
+	height: 80px;
+	background-color: #000099;
+	color: #ffffff;
+}
+
+#content {
+	padding-top: 10px;
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-bottom: 10px;
+	text-align: left;
+}
+
+#wrapper > footer {
+	height: 50px;
+	background-color: #666666;
+	color: #ffffff;
+	font-size: 90%;
+	text-align: right;
+}
+
+#wrapper > footer a {
+	color: #ffffff;
+}
+
+#maincolumn, #sidebar {
+	/*
+		setting display to inline-block tells the browser to treat 
+		the blocks like inline elements that site side-by-side along
+		a common baseline. Then vertical-align us used to align the
+		two columns to the top line rather than the base line.
+	*/
+	display: inline-block;
+	vertical-align: top;
+}
+
+#maincolumn {
+	width: 57.5%;
+	margin-right: 2%;
+}
+
+#sidebar {
+	width: 38.5%;
+	margin-left: 1%;
+	font-size: 93%;
+}
+
+/* classes for word wrap */
+.alignleft { float: left; margin-right: 15px; }
+.alignright { float: right; margin-left: 15px; }
+
+
+

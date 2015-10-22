@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Cascading menu</title>
+
+<style type="text/css">
+/* Horizontal menu styling */
+#menu ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#menu li {
+	border: 1px solid #7a7a7a;
+}
+
+#menu li li {
+	position: relative;
+}
+
+#menu > ul > li {
+	float: left;
+}
+
+#menu li ul {
+	position: absolute;
+	z-index: 100;	
+}
+
+#menu a,
+#menu span {
+	display: block;
+	padding: 5px 10px;
+}
+
+#menu a {
+	text-decoration: none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="menu">
+	<ul>
+    	<li><a href="#">Menu Item 1</a></li>
+    	<li><span>Menu Item 2</span>
+        	<ul>
+            	<li><a href="#">Sub Menu Item 1</a></li>
+            	<li><a href="#">Sub Menu Item 2</a></li>
+            	<li><a href="#">Sub Menu Item 3</a></li>
+                <li><span>Sub Menu Item 4</span>
+                    <ul>
+                        <li><a href="#">Sub Menu Item 1</a></li>
+                        <li><a href="#">Sub Menu Item 2</a></li>
+                        <li><a href="#">Sub Menu Item 3</a></li>
+                        <li><a href="#">Sub Menu Item 4</a></li>
+                    </ul>
+                </li>
+            	<li><a href="#">Sub Menu Item 5</a></li>
+            </ul>
+        </li>
+    	<li><a href="#">Menu Item 3</a></li>
+    	<li><a href="#">Menu Item 4</a></li>
+    	<li><span>Menu Item 5</span>
+        	<ul>
+            	<li><a href="#">Sub Menu Item 1</a></li>
+            	<li><a href="#">Sub Menu Item 2</a></li>
+            	<li><a href="#">Sub Menu Item 3</a></li>
+            	<li><a href="#">Sub Menu Item 4</a></li>
+            </ul>
+        </li>
+    	<li><a href="#">Menu Item 6</a></li>
+    </ul>
+</div>
+
+<script src="jquery-1.7.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$('#menu li ul li:has(ul)')			// selected submenus that have submenus
+	.each(							// for each item in collection
+	 	function(index, elem) {
+			var w = $(elem).outerWidth();
+			
+			$(elem)
+				.children('ul')
+					.css(
+					  {
+						left: (w - 2) + 'px', 
+					    top: 0,
+						width: w + 'px'
+					  }
+					 );
+		}
+	 );
+
+$('#menu ul ul')					// select all submenus
+	.hide();						// hide them from view
+
+$('#menu li:has(ul)')				// select all menu items with submenus
+	.mouseover(
+	 	function(evt) {
+			evt.stopPropagation();
+			$(this)					// slap a jQuery wrapper around this element
+				.children('ul')		// set collection to child UL (submenu)
+				.fadeIn();			// and display the submenu
+		}
+	 )
+	.mouseout(
+	 	function(evt) {
+			evt.stopPropagation();
+			$(this)
+				.children('ul')
+				.fadeOut();
+		}
+	 );
+
+</script>
+</body>
+</html>

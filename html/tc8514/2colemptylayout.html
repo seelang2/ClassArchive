@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo</title>
+	
+	<style type="text/css">
+	body {
+		background-color: #cccccc;
+	}
+	
+	#wrapper {
+		width: 800px;
+		background-color: #ffffff; /* white */
+		margin: auto;
+		/* 
+			the 1px of vertical padding prevents the margins from
+			being adjacent and thus collapsing together
+		*/
+	}
+	
+	#wrapper > header {
+		height: 80px;
+		background-color: #3597AC;
+	}
+	
+	#wrapper > footer {
+		height: 120px;
+		background-color: #263238;
+		color: #ffffff;
+	}
+	
+	#content {
+	
+	}
+	
+	#main {
+		float: left;
+		width: 550px;
+		
+	} 
+	
+	#sidebar {
+		float: right;
+		width: 250px;
+		
+	}
+	
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<header>
+	</header>
+	
+	<div id="content">
+		<section id="main">
+		
+			<p>Content goes here.</p>
+			
+		</section><!-- main -->
+		
+		<section id="sidebar">
+		
+			<p>Content goes here.</p>
+		
+		</section><!-- sidebar -->
+	</div>
+	
+	<footer>
+	</footer>
+</div><!-- wrapper -->
+
+</body>
+</html>

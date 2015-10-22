@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<p><button id="button1">Click Me!</button></p>
+
+<p><button id="button2">Click Me!</button></p>
+
+<p><button id="button3">Click Me!</button></p>
+
+<p><button id="button4">Click Me!</button></p>
+
+<script type="text/javascript">
+
+function doSomething() {
+	var timestamp = new Date();
+	
+	alert('Now clicking on button ' + this.id);
+};
+
+document.getElementById("button1").onclick = doSomething; // onclick
+document.getElementById("button2").onclick = doSomething; // onclick
+document.getElementById("button3").onclick = doSomething; // onclick
+document.getElementById("button4").onclick = doSomething; // onclick
+
+</script>
+</body>
+</html>

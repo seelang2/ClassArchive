@@ -1,0 +1,56 @@
+@charset "utf-8";
+/* CSS Layout Document */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #009 url(blue-abstract-background.jpg) no-repeat 50px 100px fixed;	
+	
+}
+
+#wrapper {
+	margin: 0 auto;
+	padding: 0;
+	width: 750px;
+}
+
+#header {
+	height: 75px;
+	overflow: hidden;
+	background: #00F url(blue-abstract-background.jpg) right -2300px;
+}
+
+#footer {
+	height: 45px;
+	overflow: hidden;
+	background: #00F;
+	clear: both;
+}
+
+#content {
+	background: #ffffff;
+	float: left;
+	
+}
+
+#main {
+	float: right;
+	width: 56%;
+	padding: 0 3% 0 1%;
+}
+
+#sidebar {
+	float: left;
+	width: 37%;
+	padding: 0 1% 0 2%;
+}
+
+.halfcol {
+	float: left;
+	width: 44%;
+	margin: 0 1%;
+	padding: 0 2%;
+}
+

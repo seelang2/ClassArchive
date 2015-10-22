@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+</head>
+<body>
+
+<script type="text/javascript">
+
+var myValue = 'This space for rent.';
+//var formalWayThatNoOneUses = new String('This space for rent');
+/*
+	Block comment.
+ */
+
+document.write('<p>' + myValue.toUpperCase() + '</p>');
+
+var sideA = 10;
+var sideB = parseFloat('fluffyhamster');
+var area = sideA * sideB;
+var perimeter = sideA + sideB + sideA + sideB;
+
+document.write('<p>The area is ' + area + ' and the perimeter is ' + perimeter + '</p>');
+
+//var weekdays = new Array('Sun', 'Mon');
+var weekdays = ['Sun','Mon','Tue']; // use object literal to define array
+
+document.write('<p>The second day is ' + weekdays[1] + '</p>');
+
+weekdays.push('Wed','Thu','Fri');
+weekdays[weekdays.length] = 'Sat';
+
+/*
+var pillbox = new Object();
+pillbox.Sun = 'white';
+*/
+
+var pillbox = {
+	Sun: 'white',
+	Mon: 'white',
+	Tue: 'none',
+	Wed: 'Blue',
+	Thu: 'Orange',
+	Fri: 'Red',
+	Sat: 'green'
+};
+
+pillbox.bob = 'technicolor';
+
+document.write(pillbox.Mon);
+document.write(pillbox['Mon']); // array notation also works on objects
+
+for (day in pillbox) {
+	document.write('<p>' + day + ' => ' + pillbox[day] + '</p>');
+}
+
+myValue = myValue.toUpperCase().toLowerCase().length.toString();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

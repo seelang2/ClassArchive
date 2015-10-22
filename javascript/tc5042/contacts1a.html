@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript">
+
+var contactList = 
+	[
+		{firstName: "John", lastname: "Doe", email: "jdoe@email.com" },
+		{firstName: "Alan", lastname: "Smith", email: "ams@email.com" },
+		{firstName: "Peter", lastname: "Connor", email: "pc101@email.com" },
+		{firstName: "Francis", lastname: "Geraci", email: "cheap@lawyer.com" },
+		{firstName: "Paulette", lastname: "Jones", email: "star@view.com" },
+		{firstName: "Donna", lastname: "Adller", email: "anon284872@hotmail.com" },
+		{firstName: "Adam", lastname: "Thomas", email: "Adam.Thomas@pretentious.com" },
+		{firstName: "Janet", lastname: "Riley", email: "justjanet@mac.com" },
+		{firstName: "Christine", lastname: "Adams", email: "ca27@email.com" },
+		{firstName: "Bruce", lastname: "Davis", email: "mynameisbruce@gmail.com" },
+		{firstName: "Chase", lastname: "Bradley", email: "banker7@email.com" },
+		{firstName: "Amanda", lastname: "Doe", email: "adoe@yahoo.com" },
+		{firstName: "Bradley", lastname: "Chase", email: "youreadingthis@question.com" },
+		{firstName: "Thomas", lastname: "Peters", email: "me@tompeters.com" }
+	];
+
+
+var targetElem = document.getElementById("target");
+
+var tableElem = document.createElement("TABLE");
+targetElem.appendChild(tableElem);
+
+var theadElem = document.createElement("THEAD");
+tableElem.appendChild(theadElem);
+
+var rowElem = document.createElement("TR");
+theadElem.appendChild(rowElem);
+
+var tdElem = document.createElement("TH");
+rowElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('First Name'));
+
+var tdElem = document.createElement("TH");
+rowElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('Last Name'));
+
+var tdElem = document.createElement("TH");
+rowElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('Email'));
+	
+
+var tbodyElem = document.createElement("TBODY");
+tableElem.appendChild(tbodyElem);
+
+for (var c = 0; c < contactList.length; c++) {
+	var rowElem = document.createElement("TR");
+	tbodyElem.appendChild(rowElem);
+	
+	var tdElem = document.createElement("TD");
+	rowElem.appendChild(tdElem);
+	tdElem.appendChild(document.createTextNode(contactList[c].firstName));
+	
+	var tdElem = document.createElement("TD");
+	rowElem.appendChild(tdElem);
+	tdElem.appendChild(document.createTextNode(contactList[c].lastname));
+	
+	var tdElem = document.createElement("TD");
+	rowElem.appendChild(tdElem);
+	tdElem.appendChild(document.createTextNode(contactList[c].email));
+	
+}
+
+
+
+
+</script>
+</body>
+</html>

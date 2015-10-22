@@ -1,0 +1,53 @@
+/* CSS Document */
+body {
+	background: #7a7a7a;
+	text-align:center;
+	font-size: 78%;
+	font-family:Geneva, Arial, Helvetica, sans-serif;
+}
+
+#wrapper {
+	margin: 0 auto;
+	padding: 0;
+	text-align: left;
+	width: 800px;
+}
+
+#header {
+	margin: 0;
+	padding: 0;
+	height: 85px;
+	overflow:hidden;
+	background:#efefef;
+}
+
+#footer {
+	margin: 0;
+	padding: 0;
+	height: 30px;
+	overflow:hidden;
+	background:#efefef;
+}
+
+#content {
+	margin: 0;
+	padding: 15px 25px;
+	background: #ffffff;
+}
+
+#leftside {
+	float:left;
+	width:40%;
+	border: 1px solid #dddddd;
+}
+
+#rightside {
+	float:right;
+	width:40%;
+	border: 1px solid #dddddd;
+}
+
+#bottom {
+	clear:both;
+	border: 1px solid #dddddd;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Fun with Twitter</title>
+
+<script type="text/javascript" src="ajax.js"></script>
+
+</head>
+
+<body>
+
+<div id="tweets"></div>
+
+<script type="text/javascript">
+var Registry = {};
+
+var App = {
+	"startup": function() {
+		
+		/*
+		Registry.ajax = new Ajax();
+		
+		// do ajax request for tweet stream
+		var x = new Date();
+		x = x.getTime();
+		Registry.ajax.request(
+			{"method": "GET",
+			 "url": "http://10.6.10.183/tc3685/tojson.php?src=get&param1=foo&param2=bar", // add dummy parameter to end of query string
+			 "type": "text",
+			 "handler": App.showTweets}
+		);
+		*/
+	}, // startup
+	
+	"runme": function(data) {
+		var paramList = '';
+		for (param in data) {
+			paramList += param + ' = ' + data[param] + '\n';
+		}
+		
+		alert(paramList);
+	} // showTweets
+}; // App
+
+//window.onload = App.startup;
+
+
+</script>
+<script type="text/javascript" src="http://10.6.10.199/tc3685/tojson1.php?src=get&var1=foo&var2=bar&callback=App.runme"></script>
+</body>
+</html>

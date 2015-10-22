@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="calendar"></div>
+
+<script type="text/javascript">
+
+// get reference to calendar div
+var calendarDiv = document.getElementById("calendar");
+
+var pElem = document.createElement("P"); // create new element node
+calendarDiv.appendChild(pElem); // append new child to its parent node
+
+var textNode = document.createTextNode("Hello World!");
+pElem.appendChild(textNode);
+
+var h1Elem = document.createElement("H1");
+calendarDiv.insertBefore(h1Elem, pElem);
+
+var textNode = document.createTextNode("Welcome!");
+h1Elem.appendChild(textNode);
+
+</script>
+</body>
+</html>

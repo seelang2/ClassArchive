@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="calendar"></div>
+
+<script type="text/javascript">
+
+// get reference to calendar div
+var calendarDiv = document.getElementById("calendar");
+
+var tableElem = document.createElement("TABLE"); // create new element node
+calendarDiv.appendChild(tableElem); // append new child to its parent node
+
+var tbodyElem = document.createElement("TBODY");
+tableElem.appendChild(tbodyElem);
+
+var rowElem = document.createElement("TR");
+tbodyElem.appendChild(rowElem);
+
+var thElem = document.createElement("TH");
+rowElem.appendChild(thElem);
+thElem.colSpan = '3';
+
+var textNode = document.createTextNode("April");
+thElem.appendChild(textNode);
+
+var rowElem = document.createElement("TR");
+tbodyElem.appendChild(rowElem);
+
+var tdElem = document.createElement("TD");
+rowElem.appendChild(tdElem);
+
+tdElem.appendChild(document.createTextNode('S'));
+
+var tdElem = document.createElement("TD");
+rowElem.appendChild(tdElem);
+
+tdElem.appendChild(document.createTextNode('M'));
+
+var tdElem = document.createElement("TD");
+rowElem.appendChild(tdElem);
+
+tdElem.appendChild(document.createTextNode('T'));
+
+var tdElem = document.createElement("TD");
+rowElem.appendChild(tdElem);
+
+tdElem.appendChild(document.createTextNode('T'));
+
+var tdElem = document.createElement("TD");
+rowElem.appendChild(tdElem);
+
+tdElem.appendChild(document.createTextNode('T'));
+
+var tdElem = document.createElement("TD");
+rowElem.appendChild(tdElem);
+
+tdElem.appendChild(document.createTextNode('T'));
+
+var tdElem = document.createElement("TD");
+rowElem.appendChild(tdElem);
+
+tdElem.appendChild(document.createTextNode('T'));
+
+</script>
+</body>
+</html>

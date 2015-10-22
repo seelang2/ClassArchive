@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 85%;
+	background-color: #cccccc;
+	margin: 1em;
+}
+
+#content {
+	border: 1px solid #000000;
+	border-color: rgb(255, 0, 0);
+}
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>JSON-P Demo</title>
+	
+</head>
+<body>
+
+
+<button id="button1">Click to get List</button>
+
+<div id="contactlist"></div>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+var App = {
+	
+	start: function() {
+		
+		$('#button1')
+			.click(function() {
+				// retrieve contact data
+				
+				// create script element and pass into jQuery
+				/*
+				// native javascript
+					var newScript = document.createElement("SCRIPT");
+					newScript.src = 'http://http://10.6.10.108/tc6444/userdata.php?action=getlist&type=json&callback=App.processList';
+					document.body.appendChild(newScript);
+				*/
+				
+				$(document.createElement("SCRIPT"))
+					.attr('src','http://10.6.10.108/tc6444/userdata.php?action=getlist&type=json&callback=App.processList')
+					.appendTo(document.body);
+				
+			 });
+		
+		
+		
+	}, // App.start
+	
+	processList: function(contactList) {
+		$('#contactlist')
+			.empty()
+			.each(function(i, contactDiv) {
+				
+				$.each(
+					contactList,
+					function(index, contact) {
+						$('<div>' +
+							contact.id + ' ' +
+							contact.firstname + ' ' +
+							contact.lastname + ' ' +
+							contact.login + ' ' +
+						  '</div>')
+							.appendTo(contactDiv);
+					}
+				);
+				
+			 })
+	} // App.processList
+	
+}; // App
+
+
+$(document).ready(App.start);
+
+</script>
+</body>
+</html>

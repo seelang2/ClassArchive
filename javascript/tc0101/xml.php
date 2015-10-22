@@ -1,0 +1,25 @@
+<?php echo "<?xml version=\"1.0\" ?>";?>
+<root>
+	<data>
+		<row>
+			<cell>Name</cell>
+			<cell>Fruit</cell>
+			<cell>Vegetable</cell>
+		</row>
+		<row>
+			<cell>Captain</cell>
+			<cell>Banana</cell>
+			<cell>Zucchini</cell>
+		</row>
+		<row>
+			<cell>Admiral</cell>
+			<cell>Melon</cell>
+			<cell>Carrot</cell>
+		</row>
+		<row>
+			<cell>Midshipman</cell>
+			<cell>Orange</cell>
+			<cell>Potatoe</cell>
+		</row>
+	</data>
+</root>

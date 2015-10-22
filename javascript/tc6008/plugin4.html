@@ -1,0 +1,295 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 85%;
+	}
+	
+	form label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	
+	form label span { 
+		display: inline-block; 
+	}
+	
+	form label span:first-child { 
+		width: 225px;
+		margin-right: 10px;
+		text-align: right;
+	}
+	
+	form label span:first-child:after {
+		content: ':';
+	}
+	
+	
+	.error { border: 2px solid #f00; }
+	form span.error { font-weight:bold; color: #f00; border: none; }
+	
+	[myplaceholder].placeholder {
+		color: #999;
+	}
+	
+	</style>
+</head>
+<body>
+
+
+<form id="form1" action="#" method="get">
+	<label>
+		<span>Enter a value</span>
+		<input name="field1" data-vrule="notblank" myplaceholder="put something here" />
+	</label>
+	<label>
+		<span>Enter at least 4 characters</span>
+		<input name="field2" data-vrequired="1" data-vrule="minlength" data-vminlength="4" />
+	</label>
+	<label>
+		<span>Enter at most 6 characters</span>
+		<input name="field3" data-vrequired="1" data-vrule="maxlength" data-vmaxlength="6" />
+	</label>
+	<label>
+		<span>Enter 4 to 8 characters</span>
+		<input name="field7" data-vrequired="1" data-vrule="between" data-vminlength="4" data-vmaxlength="8" />
+	</label>
+	<label>
+		<span>Enter a number</span>
+		<input name="field4" data-vrequired="1" data-vrule="isnumeric" />
+	</label>
+	<label>
+		<span>Enter a value</span>
+		<input name="field5" 
+			data-vrequired="1" 
+			data-vrule="pattern" 
+			data-vpattern="\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}\b" 
+			data-verrmsg="Please enter a valid email address" />
+	</label>
+	<label>
+		<span>Enter anything</span>
+		<input name="field6" data-vrequired="1" />
+	</label>
+	<div><input type="submit" /></div>
+</form>
+
+
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript">
+
+// use an Immediately-Invoked Function Expression (IIFE) to enclose our plugin code
+(function($) {
+
+	$.fn.fieldValidate = function() {
+		
+		// filter the collection and return it
+		return this.filter(function(index) {
+			var $field = $(this);
+			
+			// check for rule exceptions
+			
+			// field is required
+			if ($field.attr('data-vrequired') && $field.val().length == 0) {
+				
+				// if an exception is found...
+				$field.attr('data-verrstatus','Field is required'); // add error message to field
+				return true; // keep this in collection 
+			}
+			
+			// field can't be blank
+			if ($field.attr('data-vrule') == 'notblank' && 
+					$field.val().length == 0) {
+				
+				$field.attr('data-verrstatus','Field cannot be empty'); // add error message to field
+				return true; // keep this in collection 
+			}
+			
+			// field has minimum length
+			if ($field.val().length > 0 && $field.attr('data-vrule') == 'minlength' && 
+					$field.val().length < $field.attr('data-vminlength')) {
+				
+				$field.attr('data-verrstatus','Field must be at least '+$field.attr('data-vminlength')+' characters.'); // add error message to field
+				return true; // keep this in collection 
+			}
+			
+			// field has maximum length
+			if ($field.val().length > 0 && $field.attr('data-vrule') == 'maxlength' && 
+					$field.val().length > $field.attr('data-vmaxlength')) {
+				
+				$field.attr('data-verrstatus',
+							'Field must be less than '+ 
+							$field.attr('data-vmaxlength')+ 
+							' characters.'); // add error message to field
+				return true; // keep this in collection 
+			}
+			
+			// field has minimum and maximum length
+			if ($field.val().length > 0 && $field.attr('data-vrule') == 'between' && 
+					($field.val().length < $field.attr('data-vminlength') || 
+					 $field.val().length > $field.attr('data-vmaxlength')) ) {
+				
+				$field.attr('data-verrstatus',
+							'Field must be between '+ $field.attr('data-vminlength') +
+							' and ' + $field.attr('data-vmaxlength') +
+							' characters.'); // add error message to field
+				return true; // keep this in collection 
+			}
+			
+			// field is numeric
+			if ($field.val().length > 0 && $field.attr('data-vrule') == 'isnumeric' && 
+					 ( isNaN(parseFloat($field.val())) || !isFinite($field.val()) ) ) {
+				
+				$field.attr('data-verrstatus','Field must be numeric'); // add error message to field
+				return true; // keep this in collection 
+			}
+			
+			// field matches regex pattern
+			//var rxPattern = /fluffyhamster/; // regexp as object literal
+			var rxPattern = new RegExp($field.attr('data-vpattern'));
+			
+			if ($field.val().length > 0 && $field.attr('data-vrule') == 'pattern' && 
+				$field.val().search(rxPattern) < 0 ) {
+			
+				$field.attr('data-verrstatus',$field.attr('data-verrmsg')); // add error message to field
+				return true; // keep this in collection 
+			}
+			
+			return false; // if rules were passed, exclude this field from the exception collection
+		}); // filter
+		
+	} // fieldValidate
+
+})(jQuery); // the jQuery object gets passed into the IIFE
+
+</script>
+<script type="text/javascript">
+
+$('#form1')
+	.submit(function(e) {
+		e.preventDefault();
+		
+		var $invalidFields = 
+		$(this)
+			.find(':input')
+			.removeClass('error')
+			.next('span.error') // move the the error SPAN
+			.remove()
+			.end() // revert collection back to :INPUT
+			.fieldValidate() // traverses collection reducing it to invalid fields only
+			.addClass('error')
+			.each(function() { // not using the index or element params (this = element)
+				$(this)
+					.after('<span class="error">'+ $(this).attr('data-verrstatus') +'</span>');
+			 });
+		
+		if ($invalidFields.length == 0) {
+			alert('Form data is valid.');
+		}
+		
+	 })
+	.blur(function(e) {
+		e.preventDefault();
+		
+		var $invalidFields = 
+		$(this)
+			.find(':input')
+			.removeClass('error')
+			.next('span.error') // move the the error SPAN
+			.remove()
+			.end() // revert collection back to :INPUT
+			.fieldValidate() // traverses collection reducing it to invalid fields only
+			.addClass('error')
+			.each(function() { // not using the index or element params (this = element)
+				$(this)
+					.after('<span class="error">'+ $(this).attr('data-verrstatus') +'</span>');
+			 });
+		
+		if ($invalidFields.length == 0) {
+			alert('Form data is valid.');
+		}
+		
+	 });
+
+
+/*
+$('#form1')
+	.submit(function(e) {
+		e.preventDefault();
+		
+		
+		var $fields = $(this).find(':input');
+		
+		$fields
+			.removeClass('error')
+			.next('span.error')
+			.remove();
+		
+		var result = $.fieldValidate($fields);
+		
+		// are fields valid?
+		if (result.valid) { // if data is valid
+			alert('Form data is valid.');
+			return;
+		}
+		
+		// display feedback on field errors
+		$.each(
+			result.errors,
+			function(i, error) {
+				// set feedback on field
+				$fields
+					.eq(error.index)
+					.addClass('error')
+					.after('<span class="error">'+ error.message +'</span>');
+				
+			}
+		);
+		
+	 })
+	.on(
+		'blur',
+		':input',
+		function(e) {
+			var $fields = $(this);
+			
+			$fields
+				.removeClass('error')
+				.next('span.error')
+				.remove();
+			
+			var result = $.fieldValidate($fields);
+			
+			// are fields valid?
+			if (result.valid) { // if data is valid
+				return;
+			}
+			
+			// display feedback on field errors
+			$.each(
+				result.errors,
+				function(i, error) {
+					// set feedback on field
+					$fields
+						.eq(error.index)
+						.addClass('error')
+						.after('<span class="error">'+ error.message +'</span>');
+					
+				}
+			);
+			
+		} // function(e)
+	);
+
+*/
+
+
+
+</script>
+</body>
+</html>

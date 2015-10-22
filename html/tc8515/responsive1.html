@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Layout Demo</title>
+	
+	<style type="text/css">
+	/*
+	Responsive design starts with a mobile-first approach
+	*/
+	
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		background-color: #ff0000;
+	}
+	
+	/* Use media queries to set breakpoints to change layout 
+	   Breakpoints at 600px and 1200px */
+	   
+	@media screen and (min-width: 600px) {
+		/* treat this like a separate stylesheet */
+		
+		body {
+			background-color: #00ff00;
+		}
+	
+	} /* @media 600 */
+	
+	@media screen and (min-width: 1200px) {
+		/* treat this like a separate stylesheet */
+		
+		body {
+			background-color: #0000ff;
+		}
+	
+	} /* @media 1200 */
+	
+	/* Also use media queries for print stylesheets */
+	@media print {
+	
+		body {
+			font-size: 13pt;
+		}
+		
+	}
+	
+	
+	</style>
+	
+</head>
+<body>
+
+
+</body>
+</html>

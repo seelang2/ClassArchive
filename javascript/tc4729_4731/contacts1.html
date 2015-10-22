@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="target"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js" type="text/javascript"></script>
+<script src="mylibrary.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+var App = {
+	startup: function() {
+		App.targetDiv = document.getElementById("target");
+		
+		/*
+		// building a table the DOM way
+		var tableElem = document.createElement("TABLE");
+		App.targetDiv.appendChild(tableElem);
+		
+		var tBodyElem = document.createElement("TBODY");
+		tableElem.appendChild(tBodyElem);
+		
+		var trElem = document.createElement("TR");
+		tBodyElem.appendChild(trElem);
+		
+		var tdElem = document.createElement("TD");
+		trElem.appendChild(tdElem);
+		
+		tdElem.appendChild(document.createTextNode("John"));
+		*/
+		
+		/*
+		// building a table using innerHTML
+		App.targetDiv.innerHTML = 
+			'<table><tbody>' +
+				'<tr><td>John</td><td>Doe</td><td>Orlando</td><td>FL</td></tr>' +
+				'<tr><td>Jane</td><td>Smith</td><td>Jackson</td><td>FL</td></tr>' +
+			'</tbody></table>';
+		*/
+		
+		// Building a table the jQuery way
+		//$(App.targetDiv)
+		App.jQtarget = $("#target");
+		
+		App.jQtarget
+			.append('<table><tbody>' +
+			 		'<tr><td>John</td><td>Doe</td><td>Orlando</td><td>FL</td></tr>' +
+					'<tr><td>Jane</td><td>Smith</td><td>Jackson</td><td>FL</td></tr>' +
+					'</tbody></table>');
+		
+	}, // startup
+	
+	updateTarget: function(data) {
+		
+	} // updateTarget
+	
+}; // App
+
+//window.onload = App.startup;
+$(document).ready(App.startup); // use .ready to execute app code as soon as DOM is ready instead
+</script>
+</body>
+</html>

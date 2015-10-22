@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Table Demo</title>
+	
+</head>
+<body>
+
+<div id="contacttable"></div>
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript">
+
+
+$('<table><tbody>' + 
+  '<tr><td>John</td><td>Doe</td><td>42</td>' + 
+  '<tr><td>Jane</td><td>Smith</td><td>37</td>' + 
+  '</tbody></table')
+  .appendTo('#contacttable');
+
+
+</script>
+</body>
+</html>

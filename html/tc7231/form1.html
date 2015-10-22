@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Form Demo</title>
+	
+	<style type="text/css">
+	</style>
+	
+</head>
+<body>
+
+<form action="#" method="get">
+<input type="hidden" name="flag" value="1" />
+
+<label>
+	Enter your full name: 
+	<input type="text" name="fullname" placeholder="Enter full name" />
+</label>
+
+<label for="random">Enter a random line:</label>
+<input id="random" name="randomline" type="text" value="Do Fop Shee Boo" readonly />
+
+<input type="button" value="Click Me" disabled />
+
+<button type="button">Click Me Too</button>
+
+
+<fieldset>
+	<p>Choose all that apply:</p>
+	<p><label>One <input type="checkbox" checked name="one" value="1" /></label></p>
+	<p><label>Two <input type="checkbox" name="two" value="2" /></label></p>
+	<p><label>Three <input type="checkbox" name="three" value="3" /></label></p>
+</fieldset>
+
+<fieldset>
+	<p>Choose a gender:</p>
+	<p><label>Male <input type="radio" name="gender" value="1" /></label></p>
+	<p><label>Female <input type="radio" name="gender" value="2" /></label></p>
+	<p><label>Other <input type="radio" checked name="gender" value="3" /></label></p>
+</fieldset>
+
+<div>
+	<label for="something">Type something:</label>
+	<textarea id="something" name="stuff"></textarea>
+</div>
+
+<div>
+	<label for="dept">Select a department:</label>
+	<select id="dept" name="dept">
+		<option value="1">IT</option>
+		<option value="2">Sales</option>
+		<option value="3">Executive</option>
+		<option value="4" selected>Accounting</option>
+		<option value="5">Administrative</option>
+	</select>
+</div>
+
+
+
+<div>
+	<input type="submit" value="Continue" />
+</div>
+
+</form>
+
+</body>
+</html>

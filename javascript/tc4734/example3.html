@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div><button id="button1">Click Me</button></div>
+
+<div id="target"></div>
+
+
+<script type="text/javascript" src="prototype.js"></script>
+<script type="text/javascript">
+// define response handler function
+function updateTargetDiv(responseXHR) {
+	// Note that Prototype returns a custom XHR wrapper to the response handler
+	document.getElementById("target").innerHTML = responseXHR.responseText;
+} // updateTargetDiv
+
+
+// set up button event handler
+document.getElementById("button1").onclick = function() {
+	// do Ajax call using Prototype
+	new Ajax.Request(
+		'testdata.html',
+		{	
+			onSuccess: updateTargetDiv
+		}
+	)
+}; // button1.onclick
+
+</script>
+
+
+
+</body>
+</html>

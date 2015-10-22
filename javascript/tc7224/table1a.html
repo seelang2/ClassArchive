@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Table Demo</title>
+
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+// get reference to target element
+var $target = $('#target');
+
+var $tbody =
+$('<table><tbody /></table>')
+	.children('tbody');
+
+$tbody
+	.append('<tr><td>John</td><td>Doe</td></tr>')
+	.append('<tr />')
+	.children('tr:last-child')
+	.append('<td>Jane</td>')
+	.append('<td>Smith</td>')
+	.end()
+	.parent()
+	.appendTo($target);
+	
+	
+</script>
+</body>
+</html>

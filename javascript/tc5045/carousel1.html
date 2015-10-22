@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Ajax JSONP callback demo using YouTube</title>
+
+<style type="text/css">
+#window {
+	margin: auto;
+	width: 840px;
+	height: 158px;
+	position: relative;
+	border: 2px solid #7a7a7a;
+	overflow: hidden;
+}
+
+#filmstrip {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 158px;
+	width: 2800px;
+}
+
+#filmstrip div {
+	float: left;
+	height: 158px;
+	width: 280px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="window">
+    <div id="filmstrip"></div>
+</div>
+
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+
+// Ajax status object
+var AjaxStatus = {
+	init: function(params) {
+		AjaxStatus.div = 
+			$('<div id="ajaxstatus"></div>')
+				.css({
+					position: 'fixed',
+					height: params.height + 'px',
+					width: params.width + 'px',
+					zIndex: 1000,
+					background: 'url(' +  params.imageUrl + ') no-repeat',
+					top: '50%',
+					left: '50%',
+					marginTop: '-' + (params.height / 2) + 'px',
+					marginLeft: '-' + (params.width / 2) + 'px',
+					display: 'none'
+				 })
+				.prependTo(document.body)
+	}, // AjaxStatus.init
+	
+	show: function() {
+		AjaxStatus.div.show();
+	}, // AjaxStatus.show
+	
+	hide: function() {
+		AjaxStatus.div.hide();
+	} // AjaxStatus.hide
+}; // AjaxStatus
+
+// create application controller object
+var App = {
+	start: function() {
+		AjaxStatus.init( { imageUrl: 'ajax-loader.gif', height: 100, width: 100 } );
+		
+		var queryString = escape("Bodacious Space Pirates"); // search topic, urlencoded
+		var maxResults = 10;
+		
+		$.getScript('http://gdata.youtube.com/feeds/api/videos?' +
+						  'q=' + queryString +
+						  '&max-results=' + maxResults + '&v=2&alt=json-in-script&format=5' +
+						  '&callback=App.showvideos')
+		
+		
+	 	AjaxStatus.show(); // please wait...
+	}, // App.start
+	
+	// define callback method to handle return data
+	showvideos: function(data) {
+		AjaxStatus.hide(); // aaaand we're back
+		//alert(data.feed.entry.length);
+		App.$filmstrip = $('#filmstrip');
+		
+		$.each(
+			data.feed.entry,
+			function(key, entry) {
+				//alert(entry.title.$t);
+				var contentHTML = 
+					'<div>' +
+						'<object width="280" height="158">' +
+							'<param name="movie"' +
+							'value="'+ entry.content.src +'&autoplay=0"></param>' +
+							'<param name="allowScriptAccess" value="always"></param>' +
+							'<embed src="'+ entry.content.src +'&autoplay=0"' +
+							'type="application/x-shockwave-flash"' +
+							'allowscriptaccess="always"' +
+							'width="280" height="158"></embed>' +
+						'</object>' +
+					'</div>';
+				App.$filmstrip.append(contentHTML);
+			}
+		);
+		
+		setTimeout(App.startMoving, 5000);
+	},	// App.showdata
+	
+	startMoving: function() {
+		setInterval(App.moveLeft, 1000)
+	}, // App.startMoving
+	
+	moveLeft: function() {
+		
+		App.$filmstrip
+			.animate(
+				{ left: -280 },
+				{
+					duration: 400,
+					complete: function() {
+						App.$filmstrip
+							.children()							// select all child nodes
+							.first()									// drop all but first child
+							.detach()								// remove from filmstrip
+							.appendTo(App.$filmstrip);	// and reattach to end of filmstrip
+						
+						// reset left position to 0
+						App.$filmstrip.css('left', 0);
+					}
+				}
+			 );
+	} // App.moveLeft
+
+}; // App
+
+$(document).ready(App.start); // launch App.start on DOM ready
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<button id="pass">Resolve</button>
+<button id="fail">Reject</button>
+<button id="update">Update</button>
+
+
+
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+
+//$(document).ready(function() {
+	var c = 0;
+	
+	// create a new promise object
+	var later = $.Deferred();
+	
+	// register a callback that gets notified when the promise is resolved
+	later.done(function(data) {
+		console.log('promise is resolved. data:',data);
+	});
+
+	// register a callback that gets notified when the promise is rejected
+	later.fail(function(data) {
+		console.log('promise is rejected. data:',data);
+	});
+
+	// can attach multiple observers
+	later.done(function(data) {
+		console.log('This also wants to know when the thing is resolved. data:',data);
+	});
+
+	// progress handlers can get notified prior to the promise getting
+	// resolved or rejected
+	later.progress(function(z) {
+		c = c + z;
+		console.log('promise updated to ',c);
+	});
+	
+	// always fires after the promise is rejected or resolved
+	later.always(function() {
+		console.log('The promise is fulfilled.');
+	});
+
+	// then fires when the promise is rejected, resolved, or in progress
+	// multiple callbacks need to be passed
+	later.then(function() {
+		console.log('then called on resolved');
+	},
+	function() {
+		console.log('then called on rejected');
+	},
+	function() {
+		console.log('then called on progress');
+	});
+
+	
+	
+	$('#pass').on('click', function() {
+		later.resolve(); // triggers .done
+	});
+	
+	$('#fail').on('click', function() {
+		later.reject('oops'); // triggers .fail
+	});
+	
+	$('#update').on('click', function() {
+		later.notify(1); // triggers .progress
+	});
+	
+//});
+
+
+</script>
+</body>
+</html>

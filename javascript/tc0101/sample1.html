@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" 
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Untitled Document</title>
+
+<script type="text/javascript" src="ajax.js"></script>
+<script type="text/javascript" src="xmlparse.js"></script>
+<script type="text/javascript" src="sample1.js"></script>
+
+<style type="text/css">
+body, td {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+
+#window {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	text-align:center;
+}
+
+#content {
+	width: 800px;
+	margin: 0 auto;
+	padding: 25px;
+	text-align:left;
+	background-color:#CCCCCC;
+}
+
+#top, #bottom, #left {
+	background-color:#FFFFFF;
+	border: 1px solid #7a7a7a;
+}
+
+#left {
+	display: inline;
+	float: left;
+	width: 150px;
+	margin: 10px 25px;
+}
+
+#top {
+	height: 175px;
+	margin-left: 200px;
+}
+
+#makediv {
+	margin: 15px 25px;
+}
+
+#modeldiv {
+	margin: 15px 25px;
+}
+
+#bottom {
+	height: 250px;
+	margin-left: 200px;
+}
+
+#botinner {
+	overflow: auto;
+	height:248px;
+	background-color:#eeeeee;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="window">
+<div id="content">
+	<div id="left">
+		<ul>
+			<li><a href="#" onclick="javascript: app.updatemake()">Update Make</a></li>
+			<li><a href="#" onclick="javascript: app.dotext('1')">Display Text 1</a></li>
+			<li><a href="#" onclick="javascript: app.dotext('2')">Display Text 2</a></li>
+			<li><a href="#" onclick="javascript: app.dotext('3')">Display Text 3</a></li>
+			<li>Item 1</li>
+			<li>Item 2</li>
+			<li>Item 3</li>
+			<li>Item 4</li>
+			<li>Item 1</li>
+			<li>Item 2</li>
+			<li>Item 3</li>
+			<li>Item 4</li>
+		</ul>
+	</div>
+	<div id="top">
+		<div id="makediv"></div>
+		<div id="modeldiv"></div>
+	</div>
+	<div id="bottom">
+		<div id="botinner">
+		</div>
+	</div>
+	<div style="clear:both"></div>
+</div>
+</div>
+
+
+
+</body>
+</html>

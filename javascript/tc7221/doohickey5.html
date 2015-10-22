@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 100%;
+		color: #000000;
+		background: #dedede;
+	}
+	
+	#wrapper {
+		width: 800px;
+		margin: auto;
+		background: #ffffff;
+		box-sizing: border-box;
+		padding: 20px 30px;
+		border: 1px solid #7a7a7a;
+	}
+	
+	.customeritem {
+		border: 1px solid #cccccc;
+		padding: 20px 30px;
+		margin: 20px;
+	}
+	
+	.customeritem label {
+		display: block;
+		margin: 0.5em 0;
+	}
+	
+	.customeritem .labeltext::after {
+		content: ':';
+		margin-right: 1em;
+	}
+	
+	.ajaxspinner {
+		position: fixed;
+		width: 60px;
+		height: 60px;
+		top: 50%;
+		left: 50%;
+		margin-top: -30px;
+		margin-left: -30px;
+		background: #ff0000 url('ajax-loader.gif') center no-repeat;
+		color: #ffffff;
+		border-radius: 10px;
+		z-index: 1000;
+		
+	}
+	
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="itemlist">
+		<div class="openpage">
+			<p>Fetching data...</p>
+		</div>
+	</div><!-- itemlist -->
+	<div>
+		<button class="btnAdd" data-action="add">Add New Item</button>
+	</div>
+</div><!-- wrapper -->
+
+
+
+<script src="jquery-1.11.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+
+var App = {};
+App.data = {}; // namespace-global data
+
+/***
+
+ **/
+App.start = function() {
+
+	// register ajax feedback handlers
+	$(document).ajaxStart(function() {
+		console.log('ajaxstart');
+		
+		$('<div class="ajaxspinner" />')
+			.prependTo(document.body);
+		
+	});
+	
+	$(document).ajaxStop(function() {
+		console.log('ajaxstop');
+		
+		$(document.body)
+			.children('.ajaxspinner')
+			.remove();
+		
+	});
+	
+	// get reference to #itemlist for use later
+	App.data.itemlistElem = $('#itemlist');
+	App.data.wrapperElem = $('#wrapper');
+	
+	// load in page template files
+	App.data.addForm = $('<div />').load('doohickey-add-template.html');
+	
+	App.data.customerItemTemplate = 
+	$('<div />').load('doohickey-customeritem-template.html');
+	
+	// set up button controller
+	App.data.wrapperElem
+		.on('click', 'button', App.buttonController);
+	
+	
+	// get initial data list
+	App.getList();
+	
+}; // App.start
+
+/***
+
+ **/
+App.exit = function() {
+
+}; // App.exit
+
+/***
+	Retrieve the user list
+ **/
+App.getList = function() {
+	
+	$.ajax({
+		url:		'userdata.php?action=getlist&type=json',
+		type:		'get',
+		dataType:	'json',
+		success:	App.displayItems
+	})
+	
+}; // App.getList
+
+
+/***
+
+ **/
+App.displayItems = function(items) {
+	
+	App.data.itemlistElem
+		.empty() 		// clear out contents of #itemlist
+		.detach();		// temporarily disconnect div while adding children
+	
+	// loop through items and create customeritem divs
+	// and put them in #itemlist
+	
+	$.each(
+		items,
+		function(index, item) {
+			
+			App.data.customerItemTemplate
+				.clone()							// copy template
+				.children()							// navigate to .customeritem
+				.data('itemdata', item)				// save item object to element
+				.find('[data-field]')				// find all data items in template
+				.each(function(index,field) {
+					var fieldName = 
+					$(field).attr('data-field');
+					
+					//console.log(fieldName);
+					
+					$(field)
+						.html(item[fieldName]);
+				 })
+				.end()
+				.appendTo(App.data.itemlistElem);
+							
+		}
+	);
+	
+	// now reconnect the node back to the DOM and redraw
+	App.data.itemlistElem.prependTo(App.data.wrapperElem);
+	
+}; // App.displayItems
+
+/***
+
+ **/
+App.buttonController = function(evt) {
+	// 'this' points to button because of the selector filter
+	
+	// which customer item is this?
+	var customerItem = $(this).closest('.customeritem');
+	/*
+	var id = 
+	$(this)
+		.closest('.customeritem')
+		.data('itemdata')
+		.id;
+	*/
+	
+	
+	// what button was clicked?
+	switch(true) {
+		
+		case $(this).attr('data-action') == 'edit':
+			App.editCustomerItem(customerItem);
+		break;
+		
+		case $(this).attr('data-action') == 'cancel':
+			App.revertCustomerItem(customerItem);
+		break;
+		
+		case $(this).attr('data-action') == 'save':
+			App.saveCustomerItem(customerItem);
+		break;
+		
+		case $(this).attr('data-action') == 'delete':
+			console.log('Delete button clicked on item',id);
+		break;
+		
+		case $(this).attr('data-action') == 'add':
+			
+			App.data.addForm
+				.clone()
+				.appendTo(App.data.itemlistElem);
+			
+		break;
+		
+		
+	} // switch
+	
+}; // App.buttonController
+
+
+/***
+	Convert read-only elements into input fields
+ **/
+App.editCustomerItem = function($customerItem) {
+	
+	$customerItem
+		.find('[data-field]')
+		.each(function(index, field) {
+			
+			var newFieldHTML = 
+			'<input name="'+ $(field).attr('data-field')+'" value="'+$(field).text()+'" />';
+			
+			$(field)
+				.replaceWith(newFieldHTML);
+			
+		 })
+		.end()
+		.find('button.btnEdit')
+		.toggleClass('btnEdit btnSave')
+		.attr('data-action','save')
+		.html('Save')
+		.end()
+		.find('button.btnDelete')
+		.toggleClass('btnDelete btnCancel')
+		.attr('data-action','cancel')
+		.html('Cancel')
+		.end();
+	
+	
+}; // App.editCustomerItem
+
+/***
+
+ **/
+App.saveCustomerItem = function($customerItem) {
+	
+	//console.log($customerItem.find(':input').serialize());
+	
+	var id = $customerItem.data('itemdata').id;
+	
+	var uri = typeof id == 'undefined' ?
+		'userdata.php?action=saveuser' :
+		'userdata.php?action=saveuser&id='+id;
+	
+	// post data to server
+	$.ajax({
+		url:		uri,
+		type:		'post',
+		dataType:	'json',
+		data:		$customerItem.find(':input').serialize(),
+		success:	App.saveCustomerResult
+	});
+	
+	
+}; // App.saveCustomerItem
+
+/***
+
+ **/
+App.saveCustomerResult = function(response) {
+
+	if (response.status > 0) {
+		// it worked
+		alert('The record has been saved');
+	} else {
+		alert('There was an error saving the record.');
+	}
+
+	// revert customer record to read only
+	//App.revertCustomerItem($customerItem);
+	
+}
+
+
+/***
+	Revert back to read-only
+ **/
+App.revertCustomerItem = function($customerItem) {
+	
+	$customerItem
+		.find('[name]')
+		.each(function(index, field) {
+			
+			var newFieldHTML = 
+			'<span data-field="'+ $(field).attr('name')+'">'+$(field).val()+'</span>';
+			
+			$(field)
+				.replaceWith(newFieldHTML);
+			
+		 })
+		.end()
+		.find('button.btnSave')
+		.toggleClass('btnEdit btnSave')
+		.attr('data-action','edit')
+		.html('Edit')
+		.end()
+		.find('button.btnCancel')
+		.toggleClass('btnDelete btnCancel')
+		.attr('data-action','delete')
+		.html('Delete')
+		.end();
+	
+}; // App.revertCustomerItem
+
+
+/***
+
+ **/
+$(document).ready(App.start); // init App
+window.onunload = App.exit; // clean up
+
+
+
+
+/*
+// these are equivalent, btw
+$(document).ready( function() {} );
+$( function() {} );
+*/
+
+
+
+</script>
+</body>
+</html>

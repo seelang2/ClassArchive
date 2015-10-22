@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+
+<div>
+	<a href="http://www.google.com">Go to Google</a>
+</div>
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+$('a')
+	.on('click', function(e) {
+		/*
+		// prevent default action by returning false
+		return false;
+		*/
+		
+		// can also use Event.preventDefault() method
+		e.preventDefault();
+		
+	 });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Animation Demo</title>
+	
+	<style type="text/css">
+	
+	#box1 {
+		position: fixed;
+		width: 100px;
+		height: 100px;
+		background: #900;
+		top: 50px;
+		left: 50px;
+		
+		-webkit-animation: slide2 10s infinite;
+	}
+	
+	#box1:hover { -webkit-animation-play-state: paused; }
+	
+	@-webkit-keyframes glide {
+		
+		from { top:10px; left: 10px; }
+		to { top:200px; left: 350px; }
+		
+	}
+	
+	@-webkit-keyframes around {
+		
+		0%   { top:50px;  left: 50px; }
+		25%  { top:50px;  left: 350px; }
+		50%  { top:250px; left: 350px; }
+		75%  { top:250px; left: 50px; }
+		100% { top:50px;  left: 50px; }
+	}
+	
+	
+	@-webkit-keyframes slide {
+		
+		0%   { left: 50px; }
+		20%  { left: 150px; }
+		40%  { left: 250px; }
+		60%  { left: 350px; }
+		80%  { left: 450px; }
+		100% { left: 50px; }
+	}
+	
+	@-webkit-keyframes slide2 {
+		
+		0%   { left: 50px; }
+		10%  { left: 50px; }
+		20%  { left: 150px; }
+		30%  { left: 150px; }
+		40%  { left: 250px; }
+		50%  { left: 250px; }
+		60%  { left: 350px; }
+		70%  { left: 350px; }
+		80%  { left: 450px; }
+		90%  { left: 450px; }
+		100% { left: 50px; }
+	}
+	
+	
+	
+	</style>
+	
+</head>
+<body>
+
+<div id="box1"></div>
+
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+	
+	<style type="text/css">
+	</style>
+	
+</head>
+<body>
+
+<div id="target"></div>
+<button id="thebutton">Add new snippet</button>
+
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+var $target = $('#target');
+
+var displayContacts = function(contactData) {
+
+	$.each(
+		contactData,
+		function(index, contact) {
+			
+			$snippet
+				.clone()
+				.attr('data-contactid', contact.id)
+				.find('[data-name=firstname]')
+				.text(contact.firstname)
+				.end()
+				.find('[data-name=lastname]')
+				.text(contact.lastname)
+				.end()
+				.find('[data-name=email]')
+				.text(contact.email)
+				.end()
+				.appendTo($target);
+			
+		}
+	); // each
+
+}; // displayContacts
+
+// load template part
+var $snippet = $('<div />').load('template-part1.html');
+
+// get contact data
+$.ajax({
+	type:		'get',
+	dataType:	'json',
+	cache:		false,
+	url:		'contacts.json',
+	success:	displayContacts
+});
+
+
+
+
+}); // document.ready
+
+</script>
+</body>
+</html>
+
+
+
+

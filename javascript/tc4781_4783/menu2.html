@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Cascading Menu, Take 2</title>
+
+<style type="text/css">
+/*
+#menu ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#menu li {
+	float: left;
+	border: 1px solid #7a7a7a;
+	border-left: none;
+}
+
+#menu li:first-child { border-left: 1px solid #7a7a7a; }
+
+#menu li ul {
+	position: absolute;
+	z-index: 100;
+	border: 1px solid #7a7a7a;
+}
+
+#menu li li {
+	float: none;
+	border: none;
+	border-top: 1px solid #7a7a7a;
+}
+
+#menu li li:first-child { border: none; }
+
+#menu a, 
+#menu li span {
+	display: block;
+	padding: 5px 10px;
+}
+*/
+</style>
+</head>
+
+<body>
+
+<div id="menu" class="horizmenu">
+	<ul>
+    	<li><a href="#">Link 1</a></li>
+    	<li><a href="#">Link 2</a></li>
+    	<li><a href="#">Link 3</a></li>
+        <li><span>Submenu 1</span>
+        	<ul>
+            	<li><a href="#">Really Long Link 1</a></li>
+            	<li><a href="#">Link 2</a></li>
+            	<li><a href="#">Link 3</a></li>
+                <li><span>Submenu 1</span>
+                    <ul>
+                        <li><a href="#">Really Long Link 1</a></li>
+                        <li><a href="#">Link 2</a></li>
+                        <li><a href="#">Link 3</a></li>
+                        <li><a href="#">Link 4</a></li>
+                    </ul>
+                </li>
+            	<li><a href="#">Link 4</a></li>
+            </ul>
+        </li>
+    	<li><a href="#">Link 4</a></li>
+    	<li><a href="#">Link 5</a></li>
+    </ul>
+</div><!-- menu -->
+
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+
+$('#menu ul')
+	.css(
+	 	{listStyleType: 'none',
+		  margin: 0,
+		  padding: 0
+		}
+	 );
+
+$('#menu li')
+	.css(
+	 	{float: 'left',
+		  border: '1px solid #7a7a7a',
+		  borderLeft: 'none'
+		}
+	 )
+	.has('ul') // filters collection to selector
+	.mouseover(
+		function() { // event behavior handler
+			$(this)	// put a jQuery wrapper around the LI
+				.children('ul') // find the child UL for the LI
+				.show(); // display the UL
+		}
+	 )
+	.mouseout(
+		function() { // event behavior handler
+			$(this)	// put a jQuery wrapper around the LI
+				.children('ul') // find the child UL for the LI
+				.hide(); // hide the UL
+		}
+	 );
+
+$('#menu li:first-child')
+	.css({borderLeft: '1px solid #7a7a7a'});
+
+$('#menu a, #menu li span')
+	.css(
+		{display: 'block',
+		  padding: '5px 10px'
+		}
+	 );
+
+$('#menu li ul') // select submenus
+	.css( // assign css properties for submenus
+	 	{position: 'absolute',
+		  border: '1px solid #7a7a7a',
+		  zIndex: 100
+		}
+	 ) // css
+	.addClass('submenu') // add submenu class 
+	.hide(); // hide menus from view
+
+$('#menu li li')
+	.css(
+	 	{float: 'none',
+		  border: 'none',
+		  borderTop: '1px solid #7a7a7a'
+		}
+	 );
+
+$('#menu li li:first-child')
+	.css(
+	 	{
+		  border: 'none'
+		}
+	 );
+
+</script>
+</body>
+</html>
+
+
+
+
+

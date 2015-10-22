@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Cascading Menu, Take 1</title>
+
+<style type="text/css">
+/*
+#menu ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#menu li {
+	float: left;
+	border: 1px solid #7a7a7a;
+	border-left: none;
+}
+
+#menu li:first-child { border-left: 1px solid #7a7a7a; }
+
+#menu a {
+	display: block;
+	padding: 5px 10px;
+}
+*/
+</style>
+</head>
+
+<body>
+
+<div id="menu" class="horizmenu">
+	<ul>
+    	<li><a href="#">Link 1</a></li>
+    	<li><a href="#">Link 2</a></li>
+    	<li><a href="#">Link 3</a></li>
+        <li><span>Submenu 1</span>
+        	<ul>
+            	<li><a href="#">Link 1</a></li>
+            	<li><a href="#">Link 2</a></li>
+            	<li><a href="#">Really Long Link 3</a></li>
+            	<li><a href="#">Link 4</a></li>
+            </ul>
+        </li>
+    	<li><a href="#">Link 4</a></li>
+    	<li><a href="#">Link 5</a></li>
+    </ul>
+</div><!-- menu -->
+
+<script type="text/javascript">
+
+var menuElem = document.getElementById("menu"); // get reference to menu parent container
+
+var ulElemList = menuElem.getElementsByTagName("UL");
+//alert(ulElemList.length);
+//alert(ulElemList[0].childNodes.length);
+
+for (var c = 0; c < ulElemList.length; c++) {
+	ulElemList[c].style.listStyleType = 'none';
+	ulElemList[c].style.margin = 0;
+	ulElemList[c].style.padding = 0;
+	
+	// check if this is a submenu
+	if (ulElemList[c].parentNode.nodeName == 'LI') {
+		ulElemList[c].className = 'submenu';
+		ulElemList[c].style.position = 'absolute';
+		ulElemList[c].style.zIndex = 100;
+		ulElemList[c].style.border = '1px solid #7a7a7a';
+		ulElemList[c].style.display = 'none'; // hide menu from view
+		
+		// set up rollover events for the submenu's parent
+		ulElemList[c].parentNode.onmouseover = function() {
+			for (var c = 0; c < this.childNodes.length; c++) {
+				if (this.childNodes[c].className == 'submenu') { // is this a submenu?
+					this.childNodes[c].style.display = 'block';
+					break; // terminate the loop since we found the droid we're looking for
+				}
+			}
+		}; // onmouseover
+
+		ulElemList[c].parentNode.onmouseout = function() {
+			for (var c = 0; c < this.childNodes.length; c++) {
+				if (this.childNodes[c].className == 'submenu') { // is this a submenu?
+					this.childNodes[c].style.display = 'none';
+					break; // terminate the loop since we found the droid we're looking for
+				}
+			}
+		}; // onmouseout
+	}
+}
+
+var liElemList = menuElem.getElementsByTagName("LI");
+//alert(liElemList.length);
+
+for (var c = 0; c < liElemList.length; c++) {
+	liElemList[c].style.float = 'left';
+	liElemList[c].style.border = '1px solid #7a7a7a';
+	if (c == 0) {
+		liElemList[c].style.borderLeft = '1px solid #7a7a7a';
+	} else {
+		liElemList[c].style.borderLeft = 'none';
+	}
+	
+	if (liElemList[c].parentNode.className == 'submenu') {
+		liElemList[c].style.float = 'none';
+		liElemList[c].style.border = 'none';
+		liElemList[c].style.borderTop = '1px solid #7a7a7a';
+	}
+}
+
+var aElemList = menuElem.getElementsByTagName("A");
+
+for (var c = 0; c < aElemList.length; c++) {
+	aElemList[c].style.display = 'block';
+	aElemList[c].style.padding = '5px 10px';
+}
+
+var spanElemList = menuElem.getElementsByTagName("SPAN");
+
+for (var c = 0; c < spanElemList.length; c++) {
+	spanElemList[c].style.display = 'block';
+	spanElemList[c].style.padding = '5px 10px';
+}
+
+</script>
+</body>
+</html>
+
+
+
+
+

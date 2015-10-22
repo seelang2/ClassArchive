@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	#container {
+		position: relative;
+		width: 300px;
+		margin: auto;
+	}
+	
+	.item {
+		position: absolute;
+		height: 200px;
+		width: 300px;
+	}
+	
+	#box1 { background: #f00; top:0; }
+	#box2 { background: #0f0; top:200px; }
+	#box3 { background: #00f; top:400px; }
+	
+	</style>
+</head>
+<body>
+
+<div id="container">
+	<div id="box1" class="item"></div>
+	<div id="box2" class="item"></div>
+	<div id="box3" class="item"></div>
+</div>
+
+
+<script type="text/javascript" src="jquery-2.1.1.js"></script>
+<script type="text/javascript">
+
+$('#box2')
+	.css('zIndex',100)
+	.animate({
+		width: '+=20',
+		height: '+=20',
+		top: '-=10',
+		left: '-=10'
+	 },{
+		duration: 150
+	 })
+	.animate({
+		top: '-=200'
+	 },{
+		duration: 250,
+		complete: function() {
+			$('#box1')
+				.animate({
+					top: '+=200'
+				 },{
+					duration: 150
+				 });
+		}
+	 })
+	.animate({
+		width: '-=20',
+		height: '-=20',
+		top: '+=10',
+		left: '+=10'
+	 },{
+		duration: 150
+	 })
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Drawers</title>
+<style type="text/css">
+body {
+	font: 85% normal Verdana, Geneva, sans-serif;
+	color: #000;
+}
+
+#container {
+	width: 300px;
+	margin: auto;	
+}
+
+.title {
+	border: 1px solid #7a7a7a;
+	padding: 5px 10px;
+	background: #CCDBFD;
+}
+
+.content {
+	border: 1px solid #7a7a7a;
+	border-top: none;
+	padding: 5px 10px;
+	height: 200px;
+	overflow: scroll;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="container">
+	<div class="title">Lorem ipsum dolor sit amet</div>
+    <div class="content">
+    	<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. In auctor   lacinia risus, vitae ullamcorper orci malesuada at. Mauris non mauris   iaculis risus hendrerit aliquet eu vitae leo. Duis interdum lobortis   semper. Phasellus vitae ligula libero, id porttitor purus. Sed euismod   diam nec magna dictum hendrerit. Quisque eget leo ut purus pretium   vehicula. Proin quis fermentum nisi. Fusce venenatis massa sed ipsum   ultrices ac vestibulum turpis lacinia. </p>
+        <p> Donec est diam, accumsan in volutpat in, tincidunt eget elit. Nulla   condimentum, nulla non scelerisque suscipit, leo nulla bibendum mauris,   at consequat est dolor a ligula. Nulla bibendum, mi nec sagittis tempus,   nibh leo tempus magna, non faucibus magna turpis et enim. Ut interdum   augue bibendum mauris egestas vulputate. Aenean ac risus ac mi tempor   malesuada. In id nisi sapien, id congue ipsum. Aenean eu elementum   neque. </p>
+    </div>        
+
+	<div class="title">Cras blandit iaculis lobortis</div>
+    <div class="content">
+    	<p> Cras blandit iaculis lobortis. Aliquam tincidunt nisi sit amet dolor   hendrerit pulvinar. Suspendisse a tortor eget lectus gravida pulvinar.   Nam accumsan magna sit amet ligula feugiat id blandit lacus condimentum.   Nulla facilisi. Proin convallis lobortis ipsum, ut auctor nibh eleifend   non. Cum sociis natoque penatibus et magnis dis parturient montes,   nascetur ridiculus mus. In hac habitasse platea dictumst. Aliquam   dapibus tortor tristique eros pretium dictum. Maecenas vestibulum   facilisis eros at rutrum. Fusce vitae leo a sapien adipiscing   ullamcorper in id neque. Ut et justo et elit fermentum dignissim. </p>
+    </div>        
+
+	<div class="title">Aenean blandit neque eu velit</div>
+    <div class="content">
+    	<p> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere   cubilia Curae; Aliquam blandit augue vitae massa molestie fermentum.   Aenean blandit neque eu velit aliquet tempor nec quis neque. Ut lorem   erat, dignissim at volutpat ac, luctus vitae tortor. Mauris porta tortor   id lacus vulputate a viverra metus tincidunt. Etiam eget nisl id arcu   venenatis luctus eu at nunc. Vivamus malesuada dolor id justo dignissim   rhoncus molestie nibh tincidunt. Quisque pulvinar ultricies odio, at   adipiscing leo gravida eget. Aliquam libero purus, mollis vel eleifend   vitae, facilisis at sem. In auctor diam a dui bibendum non sagittis   magna iaculis. Integer accumsan dictum quam ut malesuada. Vestibulum   fringilla laoreet sodales. Fusce iaculis erat eu metus faucibus quis   venenatis magna luctus. </p>
+        <p> Pellentesque ullamcorper varius pharetra. Maecenas turpis mauris,   adipiscing nec porttitor pharetra, porttitor vel nunc. Morbi pretium   blandit placerat. Vivamus at lacus ante, vitae tempor elit. Sed id felis   risus. Mauris vel orci eu neque molestie elementum et sed sem. Nam ut   magna dui, quis adipiscing nisi. Suspendisse quis sapien erat, sit amet   accumsan nulla. Vivamus vel leo est. </p>
+    </div>        
+
+	<div class="title">Cras placerat, lectus</div>
+    <div class="content">
+    	<p> Fusce scelerisque convallis volutpat. Vestibulum laoreet, arcu sit amet   adipiscing aliquam, ligula sem consectetur orci, eget facilisis lacus   metus id magna. Morbi vel nulla vitae mi pulvinar volutpat. Fusce lacus   odio, commodo eu aliquam in, accumsan ut tellus. Nunc et tortor eget   lacus pulvinar sagittis. Curabitur vel metus purus. Donec consectetur   feugiat pharetra. Curabitur tellus justo, blandit at fermentum ut,   feugiat quis quam. Nullam id nisi a enim bibendum egestas. Mauris   pellentesque ornare neque vitae fringilla. Maecenas dignissim feugiat   risus vitae suscipit. Curabitur in purus elit. </p>
+        <p> Integer consectetur eleifend tristique. Praesent mollis accumsan mollis.   Aenean id risus nec tortor placerat volutpat. Cras placerat, lectus   eget tincidunt fermentum, nibh augue euismod urna, in lacinia massa dui   vitae est. Donec molestie congue ipsum, quis fringilla risus fringilla   et. Mauris ut turpis nunc. Praesent magna velit, tristique eget rutrum   eget, iaculis a justo. Praesent vel mi in lectus vehicula ornare. Duis   bibendum eros non libero convallis id mollis diam rhoncus. Morbi cursus   arcu at erat posuere egestas. Proin enim sapien, posuere ut lobortis   non, ultricies nec est. Integer et lacus eu velit facilisis tempor vel   accumsan lorem. Donec cursus tellus in nisi tempus id sagittis felis   facilisis. Vestibulum ante ipsum primis in faucibus orci luctus et   ultrices posuere cubilia Curae; Phasellus bibendum rutrum lectus commodo   fringilla. </p>
+    </div>        
+</div><!-- container -->
+
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+
+var $titleList = $('.title');
+var $contentList = $('.content');
+
+$contentList.hide();
+//$contentList.css('display', 'none'); // alternately can use the css method
+
+/*
+$titleList.bind('click',
+			    { myValue: 'Foo.' },
+				function(e) {
+					alert(e.data.myValue);	
+				}
+			   );
+*/
+/*
+$titleList.each(
+			    function(index, elem) {
+					this.data = {"id": index};
+					this.onclick = function() { alert(this.data.id); };
+				}
+			   );
+*/
+$titleList.each(
+	function(index, elem) {
+		$(this).bind('click',
+			 { "index": index },
+			 function(e) {
+				//alert(e.data.index); 
+				$contentList
+					.eq(e.data.index) // select matching element in collection
+					.toggle(); // show/hide element
+				
+				$contentList
+					.not(":eq("+ e.data.index +")")
+					.hide(); // hide other content divs
+			 }
+		);
+	}
+);
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

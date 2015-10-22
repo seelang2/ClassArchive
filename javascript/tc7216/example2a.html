@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+
+<div id="target"><p>X</p></div>
+
+<script type="text/javascript" src="jquery-2.1.1.js"></script>
+<script type="text/javascript">
+
+/*
+// TERRIBLE - DON'T DO THIS
+$('#target').append('<p>append</p>');
+$('#target').prepend('<p>prepend</p>');
+$('#target').before('<p>before</p>');
+$('#target').after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo('#target');
+$('<p>prependTo</p>').prependTo('#target');
+$('<p>insertBefore</p>').insertBefore('#target');
+$('<p>insertAfter</p>').insertAfter('#target');
+*/
+
+/*
+// BETTER - store collections in a variable if they are referenced more than once
+var $target = $('#target');
+
+$target.append('<p>append</p>');
+$target.prepend('<p>prepend</p>');
+$target.before('<p>before</p>');
+$target.after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo($target);
+$('<p>prependTo</p>').prependTo($target);
+$('<p>insertBefore</p>').insertBefore($target);
+$('<p>insertAfter</p>').insertAfter($target);
+*/
+
+
+// BETTER STILL - make use of the chaining feature
+var $target =
+$('#target')
+	.append('<p>append</p>')
+	.prepend('<p>prepend</p>')
+	.before('<p>before</p>')
+	.after('<p>after</p>');
+
+
+var $x =
+$('<p>appendTo</p>')
+	.attr('id','appendToElem')
+	.addClass('testclass')
+	.appendTo($target)
+	.clone()
+	.attr('id','appendToElem2')
+	.toggleClass('testclass testclass2')
+	.insertBefore($target)
+	.detach();
+
+$x.appendTo($target);
+
+$('<p>prependTo</p>').prependTo($target);
+$('<p>insertBefore</p>').insertBefore($target);
+$('<p>insertAfter</p>').insertAfter($target);
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

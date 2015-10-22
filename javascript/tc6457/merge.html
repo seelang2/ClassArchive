@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+(function($) {
+	
+	// define default options object
+	var defaultOptions = {
+		srcAttribute:	'data-fieldname'
+	};
+	
+	
+	$.fn.fieldMerge = function(data, options) {
+		
+		options = $.extend({}, options, defaultOptions);
+		
+		console.log(data);
+		
+		return this.each(function(index, srcElem) {
+			
+			$(srcElem)
+				.find('[' + options.srcAttribute + ']')
+				.each(function(i, dataElem) {
+					
+					// take srcAttribute value as data property
+					var value = $(dataElem).attr(options.srcAttribute);
+					
+					// and assign as text or value of dataElem
+					if (dataElem.nodeName == "INPUT") {
+						// use .val() to assign data
+						$(dataElem).val(data[value]);
+					} else {
+						// use .text() to assign data
+						$(dataElem).text(data[value]);
+					}
+					
+					
+				 });
+		
+		});
+		
+	}; // fieldMerge
+
+
+
+})(jQuery);
+
+
+contactForm =
+$('<div />')
+	.load('contact-form.html');
+
+
+
+function handleResp(data) {
+
+	//console.log(data,contactForm);
+	
+	contactForm
+		.clone()
+		.fieldMerge(data)
+		.appendTo('#target');
+
+}
+
+
+
+
+</script>
+<script type="text/javascript" src="http://127.0.0.1/tc6457/userdata.php?action=getuser&id=2&callback=handleResp"></script>
+
+
+
+</body>
+</html>

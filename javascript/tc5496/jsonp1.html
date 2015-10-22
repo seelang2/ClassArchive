@@ -1,0 +1,43 @@
+﻿<!doctype html>
+<html>
+<head>
+	<title>Sample Page</title>
+	<meta charset="UTF-8" />
+	
+</head>
+
+<body>
+
+<div id="data"></div>
+
+<script src="jquery-1.8.3.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+function updatePage(data) {
+	$('<p>' + data.firstname + '</p>' +
+	  '<p>' + data.lastname + '</p>' +
+	  '<p>' + data.login + '</p>')
+		.appendTo('#data');
+}
+
+//updatePage({"firstname":"Chris","lastname":"Langtiw","login":"clangtiw"});
+
+$(document).ready(function() {
+	// this doesn't work because of the same domain security policy.
+	$.ajax(
+		{
+			url:		'http://10.6.10.148/tc6496/userdata.php?action=getuser&id=0',
+			type:		'GET',
+			dataType:	'json',
+			cache:		false,
+			success:	function(data) {
+				updatePage(data);
+			}
+		}
+	);
+	
+}); // document.ready
+
+</script>
+</body>
+</html>

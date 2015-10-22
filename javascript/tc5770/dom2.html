@@ -1,0 +1,31 @@
+<!doctype HTML>
+<html>
+<head>
+	<title>Page Title</title>
+	<meta charset="UTF-8" />
+
+</head>
+<body>
+
+	<div id="content">
+		<h2>Contact data goes here!</h2>
+	</div>
+
+
+<script type="text/javascript">
+
+// get reference to DOM target location
+var targetElem = document.getElementById('content');
+
+// use innerHTML to replace target contents
+//console.log(targetElem.innerHTML);
+
+targetElem.innerHTML = 
+'<p>This markup will completely replace the content in the div.</p>' + 
+'<p>The important thing to remember is that you must use correct markup ' +
+'to avoid any potential rendering errors.</p>';
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery Example 1 Page</title>
+	<meta charset="UTF-8" />
+	
+</head>
+<body>
+
+<div id="target">
+	<p>X</p>
+	<p class="item">Y</p>
+	<p>Z</p>
+</div>
+
+<div>
+	<p>X</p>
+	<p class="item">Y</p>
+	<p>Z</p>
+</div>
+
+<div>
+	<p>X</p>
+	<p class="item">Y</p>
+	<p>Z</p>
+</div>
+
+<script type="text/javascript" src="jquery-1.8.2.js"></script>
+<script type="text/javascript">
+
+$collection =
+$('div')
+	.children('.item')
+	.add('<p>A</p>')
+	.appendTo('#target');
+
+console.log($collection.length);
+
+</script>
+</body>
+</html>

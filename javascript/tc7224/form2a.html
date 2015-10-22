@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	.invalidfield {
+		color: #f00;
+		border-color: #f00;
+	}
+	
+	form label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	
+	label input+span {
+		color: #f00;
+	}
+	</style>
+
+</head>
+<body>
+
+<form action="#" method="get">
+
+<label>
+	<span>Enter some text:</span>
+	<input name="field1" type="text" />
+</label>
+
+<label>
+	<span>Enter between 4 to 10 characters:</span>
+	<input name="field2" type="text" />
+</label>
+
+<input type="submit" />
+</form>
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+$('form')
+	.on('submit', function(evt) {
+		
+		//evt.preventDefault();
+		
+		// innocent until proven guilty validation approach
+		var formIsValid = true;
+		
+		$(this)
+			.find(':input')			// get all the data fieldset
+			.each(function(index, field) {
+				
+				var $field = $(field);
+				
+				switch(true) {
+					case $field.attr('name') == 'field1':
+						if ($field.val().length < 1) {
+							formIsValid = false; // mark form invalid
+							$field
+								.attr('data-verror','field cannot be blank')
+								.addClass('invalidfield');
+						}
+					
+					break;
+				}
+				
+			 })
+		
+		if (formIsValid) {
+			// you may pass.
+			return true;
+		}
+		
+		// there was an error. provide user feedback.
+		$(this)
+			.find('.invalidfield')
+			.each(function(index, field) {
+				$(field)
+					.after('<span>'+
+							$(field).attr('data-verror')
+							+'</span>');
+			 });
+		
+		
+		// You Shall Not Pass!
+		return false; // cancels default action
+		
+	 });
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

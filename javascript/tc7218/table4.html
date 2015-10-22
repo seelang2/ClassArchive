@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+	
+	<style type="text/css">
+	</style>
+	
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+var contactList =
+[
+	{"id":0,"firstname":"John","lastname":"Doe","email":"jdoe@email.com"},
+	{"id":0,"firstname":"Jane","lastname":"Adams","email":"jane.adams123@email.com"},
+	{"id":0,"firstname":"Peter","lastname":"Thomas","email":"pt3436@email.com"},
+	{"id":0,"firstname":"Alice","lastname":"Wendell","email":"alice234@email.com"},
+	{"id":0,"firstname":"Xavier","lastname":"Khan","email":"xxx2342@email.com"}
+];
+
+// create table structure and save reference to TBODY
+var $tbody =
+$('<table><tbody /></table>')
+	.children();
+
+$.each(
+	contactList,
+	function(index, contact) {
+		
+		$('<tr>' + 
+			'<td>' + contact.firstname + '</td>' +
+			'<td>' + contact.lastname + '</td>' +
+			'<td>' + contact.email + '</td>' +
+		  '</tr>')
+			.addClass('rowclass')
+			.appendTo($tbody);
+	
+	}
+); // $.each
+
+$tbody.parent().appendTo('#target');
+
+
+</script>
+</body>
+</html>
+
+
+
+

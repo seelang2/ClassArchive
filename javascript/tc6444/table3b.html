@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Table Demo using jQuery</title>
+	
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+$('#target')
+	.append('<table><tbody /></table>');
+
+$('#target tbody')
+	.append('<tr><td>John</td><td>Doe</td></tr>')
+	.append('<tr><td>Jane</td><td>Smith</td></tr>');
+
+
+
+</script>
+</body>
+</html>

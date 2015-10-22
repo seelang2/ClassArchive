@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+</head>
+<body>
+
+<div id="target"></div>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+(function(App) {
+
+	App.start = function() {
+		
+		var uri = 'http://127.0.0.1/tc6457/userdata.php?action=getuser&id=9&callback=App.handleResp';
+		
+		
+		/*
+		
+		$.ajax({
+			url: 		uri,
+			type: 		'get',
+			dataType: 	'json',
+			success: 	App.handleResp
+		})
+		
+		*/
+		
+		/*
+		*/
+		
+		$.getScript(uri);
+		
+		
+		/*
+		var scriptElem = document.createElement("SCRIPT");
+		scriptElem.type = 'text/javascript';
+		scriptElem.src = uri;
+		document.body.appendChild(scriptElem);
+		*/
+		
+		
+		
+	}; // App.start
+
+	App.handleResp = function(contact) {
+		
+		$('#target')
+			.empty()
+			.append('<p>ID: ' + contact.id + '</p>')
+			.append('<p>First Name: ' + contact.firstname + '</p>')
+			.append('<p>Last Name: ' + contact.lastname + '</p>')
+			.append('<p>Login ID: ' + contact.login + '</p>');
+		
+	}; // App.handleResp
+
+
+
+})(window.App = window.App || {});
+
+$(document).ready(App.start);
+
+
+
+</script>
+<!--
+<script type="text/javascript" src="http://127.0.0.1/tc6457/userdata.php?action=getuser&id=9&callback=App.handleResp"></script>
+-->
+</body>
+</html>

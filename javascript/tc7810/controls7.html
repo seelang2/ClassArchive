@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="contactapp">
+	<div id="contactitems"></div>
+	<div id="controls">
+		<button class="btnAdd">Add</button>
+	</div>
+</div>
+
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+
+// Use an IIFE to define a namespace
+(function(App) {
+
+// create private variable for data storage inside module
+var data = {};
+
+// intializes App
+App.init = function() {
+
+	
+	// set up app controller
+	$('#contactapp')
+		.on('click', 'button, input[type="button"]', App.buttonHandler);
+
+	App.getTemplate('tpl_contactitem.html')
+		.done(function(templateHTML) {
+			data.itemNode = $(templateHTML);
+		 })
+		.done(function() {
+			App.getContactData()
+				.done(App.updateContactItems);
+		 });
+	
+	
+	
+}; // App.init
+
+// get template data
+App.getTemplate = function(url) {
+	
+	// return the ajax promise
+	return $.ajax({
+		url: 		url,
+		type: 		'get',
+		dataType: 	'html'
+	});
+
+}; // App.getTemplate
+
+// retrieve contact info
+App.getContactData = function() {
+
+	// return the ajax promise
+	return $.ajax({
+		url:		'contacts.json',
+		type:		'get',
+		dataType:	'json',
+		cache: 		false
+	});
+	
+	
+
+}; 
+
+// button controller - routes to appropriate behavior based on button
+App.buttonHandler = function(e) {
+	// 'this' contains reference to button
+	var itemID = 
+	$(this).closest('.contactitem').attr('data-id');
+	
+	// figure out what button was clicked and... do stuff
+	switch(true) {
+		
+		case $(this).hasClass('btnEdit'):
+			App.editContactItem(itemID);
+		break;
+	
+		case $(this).hasClass('btnAdd'):
+			App.addContactItem();
+		break;
+	
+		case $(this).hasClass('btnDelete'):
+			App.deleteContactItem(itemID);
+		break;
+	
+	} // switch
+	
+}; // App.buttonHandler
+
+App.editContactItem = function(itemID) {
+	console.log('Editing contact ', itemID);
+}; 
+
+App.deleteContactItem = function(itemID) {
+	console.log('Deleting contact ', itemID);
+}; 
+
+App.addContactItem = function() {
+	console.log('Adding new contact');
+}; 
+
+// update contact item container
+App.updateContactItems = function(contactData) {
+	// delete current items in container
+	$('#contactitems').empty();
+	
+	$.each(contactData, function(index, contact) {
+		// take the item template and merge contact data into it
+		data.itemNode
+			.clone() // make a copy of the template 
+			.attr('data-id', contact.id)
+			.find('[data-fieldname]')
+			.each(function(index, element) {
+				// get which data field is referenced
+				var fieldName = $(element).attr('data-fieldname');
+				// set content of element to contact field
+				$(element).html(contact[fieldName]);
+				
+			 })
+			.end() // revert collection back to template copy
+			.appendTo('#contactitems'); // and attach to DOM
+	
+	});
+	
+}; // App.updateContactItems
+
+})(window.App = window.App || {});
+
+// defers script execution until the DOM is ready
+$(document).ready(App.init); // document.ready
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #cdcdcd url(tile1.jpg) repeat;
+	/*
+	background-color: #cdcdcd;
+	background-image: url(tile1.jpg);
+	background-repeat: repeat;
+	*/
+	font-size: 85%;
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+}
+
+#wrapper {
+	width: 800px;
+	margin: 0 auto;
+	border: 1px solid #7a7a7a;
+	background: #ffffff url(background1.jpg) repeat-y;
+}
+
+#header, #footer {
+	height: 100px;
+	overflow: hidden;
+	background: #000099 url(fantasy_16.jpg) no-repeat;
+	color: #ffffff;
+}
+
+#header {
+	background-position: 0 -1000px;
+}
+
+#footer {
+	height: 30px;
+}
+
+#content {
+
+}
+
+#leftcolumn {
+	float:left;
+	width:25%;
+}
+
+#rightcolumn {
+	float:right;
+	width:25%;
+}
+
+#centercolumn {
+	margin: 0 25%;
+}
+
+.clearing {
+	clear: both;
+	height: 1px;
+	overflow: hidden;
+}
+
+.alignleft {
+	display: block;
+	float: left;
+	margin-right: 1em;
+	margin-bottom: 0.5em;
+}
+
+.alignright {
+	display: block;
+	float: right;
+	margin-left: 1em;
+	margin-bottom: 0.5em;
+}
+
+p {
+	margin: 1em 0;
+}

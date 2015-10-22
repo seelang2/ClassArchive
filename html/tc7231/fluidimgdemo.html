@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>2 Column Layout Demo</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 1em;
+		background: #ccc;
+		background-image: url('pic1.jpg');
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: bottom right;
+		background-size: cover;
+	}
+	
+	header.main {
+		height: 80px;
+		background: #009;
+		color: #fff;
+	}
+	
+	footer.main {
+		height: 125px;
+		background: #666666;
+		color: #efefef;
+		font-size: 90%;
+	}
+	
+	#wrapper {
+		box-sizing: content-box;
+		max-width: 900px;
+		border: 1px solid #7a7a7a;
+		margin: 20px auto;
+		background: #fff url(pic1.jpg) repeat-y;
+	}
+	
+	#content {
+		background: rgba(250, 233, 167, 0.9);
+		clear: both;
+	}
+	
+	#content > section {
+		float: left;
+		width: 60%;
+	}
+	
+	#content > aside {
+		float: right;
+		width: 40%;
+	}
+	
+	.clearing {
+		clear: both;
+		height: 1px;
+		overflow: hidden;
+	}
+	
+	/* menu styling */
+	
+	nav ul {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+	}
+	
+	nav.top,
+	nav.top ul,
+	nav.top li {
+		float: left;
+	}
+	
+	nav.top { width: 100%; background: #efefef; }
+	
+	nav.top li {
+	}
+	
+	nav.top a {
+		display: block;
+		padding: 5px 10px;
+		text-decoration: none;
+	}
+	
+	nav.top a:hover {
+		background: #F99;
+	}
+	
+	.alignleft { float:left; margin-right: 1em; }
+	.alignright { float: right; margin-left: 1em; }
+	
+	img.scalable {
+		width: 100%;
+	}
+	
+	</style>
+	
+</head>
+<body>
+
+<div id="wrapper">
+	<header class="main">
+	</header>
+	
+	<nav class="top">
+		<ul>
+			<li><a href="#">Link 1</a></li>
+			<li><a href="#">Link 2</a></li>
+			<li><a href="#">Link 3</a></li>
+			<li><a href="#">Link 4</a></li>
+		</ul>
+	</nav>
+	
+	<div id="content">
+		<section>
+			<div><img src="pic1.jpg" alt="air ambulance" class="scalable" /></div>
+			
+			<p>1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel eros eleifend, volutpat lorem vel, facilisis metus. Integer posuere nibh at felis adipiscing, ac ultrices nisl mollis. Donec rhoncus posuere turpis, vitae varius nisl consectetur vitae. </p>
+
+			<p>2. Vivamus rutrum dolor eu magna pharetra interdum. Sed mauris odio, tincidunt eu ullamcorper id, fringilla sed quam. Cras odio orci, euismod non vehicula at, placerat quis justo. Integer fringilla tortor quis urna dapibus, ut pretium purus varius.  Curabitur dignissim laoreet nibh. Aenean pharetra, justo quis fringilla luctus, ipsum diam molestie dui, eu fringilla ligula diam ac nulla. Morbi auctor augue quis congue consequat. Maecenas tortor diam, molestie ac lacus et, iaculis posuere libero. Nullam faucibus dictum vestibulum.</p>
+			
+			<img src="pic2.jpg" class="alignright" />
+			
+			<p>3. Ut ac imperdiet lorem. Nullam rutrum risus porttitor lectus pulvinar dictum. Nunc volutpat dictum interdum. Nunc rhoncus tincidunt sem ac porttitor. Nulla eu tristique metus. Fusce porttitor laoreet tortor, quis malesuada sem accumsan porta. Vivamus molestie metus quis enim adipiscing vulputate.Aenean pharetra, justo quis fringilla luctus, ipsum diam molestie dui, eu fringilla ligula diam ac nulla. Morbi auctor augue quis congue consequat. Maecenas tortor diam, molestie ac lacus et, iaculis posuere libero. Nullam faucibus dictum vestibulum.</p>
+
+			<p>4. Proin vel pretium orci. Nam in sem ac nisl viverra sollicitudin ac vitae arcu. Vivamus nisl lorem, imperdiet sed est nec, vestibulum lobortis sem. Quisque vehicula imperdiet consequat. Aenean pharetra, justo quis fringilla luctus, ipsum diam molestie dui, eu fringilla ligula diam ac nulla. Morbi auctor augue quis congue consequat. Maecenas tortor diam, molestie ac lacus et, iaculis posuere libero. Nullam faucibus dictum vestibulum.</p>
+
+			<p>5. Integer eget ligula a ante adipiscing auctor. Duis in facilisis nisl, quis consequat sem. Mauris a augue orci. Suspendisse non magna aliquet, egestas diam vel, pharetra elit. Aenean pharetra, justo quis fringilla luctus, ipsum diam molestie dui, eu fringilla ligula diam ac nulla. Morbi auctor augue quis congue consequat. Maecenas tortor diam, molestie ac lacus et, iaculis posuere libero. Nullam faucibus dictum vestibulum.</p>
+
+			<p>6. Mauris semper eros non quam ullamcorper, id convallis lorem faucibus. Fusce viverra ipsum urna, eu semper sapien commodo at. Suspendisse vel ligula suscipit nunc volutpat euismod at a augue. Nunc vel pretium orci. Sed rutrum, lectus eu commodo pretium, lorem velit tincidunt nisl, sed convallis enim elit a dui. Ut ut leo eget mauris ullamcorper dictum. Suspendisse potenti. Morbi dignissim vehicula justo eget mattis. Maecenas sed felis vestibulum, faucibus sem nec, aliquam risus. Quisque sed eros in ipsum dapibus aliquet dapibus nec ligula. Curabitur orci turpis, pulvinar in augue mattis, cursus rutrum felis. Nullam cursus nunc et vestibulum lacinia. Donec id tellus tincidunt nunc consectetur dictum eget at odio. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+		</section>
+		
+		<aside>
+			<p>7. Sed sed diam ornare, consequat justo sed, semper nisi. Vivamus ligula metus, consequat quis hendrerit non, tempor accumsan turpis. Nam in sem at ipsum auctor semper. Aenean gravida magna a ipsum semper, vitae bibendum lacus tempor. Curabitur ac gravida tortor, vel ultricies sem. Quisque commodo elementum ante, sed elementum mi tincidunt vitae. Praesent id quam quis augue luctus venenatis in sed libero. Curabitur sit amet nisi a purus mollis egestas eget vel arcu. In sit amet urna auctor, lobortis ligula nec, euismod felis.</p>
+
+			<p>8. Suspendisse ut imperdiet turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla gravida porttitor pretium. Curabitur bibendum, sem et placerat elementum, ligula turpis dignissim libero, ut molestie dui tellus vitae libero. Aenean ac congue mauris. Integer vulputate eget augue vel blandit. Ut et massa dapibus, vehicula dui non, facilisis urna. Donec vehicula ante tristique nisi vehicula, eget lobortis nisl suscipit. Donec sed interdum dolor. Quisque elementum augue eros, non porta ligula scelerisque a.</p>
+
+			<p>9. Suspendisse potenti. Phasellus vel accumsan lectus. Nunc adipiscing egestas vulputate. Curabitur auctor porta sem, volutpat porttitor ante interdum elementum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mauris justo, accumsan id aliquet et, laoreet quis nisl. Integer iaculis erat turpis, a hendrerit arcu viverra in. Morbi cursus in nunc ut faucibus. Ut semper faucibus odio, sed sodales urna vulputate vitae. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam vehicula molestie nunc, eget egestas ante scelerisque eu. Integer condimentum venenatis quam, id sollicitudin velit dignissim at.</p>
+		
+		</aside>
+		
+		<div class="clearing"></div>
+		
+	</div>
+	
+	<footer class="main">
+		<div>Copyright &copy; 2014 TC Class 7231. Creative Commons License.</div>
+	</footer>
+
+</div><!-- wrapper -->
+
+
+</body>
+</html>

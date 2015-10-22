@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+</head>
+<body>
+
+<form action="#" method="get">
+
+<p>Do you like cheese?</p>
+<label>
+	<span>Yes</span>
+	<input type="radio" name="likescheese" value="yes" />
+</label>
+
+<label>
+	<span>No</span>
+	<input type="radio" name="likescheese" value="no" />
+</label>
+
+<div id="target">
+	<fieldset id="cheesetypes">
+		<p>Select the cheeses you like.</p>
+		<label>
+			<input type="checkbox" id="ilikeallcheese" />
+			<span>Check/uncheck all</span>
+		</label>
+		<label>
+			<input type="checkbox" name="cheesetype[]" value="cheddar" />
+			<span>Cheddar</span>
+		</label>
+		<label>
+			<input type="checkbox" name="cheesetype[]" value="swiss" />
+			<span>Swiss</span>
+		</label>
+		<label>
+			<input type="checkbox" name="cheesetype[]" value="havarti" />
+			<span>Havarti</span>
+		</label>
+		<label>
+			<input type="checkbox" name="cheesetype[]" value="gouda" />
+			<span>Gouda</span>
+		</label>
+		<label>
+			<span>Other:</span>
+			<input type="text" name="morecheese" />
+		</label>
+		
+	</fieldset>
+</div>
+
+<hr />
+
+
+<input type="submit" />
+
+</form>
+
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+/*
+var $formpart =
+$(
+'<fieldset id="cheesetypes">'+
+	'<p>Select the cheeses you like.</p>'+
+	'<label>'+
+		'<input type="checkbox" id="ilikeallcheese" />'+
+		'<span>Check/uncheck all</span>'+
+	'</label>'+
+	'<label>'+
+...
+)
+*/
+
+var $cheesetypeElem = 
+$('#cheesetypes').detach(); // disconnect the optional part from DOM
+
+$('[name="likescheese"]')
+	.on('change', function() {
+		
+		//alert( $(this).val() );
+		if ( $(this).val() == 'yes' ) {
+			$cheesetypeElem
+				.clone()			// make copy of optional part
+				.appendTo('#target');
+		} else {
+			$('#target').empty(); // remove optional form part
+		}
+		
+	 });
+
+
+$('#ilikeallcheese')
+	.on('change', function() {
+		
+		if ( $(this).prop('checked') ) {
+			
+			$(this)
+				.closest('fieldset')
+				.find('[name="cheesetype[]"]')
+				.prop('checked',true);
+			
+		} else {
+			$cheesetypeElem
+				.find('[name="cheesetype[]"]')
+				.prop('checked',false);
+				
+		}
+		
+		
+	 });
+
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

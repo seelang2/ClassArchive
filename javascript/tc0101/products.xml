@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<products>
+	<product>
+		<name>Basic Widget 1</name>
+		<price>10.00</price>
+		<color>Mauve</color>
+		<size>Medium</size>
+	</product>
+	<product>
+		<name>Basic Widget 2</name>
+		<price>15.95</price>
+		<color>Green</color>
+		<size>Medium</size>
+	</product>
+	<product>
+		<name>Deluxe Widget 3</name>
+		<price>59.95</price>
+		<color>Fuschia</color>
+		<size>Large</size>
+	</product>
+	<product>
+		<name>Ample Widget 4</name>
+		<price>89.00</price>
+		<color>Black</color>
+		<size>X-Large</size>
+	</product>
+	<product>
+		<name>Multipurpose Widget 5</name>
+		<price>125.00</price>
+		<color>Orange</color>
+		<size>Large</size>
+	</product>
+	<product>
+		<name>Multipurpose Widget 6</name>
+		<price>135.00</price>
+		<color>Red</color>
+		<size>Large</size>
+	</product>
+	<product>
+		<name>Mini Widget 7</name>
+		<price>9.95</price>
+		<color>White</color>
+		<size>X-Small</size>
+	</product>
+	<product>
+		<name>Mini Widget 8</name>
+		<price>9.95</price>
+		<color>Purple</color>
+		<size>X-Small</size>
+	</product>
+	<product>
+		<name>Gidget 9</name>
+		<price>2995.00</price>
+		<color>Tan</color>
+		<size>Miniature</size>
+	</product>
+</products>

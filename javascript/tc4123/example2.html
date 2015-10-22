@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="target">
+</div>
+
+<script type="text/javascript">
+//document.write('<p>Hello world!</p>');
+
+var targetElem = document.getElementById("target"); // returns reference to that DOM node as an object
+
+// create new P element
+var pElem = document.createElement("P");
+// add P to parent node
+targetElem.appendChild(pElem);
+
+pElem.appendChild(document.createTextNode('Hello World!'));
+
+hElem = document.createElement("H1");
+hElem.appendChild(document.createTextNode('Welcome!'));
+targetElem.insertBefore(hElem, pElem);
+
+targetElem.removeChild(hElem);
+targetElem.appendChild(hElem);
+
+</script>
+
+</body>
+</html>

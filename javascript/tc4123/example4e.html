@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+</head>
+
+<body>
+
+<p><button id="button1">Click Me!</button></p>
+
+<p><button id="button2">Click Me!</button></p>
+
+<p><button id="button3">Click Me!</button></p>
+
+<p><button id="button4">Click Me!</button></p>
+
+<script type="text/javascript" src="library.js"></script>
+<script type="text/javascript">
+
+function doSomething(e) {
+	if (!e) var e = window.event;
+	// figure out who triggered the event
+	var targetNode = getTargetElem(e);
+	alert('Now clicking on button ' + targetNode.id);
+};
+
+document.body.onclick = doSomething; // onclick
+
+</script>
+</body>
+</html>

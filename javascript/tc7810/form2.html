@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	form label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	</style>
+</head>
+<body>
+
+<form id="theform">
+
+<label>
+	<span>Type only numbers</span>
+	<input type="text" name="field1" data-constrain="numeric" data-vrule="required,numeric" />
+</label>
+
+<label>
+	<span>Type only love or peace</span>
+	<input type="text" name="field2" data-constrain="values" data-values="love,peace" />
+</label>
+
+<input type="submit" />
+</form>
+
+
+
+
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+
+/*
+	field can't be empty
+	not a number
+	not alphanumeric
+	regular expression catch all
+	minimum length
+	length between
+	
+*/
+
+/*
+$('[name="field1"]').on('keydown', function(e) {
+	
+	// codes 48-57 are numeric
+	return e.keyCode > 47 && e.keyCode < 58;
+	
+});
+*/
+
+// active validation
+
+// init fields
+$(document.body)
+	.find('[data-constrain]')
+	.each(function(index, element) {
+		
+		var constraint = $(element).attr('data-constrain');
+		
+		switch(constraint.toLowerCase()) {
+			
+			// only allow numeric data to be entered in field
+			case 'numeric':
+				$(element)
+					.on('keydown', function(e) {
+						// codes 48-57 are numeric
+						return e.keyCode > 47 && e.keyCode < 58;
+					});
+			break;
+			
+			// only allow values specified in data-values (comma separated)
+			case 'values':
+				// extract values array
+				var values = $(element).attr('data-values').split(',');
+				
+				$(element)
+					.on('blur', function(e) {
+						
+						var val = $(this).val();
+						if (values.indexOf(val) < 0) {
+							// not a valid value
+							alert('Please enter a valid value in this field');
+							$(this)
+								.val('') // erase value
+								.focus(); // set focus back on element
+						}
+					});
+				
+			break;
+		}
+		
+	 })
+
+	 
+// passive validation (at submit time)
+$('#theform').on('submit', function(e) {
+	// this is an ajax app, so we prevent the default action always
+	e.preventDefault();
+	
+	var $errorFields = 
+	$(this)
+		.find(':input')		// get form fields
+		.filter(function(index) {
+			// filter collection to only invalid form fields
+			
+			var $field = $(this);
+			
+			var vrules;
+			// get the validation rules applied to element
+			if (vrules = $field.attr('data-vrule')) {
+				console.log('splitting',vrules);
+				vrules = vrules.split(',');
+			} else {
+				// no rules defined on field so ignore
+				return false;
+			}
+
+			// loop through rules and test field
+			for (var c = 0; c < vrules.length; c++) {
+				var rule = vrules[c];
+				
+				switch(true) {
+					// required field (can't be empty)
+					case rule == 'required' && 
+						 $field.val().length < 1:
+						 // flag exception
+						 //$field.attr('data-verrmsg','Field is required.');
+						 var errors = $field.data('verrors') || [];
+						 errors.push('Field is required.');
+						 $field.data('verrors',errors);
+						 return true; // keep field in collection
+					break;
+					
+					// field is numeric
+					case rule == 'numeric' && 
+						!$.isNumeric($field.val()):
+						 // flag exception
+						 var errors = $field.data('verrors') || [];
+						 errors.push('Field nust be numeric.');
+						 $field.data('verrors',errors);
+						 return true; // keep field in collection
+					break;
+				
+				} // switch
+			
+			}
+			
+			// field is valid
+			return false; // removes field from collection
+		 });
+		 
+	console.log($errorFields.length);
+		
+	
+
+});
+
+	 
+</script>
+</body>
+</html>

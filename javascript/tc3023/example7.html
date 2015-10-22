@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Example 7: Drawers</title>
+
+<script src="getelementsbyclassname.js" type="text/javascript"></script>
+
+<style type="text/css">
+
+#content {
+	width: 500px;
+	margin: auto;
+}
+
+.topic {
+	border: 1px solid #000066;
+	margin: 0;
+	padding: 5px 10px;
+	background: #D2E9FF;
+}
+
+.section {
+	border-left: 1px solid #000066;
+	border-right: 1px solid #000066;
+	border-bottom: 1px solid #000066;
+	margin: 0;
+	padding: 5px 10px;
+	/*height: 150px;
+	display: none; */
+	overflow: scroll;
+}
+
+.highlight {
+	background: #00C;
+	color: #fff;
+	font-weight: bold;
+}
+
+/*
+can't use because IE is stupid
+div.section:last-child {
+	border-bottom: 1px solid #000066;
+}
+*/
+
+</style>
+</head>
+
+<body>
+
+<div id="content">
+    <div id="topic-1" class="topic">Topic 1</div>
+    <div id="section-1" class="section">
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar velit quis est iaculis consequat egestas mauris condimentum. Etiam faucibus interdum nisi, eget accumsan tortor lacinia a. Vestibulum eros nisi, suscipit quis tempor nec, ornare nec nunc. Praesent at eros justo. Suspendisse posuere facilisis diam non gravida. Cras lectus lorem, pulvinar id dapibus nec, luctus sit amet nunc. Praesent ut tempor lectus. Vestibulum ultricies, lacus non porta hendrerit, massa eros interdum quam, in mattis nisi magna sed velit. Aenean mauris odio, bibendum at eleifend vel, luctus vel arcu. Integer egestas erat ac erat vestibulum a egestas elit condimentum. Sed nulla tortor, lacinia at bibendum vitae, facilisis non dolor. Aliquam vel risus eu sem sagittis imperdiet. Nulla nec vestibulum elit. Mauris sit amet feugiat leo. Aenean vehicula rutrum leo, elementum vestibulum odio imperdiet vel. Donec dapibus libero vel mi aliquam imperdiet. Nulla id sem vel lacus interdum gravida ut a quam. </p>
+    </div>
+
+    <div id="topic-2" class="topic">Topic 2</div>
+	<div id="section-2" class="section">
+    	<p>Phasellus in tortor in nisl fermentum consectetur pharetra posuere enim. Morbi fringilla sodales ultricies. Aliquam erat volutpat. Quisque bibendum metus non est porta nec cursus leo congue. In sit amet erat quis est blandit pulvinar iaculis vel ante. Nulla facilisi. In rutrum consectetur velit, id laoreet lectus varius a. Ut tellus lacus, feugiat ut interdum sit amet, pellentesque vel purus. Sed non lacus lectus, non rutrum nulla. Nulla pharetra, enim at cursus aliquet, quam est tristique dui, at porttitor lorem nunc id justo. Maecenas eget ipsum libero, hendrerit consequat massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus sollicitudin nisi ac justo varius tincidunt. Fusce imperdiet gravida tortor, at rhoncus urna vulputate nec. Maecenas ut diam et urna volutpat tristique. Duis fermentum congue pharetra. Maecenas molestie, enim sit amet ornare placerat, erat est rhoncus elit, sit amet ultricies lacus purus ac risus. Sed a magna nec quam volutpat pulvinar. Sed at dui nec sapien eleifend vestibulum. Aliquam sit amet mi et quam lacinia commodo vitae vitae arcu. </p>
+    </div>
+
+    <div id="topic-3" class="topic">Topic 3</div>
+	<div id="section-3" class="section">
+    	<p>Phasellus velit turpis, gravida eu lobortis sed, tempus quis lectus. Cras a ornare nulla. Aenean et nunc vitae orci sodales congue vitae vel metus. Proin scelerisque ullamcorper lectus, quis tincidunt turpis posuere sit amet. Aliquam commodo, velit quis dapibus ultrices, quam purus pretium enim, hendrerit feugiat justo enim eget mi. Nunc ultricies nisi eget ligula consequat venenatis. Quisque eu odio ut arcu bibendum vulputate ut eget est. Ut ut nibh dui. Phasellus in metus dui. Etiam quis tellus lacus. Pellentesque malesuada ipsum vel lorem sagittis ac volutpat ipsum porta. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean commodo rhoncus justo, at fringilla turpis tristique nec. Donec libero turpis, iaculis ut consequat in, pharetra at nulla. Aenean nec arcu vel justo tincidunt viverra a sit amet velit. Vivamus eu auctor lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec felis sed sem feugiat ultricies. Donec ut erat nibh. </p>
+    </div>
+
+
+</div>
+
+<script type="text/javascript">
+// get arrays of the sections and topics
+
+/*
+var topicDivs = new Array();
+var sectionDivs = new Array();
+// get list all divs inside content div
+var divList = document.getElementById("content").getElementsByTagName("DIV");
+// loop through divList and sort by classnames
+for (var c = 0; c < divList.length; c++) {
+	switch(true) {
+		case divList[c].className == 'topic':
+			topicDivs[topicDivs.length] = divList[c];
+		break;
+		case divList[c].className == 'section':
+			sectionDivs[sectionDivs.length] = divList[c];
+		break;
+	} // switch
+}
+*/
+
+// same thing using getElementsByClassName library function
+var topicDivs = getElementsByClassName('topic', 'DIV', document.getElementById("content"));
+var sectionDivs = getElementsByClassName('section', 'DIV', document.getElementById("content"));
+var currentHeight = 0; // current height of drawer
+var maxHeight = 150; // maximum height of drawer
+
+// get height of first section
+var boundRect = sectionDivs[0].getBoundingClientRect();
+var h = boundRect.bottom - boundRect.top;
+var w = boundRect.right - boundRect.left;
+alert('Section 1 height is ' + h + ' and width is ' + w);
+
+//alert(topicDivs.length);
+//alert(sectionDivs.length);
+
+for (var c = 0; c < topicDivs.length; c++) {
+	topicDivs[c].arrayIndex = c; // create a custom member variable to hold array index
+	topicDivs[c].onclick = function() {
+		// loop through sections
+		for (var i = 0; i < sectionDivs.length; i++) {
+			// if the loop index matches topic.arrayIndex show section else hide it
+			if (this.arrayIndex == i) {
+				// if it's already open then close it
+				if (sectionDivs[i].style.display == 'block') {
+					sectionDivs[i].style.display = 'none';
+				} else {
+					// otherwise just open it
+					sectionDivs[i].style.display = 'block';
+				}
+			} else {
+				sectionDivs[i].style.display = 'none';
+			}
+		}
+	} // onclick
+	
+	topicDivs[c].onmouseover = function() {
+		this.className = 'highlight ' + this.className;
+	} // onmouseover
+	
+	topicDivs[c].onmouseout = function() {
+		this.className = this.className.replace(/highlight /,'');
+	} // onmouseout
+}
+
+function openDrawer() {
+	
+	drawerAnim = setInterval(doOpen, 25);
+}
+
+function doOpen() {
+	
+}
+
+</script>
+
+</body>
+</html>

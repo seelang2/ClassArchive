@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<itemlist>
+	<item>
+		<copy>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</copy>
+		<href>http://www.google.com</href>
+	</item>
+	<item>
+		<copy>Phasellus magna augue, malesuada eu pharetra ac, aliquam eget est.</copy>
+		<href>http://www.microsoft.com</href>
+	</item>
+	<item>
+		<copy>In elit turpis, tempus id tempus et, vestibulum id ante.</copy>
+		<href>http://www.intuit.com</href>
+	</item>
+	<item>
+		<copy>Nunc sit amet ipsum massa. Pellentesque neque risus, tristique ac bibendum eleifend</copy>
+		<href>http://www.trainingconnection.com</href>
+	</item>
+</itemlist>

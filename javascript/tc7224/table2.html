@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Table Demo</title>
+
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+var contactData =
+[
+	{"firstname":"John","lastname":"Doe","DOB":"10/12/1969"},
+	{"firstname":"John","lastname":"Doe","DOB":"10/12/1969"},
+	{"firstname":"John","lastname":"Doe","DOB":"10/12/1969"},
+	{"firstname":"John","lastname":"Doe","DOB":"10/12/1969"}
+];
+
+// set up table
+
+var $tbody =
+$('<table><tbody /></table>')
+	.children('tbody');
+
+// loop through contacts and build table rows
+$.each(
+	contactData,
+	function(index, contact) {
+		// create table rows
+		// attach to tbody
+		/*
+		$tbody
+			.append('<tr>' +
+				'<td>' + contact.firstname + '</td>' + 
+				'<td>' + contact.lastname + '</td>' + 
+				'<td>' + contact.DOB + '</td>' + 
+			 '</tr>');
+		*/	 
+		$('<tr>' +
+			'<td>' + contact.firstname + '</td>' + 
+			'<td>' + contact.lastname + '</td>' + 
+			'<td>' + contact.DOB + '</td>' + 
+		 '</tr>')
+			.attr('id','row-' + index)
+			.appendTo($tbody);
+	}
+);
+
+// attach table to DOM
+/*
+$tbody
+	.parent()
+	.appendTo('#target');
+*/
+
+$('#target')
+	.append($tbody.parent());
+
+	
+</script>
+</body>
+</html>

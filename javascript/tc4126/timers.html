@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Timer Demo</title>
+</head>
+
+<body>
+
+<button id="button1">Abort Timer (<span id="timeleft">3</span>)</button>
+
+<script type="text/javascript">
+var secondsLeft = 3;
+var timeLeftSpan = document.getElementById("timeleft");
+
+function countDown() {
+	secondsLeft--;
+	if (secondsLeft == 0) clearInterval(interval);
+	timeLeftSpan.innerHTML = secondsLeft;
+}
+
+var timer = setTimeout(function() { alert('Boo!'); }, 3000);
+document.getElementById("button1").onclick = function() { clearTimeout(timer); };
+
+var interval = setInterval(countDown, 1000);
+
+
+</script>
+</body>
+</html>

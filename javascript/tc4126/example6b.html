@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+body {
+	font-family:Verdana, Geneva, sans-serif;
+	color: #000000;
+}
+
+.oddrow { background:#E9E1FD; }
+.evenrow { background:#F3EDFE; }
+.hover { background:#FFC; }
+</style>
+</head>
+
+<body>
+
+<div id="target"></div>
+
+
+<script type="text/javascript">
+function getTargetElement(e) {
+	if (e.target) var targetNode = e.target;
+	else if (e.srcElement) var targetNode = e.srcElement;
+	if (targetNode.nodeType == 3) targetNode = targetNode.parentNode; // fix for older Safari bug
+	return targetNode;
+}
+
+var contactList = [{"firstname":"John", "lastname":"Doe", "email":"jdoe@email.com"},
+						   {"firstname":"Jane", "lastname":"Peters", "email":"wheresjane@gmail.com"},
+						   {"firstname":"Mary", "lastname":"Douglas", "email":"mary.douglas@bigco.com"},
+						   {"firstname":"Paul", "lastname":"Stevens", "email":"pms101@mac.com"},
+						   {"firstname":"Frances", "lastname":"Alexis", "email":"yournamehere@email.com"},
+						   {"firstname":"Alex", "lastname":"Frances", "email":"afrances@domain.com"},
+						   {"firstname":"Tom", "lastname":"Wells", "email":"guru@dot.net"}];
+
+
+
+var targetElem = document.getElementById("target");
+
+// set event handlers on target div and take advantage of event propagation
+targetElem.onmouseover = function(e) {
+	if (!e) var e = window.event; // check to see if event was passed or not
+	var targetNode = getTargetElement(e); // find which node actually triggered the event
+
+	while (targetNode.nodeName != 'TR') {
+		targetNode = targetNode.parentNode; // move up to TR element
+		if (targetNode.nodeName == 'BODY') return;
+	}
+	
+	targetNode.className += ' hover';
+}; // onmouseover
+
+targetElem.onmouseout = function(e) {
+	if (!e) var e = window.event; // check to see if event was passed or not
+	var targetNode = getTargetElement(e); // find which node actually triggered the event
+
+	while (targetNode.nodeName != 'TR') {
+		targetNode = targetNode.parentNode; // move up to TR element
+		if (targetNode.nodeName == 'BODY') return;
+	}
+	
+	targetNode.className = targetNode.className.replace(/ hover/,''); // remove class using RegEx
+}; // onmouseout
+
+
+// build table
+var tmpElem = document.createElement("TABLE");
+targetElem.appendChild(tmpElem);
+
+var tBodyElem = document.createElement("TBODY");
+tmpElem.appendChild(tBodyElem);
+
+// loop through contactList and create new rows for each contact
+for(var c = 0; c < contactList.length; c++) {
+	var trElem = document.createElement("TR");
+	trElem.id = 'row-' + c; 
+	// stripe rows using classnames
+	if (c % 2 != 0) {
+		trElem.className = 'evenrow';
+	} else {
+		trElem.className = 'oddrow';
+	}
+	
+	tBodyElem.appendChild(trElem);
+	
+	for(var columnName in contactList[c]) {
+		//alert(columnName);
+		tmpElem = document.createElement("TD");
+		trElem.appendChild(tmpElem);
+		tmpElem.appendChild(document.createTextNode(contactList[c][columnName]));
+	}
+	
+} // for
+
+</script>
+</body>
+</html>

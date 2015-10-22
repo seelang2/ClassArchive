@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Date Demo Page</title>
+	
+	<style type="text/css">
+	</style>
+	
+</head>
+<body>
+
+<script type="text/javascript" src="getordinal1.js"></script>
+<script type="text/javascript">
+
+// avoid putting stuff in the global scope
+var App = {}; // create an empty object (bucket)
+// could also use: App = new Object();
+
+// create weekday and month labels
+App.weekdays = 
+	[
+		'Sunday',
+		'Monday',
+		'Tuesday',
+		'Wednesday',
+		'Thursday',
+		'Friday',
+		'Saturday'
+	];
+
+App.months = 
+	[
+		'January',
+		'February',
+		'March',
+		'April',
+		'May',
+		'June',
+		'July',
+		'August',
+		'September',
+		'October',
+		'November',
+		'December'
+	];
+	
+App.displayDate = function() {
+
+	// get current date (make instance of Date object)
+	var today = new Date();
+
+	// output date information
+	// note that we can reference the properties of the app using
+	// the object name (App) or by using 'this'
+	document.write('<p>Today is ' + App.weekdays[today.getDay()] + ', ' +
+					this.months[today.getMonth()] + ' ' + 
+					today.getDate() + getOrdinal(today.getDate()) + ', ' +
+					today.getFullYear() + '.</p>');
+
+}; // App.displayDate
+
+
+// now run the app
+App.displayDate();
+
+</script>
+</body>
+</html>
+
+
+
+

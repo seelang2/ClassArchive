@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript">
+
+var targetElem = document.getElementById("target");
+
+var newElem = document.createElement("H1");
+targetElem.appendChild(newElem);
+newElem.appendChild(document.createTextNode("Welcome!"));
+
+newElem = document.createElement("P");
+targetElem.appendChild(newElem);
+newElem.appendChild(document.createTextNode("This is a new line."));
+
+newElem = document.createElement("P");
+targetElem.appendChild(newElem);
+
+newElem.appendChild(document.createTextNode("This is "));
+
+var bElem = document.createElement("B");
+newElem.appendChild(bElem);
+bElem.appendChild(document.createTextNode("ANOTHER"));
+
+newElem.appendChild(document.createTextNode(" new line."));
+
+
+</script>
+</body>
+</html>

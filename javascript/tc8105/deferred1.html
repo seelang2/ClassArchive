@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+
+// create basic deferred object
+
+var obj = $.Deferred();
+
+obj.then(function() {
+	console.log('then/done. ');
+},
+function() {
+	console.log('then/fail. ');
+},
+function() {
+	console.log('then/progress. ');
+});
+
+obj.progress(function(msg) {
+	console.log('progress. ', msg);
+});
+
+obj.done(function() {
+	console.log('done.');
+});
+
+obj.fail(function() {
+	console.log('fail.');
+});
+
+obj.always(function() {
+	console.log('always.');
+});
+
+</script>
+</body>
+</html>

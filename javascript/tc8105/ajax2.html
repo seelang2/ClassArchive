@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	
+	.oddrow { background: #E2F6FF; }
+	.evenrow { background: #97F1FF; }
+	
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+var $tbody = null;
+
+var start = function() {
+
+	$tbody = initTable();
+	getContacts();
+
+}; // start
+
+var initTable = function() {
+	// build base table structure
+	var $tbody = 					// store reference to TBODY
+	$('<table><tbody /></table>')
+		.children('tbody');
+	
+	return $tbody; // returns TBODY to be usable in other scopes
+}; // initTable
+
+var getContacts = function() {
+	// do ajax request
+	$.ajax({
+		url:		'data.json',
+		type:		'get',
+		dataType:	'json',
+		success:	updateTBody
+	});
+
+}; // getContacts
+
+var updateTBody = function(contacts) {
+
+	// for each contact
+	// - create a new row and attach to table
+	$.each(
+		contacts,
+		function(index, contact) {
+			$('<tr />')
+				.append('<td>' + contact.firstname + '</td>')
+				.append('<td>' + contact.lastname + '</td>')
+				.append('<td>' + contact.age + '</td>')
+				.appendTo($tbody);
+		}
+	);
+
+	// attach completed table to DOM
+	$tbody							// from the TBODY
+		.children('tr')
+		.filter(':even')
+		.addClass('oddrow')
+		.end()
+		.filter(':odd')
+		.addClass('evenrow')
+		.end()
+		.end()
+		.parent()					// traverse up to the TABLE
+		.appendTo('#target');		// and attach to #target
+
+}; // updateTBody
+
+// now begin.
+start();
+
+}); // document.ready
+
+</script>
+</body>
+</html>

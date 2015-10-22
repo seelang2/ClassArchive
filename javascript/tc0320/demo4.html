@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Ajax Class 320: Demo1</title>
+
+<script type="text/javascript" src="ajaxlib.js"></script>
+<script type="text/javascript" src="formdata2querystring.js"></script>
+<script type="text/javascript" src="xmlparse.js"></script>
+
+
+<style type="text/css">
+.readertext {
+	position: absolute;
+	top: -1000px;
+	left: -1000px;
+	width: 1px;
+	height: 1px
+	overflow:hidden;
+	z-index -1000;
+}
+</style>
+
+</head>
+<body>
+
+<div class="readertext">
+	<a name="top" />
+</div>
+
+<script type="text/javascript">
+
+leftdiv = document.getElementById("leftside");
+
+function ajaxsend() {
+
+	x = new Date();
+	x = x.getTime();
+	
+	form = document.getElementById("form1");
+	formdata = formData2QueryString(form);
+	ajaxSendReq("POST", "/echopost.php?mode=xml&x=" + x, handleResp, formdata, 'XML', true);
+	return false;
+	
+}
+
+function handleResp(response) {
+	rightdiv = document.getElementById("rightside");
+
+	rightdiv.innerHTML = '';
+
+	fieldList = XMLParse.xml2ObjArray(response, 'field');
+	
+	for (d=0; d < fieldList.length; d++) {
+		ptemp = document.createElement('P');
+		ptemp.appendChild(document.createTextNode(fieldList[d].name + ':'));
+		ptemp.appendChild(document.createElement('BR'));
+		ptemp.appendChild(document.createTextNode(fieldList[d].value));
+		rightdiv.appendChild(ptemp);
+	}
+
+	temptable = document.createElement('TABLE');
+	rightdiv.appendChild(temptable);
+
+	temptbody = document.createElement('TBODY');
+	temptable.appendChild(temptbody);
+
+	for (d=0; d < fieldList.length; d++) {
+		temprow = document.createElement('TR');
+		temptbody.appendChild(temprow);
+	
+		tempcell = document.createElement('TD');
+		tempcell.appendChild(document.createTextNode(fieldList[d].name));
+		temprow.appendChild(tempcell);
+	
+		tempcell = document.createElement('TD');
+		tempcell.appendChild(document.createTextNode(fieldList[d].value));
+		temprow.appendChild(tempcell);
+	}
+}
+
+</script>
+
+<div id="leftside" style="float:left;width:48%;border:1px solid #000000">
+	<form id="form1" name="form1" action="#" method="post" onsubmit="return ajaxsend();">
+		First Name: <input id="firstname" name="firstname" type="text" size="20" maxlength="40" /><br />
+		Last Name: <input id="lastname" name="lastname" type="text" size="20" maxlength="40" /><br />
+		<input type="submit" value="Submit" />
+	</form>
+</div>
+
+<div id="rightside" style="float:right;width:48%;border:1px solid #000000">
+</div>
+
+<div class="readertext">
+	<a href="#top">Back to top</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<script type="text/javascript">
+
+document.write('<p>This space for rent.</p>');
+
+var someValue = '<p>This is just another line.</p>';
+
+document.write(someValue);
+
+var sideA = 17;
+var sideB = 43;
+
+var perimeter = sideA + sideB;
+
+document.write('<p>' + perimeter + '</p>');
+
+var weekdays = new Array();
+var weekdays = [];
+
+var weekdays = ['Sunday','Monday','Tuesday','Wednesday','Thursday'];
+
+document.write('<p>The third week day is ' + weekdays[2] + '.</p>');
+
+document.write('<p>There are ' + weekdays.length + ' elements in weekdays.</p>');
+
+weekdays[weekdays.length] = 'Friday';
+weekdays.push('Saturday');
+
+var pillbox = new Object();
+pillbox.Mon = 'white';
+pillbox.Tue = 'none';
+pillbox.Wed = 'purple';
+pillbox.Thu = 'red';
+pillbox.Fri = 'blue';
+
+/*
+This is a block comment. Everything on multiple lines between the comment
+markers will be ignored.
+*/
+
+// line comment - the following lines work identically
+document.write("<p>Wednesday's pill is " + pillbox.Wed + '.</p>');
+document.write("<p>Wednesday's pill is " + pillbox['Wed'] + '.</p>');
+
+
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

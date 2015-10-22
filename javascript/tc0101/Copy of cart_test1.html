@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+
+<style type="text/css">
+body, td {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 76%;
+	color: #000000;
+	background-color:#7a7a7a;
+	margin: 0;
+	padding: 0;
+}
+
+#window {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	text-align:center;
+}
+
+#content {
+	width: 800px;
+	margin: 0 auto;
+	padding: 25px;
+	text-align:left;
+	background-color:#CCCCCC;
+}
+
+#products {
+	float: left;
+	width: 550px;
+	margin: 0;
+	padding: 0;
+	background-color:#FFFFFF;
+}
+
+#cart {
+	float: right;
+	width: 225px;
+	margin: 0;
+	padding: 0;
+	background-color:#FFFFFF;
+}
+
+#clearing {
+	clear:both;
+	height: 1px;
+	margin: 0;
+	padding: 0;
+}
+
+.item {
+	height: 170px;
+	width: 170px;
+	margin: 5px;
+	background-color:#ff9999;
+	float:left;
+}
+	
+</style>
+
+<script type="text/javascript" src="ajax.js"></script>
+<script type="text/javascript" src="xmlparse.js"></script>
+
+
+</head>
+<body>
+
+
+<script type="text/javascript">
+var Cart = new function() {
+	this.ajax = null;
+	this.productdiv = null;
+	this.cartdiv = null;
+	this.products = [];
+
+	this.init = function() {
+		var self = Cart;
+		self.ajax = new Ajax();
+		self.productdiv = document.getElementById("products");
+		self.cartdiv = document.getElementById("cart");
+		self.getProducts();
+		self.showCart();
+		self.doPoll();
+	};
+	
+	this.getProducts = function() {
+		var self = Cart;
+		self.ajax.doGet('products.xml', Cart.updateProducts, 'xml');
+	};
+	
+	this.updateProducts = function(xmlresp) {
+		var self = Cart;
+		self.products = XMLParse.xml2ObjArray(xmlresp, 'product');
+		
+		for (var c=0; c < self.products.length; c++) {
+			var itemdiv = document.createElement('DIV');
+			itemdiv.appendChild(document.createTextNode(self.products[c].name));
+			itemdiv.appendChild(document.createElement('BR'));
+			itemdiv.appendChild(document.createTextNode(self.products[c].price));
+			itemdiv.appendChild(document.createElement('BR'));
+			itemdiv.appendChild(document.createTextNode(self.products[c].color));
+			itemdiv.appendChild(document.createElement('BR'));
+			itemdiv.appendChild(document.createTextNode(self.products[c].size));
+			itemdiv.appendChild(document.createElement('BR'));
+			itemdiv.setAttribute('CLASS','item');
+			self.productdiv.appendchild(itemdiv);
+		}
+	};
+
+
+
+
+
+
+};
+</script>
+
+
+
+
+<div id="window">
+	<div id="content">
+		<div id="products">
+
+			<div class="item">
+			<p>Foo.</p>
+			<p>Foo.</p>
+			<p>Foo.</p>
+			</div>
+			<div class="item">
+			<p>Foo.</p>
+			<p>Foo.</p>
+			<p>Foo.</p>
+			</div>
+			<div class="item">
+			<p>Foo.</p>
+			<p>Foo.</p>
+			<p>Foo.</p>
+			</div>
+			<div class="item">
+			<p>Foo.</p>
+			<p>Foo.</p>
+			<p>Foo.</p>
+			</div>
+			<div class="item">
+			<p>Foo.</p>
+			<p>Foo.</p>
+			<p>Foo.</p>
+			</div>
+			<div class="item">
+			<p>Foo.</p>
+			<p>Foo.</p>
+			<p>Foo.</p>
+			</div>
+
+		</div> <!-- products -->
+		
+		<div id="cart">
+			<p>Foo.</p>
+		</div> <!-- cart -->
+		<div id="clearing"></div>
+	</div> <!-- content -->
+</div> <!-- window -->
+
+
+</body>
+</html>

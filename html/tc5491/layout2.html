@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sample Fixed width layout</title>
+	<meta charset="UTF-8" />
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 85%;
+		color: #000;
+		background-color: #89D3FA;
+		margin: 0;
+		padding: 0;
+	}
+	
+	#wrapper {
+		width: 80%;
+		background-color: #fff;
+		margin: auto;
+	}
+	</style>
+</head>
+<body>
+	<div id="wrapper">
+		<h1>Sample Fluid Layout</h1>
+		
+		<p>This layout stays the same size regardless of the dimension of the
+		screen.</p>
+		
+		<div id="data"></div>
+
+		<p><a href="http://www.lipsum.com">Lorem ipsum</a> dolor sit amet, consectetur adipiscing elit. Sed hendrerit ligula in arcu lacinia luctus. Nam ac hendrerit velit. Aliquam blandit augue non nibh tincidunt ullamcorper scelerisque mauris egestas. Morbi eu condimentum odio. Cras et lacus dolor, ut sollicitudin turpis. Nunc accumsan placerat varius. Mauris scelerisque dictum mauris, ut bibendum tellus faucibus at. Donec suscipit posuere est nec tempus. Nunc in sapien metus. Cras tempor augue at purus facilisis eget imperdiet arcu interdum. Morbi a lectus purus. Donec rhoncus tortor in orci fermentum sit amet sagittis orci placerat.</p>
+
+		<p>Pellentesque habitant morbi tristique <br />
+		senectus et netus et malesuada fames ac <br />
+		turpis egestas. Morbi facilisis, magna </p>
+
+		<p>sit amet tincidunt faucibus, felis diam <br />
+		sollicitudin elit, vitae sagittis purus <br />
+		risus eget magna. </p>
+
+		<p>Phasellus at tellus orci, quis sollicitudin sem. In in tortor magna. Mauris vestibulum risus velit. In varius massa at mauris congue gravida. Proin sed urna et est mollis bibendum sed ut nisl.</p>
+	</div><!-- wrapper -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
+<script type="text/javascript">
+	function updateData(e) {
+		$('#data').html('<p>' +
+						 'Viewport width: ' + $(window).width() + '<br />' +
+						 'Viewport height: ' + $(window).height() +
+						 '</p>');
+	
+	}
+	
+	$(document).ready(function() {
+		$(window).resize(updateData);
+		updateData();
+	});
+</script>
+</body>
+</html>

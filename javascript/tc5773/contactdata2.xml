@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<contactdata>
+	<requestdate>xxx</requestdate>
+	<columnLabels>
+		<label>ID</label>
+		<label>First Name</label>
+		<label>Last Name</label>
+		<label>Email Address</label>
+	</columnLabels>
+	<contactlist>
+		<contact>
+			<id>0</id>
+			<firstname>John</firstname>
+			<lastname>Doe</lastname>
+			<email>jdoe@email.com</email>
+		</contact>
+		<contact>
+			<id>0</id>
+			<firstname>John</firstname>
+			<lastname>Doe</lastname>
+			<email>jdoe@email.com</email>
+		</contact>
+		<contact>
+			<id>0</id>
+			<firstname>John</firstname>
+			<lastname>Doe</lastname>
+			<email>jdoe@email.com</email>
+		</contact>
+		<contact>
+			<id>0</id>
+			<firstname>John</firstname>
+			<lastname>Doe</lastname>
+			<email>jdoe@email.com</email>
+		</contact>
+		<contact>
+			<id>0</id>
+			<firstname>John</firstname>
+			<lastname>Doe</lastname>
+			<email>jdoe@email.com</email>
+		</contact>
+	</contactlist>
+</contactdata>

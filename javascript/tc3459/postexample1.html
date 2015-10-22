@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<form id="form1" action="echopost.php?mode=html" method="post">
+	<label>First Name: <input name="firstname"></label>
+	<label>Last Name: <input name="lastname"></label>
+	<label>Email: <input name="email"></label>
+	<input type="submit" value="Continue">
+</form>
+
+<div id="output"></div>
+
+
+<script type="text/javascript" src="formdata2querystring.js" ></script>
+<script type="text/javascript" src="registry.js" ></script>
+<script type="text/javascript" src="ajaxlib.js" ></script>
+<script type="text/javascript">
+
+var App = {
+	registry: {},
+	ajaxobj: null,
+	
+	init: function() {
+		App.setRegistry(Registry);
+		App.registry.set('outputDiv', document.getElementById("output"));
+		App.registry.set('formElem', document.getElementById("form1"));
+		App.ajaxobj = new Ajax();
+		
+		// hijack form submit
+		App.registry.get('formElem').onsubmit = function() {
+			// data validation goes here
+			
+			// pull data from form and urlencode it
+			var dataPayload = formData2QueryString(this);
+			
+			// make ajax call
+			App.ajaxobj.doRequest({method: 'POST',
+								   url: 'echopost.php?mode=html',
+								   data: dataPayload,
+								   resptype: 'TEXT',
+								   resphandler: App.showOutput});
+			
+			return false; // avoid form submission by browser
+		};
+	}, // init
+	
+	showOutput: function(response) {
+		App.registry.get('outputDiv').innerHTML = response;
+	}, // showOutput
+	
+	setRegistry: function(registry) {
+		App.registry = registry;
+	}, // setRegistry
+	
+	
+	cleanup: function() {
+		purge(App.registry.get('formElem')); // remove all closures to avoid mem leaks before deleting
+		App.registry.delete('formElem'); // delete the element (AFTER purging)
+		
+		App.registry.delete('outputDiv');
+		App.ajaxobj = null;
+	} // cleanup
+}; // App
+
+
+function purge(d) {
+    var a = d.attributes, i, l, n;
+    if (a) {
+        l = a.length;
+        for (i = 0; i < l; i += 1) {
+            n = a[i].name;
+            if (typeof d[n] === 'function') {
+                d[n] = null;
+            }
+        }
+    }
+    a = d.childNodes;
+    if (a) {
+        l = a.length;
+        for (i = 0; i < l; i += 1) {
+            purge(d.childNodes[i]);
+        }
+    }
+}
+
+
+
+
+window.onload = App.init;
+window.onunload = App.cleanup;
+</script>
+</body>
+</html>

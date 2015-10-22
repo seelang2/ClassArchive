@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+	
+	<style type="text/css">
+	</style>
+	
+</head>
+<body>
+
+<h1>Headline</h1>
+<div id="main">
+	<h2>Another Headline</h2>
+	<p>This is a paragraph.</p>
+</div>
+
+<script type="text/javascript">
+
+// get a reference to node we're working with
+var divElem = document.getElementById('main');
+
+var pElem = document.createElement('P');
+
+//divElem.appendChild(pElem);
+divElem.insertBefore(pElem, divElem.firstChild);
+
+pElem.appendChild( document.createTextNode('This space for rent.') );
+
+
+
+</script>
+</body>
+</html>
+
+
+
+

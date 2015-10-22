@@ -1,0 +1,343 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+body {
+	margin: 0;
+	padding: 0;
+}
+
+table, td, th {
+	border: 1px solid #333;
+	border-collapse: collapse;
+}
+
+table {
+	width: 400px;
+	margin: auto;
+}
+
+.oddrow { background: #FFF4FC; }
+.evenrow { background: #FDE1F3; }
+
+/* tr:hover { background: #FFC; } */
+.hover { background: #FFC; } 
+
+#modalscreen {
+	background: #fff;
+	opacity: 0.7; /* non-ie only */
+}
+
+#modalbox {
+	background: #CCC;
+	border: 1px solid #666;
+	color: #000;
+}
+
+#modalcontrol,
+#modalform {
+	padding: 5px 15px;
+}
+
+#modalcontrol {
+	text-align: right;
+}
+
+#modalbox form {
+	width: 90%;
+	margin: auto;
+}
+
+#modalbox label {
+	display: block;
+	clear: both;
+	margin-bottom: 0.5em;
+}
+
+#modalbox input {
+	float: right;
+	
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="tablegoeshere"></div>
+
+
+<script type="text/javascript">
+/*
+	See http://www.javascriptkit.com/javatutors/arraysort.shtml for more details
+*/
+function sortByFirstName(a, b) {
+	if (a.firstname < b.firstname) {
+		return -1; // Sort "a" to be a lower index than "b"
+	} else {
+		return 1; // Sort "b" to be a lower index than "a"
+	}
+}
+
+function sortByLastName(a, b) {
+	if (a.lastname < b.lastname) {
+		return -1; // Sort "a" to be a lower index than "b"
+	} else {
+		return 1; // Sort "b" to be a lower index than "a"
+	}
+}
+
+function sortByLastnameFirstname(a, b) {
+	switch (true) {
+		case a.lastname < b.lastname:
+			return -1; // Sort "a" to be a lower index than "b"
+		break;
+		case a.lastname > b.lastname:
+			return 1; // Sort "b" to be a lower index than "a"
+		break;
+		case a.lastname == b.lastname: 
+			// last names are the same, now sort by firstname
+			if (a.firstname < b.firstname) {
+				return -1; // Sort "a" to be a lower index than "b"
+			} else {
+				return 1; // Sort "b" to be a lower index than "a"
+			}
+		break;
+	} // switch
+}
+
+function doHover() {
+	this.className += ' hover';
+}
+
+function clearHover() {
+	this.className = this.className.replace(/ hover/, ''); // use regular expression to surgically remove substring
+}
+
+// create data rows in tbody
+function drawTableRows() {
+	// loop through contact array
+	for (var c = 0; c < contacts.length; c++) {
+		var trElem = document.createElement("TR");
+		tbodyElem.appendChild(trElem);
+		// add metadata to TR element object
+		trElem.appData = {arrayIndex: c};
+		
+		if (c % 2 == 0) {
+			trElem.className = 'oddrow'; // even number
+		} else {
+			trElem.className = 'evenrow'; // odd number
+		}
+		
+		// set up event handlers
+		trElem.onmouseover = doHover; // onmouseover
+		trElem.onmouseout = clearHover; // onmouseout
+		trElem.ondblclick = showEditBox;
+		
+		for (column in contacts[c]) {
+			var tdElem = document.createElement("TD");
+			trElem.appendChild(tdElem);
+			tdElem.appendChild(document.createTextNode(contacts[c][column]));
+		} // for column
+	} // for contacts
+	
+} // drawTableRows
+
+function sortColumn() {
+	// clear contents of TBODY
+	while (tbodyElem.hasChildNodes()) {
+		tbodyElem.removeChild(tbodyElem.firstChild);
+	} // while
+	
+	// resort contacts array
+	//alert(this.id);
+	switch(this.id) {
+		case 'firstname':
+			contacts = contacts.sort(sortByFirstName);
+		break;
+		case 'lastname':
+			contacts = contacts.sort(sortByLastnameFirstname);
+		break;
+	} // switch
+	
+	// redraw TBODY rows with sorted data
+	drawTableRows(); // call function to draw rowa
+
+} // sortColumn
+
+function showEditBox() {
+	// create screen
+	var screenDiv = document.createElement("DIV");
+	screenDiv.id = 'modalscreen';
+	screenDiv.style.position = 'fixed';
+	screenDiv.style.height = '100%';
+	screenDiv.style.width = '100%';
+	screenDiv.style.zIndex = 1000;
+	document.body.insertBefore(screenDiv, document.body.firstChild); // insert screen as first element in body
+	
+	// create modal box/form
+	var modalDiv = document.createElement("DIV");
+	modalDiv.id = 'modalbox';
+	modalDiv.style.position = 'fixed';
+	modalDiv.style.height = '200px';
+	modalDiv.style.width = '300px';
+	modalDiv.style.zIndex = 1500;
+	// center box 
+	modalDiv.style.top = '50%'; // set to 50% of viewport
+	modalDiv.style.left = '50%';
+	modalDiv.style.marginLeft = '-150px';
+	modalDiv.style.marginTop = '-100px';
+	
+	document.body.insertBefore(modalDiv, document.body.firstChild); // insert modal box in front of screen
+	
+	// add modal box controls bar
+	var divElem = document.createElement("DIV");
+	divElem.id = 'modalcontrol';
+	modalDiv.appendChild(divElem);
+	var aElem = document.createElement("A");
+	aElem.href = '#';
+	divElem.appendChild(aElem);
+	aElem.appendChild(document.createTextNode('Close'));
+	
+	// set up handler for 'Close' link
+	aElem.onclick = function() {
+		document.body.removeChild(document.body.firstChild); // remove modal box node;
+		document.body.removeChild(document.body.firstChild); // remove screen node;
+		return false; // override default action
+	}; // onclick
+	
+	// add modal box content
+	var divElem = document.createElement("DIV");
+	divElem.id = 'modalform';
+	modalDiv.appendChild(divElem);
+	
+	var formElem = document.createElement("FORM");
+	formElem.action = '#';
+	formElem.method = 'get';
+	divElem.appendChild(formElem);
+	// pass app metadata to form element
+	formElem.appData = this.appData;
+	
+	// save button handler (submits form)
+	formElem.onsubmit = function() {
+		// loop through elements and save to array
+		for (var c = 0; c < this.elements.length; c++) {
+			//alert(this.elements[c].name + ' = ' + this.elements[c].value);
+			switch(this.elements[c].name) {
+				case 'firstname':
+					contacts[this.appData.arrayIndex].firstname = this.elements[c].value;
+				break;
+				case 'lastname':
+					contacts[this.appData.arrayIndex].lastname = this.elements[c].value;
+				break;
+				case 'email':
+					contacts[this.appData.arrayIndex].email = this.elements[c].value;
+				break;
+			} // switch
+		} // for elements
+		
+		sortColumn(); // resort and redraw table
+		document.body.removeChild(document.body.firstChild); // remove modal box node;
+		document.body.removeChild(document.body.firstChild); // remove screen node;
+		return false; // override form submit default action
+	}; // onclick
+	
+	var labelElem = document.createElement("LABEL");
+	formElem.appendChild(labelElem);
+	labelElem.appendChild(document.createTextNode('First Name:'));
+	var inputElem = document.createElement("INPUT");
+	inputElem.type = 'text';
+	inputElem.name = 'firstname';
+	inputElem.value = contacts[this.appData.arrayIndex].firstname;
+	labelElem.appendChild(inputElem);
+	
+	var labelElem = document.createElement("LABEL");
+	formElem.appendChild(labelElem);
+	labelElem.appendChild(document.createTextNode('Last Name:'));
+	var inputElem = document.createElement("INPUT");
+	inputElem.type = 'text';
+	inputElem.name = 'lastname';
+	inputElem.value = contacts[this.appData.arrayIndex].lastname;
+	labelElem.appendChild(inputElem);
+	
+	var labelElem = document.createElement("LABEL");
+	formElem.appendChild(labelElem);
+	labelElem.appendChild(document.createTextNode('Email'));
+	var inputElem = document.createElement("INPUT");
+	inputElem.type = 'text';
+	inputElem.name = 'email';
+	inputElem.value = contacts[this.appData.arrayIndex].email;
+	labelElem.appendChild(inputElem);
+	
+	var divElem = document.createElement("DIV");
+	divElem.id = 'modalform';
+	formElem.appendChild(divElem);
+
+	var inputElem = document.createElement("INPUT");
+	inputElem.type = 'submit';
+	inputElem.value = 'Save';
+	divElem.appendChild(inputElem);
+	
+	var inputElem = document.createElement("INPUT");
+	inputElem.type = 'button';
+	inputElem.value = 'Cancel';
+	divElem.appendChild(inputElem);
+	// set up cancel handler to just close modal box and screen
+	inputElem.onclick = function() {
+		document.body.removeChild(document.body.firstChild); // remove modal box node;
+		document.body.removeChild(document.body.firstChild); // remove screen node;
+	}; // onclick
+	
+} // showEditBox
+
+var contacts = [{"firstname":"John", "lastname":"Jameson", "email":"jj2@yahoo.com"},
+				{"firstname":"Mary", "lastname":"Walters", "email":"mwalters@email.com"},
+				{"firstname":"Peter", "lastname":"Thomas", "email":"peter.thomas@fearme.net"},
+				{"firstname":"Paul", "lastname":"Gibbons", "email":"pbj@mac.com"},
+				{"firstname":"Frances", "lastname":"Geraci", "email":"me@attysrus.com"},
+				{"firstname":"Beth", "lastname":"Rizzo", "email":"noone@gmail.com"},
+				{"firstname":"Reuben", "lastname":"Irons", "email":"rirons@somewhere.com"},
+				{"firstname":"Ronald", "lastname":"Peters", "email":"rp2394@yahoo.com"},
+				{"firstname":"Jeremy", "lastname":"Reubens", "email":"jeremy23@mail.com"},
+				{"firstname":"Agatha", "lastname":"Walters", "email":"heterodyne@email.com"},
+				{"firstname":"Alice", "lastname":"Jones", "email":"ajones@hotmail.com"},
+				{"firstname":"William", "lastname":"O'Connor", "email":"thewoc@roll.com"},
+				{"firstname":"Patrick", "lastname":"Fitzgerald", "email":"pfg@mail.com"},
+				{"firstname":"Gerald", "lastname":"Fitzpatrick", "email":"gfp@mail.com"},
+				{"firstname":"Walter", "lastname":"McDonnel", "email":"waltmd@gmail.com"},
+				{"firstname":"Jane", "lastname":"Jameson", "email":"jmsmith@hmkrs.com"}];
+
+var targetDiv = document.getElementById("tablegoeshere");
+
+var tableElem = document.createElement("TABLE");
+targetDiv.appendChild(tableElem);
+
+// create THEAD section with a header row
+var theadElem = document.createElement("THEAD");
+tableElem.appendChild(theadElem);
+
+var trElem = document.createElement("TR");
+theadElem.appendChild(trElem);
+
+// get column names from the first row of data
+for (column in contacts[0]) {
+	var tdElem = document.createElement("TH");
+	tdElem.id = column;
+	trElem.appendChild(tdElem);
+	tdElem.appendChild(document.createTextNode(column.toUpperCase()));
+	
+	tdElem.onclick = sortColumn;
+} // for column
+
+// create data section
+var tbodyElem = document.createElement("TBODY");
+tableElem.appendChild(tbodyElem);
+
+drawTableRows(); // call function to draw rowa
+
+</script>
+</body>
+</html>

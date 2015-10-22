@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Calendar</title>
+<style type="text/css">
+	body {
+		font-family:arial;
+		font-size:1em;
+		background-color:#CCC;
+		padding:0;
+		margin:0;
+	}
+
+	#wrapper {
+		width:700px;
+		margin:auto;
+		position:relative;
+		border:1px solid #999;
+		border-top:none;
+		height:100%;
+		min-height:400px;
+		padding:10px;
+		background-color:white;
+	}
+
+	#calendar {
+		text-align:center;
+		border:1px solid #C6F;
+		border-collapse:collapse;
+		color:#333;
+	}
+	
+	#calendar td{
+		padding:5px;
+		border-right:1px solid #C6F;		
+	}
+	
+	#calendar th {
+		padding:5px;
+		background-color:#FFF;
+		border-bottom:1px solid #C6F;
+		font-size:1.5em;
+		color:#333;
+		width:100px;
+	}
+	
+	.evenrow {
+		background-color:#CFF;		
+	}
+	
+	.oddrow {
+		background-color:#CCF;
+	}
+	
+	#calendar td.currentdate {
+		font-weight:bold;
+		background-color:#FFC;
+		border:2px solid #FF6;
+		color:red;
+	}
+	
+	#calendar th.daysofweek {
+		background-color:#000;	
+		font-size:1em;
+		color:#FFF;		
+	}
+	
+	#calendar td.noday {
+	background-color:#FFF;
+	}
+	
+</style>
+
+</head>
+
+<body>
+<div id="wrapper">
+<table id="calendar" cellspacing="0">
+<thead>
+<tr>
+<th colspan="7" class="month">May 2010</th>
+</tr>
+
+<tr>
+<th class="daysofweek">Sun</th>
+<th class="daysofweek">Mon</th>
+<th class="daysofweek">Tues</th>
+<th class="daysofweek">Weds</th>
+<th class="daysofweek">Thurs</th>
+<th class="daysofweek">Fri</th>
+<th class="daysofweek">Sat</th>
+</tr>
+</thead>
+
+<tr class="oddrow">
+<td class="noday"></td>
+<td class="noday"></td>
+<td class="noday"></td>
+<td class="noday"></td>
+<td class="noday"></td>
+<td class="noday"></td>
+<td>1</td>
+</tr>
+
+<tr class="evenrow">
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+</tr>
+
+<tr class="oddrow">
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+<td class="currentdate">14</td>
+<td>15</td>
+</tr>
+
+<tr class="evenrow">
+<td>16</td>
+<td>17</td>
+<td>18</td>
+<td>19</td>
+<td>20</td>
+<td>21</td>
+<td>22</td>
+</tr>
+
+<tr class="oddrow">
+<td>23</td>
+<td>24</td>
+<td>25</td>
+<td>26</td>
+<td>27</td>
+<td>28</td>
+<td>29</td>
+</tr>
+
+<tr class="evenrow">
+<td>30</td>
+<td>31</td>
+<td class="noday"></td>
+<td class="noday"></td>
+<td class="noday"></td>
+<td class="noday"></td>
+<td class="noday"></td>
+</tr>
+
+
+</table>
+<div>
+<p>Wowza, you gitted yerself a calenduh, eh?</p>
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Helvetica, Arial, sans-serif;
+		font-size: 100%;
+		color: #000;
+	}
+	
+	.expandable, .expandable ul {
+		list-style-type: none;
+	}
+	
+	.expandable .submenutitle {
+		position: relative;
+	}
+	
+	.expandable .submenutitle.closed:before {
+		position: absolute;
+		content: '[+]';
+		left: -20px;
+		font-size: 75%;
+	}
+	
+	.expandable .submenutitle.open:before {
+		position: absolute;
+		content: '[-]';
+		left: -20px;
+		font-size: 75%;
+	}
+	
+	</style>
+</head>
+<body>
+
+<ul class="expandable">
+	<li><span>List Item 1</span></li>
+	<li><span>List Item 2</span></li>
+	<li>
+		<span class="submenutitle">List Item 3</span>
+		<ul class="submenu">
+			<li><span>List Item 1</span></li>
+			<li><span>List Item 2</span></li>
+			<li>
+				<span class="submenutitle">List Item 3</span>
+				<ul class="submenu">
+					<li><span>List Item 1</span></li>
+					<li><span>List Item 2</span></li>
+					<li><span>List Item 3</span></li>
+					<li><span>List Item 4</span></li>
+				</ul>
+			</li>
+			<li><span>List Item 4</span></li>
+		</ul>
+	</li>
+	<li><span>List Item 4</span></li>
+</ul>
+
+<ul>
+	<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+	<li>Donec rhoncus tellus ac nulla imperdiet porta.</li>
+	<li>Nunc in ante non orci tempor semper.
+		<ul>
+			<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+			<li>Donec rhoncus tellus ac nulla imperdiet porta.</li>
+			<li>Nunc in ante non orci tempor semper.</li>
+			<li>Proin porttitor purus nec tortor pellentesque, in ultrices turpis luctus.</li>
+			<li>Suspendisse aliquet nulla sit amet erat posuere euismod.</li>
+		</ul>
+	</li>
+	<li>Proin porttitor purus nec tortor pellentesque, in ultrices turpis luctus.</li>
+	<li>Suspendisse aliquet nulla sit amet erat posuere euismod.</li>
+</ul>
+
+<script type="text/javascript" src="jquery-2.1.1.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	// hide sublists
+	$('ul.expandable li ul').hide();
+	$('ul.expandable .submenutitle').addClass('closed');
+
+	$('ul.expandable li')
+		.has('ul')
+		.on(
+			'click',
+			'span.submenutitle',
+			function(evt) {
+				
+				evt.stopPropagation(); // prevent event from bubbling further
+				
+				$(this)
+					.toggleClass('open closed')
+					.siblings('.submenu')
+					.toggle();
+			}
+		 )
+
+
+}); // document.ready
+
+$(document).ready(function() {
+	
+	console.log('test 1');
+	
+}); // document.ready
+
+$(document).ready(function() {
+	
+	console.log('test 2');
+	
+}); // document.ready
+
+
+</script>
+</body>
+</html>

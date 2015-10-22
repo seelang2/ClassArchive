@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Example 5</title>
+
+<style type="text/css">
+body {
+	font: 85% normal Verdana, Geneva, sans-serif;
+}
+
+#menu ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	float: left;
+	background: #FFC;
+}
+
+#menu li {
+	border: 1px solid #000;
+	float: left;
+	height: 20px;
+	padding: 5px 10px;
+	width: 50px;
+}
+
+#menu ul ul {
+	position: relative;
+	top: 10px;
+	left: -10px;
+	z-index: 10; /* */
+	display: none;
+}
+
+#menu ul ul li {
+	clear: left;
+	width: 75px;
+}
+
+#menu ul ul ul {
+	position: relative;
+	left: 85px;
+	top: -20px;
+}
+
+#content {
+	clear: both;
+}
+</style>
+</head>
+
+<body>
+
+<div id="menu">
+	<ul>
+    	<li><a href="#">Link</a></li>
+    	<li>
+        	Link
+            <ul>
+            	<li><a href="#">Link</a></li>
+                <li>
+                    Link
+                    <ul>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li>
+                            Link
+                            <ul>
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Link</a></li>
+                    </ul>
+                </li>
+            	<li><a href="#">Link</a></li>
+            	<li><a href="#">Link</a></li>
+            </ul>
+        </li>
+    	<li><a href="#">Link</a></li>
+    	<li><a href="#">Link</a></li>
+    </ul>
+</div>
+
+<div id="content">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar velit quis est iaculis consequat egestas mauris condimentum. Etiam faucibus interdum nisi, eget accumsan tortor lacinia a. Vestibulum eros nisi, suscipit quis tempor nec, ornare nec nunc. Praesent at eros justo. Suspendisse posuere facilisis diam non gravida. Cras lectus lorem, pulvinar id dapibus nec, luctus sit amet nunc. Praesent ut tempor lectus. Vestibulum ultricies, lacus non porta hendrerit, massa eros interdum quam, in mattis nisi magna sed velit. Aenean mauris odio, bibendum at eleifend vel, luctus vel arcu. Integer egestas erat ac erat vestibulum a egestas elit condimentum. Sed nulla tortor, lacinia at bibendum vitae, facilisis non dolor. Aliquam vel risus eu sem sagittis imperdiet. Nulla nec vestibulum elit. Mauris sit amet feugiat leo. Aenean vehicula rutrum leo, elementum vestibulum odio imperdiet vel. Donec dapibus libero vel mi aliquam imperdiet. Nulla id sem vel lacus interdum gravida ut a quam. </p>
+</div>
+
+<script type="text/javascript">
+var menuDiv = document.getElementById("menu");
+
+var listItems = menuDiv.getElementsByTagName("LI");
+
+//alert(listItems.length);
+for (var c = 0; c < listItems.length; c++) {
+	listItems[c].onmouseover = function() {
+		var subMenus = this.getElementsByTagName("UL");
+		if (subMenus.length > 0) {
+			//alert('This item has submenus.');
+			subMenus[0].style.display = 'block';
+		}
+	}
+
+	listItems[c].onmouseout = function() {
+		var subMenus = this.getElementsByTagName("UL");
+		if (subMenus.length > 0) {
+			//alert('This item has submenus.');
+			subMenus[0].style.display = 'none';
+		}
+	}
+}
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+</head>
+<body>
+
+
+<div id="target">
+	<p>X</p>
+</div>
+
+
+<script type="text/javascript">
+
+// get a reference to the DOM location to manipulate
+//var targetElem = document.getElementsByTagName("DIV");
+//var targetElem = targetElem[0];
+
+var targetElem = document.getElementById('target');
+
+//console.log(targetElem.nodeName);
+
+// create new DOM node
+var pElem = document.createElement("P");
+
+// (optional) set any node attributes
+pElem.id = 'newparagraph';
+pElem.className = 'item';
+
+// attach new node to tree
+targetElem.appendChild(pElem);
+
+// wash, rinse, repeat
+var text = document.createTextNode('This space for rent.');
+pElem.appendChild(text);
+
+
+
+
+
+
+</script>
+</body>
+</html>

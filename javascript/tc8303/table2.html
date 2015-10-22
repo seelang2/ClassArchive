@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+// build table offline and then connect after building branch
+// to minimize browser repaints
+
+$('<table><tbody /></table>')			// create collection (TABLE)
+	.children('tbody')					// traverse to TBODY
+		.append('<tr />')				// add TR to TBODY
+		.children('tr')					// traverse to TR
+			.append('<td>John</td>')	// add TD
+			.append('<td>Doe</td>')		// add TD
+			.append('<td>34</td>')		// add TD
+			.end()						// revert collection back to TBODY
+		.append('<tr />')				// add another TR
+		.children('tr:last-child')		// traverse to new TR
+			.append('<td>Jane</td>')	// add TD
+			.append('<td>Smith</td>')	// add TD
+			.append('<td>27</td>')		// add TD
+			.end()						// revert back to TBODY
+		.end()							// revert back to TABLE
+	.appendTo('#target');				// append finished TABLE to DIV
+	
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Advanced Object Demo</title>
+	<meta charset="UTF-8" />
+	
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+function dooDad() {
+	this.value = 10; // class-level member
+}
+dooDad.prototype.value = 25;
+
+var item = new dooDad();
+console.log(item.value);
+
+//console.log(item.value);
+
+item.value = 50; // instance level overrides class value
+console.log(item.value);
+
+console.log('-----------');
+
+function Foo() {
+	this.doSomething = function() { return 'Hello'; };
+	console.log(this.prototype);
+};
+var bar = new Foo();
+//bar.doSomething(); this fails because doSomething is undefined
+
+Foo.prototype.doSomething = function() { return 'Hiya!'; };
+var bar2 = new Foo();
+
+console.log(bar.doSomething());
+console.log(bar2.doSomething());
+
+console.log(bar instanceof Foo);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+<style type="text/css">
+#modalbox-overlay { background: #CCC; }
+#modaltest { background: #FC9; }
+</style>
+</head>
+
+<body>
+<a id="testlink" href="#">Click Me.</a>
+
+<script type="text/javascript" src="modalbox.js"></script>
+<script type="text/javascript">
+
+ModalBox.init({overlayid: "modalbox-overlay"});
+
+ModalBox.createBox({width: 250,
+					height: 300,
+					boxid: "modaltest",
+					innerid: "modaltestinner"});
+
+var tmpElem = document.createElement("DIV");
+var aElem = document.createElement("A");
+tmpElem.appendChild(aElem);
+aElem.appendChild(document.createTextNode('Click Me to close'));
+aElem.href = '#';
+aElem.onclick = function() {
+	ModalBox.clearBox();
+	return false;
+};
+
+ModalBox.addBoxContent(tmpElem);
+
+document.getElementById("testlink").onclick = function() {
+	ModalBox.displayBox();
+	return false;
+};
+
+</script>
+</body>
+</html>

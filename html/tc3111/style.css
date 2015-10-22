@@ -1,0 +1,77 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	color: #000000;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 85%;
+	background: #dedede;
+}
+
+#wrapper {
+	width: 800px;
+	background: #ffffff;
+	margin: 0 auto;
+	padding: 0;
+	border: 1px solid #7a7a7a;
+}
+
+#header {
+	height: 75px;
+	background: #99C;
+	overflow: hidden;
+}
+
+#content {
+	padding: 10px 50px;
+	
+}
+
+div#nav ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+div#nav li {
+	float: left;
+	padding: 0;
+	border-left: 1px solid #7a7a7a;
+	width: 159px;
+}
+
+div#nav li:first-child {
+	border-left: none;
+	width: 160px;
+}
+
+.clear {
+	clear: both;
+}
+
+.clearingshim {
+	clear:both;
+	height: 1px;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+h2 {
+	margin-bottom: 0.25em;
+}
+
+h2 + p {
+	margin-top: 0;
+}
+
+#nav a {
+	display: block; 
+	padding: 5px 10px;
+	text-decoration: none;
+}
+
+#nav a:hover {
+	background:#FF3;	
+}
+

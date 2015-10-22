@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<script type="text/javascript">
+/*
+var age = 1;
+while (age <= 30) {
+	
+	age++;
+}
+*/
+
+for (var age = 1; age <= 30; age++) {
+	/*
+	switch (true) {
+		case age < 5:
+			document.write('Age ' + age + ': Not in school yet.<br />');
+		break;
+		case age > 4 && age < 14:
+			document.write('Age ' + age + ': In grade school.<br />');
+		break;
+		case age > 13 && age < 19:
+			document.write('Age ' + age + ': In high school.<br />');
+		break;
+		case age > 18 && age < 25:
+			document.write('Age ' + age + ': In college.<br />');
+		break;
+		case age > 24:
+			document.write('Age ' + age + ': Welcome to the rat race.<br />');
+		break;
+	}
+	*/
+	if (age < 5) {
+		document.write('Age ' + age + ': Not in school yet.<br />');
+	} else if (age > 4 && age < 14) { // each chained if statement has its own conditions set
+		document.write('Age ' + age + ': In grade school.<br />');
+	} else if (age > 13 && age < 19) {
+		document.write('Age ' + age + ': In high school.<br />');
+	} else if (age > 18 && age < 25) {
+		document.write('Age ' + age + ': In college.<br />');
+	} else {
+		document.write('Age ' + age + ': Welcome to the rat race.<br />');
+	}
+}
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

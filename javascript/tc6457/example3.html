@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+</head>
+<body>
+
+<ul id="list">
+	<li>Item 6</li>
+	<li>Item 7</li>
+	<li>Item 8</li>
+	<li>Item 9</li>
+	<li>Item 10</li>
+</ul>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+var $list = $('#list'); // get reference to UL
+
+$list
+	.append('<li class="listitem">Item 11</li>')
+	.append('<li>Item 12</li>')
+	.append('<li>Item 13</li>')
+	.append('<li>Item 14</li>')
+	.append('<li>Item 15</li>');
+
+$('<li>Item 1</li><li>Item 2</li><li>Item 3</li><li>Item 4</li><li>Item 5</li>')
+	.addClass('listitem')
+	.prependTo($list);
+
+for(var c = 16; c < 21; c++) {
+	$list.append('<li>Item ' + c + '</li>');
+}
+
+$.each(
+	['Item A', 'Item B', 'Item C', 'Item D', 'Item E'],
+	function(index, element) {
+		$list.append('<li>' + element + '</li>');
+	}
+);
+
+
+$('#list li')
+	.addClass('listitem')
+	.each(
+		function(index, liElem) {
+			// the DOM node is accessible via liElem or the 'this' keyword
+			
+			//liElem.id = 'item-' + index; // liElem is a DOM node object so this works
+		
+			// use $(this) or $(liElem)
+			$(liElem)
+				.attr('id','item-' + index);
+		}
+	 );
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

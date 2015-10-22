@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Absolute Positioned Forms</title>
+	<meta name="description" content="This is a sample web page." />
+	
+	<style type="text/css">
+	body { font-family: Verdana, Arial, sans-serif; }
+	
+	form {
+		position: relative;
+	}
+	
+	.ap { position: absolute; }
+	
+	</style>
+</head>
+<body>
+
+<form action="#" style="width:600px;height:400px;margin:auto;border:1px solid #7a7a7a;">
+
+	<label for="firstname" class="ap" style="top:50px;left:75px;">First Name:</label>
+	
+	<input id="firstname" name="firstname" class="ap" style="top:50px;left:200px;" />
+
+	<label for="lastname" class="ap" style="top:100px;left:225px;">Last Name:</label>
+	
+	<input id="lastname" name="lastname" class="ap" style="top:100px;left:350px;" />
+
+</form>
+
+
+</body>
+</html>

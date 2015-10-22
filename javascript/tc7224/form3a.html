@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	.invalidfield {
+		color: #f00;
+		border: #f00 solid;
+	}
+	
+	form label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	
+	label input + span {
+		color: #f00;
+		margin-left: 0.5em;
+	}
+	</style>
+	
+</head>
+<body>
+
+<form action="#" method="get">
+
+<label>
+	<span>Enter some text:</span>
+	<input name="field1" data-vrule="notempty" />
+</label>
+
+<label>
+	<span>Enter at least 5 characters:</span>
+	<input name="field2" data-vrule="minlength" data-vminval="5" />
+</label>
+
+<label>
+	<span>Enter between 4 and 10 characters:</span>
+	<input name="field3" data-vrule="lenbetween" data-vminval="4" data-vmaxval="10"  />
+</label>
+
+<label>
+	<span>Enter a number:</span>
+	<input name="field4" data-vrule="isnumeric" />
+</label>
+
+
+<input type="submit" />
+</form>
+
+
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript" src="formvalidator-1.0.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+
+$('form').on('submit',function() {
+	
+	
+	$(this)	
+		.find(':input')
+		.removeClass('invalidfield')
+		.next('span')
+		.remove();
+		
+	var invalidFieldCount =
+	$(this)	
+		.getInvalidFields()				// get collection of invalid fieldset
+		.addClass('invalidfield')
+		.each(function(index, field) {
+			
+			$(field)
+				.after('<span>'+
+						$(field).attr('data-verror')
+						+'</span>');
+			
+		 })
+		.length;			// get the number of items in the collection
+
+	if (invalidFieldCount > 0) return false;
+}); // .on(submit)
+	 
+}); // document.ready
+
+</script>
+</body>
+</html>

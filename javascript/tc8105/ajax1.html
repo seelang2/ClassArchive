@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Ajax Demo</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<h1>Static Page Content</h1>
+<p>This is stuff already on the page.</p>
+
+<div id="target"></div>
+
+
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+/*
+$.ajax({
+	url:		'partial.html',
+	type:		'get',
+	dataType:	'html',
+	success:	function(response) {
+		
+		$('#target').html(response);
+		
+	}
+});
+*/
+
+// shortcut
+$('#target').load('partial.html');
+
+
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

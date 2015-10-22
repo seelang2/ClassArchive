@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+table, td {
+	border: 1px solid #333;
+	border-collapse: collapse;
+}
+
+table {
+	width: 400px;
+	margin: auto;
+}
+
+.oddrow { background: #FFF4FC; }
+.evenrow { background: #FDE1F3; }
+
+/* tr:hover { background: #FFC; } */
+.hover { background: #FFC; } 
+
+</style>
+</head>
+
+<body>
+
+<div id="tablegoeshere"></div>
+
+
+<script type="text/javascript">
+/*
+	See http://www.javascriptkit.com/javatutors/arraysort.shtml for more details
+*/
+function sortByFirstName(a, b) {
+	if (a.firstname < b.firstname) {
+		return -1; // Sort "a" to be a lower index than "b"
+	} else {
+		return 1; // Sort "b" to be a lower index than "a"
+	}
+}
+
+function sortByLastName(a, b) {
+	if (a.lastname < b.lastname) {
+		return -1; // Sort "a" to be a lower index than "b"
+	} else {
+		return 1; // Sort "b" to be a lower index than "a"
+	}
+}
+
+function sortByLastnameFirstname(a, b) {
+	switch (true) {
+		case a.lastname < b.lastname:
+			return -1; // Sort "a" to be a lower index than "b"
+		break;
+		case a.lastname > b.lastname:
+			return 1; // Sort "b" to be a lower index than "a"
+		break;
+		case a.lastname == b.lastname: 
+			// last names are the same, now sort by firstname
+			if (a.firstname < b.firstname) {
+				return -1; // Sort "a" to be a lower index than "b"
+			} else {
+				return 1; // Sort "b" to be a lower index than "a"
+			}
+		break;
+	} // switch
+}
+
+function doHover() {
+	this.className += ' hover';
+}
+
+function clearHover() {
+	this.className = this.className.replace(/ hover/, ''); // use regular expression to surgically remove substring
+}
+
+var contacts = [{"firstname":"John", "lastname":"Jameson", "email":"jj2@yahoo.com"},
+				{"firstname":"Mary", "lastname":"Walters", "email":"mwalters@email.com"},
+				{"firstname":"Peter", "lastname":"Thomas", "email":"peter.thomas@fearme.net"},
+				{"firstname":"Paul", "lastname":"Gibbons", "email":"pbj@mac.com"},
+				{"firstname":"Frances", "lastname":"Geraci", "email":"me@attysrus.com"},
+				{"firstname":"Beth", "lastname":"Rizzo", "email":"noone@gmail.com"},
+				{"firstname":"Reuben", "lastname":"Irons", "email":"rirons@somewhere.com"},
+				{"firstname":"Ronald", "lastname":"Peters", "email":"rp2394@yahoo.com"},
+				{"firstname":"Jeremy", "lastname":"Reubens", "email":"jeremy23@mail.com"},
+				{"firstname":"Agatha", "lastname":"Walters", "email":"heterodyne@email.com"},
+				{"firstname":"Alice", "lastname":"Jones", "email":"ajones@hotmail.com"},
+				{"firstname":"William", "lastname":"O'Connor", "email":"thewoc@roll.com"},
+				{"firstname":"Patrick", "lastname":"Fitzgerald", "email":"pfg@mail.com"},
+				{"firstname":"Gerald", "lastname":"Fitzpatrick", "email":"gfp@mail.com"},
+				{"firstname":"Walter", "lastname":"McDonnel", "email":"waltmd@gmail.com"},
+				{"firstname":"Jane", "lastname":"Jameson", "email":"jmsmith@hmkrs.com"}];
+
+contacts = contacts.sort(sortByLastnameFirstname);
+var targetDiv = document.getElementById("tablegoeshere");
+
+var tableElem = document.createElement("TABLE");
+targetDiv.appendChild(tableElem);
+
+var tbodyElem = document.createElement("TBODY");
+tableElem.appendChild(tbodyElem);
+
+// loop through contact array
+for (var c = 0; c < contacts.length; c++) {
+	var trElem = document.createElement("TR");
+	tbodyElem.appendChild(trElem);
+	
+	if (c % 2 == 0) {
+		trElem.className = 'oddrow'; // even number
+	} else {
+		trElem.className = 'evenrow'; // odd number
+	}
+	
+	trElem.onmouseover = doHover; // onmouseover
+	trElem.onmouseout = clearHover; // onmouseout
+	
+	for (column in contacts[c]) {
+		var tdElem = document.createElement("TD");
+		trElem.appendChild(tdElem);
+		tdElem.appendChild(document.createTextNode(contacts[c][column]));
+	} // for column
+} // for contacts
+
+</script>
+</body>
+</html>

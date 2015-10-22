@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+
+.oddrow { background-color: #ACF9AE; }
+.evenrow { background-color: #DFFED8; }
+table .hover { background-color: #FFC; }
+
+</style>
+</head>
+
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript">
+
+var contactData = 
+  {
+	contacts: 
+	[
+		{id: 0, firstName: "John", lastname: "Doe", email: "jdoe@email.com" },
+		{id: 1, firstName: "Alan", lastname: "Smith", email: "ams@email.com" },
+		{id: 2, firstName: "Peter", lastname: "Connor", email: "pc101@email.com" },
+		{id: 3, firstName: "Francis", lastname: "Geraci", email: "cheap@lawyer.com" },
+		{id: 4, firstName: "Paulette", lastname: "Jones", email: "star@view.com" },
+		{id: 5, firstName: "Donna", lastname: "Adller", email: "anon284872@hotmail.com" },
+		{id: 6, firstName: "Adam", lastname: "Thomas", email: "Adam.Thomas@pretentious.com" },
+		{id: 7, firstName: "Janet", lastname: "Riley", email: "justjanet@mac.com" },
+		{id: 8, firstName: "Christine", lastname: "Adams", email: "ca27@email.com" },
+		{id: 9, firstName: "Bruce", lastname: "Davis", email: "mynameisbruce@gmail.com" },
+		{id: 10, firstName: "Chase", lastname: "Bradley", email: "banker7@email.com" },
+		{id: 11, firstName: "Amanda", lastname: "Doe", email: "adoe@yahoo.com" },
+		{id: 12, firstName: "Bradley", lastname: "Chase", email: "youreadingthis@question.com" },
+		{id: 13, firstName: "Thomas", lastname: "Peters", email: "me@tompeters.com" }
+	],
+	
+	contactHeaderRow: 
+	[
+		'ID', 'First Name', 'Last Name', 'Email Address'
+	]
+  };
+
+var contactList = contactData.contacts;
+
+//var targetElem = document.getElementById("target");
+
+var tableElem = document.createElement("TABLE");
+//targetElem.appendChild(tableElem);
+document.getElementById("target").appendChild(tableElem);
+
+var theadElem = document.createElement("THEAD");
+tableElem.appendChild(theadElem);
+
+var rowElem = document.createElement("TR");
+theadElem.appendChild(rowElem);
+
+for (var c = 0; c < contactData.contactHeaderRow.length; c++) {
+	var tdElem = document.createElement("TH");
+	rowElem.appendChild(tdElem);
+	tdElem.appendChild(document.createTextNode(contactData.contactHeaderRow[c]));
+	
+}
+
+
+var tbodyElem = document.createElement("TBODY");
+tableElem.appendChild(tbodyElem);
+
+for (var c = 0; c < contactList.length; c++) {
+	var rowElem = document.createElement("TR");
+	tbodyElem.appendChild(rowElem);
+	rowElem.id = 'row-' + c;
+	
+	/*
+	if (c % 2 == 0) {
+		// odd row (starting at 0)
+		rowElem.style.backgroundColor = '#9999ff';
+	} else {
+		// even row
+		rowElem.style.backgroundColor = '#efefff';
+	}
+	// same thing, but using a ternary operator instead
+	rowElem.style.backgroundColor = c % 2 ==0 ? '#9999ff' : '#efefff';
+	*/
+
+	rowElem.className = c % 2 ==0 ? 'oddrow' : 'evenrow';
+	
+	rowElem.onmouseover = function() {
+		this.className += ' hover';
+	}; // onmouseover
+	
+	rowElem.onmouseout = function() {
+		this.className = this.className.replace(/ hover/, '');
+	}; // onmouseout
+	
+	
+	for (colName in contactList[c]) {
+		var tdElem = document.createElement("TD");
+		rowElem.appendChild(tdElem);
+		tdElem.appendChild(document.createTextNode(contactList[c][colName]));
+	}
+	
+}
+
+
+
+
+</script>
+</body>
+</html>

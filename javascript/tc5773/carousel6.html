@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Carousel Demo</title>
+	<style type="text/css">
+	#carousel {
+		width: 400px;
+		margin: auto;
+		border: 1px solid #009;
+	}
+	
+	.slide {
+		width: 400px;
+		height: 300px;
+		/*display: inline-block; */
+		float: left;
+		overflow: hidden;
+	}
+	</style>
+</head>
+<body>
+
+<div id="carousel"></div>
+
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript" src="carousel-1.1.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	/*
+		In carousel5.html we generated the HTML on the fly, adding it to the jQuery $slides
+		object. what about if we want to load these as files from the server using AJAX, you say?
+		Then how about this one...
+	*/
+	
+	function getSlides(slideList) {
+		var	$slides = $('<div />'), // first we create a temporary div to hold all our slides
+			slidesLoaded = 0;		// track how many slides are loaded
+		
+		$.each(
+			slideList,
+			function(i, slide) {
+				$.get(slide, function(slideData) {	// make an ajax call to grab a slide
+					$slides.append(slideData);	// append this slide to the temp div
+					slidesLoaded++;  // increment the slide counter
+					
+					if (slidesLoaded == slideList.length) { // if this is the last slide to be loaded...
+						$slides = $slides.children(); // strip out the temp div container
+						
+						$('#carousel')
+							.insertCarousel({
+								direction: 'left',
+								height: '300px',
+								width:	'400px',
+								duration: 750,
+								delay: 2000,
+								slides: $slides // and pass the slide node list
+							});
+					
+					} // if slidesLoaded
+				}); // $.get
+				
+			} // function(i, slide)
+		); // $.each
+	} // getSlides
+	
+	getSlides(['slide1.html','slide2.html','slide3.html']);
+	
+}); // document.ready
+
+
+</script>
+</body>
+</html>

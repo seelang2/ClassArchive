@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+
+<script type="text/javascript">
+
+document.write('<h1>Hello World!</h1>');
+
+var myVariable = 'This space for rent';
+
+document.write('<p>');
+document.write(myVariable);
+document.write('</p>');
+// more efficient to use concatenation
+document.write('<p>' + myVariable + '</p>');
+
+var sideA = 10;
+var sideB = 'fluffyhamster';
+var perimeter = sideA + parseInt(sideB) + sideA + parseInt(sideB);
+var area = sideA * sideB;
+
+document.write('<p>The perimeter is ' + perimeter + ' and the area is ' + area + '</p>');
+
+var weekDays = new Array('Sun','Mon','Tue');
+
+document.write('<p>The second element is ' + weekDays[1] + '</p>');
+
+weekDays.push('Wed','Thu');
+
+document.write('<p>There are ' + weekDays.length + ' elements in weekDays.</p>');
+
+var months = ['Jan','Feb','Mar','Apr','May'];
+
+var pillBox = new Object();
+pillBox.Mon = 'white';
+
+var newPillBox = {
+				  Mon: "white",
+				  Tue: "orange",
+				  Wed: "purple",
+				  Thu: "white",
+				  Fri: "red",
+				  Sat: "green",
+				  Sun: "N/A"
+				 };
+
+document.write('<p>The pill for Wednesday is ' + newPillBox.Wed + ' </p>');
+// use array notation to access object property
+document.write('<p>Back down the rabbit hole on Friday with the ' + newPillBox['Fri'] + ' pill. Cue Alice.</p>');
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

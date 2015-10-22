@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+form label {
+	display: block;
+	clear: both;
+	margin-bottom: 0.5em;
+	position: relative;
+}
+
+form input {
+	position: absolute;
+	left: 75px;
+}
+</style>
+</head>
+
+<body>
+
+<form id="theform" action="#" method="get">
+	<label>First Name:<input name="firstname" /></label>
+	<label>Last Name:<input name="lastname" /></label>
+	<label>Email:<input name="email" /></label>
+    <input type="submit" value="Continue" />
+</form>
+
+<script type="text/javascript">
+
+var formElem = document.getElementById("theform");
+
+formElem.onsubmit = function() {
+	//return false; // override default element action
+	//return confirm("Are you sure you're ready to submit this form?");
+	
+	// form validation
+	var validated = true; // innocent until proven guilty approach
+	var errormsgs = ''; // error message holder
+
+	for (var c = 0; c < this.elements.length; c++) {
+		//alert(this.elements[c].name);
+		switch(this.elements[c].name) {
+			case 'firstname':
+				// field cannot be blank
+				if (this.elements[c].value.length < 1) {
+					validated = false; // invalidate form
+					errormsgs += '\n' + 'First name cannot be blank.';
+				}
+			break;
+			case 'lastname':
+				// field must be at least 4 chars
+				if (this.elements[c].value.length < 4) {
+					validated = false; // invalidate form
+					errormsgs += '\n' + 'Last name must be at least 4 chars.';
+				}
+			break;
+			case 'email':
+				if (this.elements[c].value.search(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i) < 0) {
+					validated = false; // invalidate form
+					errormsgs += '\n' + 'Email address does not appear to be valid.';
+				}
+			break;
+			
+		} // switch
+		
+	} // for elements
+	if (!validated) {
+		alert('The following errors have occurred: ' + '\n' + errormsgs);
+		return false;
+	}
+	
+}; // onsubmit
+
+
+
+</script>
+</body>
+</html>

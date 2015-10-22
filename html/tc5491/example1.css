@@ -1,0 +1,16 @@
+@import url(stylesheet2.css);
+
+body {
+	font-family: Verdana;
+	font-size: 1em; /* base font size */
+	color: #000;
+}
+
+h1 {
+	color: #000099;
+	font-family: Papyrus;
+	line-height: 1.0em;
+	margin: 1.0em 0;
+	font-size: 2em; /* relative to base font size */
+}
+

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript">
+
+// set up some mock contact data using JSON (www.json.org)
+var contactList = 
+[
+	{"firstname":"John","lastname":"Doe","email":"jdoe@email.com"},
+	{"firstname":"Mary","lastname":"Jane","email":"mj@lucyinthesky.com"},
+	{"firstname":"Peter","lastname":"Williams","email":"peter.williams@email.com"},
+	{"firstname":"Sue","lastname":"Foster","email":"sfoster111@yahoo.com"},
+	{"firstname":"Alex","lastname":"Jones","email":"aj@somedomain.com"}
+];
+
+// take contact data and display in a table
+
+// build base table structure
+$('#target')
+	.append('<table><tbody></tbody></table>');
+
+// for every contact... 
+for (var c = 0; c < contactList.length; c++) {
+	// create a table row
+	// add the contact fields to TDs
+	$('<tr>' +
+		'<td>' + contactList[c].firstname + '</td>' + 
+		'<td>' + contactList[c].lastname + '</td>' + 
+		'<td>' + contactList[c].email + '</td>' + 
+	  '</tr>')
+		.appendTo('#target > table > tbody'); // add row to the table
+
+} // for contactList.length
+
+</script>
+</body>
+</html>

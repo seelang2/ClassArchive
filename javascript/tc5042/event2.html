@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Events 2</title>
+</head>
+
+<body>
+
+<div id="controls">
+	<button id="btnSave">Save</button>
+    <button id="btnEdit">Edit</button>
+    <button id="btnDelete">Delete</button>
+</div>
+
+<script type="text/javascript">
+
+function getTargetElement(e) {
+	if (e.target) {
+		var target = e.target;
+	} else {
+		var target = e.srcElement;
+	}
+	
+	if (target.nodeType == 3) target = target.parentNode;
+	
+	return target;
+}
+
+/*
+document.getElementById("btnSave").onclick = function() {
+	alert("Save clicked");
+};
+
+document.getElementById("btnEdit").onclick = function() {
+	alert("Edit clicked");
+};
+
+document.getElementById("btnDelete").onclick = function() {
+	alert("Delete clicked");
+};
+
+*/
+
+// take advantage of event propagation
+document.getElementById("controls").onclick = function(e) {
+	//alert(this.id);
+	if (!e) var e = window.event;
+	
+	var target = getTargetElement(e);
+	
+	//alert(target.id);
+	switch(target.id) {
+		case 'btnSave':
+			alert("Save clicked");
+		break;
+
+		case 'btnEdit':
+			alert("Edit clicked");
+		break;
+
+		case 'btnDelete':
+			alert("Delete clicked");
+		break;
+	} // switch
+} // #controls.onclick
+
+</script>
+</body>
+</html>

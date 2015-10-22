@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Sample Page</title>
+	<meta charset="UTF-8" />
+	
+</head>
+<body>
+
+<button id="button1">click Me</button>
+
+<script type="text/javascript" src="jquery-1.8.2.js"></script>
+<script type="text/javascript">
+/*
+document.getElementById("button1").onclick = function() {
+	alert('The button has been clicked.');
+};
+*/
+/*
+$('#button1')
+	.on(
+		'click',
+		function() {
+			alert('The button has been clicked.');
+		}
+	);
+*/
+
+$('#button1')
+	.on(
+		{
+			click: function() {
+				alert('The button has been clicked.');
+			},
+			
+			mouseover: function() {
+				$(this).css('border','3px solid #f00');
+			},
+			
+			mouseout: function() {
+				$(this).css('border','none');
+			}
+		}
+	);
+
+	
+	
+</script>
+</body>
+</html>

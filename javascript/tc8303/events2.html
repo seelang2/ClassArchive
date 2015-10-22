@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+
+<div>
+	<button id="thebutton">Click Me</button>
+</div>
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+// attach event handler code to button
+$('#thebutton')
+	.on('click', function(e) {
+		// stop the event from bubbling past this pointer
+		e.stopPropagation();
+		
+		console.log('The button has been clicked.');
+	
+	 });
+
+$('div')
+	.on('click', function(e) {
+		
+		console.log('click event triggered on DIV');
+	 });
+
+$('body')
+	.on('click', function(e) {
+		
+		console.log('click event triggered on BODY');
+	 });
+
+</script>
+</body>
+</html>

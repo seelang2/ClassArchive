@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sample Fixed width layout</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
+	<style type="text/css" media="all">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 85%;
+		color: #000;
+		background-color: #89D3FA;
+		margin: 0;
+		padding: 0;
+	}
+	
+	#wrapper {
+		max-width: 1200px;
+		background-color: #fff;
+		margin: auto;
+		border: 1px solid #333;
+	}
+	
+	#wrapper > header {
+		height: 80px;
+		color: #fff;
+		background-color: #009;
+	}
+	
+	#wrapper > footer {
+		height: 125px;
+		color: #efefef;
+		background-color: #333;
+	}
+	
+	#content {
+		padding: 5px 35px;
+	}
+	
+	
+	
+	@media print {
+		body, #wrapper > header {
+			font-family: Times, "Times New Roman", serif;
+			font-size: 14pt;
+			color: #090;
+		}
+	}
+	
+	@media screen and (max-width: 599px) {
+		body, #wrapper > header {
+			background-color: #f00;
+		}
+	
+	}
+	
+	@media screen and (min-width: 600px) and (max-width: 849px) {
+		body, #wrapper > header {
+			background-color: #0f0;
+		}
+	
+	}
+	
+	@media screen and (min-width: 800px) and (max-width: 1199px) {
+		body, #wrapper > header {
+			background-color: #00f;
+		}
+	
+	}
+	
+	
+	</style>
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<span>Single Column Layout Demo</span>
+		</header>
+		
+		<section id="content">
+			<h1>Lorem ipsum dolor sit amet</h1>
+
+			<p><a href="http://www.lipsum.com">Lorem ipsum</a> dolor sit amet, consectetur adipiscing elit. Sed hendrerit ligula in arcu lacinia luctus. Nam ac hendrerit velit. Aliquam blandit augue non nibh tincidunt ullamcorper scelerisque mauris egestas. Morbi eu condimentum odio. Cras et lacus dolor, ut sollicitudin turpis. Nunc accumsan placerat varius. Mauris scelerisque dictum mauris, ut bibendum tellus faucibus at. Donec suscipit posuere est nec tempus. Nunc in sapien metus. Cras tempor augue at purus facilisis eget imperdiet arcu interdum. Morbi a lectus purus. Donec rhoncus tortor in orci fermentum sit amet sagittis orci placerat.</p>
+
+			<p>Pellentesque habitant morbi tristique <br />
+			senectus et netus et malesuada fames ac <br />
+			turpis egestas. Morbi facilisis, magna </p>
+
+			<p>sit amet tincidunt faucibus, felis diam <br />
+			sollicitudin elit, vitae sagittis purus <br />
+			risus eget magna. </p>
+
+			<p>Phasellus at tellus orci, quis sollicitudin sem. In in tortor magna. Mauris vestibulum risus velit. In varius massa at mauris congue gravida. Proin sed urna et est mollis bibendum sed ut nisl.</p>
+
+			<h2>Ut commodo consequat pharetra</h2>
+
+			<p>Ut commodo consequat pharetra. Maecenas nec sapien vel metus luctus placerat nec vitae diam. </p>
+
+			<div>
+				<code>
+					10 PRINT "Hello world!"<br />
+					20 GOTO 10
+				</code>
+			</div>
+
+			<blockquote>Nullam vitae mauris leo. Cras viverra auctor ligula scelerisque viverra. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent ante nulla, molestie et ullamcorper in, luctus et odio. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus laoreet nisl sed sapien mattis ut tempor sem dapibus. Integer tempor ante eleifend purus ullamcorper ac pharetra elit ultricies. </blockquote>
+
+			<p>Morbi consectetur, orci non auctor condimentum, magna augue porttitor tellus, a suscipit augue elit et massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+			<h2>Vivamus tristique massa a justo</h2>
+
+			<p>Vivamus tristique massa a justo ullamcorper faucibus. Nullam dolor felis, vehicula non vulputate in, dictum id justo. Proin vitae nisi venenatis augue aliquam cursus. Vivamus elementum diam sed velit lobortis rhoncus. Praesent tincidunt, lacus bibendum bibendum semper, sem sapien pellentesque nunc, in faucibus nisi neque placerat nibh. Etiam felis velit, vehicula vel gravida eget, ornare ac elit. Fusce dui nisl, ullamcorper et fermentum eu, suscipit sed metus. Sed pellentesque faucibus sollicitudin. Fusce lobortis arcu at arcu sollicitudin vitae pulvinar lacus suscipit. Praesent pulvinar rutrum orci, ut sodales ipsum tempus pellentesque.</p>
+
+			<ul>
+				<li>Class aptent taciti sociosqu ad litora torquent per conubia nostra</li>
+				<li>Per inceptos himenaeos</li>
+				<li>Maecenas sed orci ut mauris scelerisque fringilla</li>
+				<li>Praesent porta metus at magna semper facilisis</li>
+				<li>Nulla luctus ligula suscipit neque pharetra cursus</li>
+				<li>Quisque eu massa ac metus cursus ultrices quis a elit</li>
+				<li>Suspendisse sed diam et massa consectetur porttitor</li>
+				<li>Pellentesque non nulla elit, non viverra tortor</li>
+				<li>Nulla auctor fringilla ligula, sit amet aliquam quam blandit laoreet</li>
+				<li>Suspendisse luctus posuere felis quis viverra</li>
+				<li>Curabitur sapien quam, tincidunt in aliquet quis, lobortis pharetra nisi</li>
+				<li>Quisque a metus quis ligula sodales tempor</li>
+				<li>Nam pretium quam consequat justo euismod euismod.</li>
+			</ul>
+
+
+			<p>Etiam ut risus eget diam cursus lobortis sed vitae urna. Sed id nunc quis sapien aliquet viverra ac quis erat. Praesent dapibus dui non orci egestas a tincidunt libero ultricies. Integer sed sem eget sapien consectetur tempus. Praesent arcu neque, dignissim vel tristique sed, faucibus sit amet dui. Aenean ac ipsum sit amet sem interdum volutpat sed et libero. Fusce id leo odio, ac consectetur lacus. Maecenas eu felis dolor.</p>
+
+			<h2>Sed tincidunt neque ac arcu molestie</h2>
+
+			<p>Mauris quam ante, rhoncus vitae sodales eget, pretium sit amet mauris. Aliquam erat volutpat. Sed tincidunt neque ac arcu molestie aliquam. Vestibulum viverra massa augue. Ut aliquam sollicitudin enim eget malesuada. Nam vitae justo vitae ligula adipiscing hendrerit at in elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce sed augue velit. Sed varius condimentum ultrices. Donec pharetra ullamcorper mi ac congue. In hac habitasse platea dictumst. Nam enim erat, hendrerit ac molestie sit amet, posuere eu augue. Proin non gravida nisl. Nulla facilisi. Vestibulum rhoncus arcu in nibh auctor ac consectetur neque pellentesque.</p>
+
+			<h3>Vestibulum a neque id lacus volutpat mattis</h3>
+
+			<p>Vestibulum a neque id lacus volutpat mattis. Suspendisse potenti. Suspendisse pretium consectetur lectus mattis egestas. Vestibulum quis libero non nisl eleifend mattis feugiat quis sem. Integer nec nisl ante. Ut vitae nisi non ante laoreet rutrum a non est. Morbi sed arcu sed mauris rutrum pretium. Vivamus semper volutpat ullamcorper. Cras non mi in lorem eleifend consequat ac quis nibh. Duis quis nulla eu est interdum sagittis sed ut purus. Sed mollis ligula nec purus mollis molestie. Sed vel porta ipsum. Proin eget dolor tellus. Duis vel velit sed velit rutrum semper in sed eros.</p>
+
+			<h3>Nunc tristique massa quis ligula</h3>
+
+			<p>Nunc tristique massa quis ligula ornare fermentum. Pellentesque ac velit metus, vitae aliquam lacus. Fusce vel velit quam. Vivamus laoreet, metus ut rhoncus pharetra, ipsum magna pharetra quam, nec aliquet lacus nisl in augue. Nulla pretium convallis consequat. Suspendisse a pulvinar lacus. Pellentesque in urna lorem. Nunc vitae massa gravida odio pulvinar molestie. Ut tempor dictum nisi, eget commodo tellus commodo eu. Praesent dapibus arcu ut turpis egestas vel pretium sem molestie. Ut luctus, leo ut venenatis interdum, nunc augue commodo odio, quis pulvinar diam elit sed sapien. Sed id magna dolor, vitae lacinia sem. Mauris sagittis, tellus sit amet consectetur ullamcorper, velit tortor lacinia nulla, sit amet sagittis augue lectus eu eros.</p>
+		</section>
+		
+		<footer>
+			<span>Copyright &copy; Creative Commons License blah blah blah...</span>
+		</footer>
+	</div><!-- wrapper -->
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Sample Page</title>
+	<meta charset="UTF-8" />
+	
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+function Foo() {
+	this.doSomething = function() {
+		console.log('Foo.doSomething');
+	};
+}
+
+function Bar() {
+	this.doSomethingElse = function() {
+		console.log('Bar.doSomethingElse');
+	};
+}
+
+//Bar.prototype = Foo;
+
+var test = new Bar();
+
+test.prototype = Foo;
+
+test.doSomething();
+test.doSomethingElse();
+
+
+</script>
+</body>
+</html>

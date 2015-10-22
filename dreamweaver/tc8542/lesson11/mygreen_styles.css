@@ -1,0 +1,759 @@
+@charset "UTF-8";
+
+html, body { /* Setting a height of 100% forces the browser to calculate the height of the browser window. This is done to push the footer to the bottom of screen when the content of the page is not long enough to fill the screen. This a totally stylistic application and does not otherwise affect the loading or display of the page. If this styling fails the only repurcussion will be that the footer will not display at the bottom of the screen on shorter pages. */
+	height: 100%; 
+}
+body {
+	line-height: 1.4em;
+	font-size: 100%;
+	font-family: "Source Sans Pro", "Trebuchet MS", Verdana, Arial, sans-serif;
+	background-color: #090;
+	margin: 0px;
+	padding: 0;
+	color: #000;
+	font-style: normal;
+	font-weight: 400;
+	width: 100%;
+}
+/* ~~ Element/tag selectors ~~ */
+ul, ol, dl { /* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p  , cite{
+	margin-top: 0px; /* adding the padding to the sides of the elements within the blocks, instead of the block elements themselves, gets rid of any box model math. A nested block with side padding can also be used as an alternate method. */
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-bottom: 0.5em;
+	padding-left: 10px;
+	padding-right: 10px;
+	line-height: 1.4em;
+}
+#top-menu {
+	display: none;
+}
+a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+	border: none;
+}
+/* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+a:link {
+	color: #016F9F;
+	text-decoration: underline; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification. Change the color to match your company color standards. */
+}
+a:visited {
+	color: #5B8293;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+	text-decoration: none;
+	color: rgba(67,144,255,1.00);
+}
+/* ~~ This fixed width container surrounds all other blocks ~~ */
+.container {
+	background-color: #FFFFFF;
+	margin-top: 0;
+	margin-bottom: 0;
+	/* The following settings are designed to push the footer to the bottom of the screen if the content does not fill the column. For longer content, the footer will scroll as expected. */ 
+	height: auto !important; /* the auto value is a hack for IE7 which doesn't understand min-height.*/
+	min-height: 100%;
+	height: 100%; 
+	margin: 0 auto -3em; /* the auto value on the sides, coupled with the width, centers the layout */
+	overflow:auto;
+	width:100%;
+}
+header { /* ~~ The header is not given a width. It will extend the full width of your layout. The height is a different matter. The header features an h1 element and several background effects. Background images do not affect the height of an element automatically. The height must be set to support the dimensions of any background content. ~~ */
+	background-color: #090;
+	height: 200px;
+	/* This design uses HTML5 and CSS3-compatible specifications that may not be directly supported by Dreamweaver or other HTML editors. In turn, these specifications may not be supported by older browsers. Be sure to test any specification before relying on it. */
+	background-image: url(images/fern.png) , url(images/stripes.png) , -webkit-linear-gradient(180deg,rgba(0,59,0,1.00) 0%,rgba(0,197,0,1.00) 100%);
+	background-image: url(images/fern.png) , url(images/stripes.png) , linear-gradient(180deg,rgba(0,59,0,1.00) 0%,rgba(0,197,0,1.00) 100%);
+	background-position: 48% center, top left;
+	background-repeat: no-repeat, repeat-x;
+	background-size: auto 80%, 23px 235px, 100% 200px;
+	color: #ffc;
+	background-color: #090;
+}
+header h2 { /* The header features an h1 element. The company name could also be added to the background image itself, but then it would not be accessible to search engines. */
+	font-size: 400%;
+	font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", sans-serif;
+	color: rgba(0,240,0,1.00);
+	line-height: 1.2em;
+	text-align: center;
+	text-shadow: 0px 0px 15px rgba(0,0,0,0.98);
+	text-outline: 1px #0F6B00;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	vertical-align: baseline;
+	padding-top: 0.75em;
+}
+header p {
+	text-align: center;
+	font-size: 120%;
+	text-transform: uppercase;
+	text-shadow: 0px 1px 7px rgba(0,0,0,0.90);
+	letter-spacing: 0.5em;
+	line-height: 0.5em;
+	margin-top: 2em;
+}
+header h2 a:link, header h2 a:visited {
+	color: inherit;
+	text-decoration: none;
+}
+.logo-white {
+	color: rgba(255,255,255,1.00);
+}
+.top { /* Nav elements may be used in several places on the page. Create a custom CSS class such as this one for each unique application of a navigation menu. */
+	background-image: -moz-linear-gradient( 90deg, rgb(2,129,166) 0%, rgb(0,97,153) 100%);
+	background-image: -webkit-linear-gradient( 90deg, rgb(2,129,166) 0%, rgb(0,97,153) 100%);
+	background-image: -ms-linear-gradient( 90deg, rgb(2,129,166) 0%, rgb(0,97,153) 100%);
+	border-top: 5px solid #FD5;
+	border-bottom-style: none;
+	border-bottom-width: medium;
+	text-shadow: 2px 2px 3px rgba(0,0,0,0.60);
+	-webkit-box-shadow: 0px 3px 3px rgba(0,0,0,0.30);
+	box-shadow: 0px 3px 3px rgba(0,0,0,0.30);
+	margin-bottom: 25px;
+	text-align: center;
+	overflow: auto;
+	width: 100%;
+	background-color: rgba(0,112,159,1.00);
+	height: auto;
+}
+.top ul {/* The navigation menu is centered in the nav element. To center the menu the left and right margins of the ul are set to auto and the width is set to a fixed measurement. Furthermore, the width of the ul must be at least equal to or greater than the sum of the widths of all its children, plus borders, margins and padding. If you insert additional menu items don't forget to increase the width accordingly.*/
+	list-style: none;
+	margin-top: 0;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 0;
+	padding: 0;
+	position: relative;
+	text-align: center;
+	width: 56em;
+}
+.top ul li {/* There is no width, margin or padding applied to the li element. When an element is floated its width and height will collapse to the extents of its contents. These specifications will be applied to the a element itself, to allow the entire button to be clickable.  */
+	margin: 0px;
+	list-style: none;
+	border-top: 1px solid #00A2E2;
+	border-right: 1px solid #004862;
+	border-bottom: 1px solid #004862;
+	border-left: 1px solid #00A2E2;
+	float: left;
+	display: block;
+	overflow:auto;
+}
+.top ul li a:link  , .top ul li a:visited {/* Normally, hyperlinks are inline elements and are only as wide and as tall as the content of the link. To make the entire button an active link the width of each link is set in ems on the "a" tag itself. Since the li element is floated it will automatically collapse to the width and height of its contents. By using ems the width will scale automatically with the font size preventing the button from breaking. By placing the width and padding on the a element the hyperlink behavior is automatically inherited by the entire visible button. This effect is also assisted by applying a block specification. */
+	padding-right: 0.4em;
+	padding-left: 0.4em;
+	color: #ffc;
+	text-decoration: none;
+	vertical-align: middle;
+	height: auto;
+	display: block;
+	width: 7em;
+	line-height: 3em;
+}
+.top ul li a:hover {
+	color: #fff;
+	background-image: -moz-linear-gradient( 270deg, rgb(2,129,166) 0%, rgb(0,97,153) 100%);
+	background-image: -webkit-linear-gradient( 270deg, rgb(2,129,166) 0%, rgb(0,97,153) 100%);
+	background-image: -ms-linear-gradient( 270deg, rgb(2,129,166) 0%, rgb(0,97,153) 100%);
+
+}
+.main  {
+	width: 1015px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 20px;
+	clear: both;
+	overflow: auto;
+	padding-bottom: 15px;
+}
+.main aside {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	overflow: auto;
+	float: left;
+}
+.main aside section {
+	overflow: auto;
+	clear: both;
+	margin-top: 5px;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+}
+figure {
+	display: block;
+	margin: 0px;
+	padding: 0px;
+	overflow: auto;
+}
+figure img {
+	margin: 5px auto;
+	display: block;
+}
+figure figcaption {
+	margin:0px;
+	padding: 0px 10px;
+}
+/* ~~ These are the columns for the layout. ~~ 
+
+1) Padding is only placed on the top and/or bottom of the block elements. The elements within these blocks have padding on their sides. This saves you from any "box model math". Keep in mind, if you add any side padding or border to the block itself, it will be added to the width you define to create the *total* width. You may also choose to remove the padding on the element in the block element and place a second block element within it with no width and the padding necessary for your design.
+
+2) No margin has been given to the columns since they are all floated. If you must add margin, avoid placing it on the side you're floating toward (for example: a right margin on a block set to float right). Many times, padding can be used instead. For blocks where this rule must be broken, you should add a "display:inline" declaration to the block element's rule to tame a bug where some versions of Internet Explorer double the margin.
+
+3) Since classes can be used multiple times in a document (and an element can also have multiple classes applied), the columns have been assigned class names instead of IDs. For example, two sidebar blocks could be stacked if necessary. These can very easily be changed to IDs if that's your preference, as long as you'll only be using them once per document.
+
+4) If you prefer your nav on the left instead of the right, simply float these columns the opposite direction (all left instead of all right) and they'll render in reverse order. There's no need to move the blocks around in the HTML source.
+
+*/
+.sidebar1 {
+	float: left;
+	width: 200px;
+	border-left-color: #000;
+	border-left-style: none;
+	border-right-style: none;
+	border-bottom: 3px solid #016F9E;
+	border-radius: 0;
+	border-top: 5px solid #016F9E;
+	position: relative;
+	overflow: auto;
+}
+.sidebar1 blockquote {
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-bottom: 20px;
+	padding: 0px;
+	overflow: auto;
+}
+.sidebar1 blockquote p  {
+	margin: 0px 0px 5px;
+	padding: 0em .5em;
+	text-indent: -0.4em;
+}
+.sidebar1 blockquote cite  {
+	font-size: 90%;
+	text-align: right;
+	font-style: italic;
+	display: block;
+}
+.content {
+	width: 37em;
+	position: relative;
+	padding-right: 10px;
+	padding-left: 10px;
+	float: left;
+	overflow: auto;
+}
+.content h1 {
+	font-style: normal;
+	font-weight: 400;
+	font-size: 250%;
+	font-family: patua-one, "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	margin: 0px 0px 5px 0px;
+	line-height: 1.4;
+}
+.content section h2 {
+	color: #009900;
+	margin-top: 15px;
+	margin-bottom: 5px;
+	font-size: 170%;
+	line-height: 1.4em;
+}
+
+.content section table {
+	font-size: 90%;
+	width: 40em;
+	margin-left: 1em;
+	border-bottom: 3px solid #060;
+	font-family: "Arial Narrow", Arial, Verdana, sans-serif;
+	border-collapse: collapse;
+}
+.content section caption {
+	margin-top: 20px;
+	padding-bottom: 20px; 
+	color: #090;
+	font-weight: bold;
+	font-size: 160%; 
+	line-height: 1.2em; 
+}
+.content section .date {
+	width: 5em;
+}
+.content section .event {
+}
+.content section .location {
+}
+.content section .cost {
+	text-align: center;
+	width: 5em;
+}
+.content section .day {
+	text-align: center;
+	width: 5em;
+}
+.content section .length {
+	text-align: center;
+	width: 5em;
+}
+.content section th {
+	color: #ffc;
+	border-bottom: 6px solid #060;
+	background-color: #090;
+}
+.content section td , .content section th {
+	text-align: left;
+	padding-top: 0.5em;
+	padding-right: 0.5em;
+	padding-bottom: 0.5em;
+	padding-left: 0.5em;
+	border-top: 1px solid #090;
+	vertical-align: top;
+}
+.content .profile {
+	margin-left: 25px;
+	margin-right: 25px;
+	margin-bottom: 15px;
+	border-left: 2px solid #CADAAF;
+	border-bottom: 10px solid #CADAAF;
+}
+.content .full {
+	height: auto;
+	max-width: 93%;
+	display: block;
+	margin-left: 15px;
+}
+.ctr {
+	text-align: center;
+}
+.flt_rgt {
+	float:right;
+	margin-left:10px;
+}
+.flt_lft {
+	float:left;
+	margin-right:10px;
+}
+/* ~~ This grouped selector gives the lists in the .content area space ~~ */
+.content ul, .content ol {
+	padding: 0 15px 15px 40px; /* this padding mirrors the right padding in the headings and paragraph rule above. Padding was placed on the bottom for space between other elements on the lists and on the left to create the indention. These may be adjusted as you wish. */
+}
+/* ~~ The header is not given a width. It will extend the full width of your layout. ~~ */
+/* ~~ These are the columns for the layout. ~~ 
+
+1) Padding is only placed on the top and/or bottom of the block elements. The elements within these blocks have padding on their sides. This saves you from any "box model math". Keep in mind, if you add any side padding or border to the block itself, it will be added to the width you define to create the *total* width. You may also choose to remove the padding on the element in the block element and place a second block element within it with no width and the padding necessary for your design.
+
+2) No margin has been given to the columns since they are all floated. If you must add margin, avoid placing it on the side you're floating toward (for example: a right margin on a block set to float right). Many times, padding can be used instead. For blocks where this rule must be broken, you should add a "display:inline" declaration to the block element's rule to tame a bug where some versions of Internet Explorer double the margin.
+
+3) Since classes can be used multiple times in a document (and an element can also have multiple classes applied), the columns have been assigned class names instead of IDs. For example, two sidebar blocks could be stacked if necessary. These can very easily be changed to IDs if that's your preference, as long as you'll only be using them once per document.
+
+*/
+.sidebar2 {
+	width: 200px;
+	background-color: #CFFFC4;
+	border-left-color: #000;
+	border-left-style: none;
+	border-right-style: none;
+	border-bottom: 3px solid #016F9E;
+	border-top: 5px solid #016F9E;
+	float: left;
+	clear: none;
+}
+.sidebar2 section h2 {
+	font-size: 130%;
+	line-height: 1.4em;
+	margin-bottom: 5px;
+}
+.sidebar2 figure {
+	margin-top: 10px;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-bottom: 10px;
+	display: block;
+	padding-bottom: 15px;
+	clear: both;
+}
+.sidebar2 figure img {
+	max-width: 95%;
+	height: auto;
+	margin-top: 5px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 5px;
+	display: block;
+	float: none;
+	clear: none;
+}
+/* ~~ The footer ~~ */
+footer {
+	background-image: -webkit-linear-gradient(0deg,rgba(0,59,0,1.00) 0%,rgba(0,197,0,1.00) 100%);
+	background-image: linear-gradient(0deg,rgba(0,59,0,1.00) 0%,rgba(0,197,0,1.00) 100%);
+	background-size: 100% 100%;
+	padding-top: 10px;
+	padding-right: 10%;
+	padding-bottom: 10px;
+	padding-left: 10%;
+	background-color: #090;
+	position: relative;/* this gives IE6 hasLayout to properly clear */
+	clear: both; /* this clear property forces the .container to understand where the columns end and contain them */
+	color: #ffc;
+	font-size: 95%;
+	margin-top: 30px;
+}
+footer, .push {	/* This rule helps to position the footer at the bottom of the browser window when the page content does not fill the entire height. */
+	min-height:1em; 
+}	
+header, section, footer, aside, article, figure { /*This rule is an accommodation for older browser that may not understand HTML5 semantic elements. This rule should remain at the bottom of the style sheeet. */
+	display: block;
+	overflow: auto;
+}
+
+@media screen and (max-width:1023px){
+.container {
+	width: 100%;
+}
+header { 
+	position:relative
+	background-color: #090;
+	height: 150px;
+	background-image: url(images/fern.png) , url(images/stripes.png) , -webkit-linear-gradient(180deg,rgba(0,59,0,1.00) 0%,rgba(0,197,0,1.00) 100%);
+	background-image: url(images/fern.png) , url(images/stripes.png) , linear-gradient(180deg,rgba(0,59,0,1.00) 0%,rgba(0,197,0,1.00) 100%);
+	background-size: auto 90%,23px 235px,100% 200px;
+}
+header h2 {
+	font-size: 350%;
+	padding-top: 0.5em;
+	line-height: normal;
+}
+header p {
+	text-align: center;
+	font-size: 120%;
+	text-transform: uppercase;
+	text-shadow: 0px 1px 10px rgba(0,0,0,0.93);
+	letter-spacing: 0.5em;
+	line-height: 1em;
+	margin-top: 0em;
+	padding-top: 1em;
+}
+.top ul {
+	width: 40em;
+	margin-left: auto;
+	margin-right: auto;
+}
+.top ul li a:link  , .top ul li a:visited {
+	display: block;
+	padding-top: 0px;
+	padding-right: 0.1em;
+	padding-bottom: 0px;
+	padding-left: 0.1em;
+	width: 6em;
+	font-size: 90%;
+}
+.main  {
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.sidebar2 figure {
+	margin-top: 10px;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-bottom: 20px;
+	display: block;
+	padding-bottom: 15px;
+	clear: both;
+}
+.sidebar2 figure img {
+	max-width:95%;
+	height:auto;
+	margin-top: 5px;
+	margin-right: 15px;
+	margin-left: 15px;
+	margin-bottom: 5px;
+	display: block;
+	float: left;
+}
+
+.content {
+	width: 75%;
+	float: left;
+	overflow: auto;
+	margin-bottom: 20px;
+}
+.sidebar1 {
+	width: 20%;
+}
+.sidebar2 {
+	float: none;
+	width: 75%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	overflow: auto;
+	clear: none;
+	margin-left: 22%;
+}
+.sidebar2 figure {
+	clear: none;
+}
+.sidebar2 figure img  {
+	max-width: 30%;
+	margin: 5px;
+	float: left;
+	clear: none;
+}
+.sidebar2 section p {
+	clear: none;
+}
+}
+@media  screen and (max-width:810px) {
+table, thead, tbody, tr, td, th, caption {
+	display: block;
+}
+.content section table {
+	margin: 0px auto;
+	width: 95%;
+}
+.content section th {
+	height:0px;
+	overflow:hidden;
+	margin:0px;
+	padding:0px;
+	border: none;
+}
+td.date:before { content: "Date:"; }
+td.event:before { content: "Event:"; }
+td.location:before { content: "Location:"; }
+td.cost:before { content: "Cost:"; }
+td.class:before { content: "Class:"; }
+td.description:before { content: "Description:"; }
+td.day:before { content: "Day:"; }
+td.length:before { content: "Length:"; }
+
+
+.content section .date, .content section .event, .content section .location, .content section .cost, .content section .class, .content section .description, .content section .length, .content section .day {
+	width:auto;
+	display: block;
+	padding-left:30%;
+    position: relative;
+	text-align: left;
+	width:auto;
+}
+td:before {
+	position: absolute;
+	top: 6px;
+	left: 1em;
+	width: 25%;
+	padding-right: 10px;
+	white-space: nowrap;
+	display: block;
+	color: #060;
+	font-weight: bold;
+    }
+
+.content section tr {
+	border-bottom: 2px solid #060;
+}
+tr:nth-of-type(odd) {
+	background-color: #D4EAD4;
+}
+
+}
+@media screen and (max-width:665px) {
+.container {
+	width: 100%;
+}
+header { 
+	background-color: #090;
+	height: 135px;
+	background-image: url(images/fern.png) , url(images/stripes.png) , -webkit-linear-gradient(180deg,rgba(0,59,0,1.00) 0%,rgba(0,197,0,1.00) 100%);
+	background-image: url(images/fern.png) , url(images/stripes.png) , linear-gradient(180deg,rgba(0,59,0,1.00) 0%,rgba(0,197,0,1.00) 100%);
+	background-size: auto 80%,23px 235px,100% 200px;
+	background-size: auto 80%, 23px 235px, 100% 200px;
+}
+header h2 {
+	font-size: 300%;
+	font-family: "Impact";
+	color: rgba(0,240,0,1.00);
+	line-height: 1em;
+	text-align: center;
+	text-shadow: 0px 0px 15px rgba(0,0,0,0.98);
+	vertical-align: middle;
+	text-outline: 1px #0F6B00;
+	padding-top: .6em;
+}
+header p {
+	text-align: center;
+	font-size: 90%;
+	text-transform: uppercase;
+	text-shadow: 0px 1px 7px rgba(0,0,0,0.93);
+	letter-spacing: 0.5em;
+	line-height: 1em;
+	margin:0px;
+}
+.main  {
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 18px;
+	padding-top: 0px;
+	overflow: hidden;
+}
+.content {
+	width: 100%;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 0px;
+	padding: 0px;
+	float: none;
+}
+.content h1 {
+	font-size: 200%;
+	line-height: 1em;
+	text-align: center;
+	padding:0px;
+	margin: 0px auto;
+	width:auto;
+}
+.sidebar1 {
+	display: none;
+}
+.sidebar2 {
+	float: none;
+	clear: both;
+	margin: 10px 0px;
+	width: 100%;
+}
+.top {
+	height: 40px;
+	background-repeat: no-repeat;
+	background-position: right center;
+	overflow: hidden;
+}
+.top ul {
+	display: block;
+	width: 100%;
+	margin: 0px;
+	text-align: left;
+}
+.top li {
+	display: block;
+	float: none;
+	margin-left: 0px;
+	width: 100%;
+}
+
+.top ul li a:link  , .top ul li a:visited{
+	padding: 0px 2em;
+	width: auto;
+	font-size: 100%;
+	margin: 0px;
+	background-color: #069;
+	height: 40px;
+	line-height: 2.5em;
+}
+.top.open {
+	overflow: visible;
+	z-index: 100;
+}
+.top.open .navbar{
+	/* [disabled]top: 40px; */
+	z-index: 100;
+	font-size: medium;
+	max-height: 240px;
+}
+#top-menu {
+	display: block;
+	float: right;
+	background: rgba(3,175,244,1.00);
+	border: 1px solid rgba(3,175,244,1.00);
+	padding: 7px 10px;
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	height: 20px;
+	z-index: 1000;
+}
+.content section {
+	padding: 0px;
+	margin-top: 10px;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-bottom: 10px;
+	overflow: auto;
+}
+}
+
+@media screen and (max-width:480px){
+.main {
+	margin: 0px;
+	width: 100%;
+}
+.content section h2 {
+	padding: 0px;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	line-height: 1.4em;
+}
+.content .profile {
+	padding-top: 5px;
+	padding-right: 0px;
+	padding-bottom: 5px;
+	padding-left: 0px;
+	margin-top: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+	border-top: 10px solid #cadaaf;
+	border-bottom: 4px solid #cadaaf;
+	border-left-style: none;
+}
+.main .sidebar2 {
+	width: 100%;
+	margin: 20px 0px;
+	overflow: hidden;
+}
+.main .sidebar2 section {
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+}
+.sidebar2 figure {
+	clear: none;
+}
+.sidebar2 figure img  {
+	max-width: 95%;
+	float: none;
+	clear: both;
+	margin: 5px auto;
+}
+.sidebar2 figure p {
+	width: 90%;
+	float: none;
+	clear: both;
+	margin: 5px auto;
+}
+
+footer {
+	padding-top: 5px;
+	padding-right: 5%;
+	padding-left: 5%;
+	padding-bottom: 5px;
+}
+.flt_rgt, .flt_lft {
+	float:none;
+	margin: 5px auto;
+	display:block;
+	max-width:95%;
+	height:auto;
+}
+}

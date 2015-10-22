@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Example 4</title>
+
+<style type="text/css">
+
+#links {
+	float: left;
+	width: 200px;
+}
+
+#content {
+	float: left;
+	width: 500px;
+}
+
+#content div {
+	display: none;
+}
+
+#content #overview {
+	display: block;	
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="links">
+	<ul>
+    	<li><a id="link-1" href="http://www.google.com">Link 1</a></li>
+    	<li><a id="link-2" href="#">Link 2</a></li>
+    	<li><a id="link-3" href="#">Link 3</a></li>
+    </ul>
+</div>
+
+<div id="content">
+	<div id="overview">
+    	<p>This is overview text.</p>
+    </div>
+    <div id="section-1">
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar velit quis est iaculis consequat egestas mauris condimentum. Etiam faucibus interdum nisi, eget accumsan tortor lacinia a. Vestibulum eros nisi, suscipit quis tempor nec, ornare nec nunc. Praesent at eros justo. Suspendisse posuere facilisis diam non gravida. Cras lectus lorem, pulvinar id dapibus nec, luctus sit amet nunc. Praesent ut tempor lectus. Vestibulum ultricies, lacus non porta hendrerit, massa eros interdum quam, in mattis nisi magna sed velit. Aenean mauris odio, bibendum at eleifend vel, luctus vel arcu. Integer egestas erat ac erat vestibulum a egestas elit condimentum. Sed nulla tortor, lacinia at bibendum vitae, facilisis non dolor. Aliquam vel risus eu sem sagittis imperdiet. Nulla nec vestibulum elit. Mauris sit amet feugiat leo. Aenean vehicula rutrum leo, elementum vestibulum odio imperdiet vel. Donec dapibus libero vel mi aliquam imperdiet. Nulla id sem vel lacus interdum gravida ut a quam. </p>
+    </div>
+
+	<div id="section-2">
+    	<p>Phasellus in tortor in nisl fermentum consectetur pharetra posuere enim. Morbi fringilla sodales ultricies. Aliquam erat volutpat. Quisque bibendum metus non est porta nec cursus leo congue. In sit amet erat quis est blandit pulvinar iaculis vel ante. Nulla facilisi. In rutrum consectetur velit, id laoreet lectus varius a. Ut tellus lacus, feugiat ut interdum sit amet, pellentesque vel purus. Sed non lacus lectus, non rutrum nulla. Nulla pharetra, enim at cursus aliquet, quam est tristique dui, at porttitor lorem nunc id justo. Maecenas eget ipsum libero, hendrerit consequat massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus sollicitudin nisi ac justo varius tincidunt. Fusce imperdiet gravida tortor, at rhoncus urna vulputate nec. Maecenas ut diam et urna volutpat tristique. Duis fermentum congue pharetra. Maecenas molestie, enim sit amet ornare placerat, erat est rhoncus elit, sit amet ultricies lacus purus ac risus. Sed a magna nec quam volutpat pulvinar. Sed at dui nec sapien eleifend vestibulum. Aliquam sit amet mi et quam lacinia commodo vitae vitae arcu. </p>
+    </div>
+
+	<div id="section-3">
+    	<p>Phasellus velit turpis, gravida eu lobortis sed, tempus quis lectus. Cras a ornare nulla. Aenean et nunc vitae orci sodales congue vitae vel metus. Proin scelerisque ullamcorper lectus, quis tincidunt turpis posuere sit amet. Aliquam commodo, velit quis dapibus ultrices, quam purus pretium enim, hendrerit feugiat justo enim eget mi. Nunc ultricies nisi eget ligula consequat venenatis. Quisque eu odio ut arcu bibendum vulputate ut eget est. Ut ut nibh dui. Phasellus in metus dui. Etiam quis tellus lacus. Pellentesque malesuada ipsum vel lorem sagittis ac volutpat ipsum porta. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean commodo rhoncus justo, at fringilla turpis tristique nec. Donec libero turpis, iaculis ut consequat in, pharetra at nulla. Aenean nec arcu vel justo tincidunt viverra a sit amet velit. Vivamus eu auctor lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec felis sed sem feugiat ultricies. Donec ut erat nibh. </p>
+    </div>
+
+
+</div>
+
+<script type="text/javascript">
+// get references to working objects
+var link1 = document.getElementById("link-1");
+var link2 = document.getElementById("link-2");
+var link3 = document.getElementById("link-3");
+
+var section1 = document.getElementById("section-1");
+var section2 = document.getElementById("section-2");
+var section3 = document.getElementById("section-3");
+
+var overview = document.getElementById("overview");
+
+link1.onclick = function() {
+	overview.style.display = 'none';
+	section1.style.display = 'block';
+	section2.style.display = 'none';
+	section3.style.display = 'none';
+	return false;
+}
+
+link2.onclick = function() {
+	overview.style.display = 'none';
+	section1.style.display = 'none';
+	section2.style.display = 'block';
+	section3.style.display = 'none';
+	return false;
+}
+
+link3.onclick = function() {
+	overview.style.display = 'none';
+	section1.style.display = 'none';
+	section2.style.display = 'none';
+	section3.style.display = 'block';
+	return false;
+}
+
+</script>
+
+</body>
+</html>

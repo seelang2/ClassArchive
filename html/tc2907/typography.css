@@ -1,0 +1,44 @@
+@charset "utf-8";
+/* CSS Typography */
+
+body {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 85%;
+	color: #000000;
+}
+
+h1 {
+	font-size: 2em;
+	font-weight: normal;
+	font-family:Tahoma, Geneva, sans-serif;
+	margin: 0.5em 0 0.25em 0;
+}
+
+h2 {
+	font-size: 1.4em;
+	font-weight: normal;
+	margin: 0.5em 0 0.25em 0;
+}
+
+p {
+	font-size: 1em;
+	margin: 1.2em 0;
+	line-height: 1.2em;
+}
+
+h1 + p,
+h2 + p,
+h3 + p
+{
+	margin-top: 0;
+}
+
+ul, ol {
+	list-style-position: outside;
+	padding-left: 2em;
+}
+
+li {
+	
+}
+

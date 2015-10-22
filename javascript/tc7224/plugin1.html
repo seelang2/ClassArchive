@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>jQuery Plugin Demo</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+	
+	</style>
+
+</head>
+<body>
+
+<ul>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+</ul>
+
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+// jQuery plugins are encapsulated in an IIFE
+(function($) {
+
+	// set up default parameters
+	var defaults = 
+	{
+		prefix: 'item-',
+		start:	0
+	};
+
+	$.fn.assignID = function(params) {
+		// merge params and defaults into a new object and overwrite params
+		params = $.extend({}, defaults, params);
+		
+		// 'this' refers to jQuery collection object
+		// always return the collection to maintain chaining
+		return this
+			.each(function(index, element) {
+				$(element).attr('id',params.prefix + (params.start+index));
+			 });
+		
+		
+	}; // $.fn.assignID
+
+})(jQuery);
+
+
+// use the plugin
+$('li')
+	.assignID({ prefix: 'mystuff-', start: 100 })
+	.addClass('test');
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<html>
+<head>
+
+<script type="text/javascript" src="ajaxlib.js"></script>
+<script type="text/javascript" src="formdata2querystring.js"></script>
+<script type="text/javascript" src="xmlparse.js"></script>
+
+<style type="text/css">
+body {
+	background: #7a7a7a;
+	text-align:center;
+}
+
+#wrapper {
+	text-align: left;
+	margin: 0 auto;
+	width: 700px;
+	border: 1px solid #999999;
+	background: #aaaaaa;
+}
+
+#menu li {
+	display:block;
+	float:left;
+	border: 1px solid #7a7a7a;
+	text-align: center;
+	width: 160px;
+	background: #dddddd;
+}
+
+#menu a {
+	display:block;
+	width: 100%;
+	background: #dddddd;
+}
+
+#menu a:hover {
+	background: #ffffff;
+}
+
+.selected {
+	border-bottom: 4px solid;
+}
+
+#content {
+	background: #ffffff;
+	clear:both;
+}
+
+</style>
+
+<script type="text/javascript">
+
+currentPage = "p1";
+
+function clickLink(linkid) {
+
+	currentPage = linkid;
+	ajaxSendReq("GET", 'http://localhost/demo3_' + linkid + '.html', handleResp, null, 'TEXT');
+
+}
+
+function handleResp(response) {
+	contentDiv = document.getElementById('content');
+
+	contentDiv.innerHTML = response;	
+
+	menuTab = document.getElementById(currentPage);
+	menuTab.style.borderBottom = "0";
+}
+
+</script>
+
+</head>
+<body>
+
+<div id="wrapper">
+
+<div id="menu">
+	<ul>
+		<li id="p1"><a href="#" onClick="clickLink('p1');return false">Option 1</a></li>
+		<li id="p2"><a href="#" onClick="clickLink('p2');return false">Option 2</a></li>
+		<li id="p3"><a href="#" onClick="clickLink('p3');return false">Option 3</a></li>
+		<li id="p4"><a href="#" onClick="clickLink('p4');return false">Option 4</a></li>
+	</ul>
+</div>
+
+<div id="content">
+	<p>(Just some placeholder text)</p>
+</div>
+
+</div>
+
+</body>
+</html>

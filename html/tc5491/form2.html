@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sample Page</title>
+	<meta charset="UTF-8" />
+	
+	<style type="text/css">
+	form {
+		position: relative;
+		width: 600px;
+		height: 400px;
+		border: 1px solid #009;
+	}
+	
+	form label,
+	form input,
+	form select,
+	form textarea {
+		position: absolute;
+	}
+	
+	#label0 { top: 50px; left: 25px; }
+	#input0 { top: 50px; left: 125px; }
+
+	#label1 { top: 50px; left: 225px; }
+	#input1 { top: 50px; left: 325px; }
+
+	#label2 { top: 250px; left: 225px; }
+	#input2 { top: 250px; left: 325px; }
+	</style>
+</head>
+<body>
+
+<form action="#" method="get">
+	<label id="label0" for="input0">First Name:</label><input id="input0" name="firstname" />
+	<label id="label1" for="input1">Last Name:</label><input  id="input1" name="lastname" />
+	<label id="label2" for="input2">Email:</label><input id="input2" name="email" />
+
+
+	<input id="submit" type="submit" />
+</form>
+
+</body>
+</html>

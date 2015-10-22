@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Example 5: Events</title>
+</head>
+
+<body>
+
+<button id="thefirstbutton">Click Me!</button>
+<button id="thesecondbutton">Click Me!</button>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+function whoAmI() {
+	alert(this.id + " was clicked.");
+}
+
+function logMe() {
+	console.log(this.id + " was clicked.");
+}
+
+/*
+$("button").bind("click", function() {
+									  alert("I've been clicked!");
+									  });
+*/
+
+//$("button").bind("click", whoAmI);
+//$("button").bind("click", logMe);
+
+//$("button").unbind("click");
+
+//$("button").click(whoAmI); // click is simply an alias to bind("click")
+
+// attach multiple event listeners using object literal
+/*
+*/
+$("button").bind({"click.alert": whoAmI,
+				  "click.log": logMe});
+
+$("button").unbind("click.alert");
+
+</script>
+</body>
+</html>

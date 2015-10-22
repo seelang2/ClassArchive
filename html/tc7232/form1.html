@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	
+	
+	</style>
+</head>
+<body>
+
+<form action="#" method="get">
+	<input type="hidden" name="extras" value="default data" />
+	<div>
+		<label for="sometextfield">Enter some text:</label>
+		<input id="sometextfield" type="text" name="sometext" />
+	</div>
+	
+	<div>
+		<label>
+			<span>First Name:</span>
+			<input name="firstname" />
+		</label>
+	</div>
+	
+	<div>
+		<label for="moretext">Enter more text:</label>
+		<textarea id="moretext" name="moretext"></textarea>
+	</div>
+	
+	<p>
+		<span>Select gender:</span>
+		<label><span>Male</span><input type="radio" name="gender" value="m" /></label>
+		<label><span>Female</span><input type="radio" name="gender" value="f" /></label>
+		<label><span>Other</span><input type="radio" name="gender" value="o" /></label>
+	</p>
+	
+	<fieldset>
+		<legend>Hobbies</legend>
+		<p>What do you collect?</p>
+		
+		<label>
+			<span>Spores</span>
+			<input type="checkbox" name="hobbby[]" value="spores" />
+		</label>
+		<label>
+			<span>Mold</span>
+			<input type="checkbox" name="hobbby[]" value="mold" />
+		</label>
+		<label>
+			<span>Fungus</span>
+			<input type="checkbox" name="hobbby[]" value="fungus" />
+		</label>
+		
+	</fieldset>
+	
+	<label>
+		<span>Confirm your gender:</span>
+		<select name="gender2">
+			<option value="">Choose One</option>
+			<option value="nunya">Prefer not to say</option>
+			<optgroup label="Cisgender">
+				<option value="m">Male</option>
+				<option value="f">Female</option>
+			</optgroup>
+			<optgroup label="Non-cisgender">
+				<option value="tm">Trans-Male</option>
+				<option value="tf">Trans-Female</option>
+				<option value="non">Non-demoniational</option>
+			</optgroup>
+		</select>
+	</label>
+	
+	<label>
+		<span>Select:</span>
+		<select name="stuff" size="3" multiple>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+		</select>
+	</label>
+	
+
+	
+	<p><input type="file" name="file" multiple /></p>
+	
+	<p><input type="button" value="Click Me!" /></p>
+	
+	<p><input type="submit" value="Go" /></p>
+	
+</form>
+
+
+</body>
+</html>

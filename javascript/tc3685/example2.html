@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+.oddrow { background: #D2DAFB; }
+.evenrow { background: #ECF1FF; }
+</style>
+
+<script src="ajax.js"></script>
+</head>
+
+<body>
+
+<a id="link1" class="button" href="http://www.google.com">Click Me!</a>
+
+<div id="results">
+</div><!-- results -->
+
+<script type="text/javascript">
+var Registry = {}; // create registry singleton object
+
+var App = {
+	
+	 "init": function() {
+		 //console.log('Entering App.init');
+		 
+		 Registry.linkElem = document.getElementById("link1");
+		 Registry.resultDiv = document.getElementById("results");
+		 
+		 Registry.linkElem.onclick = function() {
+			//alert("Do stuff.");
+			ajax = new Ajax();
+			ajax.request({"method": "GET",
+						  "url": "json1.json",
+						  "type": "text",
+						  "handler": App.showdata});
+			return false; // override default action for link
+		 }
+	 },
+	 
+	 "showdata": function(response) {
+		 response = JSON.parse(response); // convert XHR string data back into a proper object
+		 // go through response data and place in a table inside #results div
+		 var tableElem = document.createElement("TABLE"); // create a new element
+		 Registry.resultDiv.appendChild(tableElem); // add new node to DOM tree
+		 tableElem.id = 'newTable';
+
+		 // create THEAD section
+		 var theadElem = document.createElement("THEAD");
+		 tableElem.appendChild(theadElem);
+		 var trElem = document.createElement("TR");
+		 theadElem.appendChild(trElem);
+		 for (fieldName in response[0]) {
+			 var thElem = document.createElement("TH");
+			 trElem.appendChild(thElem);
+			 thElem.appendChild(document.createTextNode(fieldName.toUpperCase()));
+		 }
+		 // create TBODY section
+		 var tbodyElem = document.createElement("TBODY");
+		 tableElem.appendChild(tbodyElem);
+		 
+		 for (var c = 0; c < response.length; c++ ) {
+			 var trElem = document.createElement("TR");
+			 tbodyElem.appendChild(trElem);
+			 //console.log('Adding row #' + c);
+			 // stripe the table rows
+			 if (c % 2 == 0) {
+				 trElem.className = 'oddrow'; // ODD row because we start counting at 0
+			 } else {
+				 trElem.className = 'evenrow';
+			 }
+			 
+			 for (fieldName in response[c]) {
+				 var tdElem = document.createElement("TD");
+				 trElem.appendChild(tdElem);
+				 tdElem.appendChild(document.createTextNode(response[c][fieldName]));
+			 }
+		 }
+	 } // showdata
+	
+}; // App
+
+window.onload = App.init;
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	background: #7a7a7a;
+	margin: 0;
+	padding: 0;
+	text-align:center;
+	font-size: 85%;
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+#wrapper {
+	width: 900px;
+	text-align: left;
+	padding: 0;
+	margin: 0 auto;
+	background: #ffffff;
+}
+
+#top {
+	height: 50px;
+	overflow: hidden;
+}
+
+#content {
+	float: left;
+	width: 100%;
+}
+
+#bottom {
+	clear: both;
+}
+
+#widecol {
+	float: left;
+	width: 600px;
+	background:#C9F;
+}
+
+#narrowcol, #leftsubcol, #rightsubcol {
+	width: 300px;
+	float: left;
+}
+
+#narrowcol {
+	background: #FFC;
+}
+#leftsubcol {
+	background:#0FF;
+}
+#rightsubcol {
+	background:#CCC;
+}

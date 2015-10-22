@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="target"></div>
+
+<script src="contacts1d.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+
+var contactList = contactData.contacts;
+
+var targetElem = document.getElementById("target");
+
+var tableElem = document.createElement("TABLE");
+targetElem.appendChild(tableElem);
+
+
+var theadElem = document.createElement("THEAD");
+tableElem.appendChild(theadElem);
+
+var rowElem = document.createElement("TR");
+theadElem.appendChild(rowElem);
+
+for (var c = 0; c < contactData.contactHeaderRow.length; c++) {
+	var tdElem = document.createElement("TH");
+	rowElem.appendChild(tdElem);
+	tdElem.appendChild(document.createTextNode(contactData.contactHeaderRow[c]));
+	
+}
+
+
+var tbodyElem = document.createElement("TBODY");
+tableElem.appendChild(tbodyElem);
+
+for (var c = 0; c < contactList.length; c++) {
+	var rowElem = document.createElement("TR");
+	tbodyElem.appendChild(rowElem);
+	
+	for (colName in contactList[c]) {
+		var tdElem = document.createElement("TD");
+		rowElem.appendChild(tdElem);
+		tdElem.appendChild(document.createTextNode(contactList[c][colName]));
+	}
+	
+}
+
+
+
+
+</script>
+</body>
+</html>

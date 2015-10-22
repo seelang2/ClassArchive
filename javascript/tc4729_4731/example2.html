@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<ul id="menu">
+	<li><a href="#">Link 1</a></li><!-- a comment. -->
+	<li><a href="#">Link 2</a></li><!-- a comment. -->
+	<li><a href="#">Link 3</a></li><!-- a comment. -->
+	<li><a href="#">Link 4</a></li><!-- a comment. -->
+	<li><a href="#">Link 5</a></li><!-- a comment. -->
+	<li><a href="#">Link 6</a></li><!-- a comment. -->
+</ul>
+
+
+
+<script type="text/javascript">
+//alert(document.getElementById("menu").childNodes.length);
+
+var menuLis = document.getElementById("menu").getElementsByTagName("LI");
+
+/*
+for (var c = 0; c < menuLis.length; c++) {
+	alert(menuLis[c].nodeName);
+	
+}
+*/
+
+var tmpElem = document.createElement("LI");
+
+document.getElementById("menu").appendChild(tmpElem);
+
+tmpElem.innerHTML = '<a href="#">Link 7</a>';
+
+
+
+
+</script>
+</body>
+</html>

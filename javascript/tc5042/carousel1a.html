@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>EXCITING carousel demo. Yay.</title>
+
+<style type="text/css">
+
+#carouselwindow { }
+#carouselfilmstrip { }
+
+</style>
+</head>
+
+<body>
+
+
+<div id="container">
+
+	<div id="carousel"></div>
+
+</div>
+
+
+
+<script src="jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="carousel_horiz.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	carousel.init(
+	   {
+	     target: $('#carousel'),
+		 slides: ['images/exite1.jpg',
+		 		  'images/exite2.jpg',
+		 		  'images/exite3.jpg',
+		 		  'images/exite4.jpg'
+				 ],
+		 slideWidth: 300,
+		 slideHeight: 200,
+		 moveDuration: 750,
+		 intervalDuration: 1750,
+		 autostart: true
+	   }
+	);
+	
+}); // document.ready
+
+</script>
+</body>
+</html>

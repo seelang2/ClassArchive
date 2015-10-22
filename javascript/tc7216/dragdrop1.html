@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	#box1 {
+		background: #f00;
+		width: 75px;
+		height: 75px;
+		position: fixed;
+		top: 100px;
+		left: 50px;
+	}
+	
+	
+	</style>
+</head>
+<body>
+
+<div id="box1" class="draggable"></div>
+
+
+
+
+<script type="text/javascript" src="jquery-2.1.1.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	var dragging = false; // var for dragging state
+	
+	$box1 = $('#box1');
+	
+	$(window)
+		.on(
+			'mousedown', 
+			function(evt) {
+				// check to see if we're over a draggable
+				if ( $(evt.target).hasClass('draggable') ) {
+					// we are, so set the state accordingly
+					dragging = true;
+					console.log('dragging start');
+				}
+			}
+		)
+		.on(
+			'mouseup', 
+			function(evt) {
+				// check if we're currently dragging
+				if ( dragging ) {
+					// we are, so stop
+					dragging = false;
+					console.log('dragging stop');
+				}
+			}
+		)
+		.on(
+			'mousemove', 
+			function(evt) {
+				// check if we're currently dragging
+				if ( dragging ) {
+					// we are, now update the position of whatever we're dragging
+					// for a cleaner effect we would calculate the mouse position
+					// over the item and take this offset into account, but in this
+					// demo I'm keeping it simple
+					//console.log(evt);
+					$box1.css({
+						top: evt.pageY + 'px',
+						left: evt.pageX + 'px'
+					 });
+				}
+			}
+		)
+	
+
+
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

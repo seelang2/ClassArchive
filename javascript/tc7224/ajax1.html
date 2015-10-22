@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+</head>
+<body>
+
+<h1>Static Content</h1>
+<p>This is the content that is static and part of the page HTML.</p>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+/*
+// make ajax call to load content
+$.ajax({
+	url:		'pagedata.html',
+	type:		'get',
+	dataType:	'html',
+	success:	function(response) {
+		
+		$('#target').html(response);
+		
+	}
+});
+
+*/
+
+// TL;DR
+$('#target').load('pagedata.html');
+
+
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

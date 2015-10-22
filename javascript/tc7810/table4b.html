@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+
+var contacts = 
+[
+  {"firstname":"John","lastname":"Doe","age":42},
+  {"firstname":"John","lastname":"Doe","age":12},
+  {"firstname":"John","lastname":"Doe","age":11},
+  {"firstname":"John","lastname":"Doe","age":25},
+  {"firstname":"John","lastname":"Doe","age":67},
+  {"firstname":"John","lastname":"Doe","age":54},
+  {"firstname":"John","lastname":"Doe","age":22},
+  {"firstname":"John","lastname":"Doe","age":44},
+  {"firstname":"John","lastname":"Doe","age":39},
+  {"firstname":"John","lastname":"Doe","age":27},
+  {"firstname":"John","lastname":"Doe","age":7}
+]
+
+
+var $target = $('#target');
+
+var $tbody = 
+$('<table><tbody /></table>')
+	.children('tbody');
+
+$.each(contacts, function(index, contact) {
+	
+	$('<tr />')
+		.addClass(index % 2 == 0 ? 'oddrow': 'evenrow')
+		.data('contact', contact)
+		.append('<td>' + contact.firstname + '</td>')
+		.append('<td>' + contact.lastname + '</td>')
+		.append('<td>' + contact.age + '</td>')
+		.appendTo($tbody);
+	
+});
+
+$tbody
+	.parent()
+	.appendTo($target);
+
+
+</script>
+</body>
+</html>

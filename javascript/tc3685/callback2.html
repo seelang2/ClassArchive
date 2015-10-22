@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Fun with Twitter</title>
+
+<script type="text/javascript" src="ajax.js"></script>
+
+</head>
+
+<body>
+
+<button id="button1">Click Me</button>
+
+<div id="tweets"></div>
+
+<script type="text/javascript">
+var Registry = {};
+
+var App = {
+	"startup": function() {
+		document.getElementById("button1").onclick = function() {
+			var ts = new Date().getTime();
+			// check if script node exists already and remove it if it does
+			if (document.body.firstChild.id == 'apicall') document.body.removeChild(document.body.firstChild);
+			// create script node
+			var scriptNode = document.createElement("SCRIPT");
+			scriptNode.type = 'text/javascript';
+			scriptNode.src = 'http://127.0.0.1/tc3685/tojson1.php?src=get&timestamp='+ ts +'&callback=App.runme';
+			scriptNode.id = 'apicall';
+			
+			document.body.insertBefore(scriptNode, document.body.firstChild);
+		}; // onclick
+		
+	}, // startup
+	
+	"runme": function(data) {
+		var paramList = '';
+		for (param in data) {
+			paramList += param + ' = ' + data[param] + '\n';
+		}
+		
+		alert(paramList);
+	} // showTweets
+}; // App
+
+window.onload = App.startup;
+
+
+</script>
+</body>
+</html>

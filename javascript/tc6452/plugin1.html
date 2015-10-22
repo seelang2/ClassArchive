@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Plugin Demo</title>
+
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+
+<ul>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+</ul>
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+// use an Immediately-Invoked Function Expression (IIFE) as plugin shell
+(function($) {
+	
+	$.fn.assignUniqueId = function(prefix) {
+		// assign default prefix if one isn't provided
+		prefix = typeof prefix != 'undefined'? prefix: 'item';
+		
+		// 'this' refers to target jQuery collection object
+		this.each(function(index, element) {
+			
+			$(element)
+				.attr('id',prefix + '-' + index); // set id for each element
+			
+		});
+		
+		return this; // return the collection object to maintain chaining
+	};
+	
+	
+	
+})(jQuery);
+
+</script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$('li')
+		.assignUniqueId('listitem')
+		.addClass('newclass');
+	
+}); // document.ready
+
+
+</script>
+</body>
+</html>
+

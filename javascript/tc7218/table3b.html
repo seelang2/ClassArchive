@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+	
+	<style type="text/css">
+	</style>
+	
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+$('<table><tbody /></table>')		// create table & tbody
+	.children('tbody')				// change collection to tbody
+	.append('<tr />')				// add tr to tbody
+	.children('tr')					// move to tr
+	.append('<td>John</td>')		// add td to tr
+	.append('<td>Doe</td>')			// add td to tr
+	.end()							// revert collection back to tbody
+	.append('<tr />')				// add tr to tbody
+	.children('tr')					// move to tr
+	.last()							// drop all but the last tr in the collection
+	.append('<td>Jane</td>')		// add td to tr
+	.append('<td>Smith</td>')		// add td to tr
+	.end()
+	.end()
+	.end()
+	.appendTo('#target');
+	
+
+
+
+
+</script>
+</body>
+</html>
+
+
+
+

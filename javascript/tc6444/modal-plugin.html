@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Modal/Lightbox Demo</title>
+	
+	<style type="text/css">
+	body { margin:0; padding: 0; }
+	
+	#wrapper {
+		padding: 10px;
+	}
+	
+	
+	.modal-screen {
+		background-color: #efefef;
+		opacity: 0.7;
+	}
+	
+	.modal-box {
+		background: #ffc;
+		border: 1px solid #D9A704;
+	}
+	
+	.modal-control {
+		text-align: right;
+	}
+	
+	.modal-content {
+		padding: 10px 20px;
+	}
+	
+	</style>
+	
+</head>
+<body>
+
+<div id="wrapper">
+
+<p><a href="http://www.google.com">Go to Google</a></p>
+
+<button>Click Me</button>
+
+</div>
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+// use IIFE to create protected namespace for jQuery plugin code
+// pass in the jQuery object to ensure $ points to jQuery
+(function($) {
+	
+	function makeScreen() {
+		return $('<div />')
+			.css({
+				position: 'fixed',
+				height: '100%',
+				width: '100%',
+				zIndex:	9999
+			 })
+			.addClass('modal-screen')
+			.prependTo(document.body);
+	} // makeScreen
+	
+	function makeModalBox(params) {
+		return $('<div />')
+			.attr('id','modal-box0')
+			.addClass('modal-box')
+			.css({
+				position:	'fixed',
+				height:		params.height,
+				width:		params.width,
+				top: 		'50%',
+				left:		'50%',
+				marginTop:	'-' + (parseInt(params.height) / 2) + 'px',
+				marginLeft:	'-' + (parseInt(params.width) / 2) + 'px',
+				zIndex:		10000
+			 })
+			.append('<div />')	// control container
+			.children()
+			.addClass('modal-control')
+			.append('<span><a href="#">[X]</a></span>')
+			.find('span')
+			.click(function(evt) {
+				evt.preventDefault();
+				$(this)
+					.closest('.modal-box')
+					.next()
+					.remove();
+				
+				$(this)
+					.closest('.modal-box')
+					.remove();
+			 })
+			.end()	// back to modal-control
+			.end()	// go back to modal-box
+			.append('<div />')	// content container
+			.children(':last-child')
+			.addClass('modal-content')
+			.append(params.content)
+			.end()	// back to modal-box
+			.prependTo(document.body);
+			
+	} // makeModalBox
+	
+	$.fn.makeModal = function(params) {
+		makeScreen();
+		// 'this' refers to jQuery collection object
+		params.content = this; // add collection to param list
+		
+		return makeModalBox(params); // always return (modified) jQuery collection
+		
+	};
+	
+})(jQuery);
+
+
+$(document).ready(function() {
+	
+	
+	$('button')
+		.click(function() {
+						
+			$('<p>This space for rent.</p>')
+				.makeModal({
+					width: '300px',
+					height:	'200px'
+				})
+				.addClass('newclass');
+			
+		 });
+});
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* layout */
+body {
+	background: #ababab;
+	margin: 0;
+	padding: 0;
+}
+
+#wrapper {
+	background: #fff;
+	margin: 0 auto;
+	padding: 0;
+	width: 700px;
+	border: 1px solid #7a7a7a
+}
+
+#header, #footer {
+	background: #009;
+	color: #fff;
+	height: 75px;
+	overflow: hidden;
+}
+#footer {
+	clear: both;
+	margin-top: 1em;
+	height: 35px;
+}
+
+#content {
+	margin: 0.5em 1%;
+	width: 98%;
+}
+
+#leftcol {
+	float: left;
+	width: 66.5%;
+}
+
+#rightcol {
+	float: right;
+	width: 33.5%;
+}
+
+#lefttop, #leftbot {
+	float: left;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.clearing {
+	clear: both;
+	height: 1px;
+	overflow: hidden;
+}
+
+.item {
+	float: left;
+	width: 28%;
+	margin: 1em 1%;
+	padding: 0.5em 1%;
+	border: 1px solid #ababab;
+	font-size: 90%;
+}
+
+/* typography */
+body {
+	font-size: 76%;
+	font-family:Verdana, Geneva, sans-serif;
+	color: #000;
+}

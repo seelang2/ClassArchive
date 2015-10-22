@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 85%;
+		color: #000;
+	}
+	
+	#wrapper {
+		width: 400px;
+		margin: auto;
+		border: 1px solid #7a7a7a;
+	}
+	
+	.title {
+		font-size: 130%;
+		font-weight: bold;
+		padding: 0.25em;
+		background: #D6D9FF;
+		border-top: 1px solid #7a7a7a;
+	}
+	.title:first-child { border-top: none; }
+	
+	.content {
+		padding: 0.25em 1em;
+		border-top: 1px solid #7a7a7a;
+		height: 250px;
+		overflow-y: auto;
+	}
+	</style>
+</head>
+<body>
+
+
+<div id="wrapper">
+	<div class="title">Lorem ipsum dolor sit amet</div>
+	<div class="content">
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel purus mi. Vivamus quis pellentesque velit. Maecenas id risus massa, id vehicula lacus. Nulla id elit tellus, non bibendum erat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam tincidunt nisl sit amet arcu rhoncus in ornare mi sollicitudin. Nullam sodales massa nec ipsum faucibus a ornare elit luctus. Sed hendrerit purus at nunc sagittis elementum. Curabitur enim neque, aliquam vel porttitor vitae, venenatis id diam. Proin turpis augue, sodales sed posuere et, vestibulum sed diam. Vivamus sit amet tortor leo. Morbi at tristique elit. Sed non lectus lorem, non blandit erat.</p>
+
+		<p>Phasellus pharetra eleifend massa, at ultricies massa tristique nec. Sed viverra, nunc et tempus mattis, enim lorem euismod massa, nec ultrices ante justo ut mauris. Nullam lorem quam, tincidunt vitae ultricies eu, luctus vel enim. Morbi molestie sem vitae nulla condimentum bibendum. Mauris nec lorem turpis. Maecenas feugiat neque quis dui porta nec rhoncus tellus lobortis. Maecenas blandit lorem id nunc consectetur tempor. Nunc in nisl augue. Mauris sollicitudin sollicitudin ipsum, feugiat scelerisque orci bibendum at. Suspendisse pharetra odio quis dolor egestas rutrum. Sed rutrum, elit a imperdiet auctor, risus magna cursus nisl, in pellentesque nibh leo eu elit. Morbi eleifend urna non lorem tincidunt id vulputate felis luctus. Nunc ornare venenatis lectus id gravida. Quisque volutpat arcu ut erat auctor sed bibendum magna gravida.</p>
+	</div>
+	
+	<div class="title">Aenean non tellus nulla</div>
+	<div class="content">
+		<p>Aenean non tellus nulla, eget blandit ligula. Mauris est lectus, fringilla rhoncus dapibus nec, aliquam nec massa. Pellentesque arcu sapien, rhoncus eu pharetra a, elementum pretium enim. Praesent id dui a mauris ultrices ullamcorper sed pulvinar justo. Pellentesque ut quam id quam consequat facilisis. Donec non semper purus. Aenean eleifend tristique fermentum.</p>
+
+		<p>Quisque sit amet tellus urna, sit amet pharetra quam. Proin pretium gravida odio ac volutpat. Mauris eros erat, sodales id vulputate a, pretium nec lectus. Suspendisse ut justo ligula. Ut nulla ipsum, pulvinar gravida ullamcorper semper, ullamcorper sed nibh. In ac sem odio. Vestibulum tempus pellentesque velit, fringilla aliquet tellus luctus vitae. Sed pretium varius leo in euismod. Praesent enim lorem, malesuada pretium hendrerit vel, mollis non diam. Aenean vel mi leo. Nam cursus sollicitudin lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus convallis rutrum tortor vel sagittis. Mauris aliquam eros quis turpis aliquam consequat. Proin quis viverra lorem.</p>
+	</div>
+	
+	<div class="title">Aenean tristique arcu</div>
+	<div class="content">
+		<p>Donec at sapien at enim eleifend cursus. Praesent sed neque nec arcu consequat accumsan id nec tellus. Curabitur rhoncus dapibus sem quis pharetra. Curabitur vitae imperdiet neque. Fusce molestie sapien ac neque vulputate mattis. Donec pharetra risus accumsan dui gravida eget tincidunt magna feugiat. In rhoncus arcu quis nisl tempor mattis. Sed eu sem id felis laoreet mattis. Cras sapien velit, lobortis at feugiat ullamcorper, egestas sed sem.</p>
+
+		<p>Mauris condimentum orci eu ligula placerat commodo. Maecenas rhoncus, lectus eu pretium consequat, sem erat fringilla ante, vel venenatis augue dui at metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc eu luctus lacus. Vestibulum ut magna augue. Aenean tristique arcu ut dolor imperdiet dignissim. Maecenas eros nisl, consequat a luctus eget, blandit sed magna. Suspendisse potenti. Aliquam erat volutpat. Pellentesque erat velit, eleifend dictum mollis a, dictum vitae nunc. Vestibulum at nunc sed est pretium malesuada. Aliquam placerat vehicula erat sit amet luctus.</p>
+	</div>
+	
+	<div class="title">Nam ut ultricies odio</div>
+	<div class="content">
+		<p>Nam ut ultricies odio. Morbi convallis consequat erat sit amet consequat. Integer nec varius nibh. Phasellus congue ullamcorper velit, nec adipiscing arcu placerat sed. Quisque fringilla consequat neque quis convallis. In iaculis bibendum iaculis. Morbi ac metus sed risus dignissim sollicitudin.</p>
+
+	</div>
+	
+</div>
+
+
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript">
+
+var App = {
+	data: {}, // used to store data global within App
+	
+	init: function() {
+		// store content elements in $var and hide content containers
+		App.data.contentElems = $('.content').hide();
+		// set up title containers
+		$('.title')
+			.each(App.prepTitles)
+			.click(App.showContent);
+	}, // App.init
+	
+	prepTitles: function(index, element) {
+		$(element).attr('data-titleid', index); // set attribute in node with index
+	}, // App.prepTitles
+	
+	showContent: function(e) {
+		var index = $(this).attr('data-titleid'); // retrieve array index from elem
+		
+		App.data.contentElems			// for the content elements...
+			.eq(index)					// select the item matching the title
+			.toggle()					// toggle open or closed state for selected item
+			.end()						// revert selection back to all content elements
+			.not(':eq('+ index +')') 	// select the items that are NOT index
+			.hide();					// and hide them
+	} // App.showContent
+};
+
+$(document).ready(App.init); // document.ready 
+	 
+</script>
+</body>
+</html>

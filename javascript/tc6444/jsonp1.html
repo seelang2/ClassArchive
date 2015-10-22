@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>JSON-P Demo</title>
+	
+</head>
+<body>
+
+
+<button id="button1">Click to get List</button>
+
+<div id="contactlist"></div>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+var App = {
+	
+	start: function() {
+		
+		$('#button1')
+			.click(function() {
+				// retrieve contact data
+				
+				// This won't work because it violates the Same Domain Origin security policy.
+				$.ajax({
+					url: 		'http://10.6.10.108/tc6444/userdata.php?action=getlist&type=json',
+					type:		'get',
+					dataType:	'json',
+					success:	function(contactList) {
+						$('#contactlist')
+							.empty()
+							.each(function(i, contactDiv) {
+								
+								$.each(
+									contactList,
+									function(index, contact) {
+										$('<div>' +
+											contact.id + ' ' +
+											contact.firstname + ' ' +
+											contact.lastname + ' ' +
+											contact.login + ' ' +
+										  '</div>')
+											.appendTo(contactDiv);
+									}
+								);
+								
+							 })
+					}
+				});
+				
+				
+			 });
+		
+		
+		
+	}
+	
+}; // App
+
+
+$(document).ready(App.start);
+
+</script>
+</body>
+</html>

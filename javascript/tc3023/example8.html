@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Example 8: Forms</title>
+</head>
+
+<body>
+
+<form id="form1" action="#" method="get">
+	<div><label>Name: <input name="name" /></label></div>
+	<div><label>Email: <input name="email" /></label></div>
+	<div><label>Phone: <input name="phone" /></label></div>
+    <div><label>Type:
+    	<select name="type">
+        	<option value="Personal">Personal</option>
+        	<option value="Business">Business</option>
+        </select>
+        </label>
+    </div>
+    <div><input type="submit" /></div>
+</form>
+
+<script type="text/javascript">
+var form1 = document.getElementById("form1");
+
+form1.onsubmit = function() {
+	// set up data validation
+	var validated = true; // innocent until proven guilty approach
+	var errors = '';
+	
+	for (var c = 0; c < form1.elements.length; c++) {
+		/*
+		alert(form1.elements[c].nodeName + '\n' +
+			  form1.elements[c].type + '\n' +
+			  form1.elements[c].name + '\n' +
+			  form1.elements[c].value
+			 );
+		*/
+		switch(form1.elements[c].name) {
+			case 'name':
+				// field cannot be blank
+				if (form1.elements[c].value.length == 0) {
+					validated = false; // invalidate form
+					errors = errors + '\nName field cannot be blank.';
+				}
+				// field must be more than 4 characters
+				if (form1.elements[c].value.length < 4) {
+					validated = false; // invalidate form
+					errors = errors + '\Name must be longer than 4 characters.';
+				}
+			break; 
+			
+			case 'email':
+				// field doesn't look like a proper email address
+				if (form1.elements[c].value.search(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}/) != 0) {
+					validated = false; // invalidate form
+					errors = errors + '\nEmail does not appear valid.';
+				}
+			break;
+			
+			case 'phone':
+				if (form1.elements[c].value.search(/[1-9][0-9]{2}-[0-9]{3}-[0-9]{4}/) != 0) {
+					validated = false; // invalidate form
+					errors = errors + '\nPhone does not appear valid.';
+				}
+			break;
+		} // switch
+	}
+	
+	// verify validation
+	if (!validated) {
+		// validation failed
+		alert(errors);
+		return false;
+	}
+	
+	// if I get this far the form gets submitted
+}
+
+</script>
+
+</body>
+</html>

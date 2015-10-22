@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	
+	.section { display: none; }
+	
+	fieldset { border: none; }
+	
+	</style>
+</head>
+<body>
+
+<fieldset id="sectionbranch">
+	<label>
+		<input type="radio" name="section" value="1" />
+		<span>Section 1</span>
+	</label>
+
+	<label>
+		<input type="radio" name="section" value="2" />
+		<span>Section 2</span>
+	</label>
+
+	<label>
+		<input type="radio" name="section" value="3" />
+		<span>Section 3</span>
+	</label>
+</fieldset>
+
+<div id="section1" class="section">
+	<h1>Section 1</h1>
+</div>
+
+<div id="section2" class="section">
+	<h1>Section 2</h1>
+</div>
+
+<div id="section3" class="section">
+	<h1>Section 3</h1>
+</div>
+
+
+<script type="text/javascript" src="jquery-2.1.1.js"></script>
+<script type="text/javascript">
+
+$('#sectionbranch')
+	.on(
+		'change',
+		'input',
+		function(evt) {
+			//console.log(this);
+			
+			$('.section').hide();
+			
+			switch( parseInt($(this).val()) ) {
+				case 1:
+					$('#section1').show();
+				break;
+				
+				case 2:
+					$('#section2').show();
+				break;
+				
+				case 3:
+					$('#section3').show();
+				break;
+			} // switch
+		}
+	 );
+		
+
+
+
+</script>
+</body>
+</html>

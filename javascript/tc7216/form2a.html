@@ -1,0 +1,195 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial;
+		margin: 0;
+		color: #000;
+		background: #dedede;
+	}
+	
+	#container {
+		width: 800px;
+		margin: auto;
+		border: 1px solid #7a7a7a;
+		background: #fff;
+	}
+	
+	#container > header {
+		height: 80px;
+		background: #009;
+		color: #fff;
+	}
+	
+	#container > footer {
+		height: 125px;
+		background: #666;
+		color: #fff;
+	}
+	
+	.slide {
+		height: 400px;
+		display: none;
+	}
+	
+	#slidecontrol {
+		padding: 10px;
+		text-align: right;
+		display: none;
+	}
+	
+	</style>
+</head>
+<body>
+
+<div id="container">
+	<header>
+
+	</header>
+
+	<div id="content">
+		<form id="quizform" action="#" method="post">
+		<div id="quizslides">
+			<div class="slide" data-slidecount="4">
+				<h1>Start the 'quiz'?</h2>
+				<button id="startquiz">Begin</button>
+			</div>
+			<div class="slide" data-slidenumber="1">
+				<h2>Question 1</h2>
+				<p>Choose one:</p>
+				<div>
+					<label>
+						<input type="radio" name="q1" value="1" />
+						<span>Answer 1</span>
+					</label>
+
+					<label>
+						<input type="radio" name="q1" value="2" />
+						<span>Answer 2</span>
+					</label>
+				</div>
+			</div>
+			<div class="slide" data-slidenumber="2">
+				<h2>Question 2</h2>
+				<p>Choose one:</p>
+				<div>
+					<label>
+						<input type="radio" name="q2" value="1" />
+						<span>Answer 1</span>
+					</label>
+
+					<label>
+						<input type="radio" name="q2" value="2" />
+						<span>Answer 2</span>
+					</label>
+				</div>
+			</div>
+			<div class="slide" data-slidenumber="3">
+				<h2>Question 3</h2>
+				<p>Choose one:</p>
+				<div>
+					<label>
+						<input type="radio" name="q3" value="1" />
+						<span>Answer 1</span>
+					</label>
+
+					<label>
+						<input type="radio" name="q3" value="2" />
+						<span>Answer 2</span>
+					</label>
+				</div>
+			</div>
+			<div class="slide" data-slidenumber="4">
+				<h2>Question 4</h2>
+				<p>Choose one:</p>
+				<div>
+					<label>
+						<input type="radio" name="q4" value="1" />
+						<span>Answer 1</span>
+					</label>
+
+					<label>
+						<input type="radio" name="q4" value="2" />
+						<span>Answer 2</span>
+					</label>
+				</div>
+			</div>
+			<div class="slide">
+				<h2>Results</h2>
+				<p>Nothing to see here.</p>
+			</div>
+		
+		</div><!-- quizslides -->
+		<div id="slidecontrol">
+			<button class="btnNext">Next</button>
+		</div>
+		</form>
+	</div><!-- content -->
+
+	<footer>
+
+	</footer>
+</div><!-- container -->
+
+
+
+
+<script type="text/javascript" src="jquery-2.1.1.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	var slideCount = 0;
+	var currentSlide = 0;
+	
+	var $slides = 
+	$('.slide')
+		.eq(0)
+		.show()
+		.end();
+	
+	console.log('total slides',$slides.length);
+	
+	$('#startquiz').click(function(evt) {
+		// set slidecount
+		slideCount = $(this).closest('div.slide').attr('data-slidecount');
+		
+		// advance slide
+		nextSlide();
+		
+		// display slidecontrol
+		$('#slidecontrol').show();
+	 });
+	
+	// advance to the next slide
+	var nextSlide = function() {
+		console.log(currentSlide);
+		
+		$slides
+			.eq(currentSlide)		// hide current slide
+			.hide()
+			.end()
+			.eq(++currentSlide)	// move to next slide
+			.show();
+			
+		
+		// if we're past the last slide hide the slide control
+		if ( currentSlide > slideCount ) {
+			$('#slidecontrol').hide();
+		}
+		
+	}; // nextSlide
+	
+	$('#slidecontrol .btnNext').click(nextSlide);
+	
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

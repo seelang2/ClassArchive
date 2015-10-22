@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 85%;
+		color: #000;
+	}
+	
+	table { border-collapse: collapse; }
+	
+	table, th, td {
+		border: 1px solid #ccc;
+	}
+	
+	th, td { padding: 3px 5px; }
+	
+	thead th { cursor: pointer; }
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript">
+/*****
+ *	Library methods
+ */
+
+Array.prototype.sortByColumn = function (columnName, dir) {
+	// dir accepts 'asc' or 'desc' as valid options for sort direction
+	var d = dir == 'desc' ? -1: 1; // use a ternary to assign a multiplier
+	
+	this.sort(
+		function(a, b) {
+			//console.log(a[columnName],b[columnName],a[columnName] > b[columnName]);
+			if (a[columnName] > b[columnName]) {
+				return 1 * d; // if positive, a comes first
+			} else {
+				return -1 * d; // if negative, b comes first
+			}
+		}
+	);
+}
+
+
+</script>
+<script type="text/javascript">
+
+/*****
+ *	In this iteration we extend the sorting method further by adding a sort direction flag.
+ *	We also set up a more complete table and make the column headers clickable and sortable.
+ */
+
+
+// set up some mock contact data using JSON (www.json.org)
+var contactList = 
+[
+	{"firstname":"John","lastname":"Doe","email":"jdoe@email.com"},
+	{"firstname":"Mary","lastname":"Jane","email":"mj@lucyinthesky.com"},
+	{"firstname":"Peter","lastname":"Williams","email":"peter.williams@email.com"},
+	{"firstname":"Sue","lastname":"Foster","email":"sfoster111@yahoo.com"},
+	{"firstname":"Alex","lastname":"Jones","email":"aj@somedomain.com"}
+];
+
+function redrawTableRows($tbody, contactList) {
+	$tbody = $($tbody); // make sure tbody is jQuery-wrapped
+	$tbody.empty(); // remove all current rows in tbody
+	// for every contact... 
+	$.each(
+	  contactList,
+	  function(c, contact) {
+		// create a table row
+		// add the contact fields to TDs
+		$('<tr>' +
+			'<td>' + contact.firstname + '</td>' + 
+			'<td>' + contact.lastname + '</td>' + 
+			'<td>' + contact.email + '</td>' + 
+		  '</tr>')
+			.appendTo($tbody); // add row to the table
+	  } // function
+	); // $.each
+
+} // redrawTableRows
+
+
+$(document).ready(function() {
+	// take contact data and display in a table
+	
+	// build base table structure
+	var $tbody = 
+	$('<table />')
+		.appendTo('#target')
+		.append('<thead><tr>'+
+				'<th data-sortcol="firstname" title="Click to sort in ascending order">First Name</th>' +
+				'<th data-sortcol="lastname" title="Click to sort in ascending order">Last Name</th>' +
+				'<th data-sortcol="email" title="Click to sort in ascending order">Email Address</th>' +
+				+'</tr></thead>')
+		.append('<tbody />')
+		.children('thead')
+		.on('click','th',function(e) {
+			var sortDir = $(this).attr('data-sortord');
+			if (!sortDir) {
+				sortDir = 'asc'; // no sort on this field established, set sort order to asc
+	
+			} else {
+				sortDir = sortDir == 'asc'? 'desc': 'asc'; // reverse the sort direction using ternary operator
+
+			}
+				
+				$(this)													// for this TH
+					.attr('data-sortord',sortDir)						// Set the sort order att
+					.attr('title','Click to sort in '+
+								  (sortDir == 'asc'? 'desc': 'asc')+
+								  'ending order') 						// change title attr
+					.closest('tr') 										// move to parent TR
+					.children('th') 									// move to all THs
+					.not(this) 											// except this one
+					.removeAttr('data-sortdir'); 						// remove sortdir from other columns
+				
+			
+			contactList.sortByColumn($(this).attr('data-sortcol'),sortDir); // resort array
+			redrawTableRows($tbody, contactList); // redraw table body
+		 })
+		.end()
+		.children('tbody');
+	
+	redrawTableRows($tbody, contactList);
+	
+
+}); // document.ready
+
+</script>
+</body>
+</html>

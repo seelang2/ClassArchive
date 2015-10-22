@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Event Demo</title>
+	
+</head>
+<body>
+
+<button id="button1">Click Me!</button>
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript">
+/*
+// Plain Javascript
+document.getElementById('button1').onclick = function() {
+	alert("I've been clicked.");
+}
+*/
+
+/*
+$('#button1')
+	.on(
+		'click',
+		function() {
+			alert("I've been clicked.");
+		}
+	 );
+*/
+
+
+$('#button1')
+	.click(
+		function() {
+			alert("I've been clicked.");
+		}
+	 );
+
+</script>
+</body>
+</html>

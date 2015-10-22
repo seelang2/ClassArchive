@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Form Processing</title>
+</head>
+
+<body>
+<style type="text/css">
+form label { display: block; margin-bottom: 0.25em; position: relative; }
+form div { margin-bottom: 0.25em; }
+form label input { position: absolute; left: 75px; }
+</style>
+<form action="#" method="post">
+	<label>First Name: <input name="firstname" class="notblank" /></label>
+	<label>Last Name: <input name="lastname" class="minlength length-15" /></label>
+	<label>Email: <input name="email" class="isemail" /></label>
+	<div><input type="submit" value="Continue" /></div>
+</form>
+
+
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(
+	function() {
+		$('form')
+			.submit(
+				function(evt) {
+					evt.preventDefault();
+					var formIsValid = true;
+					var validationErrors = '';
+					
+					$(this)
+						.find(':input')
+						.each(
+							function(index, element) {
+								var $element = $(element);
+								switch(true) {
+									case $element.hasClass('notblank'):
+										if ($(element).val().length < 1) { // empty string
+											formIsValid = false; // invalidate form
+											validationErrors += element.name + ' cannot be blank.\n';
+										}
+									break;
+									
+									case $element.hasClass('minlength'):
+										//alert(element.className.match(/\blength-\d\b/)[0].split('-')[1]);
+										// extract the numeric portion of length-x class
+										var len = element.className.match(/\blength-\d+\b/)[0].split('-')[1];
+										if ($(element).val().length < len) { // check for minimum length
+											formIsValid = false; // invalidate form
+											validationErrors += element.name + ' must be at least '+len+' characters.\n';
+										}
+									break;
+									
+									case $element.hasClass('isemail'):
+										// valid email format
+										if ($(element)
+											.val()
+												.search(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i) < 0 ) { 
+											formIsValid = false; // invalidate form
+											validationErrors += element.name + ' appears invalid.\n';
+										}
+									break;
+								} // switch
+							} // function
+						 );
+					
+					if (formIsValid) {
+						$.post(
+							'echopost.php?mode=html',
+							$(this).serialize(),
+							function(response) {
+								// handler for request response
+								alert(response);
+							}
+						);
+					} else {
+						// form invalid
+						alert('The following errors have been found:\n' + validationErrors);
+					}
+				}
+			 );
+	}
+); // document.ready
+</script>
+</body>
+</html>

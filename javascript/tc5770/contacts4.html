@@ -1,0 +1,63 @@
+<!doctype HTML>
+<html>
+<head>
+	<title>Page Title</title>
+	<meta charset="UTF-8" />
+
+</head>
+<body>
+
+	<div id="content">
+		<h2>Contact data goes here!</h2>
+	</div>
+
+<script type="text/javascript" src="jquery-1.9.0.js"></script>
+<script type="text/javascript">
+
+var contacts =
+{
+  colLabels: ['ID', 'First Name', 'Last Name', 'Phone #'],
+  data: 
+  [
+	{ id: 0, fname: 'John', lname: 'Doe', phone: '(312)588-2300' },
+	{ id: 0, fname: 'Mary', lname: 'Smith', phone: '(312)588-2301' },
+	{ id: 0, fname: 'Steven', lname: 'Peters', phone: '(312)588-2302' },
+	{ id: 0, fname: 'Alice', lname: 'Johnson', phone: '(312)588-2303' },
+	{ id: 0, fname: 'Bob', lname: 'Patrick', phone: '(312)588-2304' },
+	{ id: 0, fname: 'Patrick', lname: 'Roberts', phone: '(312)588-2305' }
+  ]
+};
+  
+// build table
+
+var tableHTML = '<table><thead><tr>';
+
+// loop through contact columns and build table cells
+for (var c = 0; c < contacts.colLabels.length; c++) {
+	tableHTML += '<th>' + contacts.colLabels[c] + '</th>';
+} // for.
+
+tableHTML += '</tr></thead><tbody id="thetbody">';
+
+// for each contact...
+for (var c = 0; c < contacts.data.length; c++) {
+	// build table row
+	tableHTML += '<tr>';
+	
+	// loop through contact columns and build table cells
+	for (fieldName in contacts.data[c]) {
+		tableHTML += '<td>' + contacts.data[c][fieldName] + '</td>';
+	} // for...in
+	
+	tableHTML += '</tr>';
+} // for contacts
+
+tableHTML += '</tbody></table>';
+
+//console.log(tableHTML);
+
+$('#content').html(tableHTML); // LOL
+
+</script>
+</body>
+</html>

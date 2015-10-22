@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+</head>
+
+<body>
+
+<script type="text/javascript">
+
+document.write('<p>This is a new paragraph</p>');
+
+var someVar = '<p>This space for rent.</p>';
+
+document.write(someVar);
+
+var sideA = 10;
+var sideB = '5';
+var area = sideA * parseInt(sideB);
+//var perimeter = sideA + sideB + sideA + sideB;
+//var perimeter = (sideA * 2) + (sideB * 2);
+var perimeter = sideA + parseInt(sideB) + sideA + parseInt(sideB);
+
+document.write('<p>The area is ' + area + '</p>');
+document.write('<p>The perimeter is ' + perimeter + '<p>');
+
+//var weekdays = new Array('Sun','Mon','Tue','Wed');
+var weekdays = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+document.write(weekdays[1]);
+
+/*
+var pillbox = new Object();
+pillbox.sun = 'white';
+pillbox.mon = 'none';
+pillbox.tue = 'green';
+pillbox.wed = 'purple';
+pillbox.thu = 'orange';
+pillbox.fri = 'blue';
+pillbox.sat = 'red';
+*/
+var pillbox = {
+			  	sun: 'white', // incorrect way to define objects
+				mon: 'none', // but common in javascript
+				"tue": "green", // the correct way to define json
+				"wed": "purple", // according to the spec
+				"thu": "orange",
+				"fri": "blue",
+				"sat": "red"
+			  };
+
+document.write('<p>The pill for Friday can be called like this: ' + pillbox.fri + ' or like this: ' + pillbox['fri'] + '<p>');
+
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>

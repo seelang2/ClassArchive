@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript">
+
+var targetElem = document.getElementById("target");
+
+var tableElem = document.createElement("TABLE");
+targetElem.appendChild(tableElem);
+
+var tBodyElem = document.createElement("TBODY");
+tableElem.appendChild(tBodyElem);
+
+var trElem = document.createElement("TR");
+tBodyElem.appendChild(trElem);
+
+var tdElem = document.createElement("TD");
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('John'));
+
+var tdElem = document.createElement("TD");
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('Doe'));
+
+var tdElem = document.createElement("TD");
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('jdoe@email.com'));
+
+
+var trElem = document.createElement("TR");
+tBodyElem.appendChild(trElem);
+
+var tdElem = document.createElement("TD");
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('Jane'));
+
+var tdElem = document.createElement("TD");
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('Smith'));
+
+var tdElem = document.createElement("TD");
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('jane@mac.com'));
+
+
+
+</script>
+</body>
+</html>

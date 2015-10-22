@@ -1,0 +1,179 @@
+@charset "utf-8";
+/* CSS Document */
+html, body { height: 100%; }
+
+body {
+	background: #7a7a7a;
+	margin: 0;
+	padding: 0;
+	font-size: 78%;
+	font-family:Verdana, Geneva, sans-serif;
+}
+
+#wrapper {
+	background: #ffffff;
+	width: 800px;
+	margin: 0 auto;
+	padding: 0;
+	min-height: 100%;
+}
+
+#statusbar {
+	font-weight:bold;
+	background: #ff0000;
+	color: #ffffff;
+	float: right;
+	display: none;
+}
+
+#header, #footer {
+	background: #006;
+	color: #ffffff;
+	overflow: hidden;
+	height: 75px;
+}
+#footer {
+	height: 40px;
+	clear:both;
+}
+
+#leftside, #rightside {
+	float:left;
+	width:49%;
+	border: 1px solid #7a7a7a;
+}
+
+#rightside {
+	float: right;
+}
+
+/* tableless forms baby! */
+form {
+	width: 75%;
+	margin: auto;
+}
+
+form label {
+	float: left;
+	width: 25%;
+	margin-right: 1em;
+	text-align: right;
+}
+
+form div {
+	clear:left;
+	margin-bottom: 0.5em;
+}
+
+.readertext {
+	position: absolute;
+	top: -2500px;
+	left: -2500px;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+
+#content {
+	padding: 1em 2em;
+}
+
+/* drawer styles */
+.drawerheading, .drawertopic {
+	width: 400px;
+	border: 1px solid #7a7a7a;
+	padding: 4px 10px;
+}
+
+.drawertopic {
+	display: none;
+	height: 300; /* set to 0 instead of 300 for anim */
+	overflow: hidden;
+}
+
+.drawerheading {
+	background-color:#9FF;
+}
+
+.drawerheading h2 {
+	font: bold 16px Tahoma, Geneva, sans-serif;
+	margin: 0;
+}
+
+.drwhover { background-color:#FF0; }
+
+/* autocomplete styles */
+#autocomplete {
+	width: 300px;
+	margin: 0 auto;
+}
+
+form#autocomplete div {
+	margin: 0;
+}
+
+#lookups {
+	border: 1px solid #7a7a7a;
+	display: none;
+}
+
+#submit {
+	text-align: center;
+	margin-top: 0.25em;
+}
+
+#entry {
+	width: 296px;
+}
+
+.activelookup {
+	background: #DBE7F9;
+}
+
+/* edit in place */
+#itemtable {
+	width: 90%;
+	margin: 0 auto;
+	
+}
+
+#itemtable td {
+	border: 1px solid #7a7a7a;
+	padding: 0.25em 0.5em;
+}
+
+#itemtable td input {
+	width: 99%;
+	margin: 0 auto;
+}
+
+td.editfield { padding: 0 !important; }
+
+.oddrow { background: #99CFF7; }
+.evenrow { background: #D8EFFC; }
+
+/* lightbox effect */
+#screen {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	background:#333;
+	display: none;
+}
+
+#hoverdiv {
+	position: fixed;
+	top: 0;
+	left: 50%;
+	width: 200px;
+	height: 300px;
+	z-index: 200;
+	background: #FFC;
+	display: none;
+}
+
+
+

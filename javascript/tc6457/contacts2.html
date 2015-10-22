@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Contact List Demo</title>
+	
+</head>
+<body>
+
+<div id="contactlist">
+	<div id="contactitems"></div>
+	<div>
+		<button class="btnAdd">Add New Contact</button>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+/*
+
+// defer execution until DOM is ready
+$(document).ready(function() {
+		
+}); // document.ready
+
+// same thing, only looks different
+$(function() {
+
+});
+
+*/
+
+
+//var App = App || {}; // Use the existing App object or a new empty object if not exists
+
+// Set up an IIFE to enclose my namespace
+(function(App) {
+	
+var contactList =
+[
+	{ "firstname":"Eren","lastname":"Yeager","login":"titan0" },
+	{ "firstname":"Mikasa","lastname":"Ackerman","login":"top401" },
+	{ "firstname":"Stella","lastname":"El Bridget","login":"satellizer" },
+	{ "firstname":"Kazuya","lastname":"Aoi","login":"limiterkun" },
+	{ "firstname":"Chiffon","lastname":"Fairchild","login":"classprez" },
+	{ "firstname":"Minato","lastname":"Sahashi","login":"kitanoashikabi" },
+	{ "firstname":"Myucel","lastname":"Foaran","login":"moemaid" },
+	{ "firstname":"Rick","lastname":"Hunter","login":"skull1" },
+	{ "firstname":"John","lastname":"Stewart","login":"gljohn" },
+	{ "firstname":"Stewie","lastname":"Griffin","login":"worlddictator" }
+];
+
+App.data = {}; // create a data repository
+
+App.start = function() {
+	
+	App.data.contactItems = $('#contactitems');
+	
+	// set up event handlers for buttons
+	$('#contactlist')
+		.on(
+			'click',
+			'button',
+			App.buttonRouter
+		 );
+	
+	App.updateContactItems();
+	
+	
+}; // App.start
+
+App.buttonRouter = function(e) {
+	// determine what button functionality was clicked and hand off to processor
+	
+	// get contact item index
+	var index = $(this).closest('.contactitem').attr('data-contactindex');
+	console.log('Button index is',index);
+	
+	switch(true) {
+		case $(this).hasClass('btnAdd'):
+			App.addNewContactItem(index);
+		break;
+		
+		case $(this).hasClass('btnEdit'):
+			
+			App.editContactItem(index);
+		break;
+		
+		case $(this).hasClass('btnDelete'):
+			
+			App.deleteContactItem(index);
+		break;
+		
+	} // switch
+	
+}; // App.buttonRouter
+
+
+App.addNewContactItem = function(index) {
+	
+	console.log('Displaying add contact form');
+	
+}; // App.addNewContactItem
+
+App.editContactItem = function(index) {
+	
+	console.log('Editing contact item', index);
+	
+}; // App.editContactItem
+
+App.deleteContactItem = function(index) {
+	
+	console.log('Deleting contact item', index);
+	
+}; // App.deleteContactItem
+
+App.updateContactItems = function() {
+	// loop through contacts array and build contactitem divs
+	
+	App.data.contactItems.empty(); // remove any existing contactitems from div
+	
+	$.each(
+		contactList,
+		function(index, contact) {
+			
+		$('<div>' +
+			'<p>' + contact.firstname + ' ' + contact.lastname + '</p>' +
+			'<p>' + contact.login + '</p>' +
+			'<div>' +
+				'<button class="btnEdit">Edit</button>' +
+				'<button class="btnDelete">Delete</button>' +
+			'</div>' +
+		  '</div>')
+			.addClass('contactitem')
+			.attr('data-contactindex', index)
+			.appendTo(App.data.contactItems);
+			
+		}
+	); // $.each
+	
+}; // App.updateContactItems
+	
+
+})( window.App = window.App || {} );
+
+$(document).ready(App.start); // launch App.start when DOM is ready
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Table Demo using jQuery</title>
+
+<style type="text/css">
+.oddrow { background: #AABFF9; }
+.evenrow { background: #EBF0FE; }
+.hover { background: #FFC; }
+</style>
+</head>
+
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+var contactList =
+	[
+		{ id: 0, firstname: "John", lastname: "Doe", email: "jdoe@email.com" },
+		{ id: 1, firstname: "Jane", lastname: "Smith", email: "jsmith@email.com" },
+		{ id: 2, firstname: "Peter", lastname: "Jones", email: "pj101@email.com" },
+		{ id: 3, firstname: "Paul", lastname: "Michaels", email: "pmme@email.com" },
+		{ id: 4, firstname: "Frances", lastname: "Peters", email: "frances@email.com" },
+		{ id: 5, firstname: "Amy", lastname: "Gibbons", email: "notthatamy@email.com" },
+		{ id: 6, firstname: "Jean", lastname: "Claude", email: "vd@email.com" }
+	];
+
+$('#target')
+	.append('<table><tbody></tbody></table>');
+
+var $tbody = $('#target tbody');
+
+for (var c = 0; c < contactList.length; c++) {
+	var rowHTML = '<tr>';
+	for (var fieldName in contactList[c]) {
+		rowHTML += '<td>' + contactList[c][fieldName] + '</td>';
+	}
+	rowHTML += '</tr>';
+	
+	$(rowHTML).appendTo($tbody);
+}
+
+
+$('#target tr')						// get list of all TRs in #target
+	.filter(':odd')						// reduce set to odd items only (zero based)
+	.addClass('evenrow')		// add striping class to rows
+	.end()								// cancels selection and goes back to previous selection of all TRs
+	.filter(':even')					// reduce set to even items (zero based)
+	.addClass('oddrow')			// add striping class to set
+	.end()								// release selection and go back to all TR
+	.mouseover(
+		function() { 
+			$(this).addClass('hover');
+		}
+	 )
+	.mouseout(
+		function() {
+			$(this).removeClass('hover');
+		}
+	 );
+	
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

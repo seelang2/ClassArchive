@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="formerrors"></div>
+
+<form id="form1id" name="form1name" action="#" method="post">
+<div><label for="firstname">First Name:</label><input name="firstname" id="firstname" /></div>
+<div><label for="lastname">Last Name:</label><input name="lastname" id="lastname" /></div>
+<div><label for="email">Email:</label><input name="email" id="email" /></div>
+<div><label for="phone">Phone:</label><input name="phone" id="phone" /></div>
+<div><input type="submit" value="Continue" /></div>
+</form>
+
+
+<script type="text/javascript">
+//alert(document.form1name.id);
+//alert(document.forms[0].id);
+//alert(document.form1name.elements.length); // elements[] contains all data elements in form
+
+document.form1name.onsubmit = function() {
+	var errorMessages = formValidate(this);
+	
+	if (errorMessages.length == 0) {
+		// no errors found
+		return true; // submit form
+	}
+	
+	// errors found, deal with errors
+	document.getElementById("formerrors").innerHTML = '<p>The following errors were found:' + 
+													  errorMessages + 
+													  '<br />Please correct them and try again.</p>';
+	return false; // override submit
+}
+
+function formValidate(targetForm) {
+	var errorMessages = '';
+	
+	for (var e = 0; e < targetForm.elements.length; e++) {
+		//alert(targetForm.elements[e].name);
+		switch (targetForm.elements[e].name) {
+			case 'firstname':
+				// field can't be blank
+				if (targetForm.elements[e].value.length < 1) {
+					errorMessages += '<br />First Name field cannot be blank.';
+				}
+				
+			break; // firstname
+			case 'lastname':
+				// field must be minimum length of 4 characters
+				if (targetForm.elements[e].value.length < 4) {
+					errorMessages += '<br />Last Name field must be at least 4 characters.';
+				}
+			break; // lastname
+			
+		} // switch
+	} // for elements
+	return errorMessages;
+}
+
+
+</script>
+</body>
+</html>

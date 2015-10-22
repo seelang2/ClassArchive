@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+<style type="text/css">
+label {
+	display: block;
+}
+
+label input {
+}
+</style>
+</head>
+
+<body>
+
+<div id="statusmessage"></div>
+
+<form id="form1" name="myform" action="#" method="get">
+    <label>Full Name: <input name="fullname" type="text"></label>
+    <label>Email: <input name="email" type="text"></label>
+    <label>Phone: <input name="phone" type="text"></label>
+    <label>Age: <input name="age" type="text"></label>
+    <input type="submit" value="Continue">
+</form>
+
+<script type="text/javascript">
+function isFormInvalid(form) {
+	var validated = true; // innocent until proven guilty approach. Form starts out valid
+	var errormessages = ''; // placeholder for any error messages
+	
+	for(var c = 0; c < form.elements.length; c++) {
+		alert(form.elements[c].name + ' = ' + form.elements[c].value);
+		switch(form.elements[c].name) {
+			case 'fullname':
+				// field can't be blank
+				if (form.elements[c].value.length == 0) {
+					validated = false; // invalidate form
+					errormessages += '<br />The full name field cannot be blank.';
+				}
+				
+				// field has to have minimum of 4 characters
+				if (form.elements[c].value.length < 4) {
+					validated = false;
+					errormessages += '<br />Full name must be at least 4 characters.';
+				}
+			break; // fullname
+			case 'email':
+				
+			break; // email
+			case 'phone':
+				
+			break; // phone
+			case 'age':
+				// field must be numeric
+				if (isNaN(form.elements[c].value)) {
+					validated = false;
+					errormessages += '<br />Age must be numeric.';
+				}
+				
+				// field has to be in a range - between 18 and 35 inclusive
+				if (form.elements[c].value < 18 && form.elements[c].value > 35) {
+					validated = false;
+					errormessages += '<br />Age must be between 18 and 35.';
+				}
+			break; // age
+		} // switch
+	} // for
+	
+	if (validated) {
+		return false; // form is NOT invalid
+	}
+	return errormessages; // if form is invalid, return error messages
+}
+
+//alert(document.forms[0].id); // forms are accessible via document.forms array
+var myForm = document.getElementById("form1");
+//alert(myForm.elements.length);
+
+myForm.onsubmit = function() {
+	var result = isFormInvalid(this);
+	if (result == false) {
+		return true; // form IS VALID, allow submit
+	}
+	// form is INVALID, update status with error messages
+	document.getElementById("statusmessage").innerHTML = '<p>The following errors were found:' + result + '<br />Please correct these errors and try again.</p>';
+	return false;
+}
+
+
+
+
+</script>
+</body>
+</html>

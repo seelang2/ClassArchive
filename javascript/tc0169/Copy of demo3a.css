@@ -1,0 +1,41 @@
+body {
+	background: #7a7a7a;
+	text-align:center;
+}
+
+#wrapper {
+	text-align: left;
+	margin: 0 auto;
+	width: 700px;
+	border: 1px solid #999999;
+	background: #aaaaaa;
+}
+
+#menu li {
+	display:block;
+	float:left;
+	border: 1px solid #7a7a7a;
+	text-align: center;
+	width: 160px;
+	background: #dddddd;
+}
+
+#menu a {
+	display:block;
+	width: 100%;
+	background: #dddddd;
+}
+
+#menu a:hover {
+	background: #ffffff;
+}
+
+.selected {
+	border-bottom: 4px solid;
+}
+
+#content {
+	background: #ffffff;
+	clear:both;
+}
+

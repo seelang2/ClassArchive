@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Introduction to jQuery</title>
+</head>
+
+<body>
+
+<div id="target"></div>
+
+<div id="target2"></div>
+
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+
+$('#target')
+	.append('<p>Last child content of target.</p>')
+	.find(':last-child')
+	.addClass('newclass')
+	.end()
+	.prepend('<p>First child content of target.</p>')
+	.before('<p>Previous sibling to target.</p>')
+	.after('<p>Next sibling to target.</p>');
+	
+var $target2 = $('#target2');
+
+$('<p>Last child of target2.</p>').appendTo($target2);
+$('<p>First child of target2.</p>').prependTo($target2);
+$('<p>Previous sibling of target2.</p>')
+	.addClass('anotherclass')
+	.insertBefore($target2);
+$('<p>Next sibling of target2.</p>').insertAfter($target2);
+
+
+
+
+</script>
+</body>
+</html>

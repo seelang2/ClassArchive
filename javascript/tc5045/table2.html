@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Table Demo</title>
+</head>
+
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript">
+var contactList =
+	[
+		{ firstname: "John", lastname: "Doe", email: "jdoe@email.com" },
+		{ firstname: "Jane", lastname: "Smith", email: "jsmith@email.com" },
+		{ firstname: "Peter", lastname: "Jones", email: "pj101@email.com" },
+		{ firstname: "Paul", lastname: "Michaels", email: "pmme@email.com" },
+		{ firstname: "Frances", lastname: "Peters", email: "frances@email.com" },
+		{ firstname: "Amy", lastname: "Gibbons", email: "notthatamy@email.com" },
+		{ firstname: "Jean", lastname: "Claude", email: "vd@email.com" }
+	];
+
+
+
+// get reference to DOM node we're manipulating
+var targetElem = document.getElementById("target");
+
+// create new DOM node
+var tableElem = document.createElement("TABLE");
+// add DOM node to tree
+targetElem.appendChild(tableElem);
+
+var tbodyElem = document.createElement("TBODY");
+tableElem.appendChild(tbodyElem);
+
+// loop through contactList
+for (var c = 0; c < contactList.length; c++) {
+	// create row for contact
+	var trElem = document.createElement("TR");
+	tbodyElem.appendChild(trElem);
+	
+	// create cells for contact fields
+	tdElem = document.createElement("TD");
+	trElem.appendChild(tdElem);
+	tdElem.appendChild(document.createTextNode(contactList[c].firstname));
+
+	tdElem = document.createElement("TD");
+	trElem.appendChild(tdElem);
+	tdElem.appendChild(document.createTextNode(contactList[c].lastname));
+
+	tdElem = document.createElement("TD");
+	trElem.appendChild(tdElem);
+	tdElem.appendChild(document.createTextNode(contactList[c].email));
+
+
+} // for contactList
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

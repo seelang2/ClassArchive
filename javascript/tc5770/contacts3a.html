@@ -1,0 +1,72 @@
+<!doctype HTML>
+<html>
+<head>
+	<title>Page Title</title>
+	<meta charset="UTF-8" />
+
+</head>
+<body>
+
+	<div id="content">
+		<h2>Contact data goes here!</h2>
+	</div>
+
+<script type="text/javascript">
+
+var contacts =
+  [
+	{ id: 0, fname: 'John', lastname: 'Doe', phone: '(312)588-2300' },
+	{ id: 0, fname: 'Mary', lastname: 'Smith', phone: '(312)588-2301' },
+	{ id: 0, fname: 'Steven', lastname: 'Peters', phone: '(312)588-2302' },
+	{ id: 0, fname: 'Alice', lastname: 'Johnson', phone: '(312)588-2303' },
+	{ id: 0, fname: 'Bob', lastname: 'Patrick', phone: '(312)588-2304' },
+	{ id: 0, fname: 'Patrick', lastname: 'Roberts', phone: '(312)588-2305' }
+  ];
+
+// Note: Avoid putting getElementById in a loop
+var contentDiv = document.getElementById('content');
+
+// build table
+var tableElem = document.createElement("TABLE");
+contentDiv.appendChild(tableElem);
+
+var theadElem = document.createElement("THEAD");
+tableElem.appendChild(theadElem);
+
+var rowElem = document.createElement("TR");
+theadElem.appendChild(rowElem);
+
+// loop through contact columns and build table cells
+for (fieldName in contacts[0]) {
+	var tdElem = document.createElement("TH");
+	rowElem.appendChild(tdElem);
+	
+	var cellText = document.createTextNode(fieldName.toUpperCase());
+	tdElem.appendChild(cellText);
+} // for...in
+
+
+var tbodyElem = document.createElement("TBODY");
+tableElem.appendChild(tbodyElem);
+
+// for each contact...
+for (var c = 0; c < contacts.length; c++) {
+	// build table row
+	var rowElem = document.createElement("TR");
+	tbodyElem.appendChild(rowElem);
+	
+	// loop through contact columns and build table cells
+	for (fieldName in contacts[c]) {
+		var tdElem = document.createElement("TD");
+		rowElem.appendChild(tdElem);
+		
+		var cellText = document.createTextNode(contacts[c][fieldName]);
+		tdElem.appendChild(cellText);
+	} // for...in
+	
+} // for contacts
+
+
+</script>
+</body>
+</html>

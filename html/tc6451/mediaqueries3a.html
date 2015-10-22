@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+	
+	<title>Media Query Demo</title>
+	
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	
+	<style type="text/css">
+	/* global css setup */
+	
+	body {
+		margin: 0;
+		font-family: Verdana, Arial, sans-serif;
+		color: #009;
+	}
+	
+	#target {
+		width: 80%;
+		margin: auto;
+		background: #fff;
+		padding: 10px 20px;
+	}
+	
+	/* use media query to define sub-stylesheet */
+	
+	@media screen and (min-width: 490px) and (max-width: 700px) {
+		/* begin stylesheet section */
+		
+		#target {
+			font-weight: bold;
+			background: #F5D398;
+		}
+	
+	}
+	
+	@media screen and (min-width: 701px) and (max-width: 900px) {
+		
+		#target {
+			background: #BBF598;
+		}
+		
+	}
+	
+	@media screen and (min-width: 901px) {
+		
+		#target {
+			background: #F5C9F1;
+			max-width: 920px;
+		}
+		
+	}
+	
+
+	
+	</style>
+	
+</head>
+<body>
+
+
+<div id="target">
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque adipiscing a est vel facilisis. Ut suscipit rhoncus leo eu suscipit. Vestibulum augue arcu, elementum eget neque et, luctus sagittis enim. Quisque nec porttitor tortor, quis vehicula nisl. Quisque ullamcorper elit eleifend libero mattis, eget lacinia felis blandit. Aenean ultricies elit sed felis hendrerit viverra. Nam purus sapien, varius vitae nisl quis, lobortis pharetra augue. Sed ultricies facilisis pharetra. Donec imperdiet commodo ipsum vel congue. Nullam placerat dolor semper nisi tincidunt, eget dictum dolor dictum.</p>
+</div>
+
+
+
+</body>
+</html>
+
+
+
+

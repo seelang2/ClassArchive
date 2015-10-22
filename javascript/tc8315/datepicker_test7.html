@@ -1,0 +1,322 @@
+<DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui/ui/jquery-ui.js"></script>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 100%;
+	}
+	
+	fieldset {
+		border: none;
+		margin-bottom: 1em;
+	}
+	
+	#ageset .controls { display: inline-block; }
+	
+	#wrapper {
+		width: 800px;
+		border: 1px solid #7a7a7a;
+		margin: auto;
+	}
+	
+	#main {
+		float: left;
+		width: 550px;
+		padding: 0.5em 1em;
+	}
+	
+	#sidebar {
+		float: left;
+		width: 250px;
+		padding: 0.5em 1em;
+	}
+	
+	#main, #sidebar { box-sizing: border-box; }
+	
+	.clear {
+		clear: both;
+		height: 1px;
+		overflow: hidden;
+	}
+	</style>
+</head>
+<body>
+<div id="wrapper">
+	<section id="main">
+
+		<fieldset id="ageset">
+			<span>Traveler Age(s):</span>
+			<input name="age" size="3" />
+			<div class="controls">
+				<button class="btnAdd">+</button>
+				<button class="btnRemove">-</button>
+			</div>
+		</fieldset>
+
+		<div><button id="step2">Next Step</button></div>
+
+		<fieldset id="dobset"></fieldset>
+
+		<div>
+			<label>Text:</label>
+			<input name="text" />
+		</div>
+
+	</section>
+	<section id="sidebar">
+		<h2>Quote Info</h2>
+		<div>
+			<span>Price:</span>
+			<span id="price">$0</span>
+		</div>
+	</section>
+	<div class="clear"></div>
+</div>
+
+<script type="text/javascript">
+// set up a namespace using IIFE
+(function(App) {
+
+// declare private data and methods inside namespace
+var data = {};
+data.dobArray = []; // empty array bucket for dob data
+
+
+App.init = function() {
+	
+	// Set up button and control handlers
+	$('#ageset .controls')
+		.on('click','button', App.ageButtonHandler);
+
+	$('#step2')
+		.on('click', App.updateDOBFields);	 
+
+	$('#dobset')
+		.on('blur', '[name="dob"]', App.validateDOBFields);
+
+	// load templates
+	data.dobBlock = $('<div />').load('tpl_dob_block.html');
+
+}; // App.init
+
+App.isValidDate = function(data) {
+	if (data.search(/^(0[1-9]|1[012])[- //.](0[1-9]|[12][0-9]|3[01])[- //.](19|20)\d\d$/) > -1) return true;
+	return false;
+
+}; // App.isValidDate
+
+App.getAge = function(datestring) {
+	// value = value in years
+	var theDate = new Date(datestring);
+	var today = new Date();
+	var years = today.getFullYear() - theDate.getFullYear();
+	
+	//console.log('theDate:',theDate,'today:',today,'years:',years);
+	
+	return years;
+}; // App.getAge
+
+App.doesDateMatchNumber = function(datestring, value) {
+	
+	var years = App.getAge(datestring);
+	return years == value ? true : false;
+	
+} // App.doesDateMatchNumber
+
+App.getQuote = function(dobArray) {
+	
+	$.ajax({
+		url:		'getquote.php',
+		type:		'post',
+		dataType:	'json',
+		data:		$.param(dobArray)
+	}).done(App.updatePrice);
+	
+}; // App.getQuote
+
+App.updatePrice = function(data) {
+	// confirm data
+	if (typeof data.price == "undefined") {
+		console.log('Error: no price returned.');
+		return;
+	}
+	
+	// update quote panel
+	$('#price').html(data.price);
+	
+}; // App.updatePrice
+
+App.getMockDOB = function(age) {
+	
+	var today = new Date();
+	var year = today.getFullYear() - age;
+	var month = today.getMonth() + 1;
+	var date = today.getDate();
+	return month + '/' + date + '/' + year;
+	
+}; // App.getMockDOB
+
+App.ageButtonHandler = function(e) {
+	var $this = $(this);
+	
+	switch(true) {
+		default:
+			// no soup for you! *snap*
+		break;
+		case $this.hasClass('btnAdd'):
+			$this
+				.closest('div.controls')
+				.before('<input name="age" size="3" />');
+		break;
+		case $this.hasClass('btnRemove'):
+			// bail if there's only one item
+			if ($('[name="age"]').length == 1) {
+				return false;
+			}
+			
+			$this
+				.closest('div.controls')
+				.prev()
+				.remove();
+		break;
+	} // switch
+	
+}; // App.ageButtonHandler
+
+App.updateDOBFields = function(e) {
+	
+	var $dobset = $('#dobset');
+	
+	// loop through traveler ages and create DOB fields for each 
+	$('[name="age"]')
+		.each(function(index, elem) {
+			
+			data.dobArray.push(App.getMockDOB($(elem).val()));
+			
+			/*
+			$('<div>' + 
+			    '<label>Traveler '+ (index + 1) +
+				' (Age: <span id="age'+ index +'">'+ $(elem).val() +
+				'</span>) Date of Birth:</label>' +
+				'<input id="traveler'+ (index + 1) +'" name="dob" ' +
+				'data-index="'+ index +'" ' + '/>' +
+			  '</div>')
+				.appendTo($dobset);
+			*/
+			
+			data.dobBlock
+				.children()		// bypass extraneous container
+				.clone()		// copy template
+				.each(function(i, template) {
+					// here we use the .each to do a single iteration
+					// to use the callback function as an IIFE-esque
+					// sort of thing
+					
+					// populate template with values
+					$(template)
+						.find('[data-name="num"]')
+						.html(index + 1)
+						.end()
+						.find('[data-name="age"]')
+						.attr('id','age' + index)
+						.html($(elem).val())
+						.end()
+						.find('[name="dob"]')
+						.attr('id','traveler' + (index + 1))
+						.attr('data-index', index)
+						.end();
+					
+				 })
+				.appendTo($dobset);
+
+			
+			
+		 });
+	
+	$('[name="dob"]').datepicker();
+	
+	//console.log(dobArray);
+	App.getQuote({dob: data.dobArray});
+	
+}; // App.updateDOBFields
+
+App.validateDOBFields = function(e) {
+	// clear error states and items
+	$(this)
+		.closest('div')
+		.find('.error')
+		.remove();
+	
+	//console.log(e.target);
+	if ( $(e.target).val() == '' ) {
+		// field is empty, nothing to validate yet so don't
+		// display messages
+		$(this).focus();
+		return false;
+	}
+	
+	// cache collection of ages
+	var $ages = $('[name="age"]');
+	// retrieve dob field index
+	var index = $(this).attr('data-index');
+	
+	// check for valid date format
+	if (!App.isValidDate( $(this).val() )) {
+		// display error 
+		$(this)
+			.after('<span class="error">Date must be MM/DD/YYYY</span>');
+		
+		// return focus to date field and bail
+		$(this).focus();
+		return false;
+	}
+	
+	
+	// does date match age number
+	//console.log( App.doesDateMatchNumber($(this).val(), $ages.eq(index).val()) );
+	if (!App.doesDateMatchNumber($(this).val(), $ages.eq(index).val())) {
+		// ask visitor for age confimation
+		var message = 'The date of birth specified is different '+
+		'from the age provided in Step 1. Do you wish to use ' +
+		'the date of birth age instead?';
+		
+		if ( confirm(message) ) {
+			// override age value
+			var age = App.getAge($(this).val());
+			$ages.eq(index).val(age);
+			$('#age'+index).html(age);
+			
+			data.dobArray[index] = $(this).val();
+			App.getQuote({dob: data.dobArray});
+			
+			return true;
+		}
+		
+		// return focus to date field and bail
+		$(this).focus();
+		return false;
+	}
+}; // App.validateDOBFields
+
+
+})(window.App = window.App || {});
+
+// launch App on DOM ready
+$(document).ready(App.init);
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+

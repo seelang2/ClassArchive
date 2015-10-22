@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+
+
+<script type="text/javascript">
+
+document.write("<p>This space for rent.</p>");
+
+var aValue = 'This space also for rent.'.toUpperCase();
+
+document.write('<p>' + aValue + '</p>');
+
+var sideA = 10;
+var sideB = '7';
+//var sideB = parseInt('fluffyhamster');
+
+var area = sideA * sideB;
+document.write('<p>The area is ' + area + '</p>');
+
+//var perimeter = sideA + sideB + sideA + sideB;
+var perimeter = (sideA * 2) + (sideB * 2);
+document.write('<p>The perimeter is ' + perimeter + '</p>');
+
+//var weekdays = new Array('Sun', 'Mon', 'Tue', 'Wed');
+var weekdays = ['Sun', 'Mon', 'Tue', 'Wed']; // using Object Literal (which is NOT exactly JSON)
+
+document.write('<p>The second day is ' + weekdays[1] + '</p>');
+document.write('<p>There are ' + weekdays.length + ' days currently in the array.</p>');
+
+weekdays[weekdays.length] = 'Thu';
+document.write('<p>There are ' + weekdays.length + ' days currently in the array.</p>');
+
+weekdays.push('Fri', 'Sat');
+document.write('<p>There are ' + weekdays.length + ' days currently in the array.</p>');
+
+/* everything in block comment is ignored by parser
+var pillbox = new Object();
+pillbox.Sun = 'white';
+pillbox.Mon = 'none';
+pillbox.Tue = 'none';
+pillbox.Wed = 'purple';
+pillbox['Thu'] = 'orange';
+pillbox['Fri'] = 'red';
+pillbox['Sat'] = 'green';
+*/
+
+var pillbox = 
+	{
+		Sun: 'white',
+		Mon: 'none',
+		Tue: 'none',
+		Wed: 'purple',
+		Thu: 'orange',
+		Fri: 'red',
+		Sat: 'green'
+	};
+
+var today = 'Mon';
+document.write("<p>Today's pill is " + pillbox[today] + '</p>');
+
+//console.log(weekdays.length);
+
+</script>
+
+
+
+</body>
+</html>

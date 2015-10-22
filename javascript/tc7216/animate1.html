@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	
+	#box1 {
+		background: #f00;
+		width: 75px;
+		height: 75px;
+		position: fixed;
+		top: 100px;
+		left: 50px;
+	}
+	
+	</style>
+</head>
+<body>
+
+<div id="box1"></div>
+
+
+<script type="text/javascript" src="jquery-2.1.1.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+$('#box1')
+	.animate({
+		left: 900,
+		top: 500
+	 },{
+		duration: 2000,
+	 })
+	.animate({
+		left: 700,
+		top: 20
+	 },{
+		duration: 3000,
+	 })
+	.animate({
+		width: '+=200',
+		height: '+=200'
+	 },{
+		duration: 5000,
+		queue: false
+	 })
+	.animate({
+		opacity: 0
+	 },{
+		duration: 5000,
+		queue: false
+	 })
+
+
+
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

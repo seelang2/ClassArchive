@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>HTML Layout Demo</title>
+	<meta name="description" content="This is a sample web page." />
+	
+	<style type="text/css">
+	
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		color: #000;
+		background-color: #ccc;
+		margin: 0;
+		padding: 0;
+	}
+	
+	#wrapper {
+		background-color: #ffffff;
+		width: 800px;
+		margin: auto;
+		border: 10px solid #f00;
+	}
+	
+	/* Target the page header and avoid any other headers */
+	#wrapper > header {
+		height: 80px;
+		background-color: #D5E88F;
+		padding: 1px 0;
+	}
+	
+	#content {
+		background: #0f0;
+	}
+	
+	#wrapper > footer {
+		height: 100px;
+		background: #3D4229;
+		color: #efefef;
+		font-size: 90%;
+		padding: 1px 0;
+		clear: both; /* force footer below columns */
+	}
+	
+	/* use border-box to make column sizing easier */
+	#main, #related {
+		box-sizing: border-box;
+	}
+	
+	#main {
+		float: left;
+		width: 550px;
+		background: #E88F98;
+		padding: 1px 0.5em 1px 1.5em;
+	}
+	
+	#related {
+		float: right;
+		width: 250px;
+		/* background: #B295FF; */
+		padding: 1px 1em 1px 0.5em;
+		font-size: 90%;
+	}
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<header>
+		<h1>My (Badly) Spaced Page.</h1>
+	</header>
+	
+	<div id="content">
+		<section id="main">
+			<h1>Lorem ipsum dolor sit amet</h1>
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pharetra viverra quam et posuere. Nullam bibendum, nunc non maximus suscipit, leo nunc malesuada arcu, vel gravida ex odio eget nunc. Nullam a pellentesque felis. Mauris quis enim vel mauris congue sagittis. Aenean facilisis justo non mauris ultrices consectetur. Sed a sem sodales, suscipit enim vel, varius nisi. Sed ornare ac libero a pretium. Nam dui ante, commodo quis efficitur eget, facilisis at ex. Phasellus vel tempus purus. Duis vitae orci semper, convallis magna sit amet, blandit nunc. Cras iaculis interdum tellus eu lacinia. Mauris ut commodo ligula. Nullam consectetur dignissim arcu et pulvinar.
+			</p>
+			<p>
+			In iaculis magna in dolor dictum fermentum. Nunc vel enim ac arcu finibus lacinia eu lacinia dolor. Donec in velit id lorem laoreet condimentum. Ut finibus condimentum sem, nec feugiat ipsum. Vestibulum nisi mi, sodales laoreet lorem nec, consectetur malesuada nisi. Etiam sem leo, tristique et augue id, suscipit vehicula ligula. Nullam est velit, blandit nec nulla non, consequat convallis lorem. Praesent pharetra sem in nunc tincidunt, quis molestie lectus gravida. Vivamus at risus id dui luctus tincidunt id eu tortor. Mauris hendrerit ante sed vehicula posuere. Integer pharetra arcu eu purus eleifend tincidunt. Sed id gravida quam. Fusce sit amet mollis ipsum. Mauris aliquam velit et elit varius malesuada.
+			</p>
+			<p>
+			Etiam in sapien in sapien mollis luctus. Nunc dapibus metus sed consequat pulvinar. Nunc in dolor dolor. Morbi vulputate efficitur aliquet. Ut imperdiet, arcu et facilisis placerat, lorem enim condimentum ipsum, eu congue risus massa ut est. Ut ut est mauris. Etiam euismod placerat velit, eu blandit justo rutrum et. Sed ultrices, odio non tempor eleifend, orci massa dictum metus, et facilisis nibh massa a magna. Nam ultrices nisi turpis, et maximus ante tristique ut. Donec lobortis nunc ut urna ultricies, sed luctus turpis imperdiet.
+			</p>
+		</section><!-- main -->
+		<section id="related">
+			<p>
+			Maecenas ac dolor sit amet nunc fermentum imperdiet. Suspendisse vitae lorem dapibus, varius erat sed, consectetur lorem. In hac habitasse platea dictumst. Aenean quis tellus eu lorem cursus volutpat et vel ligula. Aenean dictum sapien id cursus vehicula. Nulla ultrices mi ligula, vel bibendum lacus pulvinar nec. Duis sodales, eros et tincidunt feugiat, tellus nisl tempor velit, sed facilisis dui turpis vel felis. Quisque vehicula lacus ut eros luctus, sed iaculis lectus elementum. Sed mauris sapien, sodales eu interdum luctus, efficitur eu lorem. Aenean porta lectus id diam ullamcorper, vitae suscipit velit dictum. Proin eros ligula, tempus sed tempor a, euismod et risus.
+			</p>
+			<p>
+			Etiam euismod posuere eros ac vestibulum. Integer ac accumsan lectus. Mauris tincidunt sapien rutrum ante vulputate vestibulum. Suspendisse convallis ante sit amet molestie venenatis. Ut posuere libero massa, dignissim laoreet turpis volutpat a. Fusce porttitor vel justo sed rhoncus. Aliquam vehicula elit non ante gravida, non suscipit augue suscipit. Suspendisse sed sodales purus. Mauris malesuada odio leo, id fermentum diam volutpat at. Etiam nec tortor massa. Duis luctus sit amet nulla vitae finibus. Morbi hendrerit urna eu augue scelerisque, a mattis erat commodo. Praesent et pellentesque odio, nec ornare sapien. Nam et metus nulla. Fusce ut diam ac augue dapibus eleifend sed a urna. Ut vel sapien in felis malesuada commodo sit amet non tortor.
+			</p>
+		</section><!-- related -->
+	</div><!-- content -->
+	
+	<footer>
+		<p>Training Connection Class 7817. For training purposes only. Do not eat.</p>
+	</footer>
+
+</div><!-- wrapper -->
+
+</body>
+</html>

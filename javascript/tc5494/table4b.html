@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Sample Table Demo</title>
+	<meta charset="UTF-8" />
+	
+	<style type="text/css">
+	 table { border-collapse: collapse;  border: 5px solid #7a7a7a;} 
+	
+	tr.hover { background: #FFC; }
+	.oddrow { background: #9CFB21; }
+	.evenrow { background: #ACFF9F; }
+	
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.8.2.js"></script>
+<script type="text/javascript">
+
+var App = {
+	start: function() {
+
+		$('<table></table>')
+			.appendTo('#target')
+			.append('<thead></thead>')
+			.children('thead')
+			.each(
+				function(i, theadElem) {
+					var rowHTML = '<tr>';
+					$.each(
+						contactData.fieldLabels,
+						function(i, label) {
+							rowHTML += '<th>' + label + '</th>';
+						}
+					);
+					$(rowHTML+'</tr>').appendTo(theadElem);
+				}
+			 )
+			.end()
+			.append('<tbody></tbody>')
+			.children('tbody')
+			.on('mouseover mouseout', App.toggleHover)
+			.each(
+				function(i, tbodyElem) {
+					$.each(
+						contactData.data,
+						function(index, contact) {
+							var rowHTML = '<tr>';
+							
+							$.each(
+								contact,
+								function(colName, colValue) {
+									rowHTML += '<td><span><a href="#">' + colValue + '</a></span></td>';
+								}
+							);
+							
+							rowHTML += '</tr>';
+							$(rowHTML).appendTo(tbodyElem);
+														
+							
+						} // function
+					); // $.each contactList
+				}
+			 )
+			.children('tr')			// select all the table rows
+			.filter(':odd')			// filter on all the EVEN items
+			.addClass('evenrow')	// apply class
+			.end()					// revert selection back to all rows
+			.filter(':even')		// filter on ODD items
+			.addClass('oddrow')		// and apply class
+			.end();					// and end up back at the TBODY
+
+			
+	}, // App.start
+
+	toggleHover: function(e) {
+		/*
+		console.log(e.type);
+		console.log('This: ' + this.nodeName);
+		console.log('Target: ' + e.target.nodeName);
+		console.log('Related Target: ' + e.relatedTarget.nodeName);
+		console.log('Current Target: ' + e.currentTarget.nodeName);
+		*/
+		
+		$(e.target).closest('tr').toggleClass('hover');
+		
+	} // App.toggleHover
+
+}; // App
+
+var contactData =
+{
+	"requestdate": "Date/Time",
+	
+	"fieldLabels": ['ID', 'First Name', 'Last Name', 'Email Address'],
+	
+	"data": 
+		[
+			 { "id":10,"firstname":"John","lastname":"Allen","email":"jal@yahoo.com" },
+			 { "id":123,"firstname":"Mary","lastname":"Peters","email":"mpami@gmail.com" },
+			 { "id":2,"firstname":"Jessica","lastname":"Albert","email":"who@email.com" },
+			 { "id":24,"firstname":"Alexi","lastname":"Michaels","email":"am@morning.com" },
+			 { "id":11,"firstname":"George","lastname":"Thomas","email":"george@thomas.com" },
+			 { "id":9,"firstname":"Sybil","lastname":"Charles","email":"person1@mail.com" },
+			 { "id":54,"firstname":"Frances","lastname":"Donald","email":"fhmd@mac.com" }
+		]
+
+};
+
+$(document).ready(App.start); // document.ready
+
+</script>
+</body>
+</html>

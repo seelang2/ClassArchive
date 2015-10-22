@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<form action="#" method="get">
+
+<div id="groupa" class="group">
+	<div><button id="checkall1" data-group="a">Check All</button></div>
+	<div><input type="checkbox" name="a" /></div>
+	<div><input type="checkbox" name="a" /></div>
+	<div><input type="checkbox" name="a" /></div>
+	<div><input type="checkbox" name="a" /></div>
+	<div><input type="checkbox" name="a" /></div>
+	<div><input type="checkbox" name="a" /></div>
+</div>
+
+<button>Click Me</button>
+
+<div id="groupb" class="group">
+	<div>
+		<input id="checkall2" type="checkbox" data-group="b" />
+		<label for="checkall2">Check All</label>
+	</div>
+	<div><input type="checkbox" name="b" /></div>
+	<div><input type="checkbox" name="b" /></div>
+	<div><input type="checkbox" name="b" /></div>
+	<div><input type="checkbox" name="b" /></div>
+	<div><input type="checkbox" name="b" /></div>
+	<div><input type="checkbox" name="b" /></div>
+</div>
+
+<input type="submit" />
+</form>
+
+<script src="jquery-1.11.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$('#checkall1')
+	.on(
+		'click',
+		function(evt) {
+			evt.preventDefault(); // stops button from submitting form
+
+			// get collection of all checkboxes
+			var $checkboxes = 
+			$(this)
+				.closest('.group')
+				.find(':checkbox');
+				
+			
+			if ( $(this).hasClass('checked') ) {
+				// things are already checked, uncheck them
+				$checkboxes.prop('checked', false);
+				
+				// change checkall control
+				$(this)
+					.removeClass('checked')
+					.html('Check All');
+			} else {
+				// check all items
+				$checkboxes.prop('checked', true);
+				
+				// change checkall control
+				$(this)
+					.addClass('checked')
+					.html('Uncheck All');
+			}
+		
+		}
+	 );
+
+
+$('#checkall2')
+	.on(
+		'click',
+		function(evt) {
+
+			var $checkboxes = 
+			$(this)
+				.closest('.group')
+				.find(':checkbox')
+				.not('#checkall2');
+
+			if ( $(this).prop('checked') ) {
+				// check all items
+				$checkboxes.prop('checked',true);
+				// change checkall control
+				$(this)
+					.next()
+					.html('Uncheck All')
+			} else {
+				// things are already checked, uncheck them
+				$checkboxes.prop('checked', false);
+				
+				// change checkall control
+				$(this)
+					.next()
+					.html('Check All')
+			}
+		}
+	 );
+	 
+	 
+	 
+
+	 
+	 
+	 
+
+</script>
+</body>
+</html>

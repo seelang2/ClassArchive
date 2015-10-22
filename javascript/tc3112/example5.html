@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+<style type="text/css">
+
+#buttons {
+	float: left;
+	width: 49.5%;
+	text-align:center;
+}
+
+#content {
+	float: right;
+	width: 49.5%;
+}
+
+input[type="button"] {
+	display: block;
+	width: 100px;
+	height: 30px;
+	margin: 0 auto;
+}
+
+#content div {
+	display: none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="buttons">
+	<input id="button1" type="button" value="Topic 1" />
+	<input id="button2" type="button" value="Topic 2" />
+	<input id="button3" type="button" value="Topic 3" />
+	<input id="button4" type="button" value="Topic 4" />
+</div>
+
+<div id="content">
+	<div id="topic1">
+    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean laoreet, mi in ultrices pellentesque, est tellus pretium felis, et interdum libero mi sit amet leo. Vivamus id mauris vitae felis tempor aliquet. Ut bibendum lectus ac risus ullamcorper laoreet. Vestibulum facilisis dui diam, ac faucibus tortor. Vestibulum libero odio, convallis non tincidunt ac, auctor vitae tellus. Suspendisse rutrum, augue in blandit tempor, quam metus gravida eros, id rhoncus nisi diam nec quam. Curabitur et mauris orci, vel congue nisi. Phasellus ut odio nunc. Curabitur sed sagittis ligula. Ut at placerat elit. Mauris odio lectus, ultricies quis molestie laoreet, mattis sit amet dui. Nulla et sem at libero malesuada ultrices eget in dui. Nunc non ligula mauris. Praesent tincidunt, ante nec pharetra convallis, quam nulla accumsan felis, non mollis urna metus sit amet nunc. Nunc adipiscing leo vel risus vehicula id pharetra libero gravida. Morbi dolor elit, laoreet in pharetra vel, sodales sed purus. Vestibulum et pellentesque eros. Sed urna dui, blandit sit amet suscipit sed, dignissim eu erat. </p>
+    </div>
+	<div id="topic2">
+    	<p>Maecenas magna lectus, tempus sed dapibus sed, bibendum non nisi. Curabitur sed nulla odio, pellentesque condimentum metus. Quisque ornare, leo sed tincidunt sodales, neque enim tempor nibh, a tristique felis felis tempor velit. Proin ut tincidunt magna. Praesent sit amet leo leo. Aenean a dolor dui. Pellentesque a ipsum nec turpis hendrerit lobortis at ac metus. Etiam iaculis turpis ut ipsum pellentesque rhoncus. Nunc volutpat, magna et varius tempor, tortor tellus iaculis mauris, semper fringilla quam lectus non ligula. Nulla nec purus orci, et aliquam nisi. Vivamus fringilla porta nunc ac lobortis. Proin aliquam egestas lobortis. Integer pulvinar sapien vel enim accumsan feugiat. Etiam suscipit varius eros. Donec porttitor ornare sapien et pulvinar. </p>
+    </div>
+	<div id="topic3">
+    	<p>Cras varius facilisis tellus, id semper elit vestibulum at. Nam bibendum diam id mi vestibulum at congue elit consequat. Donec sit amet justo quis sapien adipiscing faucibus. Maecenas mi justo, rhoncus eu dapibus eget, blandit id neque. Sed nec felis libero, a commodo enim. Praesent imperdiet venenatis ligula quis laoreet. Praesent a nunc risus, at lobortis elit. Nullam dapibus urna quis erat tristique sodales sodales tellus ultricies. In bibendum consequat fringilla. Pellentesque lacinia orci sed erat luctus tincidunt. Sed metus lacus, rhoncus vitae dapibus in, rutrum nec dolor. Fusce at nibh nulla. Etiam neque ipsum, semper vitae condimentum et, vestibulum non mi. Sed cursus mattis cursus. </p>
+    </div>
+	<div id="topic4">
+    	<p>Cras feugiat velit quam, vel adipiscing massa. Praesent id odio nibh, non elementum enim. Integer gravida massa ut tellus ornare nec elementum nisl cursus. Maecenas tincidunt adipiscing ipsum in commodo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec sollicitudin varius orci ultricies semper. Proin imperdiet accumsan felis sit amet lacinia. In accumsan posuere eros ultricies gravida. Etiam ut arcu a est adipiscing euismod. In lacinia convallis velit, id iaculis leo euismod ut. Duis lacinia aliquet justo, ac auctor ipsum consequat vitae. Nullam est urna, vehicula cursus laoreet nec, porta ac nibh. Sed eu diam felis. Proin egestas tellus quis massa adipiscing sodales. Mauris ligula diam, laoreet a laoreet id, cursus pellentesque turpis. </p>
+    </div>
+</div>
+
+<script type="text/javascript">
+var topicDiv1 = document.getElementById("topic1");
+var topicDiv2 = document.getElementById("topic2");
+var topicDiv3 = document.getElementById("topic3");
+var topicDiv4 = document.getElementById("topic4");
+
+var tmpElem = document.getElementById("button1");
+tmpElem.onclick = function() {
+	// display correct topic
+	topicDiv1.style.display = 'block';
+	// hide other topics
+	topicDiv2.style.display = 'none';
+	topicDiv3.style.display = 'none';
+	topicDiv4.style.display = 'none';
+};
+
+var tmpElem = document.getElementById("button2");
+tmpElem.onclick = function() {
+	// display correct topic
+	topicDiv2.style.display = 'block';
+	// hide other topics
+	topicDiv1.style.display = 'none';
+	topicDiv3.style.display = 'none';
+	topicDiv4.style.display = 'none';
+};
+
+var tmpElem = document.getElementById("button3");
+tmpElem.onclick = function() {
+	// display correct topic
+	topicDiv3.style.display = 'block';
+	// hide other topics
+	topicDiv2.style.display = 'none';
+	topicDiv1.style.display = 'none';
+	topicDiv4.style.display = 'none';
+};
+
+var tmpElem = document.getElementById("button4");
+tmpElem.onclick = function() {
+	// display correct topic
+	topicDiv4.style.display = 'block';
+	// hide other topics
+	topicDiv2.style.display = 'none';
+	topicDiv3.style.display = 'none';
+	topicDiv1.style.display = 'none';
+};
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 85%;
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+#content {
+	margin: 0 auto;
+	width: 700px;
+	border: 1px solid #71A6E8;
+}
+
+h2 {
+	font-size: 1.2em;
+	font-weight: bold;
+	background: #CCE7F7;
+	padding: 0.5em 0.25em;
+	margin: 0;
+	border-bottom: 1px solid #71A6E8;
+	cursor: pointer;
+}
+
+.topic {
+	padding: 0 0.25em;
+	height: 0;
+	overflow: hidden;
+}
+
+.hilight {
+	background: #ADE7FA;
+}
+
+.selected {
+	background: #FEE99E;
+}
+
+

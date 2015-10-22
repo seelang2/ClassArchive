@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+	
+	form label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	
+	form label span {
+		display: inline-block;
+		width: 100px;
+	}
+	</style>
+</head>
+<body>
+
+<form id="form1" action="#" method="get">
+	<label>
+		<span>First Name:</span>
+		<input name="firstname" data-vrule="notempty" />
+	</label>
+	<label>
+		<span>Last Name:</span>
+		<input name="lastname" data-vrule="minlength" data-vminlength="4"  />
+	</label>
+	<label>
+		<span>Email:</span>
+		<input name="email" />
+	</label>
+	<div>
+		<input type="submit" value="Continue" />
+	</div>
+</form>
+
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript">
+
+function validateFormElement(formElement) {
+	var vrule = $(formElement).attr('data-vrule'); // extract validation rule
+	
+	if (!vrule) return {status: true, message: ''};
+	//console.log(vrule);
+	
+	switch(true) {
+		case vrule == 'notempty' && $(formElement).val().length < 1:
+			return {status: false, 
+					 message: $(formElement).attr('name') + ' cannot be blank.'};
+		break;
+		
+		case vrule == 'minlength' && 
+				$(formElement).val().length < $(formElement).attr('data-vminlength'):
+			return {status: false, 
+					 message: $(formElement).attr('name') + ' must be at least ' + $(formElement).attr('data-vminlength') + ' characters.'};
+		break;
+	}
+	
+	return {status: true, message: ''};
+}
+
+$(document).ready(function() {
+
+	$('#form1')
+		.submit(
+			function(e) {
+				e.preventDefault(); // cancel form submission
+				
+				var formIsValid = true; // innocent until proven guilty
+				var errorMessages = '';
+				
+				 $(this)
+					.find(':input')
+					.each(function(i, formElement) {
+						var result = validateFormElement(formElement);
+						if (!result.status) {
+							formIsValid = false;
+							errorMessages += result.message;
+						}
+					 });
+				
+				if (!formIsValid) {
+					alert('There is a problem with the form.' + errorMessages);
+					return;
+				}
+				
+					// submit form via ajax
+					$.ajax({
+						url:		'action1.html',
+						type:		'post',
+						dataType:	'html',
+						data:		$(this).serialize(),
+						success:	function(response) { }
+					 });
+					
+			}
+		 );
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

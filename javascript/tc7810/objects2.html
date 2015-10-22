@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+// constructor functions
+
+/*
+// properties defined within the constructor are copied into 
+// the local instance(s)
+function Car() {
+	this.make = 'Ford';
+	this.model = 'Escort';
+	this.status = 'off';
+	this.startEngine = function() {
+		this.status = 'on';
+	}
+}
+*/
+
+function Car() {}; // define empty function
+Car.prototype.make = 'Ford';
+Car.prototype.model = 'Escort';
+Car.prototype.status = 'off';
+Car.startEngine = function() {
+	this.status = 'on';
+};
+
+var myCar = new Car();
+
+var yourCar = new Car();
+
+	
+
+
+</script>
+</body>
+</html>

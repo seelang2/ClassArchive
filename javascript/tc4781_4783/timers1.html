@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+<div id="currenttime"></div>
+<div id="countdown"></div>
+<button id="stopbutton">Abort Timer</button>
+
+
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+
+var App = {
+	secondsLeft: 5,
+	
+	updateTime: function () {
+		var now = new Date();
+		App.timeElem.html(now.toUTCString());
+	},
+	
+	start: function() {
+		App.timeElem = $('#currenttime');
+		App.updateTime();
+		
+		setInterval(
+			App.updateTime,
+			1000
+		)
+		
+		$('#stopbutton')
+			.click(
+				function() {
+					clearTimeout(App.timerID);
+					clearInterval(App.intervalID);
+				}
+			 );
+		
+		App.countdown = $('#countdown');
+		
+		App.countdown.html('<p>' + App.secondsLeft + '</p>');
+		
+		App.timerID = setTimeout(
+			function() {
+				alert('Boo.');
+			},
+			App.secondsLeft * 1000
+		);
+		
+		App.intervalID = setInterval(
+			function() {
+				App.countdown.html('<p>' + --App.secondsLeft + '</p>');
+				if (!App.secondsLeft) clearInterval(App.intervalID);
+			},
+			1000
+		);
+		
+	} // App.start
+	
+}; // App
+
+
+
+//window.onload = App.start;
+$(document).ready(App.start);
+
+
+</script>
+</body>
+</html>

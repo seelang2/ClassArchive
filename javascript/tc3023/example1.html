@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<script type="text/javascript">
+
+document.write('<p>This space for rent.</p>');
+
+//alert('This is a basic dialog box.');
+/*
+block comments allow you to do multi-line comments.
+confirm('Bet you really wanted to know this, huh?');
+*/
+
+var fullName = 'John Doe'; // example of a camel-cased variable convention
+
+document.write('<p>Welcome, ' + fullName.toUpperCase() + '!</p>');
+
+var leftSide = 27;
+var rightSide = '32';
+var bothSides = leftSide + rightSide;
+
+document.write('<p>The sum of both sides is ' + bothSides + '</p>');
+
+/*
+Define an empty array using one of two different methods
+var weekDays = new Array();
+var weekDays = [];
+*/
+
+var weekDays = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+document.write('<p>The third element of weekDays is ' + weekDays[2] + '</p>');
+
+
+var output = 'This is an example sentence.';
+
+document.write('<p>' + output + '</p>');
+
+for (var c = output.length; c >= 0; c--) {
+	document.write(output.substr(c,1));
+}
+
+
+
+</script>
+
+</body>
+</html>

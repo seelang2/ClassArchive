@@ -1,0 +1,35 @@
+<!doctype HTML>
+<html>
+<head>
+	<title>Page Title</title>
+	<meta charset="UTF-8" />
+
+</head>
+<body>
+
+<button id="button1">Click Me</button>
+
+
+<script type="text/javascript" src="jquery-1.9.0.js"></script>
+<script type="text/javascript">
+
+/*
+document
+	.getElementById("button1")
+	.onclick = 
+	function() {
+		alert("Thank you, Alice.");
+	};
+*/
+
+$('#button1')
+	.on(
+		'click',
+		function() {
+			alert("I am " + this.id);
+		}
+	 );
+
+</script>
+</body>
+</html>

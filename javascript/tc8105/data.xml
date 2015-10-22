@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<contactlist>
+	<contact>
+		<id>1</id>
+		<firstname>John1</firstname>
+		<lastname>Doe</lastname>
+		<age>34</age>
+	</contact>
+	<contact>
+		<id>2</id>
+		<firstname>John2</firstname>
+		<lastname>Doe</lastname>
+		<age>34</age>
+	</contact>
+	<contact>
+		<id>3</id>
+		<firstname>John3</firstname>
+		<lastname>Doe</lastname>
+		<age>34</age>
+	</contact>
+	<contact>
+		<id>4</id>
+		<firstname>John4</firstname>
+		<lastname>Doe</lastname>
+		<age>34</age>
+	</contact>
+	<contact>
+		<id>5</id>
+		<firstname>John5</firstname>
+		<lastname>Doe</lastname>
+		<age>34</age>
+	</contact>
+</contactlist>

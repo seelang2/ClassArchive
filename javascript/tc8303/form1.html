@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+
+<p>Choose a color:</p>
+<label>
+	<input type="radio" name="color" value="red" />
+	<span>Red</span>
+</label>
+<label>
+	<input type="radio" name="color" value="green" />
+	<span>Green</span>
+</label>
+<label>
+	<input type="radio" name="color" value="blue" />
+	<span>Blue</span>
+</label>
+<label>
+	<input type="radio" name="color" value="other" />
+	<span>Other</span>
+</label>
+<fieldset id="othercolorset">
+	<label>
+		<span>Specify color:</span>
+		<input name="othercolor" />
+	</label>
+</fieldset>
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+// store fieldset collection in variable because we use it often
+var $colorSetElem = $('#othercolorset');
+
+$colorSetElem.hide(); // hide fieldset
+
+// set up event handler on radio group
+$('input[name="color"]')
+	.on('click', function(e) {
+		
+		//console.log($(this).val());
+		
+		if ($(this).val() == 'other') {
+			// display fieldset
+			$colorSetElem.show();
+		} else {
+			// hide fieldset
+			$colorSetElem
+				.hide()
+				.find('input[name="othercolor"]')
+				.val('');
+		}
+		
+	 });
+
+
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

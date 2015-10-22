@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>New Page</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, sans-serif;
+		background-color: #7694C2;
+	}
+
+	#wrapper {
+		width: 960px;
+		margin: auto;
+		background-color: #ffffff;
+	}
+
+	#wrapper > header,
+	#wrapper > footer {
+		padding: 1px 0; /* prevent margin collapse */
+	}
+
+	#wrapper > header {
+		height: 80px;
+		background-color: #F79CE5;
+	}
+
+	#wrapper > footer {
+		height: 125px;
+		background-color: #666666;
+		color: #efefef;
+		clear: both; /* force below floated content DIV */
+	}
+
+	#content {
+		padding: 1px 0;
+		float: left; /* floated parent elements will enclose floated descendants*/
+		background-color: #99F29F;
+	}
+
+	/*
+	Using the border-box box model makes it easier to apply
+	padding and borders to the inner elements in the layout.
+	*/
+	#maincolumn, #sidebar { box-sizing: border-box; }
+
+	#maincolumn {
+		width: 560px;
+		float: left;
+		padding: 1px 1.5em 1px 2.5em;
+	}
+
+	#sidebar {
+		width: 400px;
+		float: right;
+		padding: 1px 20px 1px 10px;
+	}
+
+
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<header>
+	</header>
+
+	<div id="content">
+		<section id="maincolumn">
+			<h2 id="section1">In sed pulvinar diam</h2>
+			<p>Aliquam malesuada sed leo eget iaculis. Fusce ultricies magna arcu, eu tincidunt purus dapibus in. Sed id orci urna. Pellentesque tristique malesuada nunc, ac volutpat dolor blandit id. Cras rhoncus pellentesque turpis eu congue. In sed pulvinar diam. Vestibulum ac vulputate neque, consequat tristique metus. Pellentesque dictum diam ut sollicitudin blandit. Vestibulum lacinia massa at eros tincidunt tristique.</p>
+
+			<p>Aliquam ac bibendum tellus, eu luctus quam. Vivamus auctor tellus dui, sed sollicitudin magna varius quis. In ac posuere ex. Proin consequat viverra fermentum. Pellentesque ultricies aliquet dignissim. Nulla facilisi. Aliquam sed est tellus. Duis eu rhoncus odio, non mollis velit. Phasellus vel malesuada neque.</p>
+
+			<h2 id="section2" style="color:red;">Mauris at magna sapien</h2>
+			<p>Phasellus non lacus dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas a ligula a enim vehicula fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut eros nisl. Mauris at magna sapien. Nulla efficitur magna sit amet placerat molestie.</p>
+
+			<h3>Aliquam vestibulum dolor</h3>
+			<p>Aliquam vestibulum dolor quis tempus mollis. Nam eu est sit amet est tincidunt condimentum. Nunc dapibus rhoncus ex consectetur lobortis. Fusce sit amet massa eget nunc gravida euismod sagittis eu dolor. Nunc consequat condimentum nisi eu faucibus. Integer malesuada luctus ligula eu venenatis. In dignissim libero non nunc gravida maximus ut non odio. Etiam et ipsum ornare, sodales felis at, interdum velit.</p>
+
+			<h2 id="section3">Vivamus bibendum massa lacus</h2>
+			<p>Integer convallis elit orci, eget pretium nisi faucibus eget. Vivamus bibendum massa lacus, vel tincidunt est maximus a. Vestibulum a urna in nisl gravida mattis. Integer at efficitur nisi. Mauris lobortis accumsan leo, nec vulputate ligula. Morbi molestie ipsum ex, eu semper nulla venenatis id. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus sed turpis pulvinar, accumsan turpis non, tempus purus. In eget nunc eget justo sagittis vestibulum. Aliquam aliquet quam at massa venenatis tincidunt. Vivamus ultrices ac lectus non hendrerit. Curabitur sed augue lacus. In ut leo eu lacus lacinia rutrum. Integer maximus pretium turpis sit amet volutpat. Pellentesque fermentum lorem velit, vel ultricies odio mattis ut.</p>
+		</section><!-- maincolumn -->
+
+		<section id="sidebar">
+			<h2>Phasellus non diam commodo</h2>
+			<p>Phasellus non diam commodo, sagittis nibh sed, placerat dolor. Fusce vel consectetur tortor. Vivamus egestas augue tellus, vel iaculis leo egestas quis. Sed augue dolor, suscipit consequat convallis in, sollicitudin eget felis. Nam eget sagittis enim. Phasellus urna risus, ornare id neque bibendum, porta consectetur nibh. Proin eu nibh urna. Nunc facilisis luctus ex, nec pulvinar risus accumsan pulvinar. Vivamus id lacus faucibus, porta neque nec, ultricies justo. Ut vulputate euismod mollis. Nulla sit amet finibus urna. Donec est felis, vehicula vel congue ac, aliquet sit amet sem. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus sed justo vel orci bibendum molestie vel id nisl. Maecenas auctor vehicula massa nec maximus. Nullam sed tellus sed elit porttitor tincidunt a et nisl.</p>
+		</section><!-- sidebar -->
+	</div><!-- content -->
+
+	<footer>
+		<p>Copyright &copy; Training Connection Class X. Creative Commons.</p>
+	</footer>
+</div><!-- wrapper -->
+
+</body>
+</html>

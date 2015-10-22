@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+	
+	</style>
+
+</head>
+<body>
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+var data = [
+    {
+        "Region": "1",
+        "RegionDesc": "Boston",
+        "APR14-JUN14": "123",
+        "JAN14-MAR14": "208",
+        "OCT13-DEC13": "132",
+        "JUL13-SEP13": "119",
+        "APR13-JUN13": "0",
+        "OCT12-DEC12": "190",
+        "JUL12-SEP12": "128",
+        "": ""
+    },
+    {
+        "Region": "2",
+        "RegionDesc": "New York",
+        "APR14-JUN14": "253",
+        "JAN14-MAR14": "477",
+        "OCT13-DEC13": "226",
+        "JUL13-SEP13": "204",
+        "APR13-JUN13": "141",
+        "OCT12-DEC12": "437",
+        "JUL12-SEP12": "221",
+        "": ""
+    },
+    {
+        "Region": "3",
+        "RegionDesc": "Philadelphia",
+        "APR14-JUN14": "235",
+        "JAN14-MAR14": "479",
+        "OCT13-DEC13": "250",
+        "JUL13-SEP13": "197",
+        "APR13-JUN13": "86",
+        "OCT12-DEC12": "366",
+        "JUL12-SEP12": "246",
+        "": ""
+    },
+    {
+        "Region": "4",
+        "RegionDesc": "Atlanta",
+        "APR14-JUN14": "675",
+        "JAN14-MAR14": "1322",
+        "OCT13-DEC13": "1066",
+        "JUL13-SEP13": "730",
+        "APR13-JUN13": "598",
+        "OCT12-DEC12": "1272",
+        "JUL12-SEP12": "923",
+        "": ""
+    },
+    {
+        "Region": "5",
+        "RegionDesc": "Chicago",
+        "APR14-JUN14": "397",
+        "JAN14-MAR14": "886",
+        "OCT13-DEC13": "947",
+        "JUL13-SEP13": "761",
+        "APR13-JUN13": "737",
+        "OCT12-DEC12": "1826",
+        "JUL12-SEP12": "1504",
+        "": ""
+    },
+    {
+        "Region": "6",
+        "RegionDesc": "Dallas",
+        "APR14-JUN14": "389",
+        "JAN14-MAR14": "694",
+        "OCT13-DEC13": "387",
+        "JUL13-SEP13": "307",
+        "APR13-JUN13": "388",
+        "OCT12-DEC12": "408",
+        "JUL12-SEP12": "327",
+        "": ""
+    },
+    {
+        "Region": "7",
+        "RegionDesc": "Kansas City",
+        "APR14-JUN14": "107",
+        "JAN14-MAR14": "196",
+        "OCT13-DEC13": "116",
+        "JUL13-SEP13": "119",
+        "APR13-JUN13": "104",
+        "OCT12-DEC12": "128",
+        "JUL12-SEP12": "91",
+        "": ""
+    },
+    {
+        "Region": "8",
+        "RegionDesc": "Denver",
+        "APR14-JUN14": "57",
+        "JAN14-MAR14": "105",
+        "OCT13-DEC13": "54",
+        "JUL13-SEP13": "78",
+        "APR13-JUN13": "58",
+        "OCT12-DEC12": "58",
+        "JUL12-SEP12": "61",
+        "": ""
+    },
+    {
+        "Region": "9",
+        "RegionDesc": "San Francisco",
+        "APR14-JUN14": "382",
+        "JAN14-MAR14": "815",
+        "OCT13-DEC13": "553",
+        "JUL13-SEP13": "421",
+        "APR13-JUN13": "352",
+        "OCT12-DEC12": "382",
+        "JUL12-SEP12": "345",
+        "": ""
+    },
+    {
+        "Region": "10",
+        "RegionDesc": "Seattle",
+        "APR14-JUN14": "61",
+        "JAN14-MAR14": "121",
+        "OCT13-DEC13": "76",
+        "JUL13-SEP13": "48",
+        "APR13-JUN13": "48",
+        "OCT12-DEC12": "66",
+        "JUL12-SEP12": "60",
+        "": ""
+    },
+    {}
+];
+
+// init totals object
+var totals = {};
+
+// loop through rows
+for (var r = 0; r < data.length; r++) {
+	// loop through item properties
+	for (field in data[r]) {
+		
+		if (field == 'Region' || field == 'RegionDesc') continue;
+		// initialize column
+		if (typeof totals[field] == 'undefined') totals[field] = 0;
+		// sum totals field
+		totals[field] += parseInt(data[r][field]);
+		
+	}
+}
+
+console.log(totals);
+
+
+
+
+</script>
+</body>
+</html>

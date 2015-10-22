@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+<div id="currenttime"></div>
+<div id="countdown"></div>
+<button id="stopbutton">Abort Timer</button>
+
+
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+/*
+document.getElementById("stopbutton").onclick = function() {
+	clearTimeout(timerID);
+};
+*/
+function updateTime() {
+	var now = new Date();
+	$timeElem.html(now.toUTCString());
+}
+
+var $timeElem = $('#currenttime');
+updateTime();
+
+setInterval(
+	updateTime,
+	1000
+)
+
+$('#stopbutton')
+	.click(
+		function() {
+			clearTimeout(timerID);
+			clearInterval(intervalID);
+		}
+	 );
+
+var $countdown = $('#countdown');
+var secondsLeft = 5;
+
+$countdown.html('<p>' + secondsLeft + '</p>');
+
+var timerID = setTimeout(
+	function() {
+		alert('Boo.');
+	},
+	secondsLeft * 1000
+);
+
+var intervalID = setInterval(
+	function() {
+		$countdown.html('<p>' + --secondsLeft + '</p>');
+		if (!secondsLeft) clearInterval(intervalID);
+	},
+	1000
+);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 100%;
+		color: #000;
+	}
+	
+	table { 
+		border-collapse: collapse;
+	}
+	
+	td, th { padding: 5px; }
+	
+	tr.hover { background: #FFC; }
+	.oddrow { background: #F3FFED; }
+	.evenrow { background: #DBFFC9; }
+	
+	
+	</style>
+
+</head>
+<body>
+
+<div id="contacts"></div>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+var App = App || {}; // cerate new App object unless it already exists
+
+App.data = {}; // simple data bucket
+
+App.start = function() {
+	
+	App.buildTable();
+	App.updateRows(App.data.contactList);
+	
+}; // App.start
+
+App.buildTable = function() {
+	App.data.tbody = 
+	$('#contacts')
+		.append('<table><tbody /></table>')
+		.find('tbody')			// set collection to TBODY
+		.on(
+			'mouseover',		// listen for mouseover event
+			'tr',				// only react to the event on TRs
+			App.addHover
+		 )
+		.on(
+			'mouseout',
+			'tr',
+			App.removeHover
+		 );
+
+}; // App.buildTable
+
+App.updateRows = function(rowData) {
+	App.data.tbody.empty(); // remove contents of TBODY before drawing rows
+	
+	// add new rows
+	$.each(
+		rowData, // collection to loop through
+		function(index, contact) {
+			$('<tr />')
+				.attr('id', 'row-' + index)
+				.append('<td>' + contact.firstname + '</td>' +
+						'<td>' + contact.lastname + '</td>' + 
+						'<td>' + contact.age + '</td>')
+				.appendTo(App.data.tbody);
+			
+		}
+	); // $.each
+
+	// stripe rows
+	App.data.tbody
+		.children('tr')			// get ALL TRs
+		.filter(':odd')			// filter set to only EVEN items (zero-based)
+		.addClass('evenrow')
+		.end()					// revert collection back to all TRs
+		.filter(':even')		// filter set to ODD items
+		.addClass('oddrow');
+
+}; // App.updateRows
+
+App.addHover = function() {
+	// because we filter the event on the TRs,
+	// 'this' gets set to the TR
+	$(this).addClass('hover');
+}; // App.addHover
+
+App.removeHover = function() {
+	$(this).removeClass('hover');
+}; // App.removeHover
+
+
+// launch App when DOM is ready
+$(document).ready(App.start);
+
+
+
+
+</script>
+<script type="text/javascript">
+App = App || {};
+
+App.data.contactList =
+[
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27}
+];
+
+</script>
+</body>
+</html>
+

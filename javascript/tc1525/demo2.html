@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style type="text/css" media="all">
+#leftside {
+	float: left;
+	width: 49%;
+	border: 1px solid #999999;
+}
+
+#rightside {
+	float: right;
+	width: 49%;
+	border: 1px solid #999999;
+	height: 100px;
+}
+
+
+</style>
+
+<script src="ajax.js"></script>
+<script src="formdata2querystring.js"></script>
+
+<script type="text/javascript">
+// create singleton data registry object
+AppData = new function() {
+	this.ajax = null;
+	this.rightDiv=null;
+	
+}; // AppData
+
+DemoApp = new function() {
+	this.init = function() {
+		AppData.ajax = new Ajax();
+		AppData.rightDiv = document.getElementById("rightside");
+		
+		var doc = document.getElementById("form1");
+		doc.onsubmit = function() {
+			var data = formData2QueryString(this);
+			alert(doc.action);
+			AppData.ajax.doPost(doc.action, data, DemoApp.showRecord, 'text');
+
+			return false;
+		};
+		
+	}; // init
+	
+	this.cleanup = function() {
+			AppData.rightDiv = null;
+	};
+		
+	this.showRecord = function(data) {
+			//AppData.rightDiv.innreHTML = data;
+			document.getElementById("data").value = data;
+	}; // showRecord
+	
+		
+}; // DemoApp
+
+window.onload = DemoApp.init;
+window.unload = DemoApp.cleanup;
+
+
+</script>
+
+</head>
+
+<body>
+<form id="form1" action="echopost.php?mode=html" method="post">
+<div id="leftside">
+
+	<div>
+    	<label for="firstname">First name:</label>
+        <input id="firstname" type="text" name="firstname" />
+    </div>
+    	<div>
+    	<label for="lasttname">last name:</label>
+        <input id="lastname" type="text" name="lastname" />
+    </div>
+    <div>
+    	<input type="submit" value="Continue" />
+    </div>
+
+</form>
+
+
+</div>
+
+<div id="rightside">
+
+
+</div>
+
+
+
+
+</body>
+</html>

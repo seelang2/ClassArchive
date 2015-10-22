@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript">
+
+var contactList = 
+	[{"id":1,"firstname":"John","lastname":"Doe","email":"jdoe@email.com"},
+	 {"id":2,"firstname":"Jane","lastname":"Smith","email":"jane@email.com"},
+	 {"id":3,"firstname":"Frances","lastname":"Alex","email":"flex@email.com"},
+	 {"id":4,"firstname":"Alex","lastname":"Frances","email":"aflex@mac.com"},
+	 {"id":5,"firstname":"Peter","lastname":"McNamara","email":"peter.mcnamara@mylongname.com"},
+	 {"id":6,"firstname":"Marcia","lastname":"Falls","email":"whoami2310@gmail.com"},
+	 {"id":7,"firstname":"Abby","lastname":"Jones","email":"chef@joneskitchen.com"},
+	 {"id":8,"firstname":"Marge","lastname":"Simpson","email":"mgroening@gmail.com"},
+	 {"id":9,"firstname":"Arnold","lastname":"Braunschlager","email":"me@lastactionhero.com"},
+	 {"id":10,"firstname":"Harry","lastname":"Jameson","email":"noone@imadethisup.com"},
+	 {"id":11,"firstname":"Gerald","lastname":"Fitzpatrick","email":"gfp@yahoo.com"}];
+
+/*
+for (members in contactList[0]) {
+	alert(members);
+}
+*/
+var targetElem = document.getElementById("target");
+
+var tableElem = document.createElement("TABLE");
+targetElem.appendChild(tableElem);
+
+var tBodyElem = document.createElement("TBODY");
+tableElem.appendChild(tBodyElem);
+
+// loop through contactList and create table rows for each contact
+for (var c = 0; c < contactList.length; c++) {
+	
+	var trElem = document.createElement("TR");
+	tBodyElem.appendChild(trElem);
+	
+	for (var whateverTheHellIWant in contactList[c]) {
+		var tdElem = document.createElement("TD");
+		trElem.appendChild(tdElem);
+		tdElem.appendChild(document.createTextNode(contactList[c][fieldName]));
+	}
+}
+
+</script>
+</body>
+</html>

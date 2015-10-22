@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+
+<script src="ajax.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<div id="left">
+	<p><a id="thelink" href="somelocation.html">Click here to continue</a></p>
+</div>
+
+<div id="right"></div>
+
+
+<script type="text/javascript">
+var startLink = document.getElementById("thelink");
+var ajax = new Ajax(); // create new instance of ajax lib object
+
+startLink.onclick = function() {
+	var x = new Date();
+	x = x.getTime();
+	
+	ajax.doGet('echoget.php?mode=html&firstname=John&lastname=Doe&x=' + x, showResult, 'text');
+	
+	return false; // cancels default action for link
+};
+
+function showResult(response) {
+	document.getElementById("right").innerHTML = response;
+	
+}
+
+</script>
+
+</body>
+</html>

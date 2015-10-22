@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	#carousel {
+		position: relative;
+		width: 400px;
+		height: 300px;
+		margin: auto;
+		overflow: hidden;
+	}
+	
+	#filmstrip {
+		position: absolute;
+		height: 300px;
+		width: 1600px;
+		left: -400px;
+	}
+	
+	#filmstrip div {
+		width: 400px;
+		height: 300px;
+		float: left;
+	}
+	</style>
+</head>
+<body>
+
+<div id="carousel">
+	<div id="filmstrip">
+		<div style="background: url('camel1.jpg');">
+		</div>
+		<div style="background: url('camel2.jpg');">
+		</div>
+		<div style="background: url('camel3.jpg');">
+		</div>
+		<div style="background: url('camel4.jpg');">
+		</div>
+	</div>
+</div>
+<button id="btnMoveLeft">Next &gt;&gt;</button>
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	var $filmstrip = $('#filmstrip');
+	
+	var moveLeft = function() {
+		$filmstrip
+			.animate(
+				{
+					left: '-=400'
+				},
+				{
+					duration: 750,
+					complete: function() {
+						$filmstrip
+							.css('left','-400px')		// reset displayed slide to start
+							.children(':first-child')	// go to first div
+							.appendTo($filmstrip);		// move to end
+							
+						startTimer();
+					}
+				}
+			 );
+	}
+	
+	var startTimer = function() {
+		timer = setTimeout(moveLeft, 3000);
+	}
+	
+	$('#btnMoveLeft')
+		.click(function() {
+			$filmstrip.finish();
+			
+			clearTimeout(timer); // cancel timer
+			
+			moveLeft();
+			
+			
+		 })
+	
+	startTimer(); // start animation
+}); // document.ready
+
+
+</script>
+</body>
+</html>

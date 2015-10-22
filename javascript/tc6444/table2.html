@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Table Demo using InnerHTML</title>
+	
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript">
+
+// get reference to DOM node to manipulate
+var targetElem = document.getElementById("target");
+
+// create DOM node
+var tableElem = document.createElement("TABLE");
+tableElem.id = 'exampletable';
+
+var tbodyElem = document.createElement("TBODY");
+tableElem.appendChild(tbodyElem); // attach node to branch
+
+// build table row
+var trElem = document.createElement("TR");
+tbodyElem.appendChild(trElem); 
+
+var tdElem = document.createElement("TD");
+trElem.appendChild(tdElem);
+// create text node and immediately append to TD
+tdElem.appendChild(document.createTextNode('John'));
+
+tdElem = document.createElement("TD");
+trElem.appendChild(tdElem);
+// create text node and immediately append to TD
+tdElem.appendChild(document.createTextNode('Doe'));
+
+// build next table row
+trElem = document.createElement("TR");
+tbodyElem.appendChild(trElem); 
+
+tdElem = document.createElement("TD");
+trElem.appendChild(tdElem);
+// create text node and immediately append to TD
+tdElem.appendChild(document.createTextNode('Jane'));
+
+tdElem = document.createElement("TD");
+trElem.appendChild(tdElem);
+// create text node and immediately append to TD
+tdElem.appendChild(document.createTextNode('Smith'));
+
+
+
+
+targetElem.appendChild(tableElem); // attach branch to DOM
+
+</script>
+</body>
+</html>

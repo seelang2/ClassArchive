@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+var someValue = 'This space for rent.';
+
+document.write('<p>' + someValue + '</p>');
+
+/*
+	parseInt() extracts the leading integer value from a string.
+	parseFloat() extracts the leading floating-point value from a string.
+*/
+var sideA = 3,
+	sideB = parseFloat('10.326in'), // use parseInt() or parseFloat()
+	area = sideA * sideB,
+	perimeter = (sideA * 2) + (sideB * 2);
+
+document.write('<p>The area is ' + area + '.</p>');
+document.write('<p>The perimeter is ' + perimeter + '.</p>');
+
+console.log('This gets sent to the console.');
+
+//var weekdays = new Array('Sun', 'Mon', 'Tue');
+var weekdays = ['Mon', 'Tue']; // use object literal to define array
+
+weekdays.unshift('Sun');
+weekdays.push('Wed','Thu','Fri');
+
+//var pillbox = ['white','white','none'];
+
+//var pillbox = new Object();
+var pillbox = 
+{
+	Sun: 'white',
+	Mon: 'white',
+	Tue: 'none',
+	Wed: 'purple',
+	Thu: 'orange',
+	Fri: 'red',
+	Sat: 'green'
+};
+
+
+
+document.write('<p>' + pillbox.Sun + '</p>'); // use object notation to access property
+document.write('<p>' + pillbox['Sun'] + '</p>'); // use array notation to access property
+
+var today = 'Mon';
+document.write('<p>' + pillbox.today + '</p>'); // won't work because today is not a property
+document.write('<p>' + pillbox[today] + '</p>'); // use array notation to reference properties via 
+												 // variable names
+
+var Registry = {};
+
+Registry.someValue = 'New value';
+
+
+
+
+
+
+</script>
+</body>
+</html>

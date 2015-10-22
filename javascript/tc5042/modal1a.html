@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Modal Box Demo</title>
+
+<style type="text/css">
+
+#container {
+	padding: 1px; /* to keep adjacent margins from collapsing */
+}
+
+/* modal box styling */
+#modalbox {
+	background: #CCC;
+	border: 1px solid #333;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="container">
+    <p>
+    	<button id="thebutton">Open Box</button>
+    </p>
+    <p>
+        <a href="http://www.google.com">Click Me.</a>
+    </p>
+    
+</div><!-- container -->
+
+<script src="jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="modal.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+	
+	$('#container a')
+		.click(
+			function(evt) {
+				//evt.preventDefault(); // stop default action
+				//return false; // also stop default action
+				
+				return confirm('Are you sure you want to leave this site?');
+			}
+		)
+	
+	$('#thebutton')
+		.click(
+			function() {
+				var content = '<h2>Sample Content.</h2><p>Foo.</p>';
+				
+				modal.createBox({ height: 200, width: 300, content: content });
+			}
+		 );
+	
+}); // document.ready
+</script>
+</body>
+</html>

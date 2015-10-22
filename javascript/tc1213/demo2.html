@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+
+<script type="text/javascript" src="ajax.js"></script>
+<script type="text/javascript" src="formdata2querystring.js"></script>
+<script type="text/javascript" src="xmlparse.js"></script>
+
+<style type="text/css">
+#leftside {
+	float:left;
+	width: 49%;
+	border: 1px solid #7a7a7a;
+}
+
+#rightside {
+	float:right;
+	width: 49%;
+	border: 1px solid #7a7a7a;
+}
+
+form label {
+	float: left;
+	margin-right:1em;
+	width: 7em;
+	text-align: right;
+}
+
+form div {
+	clear: both;
+	margin-bottom: 0.5em;
+}
+
+.evenrow {
+	background: #D3E4FE;
+}
+
+.oddrow {
+	background: #92BDFE;
+}
+
+</style>
+
+<script type="text/javascript">
+
+PageData = new function() {
+	this.leftDiv = null;
+	this.rightDiv = null;
+	this.ajaxreq = null;
+}; 
+
+DemoApp = new function() {
+
+	this.init = function() {
+		PageData.leftDiv = document.getElementById("leftside");
+		PageData.rightDiv = document.getElementById("rightside");
+		PageData.ajaxreq = new Ajax();
+		PageData.ajaxreq.async = true;
+		
+		document.getElementById("form1").onsubmit = function() {
+			
+			formData = formData2QueryString(document.getElementById("form1"));
+			
+			x = new Date();
+			x = x.getTime();
+
+			PageData.ajaxreq.doPost('echopost.php?mode=xml&x=' + x, formData, DemoApp.handleResp, 'xml');
+			
+			return false;
+		};
+
+	};
+	
+	this.cleanup = function() {
+		PageData.leftDiv = null;
+		PageData.rightDiv = null;
+	};
+	
+	this.handleResp = function(resp) {
+		
+		// clearing an element method 1
+		/*
+		while (PageData.rightDiv.firstChild) {
+			PageData.rightDiv.removeChild(PageData.rightDiv.firstChild);
+		}
+		*/
+		
+		// clearing an element method 2
+		PageData.rightDiv.innerHTML = '';
+		
+		
+		fieldList = XMLParse.xml2ObjArray(resp, 'field');
+		
+			tempElem = document.createElement("TABLE");
+			PageData.rightDiv.appendChild(tempElem);
+			
+			tbody = document.createElement("TBODY");
+			tempElem.appendChild(tbody);
+
+			// create header row
+			tempRow = document.createElement("TR");
+			tbody.appendChild(tempRow);
+			
+			tempElem = document.createElement("TH");
+			tempElem.appendChild(document.createTextNode('#'));
+			tempRow.appendChild(tempElem);
+			
+			tempElem = document.createElement("TH");
+			tempElem.appendChild(document.createTextNode('Name'));
+			tempRow.appendChild(tempElem);
+			
+			tempElem = document.createElement("TH");
+			tempElem.appendChild(document.createTextNode('Value'));
+			tempRow.appendChild(tempElem);
+
+		fieldCount = fieldList.length;
+		for (c = 0; c < fieldCount; c++) {
+			
+			tempRow = document.createElement("TR");
+			tbody.appendChild(tempRow);
+			
+			if (c % 2 == 0) {
+				tempRow.className = 'evenrow';
+			} else {
+				tempRow.className = 'oddrow';
+			}
+			
+			tempElem = document.createElement("TD");
+			tempElem.appendChild(document.createTextNode(c));
+			tempRow.appendChild(tempElem);
+			
+			tempElem = document.createElement("TD");
+			tempElem.appendChild(document.createTextNode(fieldList[c].name));
+			tempRow.appendChild(tempElem);
+			
+			tempElem = document.createElement("TD");
+			tempElem.appendChild(document.createTextNode(fieldList[c].value));
+			tempRow.appendChild(tempElem);
+			
+			
+		}
+	};
+
+};
+
+window.onload = DemoApp.init;
+window.onunload = DemoApp.cleanup;
+
+</script>
+
+</head>
+<body>
+
+<div id="leftside">
+	<form id="form1" name="form1" method="post" action="#">
+		<div><label for="firstname">First name:</label><input name="firstname" /></div>
+		<div><label for="lastname">Last name:</label><input name="lastname" /></div>
+		<div><input type="submit" value="Continue" /></div>
+	</form>
+
+</div>
+
+<div id="rightside">
+
+</div>
+
+
+
+
+</body>
+</html>

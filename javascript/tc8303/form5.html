@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	
+	label span, label input { display: inline-block; }
+	label span { width: 150px; }
+	
+	fieldset { border: none; }
+	
+	.error {
+	}
+	
+	input.error {
+		border: 1px solid #f00;
+	}
+	
+	span.error {
+		margin-left: 2em;
+		color: #f00;
+	}
+	</style>
+</head>
+<body>
+
+<form action="#" method="get">
+	<fieldset id="itemlist">
+		<label>
+			<span>Enter some text:</span>
+			<input type="text" name="field1" />
+		</label>
+		<label>
+			<span>Enter some text:</span>
+			<input type="text" name="field2" />
+		</label>
+	</fieldset>
+	<div id="controls">
+		<input type="submit" />
+	</div>
+</form>
+
+
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+$('form')
+	.on('submit',function(e) {
+		// use the preventDefault() during troubleshooting
+		//e.preventDefault();
+		
+		// remove any prior error messages and formatting
+		$(this)
+			.find('input.error')		// find any invalid fields
+			.removeAttr('data-error')	// remove error message
+			.removeClass('error')		// remove error class
+			.next('span.error')			// traverse to error span
+			.remove();					// and remove it
+		
+		// in the 'innocent until proven guilty' approach. assume form 
+		// data is valid
+		var formIsValid = true;
+		
+		// loop through fields and test against validation rules
+		$(this)
+			.find(':input')
+			.each(function(index, field) {
+				
+				var fieldName = $(field).attr('name');
+				var fieldValue = $(field).val();
+				
+				// validation rule on a per-field basis
+				// look for exceptions that invalidate fields
+				switch(true) {
+					case fieldName == 'field1':
+					case fieldName == 'field2':
+					
+						// field can't be empty
+						if (fieldValue.length < 1) {
+							// invalidate form
+							formIsValid = false;
+							// attach error message as a data attribute to
+							// element
+							$(field)
+								.addClass('error')
+								.attr('data-error','Field can\'t be blank.');
+							
+						}
+					
+					break;
+					
+				};
+				
+				
+				
+			 }); // each
+		
+		// if form is valid, complete the submit action
+		if (formIsValid) {
+			return true; // exit handler and complete default action (submit)
+		}
+		
+		// form is invalid, display user feedback
+		$(this)
+			.find('.error')
+			.each(function(index, field) {
+				
+				var errorMessage = $(field).attr('data-error');
+				
+				$(field)
+					.after('<span class="error">' + errorMessage + '</span>');
+				
+			 });
+		
+		return false; // cancel form submission
+	 });
+
+
+
+
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

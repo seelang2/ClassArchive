@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+</head>
+<body>
+
+<button id="button1">Click Me</button>
+
+<script type="text/javascript">
+
+
+function counter() {
+	var c = 0;	
+	return ++c;
+}
+
+/*
+// just using global var, no closure
+var x = 0;
+document.getElementById("button1").onclick = function() {
+	console.log(++x);
+}
+*/
+
+function setupCounter() {
+	var x = 0;
+	document.getElementById("button1").onclick = function() {
+		console.log(++x);
+	}
+}
+
+setupCounter();
+
+// use factory pattern to create counter function
+var makeCounter = function() {
+	var c = 0;
+	
+	var getCount = function() {
+		return ++c;
+	}
+	
+	return getCount;
+}
+
+var count = makeCounter();
+
+
+// use an Immediately-Invoked Function Expression(IIFE) to create a closure
+(function(n) {
+	var m = 0;
+	
+	n.updateCount = function() {
+		return ++m;
+	}
+	
+})(window);
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

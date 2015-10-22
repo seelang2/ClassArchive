@@ -1,0 +1,79 @@
+/* CSS Document - demo_f.css */
+
+body {
+	text-align:center;
+	background:#CCCCCC;
+	font-size: 76%;
+	font-family:Geneva, Arial, Helvetica, sans-serif;
+	color: #000000;
+}
+
+#body {
+	margin: 0 auto;
+	padding: 25px;
+	text-align:left;
+	background: #FFFFFF;
+	width: 700px;
+}
+
+#body div { 
+	margin: 25px;
+	border: 1px solid #cccccc; 
+}
+
+#series {
+	float:left;
+	width: 40%;
+	height: 100px;
+}
+
+#model {
+	float:right;
+	width: 40%;
+	height: 100px;
+}
+
+#results {
+	clear:both;
+	height: 250px;
+}
+
+.item {
+	width: 100px;
+	height: 125px;
+	float: left;
+	background: #dedede;
+	text-align:center; 
+}
+
+#hover {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 150px;
+	height: 200px;
+	border: 1px solid #FF9900;
+	text-align: center;
+	padding: 10px;
+	background-color: #ffffff;
+	visibility:hidden;
+	z-index:555;
+}
+
+#hoverdata {
+	width: 130px;
+	height: 150px;
+	margin: 10px auto;
+	text-align:left;
+	background: #FFFFCC;
+	z-index:556;
+}
+
+#hoverbut {
+	text-align:center;
+	z-index:556;
+}
+
+
+
+

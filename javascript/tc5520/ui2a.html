@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+<head>
+	<title>Page</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	
+	<style type="text/css">
+	html { height: 100%; }
+	
+	body { 
+		margin: 0; 
+		padding: 0; 
+		height: 100%;
+	}
+	
+	#image {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+		background: #0f0;
+	}
+	
+	#image img {
+		width: auto;
+		height: auto;
+	}
+	
+	#wrapper {
+		position: relative;
+		z-index: 10;
+		min-height: 100%;
+	}
+	
+	#content {
+		background: #fff;
+		color: #000;
+		position: fixed;
+		bottom: 0;
+		overflow-y: scroll;
+		height: 50%;
+	}
+	
+	#content-inner {
+	}
+	
+	#control {
+		text-align: center;
+		height: 40px;
+		width: 100%;
+		background: #ffc;
+	}
+	</style>
+</head>
+<body>
+<div id="image"><img src="image2.jpg" /></div>
+
+<div id="wrapper">
+	<div id="content">
+		<div id="content-inner">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacus purus, convallis in tristique non, vehicula in velit. </p>
+			<p>Mauris nulla ipsum, egestas vitae pulvinar sit amet, ullamcorper vel sem. Fusce dapibus nunc et diam semper facilisis convallis mi accumsan. Ut vel tellus tellus. Duis quis viverra dolor. Donec iaculis nulla ut odio tempor euismod vel vitae sem. Nullam ultricies nisl vel quam luctus sed sodales lorem porttitor. Etiam at eros non ipsum gravida porttitor. Cras a metus eros. Nulla facilisi. Sed in dictum nisl. Donec lobortis urna ac sem laoreet sit amet adipiscing justo varius. Aenean pulvinar scelerisque imperdiet. Ut sagittis mi id mauris aliquam eu vehicula augue tempor.</p>
+
+			<p>Fusce ac congue augue. Etiam at elit purus, sagittis consectetur ipsum. Vestibulum imperdiet ligula quis urna vestibulum sit amet porta massa imperdiet. Proin non dui congue turpis accumsan blandit. Donec tincidunt lobortis imperdiet. Pellentesque vel diam massa, quis fermentum purus. Aliquam in dui urna. Vestibulum dictum lectus a risus porta venenatis. Sed commodo interdum tempor. Ut accumsan lectus sit amet ipsum congue ac venenatis metus sollicitudin. Duis ultricies orci vitae turpis eleifend lacinia. Proin ornare orci non libero vestibulum facilisis.</p>
+			<!--
+			-->
+		</div><!-- content-inner -->
+		<div id="control">
+			<button>Do Stuff</button>
+		</div><!-- control -->
+	</div><!-- content -->
+</div><!-- wrapper -->
+
+<script type="text/javascript" src="jquery-1.8.3.js"></script>
+<script type="text/javascript">
+
+/*
+	window.onload is used because the IMG element has width and height
+	of 0 until the image has been loaded into the DOM.
+*/
+window.onload = function() {
+	// set up image scaling
+	var $imgElem = $('#image img');
+	var imgHeight = $imgElem.height();
+	var imgWidth = $imgElem.width();
+	console.log(imgWidth + ', ' + imgHeight)
+	
+	if (imgHeight > imgWidth) {
+		$imgElem
+			.css(
+				{
+					'width': '100%',
+					'height': 'auto'
+				}
+			 );
+	} else {
+		$imgElem
+			.css(
+				{
+					'height': '100%',
+					'width': 'auto'
+				}
+			 );
+	}
+	
+};
+
+$(document).ready(
+	function() {
+
+		// configure content
+		var $content = 
+		$('#content')
+			.addClass('halfHeight')
+			.css('height','50%');
+		
+		// set control
+		var $control = $('#control');
+		// if inner content + control height < control, set control to
+		// use fixed positioning
+		if ( $content.children('#content-inner').outerHeight() + 40 < 
+			 $content.outerHeight() ) {
+			$content
+				.children('#control')
+				.css({ position:'fixed', bottom: 0 });
+		} else {
+			$content
+				.children('#control')
+				.css('position','relative');
+		}
+		
+		$('#wrapper')
+			.on(
+				'click',
+				function(e) {
+					
+					if ( $(e.target).is('#wrapper') ) {
+						// toggle content if wrapper is clicked
+						$content
+							.children('#control')
+							.fadeToggle();
+						
+						$($content).slideToggle();
+						
+					} else {
+						
+						$($content).toggleClass('halfHeight fullHeight');
+						
+						if ( $($content).hasClass('halfHeight') ) {
+							$($content)
+								.animate(
+									{
+										height: '50%'
+									}
+								 );
+						} else {
+							$($content)
+								.animate(
+									{
+										height: '100%'
+									}
+								 );
+						}
+					}
+				}
+			 );
+		
+		
+	}
+);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Demo 2</title>
+</head>
+
+<body>
+
+<script type="text/javascript">
+document.write('<p>');
+// set up loop for age
+for (var age = 1; age < 31; age++) {
+	
+	switch(true) {
+		case age < 5:
+			document.write('Age ' + age + ': No school yet<br />');
+		break;
+		case age > 4 && age < 14:
+			document.write('Age ' + age + ': Grade school<br />');
+		break;
+		case age > 13 && age < 19:
+			document.write('Age ' + age + ': High school<br />');
+		break;
+		case age > 18 && age < 24:
+			document.write('Age ' + age + ': College years<br />');
+		break;
+		case age > 24:
+			document.write('Age ' + age + ': Time to join the workforce!<br />');
+		break;
+	}
+	
+	
+	
+}
+
+</script>
+
+
+</body>
+</html>

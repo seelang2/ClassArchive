@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, sans-serif;
+	}
+	
+	label {
+		display: block;
+		margin-bottom: 0.25em;
+	}
+	</style>
+</head>
+<body>
+
+<div id="data"></div>
+
+<form action="#" method="get">
+	<label>
+		<span>First Name</span>
+		<input type="text" name="firstname" />
+	</label>
+	<label>
+		<span>Last Name</span>
+		<input type="text" name="lastname" />
+	</label>
+	<div>
+		<input type="submit" value="Save" />
+	</div>
+</form>
+
+
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+// read from localStorage and display content
+if (typeof localStorage.data == "undefined") {
+	// initialize data array
+	var data = [];
+} else {
+	// load and parse data into array
+	var data = JSON.parse(localStorage.getItem('data'));
+}
+
+console.log(data);
+
+var $data = $('#data');
+
+if (data.length < 1) {
+	$data.html('<p>No data</p>');
+} else {
+	// loop through and display data
+	$.each(data, function(index, contact) {
+		$('<div />')
+			.addClass('contactitem')
+			.append('<p>First Name: ' + contact.firstname + '</p>')
+			.append('<p>Last Name: ' + contact.lastname + '</p>')
+			.appendTo($data);
+	});
+}
+
+// save data to localStorage
+$('form')
+	.on('submit', function(evt) {
+		evt.preventDefault(); // stop form from submitting
+		
+		var tmpRec = {
+			firstname: $(this).find('[name="firstname"]').val(),
+			lastname: $(this).find('[name="lastname"]').val()
+		};
+		
+		// add to data array
+		data.push(tmpRec);
+		
+		// save data to localStorage
+		localStorage.setItem('data', JSON.stringify(data));
+		
+		// display user feedback
+		// and probably good to clear form
+		alert("contact saved.");
+		
+		// call the javascript (NOT jQuery) reset method to clear form
+		this.reset();
+	 });
+
+
+	// note: to delete properties from an object, use 
+	// delete obj.property
+
+}); // document.ready
+
+</script>
+</body>
+</html>

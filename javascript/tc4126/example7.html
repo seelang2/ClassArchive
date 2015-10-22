@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<p><a id="link1" href="http://www.google.com">Click me!</a></p>
+
+<script type="text/javascript">
+
+document.getElementById("link1").onclick = function() {
+	//return false; // cancel default action for this element
+	return confirm('You are about to leave this page. Click Ok to proceed or Cancel to stay.');
+};
+
+</script>
+</body>
+</html>

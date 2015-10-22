@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+#box {
+	width: 100px;
+	height: 0;
+	background: #F00;
+	position: absolute;
+}
+</style>
+</head>
+
+<body>
+
+<div id="box"></div>
+
+<script type="text/javascript">
+
+var currX = 0; // keep track of current X position
+var endX = 255; // stopping X position
+var theBox = document.getElementById("box");
+
+function updatePosition() {
+	currX += 10; // increment x value
+	// have we reached the ending position?
+	if (currX >= endX) {
+		currX = endX; // constrain X to endX
+		clearInterval(moveInterval); // stop interval
+	}
+	
+	// update box position onscreen
+	theBox.style.height = currX + 'px';
+}
+
+// start animation
+var moveInterval = setInterval(updatePosition, 10);
+
+</script>
+</body>
+</html>

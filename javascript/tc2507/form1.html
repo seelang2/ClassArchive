@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+<style type="text/css">
+.success {
+	background: #CF9;
+	border: 1px solid #0C3;
+	padding: 0.5em;
+}
+
+.fail {
+	background: #FFE3DF;
+	border: 1px solid #C30;
+	padding: 0.5em;
+}
+
+.error {
+	border: 2px solid #F00;
+}
+
+</style>
+</head>
+
+<body>
+<div id="statusmsg"></div>
+<form id="form1" action="#" method="get">
+	<label>Name: <input type="text" name="name" /></label><br />
+	<label>Email: <input type="text" name="email" /></label><br />
+	<label>Phone: <input type="text" name="phone" /></label><br />
+	<label>Website: <input type="text" name="website" /></label><br />
+    A few gratuitous checkboxes:<br />
+    <input type="checkbox" name="check" /> Do<br />
+    <input type="checkbox" name="check" /> Re<br />
+    <input type="checkbox" name="check" /> Mi<br />
+	<input type="submit" value="Continue" />
+</form>
+
+
+<script type="text/javascript">
+
+function init() {
+	document.getElementById("form1").onsubmit = function() {
+		return validateForm(this);
+	};
+}
+
+function validateForm(theForm) {
+	var validated = true;
+	var formErrors  = '';
+	
+	var checkSelected = false; // to track checkboxes
+	
+	for (var c = 0; c < theForm.elements.length; c++) {
+		if (theForm.elements[c].name == 'name') {
+			// apply rule to check - name cannot be blank
+			if (theForm.elements[c].value.length < 1) {
+				// data invalid, create error
+				validated = false; // invalidate form
+				formErrors += 'The Name field cannot be blank.<br />';
+				theForm.elements[c].className = 'error';
+			}
+		}
+		
+		if (theForm.elements[c].name == 'email') {
+			// apply rule to check - regular expression match
+			if (theForm.elements[c].value.search(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/) != 0) {
+				// data invalid, create error
+				validated = false; // invalidate form
+				theForm.elements[c].className = 'error';
+				formErrors += 'The email entered is invalid.<br />';
+			}
+		}
+
+		if (theForm.elements[c].name == 'check') {
+			if (theForm.elements[c].checked) {
+				checkSelected = true;
+			}
+		}
+
+	} // for
+	
+	// verify that at least one item was checked
+	if (!checkSelected) {
+		validated = false; // invalidate form
+		formErrors += 'Please check at least one item.<br />';
+	}
+	
+	// check validation status
+	if (!validated) {
+		// not valid, display error message
+		var statusDiv = document.getElementById("statusmsg");
+		statusDiv.className = 'fail';
+		statusDiv.innerHTML = formErrors;
+	}
+	return validated;
+	
+}
+
+window.onload = init;
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+	
+	<style type="text/css">
+	</style>
+	
+</head>
+<body>
+
+<div id="target"></div>
+
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+var AjaxRequest = {
+	method:		'get',
+	dataType:	'text',
+	handler:	undefined,
+	url:		undefined,
+	req:		undefined
+};
+	
+AjaxRequest.get = function(params) {
+	this.method = params.method || this.method;
+	this.dataType = params.dataType || this.dataType;
+	this.handler = params.handler || this.handler;
+	this.url = params.url || this.url;
+	
+	if (typeof this.handler == "undefined" || typeof this.url == "undefined") {
+		alert('No handler or url defined');
+		return;
+	}
+	
+	// create XHR instance
+	try {
+		this.req = new XMLHttpRequest();
+	} catch (e) {
+		alert('XHR is not supported by this browser.');
+		return;
+	}
+	
+	// set up onreadystatechange handler
+	var req = this.req;
+	var ajaxObjInstance = this;
+	
+	this.req.onreadystatechange = function() {
+		if (req.readyState == 4) {
+			if (req.status > 199 && req.status < 300) {
+				// these are the droids we're looking for
+				
+				if (ajaxObjInstance.dataType == 'xml') {
+					var response = req.responseXML;
+				} else {
+					var response = req.responseText;
+				}
+				
+				ajaxObjInstance.handler(response);
+				
+			} else {
+				// these are NOT the droids we're looking for
+				// error handler
+				alert('There was an error encountered during the XHR request.');
+			}
+			
+		} // if readyState
+	}; // onreadystatechange
+	
+	// open the request
+	this.req.open(this.method, this.url);
+	
+	// send request
+	this.req.send();
+};
+
+
+
+
+
+// the code that processes the response from the ajax request should be a callback
+var showData = function(x) {
+	document
+		.getElementById('target')
+		.innerHTML = x;
+}
+
+// now do the ajax request stuff
+var ajax = Object.create(AjaxRequest);
+
+ajax.get({
+	method:		'get',
+	dataType:	'text',
+	url:		'mfpartial.html',
+	handler:	showData
+});
+
+
+</script>
+</body>
+</html>
+
+
+
+

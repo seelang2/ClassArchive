@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+
+</head>
+<body>
+
+<div id="contacts"></div>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+var contactList =
+[
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27}
+];
+
+
+$('#contacts')
+	.append('<table><tbody /></table>');
+
+var $tbody = $('#contacts tbody');
+
+for (var c = 0; c < contactList.length; c++ ) {
+	
+	/*
+	// doesn't work
+	$tbody
+		.append('<tr />')
+		.append('<td>' + contactList[c].firstname + '</td>')
+		.append('<td>' + contactList[c].lastname + '</td>')
+		.append('<td>' + contactList[c].age + '</td>');
+	*/	
+	
+	/*
+	$('<tr />')
+		.append('<td>' + contactList[c].firstname + '</td>')
+		.append('<td>' + contactList[c].lastname + '</td>')
+		.append('<td>' + contactList[c].age + '</td>')
+		.appendTo($tbody);
+	
+	*/
+	
+	$('<tr />')
+		.attr('id', 'row-' + c)
+		.append('<td>' + contactList[c].firstname + '</td>' +
+				'<td>' + contactList[c].lastname + '</td>' + 
+				'<td>' + contactList[c].age + '</td>')
+		.appendTo($tbody);
+	
+}
+
+
+
+</script>
+</body>
+</html>
+

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Page</title>
+<meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+
+<style type="text/css">
+
+body {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 1em;
+	color: #000;
+	margin: 0;
+	padding: 0;
+	background-color: #cccccc;
+	
+}
+
+#wrapper {
+	min-width: 320px;
+	margin: 0 auto;
+	background-image: url('Log_Horizon_Key_Art.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+header {
+	height: 80px;
+	background: #009;
+	color: #fff;
+}
+
+footer {
+	font-size: 90%;
+	padding: 1px 0; /* to prevent margin collapse */
+	height: 125px;
+	background: #666;
+	color: #fff;
+	width: 100%;
+	clear: both;
+}
+
+#content {
+	padding: 1px 5%;
+	background: rgba(255,255,255,0.6);
+}
+
+#banner {
+	background-image: url('Log_Horizon_Key_Art.jpg');
+}
+
+.clearing {
+	clear: both;
+	height: 1px;
+	overflow: hidden;
+}
+
+
+.alignleft {
+	float: left;
+	margin-right: 1em;
+}
+
+img.scalable {
+	width: 100%;
+}
+
+
+.icons {
+	background: url('icons.png');
+	width: 18px;
+	height: 18px;
+	display: inline-block;
+	background-size: 306px;
+}
+
+.icn1 { background-position: 0 0; }
+.icn2 { background-position: -18px 0; }
+.icn3 { background-position: -36px 0; }
+
+
+.icons a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+
+/* breakpoints are 500, 650, 800px */
+
+@media (min-width: 500px){
+
+	.icons {
+		background-size: 612px;
+		width: 36px;
+		height: 36px;
+	}
+
+	.icn1 { background-position: 0 0; }
+	.icn2 { background-position: -36px 0; }
+	.icn3 { background-position: -72px 0; }
+
+}
+
+
+@media (min-width: 500px) and (max-width: 649px){
+	
+	/* sub-stylesheet */
+	
+	header {
+		background: #f00;
+	}
+
+}
+
+@media (min-width: 650px) and (max-width: 799px){
+	
+	/* sub-stylesheet */
+	
+	header {
+		background: #0f0;
+	}
+
+}
+
+@media (min-width: 800px) and (max-width: 999px){
+	
+	/* sub-stylesheet */
+	
+	header {
+		background: #f0f;
+	}
+
+}
+
+@media (min-width: 1000px) {
+	
+	/* sub-stylesheet */
+	.icons {
+		background-size: 1224px;
+		width: 72px;
+		height: 72px;
+	}
+	
+	.icn1 { background-position: 0 0; }
+	.icn2 { background-position: -72px 0; }
+	.icn3 { background-position: -144px 0; }
+	
+	header {
+		background: #ccc;
+	}
+
+}
+
+
+
+
+</style>
+
+</head>
+<body>
+
+<div id="wrapper">
+	<header>
+
+	</header>
+	
+	<div id="content">
+		<div id="banner">
+		</div><!-- banner -->
+		
+		<h1>Lorem ipsum dolor sit amet</h1>
+		
+		<div class="icons icn1"><a href="#"> </a></div>
+		<div class="icons icn2"><a href="#"> </a></div>
+		<div class="icons icn3"><a href="#"> </a></div>
+		
+		
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce et varius mi. Mauris sed euismod nisl. Etiam eget pharetra nibh, eget facilisis augue. Morbi justo eros, lobortis vitae suscipit quis, placerat facilisis nisl. Ut pretium augue ut orci varius, eu sodales ipsum euismod. Duis at purus vel nisl rutrum ultricies. Sed pulvinar cursus dapibus. Ut quis aliquam ante.</p>
+		
+		<img src="Akatsuki_portal.png" class="alignleft" />
+		
+		<p>In metus ligula, dignissim sed quam quis, molestie consequat arcu. Quisque tempor nec risus vitae feugiat. Quisque ac est felis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque consectetur eros sed sapien viverra aliquet. Aenean vestibulum placerat risus. Quisque nec fermentum velit, nec venenatis magna. Fusce dignissim orci dictum luctus tincidunt. Cras varius nibh vitae ligula euismod, vel vestibulum mauris dapibus.</p>
+
+		<p>
+		4. Sed tellus diam, aliquam sed <span style="position:relative;top:-0.5em;font-size:75%;">nisl vitae</span>, fermentum eleifend justo. Nulla tincidunt lacus sed fermentum faucibus. Suspendisse potenti. Pellentesque metus libero, ultrices sed erat ut, aliquam ultricies dolor. Suspendisse ultrices nulla ac felis tincidunt tincidunt. Duis interdum mauris non justo semper vulputate. Nam non nulla quis lacus bibendum cursus eget vel neque. Cras pharetra non urna in viverra. Fusce eleifend, lorem nec pellentesque malesuada, enim massa fringilla neque, ac vehicula eros nisi id dui.
+		</p>
+		<p>
+		5. Nulla ornare, sapien varius volutpat viverra, odio eros bibendum purus, sit amet tincidunt dui massa in libero. Cras auctor diam quis est posuere congue. Curabitur porta dui vel sapien blandit porttitor. Sed accumsan placerat pulvinar. Sed ut pharetra purus, et tincidunt enim. Vestibulum rutrum nec erat quis faucibus. Maecenas pharetra imperdiet tellus quis vulputate.
+		</p>
+		<p>
+		6. Donec consectetur urna ut massa rutrum faucibus. Etiam ac nulla odio. Pellentesque rutrum sed lectus non pretium. Etiam ante lectus, consectetur id scelerisque id, dapibus at mi. Morbi nibh ligula, eleifend non mi sit amet, interdum malesuada ante. In venenatis lobortis nunc in pretium. Aenean a semper sem. Suspendisse eget ornare sem. Donec ultrices felis nec feugiat viverra. Maecenas venenatis sem et velit blandit ultricies. Suspendisse a adipiscing elit, pretium pretium sem. Maecenas viverra gravida lacus, sed ultrices turpis cursus vel. Etiam tempor lacinia arcu, at consectetur ipsum imperdiet eu. Vivamus ut placerat velit. Mauris egestas turpis et enim pellentesque consequat. Curabitur gravida metus et odio varius faucibus.
+		</p>
+		<p>
+		7. Curabitur ornare faucibus risus, a cursus mi fringilla nec. Cras lacinia pharetra justo, quis ultricies metus porta eu. Suspendisse est erat, sagittis id condimentum ac, semper nec odio. Fusce convallis, eros sit amet eleifend ullamcorper, odio augue iaculis quam, sit amet molestie est ligula at quam. Vestibulum id libero justo. Curabitur venenatis vel nulla et commodo. Praesent rutrum, nibh sed tincidunt porta, risus quam accumsan justo, eu fermentum lacus elit eu sapien. Morbi id elementum tortor, in lobortis magna. Nunc gravida, neque sed malesuada cursus, magna tortor faucibus nibh, nec luctus risus mauris non est. Praesent a orci gravida, dignissim tortor non, malesuada diam. Mauris diam enim, rhoncus nec rutrum non, placerat pretium sapien. Morbi sagittis, massa posuere gravida convallis, nulla augue malesuada urna, ac ullamcorper erat lectus vehicula nulla.
+		</p>
+		<p>
+		8. Etiam fringilla, justo nec ultricies posuere, nisi nulla mollis sapien, ut accumsan odio enim vel mauris. Donec in sem enim. Curabitur bibendum ornare sollicitudin. In condimentum, nibh in feugiat pulvinar, enim urna rutrum eros, ac suscipit lorem neque quis leo. Donec luctus, enim et dapibus faucibus, nulla velit hendrerit dolor, vitae porttitor sapien leo vel nisi. Vivamus laoreet urna est, fermentum fringilla metus auctor et. Donec dui quam, tincidunt quis diam non, fringilla eleifend lectus. Donec ornare augue imperdiet nunc venenatis rutrum. Aliquam erat volutpat. Nunc a arcu sit amet nibh fermentum semper id sit amet mi. Donec egestas ultricies commodo.
+		</p>
+		<p>
+		9. In sed turpis felis. Duis accumsan lobortis arcu, in dignissim tellus auctor sed. Suspendisse molestie diam eget tellus semper imperdiet. Etiam a orci nisi. Curabitur velit leo, lobortis sit amet neque vel, tempus gravida quam. Suspendisse fermentum nunc non ante dignissim, vel tempus odio vulputate. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt nec lectus ac ullamcorper. Pellentesque rhoncus sodales nisi eu euismod. Ut laoreet vulputate tempus. Phasellus volutpat, odio sed feugiat dictum, mauris urna hendrerit nunc, vel tincidunt lacus quam id justo. Proin elit sapien, bibendum quis sagittis a, hendrerit a nisi. Sed fringilla suscipit dui, ornare sollicitudin justo. Integer iaculis in quam eu bibendum.
+		</p>
+		
+		<div class="clearing"></div>
+	</div><!-- content -->
+	
+	<footer>
+		<p>Creative Commons 2014 Training Connection Class 6781</p>
+	</footer>
+</div><!-- wrapper -->
+
+
+</body>
+</html>

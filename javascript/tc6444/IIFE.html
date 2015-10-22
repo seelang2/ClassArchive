@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Immediately-Invoked Function Expression (IIFE) Demo</title>
+	
+</head>
+<body>
+
+<button>Click Me</button>
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+(function(x) {
+
+	var c = x || 0;
+
+	$('button').click(function() {
+		
+		alert("I've been clicked " + (++c) + ' times.');
+		
+	});
+	
+})(100);
+
+
+
+</script>
+</body>
+</html>

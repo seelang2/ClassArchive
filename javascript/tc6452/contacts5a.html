@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 100%;
+		color: #000;
+	}
+	
+	table { 
+		border-collapse: collapse;
+	}
+	
+	td, th { padding: 5px; }
+	
+	tr.hover { background: #FFC; }
+	.oddrow { background: #F3FFED; }
+	.evenrow { background: #DBFFC9; }
+	
+	
+	</style>
+
+</head>
+<body>
+
+<div id="contacts"></div>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+var contactList =
+[
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27}
+];
+
+
+var $tbody = 
+$('#contacts')
+	.append('<table><tbody /></table>')
+	.find('tbody');
+
+
+$.each(
+	contactList, // collection to loop through
+	function(index, contact) {
+		$('<tr />')
+			.attr('id', 'row-' + index)
+			.append('<td>' + contact.firstname + '</td>' +
+					'<td>' + contact.lastname + '</td>' + 
+					'<td>' + contact.age + '</td>')
+			.appendTo($tbody);
+		
+	}
+); // $.each
+
+// for better performance
+$tbody
+	.children('tr')			// get ALL TRs
+	.filter(':odd')			// filter set to only EVEN items (zero-based)
+	.addClass('evenrow')
+	.end()					// revert collection back to all TRs
+	.filter(':even')		// filter set to ODD items
+	.addClass('oddrow')
+	.end()					// revert collection back to all TRs
+	.end()					// revert back to TBODY
+	.on(
+		'mouseover',		// listen for mouseover event
+		'tr',				// only react to the event on TRs
+		function(e) {
+			// because we filter the event on the TRs,
+			// 'this' gets set to the TR
+			$(this).addClass('hover');
+		}
+	 )
+	.on(
+		'mouseout',
+		'tr',
+		function(e) {
+			$(this).removeClass('hover');
+		}
+	 );
+
+
+</script>
+</body>
+</html>
+

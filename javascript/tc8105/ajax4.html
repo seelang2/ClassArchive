@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+
+// function in global scope that handles JSONP data
+var doStuff = function(data) {
+	console.log(data);
+};
+
+/*
+var scriptElem = 
+$('<script />')
+	.attr('src','http://192.168.1.105/tc8105/data.jsonp')
+	.prependTo(document.body);
+*/
+
+$.ajax({
+	url:		'http://192.168.1.105/tc8105/data.jsonp',
+	type:		'get',
+	dataType:	'script'
+});
+
+
+
+</script>
+</body>
+</html>

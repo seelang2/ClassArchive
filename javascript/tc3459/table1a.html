@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+.table-oddrow { background:#E9ECFE; }
+.table-evenrow { background:#C4D1FF; }
+</style>
+</head>
+
+<body>
+
+<div id="container"></div>
+
+<script src="tablebuilder.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+var testData = [{firstname: "John", lastname: "Doe", email: "jdoe@email.com"},
+				{firstname: "Peter", lastname: "Hun", email: "jddfgdfoe@email.com"},
+				{firstname: "Mary", lastname: "Strong", email: "4hdfgh@email.com"},
+				{firstname: "Alex", lastname: "Warner", email: "ngngs@email.com"},
+				{firstname: "Brenda", lastname: "Kelly", email: "fghgmhjm6@email.com"},
+				{firstname: "Julie", lastname: "Peters", email: "fg3rhdf@email.com"},
+				{firstname: "April", lastname: "Winter", email: "iamparadox@email.com"},
+				{firstname: "May", lastname: "Summer", email: "metoo2@email.com"},
+				{firstname: "June", lastname: "Harwood", email: "noonereally@email.com"},
+				{firstname: "Howard", lastname: "Michaels", email: "howard.michaels@email.com"},
+				{firstname: "Everest", lastname: "Peaks", email: "climbme@email.com"},
+				{firstname: "Paul", lastname: "Jones", email: "btllvr@email.com"}];
+
+var targetDiv = document.getElementById("container");
+
+var newTable = buildTable({dataList: testData,
+							targetNode: targetDiv,
+							id: 'table1',
+							oddrowclass: 'table-oddrow',
+							evenrowclass: 'table-evenrow'});
+
+alert(newTable.tbodyNode.childNodes.length);
+
+</script>
+</body>
+</html>

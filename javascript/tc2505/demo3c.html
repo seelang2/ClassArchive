@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Demo 3: DOM DOM DOM!</title>
+
+<style type="text/css">
+.oddrow {
+	background: #ECF8FF;	
+}
+.evenrow {
+	background: #93D1FF;
+}
+
+.tablerowhover {
+	background: #FFC;
+}
+</style>
+
+<script type="text/javascript" src="library.js"></script>
+
+</head>
+
+<body>
+
+<div id="stockticker">
+</div>
+
+
+
+<script type="text/javascript">
+
+
+// use JSON notation to create multidimensional array
+var tickerData = [['SYM'	,'1:00'	,'2:00'	,'3:00'],
+				  ['NT'		,5.25	,4.32	,2.15],
+				  ['MSFT'	,115.21	,110.11	,112.37],
+				  ['NT'		,5.25	,4.32	,2.15],
+				  ['MSFT'	,115.21	,110.11	,112.37],
+				  ['NT'		,5.25	,4.32	,2.15],
+				  ['MSFT'	,115.21	,110.11	,112.37],
+				  ['NT'		,5.25	,4.32	,2.15],
+				  ['MSFT'	,115.21	,110.11	,112.37],
+				  ['NT'		,5.25	,4.32	,2.15],
+				  ['MSFT'	,115.21	,110.11	,112.37],
+				  ['NT'		,5.25	,4.32	,2.15],
+				  ['MSFT'	,115.21	,110.11	,112.37],
+				  ['AAPL'	,121.71	,102.07	,99.11]];
+
+
+// get reference to parent container
+var tickerElem = document.getElementById("stockticker");
+// create stock ticker table
+var stockTable = createTable(tickerData);
+// append table into ticker div
+tickerElem.appendChild(stockTable);
+
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

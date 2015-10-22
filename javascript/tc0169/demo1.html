@@ -1,0 +1,44 @@
+<html>
+<head>
+
+<script type="text/javascript" src="ajaxlib.js"></script>
+<script type="text/javascript" src="formdata2querystring.js"></script>
+
+
+<script type="text/javascript">
+
+function submitform() {
+	form = document.getElementById('form1');
+	postData = formData2QueryString(form);
+
+	ajaxSendReq("POST", 'http://localhost/echopost.php?mode=html', handleResp, postData, 'TEXT');
+
+}
+
+function handleResp(response) {
+	targetDiv = document.getElementById('output');
+	targetDiv.innerHTML = response;
+}
+
+</script>
+
+</head>
+<body>
+
+<div id="input">
+
+<form name="form1" id="form1" action="#" method="post" onsubmit="submitform();return false;">
+	<input name="firstname" id="firstname" type="text" />
+	<input type="submit" />
+
+</form>
+
+</div>
+
+<div id="output">
+
+</div>
+
+
+</body>
+</html>

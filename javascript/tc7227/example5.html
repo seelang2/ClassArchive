@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+function foo() { console.log(this); };
+
+var myObj = {};
+myObj.doStuff = function() { foo.call(this); };
+
+myObj.doStuff();
+
+
+</script>
+</body>
+</html>

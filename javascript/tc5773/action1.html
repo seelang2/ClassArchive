@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Default Actions</title>
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+
+<a id="link1" href="http://www.google.com">Take me to Google</a>
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	$('#link1')
+		.click(function(e) {
+			//return false; // cancel default action for link
+			//return confirm('Are you sure you want to follow this link?');
+			e.preventDefault(); // prevents default action
+			
+		});
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

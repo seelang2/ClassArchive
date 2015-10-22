@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>New Page</title>
+
+	<!-- load reset style first -->
+	<link href="css/normalize.css" type="text/css" rel="stylesheet" />
+	
+	<style type="text/css">
+	body {
+		/* font-family: Verdana, sans-serif; */
+		background-color: #7694C2;
+		background-image: url("images/chicago1.jpeg");
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: left;
+		background-attachment: fixed;
+	}
+
+	#wrapper {
+		max-width: 1024px;
+		margin: auto;
+		background-color: #ffffff;
+		background-image: url("images/chicago1.jpeg");
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+	#wrapper > header,
+	#wrapper > footer {
+		padding: 1px 0; /* prevent margin collapse */
+	}
+
+	#wrapper > header {
+		height: 80px;
+		background-color: #F79CE5;
+	}
+
+	#wrapper > footer {
+		height: 125px;
+		background-color: #666666;
+		color: #efefef;
+	}
+
+	#content {
+		padding: 1px 0;
+		background-color: rgba(153, 230, 242, 0.8);
+	}
+
+	/*
+	Using the border-box box model makes it easier to apply
+	padding and borders to the inner elements in the layout.
+	*/
+	#maincolumn, #sidebar { box-sizing: border-box; }
+
+	#maincolumn {
+		width: 60%;
+		float: left;
+		padding: 1px 1.5em 1px 2.5em;
+	}
+
+	#sidebar {
+		width: 40%;
+		float: right;
+		padding: 1px 20px 1px 10px;
+	}
+
+	/* set up a clearing class to be used in the clearing shim DIVs */
+	.clearing {
+		clear: both;
+		height: 1px;
+		overflow: hidden;
+	}
+	
+	.alignleft { float: left; margin-right: 1em; }
+	.alignright { float: right; margin-left: 1em; }
+
+	img.scalable {
+		width: 100%;
+	}
+
+	img.scalable30 {
+		width: 30%;
+	}
+
+	/* sprite map demo */
+	.icon {
+		background-image: url("images/20-social-media-icons.png");
+		width: 137px;
+		height: 137px;
+		display: inline-block;
+	}
+
+	.twitter-icon {
+		background-position: 0 0;
+	}
+	
+	.facebook-icon {
+		background-position: -274px 0;
+	}
+	
+	.flickr-icon {
+		background-position: -137px -137px;
+	}
+	
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<header>
+	</header>
+
+	<div id="content">
+		<section id="maincolumn">
+			<img src="images/chicago2.jpg" class="scalable" />
+
+			<h2 id="section1">In sed pulvinar diam</h2>
+			<img class="alignleft scalable30" src="images/chicago_sm.jpg" />
+			<p>Aliquam malesuada sed leo eget iaculis. Fusce ultricies magna arcu, eu tincidunt purus dapibus in. Sed id orci urna. Pellentesque tristique malesuada nunc, ac volutpat dolor blandit id. Cras rhoncus pellentesque turpis eu congue. In sed pulvinar diam. Vestibulum ac vulputate neque, consequat tristique metus. Pellentesque dictum diam ut sollicitudin blandit. Vestibulum lacinia massa at eros tincidunt tristique.</p>
+
+			<p>Aliquam ac bibendum tellus, eu luctus quam. Vivamus auctor tellus dui, sed sollicitudin magna varius quis. In ac posuere ex. Proin consequat viverra fermentum. Pellentesque ultricies aliquet dignissim. Nulla facilisi. Aliquam sed est tellus. Duis eu rhoncus odio, non mollis velit. Phasellus vel malesuada neque.</p>
+
+			<h2 id="section2" style="color:red;">Mauris at magna sapien</h2>
+			<p>Phasellus non lacus dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas a ligula a enim vehicula fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut eros nisl. Mauris at magna sapien. Nulla efficitur magna sit amet placerat molestie.</p>
+
+			<h3>Aliquam vestibulum dolor</h3>
+			<p>Aliquam vestibulum dolor quis tempus mollis. Nam eu est sit amet est tincidunt condimentum. Nunc dapibus rhoncus ex consectetur lobortis. Fusce sit amet massa eget nunc gravida euismod sagittis eu dolor. Nunc consequat condimentum nisi eu faucibus. Integer malesuada luctus ligula eu venenatis. In dignissim libero non nunc gravida maximus ut non odio. Etiam et ipsum ornare, sodales felis at, interdum velit.</p>
+
+			<h2 id="section3">Vivamus bibendum massa lacus</h2>
+			<p>Integer convallis elit orci, eget pretium nisi faucibus eget. Vivamus bibendum massa lacus, vel tincidunt est maximus a. Vestibulum a urna in nisl gravida mattis. Integer at efficitur nisi. Mauris lobortis accumsan leo, nec vulputate ligula. Morbi molestie ipsum ex, eu semper nulla venenatis id. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus sed turpis pulvinar, accumsan turpis non, tempus purus. In eget nunc eget justo sagittis vestibulum. Aliquam aliquet quam at massa venenatis tincidunt. Vivamus ultrices ac lectus non hendrerit. Curabitur sed augue lacus. In ut leo eu lacus lacinia rutrum. Integer maximus pretium turpis sit amet volutpat. Pellentesque fermentum lorem velit, vel ultricies odio mattis ut.</p>
+		</section><!-- maincolumn -->
+
+		<section id="sidebar">
+			<h2>Phasellus non diam commodo</h2>
+			<p>Phasellus non diam commodo, sagittis nibh sed, placerat dolor. Fusce vel consectetur tortor. Vivamus egestas augue tellus, vel iaculis leo egestas quis. Sed augue dolor, suscipit consequat convallis in, sollicitudin eget felis. Nam eget sagittis enim. Phasellus urna risus, ornare id neque bibendum, porta consectetur nibh. Proin eu nibh urna. Nunc facilisis luctus ex, nec pulvinar risus accumsan pulvinar. Vivamus id lacus faucibus, porta neque nec, ultricies justo. Ut vulputate euismod mollis. Nulla sit amet finibus urna. Donec est felis, vehicula vel congue ac, aliquet sit amet sem. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus sed justo vel orci bibendum molestie vel id nisl. Maecenas auctor vehicula massa nec maximus. Nullam sed tellus sed elit porttitor tincidunt a et nisl.</p>
+
+			<div class="icon facebook-icon"></div>
+			<div class="icon twitter-icon"></div>
+			<div class="icon flickr-icon"></div>
+		</section><!-- sidebar -->
+		<!-- clearing shim to force content to enclose floated columns -->
+		<div class="clearing"></div>
+	</div><!-- content -->
+
+	<footer>
+		<p>Copyright &copy; Training Connection Class X. Creative Commons.</p>
+	</footer>
+</div><!-- wrapper -->
+
+</body>
+</html>

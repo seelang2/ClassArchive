@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Slideshow Demo 1</title>
+
+<style type="text/css">
+#container {
+	width: 300px;
+	height: 250px;
+	margin: auto;
+	border: 1px solid #7a7a7a;
+}
+
+#slideshow {
+	position: relative;
+	width: 300px;
+	height: 200px;
+	overflow: hidden;
+}
+
+#slideshowcontrols {
+	width: 300px;
+	height: 30px;
+	text-align: center;
+	margin: auto;
+	padding: 10px 0;
+}
+
+#slideshowcontrols button {
+	padding: 5px 10px;
+	width: 80px;
+	font-size: 90%;
+}
+
+#slideshowfilmstrip {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 1200px;
+	height: 200px;
+}
+
+#slideshowfilmstrip a,
+#slideshowfilmstrip img {
+	width: 300px;
+	height: 200px;
+	margin: 0;
+	padding: 0;
+	border: none;
+	display: block;
+	text-decoration: none;
+}
+#slideshowfilmstrip a { 	float: left; }
+
+</style>
+</head>
+
+<body>
+
+<div id="container"></div><!-- container -->
+
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+var Slideshow = {
+	init: function(params) {
+		/*
+			params:
+			parentNode is the target element to place the slideshow in
+			items is an array of slide objects with the following properties:
+				.url		- URL to use as link href
+				.img		- src for img element
+		*/
+		$(params.parentNode)		// in the parent node
+			.append('<div id="slideshow"></div>')
+			.children('#slideshow')
+			.append('<div id="slideshowfilmstrip"></div>')
+			.children('#slideshowfilmstrip')
+			.each(
+				function(index, slideshowfilmstrip) {
+					var html = '';
+					$.each(
+						params.items,
+						function(index, slide) { 
+							html += '<a href="'+ slide.url +'"><img src="'+ slide.img +'" /></a>';
+						} // function
+					) // $.each
+					$(this).append(html);
+				} // function
+			)
+			.parent() // move back up to #slideshow
+			.parent() // move up to #container
+			.append('<div id="slideshowcontrols"></div>')
+			.children("#slideshowcontrols")
+			.append('<button id="prev">Previous</button>')
+			.children("#prev")
+			.click(Slideshow.slideRight)
+			.parent()
+			.append('<button id="next">Next</button>')
+			.children("#next")
+			.click(Slideshow.slideLeft);
+
+		//App.slideShowFilmStripElem = document.getElementById("slideshowfilmstrip");
+		Slideshow.slideShowFilmStripJQ = $("#slideshowfilmstrip");
+		Slideshow.slideShowNext = $("#next");
+		Slideshow.slideShowPrev = $("#prev");
+	}, // init
+	
+	slideLeft: function() {
+		Slideshow.slideShowNext.attr("disabled","disabled"); // disable button while animation runs
+		// move filmstrip to the left
+		Slideshow.slideShowFilmStripJQ
+			.animate(
+				{	left:"-300px"  },
+				{	duration: 1000,
+					complete: function() {
+						Slideshow.slideShowFilmStripJQ
+							.children("a:first-child")
+							.appendTo(Slideshow.slideShowFilmStripJQ)
+							.parent()
+							.css("left", "0");
+						
+						Slideshow.slideShowNext.removeAttr("disabled");
+					}
+				}
+			);
+		
+	}, // Slideshow.slideLeft
+
+	slideRight: function() {
+		Slideshow.slideShowPrev.attr("disabled","disabled"); // disable button while animation runs
+		// move filmstrip to the right
+		Slideshow.slideShowFilmStripJQ
+			.children("a:last-child")
+			.prependTo(Slideshow.slideShowFilmStripJQ)
+			.parent()
+			.css("left", "-300px")
+			.animate(
+				{	left: '0'  },
+				{	duration: 1000,
+					complete: function() {
+						Slideshow.slideShowPrev.removeAttr("disabled");
+					}
+				}
+			);
+		
+		
+	} // Slideshow.slideRight
+};
+</script>
+<script type="text/javascript">
+// create singleton App controller object for namespacing
+var App = {
+	startup: function() {
+		Slideshow.init(
+			{	parentNode: document.getElementById("container"),
+				items: [
+					{ url: "http://www.google.com", img: "chicago1.jpg" },
+					{ url: "http://www.cnn.com", img: "chicago2.jpg" },
+					{ url: "http://www.bing.com", img: "chicago3.jpg" },
+					{ url: "http://www.yahoo.com", img: "chicago4.jpg" },
+				]
+			 }
+		);
+		
+		
+	}, // App.startup
+	
+
+}; // App
+
+$(document).ready(App.startup);	// have App.startup execute as soon as DOM is ready
+</script>
+</body>
+</html>

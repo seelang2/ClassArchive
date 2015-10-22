@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript">
+
+// get reference to target elem
+var targetElem = document.getElementById('target');
+
+// build branch offline
+var tableElem = document.createElement('TABLE');
+var tBodyElem = document.createElement('TBODY');
+// connect TBODY to TABLE
+tableElem.appendChild(tBodyElem);
+
+// create row
+var trElem = document.createElement('TR');
+tBodyElem.appendChild(trElem);
+
+var tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('John'));
+
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('Doe'));
+
+// create row
+trElem = document.createElement('TR');
+tBodyElem.appendChild(trElem);
+
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('Jane'));
+
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('Smith'));
+
+
+
+// attach branch to live DOM
+targetElem.appendChild(tableElem);
+
+
+</script>
+</body>
+</html>

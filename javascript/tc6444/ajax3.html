@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>AJAX Demo 1</title>
+	
+	<style type="text/css">
+	#status {
+		background: #FAC0C0;
+		padding: 10px 20px;
+		border: 1px solid #F00;
+		margin: 10px 0;
+		display: none;
+	}
+	
+	.screenreader {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+	}
+	</style>
+</head>
+<body>
+
+<button>Click Me</button>
+
+<div id="status"></div>
+<div id="content"></div>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	function showSpinner() {
+		$('<div />')
+			.attr('id','ajax-spinner')
+			.css({
+				background:	'#f00 url(ajax-loader.gif) no-repeat center',
+				width:		'80px',
+				height:		'80px',
+				position:	'fixed',
+				top:		'50%',
+				left:		'50%',
+				marginLeft:	'-40px',
+				marginTop:	'-40px',
+				zIndex:		9999
+			 })
+			.prependTo(document.body);
+	}
+	
+	function removeSpinner() {
+		$('#ajax-spinner').remove();
+	}
+	
+	$('button')
+		.click(function() {
+			showSpinner(); // display feedback that something is happening
+			// initate AJAX request
+			$.ajax({
+				url:		'echoget.php?firstname=John&lastname=Doe&mode=html',
+				type:		'GET',
+				dataType:	'html',
+				success:	function(response) {
+					$('#content').html(response);
+					removeSpinner(); // ditch the spinner
+					$('#status')
+						.html('Page has been updated.')
+						.show(function() {
+							// we pass in a function to .show which gets executed after 
+							// show finishes
+							var self = this; // self refers back to #status
+							setTimeout(function() {$(self).fadeOut();}, 2000)
+						 })
+				}
+			});
+			
+		 });
+	
+	
+	
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

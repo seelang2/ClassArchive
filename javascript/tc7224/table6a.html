@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Ajax Table Demo</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+	
+	tr.hover { background: #FFC; }
+	.evenrow { background: #E6B8DB; }
+	.oddrow { background: #B8E6C3; }
+	
+	</style>
+
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+// Set up a modular namespace using an IIFE
+(function(App) {
+
+	// create a protected data object inside IIFE
+	// this will hold data 'global' to all App methods
+	var data = {};
+
+	App.start = function() {
+		// initialize app. Create base table, etc.
+		data.targetElem = $('#target');
+		// create table base structure
+		
+		data.tbodyElem =
+		$('<table><tbody /></table>')
+			.appendTo(data.targetElem)
+			.find('tbody');
+		
+		// get contact data
+		App.getContactData();
+		
+	}; // App.start
+
+	App.getContactData = function() {
+		// make Ajax request for contact data
+		$.ajax({
+			url:		'userdata.php?action=getlist&type=xml',
+			type:		'get',
+			dataType:	'xml',
+			success:	App.updateContactTable
+		});
+	}; // App.getContactData
+
+	App.updateContactTable = function(contactXML) {
+		// update table rows
+		data.tbodyElem.empty();		// get rid of any existing rows
+		var rowHTML = '';			// initialize row string
+		$(contactXML)				// put a jQuery wrapper around XML data
+			.find('contact')		// get collection of contact elements
+			.each(function(index, contact) {
+				rowHTML += '<tr>';
+				$(contact)			// put contact node in jQuery wrapper
+					.children()		// traverse to field nodes
+					.each(function(index, field) {
+						rowHTML += '<td>' + $(field).text() + '</td>';
+					 });
+				rowHTML += '</tr>';
+			 });
+		// attach all rows to tbody at once
+		data.tbodyElem.append(rowHTML);
+	}; // App.updateContactTable
+
+
+})(window.App = window.App || {});
+
+// launch app init method on DOM ready
+$(document).ready(App.start);
+
+</script>
+</body>
+</html>

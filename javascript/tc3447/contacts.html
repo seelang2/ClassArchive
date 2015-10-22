@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="contactlist">
+</div>
+
+
+<script type="text/javascript">
+
+var contactList = 
+	[{"name":"John Doe","email":"jdoe@email.com","phone":"(773)588-2300"},
+     {"name":"Jane Smith","email":"jmsmith@homemakers.com","phone":"(773)123-4567"},
+     {"name":"Peter Griffin","email":"peter@famguy.com","phone":"(710)555-8147"},
+     {"name":"Alex Ross","email":"alex@alexross.com","phone":"(224)538-4367"},
+     {"name":"Betty Rubble","email":"brubble@h-b.com","phone":"(918)555-1234"},
+     {"name":"Harry Lewis","email":"random@gmail.com","phone":"(454)564-3463"}];
+
+/*
+var c = 0;
+while (c < contactList.length) {
+
+	c++;
+}
+*/
+var divElem = document.getElementById("contactlist");
+
+
+for (var c = 0; c < contactList.length; c++) {
+	var pElem = document.createElement("P");
+	divElem.appendChild(pElem);
+	var text = document.createTextNode(contactList[c].name);
+	pElem.appendChild(text);
+}
+
+
+</script>
+
+</body>
+</html>

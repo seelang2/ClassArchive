@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>jQuery Plugin Demo</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+	
+	</style>
+
+</head>
+<body>
+
+<ul>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+</ul>
+
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+// jQuery plugins are encapsulated in an IIFE
+(function($) {
+
+	$.fn.merge = function(data) {
+		return this.each(function(i, template) {
+			var $template = $(template);
+			
+			// loop through contact columns
+			$.each(
+				data,
+				function(fieldName, fieldVal) {
+					// merge field data into template
+					$template
+						.find('[data-name="'+fieldName+'"]')
+						.html(fieldVal);
+				}
+			);
+		 })
+	}; // $.fn.merge
+
+})(jQuery);
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

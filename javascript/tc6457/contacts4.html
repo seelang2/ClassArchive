@@ -1,0 +1,304 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Contact List Demo</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		color: #000;
+	}
+	
+	body, button, select, input
+	{ font-size: 100%; }
+	
+	#contactlist {
+		width: 700px;
+		margin: auto;
+		border: 2px solid #7a7a7a;
+		padding: 15px 25px;
+	}
+	
+	#ajaxspinner {
+		width: 120px;
+		height: 120px;
+		background: #ff0000 url('ajax-loader.gif') center no-repeat;
+		border-radius: 20px;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		margin-top: -60px;
+		margin-left: -60px;
+		z-index: 9999;
+	}
+	
+	</style>
+</head>
+<body>
+
+<div id="contactlist">
+	<div id="contactitems"></div>
+	<div>
+		<button class="btnAdd">Add New Contact</button>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+// Set up an IIFE to enclose my namespace
+(function(App) {
+	
+App.data = {}; // create a data repository
+
+App.start = function() {
+	
+	// Set up request 'in progress' feedback
+	$(document).ajaxStart(App.showAjaxSpinner);
+	$(document).ajaxStop(App.hideAjaxSpinner);
+	
+	App.data.contactItems = $('#contactitems');
+	
+	App.data.contactForm =
+	$('<div />')
+		.load('contact-form.html');
+	
+	// set up event handlers for buttons
+	$('#contactlist')
+		.on(
+			'click',
+			'button, [type="button"]', // handles both <BUTTON> and <INPUT type="button>
+			App.buttonRouter
+		 );
+	
+	App.getContactData();
+	
+}; // App.start
+
+App.getContactData = function() {
+	
+	$.ajax({
+		url:		'userdata.php?action=getlist',
+		type:		'get',
+		dataType:	'json',
+		cache:		false,
+		success:	App.updateContactItems
+	});
+	
+}; // App.getContactData
+
+App.buttonRouter = function(e) {
+	// determine what button functionality was clicked and hand off to processor
+	
+	// get contact item index
+	var index = $(this).closest('.contactitem').attr('data-contactindex');
+	//console.log('Button index is',index);
+	
+	switch(true) {
+		case $(this).hasClass('btnAdd'):
+			App.addNewContactItem(index);
+		break;
+		
+		case $(this).hasClass('btnEdit'):
+			
+			App.editContactItem(index);
+		break;
+		
+		case $(this).hasClass('btnDelete'):
+			
+			App.deleteContactItem(index);
+		break;
+		
+		case $(this).hasClass('btnSave'):
+			
+			App.saveContactItem(index);
+		break;
+		
+		case $(this).hasClass('btnCancel'):
+			
+			App.revertContactItem(index);
+		break;
+		
+	} // switch
+	
+}; // App.buttonRouter
+
+
+App.addNewContactItem = function(index) {
+	
+	console.log('Displaying add contact form');
+	
+}; // App.addNewContactItem
+
+App.editContactItem = function(index) {
+	
+	App.data.contactItems
+		.children('[data-contactindex='+ index +']')	// find the DIV.contactitem
+		.find('.btnEdit')								// find Edit button
+		.toggleClass('btnEdit btnSave')					// change Edit to Save
+		.text('Save')
+		.end()											// revert to DIV
+		.find('.btnDelete')								// find Delete button
+		.toggleClass('btnDelete btnCancel')				// change Delete to Cancel
+		.text('Cancel')	
+		.end()											// revert to DIV
+		.find('span[data-fieldname]')					// find field SPANs
+		.after('<input type="text" />')					// add INPUTs as next siblings
+		.next()											// navigate to INPUTs
+		.each(function(index, elem) {					// for each INPUT...
+			$(elem)
+				.attr({									// set INPUT attributes
+					name: $(elem).prev().attr('data-fieldname'),
+					value: $(elem).prev().text()
+				 });
+		 })
+		.end()											// revert back to SPANs
+		.remove();										// remove SPANs
+	
+}; // App.editContactItem
+
+App.revertContactItem = function(index) {
+
+	App.data.contactItems
+		.children('[data-contactindex='+ index +']')	// find the DIV.contactitem
+		.find('.btnSave')								// find Edit button
+		.toggleClass('btnEdit btnSave')					// change Edit to Save
+		.text('Edit')
+		.end()											// revert to DIV
+		.find('.btnCancel')								// find Delete button
+		.toggleClass('btnDelete btnCancel')				// change Delete to Cancel
+		.text('Delete')	
+		.end()											// revert to DIV
+		.find('input')									// find field INPUTs
+		.not('[type="hidden"]')							// exclude hidden fields
+		.after('<span />')								// add SPANs as next siblings
+		.next()											// navigate to SPANs
+		.each(function(index, elem) {					// for each SPAN...
+			$(elem)
+				.attr('data-fieldname', $(elem).prev().attr('name'))
+				.text($(elem).prev().val());
+		 })
+		.end()											// revert back to INPUTs
+		.remove();										// remove INPUTs
+	
+}; // App.revertContactItem
+
+App.saveContactItem = function(index) {
+	
+	var $inputFields =
+	App.data.contactItems
+		.children('[data-contactindex='+ index +']')	// find the DIV.contactitem
+		.find(':input');									// find ALL data field types
+	
+	var uri = 'userdata.php?action=saveuser&id=' + 
+	$inputFields.filter('[name="id"]').val();
+	
+	//console.log(uri);
+	
+	$.ajax({
+		url:		uri,
+		type:		'post',
+		dataType:	'json',
+		data:		$inputFields.serialize(),
+		success:	function(response) {
+			if (response.status == 1) {
+				alert('The record was saved.');
+				
+				App.revertContactItem(index);
+				
+			} else {
+				alert('An error was encountered saving the record.');
+			}
+		}
+	});
+	
+	
+}; // App.saveContactItem
+
+App.deleteContactItem = function(index) {
+	
+	// confirm record deletion
+	if (!confirm('Are you sure you want to delete this record?')) return;
+	
+	var $contactItem =
+	App.data.contactItems
+		.children('[data-contactindex='+ index +']');	// find the DIV.contactitem
+
+	
+	var uri = 'userdata.php?action=delete&id=' + 
+	$contactItem.find('[name="id"]').val();
+	
+	$.ajax({
+		url:		uri,
+		type:		'get',
+		dataType:	'json',
+		success:	function(response) {
+			if (response.status == 1) {
+				alert('The record was deleted.');
+				
+				$contactItem.remove();	// remove contactitem from DOM
+				
+			} else {
+				alert('An error was encountered deleting the record.');
+			}
+		}
+	});
+	
+	
+}; // App.deleteContactItem
+
+App.updateContactItems = function(contactData) {
+	// loop through contacts array and build contactitem divs
+	
+	App.data.contactItems.empty(); // remove any existing contactitems from div
+	
+	$.each(
+		contactData,
+		function(index, contact) {
+					
+		App.data.contactForm
+			.clone()
+			.find('[data-fieldname="id"]')
+			.val(contact.id)
+			.end()
+			.find('[data-fieldname="firstname"]')
+			.html(contact.firstname)
+			.end()
+			.find('[data-fieldname="lastname"]')
+			.html(contact.lastname)
+			.end()
+			.find('[data-fieldname="login"]')
+			.html(contact.login)
+			.end()
+			.addClass('contactitem')
+			.attr('data-contactindex', index)
+			.appendTo(App.data.contactItems);
+			
+		}
+	); // $.each
+	
+}; // App.updateContactItems
+	
+
+App.showAjaxSpinner = function() {
+	$('<div id="ajaxspinner" />').prependTo(document.body);
+}
+
+App.hideAjaxSpinner = function() {
+	$('#ajaxspinner').remove();
+}
+	
+
+})( window.App = window.App || {} );
+
+$(document).ready(App.start); // launch App.start when DOM is ready
+
+
+
+
+
+</script>
+</body>
+</html>

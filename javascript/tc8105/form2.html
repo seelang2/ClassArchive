@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Form Demo 2</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, sans-serif;
+	}
+	
+	fieldset {
+		border: none;
+	}
+	
+	label {
+		display: block;
+		margin-bottom: 0.25em;
+	}
+	</style>
+</head>
+<body>
+
+<h1>Form Demo 2</h1>
+<p>This demonstrates implementing a check/uncheck all option.</p>
+
+<section>
+	<p>Select your favorite genres:</p>
+	<label>
+		<input type="checkbox" id="checkall" />
+		<span>Check/uncheck All</span>
+	</label>
+	<fieldset id="genreset">
+		<label>
+			<input type="checkbox" name="genre[]" value="Action" />
+			<span>Action</span>
+		</label>
+		<label>
+			<input type="checkbox" name="genre[]" value="Fantasy" />
+			<span>Fantasy</span>
+		</label>
+		<label>
+			<input type="checkbox" name="genre[]" value="Sci-Fi" />
+			<span>Sci-Fi</span>
+		</label>
+		<label>
+			<input type="checkbox" name="genre[]" value="Horror" />
+			<span>Horror</span>
+		</label>
+		<label>
+			<input type="checkbox" name="genre[]" value="Suspense" />
+			<span>Suspense</span>
+		</label>
+		<label>
+			<input type="checkbox" name="genre[]" value="Romantic" />
+			<span>Romantic</span>
+		</label>
+	</fieldset>
+</section>
+
+
+
+
+
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+
+// defer script execution to after DOM is initialized
+$(document).ready(function() {
+
+$('#checkall')
+	.on('change', function(evt) {
+	
+		if ( $(this).prop('checked') == true ) {
+			// select all checkboxes
+			$('#genreset input').prop('checked', true);
+			
+		} else {
+			// deselct all checkboxes
+			$('#genreset input').prop('checked', false);
+		}
+	
+	 });
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Table Demo using jQuery</title>
+	
+	<style type="text/css">
+	table { border-collapse: collapse; }
+	
+	tr.hover { background: #ffc; }
+	.oddrow { background: #9f8cff; }
+	.evenrow { background: #cfbcff; }
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+function startHover() {
+	$(this).addClass('hover');
+}
+
+function stopHover() {
+	$(this).removeClass('hover');
+}
+
+
+var contactReq =
+{
+	"requestDate": "08/06/2013 14:40",
+	
+	"fieldLabels": ["ID","First Name","Last Name","Employee Number"],
+	
+	"contactList": [
+		{"id":0,"firstname":"John","lastname":"Doe","empnum":42},
+		{"id":0,"firstname":"Jane","lastname":"Smith","empnum":12},
+		{"id":0,"firstname":"Mary","lastname":"Thompson","empnum":65},
+		{"id":0,"firstname":"Steven","lastname":"Pierce","empnum":2},
+		{"id":0,"firstname":"Beverly","lastname":"Jones","empnum":17},
+		{"id":0,"firstname":"Alex","lastname":"Reid","empnum":21}
+	]
+};
+
+// create base table structure
+
+$('#target')
+	.append('<table><thead /><tbody></tbody></table>')
+	.find('thead')
+	.each(
+		function(i, thead) {
+			$.each(
+				contactReq.fieldLabels,
+				function(i, heading) {
+					$('<th>' + heading + '</th>').appendTo(thead);
+				} // function
+			);
+		}
+	 )
+	.end()	// release thead set and revert back to #target
+	.find('tbody')
+	.each(
+		function(i, tbody) {
+			// loop through contactList
+			$.each(
+				contactReq.contactList, // collection to loop through
+				function(index, contact) {
+					// create new row for contact and add to table
+					var rowHTML = '<tr>';
+						
+					$.each(
+						contact,
+						function(fieldName, fieldValue) {
+							rowHTML += '<td>' + fieldValue + '</td>';
+							console.log(rowHTML); // dump rowHTML to console for observation
+						}
+					);
+					
+					rowHTML += '</tr>';
+					$(rowHTML).appendTo(tbody);
+				}// function
+			);
+		} // function
+	 )
+	.addClass('contacts')		// add class to TBODY
+	.children('tr')				// select all TR children of TBODY
+	.filter(':even')			// filter collection to all ODD elements
+	.addClass('oddrow')			// ...and add the oddrow class
+	.end()						// revert collection to all TR elements
+	.filter(':odd')				// filter collection to all EVEN elements
+	.addClass('evenrow')		// ...and add the evenrow class
+	.end()						// revert collection to all TR elements
+	.on(
+		{
+			mouseover: startHover,
+			mouseout: stopHover
+		}
+	 );
+	
+	
+	
+	
+	
+
+
+
+</script>
+</body>
+</html>

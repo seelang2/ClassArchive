@@ -1,0 +1,85 @@
+﻿<!doctype html>
+<html>
+<head>
+	<title>Sample Page</title>
+	<meta charset="UTF-8" />
+	
+	<style type="text/css">
+	#wrapper {
+		width: 300px;
+		margin: auto;
+		border: 1px solid #ccc;
+		padding: 20px 35px;
+	}
+	
+	form label {
+		position: relative;
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	
+	form label input {
+		position: absolute;
+		left: 75px;
+	}
+	
+	form div {
+		text-align: center;
+	}
+	</style>
+</head>
+
+<body>
+
+<div id="wrapper">
+<form id="form1" action="userdata.php?action=saveuser" method="post">
+	<label>
+		First Name: 
+		<input name="firstname" />
+	</label>
+	<label>
+		Last Name: 
+		<input name="lastname" />
+	</label>
+	<label>
+		Login: 
+		<input name="login" />
+	</label>
+	<div><input type="submit" /></div>
+</form>
+</div>
+
+<script src="jquery-1.8.3.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$('#form1')
+		.submit(
+			function(e) {
+				e.preventDefault(); // cancel default action
+				
+				//console.log($(this).serialize());
+				
+				$.ajax(
+					{
+						url: 		'userdata.php?action=saveuser',
+						type:		'POST',
+						dataType:	'json',
+						data:		$(this).serialize(),
+						success:	function(response) {
+							alert(response.message);
+						}
+					}
+				);
+			}
+		 );
+	
+	
+	
+}); // document.ready
+
+
+</script>
+</body>
+</html>

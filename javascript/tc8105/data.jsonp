@@ -1,0 +1,1 @@
+doStuff({"firstname":"John", "lastname":"Doe", "age":32});

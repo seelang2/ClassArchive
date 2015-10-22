@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript">
+
+var contactList = [
+				   { "firstName": "John",	"lastName": "Doe",	   "email": "jdoe@email.com" },
+				   { "firstName": "Janet",	"lastName": "Smith",   "email": "jsmith@mac.com" },
+				   { "firstName": "Maude",	"lastName": "Jones",   "email": "mj23123@live.com" },
+				   { "firstName": "Peter",	"lastName": "Thomas",  "email": "whythe@msn.com" },
+				   { "firstName": "Frances","lastName": "Peters",  "email": "heckdo@yahoo.com" },
+				   { "firstName": "Audrey",	"lastName": "Homes",   "email": "imake@nowhere.com" },
+				   { "firstName": "Alex",	"lastName": "Barry",   "email": "things@goto.com" },
+				   { "firstName": "Paul",	"lastName": "Moses",   "email": "rough@onme.com" },
+				   { "firstName": "Arthur",	"lastName": "Royal",   "email": "downwithtyping@email.com" },
+				   { "firstName": "Gerald",	"lastName": "Patrick", "email": "finis@email.com" }
+				  ];
+
+
+// get reference to target div element
+var targetElem = document.getElementById("target");
+
+var tableElem = document.createElement("TABLE"); // create new element node
+targetElem.appendChild(tableElem); // add table element to end of table children
+
+// create table header
+var theadElem = document.createElement("THEAD");
+tableElem.appendChild(theadElem);
+
+var trElem = document.createElement("TR"); // create a row for the THEAD
+theadElem.appendChild(trElem);
+
+for (var field in contactList[0]) {
+	//alert(field);
+	var tdElem = document.createElement("TH");
+	trElem.appendChild(tdElem);
+	tdElem.appendChild(document.createTextNode(field));
+}
+
+var tbodyElem = document.createElement("TBODY"); // create TBODY
+tableElem.appendChild(tbodyElem);
+
+// loop through contactList
+for (var c = 0; c < contactList.length; c++) {
+	
+	// create new row for each contact
+	var trElem = document.createElement("TR");
+	tbodyElem.appendChild(trElem);
+	
+	// loop through contact fields and create column for each field
+	for (var field in contactList[c]) {
+		//alert(field);
+		var tdElem = document.createElement("TD");
+		trElem.appendChild(tdElem);
+		tdElem.appendChild(document.createTextNode(contactList[c][field]));
+	}
+}
+
+
+</script>
+
+</body>
+</html>

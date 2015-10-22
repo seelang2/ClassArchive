@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+</head>
+<body>
+
+<ul>
+	<li>Item 1</li>
+	<li>Item 2</li>
+	<li>Item 3</li>
+	<li>Item 4</li>
+</ul>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+$('li')
+	//.attr('id','item1') // won't work as id gets set for each element in collection
+	.each(
+		function(index, elem) {
+			$(elem)
+				.attr('id','item' + index);
+		}
+	 );
+
+</script>
+</body>
+</html>

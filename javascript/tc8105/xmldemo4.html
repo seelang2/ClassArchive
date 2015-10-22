@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="wrapper"></div>
+
+
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+
+// defer script execution
+$(document).ready(function() {
+
+// put variables that should be accessible to all functions in this 
+// scope here
+var $contactTemplate = null;
+
+// app startup 
+var start = function() {
+	
+	// we need to load template BEFORE retrieving data
+	//$contactTemplate.load('contact-template.html'); // can't use
+	
+	$.ajax({
+		url:		'contact-template.html',
+		type:		'get',
+		dataType:	'html',
+		cache:		false
+	}).done(function(template) {
+		// store loaded HTML into jQuery object
+		$contactTemplate = $(template);
+		
+		// get data
+		getXMLData();
+	});
+	
+
+}; // startup
+
+var getXMLData = function() {
+	// get XML data (ajax)
+	$.ajax({
+		url:		'data.xml',
+		type:		'get',
+		dataType:	'xml',
+		cache:		false,
+		success:	processXML
+	});
+};
+
+// when we get the data (when the data comes back from the server)
+var processXML = function(data) {
+	console.log(data);
+	console.log($contactTemplate);
+	
+	$(data)
+		.find('contact')	// get collection of contacts
+		.each(function(index, contact) {
+			
+			// loop through fields in template and merge with
+			// contact element
+			$contactTemplate
+				.clone()
+				.find('[data-fieldname]')
+				.each(function(i, field) {
+					// get fieldname from template
+					var fieldName = $(field).attr('data-fieldname');
+					// get fieldValue from contact data
+					var fieldValue = $(contact).find(fieldName).text();
+					// merge value into field
+					$(field).html(fieldValue);
+				 })
+				.end()
+				.appendTo('#wrapper');
+				 
+		 })
+}; // processXML
+
+
+// launch app
+start();
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

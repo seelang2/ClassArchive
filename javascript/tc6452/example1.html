@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+var myText = 'This space for rent';
+
+var moreText = new String('More space for rent (nobody does this)');
+
+document.write('<p>' + myText.toUpperCase() + '</p>');
+
+document.write('<p>' + 'Another string'.toUpperCase() + '</p>');
+
+var example = myText.toUpperCase().toLowerCase().length
+
+var sideA = parseFloat('dfsgdsf10.123meters');
+var sideB = 3;
+
+var area = sideA * sideB;
+var perimeter = sideA + sideB + sideA + sideB;
+
+document.write('<p>The area is ' + area + 
+			   ' and the perimeter is ' + perimeter + '</p>');
+
+// arrays
+//var weekdays = new Array('Mon','Tue','Wed');
+var weekdays = ['Mon','Tue','Wed'];
+
+
+document.write('<p>' + weekdays[1] + '</p>');
+
+weekdays.push('Thu','Fri','Sat');
+weekdays.unshift('Sun');
+
+/*
+var pillbox = new Object();
+pillbox.Sun = 'white';
+pillbox.Mon = 'white';
+
+*/
+	
+
+var pillbox =	{
+					Sun: 'white',
+					Mon: 'white',
+					Tue: 'none',
+					Wed: 'blue',
+					Thu: 'orange',
+					Fri: 'red',
+					Sat: 'green'
+				};
+
+pillbox.Bob = 'technicolor';
+
+
+/*
+
+try {
+	xyz = getValue();
+} catch(e) {
+	alert('catastrophe avoided. ish.');
+}
+
+*/
+
+	xyz = getValue();
+
+
+			   
+
+</script>
+</body>
+</html>
+

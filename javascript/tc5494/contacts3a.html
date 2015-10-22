@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Sample Page</title>
+	<meta charset="UTF-8" />
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 85%;
+	}
+	
+	.contact, .newcontact {
+		border: 1px solid #7a7a7a;
+		margin: 15px 0;
+		padding: 10px 25px;
+	}
+	
+	.newcontact form label {
+		position: relative;
+		display: block;
+		height: 1.3em;
+		margin-bottom: 0.5em;
+	}
+	
+	.newcontact form label input {
+		position: absolute;
+		left: 100px;
+		height: 1.2em;
+	}
+	
+	</style>
+</head>
+<body>
+
+<div id="contacttop"></div>
+
+<script type="text/javascript" src="jquery-1.8.2.js"></script>
+<script type="text/javascript">
+var contactData =
+{
+	"requestdate": "Date/Time",
+	
+	"fieldLabels": ['ID', 'First Name', 'Last Name', 'Email Address'],
+	
+	"data": 
+		[
+			 { "id":10,"firstname":"John","lastname":"Allen","email":"jal@yahoo.com" },
+			 { "id":123,"firstname":"Mary","lastname":"Peters","email":"mpami@gmail.com" },
+			 { "id":2,"firstname":"Jessica","lastname":"Albert","email":"who@email.com" },
+			 { "id":24,"firstname":"Alexi","lastname":"Michaels","email":"am@morning.com" },
+			 { "id":11,"firstname":"George","lastname":"Thomas","email":"george@thomas.com" },
+			 { "id":9,"firstname":"Sybil","lastname":"Charles","email":"person1@mail.com" },
+			 { "id":54,"firstname":"Frances","lastname":"Donald","email":"fhmd@mac.com" }
+		]
+
+};
+
+
+var AjaxStatus = {
+	statusElem: null,
+	
+	init: function() {
+		AjaxStatus.statusElem = 
+		$('<div></div>')
+			.css(
+				{
+					height:		'100px',
+					width:		'100px',
+					position: 	'fixed',
+					zIndex:		5000,
+					top:		'50%',
+					left:		'50%',
+					marginTop:	'-50px',
+					marginLeft:	'-50px',
+					background:	'url(ajax-loader.gif)'
+				}
+			 );
+	}
+	
+};
+
+var App = {
+	contactButtons: '<div><button class="btnEdit">Edit</button><button class="btnDelete">Delete</button></div>',
+	
+	/** Application startup **/
+	start: function() {
+		// Configure Ajax feedback
+		AjaxStatus.init();
+		AjaxStatus.statusElem
+			.ajaxStart(
+				function(e) {
+					$(this).prependTo(document.body);
+				}
+			 )
+			.ajaxComplete(
+				function(e) {
+					$(this).detach();
+				}
+			 );
+		
+		// side load contact form into a DOM node
+		App.contactForm = 
+		$('<div></div>')
+			.addClass('newcontact')
+			.load('contactform.html');
+		
+		App.contactTop = 
+		$('#contacttop')
+			.on('click', App.contactHandleButtons);
+		
+		App.displayContacts();
+		
+	}, // App.start
+	
+	/** Display contact list **/
+	displayContacts: function(options) {
+		// assumes options.data contains contact data and
+		// options.labels contains field labels
+		App.contactTop.empty();
+		
+		$.each(
+			contactData.data,
+			App.addContactPanel
+		);
+		
+		App.contactTop
+			.append('<div><button class="btnAdd">Add Contact</button></div>');
+			
+	}, // App.displayContacts
+	
+	/** Add single contact panel div **/
+	addContactPanel: function(index, contact) {
+		console.log('index: ' + index + '; contact: ' + contact);
+		
+		$('<div></div>')
+			.addClass('contact')
+			//.attr('data-contactidx',index)
+			.data('contactidx', index)
+			.each(
+				function(i, divElem) {
+					var c = 0;
+					$.each(
+						contact,
+						function(colName, colValue) {
+							$('<p><span>'+ 
+							  contactData.fieldLabels[c] +
+							  '</span> '+ 
+							  colValue + '</p>')
+								.appendTo(divElem);
+							
+							c++;
+						}
+					);
+				}
+			 )
+			.append(App.contactButtons)
+			.appendTo(App.contactTop);
+		
+	}, // App.addContactPanel
+	
+	
+	contactHandleButtons: function(e) {
+		// so which contact am I working on?
+		var contactArrayID = 
+		$(e.target)
+			.closest('.contact')
+			//.attr('data-contactidx')
+			.data('contactidx');
+		
+		switch(true) {
+			case $(e.target).hasClass('btnEdit'):
+				alert('Editing record ' + contactData.data[contactArrayID].id);
+			break;
+			
+			case $(e.target).hasClass('btnDelete'):
+				alert('Deleting record ' + contactData.data[contactArrayID].id);
+			break;
+			
+			case $(e.target).hasClass('btnAdd'):
+				App.addNewContact();
+			break;
+			
+		}
+		
+		
+	}, // App.contactHandleButtons
+	
+	addNewContact: function() {
+		App.contactForm
+			.clone()
+			.insertBefore(App.contactTop.children().last())
+			.find('form')
+			.submit(App.saveNewContact)
+			.on(
+				'reset',
+				function(e) {
+					App.removeNewContactPanel(this.parentNode);
+				}
+			 );
+		
+	}, // App.addNewContact
+	
+	saveNewContact: function(e) {
+		e.preventDefault(); 
+		
+		// extract form data into array
+		var data = $(this).serializeArray();
+		console.log(data);
+		
+		// add form data to contact data array
+		var newContact = { id:0, firstname: null, lastname: null, email: null};
+		
+		$.each(
+			data,
+			function(i, field) {
+				newContact[field.name] = field.value;
+			}
+		);
+		
+		$.ajax(
+			{
+				url:		'echopost.php?mode=json',
+				type:		'POST',
+				dataType:	'json',
+				cache:		false,
+				data:		$(this).serialize(),
+				success:	function(response) {
+					if (response == 'Error') return false;
+					console.log(response);
+					
+					console.log(newContact);
+
+					contactData.data.push(newContact);
+					
+					alert('Record has been saved.');
+					
+					App.removeNewContactPanel(this);
+					
+					App.displayContacts();
+					
+				},
+				error: function(rqObj, txtStatus, errExp) {
+					console.log('Error');
+					console.log(txtStatus);
+					console.log(errExp);
+				}
+			}
+		);
+		
+	}, // App.saveNewContact
+	
+	removeNewContactPanel: function(target) {
+		$(target).remove();
+	} // App.removeNewContactPanel
+	
+}; // App
+
+
+$(document).ready(App.start); // document.ready
+
+
+
+</script>
+</body>
+</html>

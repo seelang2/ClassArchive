@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Table Demo using events</title>
+	
+	<style type="text/css">
+	
+	table { border-collapse: collapse; }
+	th, td { padding: 5px; }
+	
+	tr.hover { background: #FFC; }
+	.oddrow { background: #88F2BB; }
+	.evenrow { background: #D8F2E5; }
+	
+	</style>
+	
+</head>
+<body>
+
+<div id="target"></div>
+
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+
+	$.ajax({
+		url: 'contacts.json',
+		type: 'get',
+		dataType: 'json',
+		success: function(contactList) {
+
+		$('#target')
+			.append('<table><thead /><tbody /></table>')
+			.find('thead')
+			.each(function(index, thead) {
+				
+				var rowHTML = '<tr>';
+				$.each(
+					contactList[0], // just use first contact in array
+					function(fieldName, fieldValue) {
+						rowHTML += '<th>' + fieldName.toUpperCase() + '</th>';
+					}
+				);
+				rowHTML += '</tr>';
+				//$(thead).append(rowHTML);
+				$(rowHTML)
+					.appendTo(thead);
+				
+			 })
+			.next() // move to TBODY
+			.each(function(index, tbody) {
+				
+				var $rows = $('<tbody />'); // create a temporary object to hold the rows
+					
+				$.each(
+					contactList,
+					function(index, contact) {
+						//console.log(index,contact);
+						
+						var rowHTML = '<tr>';
+						
+						$.each(
+							contact,
+							function(fieldName, fieldValue) {
+								rowHTML += '<td>' + fieldValue + '</td>';
+							}
+						);
+						
+						rowHTML += '</tr>';
+						
+						$(rowHTML)
+							.attr('id','row-' + index)
+							.addClass('rowitem')
+							.appendTo($rows);
+						
+					}
+				);
+
+				$(tbody).empty().append($rows.children());
+				
+			 })
+			.children('tr')					// select ALL table rows
+			.removeClass('oddrow evenrow')	// remove any existing striping classes
+			.filter(':even')				// reduce set to only ODD rows
+			.addClass('oddrow')				// add the oddrow class
+			.end()							// revert set to all rows
+			.filter(':odd')					// reduce set to EVEN rows
+			.addClass('evenrow')
+			.end()							// revert back to all rows
+			.end()							// revert back to TBODY
+			.on('mouseover',				// attach mouseover listeners to TBODY
+				'tr',						// only respond to events on TR descendants
+				addHover
+			 )
+			.on('mouseout',					// attach mouseout listeners to TBODY
+				'tr',						// only respond to events on TR descendants
+				removeHover
+			 );
+			 
+		} // function success
+	}); // $.ajax
+
+}); // document.ready
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

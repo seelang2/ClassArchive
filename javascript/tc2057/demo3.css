@@ -1,0 +1,65 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	background: #7a7a7a;
+	margin: 0;
+	padding: 0;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size: 85%;
+}
+
+#wrapper {
+	background: #fff;
+	border: 1px solid #333;
+	width: 700px;
+	margin: 0 auto;
+	padding: 1em 2em;
+	overflow: auto; /* to clear floated children */
+}
+
+.clearing {
+	clear: both;
+	height: 1px;
+	overflow: hidden;
+}
+
+/* Lightbox styles */
+#lightbox-screen {
+	margin: 0;
+	padding: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: url(lightbox-screen1.png) repeat;
+	display: none;
+}
+
+#lightbox-hover {
+	margin: 0;
+	padding: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: #333;
+	text-align: right;
+	width: 300px;
+	height: 320px;
+	display: none;
+}
+
+#lightbox-hover a {
+	color: #fff;
+	font-size: 85%;
+	font-weight: bold;
+	margin-right: 0.5em;
+}
+
+.lightbox-item {
+	width: 100px;
+	margin: 0.5em;
+	float: left;
+}
+

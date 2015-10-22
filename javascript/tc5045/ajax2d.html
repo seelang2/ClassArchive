@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Ajax and jQuery with XML</title>
+</head>
+
+<body>
+
+<div id="feed"></div>
+
+
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+
+var App = {
+	start: function() {
+		// make Ajax call to retrieve feed data
+		$.ajax(
+			{ 	url: "news.xml",
+				type: "GET",
+				dataType: "xml",
+				cache: false,
+				success: App.showFeed
+			}
+		);
+	}, // App.start
+	
+	showFeed: function(feedData) {
+		//alert(feedData);
+		var feedDiv = document.getElementById('feed');
+		var itemList = feedData.getElementsByTagName('item');
+		
+		for(var i = 0; i < itemList.length; i++) {
+				var divElem = document.createElement('DIV');
+				feedDiv.appendChild(divElem);
+				
+				divElem.innerHTML += 
+					'<h2><a href="' +
+					itemList[i].getElementsByTagName('link')[0].childNodes[0].nodeValue +
+					'">' + 
+					itemList[i].getElementsByTagName('title')[0].childNodes[0].nodeValue +
+					'</a></h2>' + 
+					'<div>' +
+					itemList[i].getElementsByTagName('description')[0].childNodes[0].nodeValue +
+					'</div>';
+				
+		}
+		
+	} // showFeed
+	
+}; // App
+
+$(document).ready(App.start);		// start App on DOM ready
+
+
+</script>
+</body>
+</html>

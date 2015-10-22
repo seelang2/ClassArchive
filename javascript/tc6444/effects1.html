@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	
+	#content { display: none; }
+	
+	</style>
+</head>
+<body>
+
+<button>Click to view</button>
+
+<div id="content">
+	<p>This content may be displayed after the button is clicked.</p>
+</div>
+
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+$('button')
+	.click(
+		function() {
+			//$('#content').css('display','block');
+			$('#content').toggle();
+		}
+	 );
+
+</script>
+</body>
+</html>

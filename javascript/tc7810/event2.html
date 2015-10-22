@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<a href="http://www.google.com">Click Me</a>
+
+
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+
+$('a').on('click', function(e) {
+	// stops default action
+	//e.preventDefault();
+	
+	// you can also return false to cancel the default action
+	//return false;
+	
+	// conditionally cancel default action
+	return confirm('You are leaving the site. Are you sure?');
+	
+});
+
+
+</script>
+</body>
+</html>

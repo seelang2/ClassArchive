@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Fade Demo</title>
+
+<style type="text/css">
+#container {
+	width: 300px;
+	height: 200px;
+	margin: auto;
+	overflow: hidden;
+	position: relative;
+}
+
+#container img { 
+	display: block; 
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#control { text-align: center; }
+</style>
+
+</head>
+
+<body>
+
+<div id="container">
+	<img src="chicago1.jpg" />
+	<img src="chicago2.jpg" />
+</div>
+
+<div id="control"><button id="start">Start</button></div>
+
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(
+	function() {
+		$('#start')
+			.click(function() {
+				//alert('here');
+				$('#container img').eq(1).fadeOut();
+			}
+		);
+	}
+); // document.ready
+
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Exercise: Date</title>
+	
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+// create arrays for day and month labels
+var weekdays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+var months = [
+				'January',
+				'February',
+				'March',
+				'April',
+				'May',
+				'June',
+				'July',
+				'August',
+				'September',
+				'October',
+				'November',
+				'December'
+			  ];
+
+
+// create instance of Date object
+var today = new Date();
+var dayNum = today.getDate(); // store function result as a variable to avoid excess processing
+
+switch(true) {
+	case dayNum == 1 || dayNum == 21 || dayNum == 31:
+		var ordinal = 'st';
+	break;
+	
+	case dayNum == 2 || dayNum == 22:
+		var ordinal = 'nd';
+	break;
+	
+	case dayNum == 3 || dayNum == 23:
+		var ordinal = 'rd';
+	break;
+	
+	default:
+		var ordinal = 'th';
+	break;
+}
+
+
+// display message
+document.write('<p>Today is ' + weekdays[today.getDay()] + ', ' + 
+				months[today.getMonth()] + ' ' + 
+				today.getDate() + ordinal + ', ' + 
+				today.getFullYear());
+
+</script>
+</body>
+</html>

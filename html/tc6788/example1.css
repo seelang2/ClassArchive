@@ -1,0 +1,10 @@
+/* (CSS Comment) Sample External CSS Stylesheet */
+
+h1, li {
+	color: #090;
+}
+
+h2 {
+	font-weight: normal;
+	color: #3c9f4d;
+}

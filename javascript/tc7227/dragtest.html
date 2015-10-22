@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	#colA, #colB {
+		float: left;
+		width: 45%;
+	}
+
+	#item { position: relative; }
+
+	#dropzone {
+		width: 80%;
+		height: 250px;
+		border: 1px solid #ddd;
+	}
+	</style>
+</head>
+<body>
+<div id="colA">
+	<div id="item" draggable="true">Item</div>
+</div>
+<div id="colB">
+	<div id="dropzone"></div>
+</div>
+<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+data = {};
+
+$('#item')
+	.on('dragstart', function(e) {
+		console.log('dragging',this);
+		e.dataTransfer.setData('id', this.id);
+	 });
+
+});
+
+$('#dropzone').on('drop', function(e) {
+	console.log('dropping',this);
+	
+})
+
+</script>
+</body>
+</html>

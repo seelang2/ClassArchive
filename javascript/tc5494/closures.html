@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Closure Demo</title>
+	<meta charset="UTF-8" />
+	
+</head>
+<body>
+
+<button id="thebutton">Click Me</button>
+
+<script type="text/javascript">
+
+(function() {
+	var c = 0;
+	
+	document.getElementById("thebutton").onclick = function() {
+		alert('You have clicked ' + ++c + ' times.');
+	};
+
+})();
+
+console.log('c = ' + c);
+
+</script>
+</body>
+</html>

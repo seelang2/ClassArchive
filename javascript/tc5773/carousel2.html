@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Carousel Demo</title>
+	<style type="text/css">
+	#carousel {
+		width: 400px;
+		margin: auto;
+		border: 1px solid #009;
+	}
+	
+	
+	</style>
+</head>
+<body>
+
+<div id="carousel"></div>
+
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript">
+
+var Carousel = {
+	options: {},
+	
+	init: function(params) {
+		
+		var $filmstrip = 
+		$('<div />')
+			.css({
+				position: 'relative',
+				width: params.width,
+				height: params.height,
+				overflow: 'hidden',
+				padding: 0,
+				margin: 0
+			 })
+			.appendTo(params.target)
+			.append('<div />')
+			.children()
+			.css({
+				position: 'absolute',
+				width: (parseInt(params.width) * params.slides.length) + 'px',
+				height: params.height,
+				left: '-' + params.width
+			 });
+			
+		$.each(
+			params.slides,
+			function(i, url) {
+				$('<img src="'+ url +'" />')
+					.appendTo($filmstrip);
+			}
+		)
+		
+	} // Carousel.init
+}
+
+$(document).ready(function() {
+	Carousel.init({
+		target: '#carousel',
+		height: '300px',
+		width:	'400px',
+		slides: ['bird1.jpg','bird2.jpg','bird3.jpg','bird4.jpg','bird5.jpg','bird6.jpg']
+	});
+}); // document.ready
+
+
+</script>
+</body>
+</html>

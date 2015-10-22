@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+
+<form action="#" method="get">
+
+<fieldset>
+
+	<p>Select Gender:</p>
+	<label>
+		<span>Male</span>
+		<input type="radio" name="gendera" value="male" />
+	</label>
+
+	<label>
+		<span>Female</span>
+		<input type="radio" name="gendera" value="female" />
+	</label>
+
+	<label>
+		<span>Other</span>
+		<input type="radio" name="gendera" value="other" />
+	</label>
+	
+	<div id="genderbset"></div>
+
+</fieldset>
+
+
+
+
+
+</form>
+
+
+
+
+<script src="jquery-1.11.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+	
+	var $genderbset = 
+	$('<p>Please select gender identification:</p>' +
+		'<label>' +
+			'<span>Trans Male</span>' +
+			'<input type="radio" name="genderb" value="tmale" />' +
+		'</label>' +
+		'<label>' +
+			'<span>Trans Female</span>' +
+			'<input type="radio" name="genderb" value="tfemale" />' +
+		'</label>' +
+		'<label>' +
+			'<span>Non Identified</span>' +
+			'<input type="radio" name="genderb" value="non" />' +
+		'</label>' +
+		'<label>' +
+			'<span>Other non-cisgendered</span>' +
+			'<input type="radio" name="genderb" value="other" />' +
+		'</label>');
+	
+	$('[name="gendera"]')
+		.on(
+			'click',
+			function(evt) {
+				
+				//console.log($(this).val());
+				
+				if ($(this).val() == 'other') {
+					// show secondary fieldset
+					$genderbset
+						.clone()
+						.appendTo('#genderbset');
+				} else {
+					$('#genderbset').empty();
+				}
+				
+			}
+		 )
+	
+	
+	
+	
+	
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

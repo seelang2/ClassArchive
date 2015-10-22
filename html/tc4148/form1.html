@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+#container { width: 600px; }
+
+form { width: 80%; margin: auto; }
+
+form label {
+	position: relative;
+	display: block;
+	margin-bottom: 0.5em;
+}
+
+form input,
+form select {
+	position: absolute;
+	left: 100px;	
+}
+</style>
+
+</head>
+
+<body>
+
+
+<div id="container">
+
+<form action="#" method="get">
+
+<label for="firstname">First Name: <input id="firstname" name="firstname" /></label>
+<label for="lastname">Last Name: <input id="lastname" name="lastname" /></label>
+
+<label>
+	Department: 
+	<select name="dept">
+    	<option value="acct">Accounting</option>
+        <option value="sale">Sales</option>
+        <option value="it">Information Technology</option>
+    </select>
+</label>
+
+<label for="chk1">Box 1: <input type="checkbox" id="chk1" name="chk1" value="1" /></label>
+<label for="chk2">Box 2: <input type="checkbox" id="chk2" name="chk2" value="2" /></label>
+
+<label for="gender1">Male: <input type="radio" id="gender1" name="gender" value="M" /></label>
+<label for="gender2">Female: <input type="radio" id="gender2" name="gender" value="F" /></label>
+
+<label>Your Message:
+<textarea name="comments" style="width:200px;height:150px">You comments here</textarea>
+</label>
+
+<input type="submit" value="Submit comment" />
+</form>
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,1 @@
+INSERT INTO products (name, category_id, price, qty, image_url, description) VALUES {$item['Name']

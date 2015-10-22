@@ -1,0 +1,15 @@
+{
+	"requestTime": "9/11/2014",
+	"othermetadata": "stuff",
+	"columnLabels": ["First Name", "Last Name", "Email"],
+	"data": [
+		{ "firstname": "Peter", "lastname": "Griffin", "email": "pgriffin@mail.com" },
+		{ "firstname": "Glenn", "lastname": "Quagmire", "email": "giggity@mail.com" },
+		{ "firstname": "Cleveland", "lastname": "Brown", "email": "cleve@mail.com" },
+		{ "firstname": "Homer", "lastname": "Simpson", "email": "dohh@mail.com" },
+		{ "firstname": "Marge", "lastname": "Simpson", "email": "msimpson@mail.com" },
+		{ "firstname": "Sterling", "lastname": "Archer", "email": "triplezero@mail.com" },
+		{ "firstname": "Lana", "lastname": "Kane", "email": "dangerzone@mail.com" }
+	]
+}
+

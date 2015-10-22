@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Contact List Demo</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		color: #000;
+	}
+	
+	body, button, select, input
+	{ font-size: 100%; }
+	
+	#contactlist {
+		width: 700px;
+		margin: auto;
+		border: 2px solid #7a7a7a;
+		padding: 15px 25px;
+	}
+	
+	
+	</style>
+</head>
+<body>
+
+<div id="contactlist">
+	<div id="contactitems"></div>
+	<div>
+		<button class="btnAdd">Add New Contact</button>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+// Set up an IIFE to enclose my namespace
+(function(App) {
+	
+App.data = {}; // create a data repository
+
+App.start = function() {
+	
+	App.data.contactItems = $('#contactitems');
+	
+	App.data.contactForm =
+	$('<form />')
+		.attr('action','#')
+		.load('contact-form.html');
+	
+	// set up event handlers for buttons
+	$('#contactlist')
+		.on(
+			'click',
+			'button',
+			App.buttonRouter
+		 );
+	
+	App.getContactData();
+	
+}; // App.start
+
+App.getContactData = function() {
+	
+	$.ajax({
+		url:		'userdata.php?action=getlist',
+		type:		'get',
+		dataType:	'json',
+		cache:		false,
+		success:	App.updateContactItems
+	});
+	
+}; // App.getContactData
+
+App.buttonRouter = function(e) {
+	// determine what button functionality was clicked and hand off to processor
+	
+	// get contact item index
+	var index = $(this).closest('.contactitem').attr('data-contactindex');
+	console.log('Button index is',index);
+	
+	switch(true) {
+		case $(this).hasClass('btnAdd'):
+			App.addNewContactItem(index);
+		break;
+		
+		case $(this).hasClass('btnEdit'):
+			
+			App.editContactItem(index);
+		break;
+		
+		case $(this).hasClass('btnDelete'):
+			
+			App.deleteContactItem(index);
+		break;
+		
+	} // switch
+	
+}; // App.buttonRouter
+
+
+App.addNewContactItem = function(index) {
+	
+	console.log('Displaying add contact form');
+	
+}; // App.addNewContactItem
+
+App.editContactItem = function(index) {
+	
+	var $fieldSpans =
+	App.data.contactItems
+		.children('[data-contactindex='+ index +']')
+		.find('span[data-fieldname]')
+		.replaceWith('<input type="text" />');
+		
+	var $fields = 
+	App.data.contactItems
+		.children('[data-contactindex='+ index +']')
+		.find('input');
+		
+	$fields
+		.each(function(index, field) {
+			//console.log('setting field',index,$fieldSpans.eq(index));
+			
+			$(field)
+				.attr({
+					name: $fieldSpans.eq(index).attr('data-fieldname'),
+					value: $fieldSpans.eq(index).text()
+				 })
+			
+		 });
+	
+}; // App.editContactItem
+
+App.deleteContactItem = function(index) {
+	
+	console.log('Deleting contact item', index);
+	
+}; // App.deleteContactItem
+
+App.updateContactItems = function(contactData) {
+	// loop through contacts array and build contactitem divs
+	
+	App.data.contactItems.empty(); // remove any existing contactitems from div
+	
+	$.each(
+		contactData,
+		function(index, contact) {
+					
+		App.data.contactForm
+			.clone()
+			.find('[data-fieldname="firstname"]')
+			.html(contact.firstname)
+			.end()
+			.find('[data-fieldname="lastname"]')
+			.html(contact.lastname)
+			.end()
+			.find('[data-fieldname="login"]')
+			.html(contact.login)
+			.end()
+			.addClass('contactitem')
+			.attr('data-contactindex', index)
+			.appendTo(App.data.contactItems);
+			
+		}
+	); // $.each
+	
+}; // App.updateContactItems
+	
+
+})( window.App = window.App || {} );
+
+$(document).ready(App.start); // launch App.start when DOM is ready
+
+
+
+
+
+</script>
+</body>
+</html>

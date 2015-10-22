@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+#wrapper {
+	width: 400px;
+	margin: auto;
+}
+
+#slideshow {
+	width:400px;
+	height: 250px;
+	position: relative;	
+}
+
+#slideshow img {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;	
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="wrapper">
+	<div id="slideshow">
+    	<img src="image1.jpg" />
+    	<img src="image2.jpg" />
+    	<img src="image3.jpg" />
+    </div><!-- slideshow -->
+</div><!-- wrapper -->
+
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(
+	function() {
+		$slides = $('#slideshow img');
+		var slideNumber = 0;
+		$slides
+			.hide()
+			.eq(0)
+			.show();
+		var nextSlide = function() {
+			$slides
+				.fadeOut()
+				.eq(slideNumber++)
+				.fadeIn();
+			if (slideNumber > ($slides.length - 1)) slideNumber = 0;
+		};
+		setInterval(nextSlide, 1000);
+	}
+);
+
+
+</script>
+</body>
+</html>

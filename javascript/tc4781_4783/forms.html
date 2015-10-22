@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Form Processing</title>
+</head>
+
+<body>
+<style type="text/css">
+form label { display: block; margin-bottom: 0.25em; position: relative; }
+form div { margin-bottom: 0.25em; }
+form label input { position: absolute; left: 75px; }
+</style>
+<form action="#" method="post">
+	<label>First Name: <input name="firstname" /></label>
+	<label>Last Name: <input name="lastname" /></label>
+	<label>Email: <input name="email" /></label>
+	<div><input type="submit" value="Continue" /></div>
+</form>
+
+
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(
+	function() {
+		$('form')
+			.submit(
+				function(evt) {
+					evt.preventDefault();
+					$.post(
+						'echopost.php?mode=html',
+						$(this).serialize(),
+						function(response) {
+							// handler for request response
+							alert(response);
+						}
+					);
+				}
+			 );
+	}
+); // document.ready
+</script>
+</body>
+</html>

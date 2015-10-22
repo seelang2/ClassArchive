@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Sample Page</title>
+	<meta charset="UTF-8" />
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 85%;
+	}
+	
+	.contact {
+		border: 1px solid #7a7a7a;
+		margin: 15px 0;
+		padding: 10px 25px;
+	}
+	
+	</style>
+</head>
+<body>
+
+<div id="contacttop">
+<!--
+	<div class="contact">
+		<p>First Name: John</p>
+		<p>Last Name: Doe</p>
+		<p>Email: jdoe@email.com</p>
+		<div>
+			<button class="btnEdit">Edit</button>
+			<button class="btnDelete">Delete</button>
+		</div>
+	</div>
+	<div>
+		<button class="btnAdd">Add Contact</button>
+	</div>
+-->
+</div>
+
+<script type="text/javascript" src="jquery-1.8.2.js"></script>
+<script type="text/javascript">
+var contactData =
+{
+	"requestdate": "Date/Time",
+	
+	"fieldLabels": ['ID', 'First Name', 'Last Name', 'Email Address'],
+	
+	"data": 
+		[
+			 { "id":10,"firstname":"John","lastname":"Allen","email":"jal@yahoo.com" },
+			 { "id":123,"firstname":"Mary","lastname":"Peters","email":"mpami@gmail.com" },
+			 { "id":2,"firstname":"Jessica","lastname":"Albert","email":"who@email.com" },
+			 { "id":24,"firstname":"Alexi","lastname":"Michaels","email":"am@morning.com" },
+			 { "id":11,"firstname":"George","lastname":"Thomas","email":"george@thomas.com" },
+			 { "id":9,"firstname":"Sybil","lastname":"Charles","email":"person1@mail.com" },
+			 { "id":54,"firstname":"Frances","lastname":"Donald","email":"fhmd@mac.com" }
+		]
+
+};
+
+var App = {
+	contactButtons: '<div><button class="btnEdit">Edit</button><button class="btnDelete">Delete</button></div>',
+	
+	/** Application startup **/
+	start: function() {
+		App.contactTop = 
+		$('#contacttop')
+			.on('click', App.contactHandleButtons);
+		
+		App.displayContacts();
+		
+	}, // App.start
+	
+	/** Display contact list **/
+	displayContacts: function(options) {
+		// assumes options.data contains contact data and
+		// options.labels contains field labels
+		$.each(
+			contactData.data,
+			App.addContactPanel
+		);
+		
+		App.contactTop
+			.append('<div><button class="btnAdd">Add Contact</button></div>');
+			
+	}, // App.displayContacts
+	
+	/** Add single contact panel div **/
+	addContactPanel: function(index, contact) {
+		console.log('index: ' + index + '; contact: ' + contact);
+		
+		$('<div></div>')
+			.addClass('contact')
+			.each(
+				function(i, divElem) {
+					var c = 0;
+					$.each(
+						contact,
+						function(colName, colValue) {
+							$('<p><span>'+ 
+							  contactData.fieldLabels[c] +
+							  '</span> '+ 
+							  colValue + '</p>')
+								.appendTo(divElem);
+							
+							c++;
+						}
+					);
+				}
+			 )
+			.append(App.contactButtons)
+			.appendTo(App.contactTop);
+		
+	}, // App.addContactPanel
+	
+	
+}; // App
+
+
+$(document).ready(App.start); // document.ready
+
+
+
+</script>
+</body>
+</html>

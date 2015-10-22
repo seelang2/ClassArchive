@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>InnerHTML Example</title>
+</head>
+
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript">
+
+var outputHTML = 
+	'<h1>Welcome!</h1>' +
+	'<p>This is an example of using the innerHTML property to place content into an element.</p>' +
+	'<p>The content is created as a simple string and then placed inside the innerHTML property' +
+	'of its parent node.</p>' + 
+	'<p id="thisparagraph">Any properly formatted HTML may be used, though tables are known to have some issues.</p>' + 
+	'<p>You DO realize that you don\'t have to use this text verbatim, right? It\'s just an example.</p>' +
+	'<p>Feel free to make up your OWN damned text example already.</p>';
+
+document.getElementById("target").innerHTML = outputHTML;
+
+
+
+
+
+</script>
+
+</body>
+</html>

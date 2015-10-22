@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+	
+	#wrapper {
+		width: 250px;
+	}
+	
+	#wrapper label {
+		display: block;
+		margin-bottom: 0.25em;
+	}
+	
+	#wrapper label span,
+	#wrapper label input {
+		display: inline-block;
+	}
+	
+	#wrapper label span {
+		width: 50%;
+		text-align: right;
+	}
+	
+	#wrapper label span:after {
+		content: ':';
+	}
+	
+	#wrapper label input {
+		width: 75px;
+	}
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<fieldset id="items">
+		<label class="lineitem">
+			<span>Cost</span>
+			<input name="lineitems[]" />
+		</label>
+	</fieldset>
+	<div id="controls">
+		<button id="additem">Add item</button>
+		<button id="delitem">Remove item</button>
+	</div>
+	<fieldset id="totals">
+		<label class="totals">
+			<span>Subtotal</span>
+			<input name="subtotal" />
+		</label>
+		<label class="totals">
+			<span>Tax</span>
+			<input name="tax" />
+		</label>
+		<label class="totals">
+			<span>Total</span>
+			<input name="total" />
+		</label>
+	</fieldset>
+
+</div><!-- wrapper -->
+
+
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+
+/*
+var $lineitem = 
+$('<label class="lineitem"><span>Cost</span><input name="lineitems[]" /></label>');
+*/
+
+// store reference to line item fieldset
+var $itemset = $('#items');
+
+// use the existing empty field as a template
+var $lineitem = 
+$('#items .lineitem')
+	.first()
+	.clone()
+	.find('input')
+	.val('')
+	.end();
+
+$('#additem')
+	.on('click', function() {
+		
+		$lineitem
+			.clone()
+			.appendTo($itemset);
+		
+	 });
+
+$('#delitem')
+	.on('click', function() {
+		
+		/*
+		$itemset
+			.children()
+			.last()
+		*/
+		
+		$itemset
+			.children(':last-child')
+			.remove();
+		
+		
+	 });
+
+</script>
+</body>
+</html>

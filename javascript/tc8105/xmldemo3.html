@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="wrapper"></div>
+
+
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+
+// defer script execution
+$(document).ready(function() {
+
+// put variables that should be accessible to all functions in this 
+// scope here
+var $contactTemplate = null;
+
+// app startup 
+var start = function() {
+	
+	// we need to load template BEFORE retrieving data
+	//$contactTemplate.load('contact-template.html'); // can't use
+	
+	$.ajax({
+		url:		'contact-template.html',
+		type:		'get',
+		dataType:	'html',
+		cache:		false
+	}).done(function(template) {
+		// store loaded HTML into jQuery object
+		$contactTemplate = $(template);
+		
+		// get data
+		getXMLData();
+	});
+	
+
+}; // startup
+
+var getXMLData = function() {
+	// get XML data (ajax)
+	$.ajax({
+		url:		'data.xml',
+		type:		'get',
+		dataType:	'xml',
+		cache:		false,
+		success:	processXML
+	});
+};
+
+// when we get the data (when the data comes back from the server)
+var processXML = function(data) {
+	console.log(data);
+	console.log($contactTemplate);
+	
+	$(data)
+		.find('contact')	// get collection of contacts
+		.each(function(index, contact) {
+			console.log(contact);
+			// for each contact (loop through contacts)
+				// set up HTML structure
+				$contactTemplate
+					.clone() // copy template
+					// put each data field into its respective SPAN
+					.find('[data-fieldname="firstname"]')
+					.html($(contact).children('firstname').text())
+					.end()
+					.find('[data-fieldname="lastname"]')
+					.html($(contact).children('lastname').text())
+					.end()
+					.find('[data-fieldname="age"]')
+					.html($(contact).children('age').text())
+					.end()
+					// now attach to DOM
+					.appendTo('#wrapper');
+		 })
+}; // processXML
+
+
+// launch app
+start();
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+
+<script type="text/javascript" src="ajax.js"></script>
+
+<style type="text/css">
+#leftside {
+	float:left;
+	width: 49%;
+	border: 1px solid #7a7a7a;
+}
+
+#rightside {
+	float:right;
+	width: 49%;
+	border: 1px solid #7a7a7a;
+}
+
+</style>
+
+<script type="text/javascript">
+
+PageData = new function() {
+	this.leftDiv = null;
+	this.rightDiv = null;
+	this.ajaxreq = null;
+}; 
+
+DemoApp = new function() {
+
+	this.init = function() {
+		PageData.leftDiv = document.getElementById("leftside");
+		PageData.rightDiv = document.getElementById("rightside");
+		PageData.ajaxreq = new Ajax();
+		PageData.ajaxreq.async = false;
+				
+		tempelem = PageData.leftDiv.getElementsByTagName("A");
+		
+		tempelem[0].onclick = function() {
+			x = new Date();
+			x = x.getTime();
+			
+			PageData.ajaxreq.doGet('echoget.php?mode=html&firstname=John&lastname=Doe&x=' + x, DemoApp.handleResp, 'text');
+			return false;
+		};
+	};
+	
+	this.cleanup = function() {
+		PageData.leftDiv = null;
+		PageData.rightDiv = null;
+	};
+	
+	this.handleResp = function(resp) {
+		PageData.rightDiv.innerHTML = resp;
+	};
+
+};
+
+window.onload = DemoApp.init;
+window.onunload = DemoApp.cleanup;
+
+</script>
+
+</head>
+<body>
+
+<div id="leftside">
+	<p><a href="echoget.php?mode=html&firstname=John&lastname=Doe">Click Me to begin</a></p>
+</div>
+
+<div id="rightside">
+
+</div>
+
+
+
+
+</body>
+</html>

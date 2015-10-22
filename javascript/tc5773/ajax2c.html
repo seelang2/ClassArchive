@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	table { border-collapse: collapse; }
+	
+	tr.hover { background: #FFC; }
+	.oddrow { background: #E01B6A; } 
+	.evenrow { background: #F2D3DF; } 
+	
+	</style>
+	
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript">
+
+var App = {
+	data: {},
+	
+	init: function() {
+		App.createTable('#target');
+		App.getTableData();
+	}, // App.init
+	
+	cleanup: function() {
+		$(document.body).remove();
+	}, // App.cleanup
+	
+	createTable: function(target) {
+
+		// build base table structure
+		// store tbody reference in a variable to be used in the loop later
+		App.data.tbody = 
+		$(target)
+			.append('<table><tbody></tbody></table>')
+			.find('tbody')
+			.on(
+				'mouseover mouseout',
+				App.toggleHover
+			 )
+			.click(App.editRow);
+
+	}, // App.createTable
+	
+	updateTable:function(contactList) {
+		App.data.contactList = contactList;
+		
+		// for every contact... 
+		$.each(
+		  contactList.contacts,
+		  function(c, contact) {
+			// create a table row
+			var rowHTML = '<tr>';
+			
+			// add the contact fields to TDs
+			$.each(
+				contact,
+				function(colName, column) {
+					rowHTML += '<td>' + column + '</td>';
+				}
+			);
+			
+			rowHTML += '</tr>';
+			$(rowHTML)
+				.attr('data-contactid',c)
+				.appendTo(App.data.tbody); // add row to the table
+				
+		  } // function
+		); // $.each
+
+		App.data.tbody
+			.children('tr')		// get ALL TRs 
+			.filter(':even')	// reduce set to ODD items only
+			.addClass('oddrow') // the internal array is ZERO based - watch out!
+			.end()				// revert to previous selection of all TRs
+			.filter(':odd')
+			.addClass('evenrow');
+		
+	}, // App.updateTable
+	
+	getTableData: function() {
+		$.ajax({
+			url:		'contactdata2.json',
+			type:		'get',
+			dataType:	'json',
+			cache:		false, // apply caching workaround
+			success:	App.updateTable,
+			error:		App.handleAjaxError
+		}); // $.ajax
+	}, // App.getTableData
+	
+	handleAjaxError: function(req, status, error) {
+		//console.log(req);
+		//alert('There was a problem with your request: ' + req.status + ' ' + req.statusText);
+		window.location = 'error.html'; // redirect to new page
+		
+	}, // App. handleAjaxError
+	
+	toggleHover: function(e) {
+		
+		$(e.target)
+			.closest('tr')
+			.toggleClass('hover');
+		
+	}, // App.toggleHover
+	
+	editRow: function(e) {
+		
+		var contactId = $(e.target).closest('tr').attr('data-contactid');
+		
+		console.log('Editing contact', App.data.contactList[contactId]);
+		
+		$(e.target)
+			.closest('tr')
+			.html('<td><input name="firstname" value="'+App.data.contactList[contactId].firstname+'" /></td>' + 
+				  '<td><input name="lastname" value="'+App.data.contactList[contactId].lastname+'" /></td>' + 
+				  '<td><input name="email" value="'+App.data.contactList[contactId].email+'" /></td>');
+	} // App.editRow
+	
+}; // App
+
+$(document).ready(App.init); // document.ready
+
+window.onunload = App.cleanup;
+
+
+</script>
+</body>
+</html>

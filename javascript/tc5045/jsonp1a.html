@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Ajax JSONP callback demo</title>
+</head>
+
+<body>
+
+<button id="button1">Click Me</button>
+
+<div id="data"></div>
+
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+
+// create application controller object
+var App = {
+	start: function() {
+		$('#button1')
+			.click(function() {
+				// get data from server as callback (JSONP)
+				$.getScript('http://10.6.10.100/tc5045/echodata.php' +
+								  '?callback=App.showdata&firstname=John&lastname=Doe');
+			 });
+	}, // App.start
+	
+	// define callback method to handle return data
+	showdata: function(data) {
+		var $dataDiv = 
+			$('#data')
+				.html('');	// empties contents of div
+		
+		$.each(
+			data,
+			function(keyName, value) {
+				$('<div>' + keyName + ' => ' + value + '</div>').appendTo($dataDiv);
+			}
+		);
+		
+	}	// App.showdata
+
+}; // App
+
+$(document).ready(App.start); // launch App.start on DOM ready
+
+
+
+</script>
+</body>
+</html>

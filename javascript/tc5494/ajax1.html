@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Animation Demo</title>
+	<meta charset="UTF-8" />
+	
+	<style type="text/css">
+	</style>
+	
+</head>
+<body>
+
+
+<script type="text/javascript" src="jquery-1.8.2.js"></script>
+<script type="text/javascript">
+
+function Ajax() {
+	this.responseType = 'text';
+	this.req = null;
+	this.async = true;
+	this.respHandler = null;
+	
+	var Self = this;
+	
+	this.init = function() {
+		try {
+			Self.req = new XMLHttpRequest();
+		} catch(e) {
+			try {
+				Self.req = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch(e) {
+				return false;
+			}
+		}
+		return true;
+	}; // this.init
+	
+	this.doReq = function(params) {
+		Self.responseType = params.responseType || 'text';
+		Self.async = params.async || Self.async;
+		Self.respHandler = params.respHandler || null;
+		Self.reqData = params.data || null;
+		
+		// instantiate XHR object
+		if (!Self.init()) throw 'Unable to create XMLHttpRequest Instance.';
+		
+		// set up XHR onreadystatechange handler
+		Self.req.onreadystatechange = function() {
+			if (Self.req.readyState == 4) {
+				if (Self.req.status > 199 && Self.req.status < 300) {
+					
+					switch(Self.responseType.toUpperCase()) {
+						case 'TEXT':
+							var response = Self.req.responseText;
+						break;
+						
+						case 'XML':
+							var response = Self.req.responseXML;
+						break;
+					}
+					
+					Self.respHandler(response);
+					
+				} // if status
+			} // if readyState
+		};
+		
+		// open request
+		Self.req.open(params.method, params.url, Self.async);
+		
+		// set headers if necessary
+		if (params.method.toUpperCase() == 'POST')
+			Self.req.setRequestHeader('Content-Type: application/x-www-form-urlencoded');
+		
+		// send request
+		Self.req.send(Self.reqData);
+		
+	}; // this.doReq
+
+} // Ajax
+
+
+var ajax = new Ajax();
+
+ajax.doReq(
+	{ 
+		url:'contactdata.json' ,
+		method: 'GET',
+		responseType: 'text',
+		respHandler: function(response) {
+			alert(response);
+		}
+	}
+);
+
+
+</script>
+</body>
+</html>

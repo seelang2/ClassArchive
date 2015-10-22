@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+<head>
+	<title>Page</title>
+	<meta charset="UTF-8" />
+	
+	<style type="text/css">
+	form label {
+		display: block;
+		margin-bottom: 0.5em;
+		position: relative;
+	}
+	
+	form label input {
+		position: absolute;
+		left: 80px;
+	}
+	
+	form label div {
+		position: absolute;
+		top: 0;
+		left: 250px;
+		color: #F00;
+		font-weight: bold;
+	}
+	
+	</style>
+</head>
+<body>
+
+<form id="form1" action="#" method="get">
+	<label>
+		<span>First Name:</span>
+		<input name="firstname" id="firstname" data-vrule="notblank" />
+	</label>
+	<label>
+		<span>Last Name:</span>
+		<input name="lastname" id="lastname" data-vrule="maxlength" data-vmaxlength="10" />
+	</label>
+	<label>
+		<span>Email:</span>
+		<input name="email" id="email" data-vrule="isemail" />
+	</label>
+	<div>
+		<input type="submit" value="Submit Form" />
+	</div>
+</form>
+
+<script type="text/javascript" src="jquery-1.8.3.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$('#form1')
+		.submit(
+			function(e) {
+				
+				var	formIsValid = true, // innocent until guilty approach
+					errors = [];
+				
+				//console.log($(this).find(':input').length);
+				
+				var $fields =
+				$(this)
+					.find(':input')
+					.not('[type="submit"]') // exclude submit button from 
+					.each(
+						function(i, field) {
+							//console.log(i + ' ' + field.name);
+							
+							
+							// figure out what validation rule to apply
+							switch($(field).attr('data-vrule').toUpperCase()) {
+								
+								case 'NOTBLANK': // field cannot be empty
+									
+									if ( $(field).val().length < 1 ) {
+										formIsValid = false; // invalidate form
+										errors.push(
+											{
+												index: i,
+												message: 'Cannot be empty'
+											}
+										);
+									}
+									
+								break; // NOTBLANK
+								
+								case 'MAXLENGTH': // field cannot exceed maxlength
+									
+									if ( $(field).val().length > $(field).attr('data-vmaxlength') ) {
+										formIsValid = false; // invalidate form
+										errors.push(
+											{
+												index: i,
+												message: 'Length must be ' + $(field).attr('data-vmaxlength') + ' chars or less.'
+											}
+										);
+									}
+									
+								break; // MAXLENGTH
+								
+								case 'ISEMAIL': // field is an email address
+									
+									if ( $(field).val().search(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i) < 0 ) {
+										formIsValid = false; // invalidate form
+										errors.push(
+											{
+												index: i,
+												message: 'Must be a valid e-mail address.'
+											}
+										);
+									}
+									
+								break; // ISEMAIL
+								
+								
+							} // switch
+							
+							
+						} // function
+					 );
+				
+				//console.log(formIsValid);
+				
+				// check form data status
+				if (formIsValid) {
+					// valid data, submit form
+					return true;
+				}
+				
+				// handle invalid form data
+				console.log(errors);
+				
+				// remove any validation error messages
+				$(this)
+					.find('.verror')
+					.remove();
+				
+				$.each(
+					errors,
+					function(i, error) {
+						
+						$fields
+							.eq(error.index)
+							.after('<div class="verror">' + error.message + '</div>');
+						
+					}
+				); // each error
+				
+				return false; // cancel form submission
+			} // function
+		 ); // on submit
+	
+	
+});
+
+</script>
+</body>
+</html>

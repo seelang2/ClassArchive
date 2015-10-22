@@ -1,0 +1,242 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Simple Single Column Layout with Header and Footer</title>
+	<meta charset="UTF-8" />
+	
+    <style type="text/css">
+	/* Page Layout */
+	body {
+		font-family: Verdana, Geneva, sans-serif;
+		font-size: 85%;
+		color: #000;
+		background-color: #ccc;
+	}
+	
+	#wrapper {
+		width: 800px;
+		margin: 0 auto; /* auto centers the element within its parent */
+		background-color: #fff;
+		border: 1px solid #7a7a7a;
+	}
+	
+	#header { 
+		height: 80px; 
+		background-color: #009; 
+	}
+	
+	#footer {
+		height: 125px;
+		background-color: #666;
+		color: #fff;
+		clear: both;
+		font-size: 90%;
+	}
+	
+	#content {
+		background-color:#6FF;
+		clear: both; /* force content to below floated menu elements */
+	}
+	
+	#maincolumn {
+		float: left;
+		width: 515px;
+		padding: 0 10px 0 25px;
+	}
+	
+	#sidebar {
+		float: right;
+		width: 225px;
+		padding: 0 15px 0 10px;
+		font-size: 90%;
+	}
+	
+	
+	/* Vertical menu styles */
+	.vertmenu {
+		border: 1px solid #009;
+		margin: 20px 0;
+	}
+	
+	.vertmenu h2, .vertmenu ul  {
+		margin: 0;
+		padding: 0;
+	}
+	
+	.vertmenu h2 {
+		color: #fff;
+		background-color: #009;
+		font-weight: bold;
+		font-size: 130%;
+		letter-spacing: 0;
+	}
+	
+	.vertmenu ul {
+		list-style-type: none; /* get rid of bullet */
+	}
+	
+	.vertmenu li {
+		border-top: 1px solid #009;
+	}
+	
+	/* when using the pseudoclasses, you MUST put them in the following order */
+	.vertmenu a {
+		text-decoration: none;
+		color: #900;
+		display: block; /* convert from inline to block element to fill LI space*/
+		padding: 5px 10px;
+	}
+	.vertmenu a:link {}
+	.vertmenu a:visited {}
+	.vertmenu a:hover { background: #FFC; }
+	.vertmenu a:active {}
+	
+	/* Horizontal menu styles */
+	#menu ul {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		background: #009;
+		float: right; /* floats expand to contain descendant floated elements */
+		width: 100%;
+	}
+	
+	#menu li {
+		float: left;
+		border-bottom: 1px solid #7a7a7a;
+		border-left: 5px solid #009;
+		background: #cdcdcd;
+	}
+	#menu li:first-child { border-left: none; }
+	#menu li.active { border-bottom-color: #fff; background: #fff; }
+	
+	#menu a {
+		text-decoration: none;
+		color: #009;
+		display: block; /* convert from inline to block element to fill LI space*/
+		padding: 5px 10px;
+	}
+	#menu a:hover { background: #FFC; }
+	
+	/* Typography */
+	h1 {
+		font-weight: normal;
+		color: #990000;
+		font-size: 2em;
+	}
+	
+	h2 {
+		font-weight: normal;
+		font-size: 1.6em;
+		letter-spacing: -1px;
+	}
+	
+	p {
+		line-height: 1.2em;
+	}
+	</style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="header">
+        </div><!-- header -->
+        
+        <div id="menu">
+            <ul>
+                <li><a href="#section1">Section 1</a></li>
+                <li class="active"><a href="#section2">Section 2</a></li>
+                <li><a href="#section3">Section 3</a></li>
+                <li><a href="#section4">Section 4</a></li>
+                <li><a href="#section5">Section 5</a></li>
+            </ul>
+        </div><!-- menu -->
+        
+        <div id="content">
+            <div id="maincolumn">
+            
+            <h1>Lorem ipsum dolor sit amet</h1>
+            
+            <p><a href="http://www.lipsum.com" target="_blank">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. <strong>Donec mollis accumsan consequat.</strong> Sed non risus turpis. Duis dignissim imperdiet porta. Cras vitae lacus non massa malesuada adipiscing at quis ante. <span class="highlight">Nunc eget condimentum nunc.</span> Donec at velit tortor, nec viverra elit. Sed porta nisi sit amet dolor aliquet vulputate ac sed est. Maecenas adipiscing accumsan condimentum. Duis eu lorem id ligula pretium lacinia. Aliquam ullamcorper tempor convallis.</p>
+            
+            <h2 id="section1">Nulla vehicula turpis id <br />lorem dignissim mattis</h2>
+            <p>Duis sodales bibendum nibh sed laoreet. Nulla vehicula turpis id lorem dignissim mattis. </p>
+            
+            <blockquote>Fusce facilisis, mauris at aliquet viverra, sem neque tincidunt nibh, ac ornare tortor libero a neque. <em>Proin purus lorem, pulvinar vel porttitor non, hendrerit quis erat.</em> Vestibulum vestibulum pellentesque nibh, nec porttitor nisi blandit sed. Morbi condimentum feugiat bibendum. Integer nisl turpis, imperdiet vitae pulvinar sed, eleifend a leo. Proin pulvinar nunc vel urna accumsan scelerisque. Curabitur turpis nisi, rutrum quis mollis vel, auctor id erat. </blockquote>
+            
+            <p>Aliquam dictum velit at sapien pharetra consequat. Phasellus dictum venenatis tellus eu tempor. Proin sed nisi mauris. Ut eu egestas risus.</p>
+            
+            <ol reversed="reversed" start="8">
+                <li class="highlight">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>Etiam sollicitudin lacus sed risus consectetur a pretium nulla sodales.</li>
+                <li class="highlight">Cras cursus velit a leo interdum mattis.</li>
+                <li>Donec molestie libero id dolor facilisis ac imperdiet sapien sodales.</li>
+            </ol>
+            
+            <ul>
+                <li class="highlight">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>Etiam sollicitudin lacus sed risus consectetur a pretium nulla sodales.</li>
+                <li class="highlight">Cras cursus velit a leo interdum mattis.</li>
+                <li>Donec molestie libero id dolor facilisis ac imperdiet sapien sodales.</li>
+            </ul>
+            
+            <p>Praesent adipiscing adipiscing purus, et tempor orci tincidunt elementum. Cras at pulvinar purus. Fusce cursus, quam sit amet posuere sagittis, orci dolor tempus erat, eu facilisis diam lorem ut elit. Quisque vehicula aliquet elit, quis ullamcorper metus lacinia ac. Proin aliquet scelerisque sollicitudin. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum orci tortor, tempus id dapibus sed, tincidunt et tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum fringilla arcu et bibendum. Praesent vehicula convallis sapien sit amet dapibus. Nullam hendrerit vulputate metus non mattis. In quis nunc tortor. Nunc placerat pellentesque felis, ac auctor sem cursus vitae.</p>
+            
+            <h2 id="section2">Nam sollicitudin dictum turpis</h2>
+            <p>Nullam dapibus mi vitae magna elementum egestas. Nam sollicitudin dictum turpis, a accumsan mauris posuere eget. Suspendisse potenti. Vestibulum sollicitudin quam ac est iaculis vitae condimentum nisl vestibulum. Donec metus ante, bibendum quis scelerisque a, hendrerit et justo. Nam ac elit id nunc consequat laoreet. Praesent tempor congue fringilla.</p>
+            
+            <p>Vestibulum malesuada ante pulvinar turpis ultricies dapibus sit amet in dui. Vivamus eget justo id nisl mattis aliquam. Mauris vitae vestibulum ligula. Praesent vel nisi nisi, non eleifend purus. Suspendisse lacinia blandit metus non scelerisque. In dignissim pretium ipsum vitae fringilla. Quisque sit amet sodales nibh.</p>
+            
+            <p>Suspendisse potenti. Etiam nec neque sapien. Nunc sit amet elit eu augue elementum pharetra a nec elit. Vivamus ipsum leo, fringilla ut semper sit amet, convallis vitae dui. Cras ut vulputate lorem. Integer imperdiet tortor eu nisi egestas varius. Quisque eget ornare sem. Ut faucibus scelerisque eros, ut sodales sem pretium at. Nam eget urna purus. Nullam eget purus nec libero eleifend eleifend. Sed ornare, lectus at vulputate ullamcorper, arcu leo ultricies lectus, ac sagittis ligula diam in odio. Suspendisse potenti. Etiam urna lacus, ullamcorper eu volutpat vitae, consequat at libero. Praesent luctus tellus sed turpis sagittis lacinia.</p>
+            
+            <h2 id="section3">Cras et risus purus, sit amet convallis tortor</h2>
+            <p>Suspendisse potenti. Suspendisse sodales odio et turpis pellentesque volutpat. Proin commodo tincidunt sapien in dignissim. Cras et risus purus, sit amet convallis tortor. Praesent interdum, risus at iaculis scelerisque, orci massa tempus eros, id tincidunt libero est in purus. Aenean non mauris libero. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut ut accumsan nunc. Etiam vulputate nulla et turpis placerat et tempor ligula mollis. Pellentesque porta augue a quam bibendum elementum. Sed commodo augue at velit ornare dignissim. Ut vitae neque urna, quis varius est. Ut nec magna quam. Integer sed ipsum vel enim vestibulum faucibus nec quis felis. Fusce massa velit, sollicitudin eu auctor at, tincidunt nec risus. Donec tristique pellentesque diam, ac rutrum felis rhoncus non.</p>
+            
+            <p>Nulla vitae orci lacus. Nam ullamcorper velit a diam adipiscing tempor. Nullam pellentesque libero a lacus pulvinar nec sagittis velit aliquet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis posuere velit et nunc volutpat interdum tincidunt libero adipiscing. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur mollis sollicitudin tellus, sit amet pellentesque leo pretium id. Sed dignissim arcu vestibulum purus dictum faucibus. Fusce magna dui, mollis ac dapibus eget, hendrerit in diam. Morbi et eros sed lacus placerat feugiat. Phasellus eget massa lorem, id vulputate mauris. Maecenas et metus ornare neque aliquet congue at sed leo.</p>
+            
+            <p>Ut eget ante vel sem commodo convallis. Pellentesque blandit interdum est ac viverra. Curabitur iaculis tincidunt tempor. Proin eget suscipit lorem. Aenean ultricies orci sit amet erat mollis eget tempor turpis sodales. Praesent facilisis iaculis lacinia. Integer bibendum, tellus non luctus pellentesque, ligula lorem suscipit quam, nec pharetra magna odio vel mauris. Proin fermentum, diam sit amet adipiscing molestie, justo odio facilisis arcu, suscipit volutpat massa arcu vitae lectus. Duis sed urna mauris. Nunc ut neque enim. Sed quis turpis lacus, id ornare odio.</p>
+            
+            <h2 id="section4">Sed pretium dapibus lacus quis sodales</h2>
+            <p>Quisque et urna nisi, at tincidunt erat. Aenean sit amet mi mauris, et dictum velit. Morbi non ipsum vitae massa egestas elementum. Nullam bibendum dolor in ipsum auctor vel convallis quam condimentum. Suspendisse sed aliquet augue. Ut ultrices, mi sed condimentum pharetra, purus metus blandit felis, varius ultrices lorem augue id nisl. Suspendisse pellentesque, risus et fermentum venenatis, diam nisi iaculis orci, quis tincidunt orci augue pharetra erat. Fusce ultricies faucibus enim quis ullamcorper. Sed pretium dapibus lacus quis sodales. Suspendisse et sodales tortor. Aenean scelerisque luctus lacus. Quisque blandit libero ut metus tempor hendrerit. Nunc sit amet neque sit amet neque feugiat tincidunt tincidunt a purus. Suspendisse sollicitudin ultrices massa nec cursus. Maecenas malesuada, dolor vitae venenatis placerat, felis eros eleifend dolor, ut ultrices dui augue in turpis. Suspendisse risus urna, adipiscing mattis sagittis non, lacinia ac dolor.</p>
+            
+            <p>Nam tristique tellus vitae leo convallis facilisis ac a tellus. Quisque molestie rutrum aliquet. Vestibulum ac volutpat augue. Mauris rhoncus tincidunt tempor. Cras ac diam sed mi tristique sagittis at ac justo. Pellentesque malesuada, eros eget gravida aliquet, tellus leo bibendum erat, et congue nunc orci auctor nulla. Donec nulla purus, aliquet non lacinia ac, vulputate sit amet sem. Cras nec libero arcu. Quisque dolor sapien, tempor ac tempus ut, dictum eget ipsum. Pellentesque magna risus, eleifend non ultricies sit amet, tempor sit amet augue. Suspendisse blandit nisi quis lorem viverra fermentum. Proin rhoncus euismod augue eget mollis. Sed sodales justo tortor. Pellentesque tempus consequat vulputate. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+            
+            <h2 id="section5">Etiam id tortor purus</h2>
+            <p>Aliquam dapibus, risus eu lobortis tincidunt, diam nisi euismod risus, ac pretium turpis leo ut quam. Morbi ut tellus quis magna dapibus convallis. Phasellus consectetur mi ac arcu ultrices bibendum non sed odio. Ut congue ipsum non justo fermentum eget imperdiet arcu dictum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam id tortor purus. Vivamus velit dolor, sollicitudin laoreet pellentesque eu, tempor nec ligula.</p>
+            
+            <p><a href="#top">Back to top</a></p>
+            
+            </div><!-- maincolumn -->
+            
+            <div id="sidebar">
+                <div id="menu1" class="vertmenu anotherclass" style="">
+                    <h2>Contents</h2>
+                    <ul>
+                        <li><a href="#section1">Section 1</a></li>
+                        <li><a href="#section2">Section 2</a></li>
+                        <li><a href="#section3">Section 3</a></li>
+                        <li><a href="#section4">Section 4</a></li>
+                        <li><a href="#section5">Section 5</a></li>
+                    </ul>
+                </div>
+
+                <div id="menu2" class="vertmenu">
+                    <h2>Other Links</h2>
+                    <ul>
+                        <li><a href="#section1">Section 1</a></li>
+                        <li><a href="#section2">Section 2</a></li>
+                        <li><a href="#section3">Section 3</a></li>
+                        <li><a href="#section4">Section 4</a></li>
+                        <li><a href="#section5">Section 5</a></li>
+                    </ul>
+                </div>
+            </div><!-- sidebar -->
+            
+        </div><!-- content -->
+        
+        <div id="footer">
+        	<span>Copyright &copy; TC Class 5037. Some Rights Reserved.</span>
+        </div><!-- footer -->
+    </div><!-- wrapper -->
+</body>
+</html>

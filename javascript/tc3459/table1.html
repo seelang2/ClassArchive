@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="container"></div>
+
+<script type="text/javascript">
+
+var testData = [{firstname: "John", lastname: "Doe", email: "jdoe@email.com"},
+				{firstname: "Peter", lastname: "Hun", email: "jddfgdfoe@email.com"},
+				{firstname: "Mary", lastname: "Strong", email: "4hdfgh@email.com"},
+				{firstname: "Alex", lastname: "Warner", email: "ngngs@email.com"},
+				{firstname: "Brenda", lastname: "Kelly", email: "fghgmhjm6@email.com"},
+				{firstname: "Julie", lastname: "Peters", email: "fg3rhdf@email.com"},
+				{firstname: "April", lastname: "Winter", email: "iamparadox@email.com"},
+				{firstname: "May", lastname: "Summer", email: "metoo2@email.com"},
+				{firstname: "June", lastname: "Harwood", email: "noonereally@email.com"},
+				{firstname: "Howard", lastname: "Michaels", email: "howard.michaels@email.com"},
+				{firstname: "Everest", lastname: "Peaks", email: "climbme@email.com"},
+				{firstname: "Paul", lastname: "Jones", email: "btllvr@email.com"}];
+
+var targetDiv = document.getElementById("container");
+
+var tableElem = document.createElement("TABLE");
+targetDiv.appendChild(tableElem);
+// create table head section
+var theadElem = document.createElement("THEAD");
+tableElem.appendChild(theadElem);
+
+var tRowElem = document.createElement("TR");
+theadElem.appendChild(tRowElem);
+
+for (var key in testData[0]) {
+	var thElem = document.createElement("TH");
+	tRowElem.appendChild(thElem);
+	thElem.appendChild(document.createTextNode(key.toUpperCase()));
+}
+
+// create table body section
+var tbodyElem = document.createElement("TBODY");
+tableElem.appendChild(tbodyElem);
+
+for (var c = 0; c < testData.length; c++) {
+	var tRowElem = document.createElement("TR");
+	tbodyElem.appendChild(tRowElem);
+	
+	for (var key in testData[c]) {
+		var tdElem = document.createElement("TD");
+		tRowElem.appendChild(tdElem);
+		tdElem.appendChild(document.createTextNode(testData[c][key]));
+	}
+	
+}
+
+
+</script>
+</body>
+</html>

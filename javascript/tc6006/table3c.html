@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Table Demo</title>
+	
+	<style type="text/css">
+	
+	.hover { background-color: #FFC; }
+	
+	</style>
+</head>
+<body>
+
+<div id="contacttable"></div>
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript">
+
+function doHover() {
+	$(this).toggleClass('hover');
+}
+
+var contactList = 
+[
+	{ "firstname": "John", "lastname": "Doe", "age": 42 },
+	{ "firstname": "Jane", "lastname": "Smith", "age": 37 },
+	{ "firstname": "Mary", "lastname": "Allen", "age": 21 },
+	{ "firstname": "Peter", "lastname": "Tracy", "age": 56 },
+	{ "firstname": "Tracy", "lastname": "Peters", "age": 35 }
+];
+
+
+var $tbody = 
+$('#contacttable')							// select div
+	.append('<table><tbody /></table>')		// add the TABLE and TBODY
+	.find('tbody');							// traverse to TBODY
+
+$.each(
+	contactList,
+	function(i, contact) {
+		$('<tr>' + 
+			'<td>' + contact.firstname + '</td>' +
+			'<td>' + contact.lastname + '</td>' +
+			'<td>' + contact.age + '</td>' +
+		  '</tr>')
+			.appendTo($tbody)
+			.on('mouseover mouseout', doHover);
+	}
+);
+
+
+
+</script>
+</body>
+</html>

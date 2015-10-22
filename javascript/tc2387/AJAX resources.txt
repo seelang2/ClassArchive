@@ -1,0 +1,166 @@
+Sun's JavaScript Guide
+http://docs.sun.com/source/816-6409-10/contents.htm
+
+Apple Developer Connection XMLHttpRequest page
+http://developer.apple.com/internet/webcontent/xmlhttpreq.html
+
+W3C DOM Specifications
+http://www.w3.org/TR/REC-DOM-Level-1/
+http://www.w3.org/TR/DOM-Level-2-Core/
+http://www.w3.org/DOM/
+http://xml.coverpages.org/dom.html
+
+
+W3 Browser Statistics
+http://www.w3schools.com/browsers/browsers_stats.asp
+
+Other Browser Statistics
+http://www.upsdell.com/BrowserNews/stat_trends.htm
+http://www.google.com/search?sourceid=navclient-ff&ie=UTF-8&rlz=1B2GGGL_enUS206US206&q=browser+version+use+statistics
+
+Screenreaders
+Thunder - http://www.screenreader.net/index.php?section=Home
+http://espeak.sourceforge.net/
+
+JavaScript Object Notation (JSON)
+http://www.json.org/
+
+AJAX Articles, blogs, etc.
+http://ajaxian.com/
+http://www.javalobby.org/articles/ajax-ria-overview/
+http://www.maxkiesler.com/index.php/weblog/comments/how_to_make_your_ajax_applications_accessible/
+http://ajaxpatterns.org/
+http://polymorphicpodcast.com/shows/architectajax/
+http://www.fleegix.org/
+
+AJAX security issue: http://www.eweek.com/article2/0,1895,2110554,00.asp?kc=EWEWEMNL040307EP37A
+
+http://ajaxian.com/archives/ajax-tutorial-round-up
+
+http://www.phpclasses.org/blog/post/58-Responsive-AJAX-applications-with-COMET.html
+
+Ajax on Rails
+http://www.onlamp.com/pub/a/onlamp/2005/06/09/rails_ajax.html
+
+When to use AJAX
+http://www.yourtotalsite.com/archives/javascript/ajax_and_javascript_bec/Default.aspx
+
+
+Web Design Articles
+http://alistapart.com/articles/behavioralseparation
+http://alistapart.com/articles/pocket
+http://www.xfront.com/REST-Web-Services.html
+
+AJAX Site Examples
+http://www.aventureforth.com/2005/09/06/top-10-ajax-applications/
+http://ajaxian.com/archives/50-ajax-reference-websites-from-around-the-world
+http://www.kiko.com/
+http://www.backpackit.com/
+http://www.formassembly.com/time-tracker/
+
+
+AJAX Examples
+http://www.clearnova.com/ajax/index.html
+http://www.propeller-head.biz/demo/desktop/
+http://24ways.org/2005/edit-in-place-with-ajax
+http://javanet1-staging.locaweb.com/ajax-autocomplete/index.jsp
+http://wiseguysonly.com/2006/04/14/ajax-autocompletion-for-the-impatient/
+http://www.phpbuilder.com/columns/beginning_ajax20070111.php3
+http://www.phpbuilder.com/columns/beginning_ajax20070111.php3
+
+AJAX Libraries and Extensions
+
+ECMAScript for XML (E4X) and AJAX ***WARNING: LIMITED BROWSER SUPPORT***
+http://www-128.ibm.com/developerworks/library/ws-ajax1/
+http://www-128.ibm.com/developerworks/webservices/library/ws-ajax2/
+http://en.wikipedia.org/wiki/E4X
+http://www.w3schools.com/e4x/default.asp
+
+
+http://www.ajaxlessons.com/2006/02/19/ajax-workshop-3-shopping-cart-using-scriptaculous/
+
+http://www.ajaxload.info/
+
+http://parentnode.org/
+
+Web Services to use with AJAX
+http://xmethods.net/
+
+
+JavaScript Samples
+http://simonwillison.net/2004/May/26/addLoadEvent/
+
+
+JavaScript Resources
+http://www.quirksmode.org/js/events_properties.html
+http://www.quirksmode.org/js/events_access.html
+http://evolt.org/article/Mission_Impossible_mouse_position/17/23335/index.html
+http://www.comptechdoc.org/independent/web/cgi/javamanual/javaevents.html
+http://www.comptechdoc.org/independent/web/cgi/javamanual/javastyle.html
+http://www.elated.com/articles/events-and-event-handlers/
+http://www.jibbering.com/faq/faq_notes/closures.html
+http://www.nodans.com/index.cfm/2007/5/21/Using-Closures-in-Javascript
+http://www.thescripts.com/forum/thread91109.html
+http://www.shawnolson.net/a/503/altering-css-class-attributes-with-javascript.html
+
+http://www.netlobo.com/javascript_get_element_id.html
+http://www.javascriptkit.com/domref/elementproperties.shtml
+http://www.javascriptkit.com/javatutors/proto.shtml 	// JS prototype object
+
+
+http://www.google.com/search?num=100&hl=en&safe=off&rlz=1B2GGGL_enUS206US206&q=set+class+javascript&btnG=Search
+
+
+XML Stuff
+http://www.xml.com/
+
+DOM Scripting
+http://www.quirksmode.org/dom/intro.html
+
+http://www.webreference.com/js/column43/methods.html
+http://www.howtocreate.co.uk/tutorials/javascript/domstructure
+http://www.javascriptkit.com/domref/elementmethods.shtml
+
+http://www.beginningjavascript.com/
+http://domscripting.com/book/
+http://carsonworkshops.com/dev/keith/06JULY2006.html
+http://24ways.org/2005/improving-form-accessibility-with-dom-scripting
+Concise Tutorial: http://www.pageresource.com/dhtml/ryan/part4-1.html
+
+Other Resources
+http://microformats.org/wiki/rest/ahah
+http://icant.co.uk/sandbox/eventdelegation/
+http://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113/events.html#Events-eventgroupings-uievents
+http://codylindley.com/Webdev/295/javascript-get-page-height-with-scroll
+http://www.backbase.com/start/7/?gclid=COH4urKE0ooCFR6AWAod0BSXpA
+
+http://www.walterzorn.com/dragdrop/dragdrop_e.htm
+http://freeajaxscripts.net/Tutorials/ajax/Drag-and-Drop_Shopping_Cart_with_AJAX_2007021019.html
+
+Web 2.0 Information
+http://www.oreillynet.com/pub/a/oreilly/tim/news/2005/09/30/what-is-web-20.html
+http://www.oreillynet.com/lpt/a/6228
+http://en.wikipedia.org/wiki/Web_2
+
+IDE
+http://www.aptana.com/
+
+
+http://websidestory.com
+
+
+Google Searches
+http://www.google.com/search?num=100&hl=en&safe=off&rlz=1B2GGGL_enUS206US206&q=handheld+media+type+support&btnG=Search
+http://www.google.com/search?sourceid=navclient-ff&ie=UTF-8&rlz=1B2GGGL_enUS206US206&q=unobtrusive+javascript
+http://polymorphicpodcast.com/shows/architectajax/
+http://www.google.com/search?num=100&hl=en&safe=off&rlz=1B2GGGL_enUS206US206&q=what+can+you+do+with+ajax&btnG=Search
+http://www.google.com/search?num=100&hl=en&safe=off&rlz=1B2GGGL_enUS206US206&q=REST&btnG=Search
+http://www.google.com/search?sourceid=navclient-ff&ie=UTF-8&rlz=1B2GGGL_enUS206US206&q=auto+completion+ajax
+http://www.google.com/search?sourceid=navclient-ff&ie=UTF-8&rlz=1B2GGGL_enUS206US206&q=auto+completion+ajax
+
+
+Ruby on Rails AJAX
+http://demo.script.aculo.us/ajax/autocompleter
+
+Other
+http://dean.edwards.name/IE7/

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>AJAX Demo 1</title>
+	
+</head>
+<body>
+
+<button>Click Me</button>
+
+<div id="content"></div>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$('button')
+		.click(function() {
+			
+			$('#content').load('content1.html');
+			
+		 });
+	
+	
+	
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

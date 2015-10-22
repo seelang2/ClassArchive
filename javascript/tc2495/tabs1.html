@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+
+<script type="text/javascript" src="ajax.js"></script>
+<script type="text/javascript" src="general_lib.js"></script>
+
+<style type="text/css">
+body {
+	font: 85% normal Verdana, Geneva, sans-serif;
+	background: #dedede;
+}
+
+#wrapper {
+	width: 642px;
+	margin: auto;
+	background: #fff;
+}
+
+#tabs ul {
+	float: left;
+	width: 640px;
+	list-style-type:none;
+	border: 1px solid #7a7a7a;
+	border-bottom: none;
+	margin: 0;
+	padding: 0;
+}
+
+#tabs li {
+	float: left;
+	width: 159px;
+	border-left: 1px solid #7a7a7a;
+	border-bottom: 1px solid #7a7a7a;
+}
+
+#tabs li:first-child {
+	width: 160px;
+	border-left: none;
+}
+
+#tabs li.activetab { 
+	border-bottom: none; 
+}
+
+#tabs a {
+	display: block;
+	padding: 7px 5px;
+	text-align: center;
+	text-decoration: none;
+}
+
+#tabs a:hover {
+	font-weight: bold;
+	background: #FFC;
+}
+
+#content {
+	border-left: 1px solid #7a7a7a;
+	border-right: 1px solid #7a7a7a;
+	border-bottom: 1px solid #7a7a7a;
+}
+
+.readertext {
+	position: absolute;
+	top: -2500;
+	left: -2500;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	z-index: 0;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="wrapper">
+	<div id="header">
+        <div class="readertext">
+            <a name="top"></a>
+            This site description/summary goes here.
+        </div>
+        
+    </div><!-- header -->
+    
+	<div id="tabs">
+    	<ul>
+        	<li><a href="getpage.php?pageid=page1">Topic 1</a></li>
+            <li><a href="getpage.php?pageid=page2">Topic 2</a></li>
+            <li><a href="getpage.php?pageid=page3">Topic 3</a></li>
+            <li><a href="getpage.php?pageid=page4">Topic 4</a></li>
+        </ul>
+    </div><!-- tabs -->
+    
+    <div id="content">
+    	<p>This space intentionally left blank.</p>
+    </div><!-- content -->
+	
+    <div class="readertext">
+    	<a href="#top">Back to top</a>	
+    </div>
+</div><!-- wrapper -->
+
+<script type="text/javascript">
+var Registry = new Object();
+
+var App = new function() {
+	this.startup = function() {
+		// create references to objects and instances
+		Registry.contentDiv = document.getElementById("content");
+		Registry.tabLinks = document.getElementById("tabs").getElementsByTagName("A");
+		Registry.ajax = new Ajax();
+		
+		// hijack navigation links
+		for (var c = 0; c < Registry.tabLinks.length; c++) {
+			
+			Registry.tabLinks[c].onclick = function() {
+				// extract articleid parameter from query string and convert to hashtag
+				var newHash = App.getHash(this.href);
+				document.location = newHash;
+				return false; // override default action
+				
+			}; // onclick
+		}
+		
+		// set up hash check polling interval
+		Registry.lastHash = 'xxx';
+		Registry.hashCheckInterval = setInterval('App.checkHash()', 50);
+		
+	}; // startup
+	
+	this.getHash = function(href) {
+		return '#' + href.split('=')[1];
+	}; // getHash
+	
+	this.getContent = function(target) {
+		// target will be a hashtag, so we need to get rid of the leading '#'
+		target = target.substr(1);
+		
+		// make ajax call
+		var x = new Date();
+		x = x.getTime();
+		
+		Registry.ajax.doGet('getpage.php?pageid=' + target + '&x='+x, App.updateContent, 'text');
+		
+	}; // getContent
+	
+	this.makeActiveTab = function(target) {
+		//target.parentNode.className = 'activetab';
+		if (typeof Registry.activeTabLi != 'undefined')
+			Registry.activeTabLi.className = '';
+		Registry.activeTabLi = target.parentNode;
+		Registry.activeTabLi.className = 'activetab';
+	}; // makeActiveTab
+	
+	this.updateContent = function(response) {
+		Registry.contentDiv.innerHTML = response;
+	}; // updateContent
+	
+	this.checkHash = function() {
+		if (document.location.hash) {
+			if (document.location.hash != Registry.lastHash) {
+				App.getContent(document.location.hash);
+				App.makeActiveTab(Registry.tabLinks[0]);
+				Registry.lastHash = document.location.hash;
+			}
+		} else {
+			// display default page again
+			if (Registry.lastHash != '') {
+				App.getContent(App.getHash(Registry.tabLinks[0].href));
+				App.makeActiveTab(Registry.tabLinks[0]);
+				Registry.lastHash = '';
+			}
+		}
+
+	}; // checkHash
+	
+	this.shutdown = function() {
+		Registry.contentDiv = null;
+		Registry.tabLinks = null;
+		Registry.ajax = null;
+		Registry.activeTabLi = null;
+		
+		purge(document.getElementById("wrapper")); // clear out all circular refs
+		
+	}; // shutdown
+	
+}; // App
+
+window.onload = App.startup;
+window.onunload = App.shutdown;
+</script>
+
+</body>
+</html>

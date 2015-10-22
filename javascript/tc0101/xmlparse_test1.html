@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Test Document</title>
+    <script type="text/javascript" src="ajax.js"></script>
+    <script type="text/javascript" src="xmlparse.js"></script>
+
+</head>
+
+<body>
+
+<script type="text/javascript">
+var ajax = new Ajax();
+/* ajax.setMimeType("text/xml");*/
+
+var getxml = function() {
+  start = new Date();
+  start = start.getTime();
+  ajax.doGet('xml2.php?start=' + start, processresp, 'xml');
+}
+
+/* window.onload = getxml; */
+	
+var processresp = function(xmlresp) {
+	var maindiv = document.getElementById('maindiv');
+
+//	maindiv.appendChild(document.createTextNode(xmlresp.getElementsByTagName("person").item(0).firstChild.nodeValue));
+//	maindiv.appendChild(document.createElement('BR'));
+
+  var resp = [];
+  resp = XMLParse.xml2ObjArray(xmlresp, 'person');
+
+  for (var i=0; i < resp.length; i++) {
+//    document.write(resp[i].cell[0] + "<br />");
+	maindiv.appendChild(document.createTextNode(resp[i].name));
+	maindiv.appendChild(document.createElement('BR'));
+	maindiv.appendChild(document.createTextNode(resp[i].hair));
+	maindiv.appendChild(document.createElement('BR'));
+	maindiv.appendChild(document.createTextNode(resp[i].eyes));
+	maindiv.appendChild(document.createElement('BR'));
+	maindiv.appendChild(document.createTextNode(resp[i].height));
+	maindiv.appendChild(document.createElement('BR'));
+//    for (var c=0; c < resp.childNodes.length; c++) {
+//	  maindiv.appendChild(document.createTextNode(resp[i].childNodes.item(c)));
+//	  maindiv.appendChild(document.createElement('BR'));
+//	}
+  }
+
+}
+
+var init = function() {
+	start = new Date();
+	start = start.getTime();
+	var str = "Just some sample text to add dynamically for no good reason " + start;
+	var maindiv = document.getElementById('maindiv');
+
+	clearnode(maindiv);
+	maindiv.appendChild(document.createTextNode(str));
+}
+
+var clearnode = function(node) {
+    while (node.firstChild) {
+      node.removeChild(node.firstChild);
+    }
+}
+
+/* window.onload = init(); */
+
+</script>
+
+<input type="button" name="button" value="GET XML" 
+   onclick="javascript: getxml();">
+<br />
+<input type="button" name="button" value="Update Div" 
+   onclick="javascript: init();">
+
+<div id="maindiv"></div>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	background: #dedede;
+	font-size: 85%;
+	font-family:Verdana, Geneva, sans-serif;
+}
+
+#wrapper {
+	margin: 0 auto;
+	background: #ffffff;
+	border: 1px solid #7a7a7a;
+	width: 800px;
+}
+
+#leftside {
+	width: 35.5%;
+	float: left;
+	padding: 2%;
+}
+
+#rightside {
+	width: 55.5%;
+	float: right;
+	padding: 2%;
+}
+
+.clearing {
+	height: 1px;
+	overflow: hidden;
+	clear:both;
+}
+
+#login, #comment-entry, #comments {
+	border: 1px solid #7a7a7a;
+}
+
+#comment-entry { display: none; }
+
+
+
+

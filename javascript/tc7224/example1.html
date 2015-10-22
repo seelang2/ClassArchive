@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+function x(object) {
+	object = { prop: 'New property' };
+}
+
+function y(object) {
+	object.newProp = 'Extra property';
+}
+
+function z(object) {
+	a = 42;
+	b = 'test';
+}
+
+
+var a = 'Some text.'; // string object
+console.log(a);
+x(a);
+console.log(a);
+y(a);
+console.log(a);
+z(a);
+console.log(a);
+
+var b = { myProp: 'A thing.' }; // custom object
+console.log(b);
+x(b);
+console.log(b);
+y(b);
+console.log(b);
+z(b);
+console.log(b);
+
+
+
+</script>
+</body>
+</html>

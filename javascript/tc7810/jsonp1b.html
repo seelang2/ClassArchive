@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+
+var runme = function(data) {
+	console.log(data);
+};
+
+/*
+$.ajax({
+	url:		'http://127.0.0.1/tc7810/contact2.json?callback=runme',
+	type: 		'get',
+	dataType: 	'script'
+});
+*/
+
+$.getScript('http://127.0.0.1/tc7810/contact2.json?callback=runme');
+
+</script>
+</body>
+</html>

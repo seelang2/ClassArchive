@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Page</title>
+<meta charset="UTF-8" />
+<meta name="description" content="My Sample Page." />
+
+<style type="text/css">
+
+</style>
+
+</head>
+<body>
+
+<ul>
+	<li myid="item1">Item 1</li>
+	<li myid="item2">Item 2</li>
+	<li myid="item3">Item 3</li>
+	<li myid="item4">Item 4</li>
+	<li myid="item5">Item 5</li>
+</ul>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+$('ul li')
+	.addClass('listitem')
+	.attr('myatt','item1'); // applies to EVERY element in the collection
+	
+console.log( $('ul li').attr('myid') );
+	
+$('ul li')
+	.each(
+		function(index, element) {
+			
+			//element.id = 'item-' + index;
+			$(element).attr('id', 'item-' + index);
+			
+		}
+	 )
+
+	
+
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<div class="contact">
+		<p>
+			<span class="label">Firstname</span>
+			<span class="field" data-fieldname="firstname"></span>
+		</p>
+		<p>
+			<span class="label">Lastname</span>
+			<span class="field" data-fieldname="lastname"></span>
+		</p>
+		<p>
+			<span class="label">Age</span>
+			<span class="field" data-fieldname="age"></span>
+		</p>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+
+// defer script execution
+$(document).ready(function() {
+
+var getXMLData = function() {
+	// get XML data (ajax)
+	$.ajax({
+		url:		'data.xml',
+		type:		'get',
+		dataType:	'xml',
+		success:	processXML
+	});
+};
+
+// when we get the data (when the data comes back from the server)
+var processXML = function(data) {
+	console.log(data);
+	
+	$(data)
+		.find('contact')	// get collection of contacts
+		.each(function(index, contact) {
+			console.log(contact);
+			// for each contact (loop through contacts)
+				// set up HTML structure
+				$('<div class="contact">' +
+				  '<p><span class="label">Firstname</span>' +
+				  '<span class="field" data-fieldname="firstname"></span>'+
+				  '</p><p><span class="label">Lastname</span>' +
+				  '<span class="field" data-fieldname="lastname"></span>' +
+				  '</p><p><span class="label">Age</span>' +
+				  '<span class="field" data-fieldname="age"></span>' +
+				  '</p></div>')
+					// put each data field into its respective SPAN
+					.find('[data-fieldname="firstname"]')
+					.html($(contact).children('firstname').text())
+					.end()
+					.find('[data-fieldname="lastname"]')
+					.html($(contact).children('lastname').text())
+					.end()
+					.find('[data-fieldname="age"]')
+					.html($(contact).children('age').text())
+					.end()
+					// now attach to DOM
+					.appendTo('#wrapper');
+		 })
+}; // processXML
+
+
+getXMLData();
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

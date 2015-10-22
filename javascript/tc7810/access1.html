@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+	<!-- 
+		Demonstrates access restriction to page content
+		
+	 -->
+	<meta charset="UTF-8" />
+	<title>Access Demo</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="app"></div>
+
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+	// this id could be written on the page from the server, etc
+	var id = '54ca848abb686';
+</script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+/*
+  On load, makes an ajax call based on a specific user to retrieve orders
+  If the user has > 2 orders, display content
+  Otherwise display a 'no access' page
+*/
+
+var request =
+$.ajax({
+	url: 		'http://localhost/tc7810/api/customers/'+id+'/orders',
+	type:		'get',
+	dataType:	'json',
+	cache: 		false
+});
+
+
+request.done(function(data) {
+	// check order count
+	var c = 0;
+	for(row in data) { c++; }
+	
+	//console.log(c);
+	
+	// display access or no access content
+	if (c > 1) {
+		$('#app').load('access_content.html');
+	} else {
+		$('#app').load('access_denied.html');
+	}
+	
+});
+
+
+
+
+});
+
+</script>
+</body>
+</html>

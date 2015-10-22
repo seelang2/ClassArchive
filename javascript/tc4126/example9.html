@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+body {
+	font-family:Verdana, Geneva, sans-serif;
+	color: #000000;
+	margin: 0;
+}
+
+.oddrow { background:#E9E1FD; }
+.evenrow { background:#F3EDFE; }
+.hover { background:#FFC; }
+
+#modalscreen {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	background: rgba(255, 255, 255, 0.6);
+	z-index: 100;
+	display: none;
+}
+
+#modalbox {
+	width: 300px;
+	height: 200px;
+	border: 1px solid #7a7a7a;
+	background: #CCC;
+	position: fixed;
+	z-index: 110;
+	top: 50%;
+	left: 50%;
+	margin-left: -150px;
+	margin-top: -100px;
+	display: none;
+}
+
+#modalcontent { padding: 10px 20px; font-size: 90%;}
+
+#modalcontrols {
+	text-align: center;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="modalscreen"></div>
+<div id="modalbox">
+	<div id="modalcontent"></div>
+    <div id="modalcontrols">
+		<button id="butClose">Close</button>
+    </div>
+</div>
+
+<div id="target"></div>
+
+
+<script type="text/javascript">
+function openModalBox() {
+	var index = this.id.split('-')[1]; // extract contactList array index from row id attribute
+	modalContent.innerHTML = 	'<h2>Contact Details</h2>' +
+												'<p>First Name: ' + contactList[index].firstname + '</p>' +
+												'<p>Last Name: ' + contactList[index].lastname + '</p>' +
+												'<p>Email: ' + contactList[index].email + '</p>';
+	
+	modalBox.style.display = 'block'; // show modalBox
+	modalScreen.style.display = 'block'; // show modalscreen
+}
+
+function highlightRow() {
+	this.className += ' hover';
+} // highlightRow
+
+function unHighlightRow() {
+	this.className = this.className.replace(/ hover/,''); // remove class using RegEx
+} // unHighlightRow
+
+var contactList = [{"firstname":"John", "lastname":"Doe", "email":"jdoe@email.com"},
+						   {"firstname":"Jane", "lastname":"Peters", "email":"wheresjane@gmail.com"},
+						   {"firstname":"Mary", "lastname":"Douglas", "email":"mary.douglas@bigco.com"},
+						   {"firstname":"Paul", "lastname":"Stevens", "email":"pms101@mac.com"},
+						   {"firstname":"Frances", "lastname":"Alexis", "email":"yournamehere@email.com"},
+						   {"firstname":"Alex", "lastname":"Frances", "email":"afrances@domain.com"},
+						   {"firstname":"Tom", "lastname":"Wells", "email":"guru@dot.net"}];
+
+
+
+var targetElem = document.getElementById("target");
+var modalScreen = document.getElementById("modalscreen");
+var modalBox = document.getElementById("modalbox");
+var modalContent = document.getElementById("modalcontent");
+
+// set event handlers on target div and take advantage of event propagation
+targetElem.onmouseover = function(e) {
+	if (!e) var e = window.event; // check to see if event was passed or not
+	// find which node actually triggered the event
+	if (e.target) var targetNode = e.target;
+	else if (e.srcElement) var targetNode = e.srcElement;
+	if (targetNode.nodeType == 3) targetNode = targetNode.parentNode; // fix for older Safari bug
+	
+	if (targetNode.nodeName != 'TD') return; // do nothing unless I'm on a TD element
+	targetNode = targetNode.parentNode; // move up to TR element
+	//alert(targetNode.nodeName);
+	
+	targetNode.className += ' hover';
+}; // onmouseover
+
+targetElem.onmouseout = function(e) {
+	if (!e) var e = window.event; // check to see if event was passed or not
+	// find which node actually triggered the event
+	if (e.target) var targetNode = e.target;
+	else if (e.srcElement) var targetNode = e.srcElement;
+	if (targetNode.nodeType == 3) targetNode = targetNode.parentNode; // fix for older Safari bug
+	
+	if (targetNode.nodeName != 'TD') return; // do nothing unless I'm on a TD element
+	targetNode = targetNode.parentNode; // move up to TR element
+	//alert(targetNode.nodeName);
+	
+	targetNode.className = targetNode.className.replace(/ hover/,''); // remove class using RegEx
+}; // onmouseout
+
+
+// build table
+var tmpElem = document.createElement("TABLE");
+targetElem.appendChild(tmpElem);
+
+var tBodyElem = document.createElement("TBODY");
+tmpElem.appendChild(tBodyElem);
+
+// loop through contactList and create new rows for each contact
+for(var c = 0; c < contactList.length; c++) {
+	var trElem = document.createElement("TR");
+	trElem.id = 'row-' + c; 
+	// stripe rows using classnames
+	if (c % 2 != 0) {
+		trElem.className = 'evenrow';
+	} else {
+		trElem.className = 'oddrow';
+	}
+	
+	trElem.title = 'This space for rent.';
+	tBodyElem.appendChild(trElem);
+	
+	for(var columnName in contactList[c]) {
+		//alert(columnName);
+		tmpElem = document.createElement("TD");
+		trElem.appendChild(tmpElem);
+		tmpElem.appendChild(document.createTextNode(contactList[c][columnName]));
+	}
+	
+	trElem.onclick = openModalBox;
+} // for
+
+document.getElementById("butClose").onclick = function() {
+	modalBox.style.display = 'none'; // hide modalBox
+	modalContent.innerHTML = ''; // remove content
+	modalScreen.style.display = 'none'; // hide modalscreen
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 100%;
+		color: #000000;
+		background: #dedede;
+	}
+	
+	#wrapper {
+		width: 800px;
+		margin: auto;
+		background: #ffffff;
+		box-sizing: border-box;
+		padding: 20px 30px;
+		border: 1px solid #7a7a7a;
+	}
+	
+	.customeritem {
+		border: 1px solid #cccccc;
+		padding: 20px 30px;
+		margin: 20px;
+	}
+	
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="itemlist">
+		<div class="customeritem" data-id="33724">
+			<p>Firstname</p>
+			<p>Lastname</p>
+			<p>Email</p>
+			<button class="btnSave" data-action="save">Save</button>
+			<button class="btnDelete">Delete</button>
+		</div><!-- customeritem -->
+	</div><!-- itemlist -->
+	<div>
+		<button class="btnAdd">Add New Item</button>
+	</div>
+</div><!-- wrapper -->
+
+
+
+<script src="jquery-1.11.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+customerList = [
+	{ "firstname": "Peter", "lastname": "Griffin", "email": "pgriffin@mail.com" },
+	{ "firstname": "Glenn", "lastname": "Quagmire", "email": "giggity@mail.com" },
+	{ "firstname": "Cleveland", "lastname": "Brown", "email": "cleve@mail.com" },
+	{ "firstname": "Homer", "lastname": "Simpson", "email": "dohh@mail.com" },
+	{ "firstname": "Marge", "lastname": "Simpson", "email": "msimpson@mail.com" },
+	{ "firstname": "Sterling", "lastname": "Archer", "email": "triplezero@mail.com" },
+	{ "firstname": "Lana", "lastname": "Kane", "email": "dangerzone@mail.com" }
+];
+
+var App = {};
+App.data = {}; // namespace-global data
+
+App.start = function() {
+
+	// get reference to #itemlist for use later
+	App.data.itemlistElem = $('#itemlist');
+	App.data.wrapperElem = $('#wrapper');
+	
+	// set up button controller
+	App.data.wrapperElem
+		.on('click', 'button', App.buttonController);
+	
+	// build itemlist
+	App.displayItems(customerList);
+
+}; // App.start
+
+App.exit = function() {
+
+}; // App.exit
+
+App.displayItems = function(items) {
+	
+	App.data.itemlistElem
+		.empty() 		// clear out contents of #itemlist
+		.detach();		// temporarily disconnect div while adding children
+	
+	// loop through items and create customeritem divs
+	// and put them in #itemlist
+	
+	$.each(
+		items,
+		function(index, item) {
+			
+			$('<div />')
+				.addClass('customeritem')
+				.attr('data-id', index)
+				.append('<p><span>First Name:</span><span>'+ item.firstname +'</span></p>')
+				.append('<p><span>Last Name:</span><span>'+ item.lastname +'</span></p>')
+				.append('<p><span>Email:</span><span>'+ item.email +'</span></p>')
+				.append('<button class="btnEdit" data-action="edit">Edit</button>')
+				.append('<button class="btnDelete" data-action="delete">Delete</button>')
+				.appendTo(App.data.itemlistElem);
+			
+		}
+	);
+	
+	// now reconnect the node back to the DOM and redraw
+	App.data.itemlistElem.prependTo(App.data.wrapperElem);
+	
+}; // App.displayItems
+
+App.buttonController = function(evt) {
+	// 'this' points to button because of the selector filter
+	
+	// which customer item is this?
+	var id = $(this).closest('.customeritem').attr('data-id');
+	
+	// what button was clicked?
+	switch(true) {
+		
+		case $(this).hasClass('btnEdit'):
+			console.log('Edit button clicked on item',id);
+		break;
+		
+		case $(this).attr('data-action') == 'delete':
+			console.log('Delete button clicked on item',id);
+		break;
+		
+		
+	} // switch
+	
+}; // App.buttonController
+
+
+$(document).ready(App.start); // init App
+window.onunload = App.exit; // clean up
+
+
+
+
+/*
+// these are equivalent, btw
+$(document).ready( function() {} );
+$( function() {} );
+*/
+
+
+
+</script>
+</body>
+</html>

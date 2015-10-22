@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Animation 1</title>
+
+<style type="text/css">
+#box1 {
+	background: #f00;
+	height:75px;
+	width:75px;
+	position: fixed;
+	top: 50px;
+	left: 50px;
+	color: #FFF;
+}
+</style>
+</head>
+
+<body>
+
+<div id="box1"></div>
+
+<script type="text/javascript">
+
+function doStuff() {
+	alert("Boom!");
+}
+//setTimeout(doStuff, 3000);
+
+var boxElem = document.getElementById("box1");
+
+function clockUpdate() {
+	var d = new Date();
+	boxElem.innerHTML = '<p>'+ d.toLocaleTimeString() +'</p>';
+}
+var clockUpdateInterval = setInterval(clockUpdate, 1000);
+clockUpdate(); // need to call separately to immediately update
+
+var currentPos = 50;
+var endPos = 200;
+var fps = 24; // frames per second
+var duration = 4; // animation duration in seconds
+var totalFrames = duration * fps;
+var delay = (duration / totalFrames) * 1000; // duration / # frames converted to milliseconds
+var increment = (endPos - currentPos) / totalFrames; // range / # frames
+console.log('delay: '+delay+', increment: '+increment);
+
+function updatePosition() {
+	currentPos += increment;
+	if (currentPos >= endPos) {
+		currentPos = endPos; // constrain movement to endPos
+		clearInterval(boxMoveInterval);
+	}
+	boxElem.style.left = currentPos + 'px'; // update element position
+}
+var boxMoveInterval = setInterval(updatePosition, delay);
+
+</script>
+</body>
+</html>

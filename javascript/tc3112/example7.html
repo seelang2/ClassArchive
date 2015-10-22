@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Example 7 - Menus</title>
+
+<style type="text/css">
+#menu {
+	
+}
+
+#menu ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	float: left;
+	border: 1px solid #000;
+}
+
+#menu li {
+	position: relative;
+	float: left;
+	height: 30px;
+	line-height: 30px;
+	width: 150px; /* */
+	border-left: 1px solid #000;
+}
+
+#menu li:first-child {
+	border-left: none;
+}
+
+#menu li ul {
+	position: absolute;
+	top: 30px;
+	left: 0;
+	visibility: hidden;
+	float: none;
+}
+
+#menu li li {
+	border-top: 1px solid #000;
+	border-left: none;
+	width: 150px;
+}
+
+#menu li li:first-child {
+	border-top: none;
+}
+
+#menu li ul ul {
+	position: absolute;
+	left: 150px;
+	top: 0;
+}
+
+#menu a {
+	text-decoration: none;
+	display: block;
+	
+}
+
+#menu a:hover {
+	background: #FFC;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="menu">
+	<ul>
+    	<li><a href="#">Link</a></li>
+    	<li>
+        	<a href="#">Link</a>
+            <ul>
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+                <li>
+                    <a href="#">Link</a>
+                    <ul>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    	<li><a href="#">Link</a></li>
+    	<li><a href="#">Link</a></li>
+    	<li><a href="#">Link</a></li>
+    </ul>
+
+
+
+</div>
+
+<script type="text/javascript">
+var listItems = document.getElementById("menu").getElementsByTagName("LI");
+
+for (var c = 0; c < listItems.length; c++) {
+	var submenus = listItems[c].getElementsByTagName("UL");
+	if (submenus.length > 0) {
+		listItems[c].submenu = submenus[0];
+		
+		// set up event handlers to show/hide submenu
+		listItems[c].onmouseover = function() {
+			//alert('found submenu');
+			this.submenu.style.visibility = 'visible';
+		}; // onmouseover
+		
+		listItems[c].onmouseout = function() {
+			this.submenu.style.visibility = 'hidden';
+		}
+	}
+	
+}
+
+</script>
+
+</body>
+</html>

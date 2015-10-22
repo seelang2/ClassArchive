@@ -1,0 +1,178 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+
+#target {
+	margin: auto;
+	width: 500px;
+}
+
+#target table {
+	width: 99%;
+	margin: auto;
+	border-collapse: collapse;
+}
+
+#target th, #target td {
+	border: 1px solid #7a7a7a;
+}
+
+#target .oddrow { background-color: #B4EAA2; }
+#target .evenrow { background-color: #E4F4DF; }
+
+/* #target tr:hover { background-color: #FFC; } Damn you, IE. */
+
+#target .hover { background-color: #FFC; }
+
+#modalbox {
+	background-color: #DFDFDF;
+	border: 1px solid #7a7a7a;
+	width: 200px;
+	height: 300px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -150px; /* negative 50% margins used with 50% positioning to center element */
+	margin-left: -100px;
+	z-index: 1100;
+}
+
+#modalbox label {
+	display: block;
+	margin-bottom: 0.5em;
+}
+
+#modalbox input {
+	float: right;
+	width: 60%;
+}
+
+td input {
+	width: 95%;
+	margin: 0;
+	padding: 0;
+}
+
+</style>
+</head>
+
+<body>
+
+<input type="button" id="theButton" value="Click Me!" />
+
+<div id="target"></div>
+
+<script type="text/javascript">
+// set up my mockup data
+var contacts = [
+				{"firstname":"John","lastname":"Doe","city":"Dallas","state":"TX","phone":"123-456-7890"},
+				{"firstname":"Alex","lastname":"Smith","city":"Chicago","state":"IL","phone":"123-456-7890"},
+				{"firstname":"Sara","lastname":"Roberts","city":"Dallas","state":"TX","phone":"123-456-7890"},
+				{"firstname":"Peter","lastname":"Williams","city":"Chicago","state":"IL","phone":"123-456-7890"},
+				{"firstname":"Alice","lastname":"Peters","city":"Chicago","state":"IL","phone":"123-456-7890"},
+				{"firstname":"Myrtle","lastname":"Johnson","city":"Chicago","state":"IL","phone":"123-456-7890"},
+				{"firstname":"Bea","lastname":"Fields","city":"Dallas","state":"TX","phone":"123-456-7890"},
+				{"firstname":"Jeff","lastname":"Paulson","city":"Philadelphia","state":"PA","phone":"123-456-7890"},
+				{"firstname":"Paul","lastname":"Jeffries","city":"Portland","state":"OR","phone":"123-456-7890"},
+				{"firstname":"Ringo","lastname":"Starr","city":"Dallas","state":"TX","phone":"123-456-7890"},
+				{"firstname":"Mary","lastname":"Francis","city":"Quahog","state":"RI","phone":"123-456-7890"}
+			   ];
+
+
+//alert(contacts.length);
+
+function gotClicked() {
+	// alert('The button was clicked.');
+	var targetDiv = document.getElementById("target");
+	
+	// remove any nodes already in element
+	while (targetDiv.hasChildNodes()) {
+		targetDiv.removeChild(targetDiv.firstChild); // removes the first child node as long as there are child nodes
+	}
+	
+	var tableElem = document.createElement("TABLE");
+	targetDiv.appendChild(tableElem);
+	
+	var tbodyElem = document.createElement("TBODY");
+	tableElem.appendChild(tbodyElem);
+	
+	
+	for (var c = 0; c < contacts.length; c++) {
+		// ------------ NEW ROW -------------
+		var trElem = document.createElement("TR");
+		tbodyElem.appendChild(trElem);
+		
+		trElem.appData = new Object(); // create a custom property to store our app data
+		trElem.appData.id = c;
+		
+		// trElem.appData = {"id":c}; // or just use JSON notation to define data object
+		
+		
+		if (c % 2 == 0) {
+			trElem.className = 'oddrow'; // number is even so it's an odd row
+		} else {
+			trElem.className = 'evenrow'; // even row
+		}
+		
+		trElem.onmouseover = function() {
+			this.className += ' hover';
+		}; // onmouseover
+		
+		trElem.onmouseout = function() {
+			// need a regular expression for this. 
+			// see http://regular-expressions.info for details
+			this.className = this.className.replace(/ hover/, ''); 
+		}; // onmouseout
+		
+		trElem.ondblclick = makeEditable;
+		
+		for (column in contacts[c]) {
+			var tdElem = document.createElement("TD");
+			trElem.appendChild(tdElem);
+			tdElem.appendChild(document.createTextNode(contacts[c][column]));
+		}
+		
+	} // for each item
+	
+} // gotClicked
+
+function makeEditable() {
+	
+	var index = this.appData.id; // retrieve record id from custom data store
+	// blow away contents of the row
+	//this.innerHTML = ''; // innerHTML and tables do NOT get along especially in IE
+	while (this.hasChildNodes()) { this.removeChild(this.firstChild); }
+	// recreate the TDs with INPUT fields instead of text nodes
+	for (column in contacts[index]) {
+		var tdElem = document.createElement("TD");
+		this.appendChild(tdElem);
+		var inputElem = document.createElement("INPUT");
+		inputElem.type = 'text';
+		inputElem.name = column;
+		inputElem.value = contacts[index][column];
+		tdElem.appendChild(inputElem);
+	} // for column in contacts
+	
+	// create a couple of control mechanisms to save and cancel the edit operation
+	
+} // makeEditable
+
+// get reference to the button
+var theButton = document.getElementById("theButton");
+// assign function code to the event handler
+theButton.onclick = gotClicked;
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

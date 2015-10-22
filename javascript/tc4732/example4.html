@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<button id="thebutton">Click Me!</button>
+
+<p>
+<a id="link1" href="http://www.google.com">Go to Google</a>
+</p>
+
+
+
+<script type="text/javascript">
+
+document.getElementById("thebutton").onclick = function() {
+	alert('Hey! Not so hard!');
+}; // onclick
+
+document.getElementById("link1").onclick = function() {
+	//return false;
+	this.href = "http://www.disney.com";
+	this.target = "_blank";
+	return confirm('Are you sure you want to leave this page?');
+	
+}; // link1 onclick
+
+
+
+</script>
+</body>
+</html>

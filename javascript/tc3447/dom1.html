@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="content">
+</div>
+
+<script type="text/javascript">
+// get reference to parent element
+var divElem = document.getElementById("content");
+// create new element
+var hElem = document.createElement("H1");
+// add new element to tree (DOM)
+divElem.appendChild(hElem); // call the appendChild method of the new node's PARENT
+//create text node
+var text = document.createTextNode('Hello World!');
+// add node to tree
+hElem.appendChild(text);
+
+var pElem = document.createElement("P");
+divElem.appendChild(pElem);
+var text = document.createTextNode('My very first dynamic page.');
+pElem.appendChild(text);
+
+
+</script>
+
+
+</body>
+</html>

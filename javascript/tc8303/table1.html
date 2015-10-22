@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+// get a reference to target element
+var $targetElem = $('#target');
+
+// create table and store in variable for later
+var $table = $('<table />'); 
+
+// create TBODY node and store in var because it gets used repeatedly
+var $tbody = $('<tbody />');
+
+// attach TBODY to TABLE
+$tbody.appendTo($table);
+
+// build first row
+$('<tr />')
+	.append('<td>John</td>')
+	.append('<td>Doe</td>')
+	.append('<td>34</td>')
+	.appendTo($tbody);
+
+// build second row
+$('<tr />')
+	.append('<td>Jane</td>')
+	.append('<td>Smith</td>')
+	.append('<td>27</td>')
+	.appendTo($tbody);
+
+// attach table to DOM AFTER building the branch offline
+$table.appendTo($targetElem);
+
+
+</script>
+</body>
+</html>

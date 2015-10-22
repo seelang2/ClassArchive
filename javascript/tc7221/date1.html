@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+// define labels for days and months
+var weekdays = [
+	'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
+];
+
+var months = [
+	'January',
+	'February',
+	'March',
+	'April',
+	'May',
+	'June',
+	'July',
+	'August',
+	'September',
+	'October',
+	'November',
+	'December'
+];
+
+// instantiate Date
+var today = new Date();
+
+// calculate ordinal
+/*
+var ordinal = ['X', 'st','nd','rd','th','th','th','th','th','th','th','th','th','th','th','th','th','th','th','th','th','st','nd','rd','th','th','th','th','th','th','th','st'];
+*/
+
+/*
+switch(today.getDate()) {
+	case 1: case 21: case 31:
+		var ordinal = 'st';
+	break;
+	case 2: case 22:
+		var ordinal = 'nd';
+	break;
+	case 3: case 23:
+		var ordinal = 'rd';
+	break;
+	default:
+		var ordinal = 'th';
+	break;
+}
+*/
+
+var day = today.getDate();
+switch(true) {
+	case day % 10 == 1 && day % 100 != 11:
+		var ordinal = 'st';
+	break;
+	case day % 10 == 2 && day % 100 != 12:
+		var ordinal = 'nd';
+	break;
+	case day % 10 == 3 && day % 100 != 13:
+		var ordinal = 'rd';
+	break;
+	default:
+		var ordinal = 'th';
+	break;
+}
+
+
+// output date string
+document.write('<p>Today is ' + 
+				weekdays[today.getDay()] + ', ' + 
+				months[today.getMonth()] + ' ' +
+				today.getDate() + ordinal + ', ' + 
+				today.getFullYear() + '</p>');
+
+
+
+
+
+</script>
+</body>
+</html>

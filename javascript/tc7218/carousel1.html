@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+	
+	<style type="text/css">
+	
+	#carousel {
+		width: 400px;
+		height: 300px;
+		border: 7px solid #0f0;
+		margin: auto;
+	}
+	
+	#window {
+		position: relative;
+		width: 400px;
+		height: 300px;
+		overflow: hidden;
+	}
+	
+	#filmstrip {
+		position: absolute;
+		height: 300px;
+		width: 1600px;
+		
+	}
+	
+	#filmstrip img {
+		float: left;
+	}
+	</style>
+	
+</head>
+<body>
+
+<div id="carousel">
+	<div id="window">
+		<div id="filmstrip">
+			<img src="pic1.jpg" />
+			<img src="pic2.jpg" />
+			<img src="pic3.jpg" />
+			<img src="pic4.jpg" />
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	var $filmstrip = $('#filmstrip');
+	
+	var moveRight = function() {
+		
+		$filmstrip
+			.animate(
+				{
+					left:		'-=400'
+				},
+				{
+					duration:	750,
+					complete:	function() {
+						
+						$filmstrip
+							.children()
+							.first()					// take the first child
+							.appendTo($filmstrip)		// move it to the end
+							.end()
+							.end()
+							.end()						// revert back to div
+							.css('left',0);				// and reset it back to frame 1
+							
+					}
+				}
+			 );
+
+	}; // moveRight
+	
+	var moveLeft = function() {
+		
+		$filmstrip
+			.children()
+			.last()						// take the last child
+			.prependTo($filmstrip)		// move it to the front
+			.end()
+			.end()
+			.end()						// revert back to div
+			.css('left', '-400px')		// and reset it back to frame 2
+			.animate(
+				{
+					left:		'+=400'
+				},
+				{
+					duration:	750,
+					complete:	function() {
+						// this space intentionally left blank
+					}
+				}
+			 );
+
+	}; // moveLeft
+	
+	setInterval(moveLeft, 2750);
+	
+});
+
+
+
+</script>
+</body>
+</html>
+
+
+
+

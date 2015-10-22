@@ -1,0 +1,243 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Gallery and Slideshow Lightbox</title>
+
+<style type="text/css">
+#body {
+	margin: 0;
+	padding: 0;
+	background: #dedede;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 85%;
+}
+
+#gallery {
+	width: 600px;
+	background: #FEFBE9;
+	border: 1px solid #E2AC0A;
+	margin: auto;
+}
+
+.item {
+	float: left;
+	width: 31.3%;
+	margin: 10px 1%;
+	text-align: center;
+}
+
+.item h2 {
+	text-align: center;
+}
+
+.clearing {
+	height: 1px;
+	clear: both;
+	overflow: hidden;
+}
+
+
+/* lightbox styles */
+
+#modalscreen {
+	background: #000;
+}
+
+#modalboxcontrol {
+	background: url(images/bigx.png) no-repeat;
+	width: 30px;
+	height: 30px;
+	overflow: hidden;
+	position: absolute;
+	top: -12px;
+	right: -12px;
+	cursor: pointer;
+}
+
+#modalboxcontrol span {
+	position: absolute;
+	top: -2000px;
+	left: -2000px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+.leftarrow { 
+	background: url(images/ltarrow.png) no-repeat left center; 
+}
+
+.rightarrow { 
+	background: url(images/rtarrow.png) no-repeat right center; 
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="gallery"></div>
+
+<script src="jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="modal.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+var App = {
+
+	drawGallery: function(response) {
+	//alert("I'm here.");
+		// create gallery
+		$('#gallery')
+			.each(
+				function(i, elem) {
+					var $gallery = $(elem);
+					
+					$.each(
+						response.imageList,
+						function(index, imageData) {
+							$gallery
+							   .append('<div id="item-'+ index +'" class="item">' +
+										'<h2>' + imageData.name + '</h2>' +
+										'<a href="'+ imageData.fullsizeSrc +'">' +
+										'<img src="'+ imageData.thumbnailSrc +
+										  '" width="'+ imageData.thumbnailWidth +
+										  '" height="'+ imageData.thumbnailHeight +'" />' +
+										'</a>' +
+										'</div>')
+							   .children('div:last-child')
+							   .click(
+							       function(evt) {
+									   evt.preventDefault();
+									   var i = this.id.split('-')[1];
+									   var content = 
+									   		'<div id="prev"></div>' +
+											'<div id="next"></div>';
+								   	   
+									   modal.createBox(
+									       { width: response.imageList[i].fullsizeWidth,
+										     height: response.imageList[i].fullsizeHeight,
+											 content: content }
+									   );
+									   
+									   $('#modalboxcontent')
+									      .css(
+										     { backgroundImage: "url("+response.imageList[i].fullsizeSrc+")", 
+											   height: response.imageList[i].fullsizeHeight + 'px',
+											   width: response.imageList[i].fullsizeWidth + 'px'
+											 }
+										   )
+										  .data('itemIndex', i)
+										  .children('div')
+										  .eq(0)
+										  .css(
+										     { float: 'left',
+											   cursor: "pointer"
+											 }
+										   )
+										  .mouseover(
+										     function(evt) {
+												$(this)
+												  .addClass('leftarrow');
+											 }
+										   )
+										  .mouseout(
+										     function(evt) {
+												$(this)
+												  .removeClass('leftarrow');
+											 }
+										   )
+										  .end()
+										  .eq(1)
+										  .css(
+										     { float: 'right',
+											   cursor: "pointer"
+											 }
+										   )
+										  .mouseover(
+										     function(evt) {
+												$(this)
+												  .addClass('rightarrow');
+											 }
+										   )
+										  .mouseout(
+										     function(evt) {
+												$(this)
+												  .removeClass('rightarrow');
+											 }
+										   )
+										  .end()
+										  .css(
+										     { 
+											   height: response.imageList[i].fullsizeHeight + 'px',
+											   width: '45%'
+											 }
+										   )
+										  .click(
+										     function(evt) {
+											    var $this = $(this);
+												var i = $this.parent().data('itemIndex');
+												//alert(i + ' ' + this.id);
+												if (this.id == 'prev') i--;
+												if (this.id == 'next') i++;
+												
+												if (i < 0) i = 0;
+												if (i > response.imageList.length - 1) i = response.imageList.length - 1;
+												
+												$this
+												   .parent()
+												   .data('itemIndex', i)
+												   .css(
+													 { backgroundImage: "url("+response.imageList[i].fullsizeSrc+")", 
+													   height: response.imageList[i].fullsizeHeight + 'px',
+													   width: response.imageList[i].fullsizeWidth + 'px'
+													 }
+												    )
+												   .parent()
+												   .css(
+													 {  
+													   height: response.imageList[i].fullsizeHeight + 'px',
+													   width: response.imageList[i].fullsizeWidth + 'px'
+													 }
+												    );
+													
+												modal.center(
+												   {  
+												     height: response.imageList[i].fullsizeHeight + 'px',
+												     width: response.imageList[i].fullsizeWidth + 'px'
+												   }
+												);
+												
+											 }
+										   )
+								   }
+							    )
+							   
+						}
+					)
+				}
+			 )
+	
+	}, // drawgallery
+	
+	start: function() {
+		// make ajax call to retrieve gallery data
+		$.ajax(
+		  {
+			url: "galleryitems.json",
+			type: "GET",
+			dataType: "JSON",
+			success: App.drawGallery
+		  }
+		)
+		
+	}
+	
+} // App
+
+$(document).ready(App.start); // document.ready
+
+
+</script>
+</body>
+</html>

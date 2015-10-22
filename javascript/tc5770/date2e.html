@@ -1,0 +1,75 @@
+<!doctype HTML>
+<html>
+<head>
+	<title>Page Title</title>
+	<meta charset="UTF-8" />
+
+</head>
+<body>
+
+<script type="text/javascript">
+
+var weekdays = 
+	['Sunday',
+	 'Monday',
+	 'Tueday',
+	 'Wednesday', 
+	 'Thursday', 
+	 'Friday',
+	 'Saturday'
+	];
+
+var months = 
+	[
+	 'January',
+	 'February',
+	 'March',
+	 'April',
+	 'May',
+	 'June',
+	 'July',
+	 'August',
+	 'September',
+	 'October',
+	 'November',
+	 'December'
+	];
+	
+// to test we can set the date by passing a date into the date object
+var today = new Date('2013-10-24 00:00:00');
+
+// writes to the console window
+console.log('Value of today: ' + today);
+
+var theDate = today.getDate();
+
+switch(true) {
+	case theDate == 1 || theDate == 21 || theDate == 31:
+		var ordinal = 'st';
+	break;
+	
+	case theDate == 2 || theDate == 22:
+		var ordinal = 'nd';
+	break;
+	
+	case theDate == 3 || theDate == 23:
+		var ordinal = 'rd';
+	break;
+	
+	default:
+		var ordinal = 'th';
+	break;
+}
+
+
+document.write('<p>Today is ' + 
+			   weekdays[today.getDay()] + ', ' +
+			   months[today.getMonth()] + ' ' +
+			   today.getDate() + ordinal + ', ' +
+			   today.getFullYear() +
+			   '.</p>');
+
+
+</script>
+</body>
+</html>

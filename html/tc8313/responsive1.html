@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Responsive Layout Demo</title>
+	<!-- This line enables our responsive design to be, well, responsive -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+
+	<!-- load reset style first -->
+	<link href="css/normalize.css" type="text/css" rel="stylesheet" />
+	
+	<style type="text/css">
+	/* 'Mobile first' - base layout is for smallest screen size */
+	
+	body {
+		background-color: red;		
+	}
+
+	/* Print stylesheet via media query */
+	@media print {
+		/* You can set font type size in points, hide extraneous elements, etc. */
+		body {
+			font-size: 12pt;
+		}
+
+		#elementToHide { display: none; }
+	}
+
+	/* Use media queries to apply styles at breakpoints */
+	/* Sample breakpoints at 420, 580, 720*/
+
+	@media screen and (min-width:420px) and (max-width: 679px) {
+		/* this is a sub-stylesheet that can stand alone. */
+		body {
+			background-color: green;
+		}
+	} /* @media */
+
+	@media screen and (min-width:680px) and (max-width: 869px) {
+		/* this is a sub-stylesheet that can stand alone. */
+		body {
+			background-color: blue;
+		}
+	} /* @media */
+
+	@media screen and (min-width:870px) {
+		/* this is a sub-stylesheet that can stand alone. */
+		body {
+			background-color: white;
+		}
+	} /* @media */
+
+	</style>
+</head>
+<body>
+
+	<h2 id="section1">In sed pulvinar diam</h2>
+	<p>Aliquam malesuada sed leo eget iaculis. Fusce ultricies magna arcu, eu tincidunt purus dapibus in. Sed id orci urna. Pellentesque tristique malesuada nunc, ac volutpat dolor blandit id. Cras rhoncus pellentesque turpis eu congue. In sed pulvinar diam. Vestibulum ac vulputate neque, consequat tristique metus. Pellentesque dictum diam ut sollicitudin blandit. Vestibulum lacinia massa at eros tincidunt tristique.</p>
+
+	<p>Aliquam ac bibendum tellus, eu luctus quam. Vivamus auctor tellus dui, sed sollicitudin magna varius quis. In ac posuere ex. Proin consequat viverra fermentum. Pellentesque ultricies aliquet dignissim. Nulla facilisi. Aliquam sed est tellus. Duis eu rhoncus odio, non mollis velit. Phasellus vel malesuada neque.</p>
+
+	<h2 id="section2" style="color:red;">Mauris at magna sapien</h2>
+	<p>Phasellus non lacus dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas a ligula a enim vehicula fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut eros nisl. Mauris at magna sapien. Nulla efficitur magna sit amet placerat molestie.</p>
+
+
+
+</body>
+</html>

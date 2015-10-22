@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-2.1.1.js"></script>
+<script type="text/javascript">
+
+var dirList =
+[
+	{ filename: 'file1.txt', filesize: 302 },
+	{ filename: 'file2.txt', filesize: 1534 },
+	{ filename: 'file3.txt', filesize: 23425 },
+	{ filename: 'file4.txt', filesize: 198 }
+];
+
+// create empty table and store reference to tbody
+var $tbody = 
+$('#target')
+	.append('<table><tbody /></table>')
+	.find('tbody');
+
+// loop through dirList array
+$.each(
+	dirList,
+	function(index, element) {
+		
+		$tbody
+			.append('<tr>' + 
+						'<td>' + element.filename + '</td>' +
+						'<td>' + element.filesize + '</td>' +
+					'</tr>');
+	}
+);
+
+
+</script>
+</body>
+</html>

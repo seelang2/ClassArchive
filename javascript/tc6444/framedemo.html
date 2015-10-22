@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+</head>
+<body>
+
+<div id="target"><div>
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+function callbackTest() { alert('works!'); }
+
+
+$('#target').append('<iframe src="framedoc.html"></iframe>');
+
+var $testDoc = $(window.frames[0].document);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Drawers/Accordion/Whatever technique</title>
+
+<style type="text/css">
+body {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 85%;
+	color: #000;
+}
+
+#wrapper {
+	width: 600px;
+	margin: auto;
+	border: 1px solid #000;	
+}
+
+h2 {
+	margin: 0;
+	padding: 5px 10px;
+	background: #06F;
+	color: #fff;
+	font-weight: normal;
+	border-top: 1px solid #003;
+}
+
+h2:first-child { border-top: none; }
+
+.accordion-content {
+	padding: 10px 15px;
+	height: 150px;
+	overflow: scroll;
+	/* display: none;	*/
+}
+
+.highlight {
+	background-color: #88CDEE;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="wrapper">
+	<h2 class="accordion-title">Lorem ipsum dolor sit amet</h2>
+    <div class="accordion-content">
+    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id libero quis lectus ultricies vestibulum. Aenean euismod viverra enim et convallis. Suspendisse vestibulum sollicitudin sapien, et accumsan sapien consequat ac. Aenean lorem libero, ornare at semper et, bibendum vitae quam. Fusce dictum nulla non nibh ornare quis feugiat quam ullamcorper. Maecenas porta laoreet leo ac cursus. Fusce placerat vulputate ipsum eget rhoncus. Phasellus at dolor purus, et tempus leo. Praesent tristique, lorem bibendum posuere pretium, metus magna viverra quam, nec tincidunt nisl metus et dui. Nulla massa leo, commodo ut porttitor sed, euismod ac velit. Donec eros lorem, luctus vel tempor vitae, convallis vulputate velit. Proin commodo leo mollis velit dapibus cursus. Suspendisse vulputate aliquam lacinia. Aenean est nisi, fringilla id varius vitae, blandit id quam.</p>
+    </div>
+
+	<h2 class="accordion-title">Suspendisse potenti. Cras ac tortor metus</h2>
+    <div class="accordion-content">
+    	<p>Suspendisse potenti. Cras ac tortor metus, in suscipit arcu. Cras lobortis dictum iaculis. Vestibulum ultrices imperdiet mi, quis aliquet quam dignissim at. Suspendisse mollis nisl tortor, vel adipiscing quam. Suspendisse potenti. Proin porta sem at ipsum rhoncus sit amet ornare diam aliquet. Mauris lacus libero, volutpat a pharetra vitae, lobortis non justo. Duis consequat egestas ipsum, vitae pharetra quam volutpat vitae.</p>
+    </div>
+
+	<h2 class="accordion-title">Etiam eget sollicitudin diam</h2>
+    <div class="accordion-content">
+    	<p>Duis vulputate, eros at interdum facilisis, felis massa varius enim, non lacinia eros justo id ante. Nam scelerisque elit id turpis ullamcorper sed egestas urna laoreet. Etiam eget sollicitudin diam. Donec sit amet velit id odio pretium consequat non eget massa. Mauris ultricies lobortis rutrum. Fusce metus lacus, porta lobortis adipiscing in, tincidunt vel est. Aliquam quis augue dolor. Pellentesque nisi dolor, viverra in elementum ac, fermentum quis velit. Praesent est libero, rutrum vitae facilisis eu, ultricies vitae quam. Nunc feugiat, dolor id rhoncus rhoncus, nunc nulla venenatis est, in eleifend turpis urna eget leo. Morbi dignissim placerat dui, ac pharetra sem scelerisque in. Integer ultricies sapien accumsan purus mattis fermentum.</p>
+    </div>
+
+	<h2 class="accordion-title">Ut ut metus nibh, in posuere felis</h2>
+    <div class="accordion-content">
+    	<p>Nullam ultrices libero quis augue sollicitudin in suscipit nisl commodo. Integer in eros eros. Curabitur faucibus, ligula eu pretium varius, lectus odio tristique eros, et congue sapien risus eu libero. Morbi eleifend posuere mattis. Ut ut metus nibh, in posuere felis. Nunc non ante mauris. Mauris condimentum tincidunt dui id faucibus. Maecenas cursus sollicitudin ligula, id pulvinar nulla dapibus sed. Sed vel blandit purus. Phasellus quis velit sed nulla ultrices mollis quis eget turpis. Nulla facilisi. Donec ac lectus a nibh fermentum venenatis. Nunc aliquam, mi sed mattis convallis, arcu arcu varius lacus, ut placerat mi risus sed sapien.</p>
+    </div>
+</div><!-- wrapper -->
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+
+var $content = $('.accordion-content');
+//$content.css('display', 'none');
+$content.hide();
+$('.accordion-title')
+	.each(
+		function(index, titleElem) {
+			$(titleElem).data('contentIndex', index);
+		}
+	 )
+	.click(
+	 	function() {
+			//alert($(this).data('contentIndex'));
+			var $this = $(this);										// put this inside a jQuery object 
+			$content														// for the list of content elements...
+				.eq($this.data('contentIndex'))					// locate the item at index saved in contentIndex
+				.toggle()													// display that item
+				.end()													// revert collection to full list of content elements
+				.not(':eq('+$this.data('contentIndex')+')')		// remove contentIndex item from collection
+				.hide();													// ...and hide them
+		}
+	 )
+	.mouseover(
+		function() {
+			$(this).addClass('highlight');
+		}
+	 )
+	.mouseout (
+		function() {
+			$(this).removeClass('highlight');
+		}
+	 );
+
+
+
+
+</script>
+</body>
+</html>

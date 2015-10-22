@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Expanding/Collapsing List</title>
+
+<style type="text/css">
+.expandable {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.expandable ul {
+	list-style-type: none;
+	padding: 0 30px;
+	margin: 0;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="list">
+	<ul class="expandable">
+    	<li>List Item 1</li>
+    	<li>
+        	<span><a href="#">List Item 2</a></span>
+            <ul>
+            	<li>Sub List Item 1</li>
+            	<li>
+                    <span>Sub List Item 2</span>
+                    <ul>
+                        <li>Sub List Item 1</li>
+                        <li>Sub List Item 2</li>
+                        <li>Sub List Item 3</li>
+                        <li>Sub List Item 4</li>
+                    </ul>
+                </li>
+            	<li>Sub List Item 3</li>
+            	<li>Sub List Item 4</li>
+            </ul>
+        </li>
+    	<li>List Item 3</li>
+    	<li>List Item 4</li>
+    	<li>
+        	<span>List Item 5</span>
+            <ul>
+            	<li>Sub List Item 1</li>
+            	<li>Sub List Item 2</li>
+            	<li>Sub List Item 3</li>
+            	<li>Sub List Item 4</li>
+            </ul>
+        </li>
+    	<li>List Item 6</li>
+    </ul>
+</div><!-- list -->
+
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+
+var Expandable = {
+	init: function() {
+		$('.expandable ul')								// select the descendant ULs
+			.hide()												// hide them
+			.prev()												// selects previous sibling to UL (SPAN)
+			.click(												// set click event
+				function(evt) {
+					$(this)										// wrap this is a jQuery object
+						.next()									// ...and select the UL sibling
+						.toggle();								// ...and then show or hide the UL
+				}
+			 ); // click
+		
+	}
+	
+}; // Expandable
+
+//window.onload = Expandable.init; // runs the handler once all request assets are loaded (slow)
+$(document).ready(Expandable.init); // runs the specified handler as soon as the DOM is ready
+
+
+</script>
+</body>
+</html>

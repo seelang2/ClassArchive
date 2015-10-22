@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<p>This is a line.</p>
+<p class="topic">This is another line.</p>
+<p>Usually I go to lipsum.com to get placeholder text.</p>
+<p class="topic">Because this gets tedious as hell <b>REAL</b> quick.</p>
+<p class="topic">I really hope you're typing in your own thing and not copying this.</p>
+<p>(Although it'd be funny if you were.)</p>
+<p class="topic">All right, enough messing around.</p>
+<p>I'm done now.</p>
+
+
+<script type="text/javascript">
+// q: Get a list of all P elements that have a class of "topic"
+//alert("This is the standard dialog message box in the browser."); // pops up message
+//console.log('This sends a status message to the console window.');
+
+// in target container:
+
+var pList = document.body.getElementsByTagName("P"); // get a list of ALL P elements
+console.log(pList.length + ' total P elements');
+
+var pResults = []; // create result array
+
+// go through list of Ps
+for (var c = 0; c < pList.length; c++) {
+	// if class name is "topic" 
+	if (pList[c].className == 'topic') {
+		// add to result list
+		//pResults[pResults.length] = pList[c];
+		pResults.push(pList[c]);
+	}
+}
+// return result list
+console.log(pResults.length + ' matching elements found.');
+
+</script>
+</body>
+</html>

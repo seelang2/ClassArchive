@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Event Propagation (Deferred) Demo</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 85%;
+	}
+	
+	#wrapper {
+		width: 600px;
+		margin: auto;
+	}
+	
+	#contactlist {
+		width: 80%;
+		border: 1px solid #7a7a7a;
+	}
+	
+	.contactitem {
+		padding: 10px 25px;
+		border-bottom: 1px solid #ccc;
+	}
+	
+	.contactitem div {
+		padding: 10px;
+		text-align: right;
+	}
+	
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="contactlist"></div><!-- contactlist -->
+</div><!-- wrapper -->
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+var Registry = {};
+
+Registry.var1 = 1;
+Registry.var2 = 2;
+
+var App = {
+	data: {},
+	
+	start: function() {
+		// get reference to contactlist and save
+		App.data.contactlistDiv = $('#contactlist');
+
+		// loop through contact list and create containers for each
+		$.each(App.data.contactReq.contactList, App.buildContactItemList);
+
+		App.data.contactlistDiv
+			.on('click', 'button', App.processButtonClick);
+	
+	}, // App.start
+	
+	buildContactItemList: function(index, contact) {
+		$('<div class="contactitem">' +
+				'<p>First Name: '+ contact.firstname +'</p>' +
+				'<p>Last Name: '+ contact.lastname +'</p>' +
+				'<p>Employee #: '+ contact.empnum +'</p>' +
+				'<div>' +
+					'<button class="btnSave">Save</button>' +
+					'<button class="btnDelete">Delete</button>' +
+				'</div>' +
+			'</div>')
+			.data('arrayIndex', index)
+			.appendTo(App.data.contactlistDiv);
+		
+	}, // App.buildContactItemList
+	
+	processButtonClick: function(evt) {
+		// jQuery sets 'this' to the event target when using a selector filter
+		console.log('this is',this);
+		console.log('target is',evt.target);
+		
+		// retrieve array index from ancestor contactitem container
+		var itemIndex = $(this).closest('.contactitem').data('arrayIndex');
+		
+		switch(true) {
+			
+			case $(this).hasClass('btnSave'):
+				App.saveContactItem(itemIndex);
+			break;
+			
+			case $(this).hasClass('btnDelete'):
+				App.deleteContactItem(itemIndex);
+			break;
+			
+		}
+		
+		
+	}, // App.processButtonClick
+
+	saveContactItem: function(contactItemIndex) {
+		alert('Now saving item ' + contactItemIndex);
+	}, // App.saveContactItem
+	
+	deleteContactItem: function(contactItemIndex) {
+		alert('Now deleting item ' + contactItemIndex);
+	} // App.deleteContactItem
+	
+}; // App
+
+
+
+// defer execution until DOM is ready
+$(document).ready(App.start); // document.ready
+
+</script>
+<script type="text/javascript">
+App.data.contactReq =
+{
+	"requestDate": "08/06/2013 14:40",
+	
+	"fieldLabels": ["ID","First Name","Last Name","Employee Number"],
+	
+	"contactList": [
+		{"id":0,"firstname":"John","lastname":"Doe","empnum":42},
+		{"id":0,"firstname":"Jane","lastname":"Smith","empnum":12},
+		{"id":0,"firstname":"Mary","lastname":"Thompson","empnum":65},
+		{"id":0,"firstname":"Steven","lastname":"Pierce","empnum":2},
+		{"id":0,"firstname":"Beverly","lastname":"Jones","empnum":17},
+		{"id":0,"firstname":"Alex","lastname":"Reid","empnum":21}
+	]
+};
+</script>
+</body>
+</html>

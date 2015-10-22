@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+$('<table><tbody /></table>')
+	.children('tbody')
+		.append('<tr />')
+		.children('tr')
+			.append('<td>John</td>')
+			.append('<td>Doe</td>')
+			.append('<td>43</td>')
+			.end()
+		.append('<tr />')
+		.children('tr:last-child')
+			.append('<td>Jane</td>')
+			.append('<td>Smith</td>')
+			.append('<td>26</td>')
+			.end()
+		.end()
+	.appendTo('#target');
+
+
+
+</script>
+</body>
+</html>

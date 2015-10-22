@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Ajax Class 320: Demo1</title>
+
+<script type="text/javascript" src="ajaxlib.js"></script>
+<script type="text/javascript" src="formdata2querystring.js"></script>
+
+</head>
+<body>
+
+<script type="text/javascript">
+
+leftdiv = document.getElementById("leftside");
+
+function ajaxsend() {
+
+	x = new Date();
+	x = x.getTime();
+	
+	form = document.getElementById("form1");
+	formdata = formData2QueryString(form);
+	ajaxSendReq("POST", "/echopost.php?mode=html&x=" + x, handleResp, formdata, 'TEXT', true);
+	return false;
+	
+}
+
+function handleResp(response) {
+	rightdiv = document.getElementById("rightside");
+	rightdiv.innerHTML = response;
+}
+
+</script>
+
+<div id="leftside" style="float:left;width:48%;border:1px solid #000000">
+	<form id="form1" name="form1" action="#" method="post" onsubmit="return ajaxsend();">
+		First Name: <input id="firstname" name="firstname" type="text" size="20" maxlength="40" /><br />
+		Last Name: <input id="lastname" name="lastname" type="text" size="20" maxlength="40" /><br />
+		<input type="submit" value="Submit" />
+	</form>
+</div>
+
+<div id="rightside" style="float:right;width:48%;border:1px solid #000000">
+</div>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+
+#ticker {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 13px;
+	width: 200px;
+	border: 1px solid #000000;
+	margin: auto;
+}
+
+#ticker-windowpane {
+	height: 150px;
+	overflow: hidden;
+	position: relative;
+}
+
+#ticker-itemlist {
+	position: relative;
+	background: #FDEEB9;
+	top: -50px;
+}
+
+#ticker-itemlist div {
+	padding: 5px 10px;
+	height: 40px;
+	overflow: hidden;
+}
+
+#ticker-itemlist div p {
+	margin: 0;
+	padding: 0;
+	height: 40px;
+	overflow: hidden;
+}
+
+#ticker-screen {
+	height: 100px;
+	width: 200px;
+	position: absolute;
+	top: 50px;
+	background: #cdcdcd;
+	z-index: 100;
+	opacity: 0.85;
+	filter:alpha(opacity=85);
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+
+<div id="ticker">
+	<div id="ticker-windowpane">
+    	<div id="ticker-screen"></div><!-- ticker-screen -->
+        <div id="ticker-itemlist">
+        	<div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+            <div><p>Phasellus magna augue, malesuada eu pharetra ac, aliquam eget est.</p></div>
+            <div><p>In elit turpis, tempus id tempus et, vestibulum id ante.</p></div>
+            <div><p>Nunc sit amet ipsum massa. Pellentesque neque risus, tristique ac bibendum eleifend.</p></div>
+        </div><!-- ticker-itemlist -->
+    </div><!-- ticker-windowpane -->
+</div><!-- ticker -->
+
+
+
+
+
+</body>
+</html>

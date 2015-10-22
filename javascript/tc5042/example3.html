@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>jQuery Example 1</title>
+</head>
+
+<body>
+
+<div id="target"></div>
+
+
+<script src="jquery-1.7.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$('#target')
+	.addClass('someclass')
+	.append('<h1>Welcome!</h1><p>This is a new line.</p>')
+	.prepend('<p>This line comes first.</p>');
+
+$('<h2>And here is more new content</h2>')
+	.appendTo('#target');
+
+$('#target')
+	.before('<p>This comes before target.</p>')
+	.after('<p>This comes after target.</p>')
+	.attr('title','This will be a caption.')
+	.css(
+	 	{
+			backgroundColor: '#ededed',
+			color: '#f00',
+			width: '600px',
+			margin: '0 auto'
+		}
+	 );
+
+
+
+</script>
+</body>
+</html>

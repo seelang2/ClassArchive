@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<script type="text/javascript">
+
+document.write("<div class=\"someclass\"></div>");
+
+document.write('<p>' + typeof(myVar) + '</p>');
+var myVar = 'This space for rent - "right now"! don\'t do this';
+
+document.write('<p>' + myVar + '</p>');
+
+document.write('<p>' + typeof(myVar) + '</p>');
+
+delete(myVar);
+
+document.write('<p>' + typeof(myVar) + '</p>');
+
+var Registry = new Object();
+
+Registry.myVar = 'This space for rent - "right now"! don\'t do this';
+
+document.write('<p>' + Registry.myVar + '</p>');
+
+document.write('<p>' + typeof(Registry) + '</p>');
+document.write('<p>' + typeof(Registry.myVar) + '</p>');
+
+delete(Registry.myVar);
+
+document.write('<p>' + typeof(Registry.myvar) + '</p>');
+
+myVar = null;
+document.write('<p>' + typeof(myVar) + '</p>');
+
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿<!doctype HTML>
+<html>
+<head>
+	<title>Page Title</title>
+	<meta charset="UTF-8" />
+
+</head>
+<body>
+
+<script type="text/javascript">
+
+for (var c = 1; c < 201; c++) {
+	
+	var m = c % 10;
+	
+	// 1. divide number by 100
+	var step1 = c / 100;
+	
+	// 2. store integer from step 1
+	var step2 = Math.floor(step1);
+	
+	// 3. subtract integer from dividend and multiply by 100
+	var result = Math.round((step1 - step2) * 100);
+	
+	/*
+	console.log('c = ' + c + 
+				' step1 = ' + step1 +
+				' step2 = ' + step2 +
+				' result = ' + result);
+	*/
+	
+	switch(true) {
+		case m == 1 && result != 11:
+			var ordinal = 'st';
+		break;
+		
+		case m == 2 && result != 12:
+			var ordinal = 'nd';
+		break;
+		
+		case m == 3 && result != 13:
+			var ordinal = 'rd';
+		break;
+		
+		default:
+			var ordinal = 'th';
+		break;
+	} // switch
+	
+	console.log(c + ordinal);
+	
+} // for 
+
+</script>
+</body>
+</html>

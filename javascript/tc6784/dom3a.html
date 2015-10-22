@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Page</title>
+<meta charset="UTF-8" />
+<meta name="description" content="My Sample Page." />
+
+<style type="text/css">
+
+table { border-collapse: collapse; }
+td { padding: 5px; }
+
+tr.hover { background: #FFC; }
+.oddrow { background: #adacff; }
+.evenrow { background: #ffaacc; }
+</style>
+
+</head>
+<body>
+
+<div id="target"></div>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+function doRows(a, b) {
+	// do stuff
+}
+
+var contactList = 
+[
+	{ id: 0, firstname: "John", lastname: "Doe", age: 42 },
+	{ id: 1, firstname: "Alice", lastname: "Stewart", age: 23 },
+	{ id: 2, firstname: "Mary", lastname: "Jane", age: 62 },
+	{ id: 3, firstname: "Peter", lastname: "Thomas", age: 36 }
+];
+
+
+// create the table structure
+$('#target')
+	.append('<table></table>');
+	
+var $tbody = $('<tbody />');
+	
+// for each contact...
+$.each(
+	contactList,
+	function( arrayIndex, contact ) {
+		
+		// create a row for the contact
+		var $row = $('<TR />');
+		
+		// for each contact field
+		$.each(
+			contact,
+			function(fieldName, fieldValue) {
+				// add a td for the field data
+				$('<TD />')
+					.append(fieldValue)
+					.appendTo($row);
+			}
+		 );
+		 
+		// add row to tbody
+		$tbody.append($row);		
+	}
+);
+
+// now attach the tbody to the table
+$('#target table').append($tbody);	
+
+// now stripe the table
+$tbody
+	.children('tr')
+	.filter(':even')
+	.addClass('oddrow')
+	.end()
+	.filter(':odd')
+	.addClass('evenrow')
+	.end()
+	.on(
+		'mouseover',
+		function() {
+			
+			$(this).addClass('hover');
+			
+		}
+	 )
+	.on(
+		'mouseout',
+		function() {
+			
+			$(this).removeClass('hover');
+			
+		}
+	 )
+
+
+
+
+</script>
+</body>
+</html>

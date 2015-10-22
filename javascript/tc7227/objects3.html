@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+function Counter() {};
+// add properties to Counter's prototype object
+Counter.prototype.c = 0;
+Counter.prototype.update = function() { return ++this.c; }
+
+var x = new Counter();
+
+</script>
+</body>
+</html>

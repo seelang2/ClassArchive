@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<ul>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+</ul>
+
+<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+// make a simple plugin to assign unique ids to elements in collection
+(function($) {
+
+	// default params
+	var defaults = {
+		prefix: 	'item-',
+		offset: 	0
+	};
+
+	// $.fn.method will create a collection object method
+	// $().method()
+	$.fn.assignID = function(params) {
+
+		params = $.extend({}, defaults, params);
+
+		// 'this' refers to collection object
+		// always assume a set of zero or more items
+		// also, always return the collection object
+		// to maintain chaining
+		return this.each(function(index, element) {
+			$(element).attr('id', params.prefix + (index + params.offset));
+		 });
+
+	};
+
+})(jQuery);
+
+$('li')
+	.assignID({ prefix: 'coolstuff-', offset: 100 })
+	.addClass('listitem');
+
+</script>
+</body>
+</html>

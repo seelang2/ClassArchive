@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<form action="#" method="get">
+
+<div id="groupa" class="group">
+	<div><button class="checkall" data-group="a">Check All</button></div>
+	<div><input type="checkbox" name="a" /></div>
+	<div><input type="checkbox" name="a" /></div>
+	<div><input type="checkbox" name="a" /></div>
+	<div><input type="checkbox" name="a" /></div>
+	<div><input type="checkbox" name="a" /></div>
+	<div><input type="checkbox" name="a" /></div>
+</div>
+
+<button>Click Me</button>
+
+<div id="groupb" class="group">
+	<div><input type="checkbox" class="checkall" data-group="b">Check All</button></div>
+	<div><input type="checkbox" name="b" /></div>
+	<div><input type="checkbox" name="b" /></div>
+	<div><input type="checkbox" name="b" /></div>
+	<div><input type="checkbox" name="b" /></div>
+	<div><input type="checkbox" name="b" /></div>
+	<div><input type="checkbox" name="b" /></div>
+</div>
+
+<input type="submit" />
+</form>
+
+<script src="jquery-1.11.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$('.checkall')
+	.on(
+		'click',
+		function(e) {
+			e.preventDefault();
+			
+			var $checkboxes = 
+			$(this)
+				.closest('.group')
+				.find(':checkbox')
+				.not('.checkall');
+				
+			if ($checkboxes.prop('checked')) {
+				$checkboxes.prop('checked', false);
+			} else {
+				$checkboxes.prop('checked',true);
+			}
+			
+		}
+	 )
+
+
+	 
+	 
+	 
+
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>AJAX Demo 1</title>
+	
+</head>
+<body>
+
+
+<div id="content"></div>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	// side-load additional/secondary content at page load	
+	$('#content').load('content1.html');
+			
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Single Column Layout 1</title>
+	<meta name="description" content="Example single column layout" />
+	<meta charset="UTF-8" />
+	
+	<style type="text/css">
+	body {
+		color: #000;
+		background-color: #ccc;
+		font-size: 0.85em;
+		font-family: Verdana, Geneva, Arial, sans-serif;
+	}
+	
+	#wrapper {
+		background-color: #fff;
+		width: 700px;
+		margin: auto;
+		padding: 1px 50px;
+		border: 1px solid #7a7a7a;
+	}
+	
+	/* Typography */
+	h1 {
+		font-size: 2em;
+		margin: 1em 0;
+	}
+	
+	h2 {
+		font-size: 1.6em;
+		font-weight: normal;
+		margin: 1em 0 0.25em 0;
+	}
+	
+	h2 + p,
+	h2 + ul
+	{
+		margin-top: 0;
+	}
+	
+	</style>
+	
+</head>
+<body>
+	<div id="wrapper">
+		<h1 id="top">Lorem ipsum dolor sit amet</h1>
+
+		<h2>Contents</h2>
+		<ul>
+			<li><a href="#section1">Section 1</a></li>
+			<li><a href="#section2">Section 2</a></li>
+			<li><a href="#section3">Section 3</a></li>
+			<li><a href="#section4">Section 4</a></li>
+		</ul>
+
+		<h2 id="section1" style="color:red;">Vestibulum vehicula commodo libero</h2>
+
+		<ul>
+			<li class="highlight">Etiam feugiat facilisis risus, vel iaculis enim tempor eget.</li>
+			<li>Ut ullamcorper enim sit amet eros auctor congue.</li>
+			<li>In volutpat ligula eu ipsum pretium laoreet.
+				<ul>
+					<li class="highlight">Etiam feugiat facilisis risus, vel iaculis enim tempor eget.</li>
+					<li>Ut ullamcorper enim sit amet eros auctor congue.</li>
+					<li class="highlight">In volutpat ligula eu ipsum pretium laoreet.</li>
+					<li>Quisque sit amet nisi et dui molestie consequat.</li>
+					<li class="highlight">Nullam fringilla accumsan augue, a congue dolor hendrerit vel.</li>
+				</ul>
+			</li>
+			<li>Quisque sit amet nisi et dui molestie consequat.</li>
+			<li class="highlight">Nullam fringilla accumsan augue, a congue dolor hendrerit vel.</li>
+		</ul>
+
+		<p><a href="page2.html" target="page">Link to page 2</a></p>
+		<p><a href="/tc5039/page2.html">Link to page 2</a></p>
+		<p><a href="http://localhost/tc5039/page2.html">Link to page 2</a></p>
+
+		<h2 id="section2" class="highlight">Curabitur bibendum scelerisque tincidunt</h2>
+		<p>Vivamus mollis, <span class="highlight">justo sed sodales vehicula</span>, ipsum dui accumsan nulla, eu eleifend nulla dui ac magna. Nulla porttitor ultricies semper. Curabitur bibendum scelerisque tincidunt. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </p>
+
+		<blockquote><p>Quisque nec ipsum a lorem imperdiet ultricies id at dui. Nulla facilisi. Vestibulum at lorem ut massa placerat laoreet. Fusce nisi sem, fringilla sit amet mattis a, dignissim eu libero. Maecenas venenatis semper dui, et lobortis leo consectetur eu.</p><p>Donec nisl lorem, mollis vitae blandit vel, iaculis nec ante. </p></blockquote>
+
+		<p>Integer pretium nunc id elit convallis eu malesuada metus sodales. Aliquam pharetra scelerisque ornare. Nam ut eros eros. Praesent ullamcorper hendrerit orci, quis suscipit ante venenatis eu. Phasellus sed felis a magna accumsan egestas.</p>
+
+		<h3>Cras eu congue mauris</h3>
+		<p>Cras eu congue mauris. Curabitur eu orci a est malesuada tincidunt. Maecenas egestas gravida risus, sed vehicula nibh ultrices eget. Sed egestas tortor ut velit accumsan in luctus enim dapibus. Suspendisse vel turpis erat. Nunc nisl est, convallis sed pharetra sit amet, gravida a ligula. Morbi sit amet vehicula nulla. Phasellus blandit, ante eu consequat venenatis, leo tortor congue tortor, vitae eleifend metus augue nec nulla. Curabitur leo dui, consectetur in facilisis quis, sagittis semper lectus. Praesent sapien mi, congue at commodo eget, iaculis non justo. Phasellus sapien orci, euismod et consectetur ac, molestie ac risus.</p>
+
+		<h2 id="section3">Aenean id turpis ut elit interdum vulputate</h2>
+		<p>Proin blandit, dui fermentum bibendum accumsan, quam dolor tempor purus, eu bibendum justo lorem ac nisi. Aenean id turpis ut elit interdum vulputate ullamcorper ac libero. Pellentesque auctor fermentum pellentesque. Aenean commodo libero id dolor ultrices in lacinia risus rhoncus. In vel tempor nisi. Integer in purus eu felis consequat dapibus. Mauris id elit sit amet nunc bibendum bibendum. Nullam rutrum porta elit a vehicula. Aliquam id dui in neque pellentesque commodo.</p>
+
+		<p>Etiam hendrerit imperdiet pulvinar. Sed suscipit lorem id nunc ultricies tincidunt. Cras eu gravida tellus. Nulla nec facilisis purus. Fusce varius purus varius augue sodales id euismod nibh dignissim. Cras tempor ultricies lorem, in congue justo faucibus sit amet. Ut quam libero, porta vestibulum consectetur eu, aliquam id leo. Pellentesque nec lorem tempus diam elementum facilisis.</p>
+
+		<h2 id="section4">Sed egestas risus eu ipsum pellentesque vitae</h2>
+		<p>Donec augue velit, scelerisque vel posuere sed, semper a lectus. Donec eget posuere nisi. Nulla ligula tellus, elementum in vestibulum vitae, suscipit ac magna. Sed egestas risus eu ipsum pellentesque vitae posuere lorem mattis. Mauris nisl lorem, volutpat a aliquet id, venenatis pulvinar urna. In hac habitasse platea dictumst. In euismod vulputate dignissim. Aliquam laoreet, felis quis sodales vulputate, dui metus adipiscing enim, at aliquet metus mi vel odio. Nam posuere convallis nibh, sit amet consectetur diam gravida eget.</p>
+
+		<p><a href="#top">Back to top</a></p>
+	</div><!-- wrapper -->
+</body>
+</html>

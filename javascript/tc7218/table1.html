@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+	
+	<style type="text/css">
+	</style>
+	
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript">
+
+// get a reference to the target div
+var divElem = document.getElementById('target');
+
+// create table element
+var tableElem = document.createElement('TABLE');
+
+// create tbody
+var tbodyElem = document.createElement('TBODY');
+
+tableElem.appendChild(tbodyElem); // append tbody to table
+
+// create new row
+var trElem = document.createElement('TR');
+tbodyElem.appendChild(trElem); // attach row to tbody
+
+var tdElem = document.createElement('TD'); // create FIRST td
+tdElem.appendChild( document.createTextNode('John') ); // create text and add to td
+trElem.appendChild(tdElem); // attach td to tr
+
+tdElem = document.createElement('TD'); // create SECOND td
+tdElem.appendChild( document.createTextNode('Doe') ); // create text and add to td
+trElem.appendChild(tdElem); // attach td to tr
+
+// create second row
+trElem = document.createElement('TR');
+tbodyElem.appendChild(trElem); // attach row to tbody
+
+tdElem = document.createElement('TD'); // create THIRD td
+tdElem.appendChild( document.createTextNode('Jane') ); // create text and add to td
+trElem.appendChild(tdElem); // attach td to tr
+
+tdElem = document.createElement('TD'); // create FOURTH td
+tdElem.appendChild( document.createTextNode('Smith') ); // create text and add to td
+trElem.appendChild(tdElem); // attach td to tr
+
+// add finished table to div after building tree to avoid excessive redraws
+divElem.appendChild(tableElem);
+
+
+
+
+
+</script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<peoplelist>
+	<person>
+		<firstname>John</firstname>
+		<lastname>Doe</lastname>
+		<emails>
+			<email1>jdoe@email.com1</email1>
+			<email2>jdoe@email.com2</email2>
+			<email3>jmsmith@hmkr.com3</email3>
+			<email4>jmsmith@hmkr.com4</email4>
+		</emails>
+	</person>
+	<person>
+		<firstname>Jane</firstname>
+		<lastname>Smith</lastname>
+		<emails>
+			<email>jmsmith@hmkr.com</email>
+			<email>jmsmith@hmkr.com</email>
+			<email>aross@hotmail.com</email>
+			<email>aross@hotmail.com</email>
+		</emails>
+	</person>
+	<person>
+		<firstname>Alex</firstname>
+		<lastname>Ross</lastname>
+		<emails>
+			<email>aross@hotmail.com</email>
+			<email>aross@hotmail.com</email>
+			<email>jdoe@email.com</email>
+			<email>jdoe@email.com</email>
+		</emails>
+	</person>
+</peoplelist>

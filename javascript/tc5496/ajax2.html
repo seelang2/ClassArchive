@@ -1,0 +1,38 @@
+﻿<!doctype html>
+<html>
+<head>
+	<title>Sample Page</title>
+	<meta charset="UTF-8" />
+	
+</head>
+
+<body>
+
+<div id="results"></div>
+
+<script src="jquery-1.8.3.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+
+	$.ajax(
+		{
+			url:		'snippet.html',
+			type:		'GET',
+			dataType:	'text',
+			success:	function(response) {
+				
+				$('#results').html(response);
+				
+			}
+		}
+	)
+
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

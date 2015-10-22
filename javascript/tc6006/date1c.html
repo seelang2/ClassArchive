@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Date Example 1</title>
+	
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+// set up arrays to control date labels
+
+/*
+// Example of using an object containing arrays to store localization
+
+var weekdays2 = {
+	en: [
+		'Sunday',
+		'Monday',
+		'Tuesday',
+		'Wednesday',
+		'Thursday',
+		'Friday',
+		'Saturday'
+	],
+
+	it: [
+		'Sunday',
+		'Monday',
+		'Tuesday',
+		'Wednesday',
+		'Thursday',
+		'Friday',
+		'Saturday'
+	],
+
+
+}
+
+weekdays2.it[0];
+weekdays2['en'][2];
+
+*/
+
+var weekdays = 
+	[
+		'Sunday',
+		'Monday',
+		'Tuesday',
+		'Wednesday',
+		'Thursday',
+		'Friday',
+		'Saturday'
+	],
+	
+	months = [
+		'January',
+		'February',
+		'March',
+		'April',
+		'May',
+		'June',
+		'July',
+		'August',
+		'September',
+		'October',
+		'November',
+		'December'
+	];
+
+	
+// instantiate the Date object and get a date to work with
+var today = new Date();
+
+// deal with the ordinal...
+var m = today.getDate() % 10; // get modulo
+
+switch(true) {
+	case m == 1 && today.getDate() != 11:
+		var ordinal = 'st';
+	break;
+	case m == 2 && today.getDate() != 12:
+		var ordinal = 'nd';
+	break;
+	case m == 3 && today.getDate() != 13:
+		var ordinal = 'rd';
+	break;
+	default:
+		var ordinal = 'th';
+	break;
+}
+
+document.write('<p>Today is ' +
+				weekdays[today.getDay()] + ', ' + 
+				months[today.getMonth()] + ' ' + 
+				today.getDate() + ordinal + ', ' + 
+				today.getFullYear() + '</p>'
+			  );
+
+
+
+
+
+</script>
+</body>
+</html>

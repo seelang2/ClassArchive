@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>AJAX Demo 1</title>
+	
+</head>
+<body>
+
+<button>Add new fragment</button>
+
+<div id="content"></div>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	var c = 0;
+	
+	// side-load future reusable content 
+	var $fragment1 = $('<div />').load('fragment1.html');
+	
+	$('button')
+		.click(function() {
+			
+			$fragment1
+				.clone()
+				.attr('id','fragment-'+ (++c))
+				.appendTo('#content');
+			
+		 });
+	
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

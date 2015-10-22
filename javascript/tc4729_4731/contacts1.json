@@ -1,0 +1,6 @@
+[{"firstname":"John","lastname":"Doe","city":"Orlando","state":"FL"},
+ {"firstname":"Jane","lastname":"Smith","city":"Chicago","state":"IL"},
+ {"firstname":"Peter","lastname":"Abernathy","city":"Indianapolis","state":"IN"},
+ {"firstname":"Frances","lastname":"Bowan","city":"Birmingham","state":"AL"},
+ {"firstname":"Alex","lastname":"Miranda","city":"Seattle","state":"WA"},
+ {"firstname":"Melinda","lastname":"Scott","city":"Ann Arbor","state":"MI"}]

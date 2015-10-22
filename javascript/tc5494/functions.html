@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Sample Page</title>
+	<meta charset="UTF-8" />
+	
+</head>
+<body>
+
+<script type="text/javascript" src="jquery-1.8.2.js"></script>
+<script type="text/javascript">
+
+function calculate(a, b) {
+	console.log('running calculate...');
+	//if (typeof(a) != 'number' || typeof(b) != 'number') return false;
+	console.log(typeof(a));
+	console.log(a);
+	
+	a = a || 0;
+	b = b || 0;
+	
+	var sum = a + b;
+	return sum;
+}
+
+var a;
+console.log(typeof(a));
+console.log(a);
+
+var x = x || 'Just a value';
+
+console.log(x);
+
+var sum = 10;
+//console.log(sum);
+
+console.log(calculate());
+
+//console.log(sum);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<script type="text/javascript" src="ajax.js"></script>
+
+<style type="text/css">
+#formdiv {
+	float: left;
+	width: 49%;
+}
+
+#results {
+	float: right;
+	width: 49%;
+}
+
+form {
+	margin: auto;
+	width: 75%;
+}
+
+form label {
+	display: block;
+	margin-bottom: 0.5em;
+	position: relative;
+}
+
+form label input {
+	margin-left: 1em;
+	position: absolute;
+	left: 75px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="formdiv">
+	<form id="form1" action="echopost.php?mode=html" method="post">
+    	<label>First Name:<input name="firstname" type="text" /></label>
+    	<label>Last Name:<input name="lastname" type="text" /></label>
+    	<label>Email:<input name="email" type="text" /></label>
+        <input type="submit" value="Continue" />
+    </form>
+</div><!-- formdiv -->
+
+<div id="results"></div><!-- results -->
+
+<script type="text/javascript">
+var Registry = {};
+
+var App = {
+	"init": function() {
+		Registry.formElem = document.getElementById("form1"); // get ref to form element and store in var
+		Registry.formAjax = new Ajax();
+		Registry.resultDiv = document.getElementById("results");
+		
+		Registry.formElem.onsubmit = function() {
+			// collect the data elements in the form and turn it into a query string
+			var formData = '';
+			for (var c = 0; c < this.elements.length; c++) {
+				// alert(this.elements[c].name + ' = ' + this.elements[c].value);
+				if (this.elements[c].name.length > 0) {
+					if (c > 0) formData += '&';
+					formData += this.elements[c].name + '=' + escape(this.elements[c].value);
+				}
+			}
+			//alert(formData);
+			
+			// make ajax POST request
+			// caching workaround
+			var x = new Date();
+			x = x.getTime();
+			Registry.formAjax.request(
+				{"method": "POST",
+				 "url": "echopost.php?mode=html&x=" + x, // add dummy parameter to end of query string
+				 "type": "text",
+				 "data": formData,
+				 "handler": App.showResponse}
+			);
+			
+			return false; // cancels out the default action for this event
+		}; // onsubmit
+		
+	}, // init
+	
+	"showResponse": function(response) {
+		Registry.resultDiv.innerHTML = response;
+		
+	} // showResponse
+	
+}; // App
+
+window.onload = App.init;
+</script>
+</body>
+</html>

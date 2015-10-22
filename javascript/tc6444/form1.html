@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	form {
+		width: 350px;
+		margin: auto;
+	}
+	
+	form label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	
+	label span, label input {
+		display: inline-block;
+	}
+	
+	label span { width: 120px; }
+	
+	form div { text-align: center; }
+	</style>
+</head>
+<body>
+
+<form id="form1" action="#" method="get">
+	<label><span>First Name:</span><input name="firstname" /></label>
+	<label><span>Last Name:</span><input name="lastname" /></label>
+	<label><span>Employee #:</span><input name="empnum" /></label>
+	<div><input type="submit" value="Continue" /></div>
+</form>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+	
+	$('#form1')
+		.submit(
+			function(evt) {
+				evt.preventDefault(); // hijack form submission
+				
+				var formData = $(this).serialize(); // serialize form data into query string
+				
+				console.log(formData);
+				
+				$.ajax({
+					url:		'echorequest.php',
+					type:		'post',
+					dataType:	'text',
+					data:		formData,
+					success:	function(response) {
+						alert('Form data submitted.');
+					}
+				
+				});
+				
+				
+			}
+		 );
+	
+
+
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

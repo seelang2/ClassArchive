@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Drawers/Accordion Demo</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		color: #000;
+	}
+	
+	#container {
+	}
+	
+	#menu ul {
+		list-style-type: none;
+	}
+	
+	#menu span { position: relative; }
+	
+	#menu span.closed:before {
+		content: '[+]';
+		position: absolute;
+		left: -25px;
+		font-size: 75%;
+	}
+
+	#menu span.open:before {
+		content: '[-]';
+		position: absolute;
+		left: -25px;
+		font-size: 75%;
+	}
+
+	
+	</style>
+</head>
+<body>
+
+<div id="container">
+	
+	<div id="menu">
+		<ul class="expandable">
+			<li>
+				<span>Item 1</span>
+				<ul>
+					<li><span>Sub Item 1</span></li>
+					<li><span>Sub Item 2</span></li>
+					<li><span>Sub Item 3</span></li>
+					<li><span>Sub Item 4</span></li>
+				</ul>
+			</li>
+			<li><span>Item 2</span></li>
+			<li><span>Item 3</span></li>
+			<li>
+				<span>Item 4</span>
+				<ul>
+					<li><span>Sub Item 1</span></li>
+					<li><span>Sub Item 2</span></li>
+					<li>
+						<span>Sub Item 3</span>
+						<ul>
+							<li><span>Sub Item 1</span></li>
+							<li><span>Sub Item 2</span></li>
+							<li><span>Sub Item 3</span></li>
+							<li><span>Sub Item 4</span></li>
+						</ul>
+					</li>
+					<li><span>Sub Item 4</span></li>
+				</ul>
+			</li>
+			<li><span>Item 5</span></li>
+			<li><span>Item 6</span></li>
+		</ul>
+		
+	</div><!-- .expandable -->
+	
+
+	<ul>
+		<li>
+			<span>Item 1</span>
+			<ul>
+				<li><span>Sub Item 1</span></li>
+				<li><span>Sub Item 2</span></li>
+				<li><span>Sub Item 3</span></li>
+				<li><span>Sub Item 4</span></li>
+			</ul>
+		</li>
+		<li><span>Item 2</span></li>
+		<li><span>Item 3</span></li>
+		<li>
+			<span>Item 4</span>
+			<ul>
+				<li><span>Sub Item 1</span></li>
+				<li><span>Sub Item 2</span></li>
+				<li>
+					<span>Sub Item 3</span>
+					<ul>
+						<li><span>Sub Item 1</span></li>
+						<li><span>Sub Item 2</span></li>
+						<li><span>Sub Item 3</span></li>
+						<li><span>Sub Item 4</span></li>
+					</ul>
+				</li>
+				<li><span>Sub Item 4</span></li>
+			</ul>
+		</li>
+		<li><span>Item 5</span></li>
+		<li><span>Item 6</span></li>
+	</ul>
+
+	
+</div><!-- container -->
+
+
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$('.expandable li > ul')			// find all sublists inside the expandable
+		.hide()							// hide them
+		.prev()							// now move to the SPAN label for the sublist
+		.addClass('closed')				// add the closed class
+		.on(
+			'click',
+			function(e) {
+				$(this)					// from the SPAN...
+					.toggleClass('closed open')
+					.next()				// move to the sublist
+					.slideToggle()		// and show it
+			}
+		 );
+	
+}); // document.ready
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

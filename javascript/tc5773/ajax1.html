@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Ajax Demo</title>
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+
+<h1>Static Content</h1>
+<p>This is already in the source HTML.</p>
+
+<div id="target"></div>
+
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	// load additional content into page
+	$.ajax({
+		url:		'text.html',
+		type:		'get',
+		dataType:	'html',
+		success:	function(response) {
+			$('#target').html(response);
+		} // success
+	}); // $.ajax
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

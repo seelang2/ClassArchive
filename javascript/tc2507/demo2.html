@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="datatable">
+</div>
+
+<script type="text/javascript">
+
+var tableDiv = document.getElementById("datatable");
+
+var tableElem = document.createElement("TABLE");
+tableDiv.appendChild(tableElem);
+
+var tBodyElem = document.createElement("TBODY");
+tableElem.appendChild(tBodyElem);
+
+var rowElem = document.createElement("TR");
+tBodyElem.appendChild(rowElem);
+
+var tdElem = document.createElement("TH");
+rowElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode("Firstname"));
+
+tdElem = document.createElement("TH");
+rowElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode("Lastname"));
+
+/* wash, rinse, repeat */
+rowElem = document.createElement("TR");
+tBodyElem.appendChild(rowElem);
+
+tdElem = document.createElement("TD");
+rowElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode("John"));
+
+tdElem = document.createElement("TD");
+rowElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode("Doe"));
+
+/* wash, rinse, repeat */
+rowElem = document.createElement("TR");
+tBodyElem.appendChild(rowElem);
+
+tdElem = document.createElement("TD");
+rowElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode("Alice"));
+
+tdElem = document.createElement("TD");
+rowElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode("Smith"));
+
+
+</script>
+
+</body>
+</html>

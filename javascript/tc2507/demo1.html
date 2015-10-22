@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<script type="text/javascript">
+
+document.write("<p>Hello World</p>");
+
+var firstName = 'John';
+var lastName = 'Doe';
+
+/*
+block comment - everything inside will be ignored by parser
+document.write("<p>How are you, ");
+document.write(firstName);
+document.write(" ");
+document.write(lastName);
+document.write("?</p>");
+*/
+
+// line comment
+document.write("<p>How are you, " + firstName + " " + lastName + "?</p>"); // use concantenation
+
+var a = 3;
+var b = '3';
+
+var sum = a + b;
+
+document.write('<p>The sum of a and b is ' + sum + '</p>');
+
+//alert('This is a \n literal message.');
+
+//var weekdays = new Array('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri');
+var weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+
+document.write('<p>The third weekday is ' + weekdays[2] + '</p>');
+
+weekdays[6] = 'Sat';
+
+document.write('<p>There are ' + weekdays.length + ' elements in weekdays.</p>');
+
+weekdays[weekdays.length] = 'Bob';
+
+var car = new Object();
+
+car.numberOfDoors = 4;
+
+var cars = [{"numDoors":4,"color":"red"},{"numDoors":2,"color":"black"}];
+//cars[0].numDoors = 4;
+//cars[0].color = 'red';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

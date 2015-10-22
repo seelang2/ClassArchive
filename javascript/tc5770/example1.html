@@ -1,0 +1,80 @@
+<!doctype HTML>
+<html>
+<head>
+	<title>Page Title</title>
+	<meta charset="UTF-8" />
+
+</head>
+<body>
+
+<script type="text/javascript">
+
+var someValue = 'This space for rent.';
+
+document.write('<p>This is a paragraph.</p>');
+document.write('<p>');
+document.write(someValue.toUpperCase());
+document.write('</p>');
+
+document.write('<p>' + someValue.toUpperCase() + '</p>');
+
+var sideA = 3, sideB = '10';
+// var sideB = parseInt('10');
+
+var area = sideA * sideB;
+// This is a line comment. Everything after the slashes is ignored.
+
+//var perimeter = sideA + sideB + sideA + sideB;
+//var perimeter = (sideA * 2) + (sideB * 2);
+var perimeter = (sideA + sideB) * 2; // concatenation takes precedence
+
+document.write('<p>The area is: ' + area + '.</p>');
+
+document.write('<p>The perimeter is: ' + perimeter + '.</p>');
+
+
+var days = new Array('Sun','Mon','Tue');
+
+document.write('<p>The second element is ' + days[1] + '.</p>');
+
+document.write('<p>There are ' + days.length + ' elements.</p>');
+
+days.push('Wed', 'Thu', 'Fri');
+
+document.write('<p>There are ' + days.length + ' elements.</p>');
+
+// Use object literal notation to create array - more convenient
+var weekdays = ['Sun','Mon','Tue','Wed', 'Thu', 'Fri','Sat'];
+
+var myCar = new Object();
+
+myCar.color = 'charcoal';
+myCar.make = 'Mercedes';
+myCar.model = '750SL';
+
+myCar.engine = new Object(); 
+myCar.engine.status = 'off';
+
+//var pillBox = new Object();
+//pillBox.Sun = '...';
+
+var pillBox = 
+	{
+		Sun: 'white',
+		Mon: 'white',
+		Tue: 'none',
+		Wed: 'Purple',
+		Thu: 'Orange',
+		Fri: 'Red',
+		Sat: 'Green'
+	};
+
+document.write('<p>Today\'s pill is ' + pillBox.Mon + '.</p>');
+document.write('<p>Today\'s pill is also ' + pillBox['Mon'] + '.</p>');
+
+var today = 'Mon';
+document.write('<p>Today\'s pill is ' + pillBox[today] + '.</p>');
+
+</script>
+</body>
+</html>

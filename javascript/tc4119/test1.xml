@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<contactlist>
+	<contact id="1">
+		<firstname>John</firstname>
+		<lastname>Doe</lastname>
+	</contact>
+	<contact id="2">
+		<firstname>Jane</firstname>
+		<lastname>Smith</lastname>
+	</contact>
+	<contact id="3">
+		<firstname>Peter</firstname>
+		<lastname>Roe</lastname>
+	</contact>
+</contactlist>

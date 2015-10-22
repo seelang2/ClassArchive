@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-2.1.1.js"></script>
+<script type="text/javascript">
+
+var dirList =
+[
+	{ filename: 'file1.txt', filesize: 302 },
+	{ filename: 'file2.txt', filesize: 1534 },
+	{ filename: 'file3.txt', filesize: 23425 },
+	{ filename: 'file4.txt', filesize: 198 }
+];
+
+$('#target')
+	.append('<table><tbody /></table>')
+	.find('tbody')
+	.append('<tr>' + 
+				'<td>' + dirList[0].filename + '</td>' +
+				'<td>' + dirList[0].filesize + '</td>' +
+			'</tr>')
+	.append('<tr>' + 
+				'<td>' + dirList[1].filename + '</td>' +
+				'<td>' + dirList[1].filesize + '</td>' +
+			'</tr>')
+	.append('<tr>' + 
+				'<td>' + dirList[2].filename + '</td>' +
+				'<td>' + dirList[2].filesize + '</td>' +
+			'</tr>')
+	.append('<tr>' + 
+				'<td>' + dirList[3].filename + '</td>' +
+				'<td>' + dirList[3].filesize + '</td>' +
+			'</tr>');
+
+
+</script>
+</body>
+</html>

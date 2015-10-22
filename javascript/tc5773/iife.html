@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Immediately Invoked Function Expression (IIFE) Demo</title>
+	
+</head>
+<body>
+
+
+<button id="thebutton">Click Me</button>
+
+<script type="text/javascript">
+
+/*
+// this is in the global scope. We want to avoid this.
+var timesClicked = 0;
+
+document.getElementById("thebutton").onclick = function() {
+	timesClicked++;
+	alert('Total clicks: ' + timesClicked);
+}
+*/
+
+// use an IIFE to create a hidden scope
+(function() {
+	
+	var timesClicked = 0;
+	console.log(timesClicked);
+
+	document.getElementById("thebutton").onclick = function() {
+		timesClicked++;
+		alert('Total clicks: ' + timesClicked);
+	}
+	
+})();
+
+console.log(timesClicked);
+
+
+</script>
+</body>
+</html>

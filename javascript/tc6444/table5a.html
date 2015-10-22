@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Table Demo using jQuery</title>
+	
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+var contactReq =
+{
+	"requestDate": "08/06/2013 14:40",
+	
+	"fieldLabels": ["ID","First Name","Last Name","Employee Number"],
+	
+	"contactList": [
+		{"id":0,"firstname":"John","lastname":"Doe","empnum":42},
+		{"id":0,"firstname":"Jane","lastname":"Smith","empnum":12},
+		{"id":0,"firstname":"Mary","lastname":"Thompson","empnum":65},
+		{"id":0,"firstname":"Steven","lastname":"Pierce","empnum":2},
+		{"id":0,"firstname":"Beverly","lastname":"Jones","empnum":17},
+		{"id":0,"firstname":"Alex","lastname":"Reid","empnum":21}
+	]
+};
+
+// create base table structure
+
+var $tbody = 
+$('#target')
+	.append('<table><tbody></tbody></table>')
+	.find('tbody');
+
+
+var $thead = $('<thead />');
+$.each(
+	contactReq.fieldLabels,
+	function(i, heading) {
+		$('<th>' + heading + '</th>').appendTo($thead);
+	} // function
+);
+
+$thead.appendTo($tbody.parent());
+
+// loop through contactList
+$.each(
+	contactReq.contactList, // collection to loop through
+	function(index, contact) {
+		// create new row for contact and add to table
+		var rowHTML = '<tr>';
+			
+		$.each(
+			contact,
+			function(fieldName, fieldValue) {
+				rowHTML += '<td>' + fieldValue + '</td>';
+				console.log(rowHTML); // dump contents to rowHTML to console for observation
+			}
+		);
+		
+		rowHTML += '</tr>';
+		$(rowHTML).appendTo($tbody);
+	}// function
+);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div><button id="button1">Click Me</button></div>
+
+<div id="target"></div>
+
+
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+// define response handler function
+function updateTargetDiv(response) {
+	var targetDiv = document.getElementById("target"); // get reference to target div
+	
+	var tableElem = document.createElement("TABLE"); // create new node
+	targetDiv.appendChild(tableElem); // add table node to div node
+	
+	var tbodyElem = document.createElement("TBODY");
+	tableElem.appendChild(tbodyElem);
+	
+	// loop through contacts and create row for each
+	for( var c = 0; c< response.length; c++) {
+		var trElem = document.createElement("TR");
+		tbodyElem.appendChild(trElem);
+		
+		var tdElem = document.createElement("TD");
+		trElem.appendChild(tdElem);
+		tdElem.appendChild(document.createTextNode(response[c].firstName));
+		
+		var tdElem = document.createElement("TD");
+		trElem.appendChild(tdElem);
+		tdElem.appendChild(document.createTextNode(response[c].lastName));
+		
+		var tdElem = document.createElement("TD");
+		trElem.appendChild(tdElem);
+		tdElem.appendChild(document.createTextNode(response[c].email));
+		
+	} // for
+	
+} // updateTargetDiv
+
+
+// set up button event handler
+document.getElementById("button1").onclick = function() {
+	// do Ajax call using jQuery
+	$.ajax(
+		{ url: 'contactlist1.json',
+		  type: 'GET',
+		  dataType: 'json',
+		  success: updateTargetDiv
+		}
+	)
+}; // button1.onclick
+
+</script>
+
+
+
+</body>
+</html>

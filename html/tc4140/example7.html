@@ -1,0 +1,253 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+body {
+	background-color: #9a9a9a;
+	background-image: url(italian_ice_cream.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 85%;
+}
+
+#wrapper {
+	background-color: #ffffff;
+	width: 800px;
+	margin: auto;
+	border: 1px solid #7a7a7a;
+}
+
+#masthead {
+	height: 80px;
+	background: #00C url(background1.jpg) no-repeat -100px -50px;
+}
+
+#footer {
+	height: 80px;
+	background-color: #6FF;	
+}
+
+#content {
+	background-color: #FCF;
+	/* padding: 10px 50px; */
+	clear: both; /* force below topnav section */
+}
+
+#sidemenu {
+	float: left;
+	width: 150px;
+}
+
+#maincolumn {
+	float: left;
+	width: 400px;
+	background-color:#BAFED0; /* */
+}
+
+#sidebar {
+	float: right;
+	width: 250px;
+	background-color:#FFC;
+}
+
+.clearing {
+	clear:both;
+	height: 1px;
+	overflow: hidden;
+}
+
+.alignleft {
+	float: left;
+	margin-right: 15px;
+}
+
+.alignright {
+	float: right;
+	margin-left: 15px;
+}
+
+img {
+	border: 1px solid #cdcdcd;
+}
+
+/* Menu styling */
+#topnav {
+	background-color: #00C;
+	float: left; /* to enclose floated UL inside */
+	width: 100%; /* need explicit width declaration otherwise will only be as wide as ul/li/a list */
+}
+
+#topnav ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	background-color: #F8D3C2;
+	float: left; /* to enclose floated LIs inside */
+}
+
+#topnav li {
+	float: left; /* Get the blocks to stack side by side */
+	/* width: 159px; */
+	text-align: center;
+	border-left: 5px solid #00C;
+	border-bottom: 1px solid #7a7a7a;
+}
+
+#topnav li:first-child {
+	/* border-left: none;
+	width: 160px; */
+}
+
+#topnav li ul {
+	float: none;
+	position: absolute;
+	z-index: 100;
+	display: none;
+}
+
+#topnav li:hover ul {
+	display: block;
+}
+
+#topnav li li {
+	float: none;
+	border: none;
+}
+
+#topnav a, #topnav span {
+	text-decoration: none;
+	display: block;
+	padding: 7px 10px;
+}
+
+#topnav a:hover {
+	background-color: #FFC;
+}
+
+#topnav .active {
+	border-bottom: none; 
+}
+
+#sidemenu ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+#sidemenu li {
+	margin-bottom: 5px;
+}
+
+#sidemenu a {
+	display: block;
+	background: url(buttonmap.jpg) no-repeat;
+	width: 140px;
+	height: 45px;
+}
+
+/* Hide text from users that can see the graphics */
+#sidemenu a span {
+	position: absolute;
+	height: 1px;
+	width: 1px;
+	top: -5000px;
+	left: -5000px;
+	overflow: hidden;
+}
+
+a#button1 { background-position: -21px -12px; } 
+a#button2 { background-position: -21px -164px; } 
+a#button3 { background-position: -175px -240px; } 
+a#button4 { background-position: -21px -321px; } 
+a#button5 { background-position: -175px -321px; } 
+a#button6 { background-position: -21px -563px; } 
+
+</style>
+
+</head>
+
+<body>
+
+<div id="wrapper">
+	<div id="masthead">
+    
+    </div><!-- masthead -->
+    
+    <div id="topnav">
+    	<ul>
+        	<li><a href="#">Menu Item 1</a></li>
+            <li><span>Submenu 1</span>
+            	<ul>
+		        	<li><a href="#">Submenu Item 1</a></li>
+		        	<li><a href="#">Submenu Item 2</a></li>
+		        	<li><a href="#">Submenu Item 3</a></li>
+		        	<li><a href="#">Submenu Item 4</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Menu Item 3</a></li>
+            <li><a href="#">Menu Item 4</a></li>
+            <li><a href="#">Menu Item 5</a></li>
+        </ul>
+    </div>
+    
+    <div id="content">
+    	<div id="sidemenu">
+        	<ul>
+            	<li><a id="button1" href="#"><span>Button 1</span></a></li>
+            	<li><a id="button2" href="#"><span>Button 2</span></a></li>
+            	<li><a id="button3" href="#"><span>Button 3</span></a></li>
+            	<li><a id="button4" href="#"><span>Button 4</span></a></li>
+            	<li><a id="button5" href="#"><span>Button 5</span></a></li>
+            	<li><a id="button6" href="#"><span>Button 6</span></a></li>
+            </ul>
+        </div>
+        
+    	<div id="maincolumn">
+        
+            <h1>Hello world!</h1>
+            
+            <img class="alignleft" src="image1.jpg" />
+            
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <span>Etiam pretium aliquam lorem vitae porttitor.</span> Integer faucibus, nibh at rutrum mollis, quam lorem varius turpis, id facilisis arcu arcu eget nunc. Quisque ac elit diam, non lacinia dolor. Nam aliquam condimentum tellus, non dictum tellus hendrerit et. Duis ultricies, arcu at porta faucibus, ligula nisi convallis nulla, eget tristique odio ligula vitae ipsum. Donec vel justo id erat dapibus interdum. Vivamus condimentum nibh eget ipsum congue pretium. Aenean commodo imperdiet lectus, eu suscipit nisl euismod at. Nunc ac nunc nisi. Suspendisse potenti. Fusce nec est orci.</p>
+            
+            <h2>Vestibulum lacinia commodo suscipit</h2>
+            <p>Vestibulum lacinia commodo suscipit. Nam ipsum erat, hendrerit et blandit nec, dapibus in sapien. Praesent nec scelerisque justo. Maecenas congue lacinia lorem, nec condimentum urna lacinia nec. Nam ipsum felis, posuere sed placerat sit amet, congue eget turpis. Donec elit lectus, convallis at varius non, vulputate sed metus. Vivamus sed nibh nibh, ac convallis ligula. Suspendisse elit est, fringilla quis sagittis et, consectetur sit amet leo. In nec sem elit. Mauris eleifend iaculis risus eget dignissim.</p>
+            
+            <ul>
+                <li><span>Item 1</span></li>
+                <li>Item 2</li>
+                <li><span>Item 3</span></li>
+                <li>Item 4</li>
+                <li><span>Item 5</span></li>
+                <li>Item 6</li>
+            </ul>
+            
+            <p>Aenean condimentum diam venenatis leo fringilla consectetur eu nec ipsum. Morbi vitae nisl vitae nisl ultricies mollis eu eu odio. Morbi volutpat dolor et neque sodales vel fringilla libero dapibus. Aenean ultricies, odio non egestas tempor, odio eros mollis dolor, vel elementum nulla ipsum sit amet dui. In nec eros orci, vitae cursus neque. Fusce nec magna lacus. Proin ut arcu turpis. Cras feugiat nibh vel arcu gravida pellentesque. Aliquam arcu lectus, venenatis a semper vitae, consectetur nec arcu. Sed a lobortis arcu. Vivamus congue dui sed nulla consequat vitae tristique nisl molestie. Nulla posuere nulla vel massa vestibulum vitae lobortis libero vehicula.</p>
+            
+            <h2>Cras eu hendrerit sapien</h2>
+            <p>Nunc venenatis leo sed augue laoreet et semper mi blandit. Donec ultricies consectetur dui, a mattis leo luctus in. Vivamus nec ipsum vel orci imperdiet sagittis at ut odio. Etiam et eros nunc, non lacinia nunc. Mauris porta blandit felis eu cursus. In hac habitasse platea dictumst. Cras facilisis, turpis eget blandit adipiscing, erat ante pharetra mauris, in pretium lorem diam vel nunc. Pellentesque at dui nisl, id suscipit elit. Vivamus tempor, orci quis commodo convallis, dui nulla facilisis massa, ut mollis nulla enim eget massa. Cras eu hendrerit sapien. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla facilisi. Nulla vel turpis ligula.</p>
+        
+        </div><!-- maincolumn -->
+        
+        <div id="sidebar">    
+            <h2>Suspendisse consectetur cursus nunc ac fermentum</h2>
+            <p>Quisque velit quam, mattis sed sodales et, posuere non quam. Mauris sem risus, mattis vitae blandit et, consequat aliquam risus. Suspendisse consectetur cursus nunc ac fermentum. Proin pharetra congue interdum. Nunc a lectus ante. Phasellus id lacus quam, eu adipiscing odio. Praesent congue mi eu lectus imperdiet pulvinar. Ut in quam nisl, sed consequat neque. Vivamus in mi at risus scelerisque sagittis eget a neque. </p>
+        
+        </div><!-- sidebar -->
+        
+        <div class="clearing"></div>
+	</div><!-- content -->
+    
+    <div id="footer">
+    	Copyright &copy; TC Class 4140. Some Rights Reserved.
+    </div><!-- footer -->
+</div><!-- wrapper -->
+
+
+</body>
+</html>

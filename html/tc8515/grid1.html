@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Layout Demo</title>
+	
+	<link href="grid12.css" type="text/css" rel="stylesheet" />
+	
+	<style type="text/css">
+	
+	body {
+		font-family: Helvetica, Arial, sans-serif;
+		color: #111111;
+		background: #E5B976;
+	}
+	
+	#wrapper {
+		width: 800px;
+		margin: auto;
+		background: #ffffff;
+	}
+	
+	#pageheader {
+		height: 80px;
+		background: #819148;
+	}
+	
+	#pagefooter {
+		height: 50px;
+		background: #2B3018;
+		color: #ffffff;
+	}
+	
+	</style>
+	
+</head>
+<body>
+
+<div id="wrapper">
+	<header id="pageheader">Header Content</header>
+	<div id="content" class="grid">
+		<!-- 
+		To create our grid, assign classes indicating the size we want for
+		our columns. The class numbers must add up to 12 to fit properly.
+		-->
+		<section class="col-2">
+			<p>Donec purus justo, sodales non posuere eu, sodales et nisl. Aenean sed velit sit amet massa tristique dignissim et a diam. Vivamus cursus odio eget odio aliquam pretium. Vivamus sed mauris mi. Ut consequat rhoncus eros, ac tempor dolor. In elit dui, efficitur in efficitur a, malesuada iaculis magna. Aliquam erat volutpat. Morbi dignissim, lacus non gravida ultricies, nisi neque pharetra urna, vel pretium ex tellus at dolor. Integer fermentum orci at sem aliquam pulvinar eu ut eros.</p>
+		</section>
+		
+		<section class="col-6">
+			<p>Ut eget feugiat ante, ut convallis quam. Quisque quam tortor, convallis id imperdiet ac, congue eget tortor. Aenean eu dui sit amet erat aliquet suscipit eget sed nisi. Mauris tristique erat nec rhoncus fringilla. Suspendisse auctor ultricies posuere. Nullam ipsum tellus, fringilla at fringilla quis, auctor quis orci.</p>
+		</section>
+		
+		<section class="col-4">
+			<p>Duis tellus nunc, suscipit ut vestibulum non, iaculis non nisi. Donec id ligula in odio iaculis accumsan. Nullam in massa a lacus ultricies posuere vel eget sem. Donec pellentesque maximus tellus, eu iaculis magna. Morbi ornare eu metus sit amet facilisis. Sed vel ipsum et risus hendrerit tempus at vel ante. Nullam ipsum velit, convallis sed massa tincidunt, viverra imperdiet risus. Sed id fringilla erat.</p>
+		</section>
+		
+	</div><!-- content -->
+	<footer id="pagefooter">Footer Content</footer>
+</div><!-- wrapper -->
+
+
+
+</body>
+</html>

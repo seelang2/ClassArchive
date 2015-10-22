@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+
+<div id="target"><p>X</p></div>
+
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+/*
+// This SUCKS. Don't do this.
+$('#target').append('<p>append</p>');
+$('#target').prepend('<p>prepend</p>');
+$('#target').before('<p>before</p>');
+$('#target').after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo('#target');
+$('<p>prependTo</p>').prependTo('#target');
+$('<p>insertBefore</p>').insertBefore('#target');
+$('<p>insertAfter</p>').insertAfter('#target');
+*/
+
+/*
+// BETTER - store a collection in a variable if it's used more than once
+var $target = $('#target');
+$($target).append('<p>append</p>');
+$($target).prepend('<p>prepend</p>');
+$($target).before('<p>before</p>');
+$($target).after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo($target);
+$('<p>prependTo</p>').prependTo($target);
+$('<p>insertBefore</p>').insertBefore($target);
+$('<p>insertAfter</p>').insertAfter($target);
+*/
+
+// BETTER - store a collection in a variable if it's used more than once
+var $target = $('#target');
+$($target)
+	.append('<p>append</p>')
+	.prepend('<p>prepend</p>')
+	.before('<p>before</p>')
+	.after('<p>after</p>');
+
+$('<p>appendTo</p>')
+	.attr('id','someitem')
+	.addClass('itemclass')
+	.appendTo($target)
+	.detach()
+	.insertBefore($target);
+$('<p>prependTo</p>').prependTo($target);
+$('<p>insertBefore</p>')
+	.attr('id','item1')
+	.insertBefore($target)
+	.clone()
+	.attr('id','itemcopy')
+	.prependTo($target);
+$('<p>insertAfter</p>').insertAfter($target);
+
+
+
+
+</script>
+</body>
+</html>

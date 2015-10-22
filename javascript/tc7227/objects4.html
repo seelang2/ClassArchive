@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+var Car = function() {};
+Car.prototype.make = null;
+Car.prototype.model = null;
+Car.prototype.status = 'off';
+Car.prototype.startEngine = function() { 
+	this.status = 'on';
+	//console.log('boo.'); 
+};
+
+var SUV = function() {};
+SUV.prototype = new Car(); // reset prototype to point to new instance of desired parent
+SUV.prototype.has4WD = true;
+
+var myCar = new Car();
+
+var yourCar = new SUV();
+
+</script>
+</body>
+</html>

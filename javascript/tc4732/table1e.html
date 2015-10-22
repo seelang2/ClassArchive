@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+
+tr.hover { background: #FFC; }
+.oddrow { background: #C9C0FA; }
+.evenrow { background: #F0F1FF; }
+
+
+
+</style>
+</head>
+
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(
+	function() {
+		// define sample data set
+		var contactData = {
+			"contactList": [
+			   { "firstName": "John",	"lastName": "Doe",	   "email": "jdoe@email.com" },
+			   { "firstName": "Janet",	"lastName": "Smith",   "email": "jsmith@mac.com" },
+			   { "firstName": "Maude",	"lastName": "Jones",   "email": "mj23123@live.com" },
+			   { "firstName": "Peter",	"lastName": "Thomas",  "email": "whythe@msn.com" },
+			   { "firstName": "Frances","lastName": "Peters",  "email": "heckdo@yahoo.com" },
+			   { "firstName": "Audrey",	"lastName": "Homes",   "email": "imake@nowhere.com" },
+			   { "firstName": "Alex",	"lastName": "Barry",   "email": "things@goto.com" },
+			   { "firstName": "Paul",	"lastName": "Moses",   "email": "rough@onme.com" },
+			   { "firstName": "Arthur",	"lastName": "Royal",   "email": "downwithtyping@email.com" },
+			   { "firstName": "Gerald",	"lastName": "Patrick", "email": "finis@email.com" }
+			],
+			"totalContacts": 10,
+			"contactLabels": ["First Name", "Last Name", "Email Address"]
+		}; // contactData
+		
+		// note: the value of $tbody will be the result set at the end of the chain
+		var $tbody = $("#target")						// select div#target
+			.append(document.createElement("TABLE"))	// add table element node using createElement
+			.children()									// traverse down tree to child nodes
+			.first()									// limit set to first item in collection
+			.append("<thead></thead>")
+			.children("thead")
+			.each(
+				function(index, element) {
+					var rowHTML = '<tr>'; // initialize row HTML string
+					$.each( // iterate through each contact field and add to HTML string
+						contactData.contactLabels, // source collection (object)
+						function(field, value) { // callback function: field = contact object field name, value = field data
+							rowHTML += '<td>' + value + '</td>'; // add column to HTML string
+						} // function()
+					); // $.each contact
+					rowHTML += '</tr>'; // terminate HTML string
+					$(this).append(rowHTML);
+				}
+			)
+			.parent()
+			.append("<tbody></tbody>")					// add tbody element using HTML string method
+			.children()									// traverse down tree to child nodes
+			.last();									// limit set to first item in collection
+		
+		
+		$.each( // iterate through contactList
+			contactData.contactList,	// source collection (array)
+			function(index, contact) {	// callback function: index = contactList array index, contact = contact object element
+				var rowHTML = '<tr>'; // initialize row HTML string
+				$.each( // iterate through each contact field and add to HTML string
+					contact, // source collection (object)
+					function(field, value) { // callback function: field = contact object field name, value = field data
+						rowHTML += '<td>' + value + '</td>'; // add column to HTML string
+					} // function()
+				); // $.each contact
+				rowHTML += '</tr>'; // terminate HTML string
+				
+				$(rowHTML)				// convert HTML string to jQuery object with row element branch
+					.appendTo($tbody);	// append new row branch to tbody
+			} // function()
+		); // $.each contactList
+	} // function()
+); // $(document).ready
+
+</script>
+
+</body>
+</html>

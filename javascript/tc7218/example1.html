@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+	
+	<style type="text/css">
+	</style>
+	
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+// line comment - everything after slashes is ignored on line
+/*
+	block comment - useful for muti-line comments
+*/
+
+document.write('<p>This space for rent</p>');
+
+var someVal = 'This space for rent';
+
+document.write('<p>' + someVal + '</p>');
+
+var sideA = 7;
+//var sideB = parseFloat('fluffyhamster10.23523mi');
+var sideB = 'fluffyhamster10.23523mi';
+var area = sideA * sideB;
+var perimeter = sideA + sideB + sideA + sideB;
+//var perimeter = sideA * 2 + sideB * 2;
+
+document.write('<p>The area is ' + area + ' and the perimeter is ' + perimeter + '</p>');
+
+
+//var weekdays = new Array('Sun', 'Mon', 'Tue');
+var weekdays = ['Sun','Mon','Tue'];
+
+document.write('<p>The second element is ' + weekdays[1] + '.</p>');
+
+var pillbox = {
+	Sun: 'white',
+	Mon: 'white',
+	Tue: 'n/a',
+	Wed: 'blue',
+	Thu: 'orange',
+	Fri: 'blue',
+	Sat: 'green'
+};
+
+document.write('<p>' + pillbox.Mon + '</p>');
+document.write('<p>' + pillbox['Mon'] + '</p>');
+
+
+</script>
+</body>
+</html>
+
+
+
+

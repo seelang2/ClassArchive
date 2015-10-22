@@ -1,0 +1,35 @@
+﻿function getOrdinal(number) {
+
+	var m = number % 10;
+	
+	// 1. divide number by 100
+	var step1 = number / 100;
+	
+	// 2. store integer from step 1
+	var step2 = Math.floor(step1);
+	
+	// 3. subtract integer from dividend and multiply by 100
+	var result = Math.round((step1 - step2) * 100);
+	
+	switch(true) {
+		case m == 1 && result != 11:
+			var ordinal = 'st';
+		break;
+		
+		case m == 2 && result != 12:
+			var ordinal = 'nd';
+		break;
+		
+		case m == 3 && result != 13:
+			var ordinal = 'rd';
+		break;
+		
+		default:
+			var ordinal = 'th';
+		break;
+	} // switch
+	
+	return ordinal;
+	
+} // getOrdinal
+

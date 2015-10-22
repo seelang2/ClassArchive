@@ -1,0 +1,51 @@
+<!doctype HTML>
+<html>
+<head>
+	<title>Page Title</title>
+	<meta charset="UTF-8" />
+
+</head>
+<body>
+
+<script type="text/javascript" src="jquery-1.9.0.js"></script>
+<script type="text/javascript">
+
+function MYeach(collection, callback) {
+	for (var c = 0; c < collection.length; c++) {
+		callback(c, collection[c]);
+	}
+}
+
+MYeach(
+	['One','Two','Three','Four','Five'],	// the collection to loop through
+	function(collectionIndex, elementValue) {
+		console.log(collectionIndex + ' = ' + elementValue);
+	}
+);
+
+
+
+$.each(
+	['One','Two','Three','Four','Five'],	// the collection to loop through
+	function(collectionIndex, elementValue) {
+		console.log(collectionIndex + ' = ' + elementValue);
+	}
+);
+
+
+var items = ['Sun','Mon','Tue'];
+
+function doStuff(index, value) {
+	console.log(index + ' = ' + value);
+}
+
+$.each(
+	items,
+	doStuff // don't include the parens because this is a reference to the fn itself
+);
+
+
+
+</script>
+</body>
+</html>

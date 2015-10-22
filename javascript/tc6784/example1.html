@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Page</title>
+<meta charset="UTF-8" />
+<meta name="description" content="My Sample Page." />
+
+<style type="text/css">
+
+</style>
+
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+var someValue = '<p>This space for rent.</p>';
+
+document.write(someValue);
+
+var sideA = 10;
+var sideB = parseFloat('fluffyhamster');
+
+if (isNaN(sideB)) // error code
+
+var area = sideA * sideB;
+var perimeter = sideA + sideB + sideA + sideB;
+
+document.write('<p>The area is ' + area + ' and the perimeter is ' + perimeter + '</p>');
+
+var weekdays = ['Sun','Mon','Tue'];
+weekdays.push('Wed','Thu','Fri','Sat');
+
+var pillbox = 
+{
+	Sun: "white",
+	Mon: "white",
+	Tue: "none",
+	Wed: "blue",
+	Thu: "orange",
+	Fri: "red",
+	Sat: "green"
+
+};
+
+document.write('<p>' + pillbox.Mon + '</p>'); // use object notation to access property
+document.write('<p>' + pillbox['Mon'] + '</p>'); // use array notation
+
+//var today = weekdays[1];
+var today = new Date();
+today = today.getDay();
+
+
+// pillbox.today <- today is not a property of pillbox
+
+//document.write('<p>Today the pill is ' + pillbox[today] + '</p>');
+document.write('<p>Today the pill is ' + pillbox[weekdays[today]] + '</p>');
+
+
+</script>
+</body>
+</html>

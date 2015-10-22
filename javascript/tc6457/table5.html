@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Table Demo using events</title>
+	
+	<style type="text/css">
+	
+	table { border-collapse: collapse; }
+	th, td { padding: 5px; }
+	
+	tr.hover { background: #FFC; }
+	.oddrow { background: #88F2BB; }
+	.evenrow { background: #D8F2E5; }
+	
+	</style>
+	
+</head>
+<body>
+
+<div id="target"></div>
+
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+(function(App) {
+	
+	App.data = {}; // basic data repository
+	
+	App.start = function() {
+		
+		App.buildTable($('#target'));
+		App.data.tableHeadExists = false;
+		App.getContactData();
+		
+	}; // App.start
+	
+	App.getContactData = function() {
+		
+		$.ajax({
+			url:		'contacts1.json',
+			type:		'get',
+			dataType:	'json',
+			cache:		false,
+			success:	App.updateTableData
+		});
+		
+	}; // App.getContactData
+	
+	App.buildTable = function($target) {
+		
+		App.data.table = 
+		$target
+			.html('<table><thead /><tbody /></table>')
+			.find('tbody')
+			.on('mouseover',				// attach mouseover listeners to TBODY
+				'tr',						// only respond to events on TR descendants
+				App.addHover
+			 )
+			.on('mouseout',					// attach mouseout listeners to TBODY
+				'tr',						// only respond to events on TR descendants
+				App.removeHover
+			 )
+			.parent();						// traverse from TBODY to TABLE
+		
+	}; // App.buildTable
+	
+	App.buildTableHead = function(columnNames) {
+		
+		var rowHTML = '<tr>';
+		$.each(
+			columnNames, // just use first contact in array
+			function(index, colName) {
+				rowHTML += '<th>' + colName + '</th>';
+			}
+		);
+		rowHTML += '</tr>';
+		$(rowHTML)
+			.appendTo(App.data.table.children('thead'));
+		
+		App.data.tableHeadExists = true;
+		
+	}; // App.buildTableHead
+	
+	App.updateTableData = function(contactData) {
+		
+		// build the THEAD if it hasn't been built already
+		if (!App.data.tableHeadExists) App.buildTableHead(contactData.columnNames);
+		
+		var $rows = $('<tbody />'); // create a temporary object to hold the rows
+			
+		$.each(
+			contactData.data,
+			function(index, contact) {
+				//console.log(index,contact);
+				
+				var rowHTML = '<tr>';
+				
+				$.each(
+					contact,
+					function(fieldName, fieldValue) {
+						rowHTML += '<td>' + fieldValue + '</td>';
+					}
+				);
+				
+				rowHTML += '</tr>';
+				
+				$(rowHTML)
+					.attr('id','row-' + index)
+					.addClass('rowitem')
+					.appendTo($rows);
+				
+			}
+		);
+
+		App.data.table
+			.children('tbody')
+			.empty()
+			.append($rows.children());
+		
+		App.stripeRows();
+		
+	}; // App.updateTableData
+	
+	App.stripeRows = function() {
+		App.data.table
+			.children('tbody')				// move to TBODY
+			.children('tr')					// select ALL table rows
+			.removeClass('oddrow evenrow')	// remove any existing striping classes
+			.filter(':even')				// reduce set to only ODD rows
+			.addClass('oddrow')				// add the oddrow class
+			.end()							// revert set to all rows
+			.filter(':odd')					// reduce set to EVEN rows
+			.addClass('evenrow')
+	
+	}; // App.stripeRows
+	
+	App.addHover = function(e) {
+		$(this).addClass('hover');
+	}; // App.addHover
+	
+	App.removeHover = function(e) {
+		$(this).removeClass('hover');
+	}; // App.removeHover
+	
+	
+	
+})(window.App = window.App || {});
+
+$(document).ready(App.start); // launch App when DOM is ready
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

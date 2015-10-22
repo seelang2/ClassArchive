@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<ul>
+	<li data-info="thing1">Item 1</li>
+	<li data-info="thing2">Item 2</li>
+	<li data-info="thing3">Item 3</li>
+	<li data-info="thing4">Item 4</li>
+</ul>
+
+
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+
+/*
+$('li')
+	.addClass('listitem')
+	.eq(0)
+	.attr('id','item1')
+	.end()
+	.eq(1)
+	...
+
+*/
+
+$('li')
+	.each(function(index, element) {
+		// put element into jQuery wrapper to do jQuery stuff
+		$(element).attr('id','item-' + index);
+	 });
+
+
+console.log($('li').attr('data-info'));
+
+</script>
+</body>
+</html>

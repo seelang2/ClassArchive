@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Accordion Demo</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		color: #333;
+	}
+	
+	#wrapper {
+		width: 450px;
+		margin: auto;
+	}
+	
+	.title {
+		border: 1px solid #7a7a7a;
+		padding: 0.5em 1em;
+		font-size: 130%;
+		font-weight: bold;
+	}
+	
+	.content {
+		border: 1px solid #7a7a7a;
+		padding: 0.5em 1em;
+	}
+	
+	</style>
+
+</head>
+<body>
+
+<div id="wrapper">
+	<div class="title">Lorem ipsum dolor sit amet</div>
+	<div class="content">
+		<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tristique cursus bibendum. Aenean cursus, ex id pellentesque tincidunt, velit tortor pellentesque eros, quis fermentum eros quam sed elit. Duis tincidunt lobortis lectus in commodo. Sed suscipit orci viverra tellus imperdiet condimentum. Quisque fringilla, est sit amet accumsan vulputate, turpis nulla venenatis est, ut placerat neque eros quis elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris auctor gravida enim non malesuada.
+		</p>
+		<p>
+		Fusce a dictum neque. Quisque dignissim porttitor dolor nec gravida. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras scelerisque mi at nisl suscipit, tempor scelerisque lorem rutrum. Vestibulum sit amet urna nec ante euismod placerat eu quis sapien. Integer leo tellus, auctor vel semper fermentum, lobortis vitae nisl. Quisque et est placerat, tincidunt mauris sed, porta velit. Aenean pharetra tincidunt felis nec suscipit. Aliquam gravida molestie sodales. Duis ac commodo lectus, quis interdum erat. Nam dolor felis, tempus tristique diam quis, gravida pellentesque turpis.
+		</p>
+	</div>
+	
+	<div class="title">Vestibulum posuere at enim</div>
+	<div class="content">
+		<p>
+		Nulla rutrum, ipsum ut rutrum pulvinar, justo risus maximus odio, auctor imperdiet nibh nibh sed ex. Integer at libero justo. Vestibulum posuere at enim sed ultricies. Praesent nisi risus, volutpat et purus vitae, sodales finibus nisi. Integer tristique non ex tincidunt aliquet. Suspendisse id quam scelerisque, luctus lectus sed, lacinia ante. Aliquam et bibendum est. Quisque feugiat enim id diam molestie mattis.
+		</p>
+		<p>
+		Etiam vitae vulputate nulla, eu convallis nulla. Curabitur consequat augue id nisl consequat malesuada. Sed dapibus eget ante a lobortis. Nullam commodo metus et egestas placerat. Mauris commodo purus vitae elit iaculis aliquam non a ex. Nunc tristique metus ac sem pharetra, id ultricies justo iaculis. Nulla et consectetur arcu, in imperdiet leo.
+		</p>
+	</div>
+	
+	<div class="title">Proin eget ipsum rutrum</div>
+	<div class="content">
+		<p>
+		Proin volutpat vel enim vitae accumsan. Donec suscipit libero in eleifend vulputate. Duis metus sapien, feugiat eget urna in, commodo accumsan elit. Nulla interdum massa a nisl laoreet auctor sed nec libero. Vestibulum porta tristique sollicitudin. Mauris nunc urna, varius vitae neque in, vulputate varius nisi. Pellentesque laoreet justo at diam dapibus euismod. Fusce euismod, enim et scelerisque varius, justo leo vehicula nisl, eu tempus nibh nisl sit amet enim. Proin eget ipsum rutrum, ullamcorper mi eu, fringilla ligula. Nulla vitae orci ac risus elementum pretium.
+		</p>
+		<p>
+		Nunc a velit augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla scelerisque sed nisl in imperdiet. Donec semper dui ac interdum posuere. Mauris tincidunt fermentum ornare. Ut tristique, neque quis semper vestibulum, neque quam porta purus, ut malesuada nibh sem vel quam. Aliquam sodales placerat efficitur. Aenean id hendrerit ex. Aenean vel pretium sem. Proin quis rutrum ex.
+		</p>
+	</div>
+	
+	<div class="title">Etiam sed volutpat odio</div>
+	<div class="content">
+		<p>
+		Cras dictum, magna ut suscipit elementum, turpis neque euismod erat, in finibus felis ex eu felis. Fusce vel euismod lacus. In quis efficitur turpis. Phasellus sed viverra erat, eu fermentum ante. Etiam ultrices lacus eu quam consectetur, a sagittis tellus tincidunt. Sed et vehicula elit. In hac habitasse platea dictumst. Maecenas sollicitudin ornare dui, ut tempor quam elementum nec.
+		</p>
+		<p>
+		Etiam sed volutpat odio. In mollis condimentum tellus, accumsan faucibus ex. Morbi in massa suscipit tellus porta dictum. Maecenas in orci consectetur, hendrerit arcu ac, efficitur nisl. Pellentesque hendrerit non massa quis egestas. Morbi aliquam purus ipsum, ac mollis lectus rhoncus sed. Donec pharetra convallis luctus. Curabitur eget est finibus, scelerisque enim id, sagittis sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi molestie feugiat libero vitae faucibus. Aliquam erat volutpat. Nam sodales convallis justo eu hendrerit.
+		</p>
+	</div>
+	
+</div><!-- wrapper -->
+
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+$content =
+$('.content').hide();
+
+// set up click event
+$('.title')
+	.on('click', function() {
+		// 'this' defaults to element to which the event is bound
+		$(this)
+			.next()				// traverse to the content container
+			.toggle();			// and show it
+	 });
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+	<title>Page</title>
+	<meta charset="UTF-8" />
+	
+</head>
+<body>
+
+<div id="target">
+	<p>X</p>
+</div>
+
+<div id="target2"></div>
+
+<script type="text/javascript" src="jquery-1.8.3.js"></script>
+<script type="text/javascript">
+
+/*
+// BAD - do not do repeated lookups for the same selection
+$('#target').append('<p>append</p>');
+$('#target').prepend('<p>prepend</p>');
+$('#target').before('<p>before</p>');
+$('#target').after('<p>after</p>');
+*/
+
+/*
+// BETTER - cache selection in a variable if using it more than once
+var $target = $('#target'); // store selection in variable
+$target.append('<p>append</p>');
+$target.prepend('<p>prepend</p>');
+$target.before('<p>before</p>');
+$target.after('<p>after</p>');
+*/
+
+/*
+// BETTER STILL - make use of javascript chaining
+var $target = $('#target'); // store selection in variable
+$target
+	.append('<p>append</p>')
+	.prepend('<p>prepend</p>')
+	.before('<p>before</p>')
+	.after('<p>after</p>');
+*/
+	
+var $target = 
+$('#target')
+	.append('<p>append</p>')
+	.prepend('<p>prepend</p>')
+	.before('<p>before</p>')
+	.after('<p>after</p>');
+
+	
+$('<p>appendTo</p>')
+	.appendTo($target)
+	.clone()
+	.appendTo('#target2');
+
+$('<p>prependTo</p>').prependTo($target);
+$('<p>insertBefore</p>').insertBefore($target);
+$('<p>insertAfter</p>').insertAfter($target);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+body {
+	background: #7a7a7a;
+	margin: 0;
+	padding: 0;
+	font-size: 78%;
+	text-align: center;
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+#wrapper {
+	background: #ffffff;
+	margin: 0 auto;
+	padding: 0;
+	text-align: left;
+	width: 75%;
+}
+
+#leftside {
+	float: left;
+	width: 49%;
+	height: 200px;
+	border: 1px solid #7a7a7a;
+}
+
+#rightside {
+	float: right;
+	width: 49%;
+	height: 200px;
+	border: 1px solid #7a7a7a;
+}
+
+#itemlist {
+	clear:both;
+	margin: 2em;
+	border: 1px solid #7a7a7a;
+}
+
+.clearing {
+	clear:both;
+	height: 1px;
+	overflow:hidden;
+}
+
+#header {
+	height: 100px;
+	background: #000099;
+	color: #ffffff;
+	overflow: hidden;
+}
+
+#footer {
+	clear: both;
+	height: 35px;
+	background: #000099;
+	color: #ffffff;
+	margin-top: 25px;
+}
+
+#status {
+	float: right;
+	background: #ff0000;
+	font-weight: bold;
+	visibility: hidden;
+}
+
+/* tableless forms */
+form {
+	width: 80%;	
+}
+
+form label {
+	float: left;
+	margin-right: 1em;
+	text-align: right;
+	width: 25%;
+}
+
+form div {
+	clear: both;
+	margin-bottom: 0.25em;
+}
+
+/* Table styling */
+#itemlist table {
+	width: 70%;
+	margin: 0 auto;
+}
+
+#itemlist table tr {
+	margin: 0;
+	padding: 0;
+}
+
+#itemlist table td {
+	margin: 0;
+	padding: 0.25em 0.5em;
+}
+
+.oddrow {
+	background: #93BBFD;
+}
+
+.evenrow {
+	background: #D8E7FE;
+}
+
+/* hover div */
+#hoverdiv {
+	position: absolute;
+	z-index: 999;
+	width: 200px;
+	height: 300px;
+	background: #FEF8CD;
+	top: 0;
+	left: 0;
+	display: none;
+}
+
+/* */
+.readertext {
+	position: absolute;
+	top: -1000px;
+	left: -1000px;
+	height: 1px;
+	overflow: hidden;
+	z-index: -999;
+}
+
+/* EOF */

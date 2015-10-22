@@ -1,0 +1,200 @@
+<!doctype html>
+<html>
+<head>
+	<title>Page</title>
+	<meta charset="UTF-8" />
+	
+</head>
+<body>
+
+<p>Foo.</p>
+
+
+<script type="text/javascript">
+
+document.write('<p>This space for rent.</p>');
+
+var someValue = 'This is more text.';
+
+document.write('<p>' + someValue.toUpperCase() + '</p>');
+
+var	sideA = 10, 
+	sideB = 3,
+	//sideB = '3',
+	//sideB = parseInt('3.14mm'), // or parseFloat() for floating point
+	area = sideA * sideB,
+	perimeter = sideA + sideB + sideA + sideB; // (sideA * 2) + (sideB * 2)
+
+document.write('<p>The area is ' + area + 
+			   ' and perimeter is ' + perimeter + 
+			   '</p>');
+
+//var days = new Array('sun','mon','tue'); // avoid new Array()
+var days = ['sun','mon','tue']; // preferred method is Object Literal
+
+document.write('<p>The number of days is ' + days.length + '</p>');
+
+document.write('<p>The second element of days is ' + days[1] + '.</p>');
+
+//var pillBox = new Object();
+var pillBox = 
+{
+	sun: 'white',
+	mon: 'none',
+	tue: 'none',
+	wed: 'purple',
+	thu: 'orange'
+};
+
+pillBox.fri = 'blue';
+pillBox['sat'] = 'green';
+
+var whatDay = 'wed';
+
+console.log(pillBox[whatDay]);
+
+
+var weekdays = 
+['Sunday','Monday','Tuesday','Wednesday','Thurday','Friday','Saturday'];
+
+var months = 
+[
+	'January',
+	'February',
+	'March',
+	'April',
+	'May',
+	'June',
+	'July',
+	'August',
+	'September',
+	'October',
+	'November',
+	'December'
+];
+
+var today = new Date();
+
+/*
+months[today.getMonth()] = 
+	months[today.getMonth()].charAt(0).toLowerCase() + 
+	months[today.getMonth()].slice(1).toUpperCase();
+*/
+
+/*
+var ordinal = ['st','nd','rd','th','th','th','th','th','th','th','th','th','th','th','th','th','th','th','th','th','st','nd','rd','th','th','th','th','th','th','th','st'];
+
+document.write('<p>Today is ' +
+			   weekdays[today.getDay()] + ', ' +
+			   months[today.getMonth()] + ' ' +
+			   today.getDate() + ordinal[today.getDate() ] + ', ' +
+			   today.getFullYear() + 
+			   '.</p>');
+
+*/  
+
+/*
+// Note that this modulo approach does NOT work
+switch (today.getDate() % 10)  {
+	case 1:
+		var ordinal = 'st';
+	break;
+	
+	case 2:
+		var ordinal = 'nd';
+	break;
+	
+	case 3:
+		var ordinal = 'rd';
+	break;
+	
+	default:
+		var ordinal = 'th';
+	break;
+*/
+
+
+/*
+switch (today.getDate())  {
+	case 1: case 21: case 31:
+		var ordinal = 'st';
+	break;
+	
+	case 2: case 22:
+		var ordinal = 'nd';
+	break;
+	
+	case 3: case 23:
+		var ordinal = 'rd';
+	break;
+	
+	default:
+		var ordinal = 'th';
+	break;
+}
+*/
+
+/*
+var d = today.getDate();
+
+switch (true) {
+	case today.getDate() == 1 || today.getDate() == 21 || today.getDate() == 31:
+		var ordinal = 'st';
+	break;
+	
+	case d == 2 || d == 22:
+		var ordinal = 'nd';
+	break;
+	
+	case d == 3 || d == 33:
+		var ordinal = 'rd';
+	break;
+	
+	default:
+		var ordinal = 'th';
+	break;
+}
+*/
+
+var	d = today.getDate(),
+	r = d % 10;
+
+switch (true)  {
+	case d != 11 && r == 1:
+		var ordinal = 'st';
+	break;
+	
+	case d != 12 && r == 2:
+		var ordinal = 'nd';
+	break;
+	
+	case d != 13 && r == 3:
+		var ordinal = 'rd';
+	break;
+	
+	default:
+		var ordinal = 'th';
+	break;
+}
+	
+document.write('<p>Today is ' +
+			   weekdays[today.getDay()] + ', ' +
+			   months[today.getMonth()] + ' ' +
+			   today.getDate() + ordinal + ', ' +
+			   today.getFullYear() + 
+			   '.</p>');
+
+			   
+
+console.log('A string'
+				.toUpperCase()
+				.toLowerCase()
+				.length
+				.toString()
+				.length
+				);
+			   
+			   
+</script>
+</body>
+</html>

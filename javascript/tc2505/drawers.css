@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* CSS Document */
+
+.content, .topic {
+	width: 350px;
+	margin: 0 auto;
+	padding: 5px 15px;
+	border: 1px solid #7a7a7a;
+}
+
+.content {
+	display: none;
+	height: 200px;
+	overflow: scroll;
+}
+

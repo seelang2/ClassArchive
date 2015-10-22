@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<contactreq>
+	<requestdate>08/06/2013 14:40</requestdate>
+	<fieldlabels>
+		<label>ID</label>
+		<label>First Name</label>
+		<label>Last Name</label>
+		<label>Employee Number</label>
+	</fieldlabels>
+	<contactlist>
+		<contact>
+			<id>0</id>
+			<firstname>John</firstname>
+			<lastname>Doe</lastname>
+			<empnum>42</empnum>
+		</contact>
+		<contact>
+			<id>0</id>
+			<firstname>Jane</firstname>
+			<lastname>Smith</lastname>
+			<empnum>12</empnum>
+		</contact>
+		<contact>
+			<id>0</id>
+			<firstname>Mary</firstname>
+			<lastname>Thompson</lastname>
+			<empnum>65</empnum>
+		</contact>
+		<contact>
+			<id>0</id>
+			<firstname>Steven</firstname>
+			<lastname>Pierce</lastname>
+			<empnum>2</empnum>
+		</contact>
+		<contact>
+			<id>0</id>
+			<firstname>Beverly</firstname>
+			<lastname>Jones</lastname>
+			<empnum>17</empnum>
+		</contact>
+		<contact>
+			<id>0</id>
+			<firstname>Alex</firstname>
+			<lastname>Reid</lastname>
+			<empnum>21</empnum>
+		</contact>
+	</contactlist>
+</contactreq>

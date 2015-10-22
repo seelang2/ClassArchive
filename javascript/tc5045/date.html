@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Date Example</title>
+</head>
+
+<body>
+
+<script type="text/javascript">
+// create instance of Date object
+var now = new Date();
+
+// define arrays for days and months
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August','September', 'October', 'November', 'December'];
+
+var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+// output formatted date string message
+document.write(	'<p>Today is ' +
+						  	days[now.getDay()] + ', ' +
+							months[now.getMonth()] + ' ' +
+							now.getDate() + ', ' +
+							now.getFullYear() +
+							'</p>'	);
+
+</script>
+
+
+</body>
+</html>

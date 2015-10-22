@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="test">
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vehicula nisl vel mauris tempor pellentesque. Etiam et metus et erat ultrices JamesJJohnson@trashymail.com pharetra eget vel orci. Fusce a nisi fermentum odio rhoncus laoreet quis in elit. Donec eu est non metus blandit iaculis. Vestibulum in diam eu purus faucibus sollicitudin. Cras a odio elit, vel fringilla quam. </p>
+
+<p>Suspendisse adipiscing odio non turpis scelerisque aliquet. Ut quis dolor urna, sed consectetur ipsum. Etiam gravida sarah.connor@terminator.ws dictum nunc, at lacinia lorem eleifend quis. In imperdiet pretium ipsum, ac vulputate nunc fringilla id. Vestibulum non risus erat, at malesuada dui.</p>
+
+<p>Donec quis purus libero. Maecenas hendrerit porttitor lacus. Aenean at tortor odio, quis eleifend mauris. Quisque auctor jrh4th@no-where.edu odio quam, sit amet varius felis. Suspendisse laoreet fringilla elit vitae malesuada. Aenean mi urna, gravida vel lacinia sed, hendrerit in leo. </p>
+
+<p>Aliquam mattis mauris sed est porttitor eu venenatis dui sodales. Nulla facilisi. Duis felis ipsum, feugiat at volutpat id, rhoncus vel mi. Nullam accumsan, nibh vel condimentum porttitor, magna urna adipiscing lorem, ac iaculis erat odio at elit.</p>
+</div>
+
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+/*
+var content = $('#test').html();
+//alert(content);
+var results = content.match(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/gi);
+
+//alert(results.length);
+for (var c = 0; c < results.length; c++) {
+	alert(results[c]);
+}
+$('#test').html(content.replace(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/gi,
+										  "<a href=\"mailto:$&\">$&</a>"));
+*/
+
+$('#test')
+	.html(
+		$('#test').html()
+			.replace(
+				/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/gi,
+				"<a href=\"mailto:$&\">$&</a>"
+			 )
+	 );
+
+</script>
+</body>
+</html>

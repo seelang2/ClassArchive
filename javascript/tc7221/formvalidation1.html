@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	
+	form label {
+		display: block;
+		margin: 1em 0;
+	}
+	
+	input.invalid {
+		border: 1px solid #ff0000;
+	}
+	
+	input + span {
+		font-weight: bold;
+		color: #ff0000;
+	}
+	
+	</style>
+</head>
+<body>
+
+<form id="form1" action="#" method="get">
+
+	<label>
+		<span>Enter some text:</span>
+		<input type="text" name="field1" />
+	</label>
+
+	<label>
+		<span>Enter at least 4 characters:</span>
+		<input type="text" name="field2" />
+	</label>
+
+	<div><input type="submit" /></div>
+</form>
+
+
+
+<script src="jquery-1.11.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	$('#form1')
+		.on('submit', function(e) {
+			// clear out any previously marked errors
+			$(this)
+				.find('[data-fieldError]')
+				.removeClass('invalid')
+				.removeAttr('data-fieldError')
+				.next('.errmsg')
+				.remove();
+			
+			
+			
+			var formIsValid = true; // presumed innocent
+			
+			$(this)
+				.find(':input')
+				.each(function(index, field) {
+					// go through fields checking validation rules
+					
+					var $field = $(field);
+					
+					switch(true) {
+						case $field.attr('name') == 'field1':
+							// check for exceptions
+							if ($field.val().length < 1) {
+								// exception found
+								formIsValid = false; // GUILTY.
+								$field.attr('data-fieldError','Field cannot be empty')
+							}
+						
+						break;
+					
+						case $field.attr('name') == 'field2':
+							// check for exceptions
+							if ($field.val().length < 4) {
+								// exception found
+								formIsValid = false; // GUILTY.
+								$field.attr('data-fieldError','Field must have 4 chars')
+							}
+						
+						break;
+					
+					} // switch
+					
+					
+				 }); // each
+				 
+			if (formIsValid) {
+				// everything's all good, submit form
+				return true;
+			}
+			
+			// form is invalid. display user feedback
+			
+			$(this)
+				.find('[data-fieldError]')
+				.addClass('invalid')
+				.each(function(index, field) {
+					
+					$(field)
+						.after('<span class="errmsg">'+ $(field).attr('data-fieldError') +'</span>');
+					
+				 });
+			
+			return false; // stop form submission
+			
+		 });
+	
+	
+	
+	
+}); // document.ready
+
+
+
+
+</script>
+</body>
+</html>

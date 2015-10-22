@@ -1,0 +1,79 @@
+<!doctype HTML>
+<html>
+<head>
+	<title>Page Title</title>
+	<meta charset="UTF-8" />
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana,
+		font-size: 85%;
+	}
+	
+	#wrapper {
+		width: 700px;
+		margin: auto;
+		border: 1px solid #7a7a7a;
+	}
+	
+	article {
+		width: 60%;
+		float: left;
+	}
+	
+	aside {
+		width: 40%;
+		float: right;
+	}
+	
+	footer {
+		clear: both;
+		background: #ccc;
+		color: #efefef;
+		font-size: 90%;
+		padding: 10px;
+	}
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<article>
+		<h1>Main Content</h1>
+		<p>This is the primary content on the page. It is part of
+		the static content on the page</p>
+	</article>
+	<aside>
+	
+	</aside>
+	
+	<footer>
+		<p>Copyright &copy; TC Class 5770. No Rights Reserved.</p>
+	</footer>
+</div>
+
+
+<script type="text/javascript" src="jquery-1.9.0.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	// side-load secondary content
+	$.ajax(
+		{
+			url:		'secondary.html',
+			type:		'GET',
+			dataType:	'html',
+			success:	function(response) {
+				
+				$('aside').html(response);
+				
+			}		}
+	);
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

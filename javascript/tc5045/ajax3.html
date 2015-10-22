@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="feed"></div>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+/*
+References:
+https://developers.google.com/feed/v1/devguide#resultXml
+http://code.google.com/apis/ajax/playground/#results_in_xml
+*/
+// Load Google API
+google.load("feeds", "1");
+
+function callback(feedData) {
+	
+	// the XML object is inside the result.xmlDocument property
+		$(feedData.xmlDocument)			// put jQuery wrapper around XML doc
+			.find('item')								// retrieve all the <item> nodes inside the feed
+			.each(
+				function(index, element) {
+					$('<div></div>')
+						.appendTo('#feed')
+						.append( 
+							'<h2><a href="' + $(element).children('link').text() + '">' + 
+							$(element).children('title').text() + '</a></h2>'
+						 )
+						.append( '<div>' + $(element).children('description').text() + '</div>');
+					
+				} // function
+			 ) // .each
+}
+
+
+$(document).ready(function() {
+	
+	
+	// Create a feed instance with the feed URL
+	var feed = new google.feeds.Feed("http://news.google.com/news?ned=us&topic=h&output=rss");
+	
+	// Request the results in XML
+	feed.setResultFormat(google.feeds.Feed.XML_FORMAT);
+	
+	// Calling load sends the request off.  It requires a callback function.
+	feed.load(callback);
+	
+});
+
+
+</script>
+</body>
+</html>

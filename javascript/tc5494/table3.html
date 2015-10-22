@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Sample Table Demo</title>
+	<meta charset="UTF-8" />
+	
+	<style type="text/css">
+	table { border-collapse: collapse; }
+	
+	tr.hover { background: #FFC; }
+	.oddrow { background: #9CFB21; }
+	.evenrow { background: #ACFF9F; }
+	
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.8.2.js"></script>
+<script type="text/javascript">
+
+var contactData =
+{
+	"requestdate": "Date/Time",
+	
+	"fieldLabels": ['ID', 'First Name', 'Last Name', 'Email Address'],
+	
+	"data": 
+		[
+			 { "id":10,"firstname":"John","lastname":"Allen","email":"jal@yahoo.com" },
+			 { "id":123,"firstname":"Mary","lastname":"Peters","email":"mpami@gmail.com" },
+			 { "id":2,"firstname":"Jessica","lastname":"Albert","email":"who@email.com" },
+			 { "id":24,"firstname":"Alexi","lastname":"Michaels","email":"am@morning.com" },
+			 { "id":11,"firstname":"George","lastname":"Thomas","email":"george@thomas.com" },
+			 { "id":9,"firstname":"Sybil","lastname":"Charles","email":"person1@mail.com" },
+			 { "id":54,"firstname":"Frances","lastname":"Donald","email":"fhmd@mac.com" }
+		]
+
+};
+
+var $tbody =
+$('<table><tbody></tbody></table>')
+	.appendTo('#target')
+	.children('tbody');
+
+$.each(
+	contactData.data,
+	function(index, contact) {
+		var rowHTML = '<tr>';
+		
+		$.each(
+			contact,
+			function(colName, colValue) {
+				rowHTML += '<td>' + colValue + '</td>';
+			}
+		);
+		
+		rowHTML += '</tr>';
+		
+		$(rowHTML)
+			.addClass(index % 2 == 0 ? 'oddrow': 'evenrow')
+			.appendTo($tbody)
+			.on(
+				{
+					mouseover: function() {
+						$(this).addClass('hover');
+					},
+					
+					mouseout: function() {
+						$(this).removeClass('hover');
+					}
+				}
+			 );
+		
+		
+	} // function
+); // $.each contactList
+
+/*
+$tbody						// with my TBODY...
+	.children('tr')			// select all the table rows
+	.filter(':odd')			// filter on all the EVEN items
+	.addClass('evenrow')	// apply class
+	.end()					// revert selection back to all rows
+	.filter(':even')		// filter on ODD items
+	.addClass('oddrow');	// and apply class
+*/
+
+</script>
+</body>
+</html>

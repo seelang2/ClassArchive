@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Demo 3: DOM DOM DOM!</title>
+
+<style type="text/css">
+.oddrow {
+	background: #ECF8FF;	
+}
+.evenrow {
+	background: #93D1FF;
+}
+</style>
+</head>
+
+<body>
+
+<div id="stockticker">
+</div>
+
+
+
+<script type="text/javascript">
+// use JSON notation to create multidimensional array
+var tickerData = [['SYM'	,'1:00'	,'2:00'	,'3:00'],
+				  ['NT'		,5.25	,4.32	,2.15],
+				  ['MSFT'	,115.21	,110.11	,112.37],
+				  ['NT'		,5.25	,4.32	,2.15],
+				  ['MSFT'	,115.21	,110.11	,112.37],
+				  ['NT'		,5.25	,4.32	,2.15],
+				  ['MSFT'	,115.21	,110.11	,112.37],
+				  ['NT'		,5.25	,4.32	,2.15],
+				  ['MSFT'	,115.21	,110.11	,112.37],
+				  ['NT'		,5.25	,4.32	,2.15],
+				  ['MSFT'	,115.21	,110.11	,112.37],
+				  ['NT'		,5.25	,4.32	,2.15],
+				  ['MSFT'	,115.21	,110.11	,112.37],
+				  ['AAPL'	,121.71	,102.07	,99.11]];
+
+
+// get reference to parent container
+var tickerElem = document.getElementById("stockticker");
+
+var tableElem = document.createElement("TABLE");
+// add node to container
+tickerElem.appendChild(tableElem);
+
+var tHeadElem = document.createElement("THEAD");
+tableElem.appendChild(tHeadElem);
+
+var tRowElem = document.createElement("TR");
+tHeadElem.appendChild(tRowElem);
+
+for (var col = 0; col < tickerData[0].length; col++) {
+	tempElem = document.createElement("TH");
+	tRowElem.appendChild(tempElem);
+	tempElem.appendChild(document.createTextNode(tickerData[0][col]));
+}
+
+var tBodyElem = document.createElement("TBODY");
+tableElem.appendChild(tBodyElem);
+
+for (var row = 1; row < tickerData.length; row++) {
+	tRowElem = document.createElement("TR");
+	tBodyElem.appendChild(tRowElem);
+	// check whether the row is even or odd using modulus
+	if (row % 2 == 0) {
+		tRowElem.className = 'evenrow';
+	} else {
+		tRowElem.className = 'oddrow';
+	}
+	// assign row id value
+	tRowElem.id = 'row-' + row;
+	
+	for (var col = 0; col < tickerData[row].length; col++) {
+		tempElem = document.createElement("TD");
+		tRowElem.appendChild(tempElem);
+		tempElem.appendChild(document.createTextNode(tickerData[row][col]));
+	}
+}
+
+
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

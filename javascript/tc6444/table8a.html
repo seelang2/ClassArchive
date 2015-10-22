@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+</head>
+<body>
+
+<div id="contacttable"></div>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+// create application object singleton (single instance object)
+var App = {
+	data: {}, // app-wide data store
+	
+	start: function() {
+		App.data.contacttableDiv = $('#contacttable');
+		
+		App.buildTable(); // initialize table structure
+		
+		App.getTableData(); // make Ajax request to server
+		
+	}, // App.start
+	
+	buildTable: function() {
+		App.data.tbody =
+			App.data.contacttableDiv
+				.html('<table><thead /><tbody /></table>')
+				.find('tbody');
+	
+	}, // App.buildTable
+	
+	getTableData: function() {
+		$.ajax({
+			url:		'contactreq.xml',
+			type:		'GET',
+			dataType:	'xml',
+			success:	App.updateTable,
+			error:		function(req) {
+				console.log('Request error.',req);
+			}
+		});
+		
+	}, // App.getTableData
+	
+	updateTable: function(requestData) {
+		
+		console.log(requestData);
+		
+		App.data.tbody.empty(); // clear all contents of tbody. Same as tbody.html('')
+		
+		$(requestData) // pass XML doc into jQuery wrapper so we can traverse the doc
+			.find('contact')
+			.each(
+				function(i, contact) {
+					//console.log(contact);
+					
+					var $row = $('<tr />');
+					
+					$(contact)
+						.children()
+						.each(
+							function(i, column) {
+								console.log(column);
+								$row.append('<td>' + $(column).text() + '</td>');
+							}
+						 );
+					
+					$row.appendTo(App.data.tbody);
+				}
+			 );
+
+		
+	} // App.updateTable
+	
+}; // App
+
+$(document).ready(App.start); // initialize App on DOM ready
+
+
+</script>
+</body>
+</html>

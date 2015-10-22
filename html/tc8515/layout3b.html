@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Layout Demo</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		color: #000000;
+		margin: 0;
+		padding: 0;
+		background-color: #cccccc;
+	}
+	
+	#wrapper {
+		width: 800px;
+		margin: 0 auto;
+		background-color: #ffffff;
+		border: 1px solid #999999;
+	}
+	
+	#masthead {
+		height: 80px;
+		background-color: #aad565;
+	}
+	
+	#pagefooter {
+		height: 50px;
+		background-color: #000000;
+		color: #ffffff;
+		font-size: 90%;
+		/* always add at least 1px vertical padding to prevent vertical 
+		   margin collapse between parent and child elements */
+		padding: 1px 25px; 
+	}
+	
+	#content {
+		background-color: #fcc;
+	}
+	
+	#main {
+		float: left;
+		width: 550px;
+	}
+	
+	#secondary {
+		float: right;
+		width: 250px;
+	}
+	
+	/* clearing shim to use below floats */
+	.clearing {
+		clear: both;
+		height: 1px;
+	}
+	
+	h1 {
+		color: #30DCFF;
+	}
+	
+	h2 {
+		color: #E8783B;
+	}
+	
+	</style>
+	
+</head>
+<body>
+
+<div id="wrapper">
+	<header id="masthead">
+	</header>
+	<div id="content">
+		<section id="main">
+			<h1>Lorem ipsum dolor sit amet</h1>
+			<p><a href="http://www.lipsum.com" target="_blank">Lorem ipsum</a> dolor sit amet, <br />consectetur adipiscing elit. Nullam vel libero mauris. Proin consequat lacus nec nisl tempor, aliquet ullamcorper augue molestie. Mauris ut sapien elit. Integer sapien arcu, dapibus et consectetur vel, egestas quis libero. Suspendisse metus nunc, dictum accumsan nisi porttitor, tempor blandit elit. Etiam sagittis pulvinar mi ut ullamcorper. Proin libero erat, commodo sed enim eget, aliquam convallis lectus. Proin vel libero facilisis, ullamcorper elit sit amet, eleifend orci. Morbi vulputate risus at nisl dignissim convallis. Mauris sed nibh at mi tempor imperdiet nec non nisi. Nulla dignissim nibh eget libero gravida, bibendum aliquet orci iaculis. Donec nec orci eu sem suscipit feugiat.</p>
+
+			<p>Donec purus justo, sodales non posuere eu, sodales et nisl. Aenean sed velit sit amet massa tristique dignissim et a diam. Vivamus cursus odio eget odio aliquam pretium. Vivamus sed mauris mi. Ut consequat rhoncus eros, ac tempor dolor. In elit dui, efficitur in efficitur a, malesuada iaculis magna. Aliquam erat volutpat. Morbi dignissim, lacus non gravida ultricies, nisi neque pharetra urna, vel pretium ex tellus at dolor. Integer fermentum orci at sem aliquam pulvinar eu ut eros.</p>
+
+			<h2 id="section2">Ut eget feugiat ante</h2>
+			<p>Integer vehicula finibus purus, ac porta lectus tempus vel. Maecenas consectetur, orci non rutrum auctor, nisl mi egestas dui, ac euismod orci risus a augue. </p>
+
+			<ol>
+				<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+				<li>Nullam eleifend lacus at libero rhoncus hendrerit.</li>
+				<li>Quisque aliquet lectus eu urna malesuada luctus et ut leo.</li>
+				<li>Fusce lacinia nulla sit amet eros scelerisque, eleifend ultrices eros aliquam.</li>
+			</ol>
+
+			<ul>
+				<li>Mauris feugiat urna vitae dolor condimentum dapibus.</li>
+				<li>Nulla non mi ornare, vulputate turpis eu, feugiat diam.</li>
+				<li>Quisque dapibus turpis id nibh congue, sed pellentesque magna laoreet.</li>
+				<li>Duis a nisl sagittis, ullamcorper lectus laoreet, lobortis ex.</li>
+				<li>Etiam sagittis ligula non ante faucibus, eu venenatis ligula ultricies.</li>
+				<li>Duis tincidunt mauris vitae orci pulvinar, quis sagittis quam dapibus.</li>
+			</ul>
+
+			<h3>Mauris tristique erat nec rhoncus fringilla</h3>
+			<p>Ut eget feugiat ante, ut convallis quam. Quisque quam tortor, convallis id imperdiet ac, congue eget tortor. Aenean eu dui sit amet erat aliquet suscipit eget sed nisi. Mauris tristique erat nec rhoncus fringilla. Suspendisse auctor ultricies posuere. Nullam ipsum tellus, fringilla at fringilla quis, auctor quis orci.</p>
+
+			<h3>Praesent a aliquam quam</h3>
+			<p>Praesent a aliquam quam. Integer convallis nibh id efficitur tristique. Nullam placerat dapibus mi sit amet lacinia. Nullam vestibulum tellus sit amet dui tristique tincidunt. Aliquam orci quam, sagittis et erat varius, maximus fringilla urna. </p>
+
+			<p>Duis tellus nunc, suscipit ut vestibulum non, iaculis non nisi. Donec id ligula in odio iaculis accumsan. Nullam in massa a lacus ultricies posuere vel eget sem. Donec pellentesque maximus tellus, eu iaculis magna. Morbi ornare eu metus sit amet facilisis. Sed vel ipsum et risus hendrerit tempus at vel ante. Nullam ipsum velit, convallis sed massa tincidunt, viverra imperdiet risus. Sed id fringilla erat.</p>
+
+		</section>
+		<aside id="secondary">
+			
+			<h2 id="section3">In cursus arcu sed lectus</h2>
+			<p>Nam vel nisi tristique, tristique felis nec, semper urna. Maecenas congue consectetur felis id mollis. </p>
+
+			<blockquote>Aliquam in pharetra turpis. Pellentesque id mollis ex. Nam sit amet lorem a augue condimentum vestibulum. In cursus arcu sed lectus lobortis rhoncus. In a dignissim felis, sed malesuada quam. Mauris rhoncus fringilla odio, quis feugiat magna mattis sed. </blockquote>
+
+			<p>Vestibulum vel turpis sed lectus pellentesque imperdiet. Curabitur eget fringilla est. Etiam eu nibh ut nibh dignissim scelerisque sed non ex. Aenean sed enim ut sapien elementum consequat.</p>
+
+			<p>Vestibulum finibus consequat mauris at condimentum. Aenean pellentesque nisi in nibh malesuada fermentum. Curabitur ante metus, finibus at lacinia dignissim, rhoncus vitae sapien. Donec pellentesque sem mi, non vulputate ipsum faucibus eget. Quisque imperdiet lectus non lectus gravida interdum. Donec non odio fermentum, pulvinar justo ut, molestie velit. Maecenas quis bibendum justo. Sed sagittis elit ut purus ultrices consequat. Nam feugiat sagittis purus, in pulvinar mi hendrerit ac. Nunc condimentum posuere magna at elementum. Nunc suscipit vitae elit vel consectetur. Curabitur nec elit et velit pharetra commodo ac id sapien. Nam ornare eget velit sed pretium.</p>
+				
+		</aside>
+		
+		<div class="clearing"></div>
+	</div><!-- content -->
+	<footer id="pagefooter">
+	<p>Copyright &copy; Training Connection Class 8515. Free to use.</p>
+	</footer>
+	
+
+</div><!-- #wrapper -->
+
+
+</body>
+</html>

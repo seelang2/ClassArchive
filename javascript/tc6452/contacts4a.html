@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 100%;
+		color: #000;
+	}
+	
+	table { 
+		border-collapse: collapse;
+	}
+	
+	td, th { padding: 5px; }
+	
+	tr.hover { background: #FFC; }
+	.oddrow { background: #F3FFED; }
+	.evenrow { background: #DBFFC9; }
+	
+	
+	</style>
+
+</head>
+<body>
+
+<div id="contacts"></div>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+function addHover() {
+	// 'this' points to the element that the event is bound to
+	$(this).addClass('hover');
+}
+
+function removeHover() {
+	// 'this' points to the element that the event is bound to
+	$(this).removeClass('hover');
+}
+
+var contactList =
+[
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27},
+	{"firstname":"John","lastname":"Doe","age":27}
+];
+
+
+var $tbody = 
+$('#contacts')
+	.append('<table><tbody /></table>')
+	.find('tbody');
+
+
+$.each(
+	contactList, // collection to loop through
+	function(index, contact) {
+		$('<tr />')
+			.attr('id', 'row-' + index)
+			.append('<td>' + contact.firstname + '</td>' +
+					'<td>' + contact.lastname + '</td>' + 
+					'<td>' + contact.age + '</td>')
+			.appendTo($tbody);
+		
+	}
+); // $.each
+
+// for better performance
+$tbody
+	.children('tr')			// get ALL TRs
+	.filter(':odd')			// filter set to only EVEN items (zero-based)
+	.addClass('evenrow')
+	.end()					// revert collection back to all TRs
+	.filter(':even')		// filter set to ODD items
+	.addClass('oddrow')
+	.end()					// revert collection back to all TRs
+	.on('mouseover', addHover)
+	.on('mouseout', removeHover);
+
+
+</script>
+</body>
+</html>
+

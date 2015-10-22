@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+	<title>Page</title>
+	<meta charset="UTF-8" />
+	
+</head>
+<body>
+
+<div id="target"></div>
+
+
+<script type="text/javascript">
+
+// get reference to element to manipulate
+var targetElem = document.getElementById('target');
+// create new element node
+var tmpElem = document.createElement("H1");
+// create new text node and append inside element node
+tmpElem.appendChild(document.createTextNode('Headline Message!'));
+// append new element node into target element
+targetElem.appendChild(tmpElem);
+
+// wash, rinse, repeat
+tmpElem = document.createElement("P");
+tmpElem.appendChild(document.createTextNode('This space for rent.'));
+targetElem.appendChild(tmpElem);
+
+
+// using innerHTML instead of the verbose DOM methods
+targetElem.innerHTML = '<h1>Another Headline!</h1><p>This content will completely overwrite whatever existing content there is inside of targetElem.</p><p>The browser will go ahead and place the DOM nodes accordingly, allowing us to simply pass a string of well-formatted HTML.</p>';
+
+</script>
+</body>
+</html>

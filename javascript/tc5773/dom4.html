@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+</head>
+<body>
+
+<div id="menu">
+	<li><a href="#">A Link</a></li>
+	<li><a href="#">A Link</a></li>
+	<li><a href="#">A Link</a></li>
+	<li><a href="#">A Link</a></li>
+	<li><a href="#">A Link</a></li>
+	<li><a href="#">A Link</a></li>
+	<li><a href="#">A Link</a></li>
+</div>
+
+
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript">
+
+$('#menu li')
+	.addClass('menuitem')
+	.each(
+		function(index, liElem) {
+			$(liElem).attr('id','item' + index);
+		}
+	 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

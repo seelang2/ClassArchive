@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+document.write('<p>This space for rent.</p>');
+
+var someValue = 'A new line';
+
+document.write('<p>' + someValue + '</p>');
+
+var sideA = 10;
+//var sideB = 3; // operates as a number
+//var sideB = '3'; // concatenation takes operator precedence over addition
+//var sideB = parseInt('3.234sfgjfg'); // parse leading integer value from string
+//var sideB = parseInt('dfghfgh3.234sfgjfg'); // will not work - returns NaN
+var sideB = parseFloat('3.234sfgjfg'); // return leading float number from string
+
+var area = sideA * sideB,
+	perimeter = sideA + sideB + sideA + sideB;
+
+document.write('<p>The area is ' + area + ' and the perimeter is ' + perimeter + '</p>');
+
+var weekdays = ['Sun', 'Mon', 'Tue', 'Wed'];
+
+document.write('<p>The third day is ' + weekdays[2] + '</p>');
+
+var pillbox = {
+				Sun: 'white',
+				Mon: 'white',
+				Tue: 'none',
+				Wed: 'blue',
+				Thu: 'orange',
+				Fri: 'red',
+				Sat: 'green'
+			   };
+
+document.write('<p>Wednesday\'s pill is ' + pillbox.Wed + '.<p>');
+document.write("<p>Wednesday's pill is " + pillbox['Wed'] + '.<p>'); // array notation works also
+
+
+</script>
+</body>
+</html>

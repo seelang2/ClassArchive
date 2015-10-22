@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div><button id="button1">Click Me</button></div>
+
+<div id="target"></div>
+
+
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="createtable.js"></script>
+<script type="text/javascript">
+function highlightRow() {
+	this.className += ' hover';
+}
+
+function unhighlightRow() {
+	this.className = this.className.replace(/ hover/,''); // use regular expression to remove class name
+}
+
+
+// define response handler function
+function updateTargetDiv(response) {
+	var contactTable = 
+		createTable(
+			{	"rowData": response.contactList,
+				"columnNames": response.contactLabels,
+				"oddRowClassName" : "oddrow",
+				"evenRowClassName": "evenrow"
+			}
+		);
+	/*
+	// add mouseover and mouseout events using conventional javascript
+	var contactRows = contactTable
+		.getElementsByTagName("TBODY")[0]
+		.getElementsByTagName("TR");
+	
+	for (var c = 0; c < contactRows.length; c++) {
+		contactRows[c].onmouseover = highlightRow;
+		contactRows[c].onmouseout = unhighlightRow;
+	}
+	*/
+	// add hover event using jQuery
+	$(contactTable)		// place table inside jQuery object
+		.find("tbody tr")	// find descendants of table matching selector
+		.hover(highlightRow, unhighlightRow);	// attach mouseover and mouseout handlers to each row
+	
+	document.getElementById("target").appendChild(contactTable);
+} // updateTargetDiv
+
+
+// set up button event handler
+document.getElementById("button1").onclick = function() {
+	// do Ajax call using jQuery
+	$.ajax(
+		{ url: 'contactlist2.json',
+		  type: 'GET',
+		  dataType: 'json',
+		  success: updateTargetDiv
+		}
+	)
+}; // button1.onclick
+
+</script>
+
+
+
+</body>
+</html>

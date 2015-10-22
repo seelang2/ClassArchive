@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Ajax Demo</title>
+</head>
+
+<body>
+
+<div>
+	<button id="button1">Click to Load</button>
+</div>
+
+<div id="results"></div>
+
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(
+	function() {
+		$('#button1')
+			.click(
+				function(e) {
+					// make Ajax request
+					$.ajax(
+						{
+							url: 				'data1.html',
+							type:			 	'GET',
+							dataType:	'html',
+							cache:			false,
+							success:		function(responseData) {
+								$('#results').html(responseData);	
+							} // success
+						}
+					); // $.ajax
+				} // function
+			 ) // #button1.click
+	} // function
+); // document.ready
+
+
+</script>
+</body>
+</html>

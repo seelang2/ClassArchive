@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<script type="text/javascript" src="ajax.js"></script>
+</head>
+
+<body>
+
+<div id="content"></div>
+
+<script type="text/javascript">
+ajax = null;
+
+function updateContent(data) {
+	document.getElementById("content").innerHTML = data;
+} // updateContent
+
+window.onload = function() {
+	ajax = new Ajax();
+	ajax.request({"method": "GET",
+				  "url": "text.html",
+				  "type": "text",
+				  "handler": updateContent});
+	
+}; // window.onload
+</script>
+</body>
+</html>

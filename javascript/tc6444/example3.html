@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+</head>
+<body>
+
+<ul>
+	<li id="item1">Item 1</li>
+	<li id="item2">Item 2</li>
+	<li id="item3">Item 3</li>
+	<li id="item4">Item 4</li>
+</ul>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+var $templateLi = $('<li class="item">Some New Item</li>'); // create new document fragment
+
+
+$('li')
+	.addClass('item');
+
+$('#item3')							// select item3
+	.insertBefore('#item1')			// move it before item1
+	.clone()						// copy item3 and select copy
+	.insertAfter('#item4')			// and place copy after item4
+	.attr('id','item3-2');			// change the id of the new item3
+
+// use template LI to add new item to list
+$templateLi
+	.clone()						// make a working copy of template element
+	.attr('id','item5')				// set attributes/properties/etc
+	.appendTo('ul');				// and attach it to DOM
+
+$('ul')
+	.prepend(newLi = $templateLi.clone().attr('id','item6'));
+
+
+$('#item3-2').remove();				// detach element from DOM and scrubs data
+
+newLi.remove();						// removes element
+newLi = null;						// remove element data from var
+
+
+</script>
+</body>
+</html>

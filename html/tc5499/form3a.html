@@ -1,0 +1,92 @@
+﻿<!doctype html>
+<html>
+<head>
+	<title>Page Title</title>
+	<meta charset="UTF-8" />
+	
+	<style type="text/css">
+	#wrapper {
+		width: 700px; 	
+		padding: 10px 50px; 	
+		border: 1px solid #000; 	
+		margin: 25px auto; 
+	}
+	
+	form { 
+		position: relative; 	
+		height: 150px; 	
+		border: 1px solid #000; 
+	}
+	
+	form label,
+	form input
+	{ position: absolute; }
+	
+	#firstnameLabel 	{ top: 10px;  left: 19px;   width: 100px; }
+	#firstname 		{ top: 8px;   left: 124px;  width: 100px; }
+	#miLabel 			{ top: 11px;  left: 279px;  width: 31px;  }
+	#mi 				{ top: 9px;   left: 316px;  width: 27px;  }
+	#lastnameLabel 	{ top: 11px;  left: 378px;  width: 100px; }
+	#lastname 			{ top: 8px;   left: 463px;  width: 100px; }
+	#emailLabel 		{ top: 43px;  left: 31px;   width: 100px; }
+	#email 				{ top: 38px;  left: 142px;  width: 100px; }
+	#dobLabel 			{ top: 39px;  left: 405px;  width: 100px; }
+	#dob 				{ top: 34px;  left: 515px;  width: 100px; }
+	#eyesLabel 		{ top: 68px;  left: 30px;   width: 100px; }
+	#eyes 				{ top: 65px;  left: 141px;  width: 100px; }
+	#hairLabel 		{ top: 99px;  left: 30px;   width: 100px; }
+	#hair 				{ top: 95px;  left: 139px;  width: 100px; }
+	#heightLabel 		{ top: 70px;  left: 403px;  width: 100px; }
+	#height 			{ top: 65px;  left: 514px;  width: 100px; }
+	#weightLabel 		{ top: 95px;  left: 405px;  width: 100px; }
+	#weight 			{ top: 92px;  left: 514px;  width: 100px; }
+	#btnSubmit 		{ top: 118px; left: 302px;  width: 100px; }
+	
+	</style>
+	
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="html5shiv.js"></script>
+	<![endif]-->
+</head>
+<body>
+
+<div id="wrapper">
+
+<form action="#" id="form1">
+	<label id="firstnameLabel" for="firstname">First Name:</label>
+	<input id="firstname" name="firstname" />
+		
+	<label id="miLabel" for="mi">MI:</label>
+	<input id="mi" name="mi" size="1" maxlength="2" />
+		
+	<label id="lastnameLabel" for="lastname">Last Name:</label>
+	<label id="emailLabel" for="email">Email:</label>
+	<input id="email" name="email" />
+		
+	<label id="dobLabel" for="dob">DOB:</label>
+	<input id="dob" name="dob" />
+		
+	<label id="eyesLabel" for="eyes">Eye color:</label>
+	<input id="eyes" name="eyes" />
+		
+	<label id="hairLabel" for="hair">Hair color:</label>
+	<input id="hair" name="hair" />
+		
+	<label id="heightLabel" for="height">Height:</label>
+	<input id="height" name="height" />
+		
+	<label id="weightLabel" for="weight">Weight:</label>
+	<input id="weight" name="weight" />
+	
+	<input id="btnSubmit" type="submit" />
+	<input id="lastname" name="lastname" />
+</form>
+
+<p>Extra content just for display</p>
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Exercise: Date</title>
+	
+</head>
+<body>
+
+<script type="text/javascript">
+
+function getOrdinal(num) {
+	var e = num % 100; // get the last two digits
+	
+	var m = num % 10; // get the ones place
+
+	switch(true) {
+		case m == 1 && e != 11:
+			return 'st';
+		break;
+		
+		case m == 2 && e != 12:
+			return 'nd';
+		break;
+		
+		case m == 3 && e != 13:
+			return'rd';
+		break;
+		
+		default:
+			return 'th';
+		break;
+	}
+
+}
+
+</script>
+<script type="text/javascript">
+
+// create arrays for day and month labels
+var weekdays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+var months = [
+				'January',
+				'February',
+				'March',
+				'April',
+				'May',
+				'June',
+				'July',
+				'August',
+				'September',
+				'October',
+				'November',
+				'December'
+			  ];
+
+
+// create instance of Date object
+var today = new Date();
+var dayNum = today.getDate(); // store function result as a variable to avoid excess processing
+
+
+// display message
+document.write('<p>Today is ' + weekdays[today.getDay()] + ', ' + 
+				months[today.getMonth()] + ' ' + 
+				today.getDate() + getOrdinal(dayNum) + ', ' + 
+				today.getFullYear());
+
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<a href="http://www.google.com">Go to Google</a>
+
+<script src="jquery-1.11.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$('a').on(
+	'click',
+	function(evt) {
+		// Basic method of preventing default action is to return false
+		// return confirm('You are about to leave this page. Are you sure?');
+		
+		// Also stops default action
+		evt.preventDefault();
+		
+	}
+);
+
+
+</script>
+</body>
+</html>

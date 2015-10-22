@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, sans-serif;
+	}
+	
+	label {
+		display: block;
+		margin-bottom: 0.25em;
+	}
+	</style>
+</head>
+<body>
+
+
+<form action="#" method="get">
+	<label>
+		<span>First Name</span>
+		<input type="text" name="firstname" />
+	</label>
+	<label>
+		<span>Last Name</span>
+		<input type="text" name="lastname" />
+	</label>
+	<div>
+		<input type="submit" value="Save" />
+	</div>
+</form>
+
+
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+
+
+$('form')
+	.on('submit', function(evt) {
+		evt.preventDefault(); // stop form from submitting
+		
+		// do ajax POST to server
+		$.ajax({
+			url:		'#',
+			type:		'post',
+			dataType:	'html',
+			data:		$(this).serialize(),
+			success:	function(response) {
+				alert('POST operation complete');
+			}
+		});
+		
+		
+	 });
+
+
+
+}); // document.ready
+
+</script>
+</body>
+</html>

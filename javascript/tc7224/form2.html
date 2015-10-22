@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+</head>
+<body>
+
+<form action="#" method="get">
+
+<label>
+	<span>Enter some text:</span>
+	<input name="field1" type="text" />
+</label>
+
+<input type="submit" />
+</form>
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+$('form')
+	.on('submit', function(evt) {
+		
+		//evt.preventDefault();
+		
+		// innocent until proven guilty validation approach
+		var formIsValid = true;
+		var errorMessages = '';
+		
+		// field1 can't be empty
+		if ( $('[name="field1"]').val().length < 1 ) {
+			// field is invalid
+			formIsValid = false; // invalidate form
+			errorMessages += 'Field 1 cannot be blank.';
+		}
+		
+		
+		if (formIsValid) {
+			// you may pass.
+			return true;
+		}
+		
+		// there was an error. provide user feedback.
+		alert('There was an error in your form. ' + errorMessages);
+		
+		
+		// You Shall Not Pass!
+		return false; // cancels default action
+		
+	 });
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

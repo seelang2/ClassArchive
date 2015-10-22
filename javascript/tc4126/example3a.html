@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="target"></div>
+
+
+<script type="text/javascript">
+
+var contactList = [{"firstname":"John", "lastname":"Doe", "email":"jdoe@email.com"},
+						   {"firstname":"Jane", "lastname":"Peters", "email":"wheresjane@gmail.com"},
+						   {"firstname":"Mary", "lastname":"Douglas", "email":"mary.douglas@bigco.com"},
+						   {"firstname":"Paul", "lastname":"Stevens", "email":"pms101@mac.com"},
+						   {"firstname":"Frances", "lastname":"Alexis", "email":"yournamehere@email.com"},
+						   {"firstname":"Alex", "lastname":"Frances", "email":"afrances@domain.com"},
+						   {"firstname":"Tom", "lastname":"Wells", "email":"guru@dot.net"}];
+
+
+
+var targetElem = document.getElementById("target");
+
+var tmpElem = document.createElement("TABLE");
+targetElem.appendChild(tmpElem);
+
+var tBodyElem = document.createElement("TBODY");
+tmpElem.appendChild(tBodyElem);
+
+// loop through contactList and create new rows for each contact
+for(var c = 0; c < contactList.length; c++) {
+	var trElem = document.createElement("TR");
+	tBodyElem.appendChild(trElem);
+	
+	for(var columnName in contactList[c]) {
+		//alert(columnName);
+		tmpElem = document.createElement("TD");
+		trElem.appendChild(tmpElem);
+		tmpElem.appendChild(document.createTextNode(contactList[c][columnName]));
+	}
+} // for
+
+</script>
+</body>
+</html>

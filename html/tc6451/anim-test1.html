@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Test Page</title>
+	
+	<style type="text/css">
+	#box1 {
+		position: fixed;
+		/*top: 10px;
+		left: 10px;*/
+		width: 75px;
+		height: 75px;
+		background: #00F;
+		
+		-webkit-animation:move1 1s;
+		
+		/*
+		-webkit-animation:move1 1s, move2 1s 3s, move3 1s 7s;
+		*/
+	}
+
+	@-webkit-keyframes move1
+	{
+		from {left:10px;}
+		to {left:100px;}
+	}
+	
+	@-webkit-keyframes move2
+	{
+		from {left:100px;}
+		to {left:200px;}
+	}
+	
+	@-webkit-keyframes move3
+	{
+		from {left:200px;}
+		to {left:300px;}
+	}
+	
+	</style>
+	
+</head>
+<body>
+
+<div id="box1"></div>
+
+</body>
+</html>
+
+
+
+

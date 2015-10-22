@@ -1,0 +1,42 @@
+<!doctype html>
+<head>
+<title>Position Advanced Demo</title>
+
+<style type="text/css">
+
+.box {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+}
+
+#a { background: #f00; }
+#b { background: #0f0; }
+#c { background: #00f; }
+#d { background: #ffc; }
+#e { background: #ccf; }
+
+</style>
+</head>
+<body>
+
+<div id="a" class="box"></div>
+<div id="b" class="box"></div>
+<div id="c" class="box"></div>
+<div id="d" class="box"></div>
+<div id="e" class="box"></div>
+
+<script type="text/javascript">
+
+var items = document.getElementsByTagName("DIV");
+
+console.log(items.length + ' items found');
+
+var angle = 360 / items.length;
+
+console.log('Angle: ' + angle);
+
+
+</script>
+</body>
+</html>

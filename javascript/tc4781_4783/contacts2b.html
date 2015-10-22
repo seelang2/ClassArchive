@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Ajax Request Example 1</title>
+</head>
+
+<body>
+
+<div id="info"></div>
+
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(
+	function() {
+		// configure ajax options
+		$.ajaxSetup(
+			{cache: false,
+			  beforeSend: function() {
+				  // make status image appear
+				  $('<img src="ajax-loader.gif" id="statuswait" />')
+				  	.css(
+						{display: "block",
+						  position: "fixed",
+						  height: "100px",
+						  width: "100px",
+						  zIndex: 1000,
+						  top: "50%",
+						  left: "50%",
+						  margin: "-50px 0 0 -50px"
+						}
+					 )
+					.appendTo(document.body);
+			 }, // beforeSend
+			 complete: function() {
+				// removes status image after ajax request completes
+				$('#statuswait').remove();
+			 }
+			}
+		); // ajaxSetup
+		
+		var drawTable = function(data) {
+			//alert(data.length);
+			var $infoDiv = $('#info');
+			$infoDiv
+				.empty() // also clears contents of element
+				.append('<table><tbody></tbody></table>');
+			var $tbodyElem = $infoDiv.find('tbody');
+			
+			$.each(
+				data.names,
+				function(index, value) {
+					$tbodyElem
+						.append('<tr></tr>');
+					
+					var $trElem = $tbodyElem.find('tr:last-child');
+					
+					for(var c = 0; c < data.columnNames.length; c++) {
+						$trElem.append('<td>'+ value[data.columnNames[c]] +'</td>');
+					}
+					
+				} // callback for each
+			); // each
+			
+			$tbodyElem.before('<tfoot></tfoot>');
+			$infoDiv
+				.find('tfoot')
+				.append('<tr><td colspan="'+data.columnNames.length+'">' + 
+							'<button class="prevpage">Prev Page</button>' + 
+							'<button class="nextpage">Next Page</button>' + 
+							'<label>Results per page: ' +
+								'<select class="pagerange">' +
+									'<option value="5"'+ 
+										(range == 5? ' selected="selected"': '') +
+										'>5 rows</option>' +
+									'<option value="10"'+ 
+										(range == 10? ' selected="selected"': '') +
+										'>10 rows</option>' +
+									'<option value="50"'+ 
+										(range == 50? ' selected="selected"': '') +
+										'>50 rows</option>' +
+									'<option value="100"'+ 
+										(range == 100? ' selected="selected"': '') +
+										'>100 rows</option>' +
+								'</select>' +
+							'</label>' +
+							'</td></tr>')
+				.bind(
+					'click change',
+					function(theEvent) {
+						console.log(theEvent.type);
+						//alert(theEvent.target.className);
+						$target = $(theEvent.target);
+						switch(true) {
+							case $target.hasClass('prevpage'):
+								//page--;
+								page = page == 1? 1: --page;
+								getNames(page, range);
+							break; // prevpage
+							
+							case $target.hasClass('nextpage'):
+								getNames(++page, range);
+							break; // nextpage
+							
+							case $target.hasClass('pagerange') && theEvent.type == 'change':
+								if (range != $target.val()) {
+									range = $target.val();
+									getNames(page, range);
+								}
+							break; // pagerange
+						}
+					}
+				 ); // bind
+			
+			// any additional post-processing can go here
+
+			var content = $tbodyElem.html();
+			$tbodyElem
+				.html(
+				 	content.replace(
+						/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/gi,
+						"<a href=\"mailto:$&\">$&</a>"
+					)
+				 );
+			
+		} // drawTable
+		
+		var getNames = function(page, range) {
+			$.getJSON(
+				'getnames.php?page='+ page +'&range='+ range,
+				drawTable
+			); // getJSON
+		} // getNames
+		
+		var page = 1;
+		var range = 10;
+		
+		
+		getNames(page, range); // do initial call to retrieve and display table
+	} // function
+); // document.ready
+
+</script>
+</body>
+</html>

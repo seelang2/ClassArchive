@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	
+	form label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	
+	form label span,
+	form label div,
+	form label input {
+		display: inline-block;
+	}
+	
+	form label span {
+		text-align: right;
+		margin-right: 1em;
+		width: 150px;
+	}
+	
+	.verror {
+		border: 2px solid #f00;
+	}
+	
+	.verrmsg {
+		font-weight: bold;
+		color: #f00;
+	}	
+	
+	
+	</style>
+	
+</head>
+<body>
+
+<form id="theform" action="#">
+	<label>
+		<span>Enter a value:</span>
+		<input name="field1" data-vrule="notempty" />
+	</label>
+
+	<label>
+		<span>Enter a value less than 8 characters:</span>
+		<input name="field2" data-vrule="maxlength" data-vmaxval="8" />
+	</label>
+
+	<label>
+		<span>Enter a value between 4 and 8 characters:</span>
+		<input name="field3" data-vrule="lenbetween" data-vminval="4" data-vmaxval="8"  />
+	</label>
+	
+	<div><input type="submit" value="Continue" /></div>
+</form>
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript" src="formvalidator-1.0.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	$('#theform')
+		.on('submit', function(e) {
+			e.preventDefault();
+			
+			// reset validation error elements
+			$(this)
+				.find(':input')
+				.removeClass('verror')
+				.end()
+				.find('.verrmsg')
+				.remove();
+				
+			// run validator
+			var $invalidFields = 
+			$(this)
+				.getInvalidFields();
+			
+			// display feedback on invalid fields
+			$invalidFields
+				.addClass('verror')
+				.after('<div />')
+				.next()
+				.each(function(i, div) {
+					
+					$(div)
+						.addClass('verrmsg')
+						.text($(div).prev().attr('data-verror'));
+					
+				 })
+			
+		 });
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

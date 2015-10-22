@@ -1,0 +1,40 @@
+<html>
+<head>
+
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript">
+
+targetdiv = document.getElementById('target');
+
+pElem = document.createElement("P");
+tNode = document.createTextNode("You've done this already");
+
+pElem.appendChild(tNode);
+
+targetdiv.appendChild(pElem);
+
+pElem = document.createElement("P");
+tNode = document.createTextNode("Now do ");
+
+pElem.appendChild(tNode);
+
+sElem = document.createElement("STRONG");
+tNode = document.createTextNode("this");
+
+sElem.appendChild(tNode);
+pElem.appendChild(sElem);
+
+tNode = document.createTextNode(" one");
+pElem.appendChild(tNode);
+
+targetdiv.appendChild(pElem);
+
+</script>
+
+
+</body>
+</html>

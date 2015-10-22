@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Calendar Demo</title>
+</head>
+
+<body>
+
+<div id="calendar">
+</div>
+
+
+<script type="text/javascript">
+
+var weekDays = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+var calendarDiv = document.getElementById("calendar");
+
+var tableElem = document.createElement("TABLE");
+calendarDiv.appendChild(tableElem);
+
+var tbodyElem = document.createElement("TBODY");
+tableElem.appendChild(tbodyElem);
+
+trElem = document.createElement("TR");
+tbodyElem.appendChild(trElem);
+
+thElem = document.createElement("TH");
+trElem.appendChild(thElem);
+thElem.colSpan = '7';
+thElem.appendChild(document.createTextNode('February 2011'));
+
+trElem = document.createElement("TR");
+tbodyElem.appendChild(trElem);
+
+for (var c = 0; c < weekDays.length; c++) {
+	thElem = document.createElement("TH");
+	trElem.appendChild(thElem);
+	thElem.appendChild(document.createTextNode(weekDays[c]));
+}
+
+currentDay = 1;
+for (var r = 0; r < 4; r++) {
+	trElem = document.createElement("TR");
+	tbodyElem.appendChild(trElem);
+	
+	for (var c = 0; c < 7; c++) {
+		tdElem = document.createElement("TD");
+		trElem.appendChild(tdElem);
+		tdElem.appendChild(document.createTextNode(currentDay));
+		currentDay++;
+	}
+}
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

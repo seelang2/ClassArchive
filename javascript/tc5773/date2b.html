@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+// define weekday labels
+// define month labels
+var weekdays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+	months = [
+		'January',
+		'February',
+		'March',
+		'April',
+		'May',
+		'June',
+		'July',
+		'August',
+		'September',
+		'October',
+		'November',
+		'December'
+	];
+
+// get date instance for today
+var today = new Date('3/22/2013');
+
+var dayNum = today.getDate();
+var d = dayNum % 10;
+
+switch(true) {
+	case d == 1 && dayNum != 11:
+		var ordinal = 'st';
+	break;
+	
+	case d == 2 && dayNum != 12:
+		var ordinal = 'nd';
+	break;
+	
+	case d == 3 && dayNum != 13:
+		var ordinal = 'rd';
+	break;
+	
+	default:
+		var ordinal = 'th';
+	break;
+	
+	
+	
+} // switch
+
+// create output message
+document.write('<p>Today is ' + 
+				weekdays[today.getDay()] + ', ' + 
+				months[today.getMonth()] + ' ' +
+				dayNum + ordinal + ', ' +
+				today.getFullYear() + 
+			   '</p>');
+
+
+</script>
+</body>
+</html>

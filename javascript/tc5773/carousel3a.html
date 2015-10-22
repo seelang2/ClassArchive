@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Carousel Demo</title>
+	<style type="text/css">
+	#carousel {
+		width: 400px;
+		margin: auto;
+		border: 1px solid #009;
+	}
+	
+	#window {
+		position: relative;
+		width: 400px;
+		height: 300px;
+		overflow: hidden;
+		padding: 0;
+		margin: 0;
+	}
+	
+	#filmstrip {
+		position: absolute;
+		width: 2400px;
+		height: 300px;
+		left: 0;
+	}
+	
+	#filmstrip img { margin: 0; padding: 0; border: none;  }
+	
+	</style>
+</head>
+<body>
+
+<div id="carousel">
+	<div id="window">
+		<div id="filmstrip"><img src="bird1.jpg" /><img src="bird2.jpg" /><img src="bird3.jpg" /><img src="bird4.jpg" /><img src="bird5.jpg" /><img src="bird6.jpg" /></div>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	function animateCarousel($target) {
+		$target = $(target);
+		
+		$target
+			.delay(1000)			// pause animation queue
+			.animate(
+				{
+					left: '-=400'	// use relative/delta ending position
+				},
+				{
+					duration: 1000,
+					complete: function() {
+						$target
+							.children(':first-child')
+							.appendTo(target)
+							.parent()
+							.css('left','0');
+						
+						animateCarousel(target);
+					}
+				}
+			 )
+		
+	} // animateCarousel
+	
+	var $filmstrip = $('#filmstrip');
+	
+	animateCarousel($filmstrip); // start the animation sequence
+	
+}); // document.ready
+
+
+</script>
+</body>
+</html>

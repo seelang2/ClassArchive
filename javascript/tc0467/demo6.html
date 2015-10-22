@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+
+<script src="/ajax.js" type="text/javascript"></script>
+
+<script>
+
+var Widget = new function() {
+	this.timediv = null;
+	this.ajax = new Ajax1();
+	this.timer = null;
+	
+	this.init = function() {
+		Widget.timediv = document.getElementById("timebox");
+		document.getElementById("starter").onclick = function() {
+			Widget.start();
+			return false;
+		};
+	};
+	
+	this.start = function() {
+		Widget.doPoll();
+	};
+	
+	this.doPoll = function() {
+		x = new Date();
+		x = x.getTime();
+
+		Widget.ajax.doGet('http://localhost/getdate.php?x=' + x, Widget.showPoll, 'text');
+	};
+	
+	this.showPoll = function(response) {
+		Widget.timediv.innerHTML = "<p>The current time is: " + response + "</p>";
+		Widget.timer = setTimeout(Widget.doPoll, 2000);
+	};
+	
+}
+
+
+window.onload = Widget.init;
+
+</script>
+
+</head>
+<body>
+
+<a id="starter" href="#">Click to start</a>
+
+<div id="timebox"></div>
+
+
+</body>
+</html>

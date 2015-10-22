@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Table Demo using events</title>
+	
+	<style type="text/css">
+	
+	table { border-collapse: collapse; }
+	th, td { padding: 5px; }
+	
+	tr.hover { background: #FFC; }
+	.oddrow { background: #88F2BB; }
+	.evenrow { background: #D8F2E5; }
+	
+	</style>
+	
+</head>
+<body>
+
+<div id="target"></div>
+
+
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+var contactList =
+[
+	{ "id":0,"firstname":"Stella","lastname":"El Bridget","login":"satellizer" },
+	{ "id":0,"firstname":"Elizabeth","lastname":"Mably","login":"emably" },
+	{ "id":0,"firstname":"Chiffon","lastname":"Fairchild","login":"classprez" },
+	{ "id":0,"firstname":"Kazuya","lastname":"Aoi","login":"kaoi" },
+	{ "id":0,"firstname":"Ticy","lastname":"Phenyl","login":"tphenyl" },
+	{ "id":0,"firstname":"Rick","lastname":"Hunter","login":"skull1" },
+	{ "id":0,"firstname":"Eren","lastname":"Yeager","login":"titan0" },
+	{ "id":0,"firstname":"John","lastname":"Stewart","login":"gljohn" },
+	{ "id":0,"firstname":"Peter","lastname":"Griffin","login":"stewierules" },
+	{ "id":0,"firstname":"Shin'ichi","lastname":"Kano","login":"moe" }
+];
+
+$('#target')
+	.append('<table><thead /><tbody /></table>')
+	.find('thead')
+	.each(function(index, thead) {
+		
+		var rowHTML = '<tr>';
+		$.each(
+			contactList[0], // just use first contact in array
+			function(fieldName, fieldValue) {
+				rowHTML += '<th>' + fieldName.toUpperCase() + '</th>';
+			}
+		);
+		rowHTML += '</tr>';
+		//$(thead).append(rowHTML);
+		$(rowHTML)
+			.appendTo(thead);
+		
+	 })
+	.next() // move to TBODY
+	.each(function(index, tbody) {
+		
+		var $rows = $('<tbody />'); // create a temporary object to hold the rows
+			
+		$.each(
+			contactList,
+			function(index, contact) {
+				//console.log(index,contact);
+				
+				var rowHTML = '<tr>';
+				
+				$.each(
+					contact,
+					function(fieldName, fieldValue) {
+						rowHTML += '<td>' + fieldValue + '</td>';
+					}
+				);
+				
+				rowHTML += '</tr>';
+				
+				$(rowHTML)
+					.attr('id','row-' + index)
+					.addClass('rowitem')
+					.on({
+						mouseover: function() {
+							$(this).addClass('hover');
+						},
+						
+						mouseout: function() {
+							$(this).removeClass('hover');
+						},
+					 })
+					.appendTo($rows);
+				
+			}
+		);
+
+		$(tbody).empty().append($rows.children());
+		
+	 })
+	.children('tr')					// select ALL table rows
+	.removeClass('oddrow evenrow')	// remove any existing striping classes
+	.filter(':even')				// reduce set to only ODD rows
+	.addClass('oddrow')				// add the oddrow class
+	.end()							// revert set to all rows
+	.filter(':odd')					// reduce set to EVEN rows
+	.addClass('evenrow');
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

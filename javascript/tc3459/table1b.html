@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+table, tr, th, td {
+	/* border-collapse: collapse; */
+	border: 1px solid #7a7a7a;
+}
+
+.table-oddrow { background:#E9ECFE; }
+.table-evenrow { background:#C4D1FF; }
+.table-hover { background:#FFC; }
+</style>
+</head>
+
+<body>
+
+<div id="container"></div>
+
+<script src="tablebuilder.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+var testData = [{firstname: "John", lastname: "Doe", email: "jdoe@email.com"},
+				{firstname: "Peter", lastname: "Hun", email: "jddfgdfoe@email.com"},
+				{firstname: "Mary", lastname: "Strong", email: "4hdfgh@email.com"},
+				{firstname: "Alex", lastname: "Warner", email: "ngngs@email.com"},
+				{firstname: "Brenda", lastname: "Kelly", email: "fghgmhjm6@email.com"},
+				{firstname: "Julie", lastname: "Peters", email: "fg3rhdf@email.com"},
+				{firstname: "April", lastname: "Winter", email: "iamparadox@email.com"},
+				{firstname: "May", lastname: "Summer", email: "metoo2@email.com"},
+				{firstname: "June", lastname: "Harwood", email: "noonereally@email.com"},
+				{firstname: "Howard", lastname: "Michaels", email: "howard.michaels@email.com"},
+				{firstname: "Everest", lastname: "Peaks", email: "climbme@email.com"},
+				{firstname: "Paul", lastname: "Jones", email: "btllvr@email.com"}];
+
+var targetDiv = document.getElementById("container");
+
+var newTable = new HTMLTable({dataList: testData,
+							targetNode: targetDiv,
+							columnheaders: ['First Name','Last Name','Email Address'],
+							tableId: 'table1',
+							rowhoverclass: 'table-hover',
+							oddrowclass: 'table-oddrow',
+							evenrowclass: 'table-evenrow'});
+
+newTable.render(targetDiv);
+
+</script>
+</body>
+</html>

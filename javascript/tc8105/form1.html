@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Form Demo 1</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, sans-serif;
+	}
+	
+	label {
+		display: block;
+		margin-bottom: 0.25em;
+	}
+	</style>
+</head>
+<body>
+
+<h1>Form Demo 1</h1>
+<p>This demonstrates creating optional form fields/sections.</p>
+
+
+<fieldset id="colorset">
+	<p>Select a widget color:</p>
+	<label>
+		<input type="radio" name="color" value="red" />
+		<span>Red</span>
+	</label>
+
+	<label>
+		<input type="radio" name="color" value="blue" />
+		<span>Blue</span>
+	</label>
+
+	<label>
+		<input type="radio" name="color" value="other" />
+		<span>Other</span>
+	</label>
+	
+	<div id="otherfield">
+		<label>
+			<span>Specify color:</span>
+			<input type="text" name="othercolor" />
+		</label>
+	</div>
+</fieldset>
+
+
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+
+// defer script execution to after DOM is initialized
+$(document).ready(function() {
+
+var $otherfield = 
+$('#otherfield').hide();
+
+$('#colorset')
+	.on('change', '[name="color"]', function(evt) {
+		// using the selector filter option sets 'this' 
+		// to the filtered element
+		
+		//console.log( $(this).val() );
+		
+		if ($(this).val() == 'other') {
+			$otherfield.show();
+		} else {
+			$otherfield
+				.hide()
+				.find('[name="othercolor"]')
+				.val('');		// reset field to blank
+		}
+		
+	 });
+
+
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

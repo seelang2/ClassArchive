@@ -1,0 +1,226 @@
+Notes
+
+Chris Langtiw chris@sitebabble.com http://www.sitebabble.com (updating soon)
+
+References:
+http://www.w3schools.com/tags/default.asp
+http://www.w3schools.com/cssref/default.asp
+http://www.w3schools.com/cssref/css_selectors.asp
+
+
+
+
+Three layers of web:
+Content - Described by HTML structurally and semantically
+Presentation - Controlled by Cascading Style Sheets (CSS)
+Behavior - Provided by Javascript via an event model
+
+HTML 
+
+HTML (Hyper Text Markup Language) is based on XML (eXtensible Markup Language) - 
+Markup that describes nodes in a tree structure
+
+Most important nodes element nodes and text nodes for our purposes
+
+Elements are described open and closing tags with angle brackets as follows:
+
+<element>Content (text node)</element>
+
+Attributes are additional data associated with an element (but is not content) and are assigned using name/value pairs inside opening tag:
+
+<element attributename="value" attribute2="value">
+
+Multiple attributes may be associated with elements
+
+Elements that don't require explicit closing tags are called void or self-closing tags. Put a slash before the closing angle bracket in the opening tag:
+
+<input name="field1" type="text" />
+<img src="pic1.jpg" />
+
+HTML documents defined using HTML element, and have a HEAD and BODY section
+
+<html>
+	<head>
+		 - information about the document (metadata, title, etc.)
+		 - attached files like stylesheets, scripts, etc.
+		 - doesn't get rendered to user agent
+	</head>
+	<body>
+		 - rendered content goes here
+		 - can also put embedded stylesheets and scripts here as well
+	</body>
+</html>
+
+Recommended to always use a DOCTYPE to force browsers (well, IE) into standards mode:
+
+<!DOCTYPE html> - placed at top of document before opening HTML tag
+
+HTML5 has over 100 defined elements that the browser recognizes
+
+Most elements are for semantic context
+Other elements are more specific (forms, tables, media)
+
+Two broad categories of elements:
+Block elements define structure in addition to semantic context
+Blocks may contain other blocks as well as inline elements and text
+Blocks stack vertically down document
+Width is 100% of parent width unless explicitly defined
+
+Commonly-used block elements: h1-h6, blockquote, ul, ol, li, section, header, footer, article, aside, nav, table elements, and div
+
+Inline elements are mostly for semantic context
+Only as wide as the text they contain
+Can only contain text as well as other inline elements
+Share a common baseline and wrap within parent container
+Line height is based on largest element on line
+
+Commonly-used inline elements: a, em, b, span, form elements
+
+NOTE: P is actually an inline element, but acts "blockish" because it has layout and stacks like a block. HOWEVER, you can only put inline elements and text inside a P element.
+
+Identify and group elements using ids and classes
+
+Ids are unique inside a document and are set using the id attribute
+
+<div id="wrapper">...</div>
+
+Classes can group multiple elements together
+
+<li class="active">...
+
+Multiple classes can be assigned by separating class names with spaces in the class attribute:
+
+<button class="btn-icon saveButton large">Click Me</button>
+
+
+
+Document Object Model (DOM)
+
+Browser reads in source HTML file and parses the nodes into a linked tree structure in memory.
+
+Order of nodes is important
+
+Node relationships: Descendants, children, ancestors, parents, siblings
+
+CSS
+
+CSS only styles elements, NOT text
+To style text we need to wrap the text inside an element
+
+3 ways to use CSS:
+
+1. Inline styles directly in HTML element using style attribute
+	<p style="color:red;">A paragraph.</p>
+Worst method. Avoid when possible.
+
+2. Embedded stylesheets using STYLE element in HEAD or BODY:
+	<style type="text/css">...</style>
+	
+3. External stylesheet linked to HTML document in HEAD:
+	<link href="style.css" type="text/css" rel="stylesheet" />
+Best method.
+
+Basic CSS rule structure:
+
+	selector {
+		property: value;
+		...
+	}
+
+Common selectors ref: http://www.w3schools.com/cssref/css_selectors.asp
+
+element - element name (h1, p, div, etc.)
+id - #id
+class - .class
+
+Easiest way to understand a selector is to read it right to left; the rightmost component is the target and everything to the left qualifies the selection
+
+selector1, selector2 { } - Multiple selectors separated by commas
+
+elem1 elem2 - All elem2s that are decendants of elem1
+
+elem1 > elem2 - All elem2s that are children of elem1
+
+elem1 + elem2 - All elem2s whose previous sibling is an elem1
+
+elem1 ~ elem2 - All elem2s that are preceded by an elem1 sibling
+
+elem#id - The elem whose id is id (don't confuse with elem #id)
+
+elem.class - Any elem with a classname of class (don't confuse with elem .class)
+
+[attr="val"] - Any elements with an attribute attr with value val
+
+Pseudoclass selectors begin with a colon : and reflect an element's state:
+
+elem:hover - Any elem currently being moused over
+
+elem:first-child - Any elem that is the first child of its parent
+
+CSS Conflict Resolution
+Listed from least important to most important; When higher importance is equal fall back to next lowest rule
+
+1. Inheritance always loses
+2. Last rule defined wins
+3. Selector with highest specificity wins
+4. Rank Order: inline styles->ids->classes->elements
+5. !important overrides everything, including inline styles
+
+Only make your selectors as specific as you need to be
+Never use !important
+
+
+
+
+Positioning
+
+static - elements are locked in their position in the cascade
+
+relative - elements can be moved relative to their original position in the cascade; other items in the cascade are not affected
+
+absolute - elements can positioned relative to the document; origin coordinates are determined by the closest relatively-positioned ancestor or the document origin
+
+fixed - elements are positioned relative to the viewport
+
+Positioning is done relative to an edge: top, right, bottom, or left. Positive values move toward the center of the element, whereas negative values more away from the center of the element.
+
+
+Tables
+
+Not used for web layout anymore! (HTML email doesn't count.)
+
+Basic structure:
+
+TABLE
+	THEAD | TFOOT | TBODY 
+		TR
+			TH | TD
+	
+THEAD and TFOOT are optional, but you must have at least one TBODY
+
+Formatting is done via CSS
+Use border:collapse on the table element in CSS to get rid of the windowpane effect
+
+The colspan and rowspan attributes allow you to span columns and rows 
+(Note that you can only span rows within the same TBODY/THEAD/TFOOT)
+
+Make sure your columns and rows match up properly
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

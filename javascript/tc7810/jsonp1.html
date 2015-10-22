@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+
+$.ajax({
+	url:		'http://127.0.0.1/tc7810/contact1.json',
+	type: 		'get',
+	dataType: 	'json'
+}).done(function(data) {
+	console.log(data);
+})
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+	
+	form label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	
+	label input + span {
+		color: #f00;
+		margin-left: 0.5em;
+	}
+	</style>
+
+</head>
+<body>
+
+
+<form action="#" method="get">
+
+<label>
+	<span>First Name:</span>
+	<input name="firstname"/>
+</label>
+
+<label>
+	<span>Last Name:</span>
+	<input name="lastname" />
+</label>
+
+<label>
+	<span>Login:</span>
+	<input name="login" />
+</label>
+
+
+<input type="submit" value="Save" />
+</form>
+
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript" src="http://10.6.10.123/tc7224/postapp.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+$('form')
+	.on('submit', function(evt) {
+		
+		evt.preventDefault(); // we're doing ajax, so stop default submit action
+		
+		// remember to validate, yadda yadda yadda
+		
+		PostApp.post( $(this).serialize() );
+		
+	 });
+
+
+
+}); // document.ready
+
+
+
+
+
+</script>
+</body>
+</html>

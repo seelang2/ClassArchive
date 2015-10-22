@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="container">
+
+    <input id="button1" type="button" value="Click Me!">
+    
+    <input id="button2" type="button" value="Click Me!">
+    
+    <input id="button3" type="button" value="Click Me!">
+    
+</div>
+
+<script type="text/javascript">
+
+function getClicked(e) {
+	if (typeof(e) == 'undefined') var e = window.event;
+	
+	if (typeof(e.target) != 'undefined') 
+		var targetNode = e.target; // look in target property of event object first
+	else if (typeof(e.srcElement) != 'undefined')
+		var targetNode = e.srcElement; // then look in the srcElement property
+	else 
+		return false; // failsafe means something else is wrong
+	
+	if (targetNode.nodeType == 3) 
+		targetNode = targetNode.parentNode; // counter an old Safari bug that returned the text node rather than element.
+	
+	alert("I am " + this.id + " but the object clicked on was " + targetNode.id);
+} // getClicked
+
+var theButton = document.getElementById("button1"); // get reference to button
+// attach event handler to element
+theButton.onclick = getClicked;
+
+document.getElementById("button2").onclick = getClicked;
+
+document.getElementById("button3").onclick = getClicked;
+
+document.getElementById("container").onclick = getClicked;
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

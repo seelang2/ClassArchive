@@ -1,0 +1,156 @@
+<?php
+
+require_once ("demoe-config.php");
+
+$mode = 'LIST';
+
+if (isset($_GET['mode']) && $_GET['mode'] != '') $mode = strtoupper($_GET['mode']);
+
+if (isset($_GET['ajax']) && $_GET['ajax'] != '') $render_partial = true;
+
+if (!$render_partial) include ("demoe-header.php");
+
+$page_output = '';
+
+if (!$render_partial) {
+?>
+
+<h2>Visit Log</h2>
+<p><a id="list" href="<?php echo "$me?mode=list"; ?>">List Visits</a> | <a id="add" href="<?php echo "$me?mode=add"; ?>">Add New Visit</a></p>
+
+<?php
+}
+
+switch($mode)
+{
+	case 'LIST':
+
+		$query = "SELECT v.id, c.firstname, c.lastname, subject, status, visit_date FROM visits AS v, contacts as c WHERE patient_id = c.id";
+
+		$result = mysql_query($query);
+
+		if (mysql_num_rows($result) < 1) $page_output .= "<p>No rows present.</p>";
+		else {
+			$page_output .= "<table>";
+			while ($row = mysql_fetch_array($result)) {
+				$page_output .= "<tr>" .
+				"<td>" . $row['firstname'] . "</td>" .
+				"<td>" . $row['lastname'] . "</td>" .
+				"<td>" . $row['subject'] . "</td>" .
+				"<td>" . $row['visit_date'] . "</td>" .
+				"<td>" . $visit_status[$row['status']] . "</td>" .
+				"<td><a id='edit{$row[id]}' href=\"$me?mode=edit&id={$row[id]}\">View/Edit</a></td>" .
+				"</tr>";
+			}
+			$page_output .= "</table>";
+		}
+
+		echo $page_output;
+
+	break;
+
+	case 'EDIT':
+
+		$label = "Update";
+		$query = "SELECT * FROM visits WHERE id = " . escape($_GET['id']) . " LIMIT 1";
+		$result = mysql_query($query);
+		$visit_record = mysql_fetch_array($result);
+
+
+	case 'ADD':
+
+		if (!isset($label)) $label = "Add";
+		$query="SELECT id, firstname, lastname FROM contacts WHERE type = 1 ORDER BY lastname, firstname ASC";
+		$result = mysql_query($query);
+
+		
+		$patientlist = "<select name=\"patient_id\">";
+		while ($row = mysql_fetch_array($result)) {
+			$patientlist .= "<option value=\"{$row['id']}\"";
+			if ($row['id'] == $visit_record['patient_id']) $patientlist .= " selected";
+			$patientlist .= ">" . $row['lastname'] . ', ' . $row['firstname'] . "</option>";
+		}
+		$patientlist .= "</select>";
+
+		$query="SELECT id, firstname, lastname FROM contacts WHERE type = 2 ORDER BY lastname, firstname ASC";
+		$result = mysql_query($query);
+		
+		$doctorlist = "<select name=\"doctor_id\">";
+		while ($row = mysql_fetch_array($result)) {
+			$doctorlist .= "<option value=\"{$row['id']}\"";
+			if ($row['id'] == $visit_record['doctor_id']) $doctorlist .= " selected";
+			$doctorlist .= ">" . $row['lastname'] . ', ' . $row['firstname'] . "</option>";
+		}
+		$doctorlist .= "</select>";
+
+?>
+<h2><?php echo $label; ?> Visit Information</h2>
+<form action="<?php echo "$me?mode=processform&id={$_GET['id']}"; ?>" method="post">
+<input type="hidden" name="formtype" value="<?php echo $mode; ?>" />
+<table>
+	<tr><td>Patient Name:</td><td><?php echo $patientlist; ?></td></tr>
+	<tr><td>Subject:</td><td><input type="text" name="subject" value="<?php echo $visit_record['subject']; ?>" size="50" maxlength="100" /></td></tr>
+	<tr><td>Doctor Name:</td><td><?php echo $doctorlist; ?></td></tr>
+	<tr><td>Status:</td><td>
+		<select name="status">
+		<?php
+			for($i=0; $i < count($visit_status); $i++) {
+				echo "<option value=\"$i\"";
+				if ($i == $visit_record[status]) echo " selected";
+				echo ">" . $visit_status[$i] . "</option>";
+			}
+		?>
+		</select>
+	</td></tr>
+	<tr><td>Visit Date (yyyy-mm-dd):</td><td><input type="text" name="visit_date" value="<?php echo $visit_record['visit_date']; ?>" size="10" maxlength="10" /></td></tr>
+	<tr><td colspan="2">Notes:<br /><textarea name="notes" cols="55" rows="5"><?php echo $visit_record['notes']; ?></textarea></td></tr>
+	<tr><td colspan="2"><input type="submit" value="<?php echo $label; ?> Visit" /></td></tr>
+</table>
+</form>
+
+
+<?php
+	break;
+
+	case 'PROCESSFORM':
+		if (isset($_POST['formtype'])) $formtype = strtoupper($_POST['formtype']);
+
+		$query = ($formtype == 'ADD') ? 'INSERT INTO' : 'UPDATE';
+
+		$query .= ' visits SET ';
+		
+		$i = 0;
+		foreach ($_POST as $key => $value) {
+			if ($key != 'formtype') {
+				if ($i > 0) $query .= ', ';
+				$query .= escape($key) . " = '" . escape($value) . "'";
+				$i++;
+			}
+		}
+
+		if ($formtype == 'EDIT') $query .= " WHERE id = " . escape($_GET['id']);
+
+		echo "<p>Query: $query</p>";
+
+		if (!$result = mysql_query($query)) {
+			// error stuff
+			echo "<p>There was an error processing the form.</p>";
+		} else {
+			// display success message
+			echo "<p>Record successfully added to the database.</p>";
+		}
+
+	break;
+	
+	default:
+		echo "<p><strong>Error:</strong> Invalid mode set.</p>";
+	break;
+} // switch
+
+
+?>
+
+<div id="results"></div>
+
+
+<?php if (!$render_partial) include ("demoe-footer.php");

@@ -1,0 +1,14 @@
+{
+	"requestDate": "08/06/2013 14:40",
+	
+	"fieldLabels": ["ID","First Name","Last Name","Employee Number"],
+	
+	"contactList": [
+		{"id":0,"firstname":"John","lastname":"Doe","empnum":42},
+		{"id":0,"firstname":"Jane","lastname":"Smith","empnum":12},
+		{"id":0,"firstname":"Mary","lastname":"Thompson","empnum":65},
+		{"id":0,"firstname":"Steven","lastname":"Pierce","empnum":2},
+		{"id":0,"firstname":"Beverly","lastname":"Jones","empnum":17},
+		{"id":0,"firstname":"Alex","lastname":"Reid","empnum":21}
+	]
+}

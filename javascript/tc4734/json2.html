@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div><button id="button1">Click Me</button></div>
+
+<div id="target"></div>
+
+
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="createtable.js"></script>
+<script type="text/javascript">
+// define response handler function
+function updateTargetDiv(response) {
+	document.getElementById("target")
+		.appendChild(
+			createTable(
+				{	"rowData": response.contactList,
+					"columnNames": response.contactLabels,
+					"oddRowClassName" : "oddrow",
+					"evenRowClassName": "evenrow"
+				}
+			)
+		);
+} // updateTargetDiv
+
+
+// set up button event handler
+document.getElementById("button1").onclick = function() {
+	// do Ajax call using jQuery
+	$.ajax(
+		{ url: 'contactlist2.json',
+		  type: 'GET',
+		  dataType: 'json',
+		  success: updateTargetDiv
+		}
+	)
+}; // button1.onclick
+
+</script>
+
+
+
+</body>
+</html>

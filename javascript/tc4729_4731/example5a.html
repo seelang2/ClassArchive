@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Example 5: Events</title>
+</head>
+
+<body>
+
+<button id="thefirstbutton">Click Me!</button>
+<button id="thesecondbutton">Click Me!</button>
+
+
+<script type="text/javascript">
+function whoAmI() {
+	alert(this.id + " was clicked.");
+}
+
+document.getElementById("thefirstbutton").onclick = whoAmI;
+
+document.getElementById("thesecondbutton").onclick = whoAmI;
+
+
+</script>
+</body>
+</html>

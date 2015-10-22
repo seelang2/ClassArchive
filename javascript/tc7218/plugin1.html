@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+	
+	<style type="text/css">
+	</style>
+	
+</head>
+<body>
+
+<ul>
+	<li>Item 1</li>
+	<li>Item 2</li>
+	<li>Item 3</li>
+	<li>Item 4</li>
+	<li>Item 5</li>
+</ul>
+
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+// create a simple jquery plugin
+
+// use an IIFE to create the plugin space and pass in the jQuery object
+(function($) {
+	
+	// creates a top-level utility method
+	$.foo = function() {
+		console.log('Foo.');
+	};
+
+})(jQuery);
+
+$.foo();
+
+
+
+// use an IIFE to create the plugin space and pass in the jQuery object
+(function($) {
+	
+	// creates a jQuery collection method
+	$.fn.setClass = function() {
+		// 'this' refers to the collection object
+		this.addClass('thenewclass');
+		
+		return this; // always return the collection object to maintain chaining
+	}
+	
+
+})(jQuery);
+
+$('li')
+	.setClass()
+	.attr('data-text','foo');
+
+/*
+// use an IIFE to create the plugin space and pass in the jQuery object
+(function($) {
+	
+	// creates a jQuery collection method
+	$.fn.setID = function(prefix) {
+		// 'this' refers to the collection object
+		this.each(function(index, element) {
+			
+			$(element).attr('id', prefix + index);
+			
+		});
+		
+		return this; // always return the collection object to maintain chaining
+	}
+	
+
+})(jQuery);
+*/
+
+// use an IIFE to create the plugin space and pass in the jQuery object
+(function($) {
+	
+	// creates a jQuery collection method
+	$.fn.setID = function(prefix) {
+		// 'this' refers to the collection object
+		return this.each(
+			function(index, element) {
+			
+				$(element).attr('id', prefix + index);
+			
+			}
+		);
+		
+	}
+	
+
+})(jQuery);
+
+$('li')
+	.setID('cll-');
+
+	
+// use an IIFE to create the plugin space and pass in the jQuery object
+(function($) {
+	
+	defaultPrefix = 'item-';
+	
+	var getDefaultPrefix = function() {
+		return defaultPrefix;
+	};
+		
+	// creates a jQuery collection method
+	$.fn.setID = function(prefix) {
+		
+		prefix = prefix || getDefaultPrefix();
+		
+		// 'this' refers to the collection object
+		return this.each(
+			function(index, element) {
+			
+				$(element).attr('id', prefix + index);
+			
+			}
+		);
+		
+	}
+	
+
+})(jQuery);
+
+
+</script>
+</body>
+</html>
+
+
+
+

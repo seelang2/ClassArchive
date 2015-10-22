@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Immediately Invoked Function Expression (IIFE) Demo</title>
+	
+</head>
+<body>
+
+
+<button id="thebutton">Click Me</button>
+
+<script type="text/javascript">
+
+var myObj = {};
+
+
+
+// use an IIFE to create a hidden scope
+(function(obj) {
+	
+	var timesClicked = 0;
+	console.log(timesClicked);
+	
+	var trackClick = function() {
+		timesClicked++;
+		alert('Total clicks: ' + timesClicked);
+	}
+	
+	obj.trackClick = trackClick;
+	
+})(myObj);
+
+//console.log(timesClicked);
+//trackClick();
+
+document.getElementById("thebutton").onclick = myObj.trackClick;
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+var start1 = new Date().getTime();
+for (var c = 0; c < 1000000; c++) {
+var d = c % 10;
+
+	switch(true) {
+		case d == 1 && c != 11:
+			var ordinal = 'st';
+		break;
+		
+		case d == 2 && c != 12:
+			var ordinal = 'nd';
+		break;
+		
+		case d == 3 && c != 13:
+			var ordinal = 'rd';
+		break;
+		
+		default:
+			var ordinal = 'th';
+		break;
+	} // switch
+} // for c
+var end1 = new Date().getTime();
+
+var start2 = new Date().getTime();
+for (var c = 0; c < 1000000; c++) {
+var d = c % 10;
+
+	if (d == 1 && c != 11) {
+		var ordinal = 'st';
+	} else if (d == 2 && c != 12) {
+		var ordinal = 'nd';
+	} else if (d == 3 && c != 13) {
+		var ordinal = 'rd';
+	} else {
+		var ordinal = 'th';
+	}
+} // for c
+var end2 = new Date().getTime();
+
+document.write('<p>switch statement time: ' + (end1 - start1) + 'ms.</p>');
+document.write('<p>if...else statement time: ' + (end2 - start2) + 'ms.</p>');
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

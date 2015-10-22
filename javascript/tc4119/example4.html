@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+
+<button id="button1">Click Me!</button>
+
+<div id="results"></div>
+
+<script type="text/javascript">
+// apply behavior to the button
+document.getElementById("button1").onclick = function() {
+	// some 'processing' to do
+	var time = new Date();
+	time = time.toGMTString();
+	
+	// create new script element
+	var scriptElem = document.createElement("SCRIPT");
+	scriptElem.type = 'text/javascript';
+	scriptElem.src = 'http://10.6.10.103/tc4119/callback.php?callback=showResult&time='+time;
+	scriptElem.id = 'timestamp';
+	
+	// if there's already a timestamp script in place we remove it
+	if (oldScript = document.getElementById("timestamp")) {
+		document.body.removeChild(oldScript);
+		oldScript = null;
+	}
+	
+	// now add the new script to document body
+	document.body.insertBefore(scriptElem, document.body.firstChild);
+	
+}; // button1 onclick
+
+// the callback function used in the script src
+function showResult(params) {
+	// take the time parameter and display it in the results div
+	document.getElementById("results").innerHTML = '<p>The button was clicked on: ' + params.time + '</p>';
+}
+
+
+
+</script>
+</body>
+</html>

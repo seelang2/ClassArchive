@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Demo 4: setTimeout</title>
+
+<style type="text/css">
+.oddrow {
+	background: #ECF8FF;	
+}
+.evenrow {
+	background: #93D1FF;
+}
+
+.tablerowhover {
+	background: #FFC;
+}
+</style>
+
+<script type="text/javascript" src="library.js"></script>
+
+</head>
+
+<body>
+
+<div id="stockticker">
+</div>
+
+
+
+<script type="text/javascript">
+var Registry = new Object();
+
+// use JSON notation to create multidimensional array
+var tickerData = [['SYM'	,'1:00'	,'2:00'	,'3:00'],
+				  ['NT'		,5.25	,4.32	,2.15],
+				  ['MSFT'	,115.21	,110.11	,112.37],
+				  ['NT'		,5.25	,4.32	,2.15],
+				  ['MSFT'	,115.21	,110.11	,112.37],
+				  ['NT'		,5.25	,4.32	,2.15],
+				  ['MSFT'	,115.21	,110.11	,112.37],
+				  ['NT'		,5.25	,4.32	,2.15],
+				  ['MSFT'	,115.21	,110.11	,112.37],
+				  ['NT'		,5.25	,4.32	,2.15],
+				  ['MSFT'	,115.21	,110.11	,112.37],
+				  ['NT'		,5.25	,4.32	,2.15],
+				  ['MSFT'	,115.21	,110.11	,112.37],
+				  ['AAPL'	,121.71	,102.07	,99.11]];
+
+
+// get reference to parent container
+var tickerElem = document.getElementById("stockticker");
+// create stock ticker table
+var stockTable = createTable(tickerData);
+
+stockTable.onmouseover = function(e) {
+	if (!e) var e = window.event;
+	
+	if (e.target) var target = e.target;
+	else if (e.srcElement) var target = e.srcElement;
+	// Safari has a bug where it returns a textnode instead of element
+	if (target.nodeType == 3)
+		target = target.parentNode;
+	
+	if (target.nodeName != 'TD' && target.nodeName != 'TR') return;
+	if (target.nodeName != 'TR') target = target.parentNode;
+	
+	// only set timed hover if we're in the tbody data section
+	if (target.parentNode.nodeName == 'TBODY') {
+		//alert('Table mouseover event');
+		var showAlert = function() { showDetail(target.id); };
+		
+		Registry.timer = setTimeout(showAlert,2000);
+	}
+}
+
+stockTable.onmouseout = function() {
+	// clear timed event
+	clearTimeout(Registry.timer);
+	//alert('Table mouseout event');
+
+}
+
+function showDetail(target) {
+	alert(target);
+} // showDetail
+
+// append table into ticker div
+tickerElem.appendChild(stockTable);
+
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

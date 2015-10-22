@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+
+<ul>
+	<li><span>List Item 1</span></li>
+	<li><span>List Item 2</span></li>
+	<li>
+		<span>List Item 3</span>
+		<ul>
+			<li><span>List Item 1</span></li>
+			<li><span>List Item 2</span></li>
+			<li>
+				<span>List Item 3</span>
+				<ul>
+					<li><span>List Item 1</span></li>
+					<li><span>List Item 2</span></li>
+					<li><span>List Item 3</span></li>
+					<li><span>List Item 4</span></li>
+				</ul>
+			</li>
+			<li><span>List Item 4</span></li>
+		</ul>
+	</li>
+	<li><span>List Item 4</span></li>
+</ul>
+
+
+<script type="text/javascript" src="jquery-2.1.1.js"></script>
+<script type="text/javascript">
+
+// hide sublists
+$('li ul').hide();
+
+$('li')
+	.has('ul')
+	.on(
+		'click',
+		function() {
+			// 'this' refers to LI
+			$(this)
+				.children('ul')
+				.toggle();
+		}
+	 )
+
+
+
+
+
+
+</script>
+</body>
+</html>

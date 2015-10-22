@@ -1,0 +1,150 @@
+/* CSS Document */
+
+body {
+	background: #7a7a7a;
+	margin: 0 auto;
+	padding: 0;
+	text-align: center;
+}
+
+#wrapper {
+	text-align: left;
+	margin: 0 auto;
+	padding: 0;
+	width: 700px;
+	background: #ffffff;
+}
+
+#header, #footer {
+	margin: 0;
+	padding: 0;
+	height: 100px;
+	overflow: hidden;
+	background: #000099;
+	color: #ffffff;
+}
+
+#footer { 
+	height: 30px; 
+	clear: both;
+}
+
+#content {
+	margin: 0;
+	padding: 1em 0;
+}
+
+#leftside {
+	float:left;
+	width: 49%;
+	text-align: center;
+}
+
+#rightside {
+	float:right;
+	width: 49%;
+	text-align: center;
+}
+
+#itemlist {
+	clear: both;
+	width: 80%;
+	margin: 0 auto;
+	padding: 1em 0;
+}
+
+#statusmsg {
+	float: right;
+	width: 200px;
+	background: #ff0000;
+	color: ffffff;
+	font-weight:bold;
+	visibility: hidden;
+}
+
+/* Simple tableless forms */
+form label {
+	float: left;
+	margin-right:1em;
+	width: 7em;
+	text-align: right;
+}
+
+form div {
+	clear: both;
+	margin-bottom: 0.5em;
+}
+
+/* alternating row colors*/
+.evenrow {
+	background: #D3E4FE;
+}
+
+.oddrow {
+	background:#EAF2FF;
+}
+
+#itemlist table {
+	padding: 0;
+	width: 100%;
+}
+
+#itemlist td {
+	margin: 0;
+	padding: 0;
+}
+
+#itemlist td input {
+	width: 100%;
+}
+
+.icon {
+	height: 16px;
+	width: 16px;
+	padding: 0;
+	margin: 0;
+}
+
+/* for screenreaders */
+.readertext {
+	position: absolute;
+	top: -1000px;
+	left: -1000px;
+	height: 1px;
+	overflow: hidden;
+	z-index: -999;
+}
+
+/* hover div */
+#hoverdiv {
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:999;
+	width:150px;
+	height:250px;
+	overflow: hidden;
+	background: #FCFEE2;
+	border: 2px solid #E0B505;
+	text-align:center;
+	visibility: hidden;
+}
+
+#hoverdiv input {
+	margin: 0 auto;
+	text-align: center;
+}
+
+#screen {
+	margin:0;
+	padding:0;
+	height:100%;
+	width: 100%;
+	min-height:100%;
+	z-index: 500;
+	background: #330099;
+	position:absolute;
+	top:0;
+	left:0;
+	visibility:hidden;
+}

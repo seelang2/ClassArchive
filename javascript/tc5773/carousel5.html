@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Carousel Demo</title>
+	<style type="text/css">
+	#carousel {
+		width: 400px;
+		margin: auto;
+		border: 1px solid #009;
+	}
+	
+	.slide {
+		width: 400px;
+		height: 300px;
+		display: inline-block;
+		overflow: hidden;
+	}
+	</style>
+</head>
+<body>
+
+<div id="carousel"></div>
+
+
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript" src="carousel-1.1.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	// create a jQuery collection containing the slides we're going to use
+	var $slides = 
+	$('<div class="slide" style="background: url(bird1.jpg)"></div>')			// create a new slide
+		.add('<div class="slide" style="background: url(bird2.jpg)"></div>')	// create a new slide and add to obj
+		.add('<div class="slide" style="background: url(bird3.jpg)"></div>')	// repeat
+		.add('<div class="slide" style="background: url(bird4.jpg)"></div>');	// repeat
+	
+	$('#carousel')
+		.insertCarousel({
+			direction: 'left',
+			height: '300px',
+			width:	'400px',
+			duration: 750,
+			delay: 2000,
+			slides: $slides
+		});
+	
+}); // document.ready
+
+
+</script>
+</body>
+</html>

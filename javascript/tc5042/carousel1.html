@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>EXCITING carousel demo. Yay.</title>
+
+<style type="text/css">
+#window {
+	position: relative;
+	width: 300px;
+	height: 200px;
+	border: 5px solid #000;
+	overflow: hidden;
+	margin: auto;
+}
+
+#filmstrip {
+	width: 1200px;
+	height: 200px;
+	position: absolute;
+	left: 0;
+}
+
+#filmstrip img {
+	margin: 0;
+	padding: 0;
+}
+
+</style>
+</head>
+
+<body>
+
+
+<div id="container">
+
+	<div id="carousel">
+    	<div id="window">
+        	<div id="filmstrip">
+            	<img src="images/exite1.jpg" /><img src="images/exite2.jpg" /><img src="images/exite3.jpg" /><img src="images/exite4.jpg" />
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<script src="jquery-1.7.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+function moveLeft() {
+	$('#filmstrip')
+		.animate(
+		   {
+		     left: -300
+		   }, 
+		   750, 
+		   'swing',
+		   function() {
+		      $('#filmstrip img:first-child')
+			     .detach()
+				 .appendTo('#filmstrip')
+				 .parent()
+				 .css( {left: 0} );
+		   }
+		 );
+}
+
+
+$(document).ready(function() {
+	
+	setInterval(moveLeft, 1750);
+	
+}); // document.ready
+
+</script>
+</body>
+</html>

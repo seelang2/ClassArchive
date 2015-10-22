@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<form action="#">
+<p>Firstname: <input name="firstname" /></p>
+<p>Lastname: <input name="lastname" /></p>
+<input type="submit" />
+</form>
+
+
+
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+
+if (localStorage.getItem('contact') === null) {
+	// define object
+	var contact = {};
+} else {
+	//retrieve JSON data from localStorage and deserialize
+	contact = JSON.parse(localStorage.getItem('contact'));
+
+	$('[name="firstname"]').val(contact.firstname);
+	$('[name="lastname"]').val(contact.lastname);
+}
+
+
+$('form').on('submit', function(e) {
+	e.preventDefault();
+	
+	contact.firstname = $(this).find('[name="firstname"]').val();
+	contact.lastname = $(this).find('[name="lastname"]').val();
+	
+	// localStorage only allows string values
+	// convert to JSON string before saving
+	localStorage.setItem('contact', JSON.stringify(contact));
+
+});
+
+</script>
+</body>
+</html>
