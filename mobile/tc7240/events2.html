@@ -1,0 +1,98 @@
+<!DOCTYPE html />
+<html>
+<head>
+	<meta charset="UTF-8" />
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<link 
+		rel="stylesheet" 
+		type="text/css" 
+		href="jquery.mobile-1.4.3/jquery.mobile-1.4.3.css" />
+	
+	<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+	<script 
+		type="text/javascript" 
+		src="jquery.mobile-1.4.3/jquery.mobile-1.4.3.min.js"></script>
+
+	<script type="text/javascript">
+	console.log('running script in events2.html');
+	// Namespace IIFE
+	(function(App) {
+		
+		var c = 1;
+
+		App.init = function() {
+			console.log('App.init');
+			
+			/*
+			// handler for TAG page
+			$( document ).on( "pagecreate", "#tag", App.initPageTag);
+				
+			// handler for VIEWLIST page
+			$( document ).on( "pagebeforecreate", "#viewlist", App.initPageViewlist);
+				
+			// handler for VIEWITEM page
+			$( document ).on( "pagecreate", "#viewitem", App.initPageViewitem);
+			*/
+
+			$( document ).on( "pagecreate", "#page1", function(e,u) { console.log(c++,'Page1 pagecreate'); });
+			$( document ).on( "pagebeforecreate", "#page1", function(e,u) { console.log(c++,'Page1 pagebeforecreate'); });
+
+			$( document ).on( "pagecreate", "#page2", function(e,u) { console.log(c++,'Page2 pagecreate'); });
+			$( document ).on( "pagebeforecreate", "#page2", function(e,u) { console.log(c++,'Page2 pagebeforecreate'); });
+			
+			$( ':mobile-pagecontainer' )
+				.on( "pagecontainerbeforehide", function(e,u) { console.log(c++,'pagecontainerbeforehide','prevPage: #'+u.prevPage[0].id,'toPage: #'+u.toPage[0].id); })
+				.on( "pagecontainerbeforechange", function(e,u) { console.log(c++,'pagecontainerbeforechange','prevPage: #'+u.prevPage[0].id,'toPage: #'+u.toPage[0].id); })
+				.on( "pagecontainerbeforeload", function(e,u) { console.log(c++,'pagecontainerbeforeload','prevPage: #'+u.prevPage[0].id,'toPage: #'+u.toPage[0].id); })
+				.on( "pagecontainerbeforeshow", function(e,u) { console.log(c++,'pagecontainerbeforeshow','prevPage: #'+u.prevPage[0].id,'toPage: #'+u.toPage[0].id); })
+				.on( "pagecontainerbeforetransition", function(e,u) { console.log(c++,'pagecontainerbeforetransition','prevPage: #'+u.prevPage[0].id,'toPage: #'+u.toPage[0].id); })
+				.on( "pagecontainerchange", function(e,u) { console.log(c++,'pagecontainerchange','prevPage: #'+u.prevPage[0].id,'toPage: #'+u.toPage[0].id); })
+				.on( "pagecontainercreate", function(e,u) { console.log(c++,'pagecontainercreate','prevPage: #'+u.prevPage[0].id,'toPage: #'+u.toPage[0].id); })
+				.on( "pagecontainerhide", function(e,u) { console.log(c++,'pagecontainerhide','prevPage: #'+u.prevPage[0].id,'toPage: #'+u.toPage[0].id); })
+				.on( "pagecontainerload", function(e,u) { console.log(c++,'pagecontainerload'/* ,'prevPage: #'+u.prevPage[0].id,'toPage: #'+u.toPage[0].id */); })
+				.on( "pagecontainerremove", function(e,u) { console.log(c++,'pagecontainerremove','prevPage: #'+u.prevPage[0].id,'toPage: #'+u.toPage[0].id); })
+				.on( "pagecontainershow", function(e,u) { console.log(c++,'pagecontainershow','prevPage: #'+u.prevPage[0].id,'toPage: #'+u.toPage[0].id); })
+				.on( "pagecontainertransition", function(e,u) { console.log(c++,'pagecontainertransition','prevPage: #'+u.prevPage[0].id,'toPage: #'+u.toPage[0].id); });
+
+
+		}; // App.init
+
+
+	})(window.App = window.App || {});
+
+	$(document).ready(App.init);
+
+
+	</script>
+</head>
+<body>
+
+<div id="page1" data-role="page">
+
+	<div data-role="header">
+		<a href="events2a.html" class="ui-btn-right">Next</a>
+		<h1>Page 1</h1>
+	</div><!-- header -->
+
+	<div role="main" class="ui-content">
+		<h1>Page 1</h1>
+
+		<ul data-role="listview" data-inset="true">
+			<li><a href="events2a.html">Page 2</a></li>
+		</ul>
+
+	</div><!-- main -->
+	
+	<div data-role="footer">
+		<h2>Footer</h2>
+	</div><!-- footer -->
+	
+</div><!-- page -->
+		
+
+
+
+</body>
+<html>

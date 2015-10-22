@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+	
+	ul.expandable,
+	ul.expandable ul {
+		list-style-type: none;
+		padding: 0 0 0 2em;
+	}
+	
+	.expandable span {
+		position: relative;
+	}
+	
+	.expandable span.closed:before {
+		content: '[+]';
+		position: absolute;
+		left: -2em;
+		font-size: 75%;
+	}
+	
+	.expandable span.open:before {
+		content: '[-]';
+		position: absolute;
+		left: -2em;
+		font-size: 75%;
+	}
+	
+	</style>
+</head>
+<body>
+
+<div id="container">
+	<ul class="expandable">
+		<li><a href="#">List Item 1</a></li>
+		<li><a href="#">List Item 2</a></li>
+		<li><a href="#">List Item 3</a></li>
+		<li>
+			<span>Submenu Item</span>
+			<ul>
+				<li><a href="#">List Item 1</a></li>
+				<li><a href="#">List Item 2</a></li>
+				<li>
+					<span>Submenu Item</span>
+					<ul>
+						<li><a href="#">List Item 1</a></li>
+						<li><a href="#">List Item 2</a></li>
+						<li><a href="#">List Item 3</a></li>
+						<li><a href="#">List Item 4</a></li>
+					</ul>
+				</li>
+				<li><a href="#">List Item 3</a></li>
+				<li><a href="#">List Item 4</a></li>
+			</ul>
+		</li>
+		<li><a href="#">List Item 5</a></li>
+	</ul>
+</div>
+
+
+<script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+if (typeof localStorage.menuState == 'undefined') {
+	var menuState = [];
+	localStorage.menuState = JSON.stringify(menuState);
+} else {
+	var menuState = JSON.parse(localStorage.menuState);
+}
+
+$('.expandable li > ul')
+	.hide()
+	.prev()					// traverse to SPAN 
+	.addClass('closed')
+	.on('click', function(e) {
+		
+		$(this)
+			.toggleClass('open closed')
+			.next()
+			.toggle();
+		
+		var index = $(this).attr('data-menuindex');
+		
+		/*
+		if ( $(this).hasClass('open') ) {
+			menuState[index] = true;
+		} else {
+			menuState[index] = false;
+		}
+		*/
+		menuState[index] = $(this).hasClass('open') ? true: false;
+		localStorage.menuState = JSON.stringify(menuState);
+	 })
+	.each(function(index, span) {
+		// set menu initial state
+		if (menuState.length == 0) {
+			// set initial menu state to closed (false)
+			menuState[index] = false;
+			localStorage.menuState = JSON.stringify(menuState);
+		} else {
+			// use menuState to set menu open positions
+			if (menuState[index] == true) {
+				$(span)
+					.toggleClass('open closed')
+					.next()
+					.toggle();
+			}
+		}
+		
+		$(this).attr('data-menuindex', index);
+	 });
+
+
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

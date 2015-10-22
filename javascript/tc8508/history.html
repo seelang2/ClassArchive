@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<p><a href="/link1">Link 1</a></p>
+<p><a href="/link2">Link 2</a></p>
+<p><a href="/link3">Link 3</a></p>
+
+<p><button>Click Me</button></p>
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+/*
+	ref: https://developer.mozilla.org/en-US/docs/Web/API/History_API
+		 http://caniuse.com/#search=popstate
+*/
+$(document).ready(function() {
+
+	$('a').each(function(index, elem) {
+		
+	});
+	
+	var c = 1;
+	$('button').on('click', function(e) {
+		history.pushState({ c: c }, '', '#!/fake/link/' + c);
+		c++;
+	});
+	
+	$(window).on('popstate', function(e) {
+		console.log(history.state);
+	});
+
+});
+
+
+</script>
+</body>
+</html>

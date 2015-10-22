@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<form action="#" method="post">
+	<input name="test1 " />
+	<input name="test2" />
+	<input type="submit" />
+</form>
+
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+$('form').on('submit', function(e) {
+	// hijack form
+	e.preventDefault();
+	
+	// do the ajax request
+	$.ajax({
+		url:		'echorequest.php',
+		type:		'post',
+		dataType:	'json',
+		data:		$(this).serialize()
+	}).then(function(response) {
+		console.log(response);
+	});
+});
+
+</script>
+</body>
+</html>

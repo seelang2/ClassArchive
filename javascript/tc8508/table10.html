@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		background: #ccc;
+	}
+	
+	#target {
+		background: #fff;
+		width: 700px;
+		margin: auto;
+	}
+	
+	table { border-collapse: collapse; width: 100%; margin: auto;}
+	th, td { 
+		border: 1px solid #7a7a7a; 
+		padding: 0.5em 1em;
+	}
+	
+	.evenrow { background: #BDFBFF; }
+	.oddrow { background: #DEFDFF; }
+	
+	tr.hover { background: #FFFFCC; }
+	
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+// use an IIFE for namespacing
+(function(App) {
+
+var data = {}; // data repository
+
+App.start = function() {
+
+	// set up table
+	data.tbody =
+	$('<table><tbody /></table>')
+		.appendTo('#target')			// attach table to DOM
+		.children('tbody')
+		.on('mouseover', 'tr.customeritem', App.waxOn)
+		.on('mouseout', 'tr.customeritem', App.waxOff)
+		.on('dblclick', 'tr.customeritem', App.getCustomerOrders);
+
+	App.getContacts();
+
+
+}; // App.start
+
+App.getContacts = function() {
+
+	$.ajax({
+		url:		'/backend/customers',
+		//url:		'contacts.json',
+		type:		'get',
+		dataType:	'json',
+		cache:		false,
+		success:	App.updateTable
+	});
+
+}; // App.getContacts
+
+App.updateTable = function(response) {
+
+	// for each contact:
+	$.each(response, function(index, contact) {
+		$('<tr />')											// create new row
+			.addClass('customeritem')
+			.attr('id','row-' + index)
+			.data('data-id', contact.id)
+			.each(function(i, tr) {
+				
+				$.each(contact, function(fieldName, fieldValue) {
+					$('<td>' + fieldValue + '</td>')
+						.appendTo(tr);
+					
+				});
+				
+			 })
+			.appendTo(data.tbody);								// add row to table
+
+});
+
+
+}; // App.updateTable
+
+App.getCustomerOrders = function(e) {
+	// if this customer already has orders shown just remove orderlist
+	// and bail
+	if ( $(this).next().is('.orderlist') ) {
+		// remove any orderlist rows
+		data.tbody.children('.orderlist').remove();
+		return;
+	}
+	
+	// remove any orderlist rows
+	data.tbody.children('.orderlist').remove();
+	
+	// retrieve id from data store
+	var id = $(this).data('data-id');
+	var customerRow = this; // save customer row reference
+
+	$.ajax({
+		url:		'/backend/customers/'+ id +'/orders',
+		type:		'get',
+		dataType:	'json',
+		cache:		false,
+		success:	function(orderData) {
+			// pass customer row element and order data to showOrders
+			// (remember, 'this' gets reassigned when the execution context
+			// changes)
+			App.showOrders(customerRow, orderData);
+		}
+	});
+	
+}; // App.getCustomerOrders
+
+App.showOrders = function(customerRow, orderData) {
+	
+	// get column count
+	var cols = 
+	$(customerRow)
+		.children('td, th')
+		.length;
+	
+	$('<tr />')
+		.addClass('orderlist')
+		.append('<td />')
+		.children('td:last-child')
+		.attr('colspan', cols)
+		.each(function(i, td) {
+			// build order table
+			var $tbody =
+			$('<table><tbody /></table>')
+				.appendTo(td)
+				.children('tbody');
+				
+			// loop through order data and build table rows
+			$.each(orderData.orders, function(index, order) {
+				$('<tr />')
+					.append('<td>'+ order.orderdate + '</td>')
+					.append('<td>'+ order.id + '</td>')
+					.append('<td>'+ order.ordertotal + '</td>')
+					.appendTo($tbody);
+			});
+		 })
+		.end()
+		.hide()
+		.insertAfter(customerRow)
+		.show();
+	
+}; // App.showOrders
+
+App.waxOn = function() {
+	// 'this' refers to element the event is bound to
+	// OR if a selector filter is applied, to whatever element
+	// is being filtered on
+	$(this).addClass('hover');	// add hover class to TR
+	//console.log('wax on', this.id);
+};
+
+App.waxOff = function() {
+	// 'this' refers to element the event is bound to
+	$(this).removeClass('hover');	// add hover class to TR
+	//console.log('wax off', this.id);
+};
+
+
+
+
+})(window.App = window.App || {});
+
+$(document).ready(App.start);
+
+/*
+
+$tbody 
+	.children('tr')					// get all TRs 
+		.filter(':odd')				// select EVEN TRs
+			.addClass('evenrow')	// add the evenrow class
+			.end()					// revert back to all TRs
+		.filter(':even')			// select ODD TRs
+			.addClass('oddrow')		// add the oddrow class
+			.end()					// revert back to all TRs
+		.end()						// revert back to TBODY
+	.parent()						// traverse up to TABLE
+	.appendTo('#target');			// attach table to DOM
+
+
+*/
+
+
+
+</script>
+</body>
+</html>

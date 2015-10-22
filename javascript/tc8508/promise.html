@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+// create new Promise (deferred object)
+var promise = $.Deferred();
+
+// add resolve (success) handlers
+promise.done(function(data) {
+	console.log('promise is done.',data);
+});
+
+// add reject (fail) handlers
+promise.fail(function(data) {
+	console.log('promise has failed.',data);
+});
+
+// add progress handlers
+promise.progress(function(data) {
+	console.log('promise is in progress.',data);
+});
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript">
+
+// get a reference to the node to manipulate
+var targetElem = document.getElementById('target');
+
+// create new P element
+var pElem = document.createElement('P');
+
+// create new text node
+var text = document.createTextNode('This space for rent.');
+
+// attach text node to P element
+pElem.appendChild(text);
+
+// attach P to target
+targetElem.appendChild(pElem);
+
+targetElem.innerHTML = '<h1>innerHTML vs DOM methods</h1><p>using <b>innerHTML</b> allows you to add your HTML content to a node as a string instead of as separate nodes via the DOM methods.</p><p>This allows the browser to do the heavy lifting for us instead of doing a lot of it manually.</p><p>In the past there was debate about whether innerHTML or the DOM methods were faster. innerHTML was faster in older browsers, but in modern browsers both methods are about the same.</p><p>Oh yeah - keep in mind that using innerHTML <strong>completely replaces</strong> whatever content was originally in the element, so use with caution.</p>';
+
+
+</script>
+</body>
+</html>

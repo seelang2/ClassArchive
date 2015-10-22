@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<table>
+<tbody id="target"></tbody>
+</table>
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+var start = new Date().getTime();
+
+for (var c = 1; c < 201; c++) {
+
+	$('#target')
+		.append('<tr><td>' + c + '</td></tr>')
+		.children('tr:last-child')
+		.attr('id','row-' + c)
+		.on('click', function(e) { return; });
+
+}
+
+var end = new Date().getTime();
+
+var elapsed = end - start;
+
+console.log('Total time:',elapsed,'ms');
+
+</script>
+</body>
+</html>

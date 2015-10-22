@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+	
+	table { border-collapse: collapse; }
+	th, td { 
+		border: 1px solid #7a7a7a; 
+		padding: 0.5em 1em;
+	}
+	
+	.evenrow { background: #BDFBFF; }
+	.oddrow { background: #DEFDFF; }
+	
+	tr.hover { background: #FFFFCC; }
+	
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+// use an IIFE for namespacing
+(function(App) {
+
+var data = {}; // data repository
+
+App.start = function() {
+
+	// set up table
+	data.tbody =
+	$('<table><tbody /></table>')
+		.appendTo('#target')			// attach table to DOM
+		.children('tbody')
+		.on('mouseover', 'tr', App.waxOn)
+		.on('mouseout', 'tr', App.waxOff);
+
+	App.getContacts();
+
+
+}; // App.start
+
+App.getContacts = function() {
+
+	$.ajax({
+		url:		'http://192.168.1.105/backend/customers',
+		type:		'get',
+		dataType:	'json',
+		success:	App.updateTable
+	});
+	
+}; // App.getContacts
+
+App.runme = function(data) {
+	App.updateTable(data);
+}
+
+App.updateTable = function(response) {
+
+	// for each contact:
+	$.each(response, function(index, contact) {
+		$('<tr />')											// create new row
+			.attr('id','row-' + index)
+			.append('<td>' + contact.firstname + '</td>')	// add contact fields to row
+			.append('<td>' + contact.lastname + '</td>')	// add contact fields to row
+			.append('<td>' + contact.email + '</td>')		// add contact fields to row
+			.appendTo(data.tbody);								// add row to table
+
+});
+
+
+}; // App.updateTable
+
+App.waxOn = function() {
+	// 'this' refers to element the event is bound to
+	// OR if a selector filter is applied, to whatever element
+	// is being filtered on
+	$(this).addClass('hover');	// add hover class to TR
+	console.log('wax on', this.id);
+};
+
+App.waxOff = function() {
+	// 'this' refers to element the event is bound to
+	$(this).removeClass('hover');	// add hover class to TR
+	console.log('wax off', this.id);
+};
+
+
+
+
+})(window.App = window.App || {});
+
+$(document).ready(App.start);
+
+/*
+
+$tbody 
+	.children('tr')					// get all TRs 
+		.filter(':odd')				// select EVEN TRs
+			.addClass('evenrow')	// add the evenrow class
+			.end()					// revert back to all TRs
+		.filter(':even')			// select ODD TRs
+			.addClass('oddrow')		// add the oddrow class
+			.end()					// revert back to all TRs
+		.end()						// revert back to TBODY
+	.parent()						// traverse up to TABLE
+	.appendTo('#target');			// attach table to DOM
+
+
+*/
+
+
+
+</script>
+</body>
+</html>

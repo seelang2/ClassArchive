@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<ul>
+	<li id="item1">List Item</li>
+	<li id="item2">List Item</li>
+	<li id="item3">List Item</li>
+	<li id="item4">List Item</li>
+	<li id="item5">List Item</li>
+	<li id="item6">List Item</li>
+	<li id="item7">List Item</li>
+</ul>
+
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+var $coll = $('li');
+
+console.log($coll.length);
+
+$coll.addClass('listitem'); // gets applied to EVERY element in coll
+
+console.log($coll.attr('id')); // only returns the value from the FIRST 
+
+// $coll.attr('data-index', 1); // doesn't work as intended
+
+// loop through collection
+$coll.each(function(index, elem) {
+	
+	// index contains the internal nodelist array of the collection
+	// elem contains the individual DOM node associated with index
+	
+	$(elem)
+		.attr('data-index', index)	// store data as html attribute on node
+		.data('index', index);		// store data separately
+	
+});
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+Notes
+
+nitrous.io
+azure
+bizspark
+
+http://www.tomsitpro.com/articles/azure-vs-aws-cloud-comparison,2-870.html
+
+
+Wordpress
+gravity forms plugin
+create page in wordpress that displays page with data from gravity table
+
+
+https://bitbucket.org/ - Free public and private for up to 5 users
+
+
+ublock
+
+pluralsight
+learnnow.com
+
+murach
+
+http://www.creativebloq.com/tips-naming-app-9112818
+
+JSONview - Chrome extension
+
+

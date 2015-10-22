@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+	
+	#chart {
+		border: 1px solid #7a7a7a;
+		width: 600px;
+		margin: auto;
+		box-sizing: border-box;
+		padding: 15px 25px;
+	}
+	
+	#chart .lineitem {
+		margin-bottom: 0.5em;
+		
+	}
+	
+	.lineitem div { display: inline-block; }
+	
+	.x-axis-label { 
+		width: 80px;
+	}
+	
+	.y-val {
+		background: #f00;
+		height: 0.9em;
+		
+	}
+	
+	
+	</style>
+</head>
+<body>
+
+<div id="chart"></div>
+
+<script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+
+var items = [
+	{"month":"January", "total":115},
+	{"month":"February", "total":75},
+	{"month":"March", "total":227},
+	{"month":"April", "total":87},
+	{"month":"May", "total":43},
+	{"month":"June", "total":68},
+	{"month":"July", "total":92}
+];
+
+var $chartElem = $('#chart');
+
+var scalingFactor = 2;
+
+// loop through items and create a new chart line for each item
+$.each(
+	items,
+	function(index, item) {
+		
+		var $tmpElem = 
+		$('<div />')
+			.addClass('lineitem');
+		
+		$('<div>' + item.month + '</div>')
+			.addClass('x-axis-label')
+			.appendTo($tmpElem);
+			
+		$('<div />')
+			.addClass('y-val')
+			.css('width', (item.total * scalingFactor) + 'px')
+			.attr('title', item.total)
+			.appendTo($tmpElem);
+		
+		$tmpElem.appendTo($chartElem);
+	}
+);
+
+
+</script>
+</body>
+</html>

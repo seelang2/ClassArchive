@@ -1,0 +1,6 @@
+http://stackoverflow.com/questions/270309/can-i-use-a-function-for-a-default-value-in-mysql
+http://random-name-generator.info/
+http://www.dreamincode.net/forums/topic/193710-mysql-triggers-and-random-password-generation/
+
+
+https://datatables.net/manual/server-side

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<h2>Store Locator</h2>
+
+<form id="form1" action="#" method="get">
+	<p><input type="radio" name="searchtype" value="zipcode" />
+	By zip code
+	<input name="zipcode" />
+	</p>
+	<p><input type="radio" name="searchtype" value="geo" /> By your location</p>
+	<p>
+		Select a search radius:
+		<select name="radius">
+			<option value="5">5 miles</option>
+			<option value="10">10 miles</option>
+			<option value="20">20 miles</option>
+			<option value="50">50 miles</option>
+		</select>
+	</p>
+	<input type="submit" value="Go" />
+</form>
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+var apiKey = 'ar7hdjbvp9mu6b3tb4n2f7hx';
+
+var doRequest = function(area) {
+
+	console.log(area);
+	
+	var requestURI = 
+		'http://api.bestbuy.com/v1/stores(' +
+		area + ')?format=json&apiKey=' + apiKey;
+	
+	$.ajax({
+		url:		requestURI,
+		type:		'get',
+		dataType:	'json'
+	}).done(function(data) {
+	
+		console.log(data);
+		// display data, etc...
+		
+	})
+	
+};
+
+$('#form1').on('submit', function(e) {
+	
+	e.preventDefault();
+	
+	var searchType = $(this).find('[name="searchtype"]:checked').val();
+	var zipcode = $(this).find('[name="zipcode"]').val();
+	var radius = $(this).find('[name="radius"]').val();
+	
+	console.log(searchType, zipcode, radius);
+	
+	if (searchType == 'zipcode') {
+		var area = 'area(' + zipcode + ',' + radius + ')';
+		doRequest(area);
+	}
+	
+	if (searchType == 'geo') {
+		navigator.geolocation.getCurrentPosition(function(data) {
+			console.log(data);
+			
+			var area = 
+				'area(' + data.coords.latitude + ',' + 
+				data.coords.longitude + ',' + radius + ')';
+			doRequest(area);
+		});
+	}
+	
+});
+
+
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		background: #7a7a7a;
+	}
+	
+	#container {
+		width: 600px;
+		margin: auto;
+		background: #ffffff;
+	}
+	
+	.tabs {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+	
+	.tabs li {
+		float: left;
+		width: 25%;
+		box-sizing: border-box;
+		border: 1px solid #ccc;
+		border-left: none;
+		background: #dedede;
+	}
+	
+	.tabs li:first-child {
+		border-left: 1px solid #ccc;
+	}
+	
+	.tabs li.active {
+		border-bottom: none;
+		background: #ffffff;
+	}
+	
+	.tabs a {
+		display: block;
+		padding: 0.25em 0.5em;
+		text-decoration: none;
+		color: #900;
+	}
+	
+	.tabs a:hover {
+		background: #FFC;
+	}
+	
+	#content {
+		clear: both;
+		height: 400px;
+		border: 1px solid #ccc;
+		border-top: none;
+		padding: 0.5em;
+	}
+	</style>
+</head>
+<body>
+
+<div id="container">
+	<ul class="tabs">
+		<li data-page="tpl_tab1.html"><a href="#!page1">Tab 1</a></li>
+		<li data-page="tpl_tab2.html"><a href="#!page2">Tab 2</a></li>
+		<li data-page="tpl_tab3.html"><a href="#!page3">Tab 3</a></li>
+		<li data-page="tpl_tab4.html"><a href="#!page4">Tab 4</a></li>
+	</ul>
+	
+	<div id="content"></div>
+</div><!-- container -->
+
+
+<script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+// set up a modular namespace using an IIFE
+(function(App, undefined) {
+
+var $contentElem = $('#content');
+var $tabs = $('.tabs li');
+
+App.data = {}; // data 'registry'
+App.init = function() {
+
+	App.data.templates = [undefined, undefined, undefined, undefined];
+	// set up template loader promise
+	App.loader = $.Deferred();
+	
+	// have loader continue App init process when complete
+	App.loader.flag = 0; // flag that indicates template load progress
+	
+	App.loader.progress(function(data) {
+		// update flag with data
+		App.loader.flag = App.loader.flag | data;
+
+		if (App.loader.flag == 15) {
+			// all templates are done loading, resolve promise
+			App.loader.resolve();
+		}
+	});
+	 
+	App.loader.done(function() {
+		// continue with app init
+		//console.log('all templates loaded.');
+		App.tabSetup(); // continue app initialization
+	});
+	
+	// load templates
+	$.ajax({
+		url:		'tpl_tab1.html',
+		type:		'get',
+		dataType:	'html',
+		cache:		false
+	}).then(function(data) { 
+		App.data.templates[0] = $('<div />').html(data);
+		
+		App.loader.notify(1); 
+	});
+	
+	$.ajax({
+		url:		'tpl_tab2.html',
+		type:		'get',
+		dataType:	'html',
+		cache:		false
+	}).then(function(data) { 
+		App.data.templates[1] = $('<div />').html(data);
+		
+		App.loader.notify(2); 
+	});
+	
+	$.ajax({
+		url:		'tpl_tab3.html',
+		type:		'get',
+		dataType:	'html',
+		cache:		false
+	}).then(function(data) { 
+		App.data.templates[2] = $('<div />').html(data);
+		
+		App.loader.notify(4); 
+	});
+	
+	$.ajax({
+		url:		'tpl_tab4.html',
+		type:		'get',
+		dataType:	'html',
+		cache:		false
+	}).then(function(data) { 
+		App.data.templates[3] = $('<div />').html(data);
+		
+		App.loader.notify(8); 
+	});
+	
+	
+	
+}; // App.init
+
+// clean up potential mem leak issues
+App.cleanup = function() {
+	$(document.body).empty();
+}; // App.cleanup
+
+App.tabSetup = function() {
+
+	$tabs
+		.each(function(index, element) {
+			$(element).attr('data-index',index);
+			
+		 })
+		.on('click', App.tabHandler)
+
+}; // App.tabSetup
+
+App.tabHandler = function(e) {
+
+	var index = $(this).attr('data-index');
+	var pagefile = $(this).attr('data-page');
+	
+	// do stuff depending on what tab we're on
+	switch(index) {
+		case '0':
+			// get contact info then update tab
+			$.ajax({
+				url:		'contact1.json',
+				type:		'get',
+				dataType:	'json',
+				cache:		false
+			}).then(function(data) { 
+				App.updateContentElem(index, data);
+			});
+			
+		break;
+	
+		default:
+			App.updateContentElem(index);
+		break;
+	}
+	
+}; // App.tabHandler
+
+App.updateContentElem = function(index, data) {
+	// take view for tab and merge any data
+	var $template = App.data.templates[index].clone();
+	
+	if (typeof data != "undefined") {
+		// merge data
+		$.each(
+			data,
+			function(fieldName, fieldValue) {
+				$template
+					.find('[data-fieldname="'+ fieldName +'"]')
+					.html(fieldValue);
+			}
+		);
+		
+	}
+	
+	// then display in content container
+	$contentElem.html($template);
+	
+	$tabs
+		.removeClass('active')
+		.eq(index)
+		.addClass('active');
+
+}; // App.updateContentElem
+
+})(window.App = window.App || {});
+
+
+
+// set up application startup and finish handlers
+$(document).ready(App.init);
+window.onunload = App.cleanup;
+
+
+
+
+
+
+</script>
+</body>
+</html>

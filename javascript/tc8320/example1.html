@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div><p>X</p></div>
+
+<script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+
+/*
+
+// sucks - DO NOT DO.
+$('div').append('<p>append</p>');
+$('div').prepend('<p>prepend</p>');
+$('div').before('<p>before</p>');
+$('div').after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo('div');
+$('<p>prependTo</p>').prependTo('div');
+$('<p>insertBefore</p>').insertBefore('div');
+$('<p>insertAfter</p>').insertAfter('div');
+
+*/
+
+// BETTER - take advantage of chaining where possible
+// and/or store the collection in a variable
+var $target = $('div');
+
+$target
+	.append('<p>append</p>')
+	.prepend('<p>prepend</p>')
+	.before('<p>before</p>')
+	.after('<p>after</p>');
+
+$('<p>appendTo</p>')
+	.appendTo($target)
+	.insertBefore($target);
+$('<p>prependTo</p>').prependTo($target);
+$('<p>insertBefore</p>').insertBefore($target);
+$('<p>insertAfter</p>').insertAfter($target);
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html />
+<html>
+<head>
+	<meta charset="UTF-8" />
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<link 
+		rel="stylesheet" 
+		type="text/css" 
+		href="jquery.mobile-1.4.3/jquery.mobile-1.4.3.css" />
+	
+	<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+	<script 
+		type="text/javascript" 
+		src="jquery.mobile-1.4.3/jquery.mobile-1.4.3.min.js"></script>
+
+	<script type="text/javascript">
+	console.log('running script in events2a.html');
+
+	// Namespace IIFE
+	(function(App) {
+		
+		var c = 1;
+
+		App.init = function() {
+			console.log('App.init');
+			
+			/*
+			// handler for TAG page
+			$( document ).on( "pagecreate", "#tag", App.initPageTag);
+				
+			// handler for VIEWLIST page
+			$( document ).on( "pagebeforecreate", "#viewlist", App.initPageViewlist);
+				
+			// handler for VIEWITEM page
+			$( document ).on( "pagecreate", "#viewitem", App.initPageViewitem);
+			*/
+
+			$( document ).on( "pagecreate", "#page1", function(e,u) { console.log(c++,'Page1 pagecreate'); });
+			$( document ).on( "pagebeforecreate", "#page1", function(e,u) { console.log(c++,'Page1 pagebeforecreate'); });
+
+			$( document ).on( "pagecreate", "#page2", function(e,u) { console.log(c++,'Page2 pagecreate'); });
+			$( document ).on( "pagebeforecreate", "#page2", function(e,u) { console.log(c++,'Page2 pagebeforecreate'); });
+			
+			$( ':mobile-pagecontainer' )
+				.on( "pagecontainerbeforehide", function(e,u) { console.log(c++,'pagecontainerbeforehide', u); })
+				.on( "pagecontainerbeforechange", function(e,u) { console.log(c++,'pagecontainerbeforechange', u); })
+				.on( "pagecontainerbeforeload", function(e,u) { console.log(c++,'pagecontainerbeforeload', u); })
+				.on( "pagecontainerbeforeshow", function(e,u) { console.log(c++,'pagecontainerbeforeshow', u); })
+				.on( "pagecontainerbeforetransition", function(e,u) { console.log(c++,'pagecontainerbeforetransition', u); })
+				.on( "pagecontainerchange", function(e,u) { console.log(c++,'pagecontainerchange', u); })
+				.on( "pagecontainercreate", function(e,u) { console.log(c++,'pagecontainercreate', u); })
+				.on( "pagecontainerhide", function(e,u) { console.log(c++,'pagecontainerhide', u); })
+				.on( "pagecontainerload", function(e,u) { console.log(c++,'pagecontainerload', u); })
+				.on( "pagecontainershow", function(e,u) { console.log(c++,'pagecontainershow', u); })
+				.on( "pagecontainertransition", function(e,u) { console.log(c++,'pagecontainertransition', u); });
+
+
+		}; // App.init
+
+
+	})(window.App = window.App || {});
+
+	$(document).ready(App.init);
+
+
+	</script>
+</head>
+<body>
+
+		
+<div id="page2" data-role="page">
+
+	<div data-role="header">
+		<a href="#" data-rel="back">Back</a>
+		<h1>Page 2</h1>
+	</div><!-- header -->
+
+	<div role="main" class="ui-content">
+		<h1>Page 2</h1>
+		
+		<ul data-role="listview" data-inset="true">
+			<li><a href="events2.html">Page 1</a></li>
+		</ul>
+
+	</div><!-- main -->
+	
+	<div data-role="footer">
+		<h2>Footer</h2>
+	</div><!-- footer -->
+	
+</div><!-- page -->
+		
+
+
+
+</body>
+<html>

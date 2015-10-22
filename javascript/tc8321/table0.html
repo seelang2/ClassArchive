@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+	
+	table { border-collapse: collapse; }
+	table, th, td { border: 1px solid #7a7a7a; }
+	th, td { padding: 0.5em 1em; }
+	
+	#contacttable {
+		width: 400px;
+		margin: auto;
+	}
+	</style>
+</head>
+<body>
+
+<div id="contacttable">
+	<table>
+		<thead>
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Office Code</th>
+			</tr>
+		</thead>
+		<tbody id="contactitems">
+			<!-- cfm module magic -->
+			<tr><td>John</td><td>Doe</td><td>1G1</td></tr>
+			<tr><td>John</td><td>Doe</td><td>1G1</td></tr>
+			<tr><td>John</td><td>Doe</td><td>1G1</td></tr>
+			<tr><td>John</td><td>Doe</td><td>1G1</td></tr>
+			<tr><td>John</td><td>Doe</td><td>1G1</td></tr>
+			<tr><td>John</td><td>Doe</td><td>1G1</td></tr>
+			<tr><td>John</td><td>Doe</td><td>1G1</td></tr>
+			<tr><td>John</td><td>Doe</td><td>1G1</td></tr>
+			<tr><td>John</td><td>Doe</td><td>1G1</td></tr>
+			<tr><td>John</td><td>Doe</td><td>1G1</td></tr>
+			<tr><td>John</td><td>Doe</td><td>1G1</td></tr>
+			<tr><td>John</td><td>Doe</td><td>1G1</td></tr>
+			<tr><td>John</td><td>Doe</td><td>1G1</td></tr>
+			<tr><td>John</td><td>Doe</td><td>1G1</td></tr>
+			<tr><td>John</td><td>Doe</td><td>1G1</td></tr>
+			<tr><td>John</td><td>Doe</td><td>1G1</td></tr>
+			<tr><td>John</td><td>Doe</td><td>1G1</td></tr>
+			<tr><td>John</td><td>Doe</td><td>1G1</td></tr>
+			<tr><td>John</td><td>Doe</td><td>1G1</td></tr>
+			<tr><td>John</td><td>Doe</td><td>1G1</td></tr>
+		</tbody>
+	</table>
+</div>
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+
+// initalize table structure
+var $tbodyElem = $('#contactitems');
+var $tbodyParent = $tbodyElem.parent(); // get ref to table
+
+// fetch data from server
+
+// clear out and temporarily detach tbody from table
+$tbodyElem
+	.empty()
+	.detach();
+
+// loop through data and update tbody
+$.each(
+	data,
+	function(index, contact) {
+		
+		$('<tr />')
+			.append('<td>' + contact.firstname + '</td>')
+			.append('<td>' + contact.lastname + '</td>')
+			.append('<td>' + contact.code + '</td>')
+			.appendTo($tbodyElem);
+		
+	}
+);
+
+// reattach updated tbody to table
+$tbodyElem.appendTo($tbodyParent);
+
+
+}); // document.ready
+
+
+
+
+</script>
+</body>
+</html>

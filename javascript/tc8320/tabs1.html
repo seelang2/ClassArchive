@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		background: #7a7a7a;
+	}
+	
+	#container {
+		width: 400px;
+		margin: auto;
+		background: #ffffff;
+	}
+	
+	.tab {
+		float: left;
+		width: 25%;
+		box-sizing: border-box;
+		padding: 0.25em 0.5em;
+		border: 1px solid #ccc;
+		border-left: none;
+		background: #dedede;
+	}
+	
+	.tab:first-child {
+		border-left: 1px solid #ccc;
+	}
+	
+	.tab.active {
+		border-bottom: none;
+		background: #ffffff;
+	}
+	
+	.content {
+		clear: both;
+		height: 250px;
+		border: 1px solid #ccc;
+		border-top: none;
+		padding: 0.5em;
+	}
+	</style>
+</head>
+<body>
+
+<div id="container">
+	<div class="tab">Tab 1</div>
+	<div class="tab">Tab 2</div>
+	<div class="tab">Tab 3</div>
+	<div class="tab">Tab 4</div>
+	
+	<div class="content">
+		<h2>Tab 1 Content</h2>
+		<p>Just the content on the tab. Nothing to see here.</p>
+	</div>
+	<div class="content">
+		<h2>Tab 2 Content</h2>
+		<p>Just the content on the tab. Nothing to see here.</p>
+	</div>
+	<div class="content">
+		<h2>Tab 3 Content</h2>
+		<p>Just the content on the tab. Nothing to see here.</p>
+	</div>
+	<div class="content">
+		<h2>Tab 4 Content</h2>
+		<p>Just the content on the tab. Nothing to see here.</p>
+	</div>
+</div><!-- container -->
+
+
+<script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+// get reference to content sections and mark first section visible
+var $contentElems =
+$('.content')
+	.hide()
+	.first()
+	.show()
+	.end();
+
+
+var $tabElems = 	
+$('.tab')
+	.each(function(index, element) {
+		
+		$(element).attr('data-index', index);
+		
+	 })
+	.on('click', function(e) {
+		
+		var index = $(this).attr('data-index');
+		
+		$contentElems
+			.not(':eq('+ index +')')
+			.hide()
+			.end()
+			.eq(index)
+			.show();
+		
+		$tabElems
+			.removeClass('active')
+			.eq(index)
+			.addClass('active');
+	 })
+	.first()
+	.addClass('active')
+	.end();
+	 
+	 
+	 
+
+
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

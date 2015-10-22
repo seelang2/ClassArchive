@@ -1,0 +1,47 @@
+/* tabs.css */
+
+body {
+	font-family: Verdana, Arial, sans-serif;
+	color: #000;
+	background: #ccc;
+}
+
+#wrapper {
+	width: 800px;
+	margin: auto;
+
+}
+
+.tab {
+	display: inline-block;
+	background: #efefef;
+	border: 1px solid #7a7a7a;
+	border-radius: 7px 7px 0 0;
+	position: relative;
+	bottom: -1px;
+	z-index: 10;
+}
+
+.tab.active {
+	background: #fff;
+	border-bottom-color: #fff;
+}
+
+.tab a {
+	text-decoration: none;
+	display: block;
+	padding: 0.5em 1em;
+}
+
+.content {
+	padding: 1px 30px;
+	border: 1px solid #7a7a7a;
+	background: #fff;
+}
+
+/* could be an accessibility issue */
+[data-role="view"] {
+	display: none;
+}
+
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+// most often an empty object is defined and then the members
+// added to the object.
+var Car = {};
+Car.color = '';
+Car.status = 'off';
+Car.startEngine = function() {
+	// 'this' refers to the current object in contextmenu
+	this.status = 'running';
+};
+Car.stopEngine = function() {
+	this.status = 'off';
+};
+
+// or we could use an object literal to define the whole thing at once
+var Car2 = {
+	color: '',
+	status: 'off',
+	startEngine: function() {
+	
+	},
+	stopEngine: function() {
+	
+	}
+};
+
+
+
+
+// create a new object derived from the Car object
+var myCar = Object.create(Car);
+
+
+
+
+</script>
+</body>
+</html>

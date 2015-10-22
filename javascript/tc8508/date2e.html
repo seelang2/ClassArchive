@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+
+
+<script type="text/javascript">
+
+function getOrdinal(num, lang) {
+	
+	if (typeof lang == 'undefined') lang = 'en';
+	//lang = typeof lang == 'undefined' ? 'en' : lang;
+	//lang = lang || 'en'; // not as safe, but can be used
+	
+	var ordinals = {
+		'en': ['st','nd','rd','th'],
+		'gr': ['-proto','-deutero','-trito','-tetarto']
+	};
+	
+	switch(true) {
+		case num % 10 == 1 && num % 100 != 11:
+			return ordinals[lang][0];
+		break;
+		
+		case num % 10 == 2 && num % 100 != 12:
+			return ordinals[lang][1];
+		break;
+		
+		case num % 10 == 3 && num % 100 != 13:
+			return ordinals[lang][2];
+		break;
+		
+		default:
+			return ordinals[lang][3];
+		break;
+	}
+} // getOrdinal
+
+var weekdays = [
+	'Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'
+];
+
+var months = [
+	'January',
+	'February',
+	'March',
+	'April',
+	'May',
+	'June',
+	'July',
+	'August',
+	'September',
+	'October',
+	'November',
+	'December'
+];
+
+
+var today = new Date();
+
+
+document.write('<p>'+ weekdays[today.getDay()] +', '+ 
+				months[today.getMonth()] + ' ' + 
+				today.getDate() + getOrdinal(today.getDate()) + ', ' + 
+				today.getFullYear() + '</p>');
+
+</script>
+</body>
+</html>

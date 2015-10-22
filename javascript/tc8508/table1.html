@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+/*
+// DON'T DO THIS:
+$('<table>')
+	.append('<tbody>')
+	...
+	.append('</table>')
+
+// In Javascript and especially jQuery we work with nodes, NOT html tags
+*/
+
+var $tableElem = $('<table />');
+
+var $tbodyElem = $('<tbody />');
+
+$('<tr />')
+	.append('<th>First Name</th>')
+	.append('<th>Last Name</th>')
+	.append('<th>Score</th>')
+	.appendTo($tbodyElem);
+
+$('<tr />')
+	.append('<td>John</td>')
+	.append('<td>Doe</td>')
+	.append('<td>87</td>')
+	.appendTo($tbodyElem);
+
+$('<tr />')
+	.append('<td>Jane</td>')
+	.append('<td>Smith</td>')
+	.append('<td>92</td>')
+	.appendTo($tbodyElem);
+
+//$tbodyElem.appendTo($tableElem);
+//$tableElem.appendTo('#target');
+
+$tableElem
+	.append($tbodyElem)
+	.appendTo('#target');
+
+
+</script>
+</body>
+</html>

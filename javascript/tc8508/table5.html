@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+	
+	table { border-collapse: collapse; }
+	th, td { 
+		border: 1px solid #7a7a7a; 
+		padding: 0.5em 1em;
+	}
+	
+	.evenrow { background: #BDFBFF; }
+	.oddrow { background: #DEFDFF; }
+	
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+var contactList = 
+[
+	{"firstname":"John","lastname":"Doe","phone":"123-456-7890"},
+	{"firstname":"Jane","lastname":"Doe","phone":"123-456-7890"},
+	{"firstname":"Alex","lastname":"Doe","phone":"123-456-7890"},
+	{"firstname":"Frank","lastname":"Doe","phone":"123-456-7890"},
+	{"firstname":"Alice","lastname":"Doe","phone":"123-456-7890"},
+	{"firstname":"Amy","lastname":"Doe","phone":"123-456-7890"},
+	{"firstname":"Ralph","lastname":"Doe","phone":"123-456-7890"},
+	{"firstname":"Glenn","lastname":"Doe","phone":"123-456-7890"},
+	{"firstname":"Paz","lastname":"Doe","phone":"123-456-7890"}
+];
+
+
+// set up table
+var $tbody =
+$('<table><tbody /></table>')
+	.children('tbody');
+
+// for each contact:
+$.each(contactList, function(index, contact) {
+	$('<tr />')											// create new row
+		.append('<td>' + contact.firstname + '</td>')	// add contact fields to row
+		.append('<td>' + contact.lastname + '</td>')	// add contact fields to row
+		.append('<td>' + contact.phone + '</td>')		// add contact fields to row
+		.appendTo($tbody);								// add row to table
+
+});
+
+$tbody 
+	.children('tr')					// get all TRs 
+		.filter(':odd')				// select EVEN TRs
+			.addClass('evenrow')	// add the evenrow class
+			.end()					// revert back to all TRs
+		.filter(':even')			// select ODD TRs
+			.addClass('oddrow')		// add the oddrow class
+			.end()					// revert back to all TRs
+		.end()						// revert back to TBODY
+	.parent()						// traverse up to TABLE
+	.appendTo('#target');			// attach table to DOM
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

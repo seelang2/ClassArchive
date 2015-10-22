@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		color: #000;
+		background: #b8c0d9;
+	}
+
+	#wrapper {
+		width: 800px;
+		margin: auto;
+		background: #fff;
+		border: 1px solid #102940;
+		box-shadow: 0 5px 15px #333;
+	}
+	
+	#wrapper > header {
+		height: 50px;
+		background: #153959;
+		color: #fff;
+		padding: 1px 1em;
+	}
+	
+	#wrapper > footer {
+		height: 50px;
+		background: #102940;
+		color: #fff;
+		font-size: 90%;
+		padding: 1px 1em;
+	}
+	
+	#maincontent {
+		padding: 1em 30px;
+	}
+	
+	.controls {
+		text-align: right;
+	}
+	
+	.customeritem {
+		margin-bottom: 1em;
+		border: 1px solid #9d9d9d;
+	}
+	
+	.customeritem .itemcontent {
+		padding: 0.5em 2em;
+	
+	}
+	
+	.customeritem .controls {
+		padding: 0.5em 1em;
+	}
+	
+	.customeritem h3 {
+		background: #7686a6;
+		color: #fff;
+		margin: 0;
+		padding: 0.5em 1em;
+		box-shadow: 0px 3px 8px #7a7a7a;
+	}
+	
+	.form label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	
+	.form label span,
+	.form label input {
+		display: inline-block;
+	}
+	
+	.form label span {
+		width: 100px;
+	}
+
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<header>
+		<h2>Customer List</h2>
+	</header>
+	<section id="maincontent">
+		<div id="customeritems">
+		</div>
+		<div class="controls">
+			<button class="btnAdd">Add new customer</button>
+		</div>
+	
+	
+	</section>
+	<footer></footer>
+</div>
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+(function(App) {
+
+var data = {};
+
+App.start = function() {
+	// do other setup stuff
+	data.customerItemsWrapper = $('#customeritems');
+	
+	// set up universal button handler
+	$('#maincontent')
+		.on('click','button, input[type="button"]', App.buttonHandler);
+	
+	App.loadTemplates();
+	
+}; // App.start
+
+App.loadTemplates = function() {
+
+	// set up template loading progress tracker
+	var templateQueue = $.Deferred();
+	templateQueue.flags = 0;
+	templateQueue.finishedValue = 3;
+	
+	templateQueue
+		.progress(function(value) {
+			templateQueue.flags += value;
+			if (templateQueue.flags == templateQueue.finishedValue) {
+				templateQueue.resolve();
+			}
+		 })
+		.done(App.continue);
+	
+	// load templates
+	
+	// template 1
+	$.ajax({
+		url:		'pos-customeritem.tpl.html',
+		type:		'get',
+		dataType:	'html'
+	}).done(function(template) {
+		// store template data 
+		data.customerItemTemplate = $('<div />').append(template);
+		// update progress tracker
+		templateQueue.notify(1);
+	});
+	
+	// load next template
+	$.ajax({
+		url:		'pos-customeritemform.tpl.html',
+		type:		'get',
+		dataType:	'html'
+	}).done(function(template) {
+		data.customerItemFormTemplate = $('<div />').append(template);
+		templateQueue.notify(2);
+	});
+		
+}; // App.loadTemplates
+
+App.continue = function() {
+	// ... and we go on...
+	
+	// get customer data
+	App.getCustomers();
+	
+}; // App.continue
+
+App.buttonHandler = function(e) {
+	
+	var $this = $(this);
+	
+	switch(true) {
+		case $this.hasClass('btnEdit'):
+			// do stuff
+		break;
+		
+		case $this.hasClass('btnAdd'):
+			App.showAddForm();
+		break;
+	
+		case $this.hasClass('btnSave'):
+			App.saveForm($this); // pass button element into function
+		break;
+		
+	}
+	
+	
+}; // App.buttonHandler
+
+App.showAddForm = function() {
+	// display form
+	data.customerItemFormTemplate
+		.children()
+		.clone()
+		.insertAfter(data.customerItemsWrapper);
+	
+}; // App.showAddForm
+
+App.saveForm = function($buttonRef) {
+	
+	var data = 
+	$buttonRef
+		.closest('.form')
+		.find(':input')			// find all data fields
+		.serialize();			// and get it ready to be sent 
+		
+	$.ajax({
+		url:		'/backend/customers',
+		type:		'post',
+		data:		data,
+		dataType:	'json'
+	}).done(function(response) {
+		
+		alert('The data was saved.');
+		
+		// remove the form
+		$buttonRef
+			.closest('.form')
+			.remove();
+		
+		// refresh data
+		App.getCustomers();
+		
+	});
+
+}; // App.saveForm
+
+App.getCustomers = function() {
+	
+	$.ajax({
+		url:		'/backend/customers',
+		type:		'get',
+		dataType:	'json',
+		cache:		false
+	}).done(App.showCustomers);
+}; // App.getCustomers
+
+App.showCustomers = function(customerList) {
+	// empty customer items wrapper
+	data.customerItemsWrapper.empty();
+	
+	// loop through customers
+	$.each(customerList, function(index, customer) {
+		
+		data.customerItemTemplate
+			.children()
+			.clone()
+			.find('[data-fieldname]')
+				.each(function(i, field) {
+					// get the field name
+					var fieldName = $(field).attr('data-fieldname');
+					// replace the contents
+					$(field).html(customer[fieldName]);
+				
+				 })
+				.end()
+			.appendTo(data.customerItemsWrapper);
+	
+	});
+	
+}; // App.showCustomers
+
+
+
+})(window.App = window.App || {});
+
+$(document).ready(App.start);
+
+</script>
+</body>
+</html>

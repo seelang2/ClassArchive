@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+	
+	nav ul {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+	}
+	
+	nav li {
+		position: relative;
+	}
+	
+	nav a {
+		text-decoration: none;
+	}
+	
+	nav a, nav li span {
+		display: block;
+		padding: 0.25em 0.5em;
+		color: #990000;
+	}
+
+	nav li:hover {
+		background: #FFFFCC;
+	}
+	
+	nav.horizontal > ul > li {
+		float: left;
+		border: 1px solid #7a7a7a;
+	}
+	
+	nav.horizontal li ul {
+		border: 1px solid #7a7a7a;
+		position: absolute;
+		width: 170px;
+		left: -1px;
+	}
+	
+	nav.horizontal li ul ul {
+		left: 170px;
+		top: -1px;
+	}
+	
+	nav.horizontal li li {
+		border-top: 1px solid #7a7a7a;
+	}
+	
+	nav.horizontal li li:first-child {
+		border-top: none;
+	}
+	
+	
+	
+	</style>
+</head>
+<body>
+
+<nav class="dropdown horizontal">
+	<ul>
+		<li><a href="#">Menu Item 1</a></li>
+		<li><a href="#">Menu Item 2</a></li>
+		<li>
+			<span>Sub Menu</span>
+			<ul>
+				<li><a href="#">Sub Menu Item 1</a></li>
+				<li><a href="#">Sub Menu Item 2</a></li>
+				<li><a href="#">Sub Menu Item 3</a></li>
+				<li>
+					<span>Sub Sub Menu</span>
+					<ul>
+						<li><a href="#">Sub Menu Item 1</a></li>
+						<li><a href="#">Sub Menu Item 2</a></li>
+						<li><a href="#">Sub Menu Item 3</a></li>
+						<li><a href="#">Sub Menu Item 4</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Sub Menu Item 4</a></li>
+			</ul>
+		</li>
+		<li><a href="#">Menu Item 4</a></li>
+	</ul>
+</nav>
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+$('nav.dropdown li > ul')	// choose all submenus
+	.hide()
+	.parent('li')			// move up to the submenu's parent LI
+	.on('mouseover mouseout touchstart touchend', function(e) {
+		$(this)
+			.children('ul')
+			.toggle();
+	 });
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

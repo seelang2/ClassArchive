@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+function wordify(num) {
+
+	// get words for base ten numerals
+	var places = [
+		[
+			'',
+			'one',
+			'two',
+			'three',
+			'four',
+			'five',
+			'six',
+			'seven',
+			'eight',
+			'nine',
+			'ten',
+			'eleven',
+			'twelve',
+			'thirteen',
+			'fourteen',
+			'fifteen',
+			'sixteen',
+			'seventeen',
+			'eighteen',
+			'nineteen'
+		],
+		[
+			'',
+			'ten',
+			'twenty',
+			'thirty',
+			'forty',
+			'fifty',
+			'sixty',
+			'seventy',
+			'eighty',
+			'ninety'
+		]	
+	];
+
+	var theWord = '';
+	var digit = 0;
+	var c = 0;
+	
+	while (num > 0) {
+		if (c == 0) {
+			var tensones = num % 100;
+			if (tensones > 9 && tensones < 20) {
+				theWord = places[0][tensones];
+				c+=2; // skip the tens place
+				num = Math.floor(num / 100); 
+			} else {
+				digit = num % 10; // get ones place
+				num = Math.floor(num / 10); 
+				theWord = places[0][digit];
+				c++;
+			}
+		} else {
+			digit = num % 10; // get ones place
+			num = Math.floor(num / 10); // shift number one place to right
+			
+			//console.log(c, digit, num);
+			
+			if (c == 1) theWord = places[1][digit] + '-' + theWord;
+			if (c == 2) theWord = places[0][digit] + ' hundred ' + theWord;
+			if (c == 3) theWord = places[0][digit] + ' thousand ' + theWord;
+			if (c == 4) theWord = places[1][digit] + '-' + theWord;
+			if (c == 5) theWord = places[0][digit] + ' hundred ' + theWord;
+			
+			c++;
+			
+		}
+		
+	}
+	
+	return theWord;
+}
+
+
+
+</script>
+</body>
+</html>

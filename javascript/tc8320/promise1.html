@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+
+<script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+
+var x = $.Deferred(); // creates a promise object
+
+x.done(function() {
+	console.log('Done.');
+});
+
+x.fail(function() {
+	console.log('Fail.');
+});
+
+x.always(function() {
+	console.log('Always.');
+});
+
+x.progress(function(message) {
+	console.log('Progress update: ' + message);
+});
+
+
+</script>
+</body>
+</html>

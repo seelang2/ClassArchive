@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		color: #000;
+		background: #b8c0d9;
+	}
+
+	#wrapper {
+		width: 800px;
+		margin: auto;
+		background: #fff;
+		border: 1px solid #102940;
+		box-shadow: 0 5px 15px #333;
+	}
+	
+	#wrapper > header {
+		height: 50px;
+		background: #153959;
+		color: #fff;
+		padding: 1px 1em;
+	}
+	
+	#wrapper > footer {
+		height: 50px;
+		background: #102940;
+		color: #fff;
+		font-size: 90%;
+		padding: 1px 1em;
+	}
+	
+	#maincontent {
+		padding: 1em 30px;
+	}
+	
+	.controls {
+		text-align: right;
+	}
+	
+	.customeritem {
+		margin-bottom: 1em;
+		border: 1px solid #9d9d9d;
+	}
+	
+	.customeritem .itemcontent {
+		padding: 0.5em 2em;
+	
+	}
+	
+	.customeritem .controls {
+		padding: 0.5em 1em;
+	}
+	
+	.customeritem h3 {
+		background: #7686a6;
+		color: #fff;
+		margin: 0;
+		padding: 0.5em 1em;
+		box-shadow: 0px 3px 8px #7a7a7a;
+	}
+	
+	.form label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	
+	.form label span,
+	.form label input {
+		display: inline-block;
+	}
+	
+	.form label span {
+		width: 100px;
+	}
+
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<header>
+		<h2>Customer List</h2>
+	</header>
+	<section id="maincontent">
+		<div id="customeritems">
+		</div>
+		<div class="controls">
+			<button class="btnAdd">Add new customer</button>
+		</div>
+	
+	
+	</section>
+	<footer></footer>
+</div>
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+(function(App) {
+
+var data = {};
+
+App.start = function() {
+	
+	// doesn't work because of asynchronous loading
+	data.customerItemElem = 
+	$('<div />').load('pos-customeritem.tpl.html');
+
+	data.customerItemFormElem = 
+	$('<div />').load('pos-customeritemform.tpl.html');
+
+	// ... continue processing after templates load
+	
+}; // App.start
+
+
+
+})(window.App = window.App || {});
+
+$(document).ready(App.start);
+
+</script>
+</body>
+</html>

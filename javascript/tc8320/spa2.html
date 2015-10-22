@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		background: #7a7a7a;
+	}
+	
+	#container {
+		width: 600px;
+		margin: auto;
+		background: #ffffff;
+	}
+	
+	.tabs {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+	
+	.tabs li {
+		float: left;
+		width: 25%;
+		box-sizing: border-box;
+		border: 1px solid #ccc;
+		border-left: none;
+		background: #dedede;
+	}
+	
+	.tabs li:first-child {
+		border-left: 1px solid #ccc;
+	}
+	
+	.tabs li.active {
+		border-bottom: none;
+		background: #ffffff;
+	}
+	
+	.tabs a {
+		display: block;
+		padding: 0.25em 0.5em;
+		text-decoration: none;
+		color: #900;
+	}
+	
+	.tabs a:hover {
+		background: #FFC;
+	}
+	
+	#content {
+		clear: both;
+		height: 400px;
+		border: 1px solid #ccc;
+		border-top: none;
+		padding: 0.5em;
+	}
+	</style>
+</head>
+<body>
+
+<div id="container">
+	<ul class="tabs">
+		<li data-page="tpl_tab1.html"><a href="#!page1">Tab 1</a></li>
+		<li data-page="tpl_tab2.html"><a href="#!page2">Tab 2</a></li>
+		<li data-page="tpl_tab3.html"><a href="#!page3">Tab 3</a></li>
+		<li data-page="tpl_tab4.html"><a href="#!page4">Tab 4</a></li>
+	</ul>
+	
+	<div id="content"></div>
+</div><!-- container -->
+
+
+<script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+var $contentElem = $('#content');
+
+var $tabs =
+$('.tabs li')
+	.each(function(index, element) {
+		$(element).attr('data-index',index);
+		
+	 })
+	.on('click', function(e) {
+		var index = $(this).attr('data-index');
+		var pagefile = $(this).attr('data-page');
+		
+		// take view for tab and merge any data
+		// then display in content container
+		$contentElem.load(pagefile);
+		
+		$tabs
+			.removeClass('active')
+			.eq(index)
+			.addClass('active');
+	 })
+
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

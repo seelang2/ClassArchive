@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+
+
+<script type="text/javascript">
+
+var weekdays = [
+	'Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'
+];
+
+var months = [
+	'January',
+	'February',
+	'March',
+	'April',
+	'May',
+	'June',
+	'July',
+	'August',
+	'September',
+	'October',
+	'November',
+	'December'
+];
+
+
+var today = new Date();
+
+var day = today.getDate(); // store calendar date in a var
+
+
+switch(true) {
+	case day % 10 == 1 && day % 100 != 11:
+		var ordinal = 'st';
+	break;
+	
+	case day % 10 == 2 && day % 100 != 12:
+		var ordinal = 'nd';
+	break;
+	
+	case day % 10 == 3 && day % 100 != 13:
+		var ordinal = 'rd';
+	break;
+	
+	default:
+		var ordinal = 'th';
+	break;
+}
+
+
+
+document.write('<p>'+ weekdays[today.getDay()] +', '+ 
+				months[today.getMonth()] + ' ' + 
+				today.getDate() + ordinal + ', ' + 
+				today.getFullYear() + '</p>');
+
+</script>
+</body>
+</html>

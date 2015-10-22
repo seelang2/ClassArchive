@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+
+foo();
+
+/*
+All function DECLARATIONS are hoisted to the top
+of whatever scope they're defined in.
+This also means you can't declare functions in blocks
+such as loops, conditional statements, etc.
+*/
+function foo() {
+	console.log('function foo called.');
+	foo2();
+}
+
+// the order of declared functions doesn't matter.
+function foo2() {
+	console.log('function foo2 called.');
+}
+
+
+bar();
+
+/*
+Assignments are NOT hoisted, so they must be assigned
+BEFORE they can be used.
+*/
+var bar = function() {
+	console.log('function bar called.');
+};
+
+
+</script>
+</body>
+</html>

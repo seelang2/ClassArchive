@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<p><a id="link1" href="http://www.google.com">Click Me</a></p>
+
+<p><a id="link2" href="http://www.lipsum.com">Click Me 2</a></p>
+
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+$('#link1').on('click', function(e) {
+
+	//return false; // cancels default action
+	return confirm('Are you sure you want to leave this site?');
+	
+});
+
+$('#link2').on('click', function(e) {
+
+	e.preventDefault(); // prevents default action, period.
+	return true; // still doesn't follow the default action
+	
+});
+
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>
