@@ -1,0 +1,137 @@
+<!DOCTYPE html />
+<html>
+<head>
+	<meta charset="UTF-8" />
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<link 
+		rel="stylesheet" 
+		type="text/css" 
+		href="lib/jquery.mobile-1.4.3.min.css" />
+	
+	<script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+	<script 
+		type="text/javascript" 
+		src="lib/jquery.mobile-1.4.3.min.js"></script>
+
+	<script type="text/javascript" src="waypoint.app.js"></script>
+	
+</head>
+<body>
+
+<!-- HOME -->
+<div id="home" data-role="page">
+
+	<div data-role="header" data-position="fixed">
+		<h1>Home</h1>
+	</div><!-- header -->
+
+	<div role="main" class="ui-content">
+		<a href="#viewlist" class="ui-btn">View Waypoints</a>
+		
+		<a href="#tag" class="ui-btn">Tag Current Location</a>
+
+	</div><!-- main -->
+	
+	<div data-role="footer" data-position="fixed">
+		<h2>Footer</h2>
+	</div><!-- footer -->
+	
+</div><!-- page -->
+		
+<!-- TAG -->
+<div id="tag" data-role="page">
+
+	<div data-role="header" data-position="fixed">
+		<h1>Tag Location</h1>
+	</div><!-- header -->
+
+	<div role="main" class="ui-content">
+		
+		<h1>New Location</h1>
+		
+		<form id="tagform" action="#" method="post">
+			<input type="hidden" id="timestamp" name="timestamp" value="" />
+			
+			<div class="ui-field-contain">
+				<label for="name">Name:</label>
+				<input type="text" id="name" name="name" value="" />
+			</div>
+		
+			<div class="ui-field-contain">
+				<label for="latitude">Latitude:</label>
+				<input data-inline="true" type="text" id="latitude" name="latitude" value="" readonly />
+			</div>
+			
+			<div class="ui-field-contain">
+				<label for="longitude">Longitude:</label>
+				<input type="text" id="longitude" name="longitude" value="" readonly />
+			</div>
+		
+			<div class="ui-field-contain">
+				<label for="accuracy">Accuracy:</label>
+				<input type="text" id="accuracy" name="accuracy" value="" readonly />
+			</div>
+		
+			<div class="ui-field-contain">
+				<label for="note">Notes:</label>
+				<textarea id="note" name="note"></textarea>
+			</div>
+		
+		</form>
+
+	</div><!-- main -->
+	
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a id="savetag" href="#" data-icon="check">Done</a></li>
+				<li><a id="canceltag" href="#" data-icon="back" data-rel="back">Back</a></li>
+			</ul>
+		</div>
+	</div><!-- footer -->
+	
+</div><!-- page -->
+
+<!-- VIEWLIST -->
+<div id="viewlist" data-role="page">
+
+	<div data-role="header" data-position="fixed">
+		<h1>View Waypoints</h1>
+	</div><!-- header -->
+
+	<div role="main" class="ui-content">
+
+
+	</div><!-- main -->
+	
+	<div data-role="footer" data-position="fixed">
+		<h2>Footer</h2>
+	</div><!-- footer -->
+	
+</div><!-- page -->
+		
+<!-- VIEWITEM -->
+<div id="viewitem" data-role="page">
+
+	<div data-role="header" data-position="fixed">
+		<h1>View Waypoint</h1>
+	</div><!-- header -->
+
+	<div role="main" class="ui-content">
+
+		<p>?</p>
+
+	</div><!-- main -->
+	
+	<div data-role="footer" data-position="fixed">
+		<h2>Footer</h2>
+	</div><!-- footer -->
+	
+</div><!-- page -->
+		
+
+
+</body>
+<html>

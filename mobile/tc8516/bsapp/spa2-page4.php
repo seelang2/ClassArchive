@@ -1,0 +1,13 @@
+<?php
+// set CORS header to allow all access
+header('Access-Control-Allow-Origin: *');
+?>
+		<div id="page4" data-role="view">
+			<h2>Page 4</h2>
+			<p>
+			Donec ac augue mattis, sollicitudin odio non, euismod augue. Donec condimentum tortor vel felis aliquet tempus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent consectetur erat quis ipsum ullamcorper, a faucibus dolor imperdiet. Nunc nec eros quam. Integer rhoncus enim et nisi accumsan viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras bibendum est sed orci pellentesque, eget egestas odio porttitor. Mauris vitae est volutpat, volutpat mi eu, efficitur ante.
+			</p>
+			<p>
+			Fusce sollicitudin quam vitae vulputate accumsan. Pellentesque a tortor non nisl viverra pellentesque at vel odio. Vestibulum maximus ex sit amet lacus auctor, non interdum ipsum euismod. Fusce condimentum sapien at quam pretium bibendum. Aenean erat eros, venenatis sed ligula non, laoreet efficitur libero. Sed varius quis erat ut egestas. Etiam eget tempor dui, vitae accumsan est. Aenean luctus dapibus sodales. Donec ut urna vel orci facilisis venenatis. Pellentesque at pretium ipsum. In pretium odio eget magna ultrices, vel luctus enim scelerisque. Vivamus mattis est non metus sodales, quis gravida enim bibendum. Integer ullamcorper placerat massa, sit amet mollis arcu ultrices vitae.
+			</p>
+		</div>

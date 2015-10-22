@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<ul id="list1">
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+</ul>
+
+<ul id="list2">
+	<li id="item-1">Item</li>
+	<li id="item-2">Item</li>
+	<li id="item-3">Item</li>
+	<li id="item-4">Item</li>
+	<li id="item-5">Item</li>
+	<li id="item-6">Item</li>
+	<li id="item-7">Item</li>
+</ul>
+
+
+<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+$('#list1 li')
+	.addClass('listitem')
+	.attr('id','item1');
+
+console.log( $('#list2 li').attr('id') );
+
+
+
+</script>
+</body>
+</html>

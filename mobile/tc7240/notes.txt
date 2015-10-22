@@ -1,0 +1,126 @@
+Notes
+
+http://www.andygup.net/how-accurate-is-html5-geolocation-really-part-2-mobile-web/
+http://www.w3.org/TR/geolocation-API/#position-options
+http://www.w3schools.com/html/html5_webstorage.asp
+http://www.w3.org/TR/webstorage/
+http://domenic.me/2012/10/14/youre-missing-the-point-of-promises/
+https://github.com/Monglo/MongloDB
+http://stackoverflow.com/questions/9009487/jquery-mobile-detect-which-row-was-clicked-in-a-listview
+http://api.jquerymobile.com/pagecontainer/#event-beforechange
+http://api.jquerymobile.com/category/events/
+
+
+http://api.jquerymobile.com/enhanceWithin/
+
+
+http://bradbroulik.blogspot.com.br/2011/12/jquery-mobile-events-diagram.html
+
+
+http://stackoverflow.com/questions/10403138/what-is-the-purpose-of-the-role-attribute-in-html
+
+
+
+https://build.phonegap.com/apps/1038198/builds
+
+
+
+
+Multipage layout page navigation event flow
+-------------------------------------------
+Load events1.html
+App.init events1.html:25
+
+Click link in #page1 to #page2
+1 "pagecontainerbeforechange" "prevPage: #page1" "toPage: #undefined" events1.html:46
+2 "Page2 pagebeforecreate" events1.html:42
+3 "Page2 pagecreate" events1.html:41
+4 "pagecontainerbeforechange" "prevPage: #page1" "toPage: #page2" events1.html:46
+5 "pagecontainerbeforetransition" "prevPage: #page1" "toPage: #page2" events1.html:49
+6 "pagecontainerbeforehide" "prevPage: #page1" "toPage: #page2" events1.html:45
+7 "pagecontainerbeforeshow" "prevPage: #page1" "toPage: #page2" events1.html:48
+8 "pagecontainerhide" "prevPage: #page1" "toPage: #page2" events1.html:52
+9 "pagecontainershow" "prevPage: #page1" "toPage: #page2" events1.html:54
+10 "pagecontainertransition" "prevPage: #page1" "toPage: #page2" events1.html:55
+11 "pagecontainerchange" "prevPage: #page1" "toPage: #page2" events1.html:50
+
+Click link in #page2 back to #page1
+12 "pagecontainerbeforechange" "prevPage: #page2" "toPage: #undefined" events1.html:46
+13 "pagecontainerbeforechange" "prevPage: #page2" "toPage: #page1" events1.html:46
+14 "pagecontainerbeforetransition" "prevPage: #page2" "toPage: #page1" events1.html:49
+15 "pagecontainerbeforehide" "prevPage: #page2" "toPage: #page1" events1.html:45
+16 "pagecontainerbeforeshow" "prevPage: #page2" "toPage: #page1" events1.html:48
+17 "pagecontainerhide" "prevPage: #page2" "toPage: #page1" events1.html:52
+18 "pagecontainershow" "prevPage: #page2" "toPage: #page1" events1.html:54
+19 "pagecontainertransition" "prevPage: #page2" "toPage: #page1" events1.html:55
+20 "pagecontainerchange" "prevPage: #page2" "toPage: #page1" events1.html:50
+
+Click link in #page1 to #page2 second time
+21 "pagecontainerbeforechange" "prevPage: #page1" "toPage: #undefined" events1.html:46
+22 "pagecontainerbeforechange" "prevPage: #page1" "toPage: #page2" events1.html:46
+23 "pagecontainerbeforetransition" "prevPage: #page1" "toPage: #page2" events1.html:49
+24 "pagecontainerbeforehide" "prevPage: #page1" "toPage: #page2" events1.html:45
+25 "pagecontainerbeforeshow" "prevPage: #page1" "toPage: #page2" events1.html:48
+26 "pagecontainerhide" "prevPage: #page1" "toPage: #page2" events1.html:52
+27 "pagecontainershow" "prevPage: #page1" "toPage: #page2" events1.html:54
+28 "pagecontainertransition" "prevPage: #page1" "toPage: #page2" events1.html:55
+29 "pagecontainerchange" "prevPage: #page1" "toPage: #page2" events1.html:50
+
+Notes:
+Page1 pagebeforecreate and pagecreate never fire
+Page2 pagebeforecreate and pagecreate only fire once
+
+Single page layout page navigation event flow
+---------------------------------------------
+Load events2.html
+running script in events2.html events2.html:19
+App.init events2.html:26
+
+Click link in events2.html to events2a.html
+1 "pagecontainerbeforechange" "prevPage: #page1" "toPage: #undefined" events2.html:47
+2 "pagecontainerbeforeload" "prevPage: #page1" "toPage: #undefined" events2.html:48
+3 "pagecontainerload" events2.html:54
+4 "Page2 pagebeforecreate" events2.html:43
+5 "Page2 pagecreate" events2.html:42
+6 "pagecontainerbeforechange" "prevPage: #page1" "toPage: #page2" events2.html:47
+7 "pagecontainerbeforetransition" "prevPage: #page1" "toPage: #page2" events2.html:50
+8 "pagecontainerbeforehide" "prevPage: #page1" "toPage: #page2" events2.html:46
+9 "pagecontainerbeforeshow" "prevPage: #page1" "toPage: #page2" events2.html:49
+10 "pagecontainerhide" "prevPage: #page1" "toPage: #page2" events2.html:53
+11 "pagecontainershow" "prevPage: #page1" "toPage: #page2" events2.html:55
+12 "pagecontainertransition" "prevPage: #page1" "toPage: #page2" events2.html:56
+13 "pagecontainerchange" "prevPage: #page1" "toPage: #page2" events2.html:51
+
+Click link in events2a.html to events2.html
+14 "pagecontainerbeforechange" "prevPage: #page2" "toPage: #undefined" events2.html:47
+15 "pagecontainerbeforechange" "prevPage: #page2" "toPage: #page1" events2.html:47
+16 "pagecontainerbeforetransition" "prevPage: #page2" "toPage: #page1" events2.html:50
+17 "pagecontainerbeforehide" "prevPage: #page2" "toPage: #page1" events2.html:46
+18 "pagecontainerbeforeshow" "prevPage: #page2" "toPage: #page1" events2.html:49
+19 "pagecontainerhide" "prevPage: #page2" "toPage: #page1" events2.html:53
+20 "pagecontainershow" "prevPage: #page2" "toPage: #page1" events2.html:56
+21 "pagecontainertransition" "prevPage: #page2" "toPage: #page1" events2.html:57
+22 "pagecontainerchange" "prevPage: #page2" "toPage: #page1" events2.html:51
+
+Click link in events2.html to events2a.html a second time
+23 "pagecontainerbeforechange" "prevPage: #page1" "toPage: #undefined" events2.html:47
+24 "pagecontainerbeforeload" "prevPage: #page1" "toPage: #undefined" events2.html:48
+25 "pagecontainerload" events2.html:54
+26 "Page2 pagebeforecreate" events2.html:43
+27 "Page2 pagecreate" events2.html:42
+28 "pagecontainerbeforechange" "prevPage: #page1" "toPage: #page2" events2.html:47
+29 "pagecontainerbeforetransition" "prevPage: #page1" "toPage: #page2" events2.html:50
+30 "pagecontainerbeforehide" "prevPage: #page1" "toPage: #page2" events2.html:46
+31 "pagecontainerbeforeshow" "prevPage: #page1" "toPage: #page2" events2.html:49
+32 "pagecontainerhide" "prevPage: #page1" "toPage: #page2" events2.html:53
+33 "pagecontainershow" "prevPage: #page1" "toPage: #page2" events2.html:56
+34 "pagecontainertransition" "prevPage: #page1" "toPage: #page2" events2.html:57
+35 "pagecontainerchange" "prevPage: #page1" "toPage: #page2" events2.html:51
+
+Notes
+pagecontainerload fires at ajax load
+DOM is pruned of previous page
+
+
+
+

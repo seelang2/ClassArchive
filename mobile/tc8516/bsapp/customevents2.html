@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<script src="jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+/*
+data can be passed into an event handler either at binding (accessible via
+event.data) or when triggered manually.
+*/
+$(document).on('customevent', {msg:'data passed at binding'}, function(e, data) {
+
+	console.log(e.data, data);
+
+});
+
+/*
+when the event is triggered, the data passed (after the event name) will be
+passed into the event handler parameters following the event object
+*/
+$(document).trigger('customevent', 'thisspaceforrent');
+
+
+</script>
+</body>
+</html>

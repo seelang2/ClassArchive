@@ -1,0 +1,413 @@
+http://web.archive.org/web/20050521030247/http://www.jvmultimedia.com/
+Power Tips For PHP (1)
+Added: 04/02/2003 
+
+Introduction
+
+To me, at least, Turkeys come across as a rather stupid looking type of animal. I’ll never forget the time my father took me to buy a Christmas Turkey. It was in Ireland when I was about fourteen. He took me to a huge barn in Straffan (just outside Dublin) that for all intents and purposes resembled a giant aircraft hanger (albeit with stinky hazy air).
+
+To this day I remember the ghoulish spectre very clearly in my minds eye. There were turkeys as far as I could see. Running around in the mud. Making silly gobbling noises. Waiting for people like us to stroll in and point at them so they could get the chop... 
+
+Never Breaking Out of PHP
+
+Hmm. What other useful tips can I think of for you?
+
+Lets see…. Ah. I know…. Don’t break out of PHP tags at any point (period). This is a practise I carry out religiously and here’s why:
+
+Oh how awful:
+
+      <?php $php_tags = “PHP Tags” ?>
+      Combining HTML output and
+      <?php echo $php_tags; ?>
+      tags really wastes my time. 
+
+Oh what beauty:
+
+      <?php
+            $php_tags = “PHP Tags”;
+            echo “Never breaking out of $php_tags is much less irritating.”; ?> 
+
+You should probably know... the advice I have just given is highly controversial. There are programmers out there reading this who are foaming at the mouth, jumping up and down, stomping on the ground and yelling ‘that’s not right!’.
+
+That’s because PHP takes slightly longer to execute when working this way, but when I say ‘slightly’ I do mean ‘slightly’. We’re talking milliseconds. Even with complex scripts. A user on a 56k modem or even a T1 on the other side of the world will not notice the extra execution time when data transfer is taken into consideration. Yet there are ‘many’ benefits to working this way, some of which I will outline within this article.
+
+If the truth be known every PHP site that I have ever written (including many that are highly complex and generate millions of hits) have been created using this style of coding. The bottleneck (if there has ever been one) has always been the ‘database server’ never the PHP. So lets not start a flame war over this. Please recognize that this is my opinion and all are free to take or leave it as they wish.
+
+Now that I have that out of the way let us continue.
+
+Working this way can bring up other (more technical) issues. Like what do you do when you want to output big blocks of HTML without having to put a \ behind all the “’s? Here’s how:
+
+      <?php
+
+            $turkeys = “variables”;
+
+            print <<<END
+                  It is nice to know that “you” can print any amount of text on
+                  <font color=”red”>multiple</font> lines with <b>any</b>
+                  character and still include $turkeys. END;
+
+      ?> 
+
+By the way, within this article I will be jumping from one way of doing things to another. Usually I will show you what I consider to be the most understandable (not necessarily the best) way of doing something and then refine it into code that is more elegant (yet not so easy to understand). It might take two or three steps to get from understandable to elegant, but you can rest assured that each step will help to broaden your understanding of PHP and PHP techniques (unless you’re a Turkey).
+
+Basic Template Theory
+
+Back to the above print statement (print <<<END etc.). As a beginning PHP programmer this type of print statement can be used to build simple template driven websites very quickly. Here is a simple template using this concept:
+
+      <?php
+
+            // N.B. This file is stored as ‘templates/simple_template.php’
+
+            print <<<END
+                  <html>
+                        <head>
+                              <title>Simple Template</title> </head> 
+                        <body>
+                              $gBODY </body> </html> END;
+
+      ?> 
+
+Now let's output “Turkey Love” using our new simple_template.php:
+
+      <?php
+            $gBODY = “Turkey Love”;
+            include_once “templates/simple_template.php”; ?> 
+
+This can be improved greatly upon by the use of two simple functions:
+
+      <?php
+
+            // N.B. This file is stored as ‘functions/global.php’
+
+            // =========================================
+            // Function 1 - Used to append something to a global variable
+
+            function out( $str , $var_name = “gBODY”)
+            {
+                  // Make this global variable available to this function
+                  global ${$var_name}; // <-- This is a variable variable
+
+                  // Add the input of string to the global variable gBODY
+                  // (or any other specified global variable)
+                  ${$var_name} .= $str; }
+
+
+            // =========================================
+            // Function 2 - Used to select a template.
+
+            function use_template ($template_name)
+            {
+                  if ( is_file(“templates/$template_name.php”))
+                  {
+                        include_once “templates/$template_name.php”; }
+                  else
+                  {
+                        echo “The template $template_name was not found!”; } } ?> 
+
+Then if we place the above functions in a global function file, the whole thing looks much more elegant indeed.
+
+      <?php
+            include_once “functions/global.php”;
+
+            out(“Turkey Love”);
+
+            use_template(“simple_template”); ?> 
+
+Using this method it is easy to see how we can create any number of templates and store them within the template directory. Let's have a look at this concept using a slightly more complicated template:
+
+      <?php
+
+            // N.B. This file is stored as ‘templates/complex_template.php’
+
+            print <<<END
+                  <html>
+                        <head>
+                              <title>$gTITLE</title> </head> 
+                        <body>
+                              <table width=100%>
+                                    <tr>
+                                          <td width=100>
+                                                $gLEFT_MENU </td> 
+                                          <td>
+                                                $gBODY </td> </tr> </table> </body> </html> END; ?> 
+
+Lets quickly define some global constants in functions/global.php (this will make sense in a minute).
+
+      <?php
+            // functions/global.php
+            define(“TITLE”,”gTITLE”);
+            define(“MENU”,”gLEFT_MENU”);
+            define(“BODY”,”gBODY”);
+            // etc..
+      ?> 
+
+Then to use complex_template.php, the script might look something like this:
+
+      <?php
+
+            include_once “functions/global.php”;
+
+            out(“Page Title”,TITLE);
+            out(“My Menu”,MENU);
+            out(“Hello World”,BODY);
+
+            use_template(“complex_template”);
+
+      ?> 
+
+If this doesn’t make sense to you go back to the function out(). You can see that any input to out() is written to a global variable (specified as a string in the second parameter of the function out()). Hopefully this makes it clear why I created constants using the define function. Essentially because I’m lazy and when I type:
+
+      out(“My Menu”,MENU); 
+
+It is really the same as typing (with less effort [and more readable] than):
+
+      out(“My Menu”,”gLEFT_MENU”); 
+
+Refining the Previous
+
+What I have shown so far is the concept of using templates in the most basic form. There are, however, some further refinements that can be made. Let's take another look at the simple template used previously:
+
+      <?php
+            print <<<END
+                  <html>
+                        <head>
+                              <title>Simple Template</title>
+                        </head>
+                        <body>
+                              $gBODY
+                        </body>
+                  </html>
+            END;
+      ?> 
+
+This can work quite well when you are starting out in PHP and if you are a loan developer… but when you start building websites with other people, designers etc., some of whom have no idea how to code PHP it makes sense to abstract this out even further. The ideal solution would be if the above template looked like this:
+
+      <html>
+            <head>
+                  <title>Simple Template</title> </head> 
+            <body>
+                  $gBODY </body> </html> 
+
+In other words… a bog standard HTML file that you can put PHP variables in.
+
+Ok rewind. Let’s just get back to the reason why this is a good practice. What are we trying to accomplish with all this? Why is it good to never break out of PHP tags and use templates?
+
+What we are trying to do is to separate HTML from PHP programming logic. This means that:
+
+When you create your site you can put all of your HTML in one place and all your PHP in another.It means that 2 years down the line when someone says to you the font is the wrong colour in the shopping basket screen (and please can you change it). You don’t have to wade through line after line of HTML embedded in print statements in order to find the part to change. You can simply open up the file templates/shopping_basket.htm (or better still you can get the designer to open it up). It means that when you work with designers they don’t have to rely on you to make cosmetic tweaks and changes. Now that we have re-capped the reasons why all this is useful, lets have a look at a more complex function that will allow us to make use of standard HTML templates with embedded PHP variables (and no PHP tags or print statements).
+
+      <?php
+
+            // This function is stored in functions/global.php
+
+            function get_template($the_template)
+            {
+                  // Make sure that all global variables are available to this functions..
+                  foreach ( $GLOBALS as $key => $val )
+                  {
+                        global ${$key};
+                  }
+
+                  // Make sure the template exists..
+                  if ( is_file("templates/$the_template.htm") )
+                  {
+
+                        // Load the template into memory (inc. older versions of PHP)
+                        foreach( file("templates/$the_template.htm") as $line )
+                        {
+                              $content .= $line;
+                        }
+
+                        // Convert all the php variables to their dynamic values..
+                        eval("\$str = \"" . str_replace("\"","\\\"",$content) . "\";");
+
+                        // Return the merged template from this function..
+                        return $str;
+                  }
+                  else
+                  {
+                        echo "Could not find template: $the_template";
+                  }
+            }
+
+      ?> 
+
+Even though this new function looks quite complicated it is no harder to use than the previous function use_template(); The key difference is that instead of outputting the template contents to the browser it uses the function’s return operator. This gives us the choice of re-assigning the merged template contents, or outputting them to the browser. Here is an example of how useful this is:
+
+Firstly lets create two templates:
+
+1) Simple Table Template (simple_table.htm)
+
+      <table>
+            <tr>
+                  <td>
+                        $dynamic_text </td> </tr> </table> 
+
+2) Simple Main Page Template (simple_template.htm)
+
+      <html>
+            <head>
+                  <title>Simple Template</title> </head>
+            <body>
+                  $gBODY </body> </html> 
+
+Then using a separate PHP script we can output these templates using injected dynamic values:
+
+      <?php
+
+            // Include our growing function library..
+            include_once “global/functions.php”;
+
+            // Assign some dynamic text within PHP..
+            $dynamic_text = “I Have Loved Turkeys”;
+
+            // Inject this text into the simple table template..
+            $merged_table = get_template(“simple_table”);
+
+            // Add the merged table to the main body..
+            $gBODY = $merged_table;
+
+            // Inject the main body variable into the main template..
+            $complete_page = get_template(“simple_template”);
+
+            // Output complete page to the browser..
+            echo $complete_page;
+
+      ?> 
+
+In truth, the above example makes a meal of the task at hand. You can actually do the same thing with much less code (using our global function library). Here’s how:
+
+      <?php
+
+            include_once “global/functions.php”;
+
+            $dynamic_text = “Hello Turkey!”;
+
+            // Inject text into table template and assign to var. gBODY..
+            out(get_template(“simple_table”));
+
+            // Inject gBODY into main template and output everything..
+            echo get_template(“simple_template”);
+
+      ?> 
+
+If you find yourself confused at this point just go back over this article from the beginning up until this point (you can skip the turkey intro). Make sure you trace through the logic step by step. It may take one or two passes but in the end it will all make sense.
+
+Accessing Other Variables from Within this Type of Template
+
+Of course not all PHP variables come in the form of $basic_var. So how can we access more complex variables such as associative arrays, objects, cookies and variables submitted by forms within our templates? Here’s how:
+
+Variables posted via a forms
+
+Simply wrap the standard variable access syntax within {}’s like so:
+
+      <html>
+            <head>
+                  <title>Simple Template</title> 
+            </head>
+            <body>
+                  {$_POST[‘var_from_form’]} </body> </html> 
+
+This works for associative arrays as well...actually this works anywhere in PHP. For example instead of this:
+
+      <?php
+            $turkey_speach = “Hello “ . $_POST[‘turkey_name’] . ” how are you?”;
+            echo $turkey_speach; ?> 
+
+You can do this and save yourself breaking the “’s: <?php $turkey_speach = “Hello {$_POST[‘turkey_name’]} how are you?”; echo $turkey_speach; ?> It also works here:
+
+      <?php
+
+            $turkey = array (“lover”=>”me”,”in_person” =>”dustin”);
+
+            print “Page by {$turkey[‘lover’]}<p>”;
+
+            print <<<END
+                  Hello {$turkey[‘in_person’]} how are you?<br>
+                  “OK?”
+            END; 
+      ?> 
+
+Object syntax works too:
+
+      <html>
+            <head>
+                  <title>Simple Template</title> </head>
+            <body>
+                  $object_name->var_name </body> </html> 
+
+You can also use object syntax within PHP print statements (and while assigning variables). I prefer using objects to arrays for this type of thing and often create objects on the fly to use in templates and dynamic output. Here’s how:
+
+      <?php
+
+            // Create an object on the fly..
+            $output->{‘my_turkey’} = “Gobble”;
+            $output ->{‘my_dog’} = “Rex”;
+
+            $turkey_buffer = “Page by: $output->my_turkey:<p>”;
+
+            echo $turkey_buffer;
+
+            print <<<END
+                  Hello $output->my_dog how are you?<br>
+                  “OK?”
+            END;
+
+      ?> 
+
+Using Objects to Store Multiple Output Values
+
+Another reason why this is useful is that it files your output variables into one (or a few) objects. It also means that in our function get_template() we can get rid of this:
+
+      <?php
+
+            // etc.
+
+            // Make sure that all global variables are available to this functions..
+            foreach ( $GLOBALS as $key => $val )
+            {
+                  global ${$key}; }
+
+            // etc. 
+      ?> 
+
+...which, in truth, is a little costly and replace it with this:
+
+      <?php
+
+            // etc.
+
+            // We only need to make the object $output global to this function..
+            global $output;
+
+            // etc.
+
+      ?> 
+
+Going back to our table template. It would look like this:
+
+      <table>
+            <tr>
+                  <td>
+                        $output->dynamic_text </td> </tr> </table> 
+
+Of course, you don’t have to write your own template system if you don’t want to. I just happen to be a control freak who likes to know the structure of all the code I use. There are plenty of pre-built template systems out there that can save you hours of coding (e.g. Smarty). Even so, the principle is still the same:
+
+Don’t break out of PHP tags. Abstract HTML content from programming logic.
+
+Conclusion
+
+During the course of this article, amongst other things, we have explored why it is important to abstract programming logic from layout and display. Here are the main tips broken down into bullet points:
+
+    * Try not to combine PHP logic and static HTML in the same place.
+    * Take note of how useful the print <<<END statement is
+    * Put your static HTML into PHP templates to make it very easy to merge dynamic variables into it
+    * Gather dynamic variables (at the beginning of your script) and then inject them into templates (at the end of your script)
+    * Make your own function such as out() and use_template() to help you
+    * Use define() to make short cut aliases for use with functions like out()
+    * Structure your code into directories such as functions and templates
+    * Refine a function like use_template() into something more useful like get_template()
+    * Use a single global object such as $output to store your dynamic output into 
+
+Anyway, thanks for your time and perhaps I’ll see you in the next instalment of Power Tips for PHP. In the mean time I’m off to think about Turkeys...
+

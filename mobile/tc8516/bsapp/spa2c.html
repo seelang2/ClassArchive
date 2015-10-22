@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	
+	<style type="text/css">	
+	</style>
+</head>
+<body>
+
+<div id="wrapper" class="container">
+	<header id="masthead"></header>
+	
+	<nav class="navbar">
+		<ul class="nav navbar-nav">
+			<li><a href="#!page1">Page 1</a></li>
+			<li><a href="#!page2">Page 2</a></li>
+			<li><a href="#!page3">Page 3</a></li>
+			<li><a href="#!page4">Page 4</a></li>
+		</ul>
+	</nav>
+	
+	<div id="innerwrapper"></div>
+	
+	<footer id="pagefooter"></footer>
+
+</div>
+
+<script src="jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+// use an IIFE to create namespace
+(function(App) {
+
+var data = {}; // cheap and easy data registry
+data.defaultPage = 'page1';
+data.innerWrapper = $('#innerwrapper');
+data.baseURI = 'http://192.168.1.84/tc8516/bsapp/'; // don't forget trailing slash
+data.viewPrefix = 'spa2-';
+
+App.start = function() {
+
+	data.views = $('[data-role="view"]');
+
+	// show default page
+	App.getView(data.defaultPage);
+
+	// add default page hashbang to URI
+	history.pushState({}, '', '#!' + data.defaultPage)
+	
+	$(window).on('popstate', function(e) {
+		//console.log(e.state, history.state, location.hash);
+		
+		// prevent us from erroring out when the hash is empty
+		if (location.hash.length == 0) {
+			// add default page hashbang to URI
+			history.pushState({}, '', '#!' + data.defaultPage)
+			var viewName = data.defaultPage;
+		}
+		
+		// extract new page from location hash
+		var viewName = location.hash.replace('#!','');
+		
+		App.getView(viewName);
+		
+	});
+	
+	
+}; // App.start
+
+App.getView = function(viewName) {
+	// instead of getting the file directly we call a retrieval helper on the
+	// server that manages CORS for us
+	data.innerWrapper
+		.load(data.baseURI + 'spa2-getpage.php?file=' + data.viewPrefix + viewName);
+	
+
+}; // App.getView
+
+})( window.App = window.App || {} );
+
+// launch App.start on DOM ready
+$(document).ready(App.start);
+
+</script>
+</body>
+</html>

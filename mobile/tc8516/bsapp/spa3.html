@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	
+	<style type="text/css">
+	
+	[data-role="view"] { display: none; }
+	
+	</style>
+</head>
+<body>
+
+<div id="wrapper" class="container">
+	
+	<nav class="navbar navbar-inverse">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			</button>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="#!home">Page 1</a></li>
+				<li><a href="#!viewcust">Page 2</a></li>
+				<li><a href="#!page3">Page 3</a></li>
+				<li><a href="#!page4">Page 4</a></li>
+			</ul>
+		</div>
+	</nav>
+	
+	<header id="masthead"></header>
+	
+	<div id="innerwrapper" data-role="viewwrapper">
+		<div id="home" class="defaultpage" data-role="view">
+			<h2>Dashboard</h2>
+			<div class="text-center">
+			<p><a href="#!viewcust" class="btn btn-primary btn-lg">View Customers</a></p>
+			</div>
+		</div>
+		
+		<div id="viewcust" class="" data-role="view">
+			<h2>Customer List</h2>
+		</div>
+		
+		<div id="page3" class="" data-role="view">
+			<h2>Page 3</h2>
+		</div>
+		<div id="page4" class="" data-role="view">
+			<h2>Page 4</h2>
+		</div>
+	</div>
+	
+	<footer id="pagefooter"></footer>
+
+</div>
+
+
+
+<script src="jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="appstart.js"></script>
+<script src="registry.js"></script>
+<script src="viewmanager.js"></script>
+<script type="text/javascript">
+// IIFE module namespace
+(function(App) {
+
+// continue App initialization
+App.continue = function() {
+
+console.log('app init continues...');
+
+$(App)
+	.on('viewchange', function(e, params) {
+		
+		console.log('viewchange event called for',params.viewName);
+		
+		// do stuff depending on what view is being called
+		switch(params.viewName) {
+			case 'viewcust':
+				App.getCustomers(params.view);
+			break;
+		}
+	 });
+
+}; // App.continue
+
+App.getCustomers = function(view) {
+	// stop the view manager from attaching the view
+	// to the DOM
+	App.preventViewRender(); 
+	
+	// do ajax call to retrieve customer data
+	$.ajax({
+		url: 		'http://192.168.1.84/tc8516/backend/customers',
+		type:		'get',
+		dataType:	'json',
+		//async:		false,
+		cache:		false
+	}).done(function(data) {
+		App.updateCustomerView(data, view);
+		// manually render the view after updating it
+		App.renderView('viewcust');
+	});
+	
+}; // App.getCustomers
+
+App.updateCustomerView = function(data, view) {
+	
+	console.log('view',view);
+	
+	$('<ul />')
+		.each(function(i, ul) {
+			
+			$.each(data.customers, function(r, customer) {
+			
+				$('<li>' + 
+					customer.firstname + ' ' +
+					customer.lastname + '</li>')
+					.appendTo(ul);
+				
+			});
+			
+			
+		 })
+		.appendTo(view);
+	
+}; // App.updateCustomerView
+
+
+$(App).on('app.start', App.continue);
+
+})(window.App = window.App || {});
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+body {
+	font-size: 76%;
+	font-family:Geneva, Arial, Helvetica, sans-serif;
+	background: #7a7a7a;
+	margin: 0;
+	padding: 0;
+	text-align:center;
+}
+
+#wrapper {
+	width: 700px;
+	margin: 20px auto;
+	text-align:left;
+	background: #ffffff;
+}
+
+#header {
+	height: 75px;
+	background: #000099;
+	color: #ffffff;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+}
+
+#footer {
+	height: 35px;
+	background: #000099;
+	color: #ffffff;
+	overflow: hidden;
+	text-align: center;
+	padding: 10px auto;
+	margin: 0;
+}
+
+#content {
+	margin: 0;
+	padding: 0 20px;;
+	background: #ffffff;
+
+}
+
+.clearing { 
+	clear:both; 
+	height: 1px;
+	overflow: hidden;
+}
+
+/* menu styleing */
+#menu {
+	margin: 0;
+	padding: 0;
+	background: #000099;
+	border: 1px solid #000099;	
+	color: #ffffff;
+	overflow: hidden;
+}
+
+#menu ul {
+	list-style-type: none;
+	float: right;
+	padding: 0;
+	margin: 0;
+}
+
+#menu ul li {
+	float: left;
+	padding: 0;
+	margin: 0;
+}
+
+#menu a {
+	text-decoration: none;
+	font-weight: bold;
+	color: #ffffff;
+	width: 100%;
+	margin: 0;
+	padding: 0.5em 1em;
+	background: #000099;
+}
+
+#menu a:hover {
+	background: #ffffff;
+	color: #000099;
+}
+
+/* tables */
+table {
+	width: 90%;
+	margin: 0 auto;
+	padding: 0;
+}
+
+tr {
+	margin: 0;
+	padding: 0;
+}
+
+td {
+	margin: 0;
+	padding: 0;
+}
+
+/* Tableless form styling */
+form {
+	width: 75%;
+	margin: 0 auto;
+}
+
+form label {
+	float: left;
+	margin-right:1em;
+	text-align:right;
+	width: 25%;
+}
+
+form div {
+	clear:both;
+	margin-bottom: 0.5em;
+}
+
+/* misc */
+.errormessage {
+	color: #ff0000;
+	font-weight: bold;
+}
+
+/* EOF */

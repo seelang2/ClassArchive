@@ -1,0 +1,139 @@
+/* CSS Document */
+
+/* Layout */
+
+* {
+	margin: 0;
+/*	padding: 0; */
+}
+
+body { 
+	text-align:center;
+	padding: 0;
+	background: #cccccc;
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 76%;/* font sizing in ems, baby. if you want to change anything, just change this.*/
+}
+#wrapper {
+	margin: 0 auto;
+	padding: 0;
+	width: 700px;
+	border: 2px solid #1F408B;
+}
+
+#header { 
+	height: 75px; 
+	padding: 0;
+	background: #AFBDED;
+	border-top: 1px solid #AFBDED;
+}
+
+div#header .menu {
+	margin-top: 20px;
+}
+
+#content { 
+	background: #ffffff; 
+	padding: 0;
+	text-align:left;
+	border-top: 1px solid #AFBDED;
+	border-bottom: 1px solid #AFBDED;
+}
+
+#footer { 
+	height: 25px; 
+	padding: 0;
+	background: #AFBDED; 
+}
+
+#submenu {
+	border-bottom: 1px solid #000099;
+	margin: 5px 0;
+	padding: 10px;
+}
+
+table.list {
+	width: 90%;
+	margin: auto;
+}
+
+.statusmessage {
+	font-weight: bold;
+	color:#FF0000;
+}
+
+
+
+/* Typography */
+
+a {
+	text-decoration: none;
+	font-weight: normal;
+	color: #000;
+	}
+a:link {
+	}
+a:visited {
+	}
+a:active {
+	}
+a:hover {
+	text-decoration: underline;
+	}
+img {
+	border: 0;
+	}
+ol, ul, li {
+	font-size: 1.0em;
+	line-height: 1.8em;
+	margin-top: 0.2em;
+	margin-bottom: 0.1em; 
+	}
+p {
+	font-size: 1.0em;
+	line-height: 1.8em;
+	margin: 1.2em 0em 1.2em 0em;
+	}
+li > p {
+	margin-top: 0.2em;
+	}
+pre {
+	font-family: monospace;
+	font-size: 1.3em;
+	}
+strong, b {
+	font-weight: bold;
+	}
+
+h1 {
+	font-size: 2.0em;
+	font-weight: normal;
+	margin-top: 0em;
+	margin-bottom: 0em;
+	}
+h2 {
+	font-size: 1.7em;
+	margin: 1.2em 0em 1.2em 0em;
+	font-weight: normal;
+	}
+h3 {
+	font-size: 1.4em;
+	margin: 1.2em 0em 1.2em 0em;
+	font-weight: normal;
+	}
+h4 {
+	font-size: 1.2em;
+	margin: 1.2em 0em 1.2em 0em;
+	font-weight: bold;
+	}
+h5 {
+	font-size: 1.0em;
+	margin: 1.2em 0em 1.2em 0em;
+	font-weight: bold;
+	}
+h6 {
+	font-size: 0.8em;
+	margin: 1.2em 0em 1.2em 0em;
+	font-weight: bold;
+	}
+

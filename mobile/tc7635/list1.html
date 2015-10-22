@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="contacts"></div>
+
+<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+var contactList = 
+[
+	{ "firstname":"John","lastname":"Doe"},
+	{ "firstname":"Janet","lastname":"Steward"},
+	{ "firstname":"Alex","lastname":"Carruthers"},
+	{ "firstname":"Bethany","lastname":"Johnson"},
+	{ "firstname":"Thomas","lastname":"Fitzpatrick"},
+	{ "firstname":"Lorraine","lastname":"Ross"}
+];
+
+$('<ul />')
+	.each(function(i, ulElem) { // use the .each as an IIFE-like construct
+		// loop through contacts
+		$.each(
+			contactList,
+			function(i, contact) {
+				// create list item for contact and add to UL
+				$('<li>' + contact.firstname + ' ' + contact.lastname + '</li>')
+					.appendTo(ulElem);
+					
+			}
+		);
+		
+	 })
+	.appendTo('#contacts');
+
+
+</script>
+</body>
+</html>

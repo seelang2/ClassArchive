@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="contacts"></div>
+
+<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+var contactList = 
+[
+	{ "firstname":"John","lastname":"Doe"},
+	{ "firstname":"Janet","lastname":"Steward"},
+	{ "firstname":"Alex","lastname":"Carruthers"},
+	{ "firstname":"Bethany","lastname":"Johnson"},
+	{ "firstname":"Thomas","lastname":"Fitzpatrick"},
+	{ "firstname":"Lorraine","lastname":"Ross"}
+];
+
+
+var contactDiv = document.getElementById('contacts');
+
+var ulElem = document.createElement('UL');
+
+for(var c = 0; c < contactList.length; c++) {
+
+	var liElem = document.createElement('LI');
+	liElem.appendChild(document.createTextNode(contactList[c].firstname + ' ' + contactList[c].lastname));
+	ulElem.appendChild(liElem);
+	
+}
+
+contactDiv.appendChild(ulElem);
+
+
+
+
+</script>
+</body>
+</html>

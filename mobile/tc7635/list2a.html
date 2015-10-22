@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	
+	.hover { background: #FFC; }
+	
+	</style>
+</head>
+<body>
+
+<div id="contacts"></div>
+
+<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+var addHover = function() {
+	$(this).addClass('hover');
+};
+
+var removeHover = function() {
+	$(this).removeClass('hover');
+};
+
+
+var contactList = 
+[
+	{ "firstname":"John","lastname":"Doe"},
+	{ "firstname":"Janet","lastname":"Steward"},
+	{ "firstname":"Alex","lastname":"Carruthers"},
+	{ "firstname":"Bethany","lastname":"Johnson"},
+	{ "firstname":"Thomas","lastname":"Fitzpatrick"},
+	{ "firstname":"Lorraine","lastname":"Ross"}
+];
+
+var $ulElem = $('<ul />');
+
+$.each(
+	contactList,
+	function(index, contact) {
+		$('<li>' + contact.firstname + ' ' + contact.lastname + '</li>')
+			.appendTo($ulElem)
+			.on('mouseover', addHover)
+			.on('mouseout', removeHover);
+	}
+);
+
+$ulElem
+	.appendTo('#contacts');
+
+
+</script>
+</body>
+</html>

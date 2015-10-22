@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="viewport"></div>
+
+<script src="jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+var $viewport = $('#viewport');
+
+var views = {}; // bucket to store views
+/*
+Let's use Promises to clean up the mess a bit. But if you look closely,
+you'll note we're still nesting the ajax calls and doing stuff synchronously
+even though it's a little bit saner than before.
+*/
+
+var getViews = function() {
+	$.ajax({
+		url:		'spa2-page1.html',
+		type:		'get',
+		dataType:	'html'
+	}).done(function(response) {
+		// store view as jQuery collection in view object
+		views.page1 = $(response);
+		
+		// do call for page 2
+		$.ajax({
+			url:		'spa2-page2.html',
+			type:		'get',
+			dataType:	'html'
+		}).done(function(response) {
+			// store view as jQuery collection in view object
+			views.page2 = $(response);
+			
+			// do call for page 3
+			$.ajax({
+				url:		'spa2-page3.html',
+				type:		'get',
+				dataType:	'html'
+			}).done(function(response) {
+				// store view as jQuery collection in view object
+				views.page3 = $(response);
+				
+				// do call for page 4
+				$.ajax({
+					url:		'spa2-page4.html',
+					type:		'get',
+					dataType:	'html'
+				}).done(function(response) {
+					// store view as jQuery collection in view object
+					views.page4 = $(response);
+					
+					continueAppInit();
+				}); // done 4
+			}) // done 3
+		}) // done 2
+	}); // done 1
+	
+}; // getViews
+
+var continueAppInit = function() {
+	// now we can continue with the rest of the app init stuff
+	// once that mess is done with
+	console.log(views);
+	
+}; // continueAppInit
+
+// start process
+getViews();
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

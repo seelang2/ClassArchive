@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="viewport"></div>
+
+<script src="jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+var $viewport = $('#viewport');
+
+var views = {}; // bucket to store views
+
+$.ajax({
+	url:		'spa2-page1.html',
+	type:		'get',
+	dataType:	'html',
+	success: function(response) {
+		// store view as jQuery collection in view object
+		views.page1 = $(response);
+	}
+});
+
+$.ajax({
+	url:		'spa2-page2.html',
+	type:		'get',
+	dataType:	'html',
+	success: function(response) {
+		// store view as jQuery collection in view object
+		views.page2 = $(response);
+	}
+});
+// ... 
+
+//continue with the rest of the app load
+
+/*
+We're doing asynchronous programming when it comes to Ajax calls and callbacks,
+so we can't write our code as if it will run synchronously.
+*/
+
+$viewport.append(views.page1); // may fail if the request has not finished
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

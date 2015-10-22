@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<h1>Static Content</h1>
+<p>This is the static data that is coded into the page.</p>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	/*
+	
+	$.ajax({
+		url:		'pagedata1.html',
+		type:		'get',
+		dataType:	'html',
+		success:	function(response) {
+			
+			$('#target').html(response);
+			
+		}
+	});
+	
+	*/
+	
+	$('#target').load('pagedata1.html');
+
+}); // document.ready
+
+</script>
+</body>
+</html>

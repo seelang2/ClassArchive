@@ -1,0 +1,59 @@
+For a project I recently worked on I needed to make a full text search engine -- a prospect I know 'all too well' having built a number of these in the past.
+
+I usually end up making full text search with separate word indexe tables (so that I can add special weightings to different words found in different parts of the document and also so that I can do porter stemming etc). Along with that comes things like cron driven search index update scripts, etc. (to maintain the system).
+
+This time I decided to do a little research into mySQL to see if the full text search was any faster than the last time I looked (about 4 years ago), last time I looked at it was too slow and not a viable option.
+
+This time round, after a bit of digging, I came up with the following fully weighted full text search engine with hardly any lines of code at all :)
+
+Lovely if your lazy!!!
+
+Best thing is it seems to be returning results from a million row table in less than a second (on my local machine).
+
+So here it is. A quick, weighted, full text search engine, for lazy sods (in mySQL). Enjoy.
+
+(Requires ezSQL)
+
+
+      // Table structure
+      CREATE TABLE stories
+      (
+      story_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+      category VARCHAR(255),
+      title VARCHAR(255),
+      body TEXT,
+      FULLTEXT (title,category,body),
+      FULLTEXT (title),
+      FULLTEXT (category),
+      FULLTEXT (body),
+      PRIMARY KEY (story_id)
+      )
+
+      // Incoming search
+      $query = "this is my search";
+
+      // Main query
+      $db->get_results("
+      SELECT
+      *,
+      (MATCH (category) AGAINST ('$query' IN BOOLEAN MODE)*100) +
+      (MATCH (title) AGAINST ('$query' IN BOOLEAN MODE)*10) +
+      MATCH (body) AGAINST ('$query' IN BOOLEAN MODE) AS rating
+      FROM
+      stories
+      WHERE
+      MATCH (title,category,body) AGAINST ('$query' IN BOOLEAN MODE)
+      ORDER BY
+      rating DESC
+      LIMIT 0,10
+      ");
+
+Note 1: 'category' is weighted as 100 times more important than 'body'. 'title' is weighted as 10 times more important than 'body'. Tweak as required.
+
+Note 2: It requires a 'big' data set to work nicely
+
+Note 3: mySQL ignores search terms of 4 chars or less by default
+
+Note 4: Try removing 'IN BOOLEAN MODE' (all instances). The results 'might' be more accurate.
+
+Note 5: Does not include porter stemming.

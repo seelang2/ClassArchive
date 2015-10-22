@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<script src="jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+// IIFE module namespace
+(function(App) {
+
+	App.start = function() {
+		// do init stuff
+		
+		// notify any listeners for the app.start event
+		$(App).trigger('app.start');
+		
+	}; // App.start
+
+})(window.App = window.App || {});
+
+$(document).ready(App.start); // launch App
+
+</script>
+<script type="text/javascript">
+// IIFE module namespace
+(function(App) {
+
+	// extend App with new module methods
+	App.module1Init = function(e) {
+		console.log('module 1 init called.');
+	}; 
+
+	// add custom event and handler to App object
+	$(App).on('app.start', App.module1Init);
+
+})(window.App = window.App || {});
+
+</script>
+<script type="text/javascript">
+// IIFE module namespace
+(function(App) {
+
+	// private method accessible only by this module
+	var showMessage = function() {
+		console.log('module 2 init called.');
+	};
+
+	// extend App with new module methods
+	App.module2Init = function(e) {
+		showMessage();
+	}; 
+
+	// add custom event and handler to App object
+	$(App).on('app.start', App.module2Init);
+
+})(window.App = window.App || {});
+
+</script>
+</body>
+</html>

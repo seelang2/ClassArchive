@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript">
+
+// get reference to DOM
+var targetElem = document.getElementById('target');
+
+// create branch OFFLINE to minimize browser repaints
+var pElem = document.createElement('P');
+
+var text = document.createTextNode('This space for rent.');
+
+// connect branch nodes together
+pElem.appendChild(text);
+
+// connect completed branch to tree
+targetElem.appendChild(pElem);
+
+// ... or use innerHTML
+targetElem.innerHTML = '<h1>Warning</h1><p>Using <b>innerHTML</b> will overwrite ALL existing content in the element. Use with caution.</p>';
+
+
+</script>
+</body>
+</html>

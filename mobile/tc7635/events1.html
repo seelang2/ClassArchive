@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<a href="http://www.google.com">Go to Google</a>
+
+
+<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+$('a')
+	.on('click', function(e) {
+		
+		//e.preventDefault(); // permanently prevents default action
+		
+		//return false; // prevent default action
+		
+		// confirm returns true or false depending on whether you click ok or cancel
+		return confirm('You are about to leave this site. Is this ok?');
+		
+	 });
+
+</script>
+</body>
+</html>

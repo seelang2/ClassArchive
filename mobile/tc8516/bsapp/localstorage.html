@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	
+	<style type="text/css">
+	label { 
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	
+	</style>
+</head>
+<body>
+
+<div id="view">
+	<label>
+		<span>First Name:</span>
+		<span data-name="firstname"></span>
+	</label>
+	<label>
+		<span>Last Name:</span>
+		<span data-name="lastname"></span>
+	</label>
+	<label>
+		<span>Email:</span>
+		<span data-name="email"></span>
+	</label>
+	<button class="btn btn-primary btnEdit">Edit</button>
+	<button class="btn btn-primary btnDelete">Delete</button>
+</div>
+
+
+<script src="jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+/*
+NOTE: In order for localStorage to be persistent, the browser must be 
+set to allow cookie and site content to be saved (In Chrome, check
+Content Settings -> Allow local data to be set). Otherwise localStorage
+behaves like sessionStorage and will clear its contents once the browser
+is closed.
+*/
+
+// take JSON string from localStorage and parse into object
+if (typeof localStorage.contactItem != 'undefined') {
+	var contactItem = JSON.parse(localStorage.contactItem);
+} else {
+	contactItem = {};
+}
+
+var $view = $('#view');
+
+// populate view with data
+$view
+	.find('[data-name]')
+	.each(function (index, fieldElem) {
+		
+		var fieldName = $(fieldElem).attr('data-name');
+		
+		$(fieldElem).html(contactItem[fieldName]);
+		
+	 });
+		
+// set up buttons
+$view
+	.on('click', 'button', function(e) {
+	
+		switch(true) {
+			case $(this).hasClass('btnEdit'):
+				// replace SPANs with INPUTs
+				$view
+					.find('[data-name]')
+					.each(function(index, field) {
+						var fieldName = $(field).attr('data-name');
+						var fieldValue = $(field).html();
+						
+						$(field)
+							.replaceWith('<input name="'+ fieldName +'" value="'+ fieldValue +'" />');
+					 })
+					.end()
+					.find('.btnEdit')
+					.toggleClass('btnEdit btnSave')
+					.html('Save')
+					.end()
+					.find('.btnDelete')
+					.toggleClass('btnDelete btnCancel')
+					.html('Cancel');
+					
+				
+			break; // btnEdit
+			
+			case $(this).hasClass('btnSave'):
+			
+				// take input fields and save into contactItem
+				$view
+					.find(':input')
+					.each(function(index, field) {
+						
+						var fieldName = $(field).attr('name');
+						contactItem[fieldName] = $(field).val();
+						
+					 })
+				
+				// serialize contactItem into localStorage
+				localStorage.contactItem = JSON.stringify(contactItem);
+				
+				// revert back to SPANs
+				revertToReadOnly();
+			
+			break; // btnSave
+
+			case $(this).hasClass('btnCancel'):
+				revertToReadOnly();
+				// restore original content
+				$view
+					.find('[data-name]')
+					.each(function(index, field) {
+						var fieldName = $(field).attr('data-name');
+						$(field).html(contactItem[fieldName]);
+						
+					 });
+				
+			break; // btnCancel
+			
+			case $(this).hasClass('btnDelete'):
+				contactItem = {};
+				delete localStorage.contactItem;
+				$view
+					.find('[data-name]')
+					.each(function(index, field) {
+						$(field).empty();
+					 });
+			break; // btnDelete
+
+			
+		} // switch
+	
+	 });
+
+// take input fields and revert to SPANs
+var revertToReadOnly = function() {
+	$view
+		.find('[name]')
+		.each(function(index, field) {
+			
+			var fieldName = $(field).attr('name');
+			var fieldValue = $(field).val();
+			
+			$(field)
+				.replaceWith('<span data-name="'+ fieldName +'">' + fieldValue + '</span>');
+			
+		 })
+		.end()
+		.find('.btnSave')
+		.toggleClass('btnEdit btnSave')
+		.html('Edit')
+		.end()
+		.find('.btnCancel')
+		.toggleClass('btnDelete btnCancel')
+		.html('Delete');
+		
+};	 
+
+</script>
+</body>
+</html>

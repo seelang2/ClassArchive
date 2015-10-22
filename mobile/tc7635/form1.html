@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+	
+	input, select, textarea { font-size: 100%; }
+	
+	form label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	
+	label span,
+	label input {
+		display: inline-block;
+	}
+	
+	</style>
+</head>
+<body>
+
+<form id="form1" action="#" method="get">
+	<label>
+		<span>First Name:</span>
+		<input name="firstname" />
+	</label>
+	<label>
+		<span>Last Name:</span>
+		<input name="lastname" />
+	</label>
+	<div>
+		<input type="submit" value="Go" />
+	</div>
+</form>
+
+<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+var App = {};
+App.init = function() {
+	
+	$('#form1')
+		.on('submit', App.saveData)
+	
+}; // App.init
+
+App.saveData = function(e) {
+	// we're using ajax to send form data, so hijack the form default action
+	e.preventDefault();
+	
+	// do client-side validation, yadda yadda yadda
+	
+	// send data to the server
+	$.ajax({
+		url:		'savedata.php',
+		type:		'post',
+		dataType:	'text',
+		data:		$(this).serialize(),
+		success:	App.saveResponseHandler
+	});
+	
+}; // App.saveData
+
+App.saveResponseHandler = function(response) {
+	// process server response as necessary
+	
+};
+
+
+$(document).ready(App.init); // load App.init on DOM ready
+
+</script>
+</body>
+</html>

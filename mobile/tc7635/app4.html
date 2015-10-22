@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	
+	<style type="text/css">
+	* {
+		-webkit-box-sizing: border-box; /* for older android devices */
+		box-sizing: border-box;
+	}
+	
+	html, body, #wrapper { height: 100%; }
+	
+	body {
+		margin: 0;
+		padding: 0;
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 160%;
+		color: #000;
+	}
+	
+	button, select, input {
+		font-size: inherit;
+	}
+	
+	#wrapper {
+	}
+	
+	#wrapper > header,
+	#wrapper > footer {
+		height: 50px;
+		width: 100%;
+		background: #E1E6ED;
+		color: #4A4C4F;
+		position: fixed;
+		text-align: center;
+	}
+	
+	#wrapper > header {
+		top: 0;
+	}
+	
+	#wrapper > footer {
+		bottom: 0;
+	}
+	
+	.page {
+		padding: 50px 0;
+		
+	}
+	
+	ul.ui-list {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+	
+	.ui-list li {
+		border: 1px outset #7a7a7a;
+		border-left: none;
+		border-right: none;
+		position: relative;
+	}
+	
+	.ui-list li a {
+		display: block;
+		width: 100%;
+		height: 100%;
+		padding: 0.75em;
+		text-decoration: none;
+		color: inherit;
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+		-webkit-transition-duration: 0.25s;
+		transition-duration: 0.25s;
+	}
+	
+	.btn {
+		padding: 0.25em 0.5em; 
+	}
+	
+	.ui-list li.swiped { 
+		/* height: 72px; */
+	}
+	
+	.ui-list li.swiped span { 
+		display: block;
+		padding: 0.75em;
+	}
+	
+	.ui-list li.swiped a {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background: #fff;
+		-webkit-transform: translate3d(-50%, 0, 0);
+		transform: translate3d(-50%, 0, 0);
+		-webkit-transition-duration: 0.25s;
+		transition-duration: 0.25s;
+		top: 0;
+	}
+	
+	.ui-list li.swiped div {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		text-align: right;
+		background: #ccc;
+	}
+	
+	.ui-delete {
+		background: #f00;
+		color: #fff;
+	}
+	
+	.alignleft { float: left; }
+	.alignright { float: right; }
+	
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<header>Header</header>
+	
+	<div class="page" id="main">
+	
+	</div>
+	
+	<footer>Footer</footer>
+</div><!-- wrapper -->
+
+<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="jquery.mobile-events.min.js"></script>
+<script type="text/javascript">
+/****
+	Using mobile events library by Ben Major 
+	https://github.com/benmajor/jQuery-Mobile-Events
+	
+	Prefer this to HammerJS http://hammerjs.github.io/ because JME is a plugin to
+	jQuery, which uses the standard .on() method. This means we can use the selector 
+	filter option, which is not available in HammerJS.
+		
+	Use an IIFE to create modular namespaces
+	The application object itself is in the global scope, allowing other files/modules
+	to easily extend the object
+ **/
+(function(App) {
+	// everything inside the IIFE is private and not accessible from the outside
+	// only accessible to methods/functions defined within the IIFE scope
+	
+	App.data = {}; // simple data container to store App-global data
+	
+	// App initialization
+	App.start = function() {
+		// store references to elements commonly manipulated
+		App.data.header = $('#wrapper > header');
+		App.data.footer = $('#wrapper > footer');
+		App.data.pageMain = $('#main');
+		
+		// initialize localStorage data if it doesn't existing
+		if (typeof localStorage.appData == "undefined") {
+			// initialize appData as an empty stringified empty array
+			localStorage.appData = JSON.stringify([]);
+		}
+		
+		// load contact form into var
+		App.data.contactForm = $('<div />').load('contactform.html');
+		
+		// show contact list
+		App.viewListContacts();
+		
+	}; // App.start
+	
+	App.viewListContacts = function() {
+		// set up view (if necessary)
+		App.data.contactListElem = 
+		App.data.pageMain
+			.empty()				// removes content in pageMain
+			.append('<ul />')		// add UL for list items
+			.children('ul')			// traverse into the UL to be saved in contactListElem
+			.addClass('ui-list')	// give it a class for styling 
+			.on('singletap','li',App.getContactID) // set up click handler for contact item 
+			.on('swipeleft','li',App.deleteContact)
+			.on('swiperight','li',App.cancelDeleteContact);
+				
+		// set any buttons in header and footer
+		App.data.header
+			.empty(); // clear any buttons out
+		
+		App.data.footer
+			.empty() // clear any buttons out
+			.append('<button>Add</button>')
+			.children('button')
+			.addClass('btn ui-add alignleft')
+			.on('click',function(e) {
+				App.viewContactForm();
+			 })
+		
+		App.getContactData(); // get contact list from server
+		
+	}; // App.viewListContacts
+	
+	App.getContactData = function() {
+		/*
+		$.ajax({
+			url:		'userdata.php?action=getlist',
+			type:		'get',
+			dataType:	'json',
+			cache:		false,
+			success:	App.updateContactList
+		});
+		*/
+		
+		var data = JSON.parse(localStorage.appData);
+		App.updateContactList(data);
+		
+	}; // App.getContactData
+	
+	App.updateContactList = function(response) {
+		// populate view with contact data
+		$.each(
+			response,
+			function(index, contact) {
+				$('<li><a href="#">' + contact.firstname + ' ' + contact.lastname + '</a></li>')
+					.attr('data-id', contact.id)
+					.appendTo(App.data.contactListElem);
+			}
+		);
+	
+	}; // App.updateContactList
+	
+	App.getContactID = function(e) {
+		e.preventDefault();  // hijack link
+		// get contact ID from data attribute on LI
+		var id = $(this).attr('data-id');
+		
+		App.viewContactItem(id); // set up contact item view and pass id to view
+		
+	}; // App.getContactID
+	
+	App.viewContactItem = function(id) {
+		App.data.contactItemElem = 
+		App.data.pageMain
+			.empty()				// removes content in pageMain
+			.append('<h1>Contact Information</h1>')
+			.append('<div />')
+			.children('div');
+	
+		// set any buttons in header and footer
+		App.data.header
+			.empty()			// clear any buttons out
+			.append('<button>Back</button>')
+			.children('button')
+			.addClass('btn ui-back alignleft')
+			.on('click',function(e) {
+				App.viewListContacts();
+			 });
+			 
+		App.data.footer
+			.empty()
+			.append('<button>Edit</button>')
+			.children('button')
+			.addClass('btn ui-edit alignleft')
+			.on('click',function(e) {
+				App.viewContactForm(id);
+			 });
+		
+		// pass the item id on to getContactItem
+		App.getContactItem(id);
+	}; // App.viewContactItem
+	
+	App.getContactItem = function(id) {
+		/*
+		$.ajax({
+			url:		'userdata.php?action=getuser&id=' + id,
+			type:		'get',
+			dataType:	'json',
+			cache:		false,
+			success:	App.updateContactItemView
+		});
+		*/
+		
+		var data = JSON.parse(localStorage.appData);
+		
+		App.updateContactItemView(data[id]);
+		
+	}; // App.getContactItem
+	
+	App.updateContactItemView = function(contact) {
+		App.data.contactItemElem
+			.append('<p>' + contact.firstname + '</p>')
+			.append('<p>' + contact.lastname + '</p>')
+			.append('<p>' + contact.phone + '</p>')
+	}; // App.updateContactItemView
+	
+	App.viewContactForm = function(id) {
+		App.data.pageMain
+			.empty();				// removes content in pageMain
+		
+		// set any buttons in header and footer
+		App.data.header
+			.empty()			// clear any buttons out
+			.append('<button>Cancel</button>')
+			.children('button')
+			.addClass('btn ui-cancel alignleft')
+			.on('click',function(e) {
+				if (typeof id == "undefined") {
+					App.viewListContacts();
+				} else {
+					App.viewContactItem(id);
+				}
+			 });
+			 
+		App.data.footer
+			.empty()
+			.append('<button>Save</button>')
+			.children('button')
+			.addClass('btn ui-save alignleft')
+			.on('click',function(e) {
+				App.saveContact(id);
+			 });
+		
+		if (typeof id == "undefined") {
+			// id not passed, show empty form
+			App.data.contactForm
+				.clone()
+				.appendTo(App.data.pageMain);
+			
+		} else {
+			// id present, this is an edit
+			
+			/*
+			// get data from server
+			$.ajax({
+				url:		'userdata.php?action=getuser&id=' + id,
+				type:		'get',
+				dataType:	'json',
+				cache:		false,
+				success:	function(contact) {
+					// populate form
+					App.data.contactForm
+						.clone()
+						.find('[name="firstname"]')
+						.val(contact.firstname)
+						.end()
+						.find('[name="lastname"]')
+						.val(contact.lastname)
+						.end()
+						.find('[name="phone"]')
+						.val(contact.phone)
+						.end()
+						.appendTo(App.data.pageMain);	// show populated form
+					
+				}
+			});
+			*/
+			
+			// get specific contact item
+			var contact = JSON.parse(localStorage.appData)[id];
+			
+			// populate form
+			App.data.contactForm
+				.clone()
+				.find('[name="firstname"]')
+				.val(contact.firstname)
+				.end()
+				.find('[name="lastname"]')
+				.val(contact.lastname)
+				.end()
+				.find('[name="phone"]')
+				.val(contact.phone)
+				.end()
+				.appendTo(App.data.pageMain);	// show populated form
+					
+		
+			
+		}
+	}; // App.showContactForm
+	
+	App.saveContact = function(id) {
+		
+		/*
+		var URI = 'userdata.php?action=saveuser';
+		URI += typeof id == "undefined" ? '' : '&id=' + id;
+		
+		//console.log('saving contact',id);
+		$.ajax({
+			url:		URI,
+			type:		'post',
+			dataType:	'json',
+			data:		App.data.pageMain.find('form').serialize(),
+			cache:		false,
+			success:	function(response) {
+				if (response.status == 0) {
+					alert('Error: ' + response.message);
+				}
+				// go back
+				if (typeof id == "undefined") {
+					App.viewListContacts();
+				} else {
+					App.viewContactItem(id);
+				}
+			}
+		});
+		*/
+		
+		// get data from localStorage
+		var data = JSON.parse(localStorage.appData);
+		
+		// serialize form data into an array
+		var contactArray = App.data.pageMain.find('form').serializeArray();
+		
+		// convert data from array into object
+		var contactObj = {};
+		for (var c = 0; c < contactArray.length; c++) {
+			contactObj[contactArray[c].name] = contactArray[c].value;
+		}
+		
+		if (typeof id == "undefined"){
+			//add new item
+			var newID = data.length;
+			contactObj.id = newID;
+			data.push(contactObj);
+		} else {
+			// edit existing item
+			contactObj.id = id;
+			data[id] = contactObj;
+		}
+		
+		// update localStorage object to write data to device
+		localStorage.appData = JSON.stringify(data);
+
+		// go back
+		if (typeof id == "undefined") {
+			App.viewListContacts();
+		} else {
+			App.viewContactItem(id);
+		}
+
+		
+	}; // App.saveContact
+	
+	App.deleteContact = function(e, touch) {
+		
+		// if something is already swiped bail
+		if ( App.data.pageMain.find('.ui-list li').hasClass('swiped') ) return;
+		
+		var self = this; //create reference to LI
+		
+		$(this)
+			.prepend('<div><button class="btn ui-delete">Delete</button></div>')
+			.prepend('<span>&nbsp;</span>')
+			.addClass('swiped')
+			.find('.ui-delete')
+			.on('singletap', function(e, touch) {
+				e.stopPropagation(); // prevent event from bubbling and triggering contact view
+				
+				// get the id from the LI
+				var id = $(self).attr('data-id');
+				
+				/*
+				// delete item from server db
+				$.ajax({
+					url:		'userdata.php?action=delete&id=' + id,
+					type:		'get',
+					dataType:	'json',
+					cache:		false,
+					success:	function(response) {
+						// remove LI from UL
+						$(self).slideUp(function() {
+							$(self).remove();
+							self = null;
+						});
+					
+					}
+				}); // $.ajax
+				*/
+				
+				// read in data from localStorage
+				var data = JSON.parse(localStorage.appData);
+				// splice out the offending element 
+				data.splice(id, 1);
+				// and resave the data back into localStorage
+				localStorage.appData = JSON.stringify(data);
+				
+				// remove LI from UL
+				$(self).slideUp(function() {
+					$(self).remove();
+					self = null;
+				});
+				
+				
+			 }); // .on
+		
+		
+		
+	}; // App.deleteContact
+		
+	App.cancelDeleteContact = function(e, touch) {
+	
+		// if this item is NOT already swiped bail
+		if ( !$(this).hasClass('swiped') ) return;
+		
+		$(this)
+			.removeClass('swiped')
+			.children('span, div')
+			.remove();
+	
+	}; // App.cancelDeleteContact
+		
+})(window.App = window.App || {});
+
+$(document).ready(App.start); // Launch App
+
+</script>
+</body>
+</html>

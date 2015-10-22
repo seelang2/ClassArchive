@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	
+	<style type="text/css">
+	
+	[data-role="view"] { display: none; }
+	
+	</style>
+</head>
+<body>
+
+<div id="wrapper" class="container">
+	<header id="masthead"></header>
+	
+	<nav class="navbar">
+		<ul class="nav navbar-nav">
+			<li><a href="#!page1">Page 1</a></li>
+			<li><a href="#!page2">Page 2</a></li>
+			<li><a href="#!page3">Page 3</a></li>
+			<li><a href="#!page4">Page 4</a></li>
+		</ul>
+	</nav>
+	
+	<div id="innerwrapper">
+		<div id="page1" class="defaultpage" data-role="view">
+			<h2>Page 1</h2>
+		</div>
+		<div id="page2" class="" data-role="view">
+			<h2>Page 2</h2>
+		</div>
+		<div id="page3" class="" data-role="view">
+			<h2>Page 3</h2>
+		</div>
+		<div id="page4" class="" data-role="view">
+			<h2>Page 4</h2>
+		</div>
+	</div>
+	
+	<footer id="pagefooter"></footer>
+
+</div>
+
+
+
+<script src="jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="registry.js"></script>
+<script src="viewmanager.js"></script>
+<script type="text/javascript">
+// IIFE module namespace
+(function(App) {
+
+	App.start = function() {
+		// do init stuff
+		
+		// initialize view manager module
+		App.initViews({
+			viewWrapperID:	'innerwrapper'
+		});
+		
+		// notify any listeners for the app.start event
+		$(App).trigger('app.start');
+		
+	}; // App.start
+
+})(window.App = window.App || {});
+
+$(document).ready(App.start); // launch App
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	
+	.hover { background: #FFC; }
+	
+	</style>
+</head>
+<body>
+
+<div id="contacts"></div>
+
+<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	var toggleHover = function(e) {
+		// 'this' now points to the LIs because of the selector filter in the .on()
+		$(this).toggleClass('hover');
+	};
+
+	var $ulElem = 
+	$('<ul />')
+		.appendTo('#contacts')
+		.on('mouseover mouseout', 'li', toggleHover);
+
+	// get contact data via ajax
+	$.ajax({
+		url:		'contacts.json',
+		type:		'get',
+		dataType:	'json',
+		success:	function(response) {
+			// create list items
+			$.each(
+				response,
+				function(index, contact) {
+					$('<li>' + contact.firstname + ' ' + contact.lastname + '</li>')
+						.appendTo($ulElem)
+				}
+			);
+		}
+	});
+}); // document.ready
+	
+</script>
+</body>
+</html>

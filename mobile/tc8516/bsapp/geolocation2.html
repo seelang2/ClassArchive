@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="info"></div>
+
+<script src="jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+if ("geolocation" in navigator) {
+	
+	// get position
+	navigator.geolocation.getCurrentPosition(function(pos) {
+		//console.log(pos);
+		$('#info')
+			.append('<h2>Position Information:</h2>')
+			.append('<p>Latitude: ' + pos.coords.latitude + '</p>')
+			.append('<p>Longitude: ' + pos.coords.longitude + '</p>')
+			.append('<p>Altitude: ' + pos.coords.altitude + '</p>')
+			.append('<p>Heading: ' + pos.coords.heading + '</p>')
+			.append('<p>Speed: ' + pos.coords.speed + '</p>')
+			.append('<p>Altitude accuracy: ' + pos.coords.altitudeAccuracy + '</p>')
+			.append('<p>Accuracy: ' + pos.coords.accuracy + '</p>')
+			.append('<p>Timestamp: ' + pos.timestamp + '</p>');
+		
+	})
+
+} else {
+	console.log('Geo location services is not available.');
+}
+
+
+
+</script>
+</body>
+</html>

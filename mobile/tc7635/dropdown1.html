@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		color: #000;
+		font-size: 100%;
+	}
+	
+	#menu {
+
+	}
+	
+	#menu ul {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+	}
+	
+	#menu li {
+		border: 1px solid #7a7a7a;
+		border-top: none;
+		position: relative;
+	}
+	
+	#menu > ul > li {
+		border-left: none;	
+		border-top: 1px solid #7a7a7a;
+	}
+	#menu > ul > li:first-child {
+		border-left: 1px solid #7a7a7a;	
+	}
+	
+	#menu > ul > li {
+		float: left;
+	}
+	
+	#menu li > ul {
+		position: absolute;
+		width: 175px;
+	}
+	
+	#menu li li ul {
+		width: 200px;
+		left: 173px;
+		top: 0;
+	}
+	
+	#menu li li ul li:first-child {
+		border-top: 1px solid #7a7a7a;
+	}
+	
+	#menu span,
+	#menu a {
+		display: block;
+		padding: 0.25em 0.5em;
+	}
+	
+	#menu a {
+		color: #009;
+		text-decoration: none;
+	}
+	
+	#menu li:hover {
+		background: #FFC; 
+	}
+	
+	</style>
+</head>
+<body>
+
+<nav id="menu">
+	<ul>
+		<li><a href="#">Menu Item 1</a></li>
+		<li><a href="#">Menu Item 2</a></li>
+		<li>
+			<span>Menu Item 3</span>
+			<ul>
+				<li><a href="#">Sub Menu Item 1</a></li>
+				<li><a href="#">Sub Menu Item 2</a></li>
+				<li>
+					<span>Sub Menu Item 3</span>
+					<ul>
+						<li><a href="#">SubSub Menu Item 1</a></li>
+						<li><a href="#">SubSub Menu Item 2</a></li>
+						<li><a href="#">SubSub Menu Item 3</a></li>
+						<li><a href="#">SubSub Menu Item 4</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Sub Menu Item 4</a></li>
+			</ul>
+		</li>
+		<li><a href="#">Menu Item 4</a></li>
+	</ul>
+</nav>
+
+<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+/*
+	$('#menu li')
+		.has('ul')
+		.on('mouseover mouseout', function(e) {
+			$(this)							// from this LI
+				.children('ul')				// navigate to submenu
+				.toggle();					// and show it
+		 })
+		.children('ul')
+		.hide(); 							// hide submenus
+*/
+		
+		
+	$('#menu li ul')
+		.hide() 							// hide submenus
+		.parent()							// move up to LI
+		.on('mouseover mouseout', function(e) {
+			$(this)							// from this LI
+				.children('ul')				// navigate to submenu
+				.toggle();					// and show it
+		 })
+	
+	
+
+}); // document.ready
+
+
+
+
+</script>
+</body>
+</html>

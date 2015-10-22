@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	
+	<style type="text/css">
+	
+	.hover { background: #FFC; }
+	
+	</style>
+</head>
+<body>
+
+<div id="contacts"></div>
+
+<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+var toggleHover = function(e) {
+	// 'this' now points to the LIs because of the selector filter in the .on()
+	$(this).toggleClass('hover');
+	
+};
+
+var contactList = 
+[
+	{ "firstname":"John","lastname":"Doe"},
+	{ "firstname":"Janet","lastname":"Steward"},
+	{ "firstname":"Alex","lastname":"Carruthers"},
+	{ "firstname":"Bethany","lastname":"Johnson"},
+	{ "firstname":"Thomas","lastname":"Fitzpatrick"},
+	{ "firstname":"Lorraine","lastname":"Ross"}
+];
+
+var $ulElem = $('<ul />');
+
+$.each(
+	contactList,
+	function(index, contact) {
+		$('<li>' + contact.firstname + ' ' + contact.lastname + '</li>')
+			.appendTo($ulElem)
+	}
+);
+
+$ulElem
+	.appendTo('#contacts')
+	.on('mouseover mouseout', 'li', toggleHover);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="viewport"></div>
+
+<script src="jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+
+// Promise demonstration
+
+var promise = $.Deferred(); // creates a new Promise object
+promise.x = 0;
+
+// note that any values passed to the promise via .resolve(), .reject(), 
+// notify(), etc. get passed to the callbacks
+
+// add callbacks to promise when promise is resolved
+promise.done(function(x) {
+	console.log('Promise has been resolved.',x,promise.x);
+});
+
+// add callbacks to promise when promise is rejected
+promise.fail(function(x) {
+	console.log('Promise has been rejected.',x,promise.x);
+});
+
+// add callbacks to promise when promise is either resolved or rejected
+// (fires AFTER done() or fail() callbacks have been called)
+promise.always(function(x) {
+	console.log('Promise has been completed.',x,promise.x);
+});
+
+// add progress callbacks to promise
+promise.progress(function(x) {
+	promise.x += x;
+	console.log('Promise has been updated and now contains',promise.x);
+});
+
+
+
+</script>
+</body>
+</html>
