@@ -1,0 +1,37 @@
+.ttp-row > .ttp-col,
+.tpp-catitem 
+{
+	display: inline-block;
+}
+
+#ttp-rolecats {
+	border: 1px solid #ccccff;
+	width: 300px;
+	height: 100px;
+	margin-top: 0.5em;
+}
+
+.tpp-catitem {
+	border: 1px solid #cccccc;
+	padding: 0.25em 0.5em;
+	margin: 0.25em;
+	position: relative;
+}
+
+.tpp-catitem span {
+	margin-right: 12px;
+}
+
+.tpp-catitem span:after {
+	content: ' ';
+	display: block;
+	position: absolute;
+	right: 5px;
+	top: 9px;
+	width: 8px;
+	height: 9px;
+	font-size: 1px;
+	background: url('chosen-sprite.png') right top no-repeat;
+	cursor: pointer;
+}
+

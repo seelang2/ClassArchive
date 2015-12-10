@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Table Demo</title>
+<style type="text/css">
+table, th, td {
+	border: 1px solid #373737;
+}
+th, td {
+	padding: 0.25em;
+}
+table {
+	border-collapse: collapse;
+	display: inline-table;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+.repeating-column {
+	display: none;
+}
+
+@media screen and (max-width:599px){
+table {
+	margin-left: auto;
+	margin-right: auto;
+	width: 96%;
+}
+.repeating-column {
+	display: table-cell;
+}
+th:first-child {
+	width: 40px;
+}
+}
+
+@media screen and (min-width:600px) and (max-height:999px){
+}
+
+@media screen and (min-width:1000px){
+table {
+	border-right: none;
+}
+table:last-child {
+	border-right: 1px solid #373737;
+}
+th:last-child,
+td:last-child {
+	/*background-color: #E70A0E; */
+	border-right: none;
+}
+}
+</style>
+</head>
+<body>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Phone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1223</td>
+      <td>John </td>
+      <td>Doe </td>
+      <td>123-456-7890 </td>
+    </tr>
+    <tr>
+      <td>3526</td>
+      <td>Jane </td>
+      <td>Smith </td>
+      <td>312-588-2300 </td>
+    </tr>
+    <tr>
+       <td>7758</td>
+     <td>Alex </td>
+      <td>Welles </td>
+      <td>818-555-1212 </td>
+    </tr>
+  </tbody>
+</table><table>
+  <thead>
+    <tr>
+      <th class="repeating-column">ID</th>
+      <th>Email</th>
+      <th>Age</th>
+      <th>Department</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="repeating-column">1223</td>
+      <td>jdoe@company.com</td>
+      <td>44</td>
+      <td>Accounting</td>
+    </tr>
+    <tr>
+      <td class="repeating-column">3526</td>
+      <td>jsmith@company.com</td>
+      <td>32</td>
+      <td>Sales</td>
+    </tr>
+    <tr>
+       <td class="repeating-column">7758</td>
+      <td>awelles@company.com</td>
+      <td>29</td>
+      <td>IT</td>
+    </tr>
+  </tbody>
+</table><table>
+  <thead>
+    <tr>
+      <th class="repeating-column">ID</th>
+      <th>Supervisor</th>
+      <th>TPL</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="repeating-column">1223</td>
+      <td>Alex M</td>
+      <td>Y</td>
+      <td>Active</td>
+    </tr>
+    <tr>
+      <td class="repeating-column">3526</td>
+      <td>Janet R</td>
+      <td>Y</td>
+      <td>Active</td>
+    </tr>
+    <tr>
+       <td class="repeating-column">7758</td>
+      <td>Arnold W</td>
+      <td>N</td>
+      <td>Active</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

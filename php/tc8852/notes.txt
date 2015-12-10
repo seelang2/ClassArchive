@@ -1,0 +1,16 @@
+Notes
+-----
+
+https://premium.wpmudev.org/blog/creating-database-tables-for-plugins/
+http://codex.wordpress.org/Creating_Tables_with_Plugins
+http://codex.wordpress.org/Writing_a_Plugin#Saving_Plugin_Data_to_the_Database
+http://www.kylejlarson.com/blog/2013/how-to-create-a-wordpress-database-table/
+
+https://github.com/seelang2
+
+
+
+
+
+
+

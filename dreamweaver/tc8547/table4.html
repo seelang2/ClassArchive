@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Table Demo</title>
+<style type="text/css">
+table, th, td {
+	border: 1px solid #373737;
+}
+th, td {
+	padding: 0.25em;
+}
+table {
+	border-collapse: collapse;
+}
+
+tbody tr:nth-of-type(odd) {
+	background-color: #efefef;
+}
+
+@media screen and (max-width:700px){
+	/* ref: https://css-tricks.com/responsive-data-tables/ */
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide header by moving it outside the renderable viewport area
+	   (keeps the content available for accessibility)  */
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tbody td {
+		border-color: #cecece;
+	}
+	
+	tbody td:last-child {
+		border-bottom: 1px solid #5F5F5F
+	}
+	
+	/* Set up field headings */
+	tbody td:before {
+		display: inline-block;
+		width: 33%;
+		border-right: 1px solid #959595;
+		margin-right: 1em;
+		font-weight: bold;
+	}
+	
+	tbody td:nth-of-type(1):before { content: 'ID'; }
+	tbody td:nth-of-type(2):before { content: 'First Name'; }
+	tbody td:nth-of-type(3):before { content: 'Last Name'; }
+	tbody td:nth-of-type(4):before { content: 'Phone'; }
+	tbody td:nth-of-type(5):before { content: 'Email'; }
+	tbody td:nth-of-type(6):before { content: 'Age'; }
+	tbody td:nth-of-type(7):before { content: 'Department'; }
+	tbody td:nth-of-type(8):before { content: 'Supervisor'; }
+	tbody td:nth-of-type(9):before { content: 'TPL'; }
+	tbody td:nth-of-type(10):before { content: 'Status'; }
+}
+</style>
+</head>
+<body>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Age</th>
+      <th>Department</th>
+      <th>Supervisor</th>
+      <th>TPL</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1223</td>
+      <td>John </td>
+      <td>Doe </td>
+      <td>123-456-7890 </td>
+      <td>jdoe@company.com</td>
+      <td>44</td>
+      <td>Accounting</td>
+      <td>Alex M</td>
+      <td>Y</td>
+      <td>Active</td>
+    </tr>
+    <tr>
+      <td>3526</td>
+      <td>Jane </td>
+      <td>Smith </td>
+      <td>312-588-2300 </td>
+      <td>jsmith@company.com</td>
+      <td>32</td>
+      <td>Sales</td>
+      <td>Janet R</td>
+      <td>Y</td>
+      <td>Active</td>
+    </tr>
+    <tr>
+       <td>7758</td>
+     <td>Alex </td>
+      <td>Welles </td>
+      <td>818-555-1212 </td>
+      <td>awelles@company.com</td>
+      <td>29</td>
+      <td>IT</td>
+      <td>Arnold W</td>
+      <td>N</td>
+      <td>Active</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
