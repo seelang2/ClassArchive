@@ -1,0 +1,377 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5" />
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+	<link href="reset.css" type="text/css" rel="stylesheet" />
+	
+	<style type="text/css">
+	body {
+		font-family: 'Open Sans', Verdana, Arial, sans-serif;
+	}
+
+	/* temp color schemes for layout debugging */
+	body { background: #cccccc; }
+	#wrapper { background: #ffffff; }
+	#masthead { background: #90C3D4; }
+	#pagefoot { background: #BCF5CD; }
+	#section1 { background: #EFBCF5; }
+	#section2 { background: #F5D9BC; }
+	#content1 { background: #BCBDF5; }
+	#content2 { background: #F5F4BC; }
+	#content3 { background: #E3C3D0; }
+	#content4 { background: #E0F7C8; }
+	#content5 { background: #A2ECFC; }
+	#content6 { background: #FCB1A2; }
+	#content7 { background: #E2BBFA; }
+	#content8 { background: #BBFAEC; }
+	#content9 { background: #FABBBB; }
+
+	div { padding: 1px 0; } /* prevent vertical margin collapse */
+
+	img.scalable { width: 100%; }
+
+	.centeredtext { text-align: center; }
+	.circle { 
+		border-radius: 50%; 
+		overflow: hidden; 
+		padding: 0;
+	}
+
+	#content1 img {
+		display: block;
+	}
+
+	#section2 .content,
+	#sitefoot .content {
+		text-align: center;
+	}
+
+	#logo {
+		height: 50px;
+		background: url('http://dummyimage.com/50x50/333/fff') no-repeat;
+		padding-left: 60px;
+		font-weight: bold;
+		font-size: 2em;
+	}
+
+	/* menu styling */
+	#topmenu {
+		position: relative;
+		padding-top: 40px;
+	}
+
+	#topmenu > div {
+		width: 40px;
+		height: 40px;
+		background: url('icon-menu.svg') no-repeat;
+		background-size: contain;
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+
+	#topmenu ul {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		position: absolute;
+		background: rgba(128,128,128,0.98);
+		width: 100%;
+		z-index: 100;
+	}
+
+	#topmenu li {
+		font-size: 120%;
+		font-weight: bold;
+		border-bottom: 1px solid #cccccc;
+	}
+
+	#topmenu a {
+		text-decoration: none;
+		color: #000000;
+		display: block;
+		padding: 0.5em;
+	}
+	#topmenu a:hover {
+		background-color: #FFC;
+	}
+
+	/**
+	 * Microclearfix hack
+	 * ref: http://nicolasgallagher.com/micro-clearfix-hack/
+	 */
+    /* Start of "Micro clearfix" */
+
+    .cf { zoom: 1; }
+    .cf:before,
+    .cf:after { content: ""; display: table; }
+    .cf:after { clear: both; }
+
+    /* End of "Micro clearfix" */
+
+	/* breakpoints at 500, 1000 */
+	@media screen and (max-width:499px) {
+		#logo span { display: none; }
+
+		.imgcontainer {
+			width: 150px;
+			height: 150px;
+			margin: auto;
+		}
+
+		#topmenu ul {
+			display: none; /* hide menu initially */
+		}
+	}
+
+	@media screen and (min-width:500px) and (max-width:999px) {
+		#masthead { text-align: center; }
+
+		#logo {
+			background-image: url('http://dummyimage.com/80x80/333/fff');
+			padding-left: 85px;
+			height: 80px;
+			display: inline-block;
+		}
+
+		#topmenu ul {
+			display: none; /* hide menu initially */
+		}
+
+		#content1, #content2 {
+			float: left;
+		}
+
+		#content1 { width: 60%; }
+		#content2 { width: 40%; }
+
+		#section2 .content {
+			width: 50%;
+			float: left;
+		}
+
+		#sitefoot .content {
+			width: 33.33%;
+			display: inline-block;
+			vertical-align: top;
+			text-align: center;
+		}
+
+		.imgcontainer {
+			/*width: 150px;
+			height: 150px;*/
+			width: 50%;
+			height: 50%;
+			margin: auto;
+		}
+
+		#sitefoot .imgcontainer {
+			width: 75%;
+			height: auto;
+		}
+
+		.imgcontainer img {
+			display: block;
+		}
+
+		.imgcontainer img.scalable {
+			max-width: 250px;
+			max-height: 250px;
+
+		}
+	}
+
+	@media screen and (min-width:1000px) {
+		#masthead { text-align: center; }
+
+		#logo {
+			background-image: url('http://dummyimage.com/100x100/333/fff');
+			background-position: top center;
+			height: 100px;
+			padding-left: 0;
+			padding-top: 110px;
+			display: inline-block;
+		}
+
+		#wrapper {
+			max-width: 1200px;
+			margin: auto;
+		}
+
+		#section1 { 
+			width: 80%;
+			margin: auto;
+		}
+
+		#content1, #content2 {
+			float: left;
+		}
+
+		#content1 { width: 75%; }
+		#content2 { width: 25%; }
+
+		#section2 .content {
+			width: 25%;
+			float: left;
+		}
+
+		#sitefoot .content {
+			width: 33.33%;
+			display: inline-block;
+			vertical-align: top;
+			text-align: center;
+		}
+
+		.imgcontainer {
+			/*width: 150px;
+			height: 150px;*/
+			width: 70%;
+			height: 70%;
+			margin: auto;
+		}
+
+		#sitefoot .imgcontainer {
+			width: 75%;
+			height: auto;
+		}
+
+		.imgcontainer img {
+			display: block;
+		}
+
+		.imgcontainer img.scalable {
+			max-width: 250px;
+			max-height: 250px;
+		}
+
+		#sitefoot .imgcontainer img {
+			margin: auto;
+			max-height: none;
+		}
+
+		/* menu is always open and horizontal */
+		#topmenu {
+			padding-top: 0;
+		}
+
+		#topmenu > div { display: none; }
+
+		#topmenu ul {
+			position: static;
+			background-color: inherit;
+			text-align: center;
+			display: block !important;
+		}
+
+		#topmenu li {
+			border-bottom: none;
+			display: inline-block;
+		}
+	}
+
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<header id="masthead">
+		<div id="logo"><span>Really Long Site Title</span></div>
+		<nav id="topmenu">
+			<div></div>
+			<ul>
+				<li><a href="#">Menu Item</a></li>
+				<li><a href="#">Menu Item</a></li>
+				<li><a href="#">Menu Item</a></li>
+				<li><a href="#">Menu Item</a></li>
+				<li><a href="#">Menu Item</a></li>
+				<li><a href="#">Menu Item</a></li>
+				<li><a href="#">Menu Item</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<section id="section1" class="cf">
+		<div id="content1" class="content">
+			<img src="http://dummyimage.com/800x400/333/fff" class="scalable" />
+		</div><!-- content1 -->
+		<div id="content2" class="content">
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus sem eu consectetur dignissim. Donec nec odio mi. Vestibulum vestibulum magna sit amet ullamcorper commodo. Mauris id condimentum dui. Vestibulum semper metus et elit dapibus posuere. Praesent rutrum neque a rutrum suscipit. 
+			</p>
+		</div><!-- content2 -->
+	</section>
+
+	<section id="section2" class="cf">
+		<div id="content3" class="content">
+			<div class="imgcontainer circle">
+				<img src="http://dummyimage.com/150x150/333/fff" class="scalable" />
+			</div>
+			<p>
+				Donec nec odio mi
+			</p>
+		</div><!-- content3 -->
+		<div id="content4" class="content">
+			<div class="imgcontainer circle">
+				<img src="http://dummyimage.com/150x150/9f3/fff" class="scalable" />
+			</div>
+			<p>
+				Vivamus malesuada leo quam
+			</p>
+		</div><!-- content4 -->
+		<div id="content5" class="content">
+			<div class="imgcontainer circle">
+				<img src="http://dummyimage.com/150x150/3fc/000" class="scalable" />
+			</div>
+			<p>
+				Nam auctor at orci
+			</p>
+		</div><!-- content5 -->
+		<div id="content6" class="content">
+			<p>
+			Vivamus posuere dapibus tristique. Vivamus malesuada leo quam, vel pretium elit pellentesque pulvinar. Donec et eleifend purus. Nam auctor at orci ac suscipit. 
+			</p>
+		</div><!-- content6 -->
+	</section>
+
+	<footer id="sitefoot">
+		<div id="content7" class="content">
+			<div class="imgcontainer">
+				<img src="http://dummyimage.com/250x125/9f3/fff" class="scalable" />
+			</div>
+			<p>
+				Vivamus malesuada leo quam
+			</p>
+		</div><!-- content7 --><div id="content8" class="content">
+			<div class="imgcontainer">
+				<img src="http://dummyimage.com/250x125/9f3/fff" class="scalable" />
+			</div>
+			<p>
+				Vivamus malesuada leo quam
+			</p>
+		</div><!-- content8 --><div id="content9" class="content">
+			<div class="imgcontainer">
+				<img src="http://dummyimage.com/250x125/9f3/fff" class="scalable" />
+			</div>
+			<p>
+				Vivamus malesuada leo quam
+			</p>
+		</div><!-- content9 -->
+	</footer>
+
+</div><!-- wrapper -->
+
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+// hamburger icon functionality
+$(document).ready(function() {
+	var $menu = $('#topmenu > ul');
+	$('#topmenu > div').click(function(e) {
+		$menu.toggle();
+	});
+});
+</script>
+</body>
+</html>

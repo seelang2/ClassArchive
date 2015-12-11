@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5" />
+	<link href="reset.css" type="text/css" rel="stylesheet" />
+	<style type="text/css">
+	form label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+
+	form div { margin-bottom: 0.5em; }
+
+	label input, 
+	label span {
+		display: inline-block;
+	}
+
+	label span {
+		width: 13em;
+	}
+
+	</style>
+</head>
+<body>
+
+<form action="#" method="get">
+	<!--
+	<label for="example1">Enter some text</label>
+	<input id="example1" name="field1" />
+	-->
+
+	<label>
+		<span>Another text field</span>
+		<input name="field2" type="text" />
+	</label>
+
+	<input type="hidden" name="field3" value="field3data" />
+
+	<label>
+		<span>Enter some hidden text</span>
+		<input name="field4" type="password" />
+	</label>
+
+	<div>
+		<p>Select your hobbies:</p>
+		<label>
+			<input type="checkbox" name="hobbies[]" checked value="spores" />
+			<span>Spores</span>
+		</label>
+		<label>
+			<input type="checkbox" name="hobbies[]" value="mold" />
+			<span>Mold</span>
+		</label>
+		<label>
+			<input type="checkbox" name="hobbies[]" value="fungus" />
+			<span>Fungus</span>
+		</label>
+	</div>
+
+	<div>
+		<p>Select your gender:</p>
+		<label>
+			<input type="radio" name="gender" value="cismale" />
+			<span>Cis Male</span>
+		</label>
+		<label>
+			<input type="radio" name="gender" value="cisfemale" />
+			<span>Cis Female</span>
+		</label>
+		<label>
+			<input type="radio" name="gender" value="transmale" />
+			<span>Trans Male</span>
+		</label>
+		<label>
+			<input type="radio" name="gender" value="transfemale" />
+			<span>Trans Female</span>
+		</label>
+		<label>
+			<input type="radio" name="gender" value="fluid" />
+			<span>Gender Fluid</span>
+		</label>
+		<label>
+			<input type="radio" name="gender" value="noid" />
+			<span>Non-identified</span>
+		</label>
+		<label>
+			<input type="radio" name="gender" checked value="other" />
+			<span>Other</span>
+		</label>
+	</div>
+
+	<label>
+		<span>Select a day</span>
+		<select name="weekday">
+			<option value="sun">Sunday</option>
+			<option value="mon">Monday</option>
+			<option value="tue">Tuesday</option>
+			<option value="wed" selected>Wednesday</option>
+			<option value="thu">Thursday</option>
+			<option value="fri">Friday</option>
+			<option value="sat">Saturday</option>
+		</select>
+	</label>
+
+	<label>
+		<span>Choose one or more from the list</span>
+		<select name="boguslist1" multiple size="4">
+			<option value="1">One</option>
+			<option value="2">Two</option>
+			<option value="3">Three</option>
+			<option value="4">Four</option>
+			<option value="5">Five</option>
+			<option value="6">Six</option>
+			<option value="7">Seven</option>
+			<option value="8">Eight</option>
+			<option value="9">Nine</option>
+			<option value="10">Ten</option>
+			<option value="11">Eleven</option>
+			<option value="12">Twelve</option>
+			<option value="13">Thirteen</option>
+			<option value="14">Fourteen</option>
+		</select>
+
+		<label>
+			<span>Tell me a story</span>
+			<textarea name="story">Default text</textarea>
+		</label>
+
+	<div>
+		<input type="submit" />
+	</div>
+</form>
+
+
+</body>
+</html>

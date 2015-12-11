@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Responsive Demo</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+	<style type="text/css">
+	/* "Global" stylesheet area */
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 100%;
+	}
+
+	/* small = < 500px; medium = 500-900px; large = > 900px */
+	@media screen and (max-width:499px) {
+		/* treat these areas as standalone stylesheets */
+		body {
+			background: #ff0000;
+		}
+	}
+
+	@media screen and (min-width:500px) and (max-width:899px) {
+		body {
+			background: #00ff00;
+		}
+	}
+
+	@media screen and (min-width:900px) {
+		body {
+			background: #0000ff;
+		}
+	}
+	</style>
+</head>
+<body>
+	<p>
+	Praesent sit amet enim sit amet nulla ornare dictum ut sed quam. Praesent nisi turpis, finibus finibus venenatis quis, sodales a lacus. Pellentesque tempus, arcu vel hendrerit viverra, elit metus consectetur nisl, eu eleifend libero lectus sed purus. Mauris in cursus odio, et faucibus urna. Maecenas turpis mauris, efficitur aliquam pretium vel, rhoncus id eros. Pellentesque sodales accumsan ante at lobortis. Sed vel erat eget ante elementum euismod.
+	</p>
+</body>
+</html>
