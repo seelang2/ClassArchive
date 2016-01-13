@@ -1,0 +1,33 @@
+body {
+	font-family: Verdana, Arial, sans-serif;
+	background-color: #cccccc;
+}
+
+#wrapper {
+	width: 960px;
+	margin: auto;
+	background-color: #ffffff;
+	border: 1px solid #7a7a7a;
+}
+
+#masthead {
+	height: 80px;
+	background: #000099;
+	color: #ffffff;
+	padding: 1px 1em;
+}
+
+#topnav {
+	padding: 0.5em 1em;
+}
+
+#content {
+	padding: 1em 50px;
+}
+
+#footer {
+	padding: 1px 1em;
+	background-color: #666666;
+	color: #efefef;
+	font-size: 90%;
+}
