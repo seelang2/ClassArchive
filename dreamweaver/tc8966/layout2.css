@@ -1,0 +1,30 @@
+@charset "utf-8";
+body {
+	font-family: Verdana, Arial, sans-serif;
+	background-color: #2E3C32;
+}
+#wrapper {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #FFFFFF;
+}
+#masthead {
+	height: 80px;
+	background-color: #D9A05B;
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+#footer {
+	height: 125px;
+	background-color: #352F18;
+	color: #FFFFFF;
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+#content {
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 50px;
+	padding-right: 50px;
+}
