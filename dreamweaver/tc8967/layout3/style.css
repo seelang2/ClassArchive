@@ -1,0 +1,67 @@
+@charset "utf-8";
+#wrapper {
+	background-color: #FFFFFF;
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 10px solid #494949;
+}
+#masthead {
+	height: 80px;
+	background-color: #E9CC5E;
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+#content {
+	background-color: #FF9E9F;
+}
+#pagefooter {
+	background-color: #2A1C0E;
+	color: #FFFFFF;
+	font-size: 90%;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	height: 50px;
+}
+#main {
+	width: 60%;
+	float: left;
+	background-color: #91FF55;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding-left: 2em;
+	padding-right: 15px;
+}
+#secondary {
+	float: right;
+	width: 40%;
+	background-color: #A4F7FF;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding-left: 15px;
+	padding-right: 2em;
+}
+body {
+	background-color: #CCCCCC;
+}
+
+.clearing {
+	clear: both;
+	height: 1px;
+	overflow: hidden;
+}
+
+/* clearfix hack to create a virtual shim rather than static in html 
+   ref: http://nicolasgallagher.com/micro-clearfix-hack/
+*/
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
