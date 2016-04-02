@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+
+	</style>
+</head>
+<body>
+
+<ul id="set1" class="multiaccordion"></ul>
+
+<script type="text/javascript" src="jquery-1.12.2.js"></script>
+<script type="text/javascript">
+// use IIFE to create namespace
+(function(App) {
+
+// define private data
+var data = {};
+
+// define public App methods here
+
+// App startup - connect to dom ready handler
+App.start = function() {
+	
+	// use deferred object (promises) to load templates asynchronously
+	var templateLoader = $.Deferred();
+	templateLoader.status = 0;
+	templateLoader.completed = 7; // note that this is a bitmask
+	
+	// add progress handler to track template loading status
+	templateLoader.progress(function(t) {
+		// update status with loaded template
+		templateLoader.status += t; 
+		console.log('Loaded template',t,'status:',templateLoader.status);
+
+		if (templateLoader.status == templateLoader.completed) {
+			// all templates have loaded so resolve the promise
+			templateLoader.resolve();
+		}
+	});
+
+	// when the loader finishes then continue App 
+	templateLoader.done(function() {
+		console.log('all templates loaded.');
+		App.getContactData();
+	})
+
+	// load templates into a jQuery collection object
+	// template 1
+	$.ajax({
+		url: 		'contact-template.html',
+		method: 	'get',
+		dataType: 	'html'
+	}).done(function(response) {
+		data.contactTemplate = $('<div />').html(response);
+		templateLoader.notify(1);
+	});
+	// template 2
+	$.ajax({
+		url: 		'contact-template2.html',
+		method: 	'get',
+		dataType: 	'html'
+	}).done(function(response) {
+		data.contactTemplate2 = $('<div />').html(response);
+		templateLoader.notify(2);
+	});
+
+	// template 3
+	$.ajax({
+		url: 		'contact-template3.html',
+		method: 	'get',
+		dataType: 	'html'
+	}).done(function(response) {
+		data.contactTemplate3 = $('<div />').html(response);
+		templateLoader.notify(4);
+	});
+
+
+}; // App.start
+
+App.get = function(key) {
+	return data[key];
+};
+
+App.getContactData = function() {
+	// get contact data from server
+	$.ajax({
+		url: 		'contacts2.json',
+		method: 	'get',
+		dataType: 	'json',
+		success: 	App.updateView
+	});
+
+}; // App.getContactData
+
+App.updateView = function(contactList) {
+
+	// for each contact
+	$.each(contactList, function(index, contact) {
+		console.log(contact);
+	});
+
+
+}; // App.updateView
+
+
+})(window.App = window.App || {});
+
+// start app on DOM ready
+$(document).ready(App.start); // document.ready
+
+</script>
+</body>
+</html>

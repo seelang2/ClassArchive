@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<div>
+	<h1>Static Content</h1>
+	<p>This is the static content on the page.</p>
+</div>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.12.2.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+
+// make ajax call to retrieve partial data
+$.ajax({
+	url: 		'http://10.1.10.18/tc8977/partial.php',
+	method: 	'get',
+	dataType: 	'html',
+	success: 	function(response) {
+		// update page with content
+		$('#target').html(response);
+	} 
+});
+
+/*
+
+$('#target').load('partial.html');
+*/
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

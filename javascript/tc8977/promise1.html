@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+
+<script type="text/javascript" src="jquery-1.12.2.js"></script>
+<script type="text/javascript">
+
+var promise = $.Deferred();
+promise.counter = 0;
+
+// add a resolved handler to the promise
+promise.done(function() {
+	console.log('The promise has been fulfilled.');
+});
+
+// add a rejected handler to the promise
+promise.fail(function() {
+	console.log('The promise has been broken.');
+});
+
+// add a progress handler to the promise
+promise.progress(function() {
+	promise.counter++;
+	console.log('Counter is', promise.counter);
+});
+
+promise.notify();
+promise.notify();
+promise.notify();
+promise.resolve();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+
+<script type="text/javascript" src="jquery-1.12.2.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

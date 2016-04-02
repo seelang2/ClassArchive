@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript">
+
+// get reference to target
+var targetElem = document.getElementById('target');
+
+// create new node
+var tableElem = document.createElement('TABLE');
+
+// add node to branch
+targetElem.appendChild(tableElem);
+
+var tbodyElem = document.createElement('TBODY');
+tableElem.appendChild(tbodyElem);
+
+// create first row
+var trElem = document.createElement('TR');
+tbodyElem.appendChild(trElem);
+
+var tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('Frank'));
+
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('Kern'));
+
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('45'));
+
+//create second row
+trElem = document.createElement('TR');
+tbodyElem.appendChild(trElem);
+
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('Alice'));
+
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('Cooper'));
+
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('67'));
+
+</script>
+</body>
+</html>

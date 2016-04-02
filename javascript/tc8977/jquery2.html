@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<ul id="list1">
+	<li id="item1">Item</li>
+	<li id="item2">Item</li>
+	<li id="item3">Item</li>
+	<li id="item4">Item</li>
+	<li id="item5">Item</li>
+	<li id="item6">Item</li>
+</ul>
+
+<ul id="list2">
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+</ul>
+
+<script type="text/javascript" src="jquery-1.12.2.js"></script>
+<script type="text/javascript">
+
+$('#list2 li')
+	.addClass('item')
+	.append('<span>Stuff</span>');
+
+
+$('#list1 li')
+	.attr('data-stuff', 'foo'); // .attr as a setter
+
+console.log($('#list1 li').attr('id')); // .attr as a getter
+
+// Challenge: Add unique IDs to list2's LIs
+
+// manually loop through list items
+$('#list2 li')
+	.each(function(index, element) { 
+		// element is bare DOM node, so we get a jQuery collection
+		$(element).attr('id', 'item-' + index);
+	 });
+
+</script>
+</body>
+</html>

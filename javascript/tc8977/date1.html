@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+// set up label arrays
+var weekdays = [
+	'Sunday',
+	'Monday',
+	'Tuesday',
+	'Wednesday',
+	'Thursday',
+	'Friday',
+	'Saturday'
+];
+
+var months = [
+	'January',
+	'February',
+	'March',
+	'April',
+	'May',
+	'June',
+	'July',
+	'August',
+	'September',
+	'October',
+	'November',
+	'December'
+];
+
+// get current date
+var today = new Date();
+
+// get date components
+var date = today.getDate();
+var day = weekdays[today.getDay()];
+var month = months[today.getMonth()];
+var year = today.getFullYear();
+
+// output to user agent
+document.write('<p>Today is ' + 
+				day + ', ' +
+				month + ' ' +
+				date + ', ' +
+				year + '.</p>');
+
+</script>
+</body>
+</html>

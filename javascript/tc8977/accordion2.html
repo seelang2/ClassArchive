@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+	<style type="text/css">
+	ul.multiaccordion {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	#set1 {
+		width: 450px;
+		margin: auto;
+		border: 1px solid #7a7a7a;
+	}
+
+	.multiaccordion h1 {
+		border-top: 1px solid #7a7a7a;
+		border-bottom: 1px solid #7a7a7a;
+		margin: 0;
+		padding: 1px 0;
+	}
+
+	.multiaccordion h1,
+	.multiaccordion h2 {
+		cursor: pointer;
+	}
+
+	</style>
+</head>
+<body>
+
+<ul id="set1" class="multiaccordion">
+	<li>
+		<h1>Topic A</h1>
+		<div class="content">
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci libero, fermentum at finibus in, fringilla pellentesque elit. Vivamus mollis sem ligula, eu ornare ex commodo et. Sed ultrices mauris ut nisi vehicula, quis mollis libero facilisis. Fusce lobortis eget mi nec tincidunt. Aliquam est erat, semper vel dui non, dapibus porttitor lacus. Pellentesque ornare molestie massa, nec semper odio dictum nec.
+			</p>
+		</div>
+	</li>
+	<li>
+		<h1>Topic B</h1>
+		<ul class="content">
+			<li>
+				<h2>Sub Topic B.1</h2>
+				<div class="content">
+					<p>B.1 Content</p>
+				</div>
+			</li>
+			<li>
+				<h2>Sub Topic B.2</h2>
+				<div class="content">
+					<p>B.2 Content</p>
+				</div>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<h1>Topic C</h1>
+		<div class="content">
+			<p>
+			Etiam ut sollicitudin erat, eget cursus risus. Mauris justo mi, interdum id finibus sed, placerat et magna. Suspendisse eros risus, hendrerit sed gravida nec, hendrerit non diam. Aliquam lacus augue, dignissim sit amet volutpat ac, congue et augue. Nullam mauris nisl, bibendum id ultrices vitae, fermentum id lectus. Maecenas at arcu ultricies, iaculis lorem ut, malesuada risus. In dignissim ex ut orci pellentesque tempus. Integer sagittis, leo nec pulvinar lobortis, ex libero elementum nisi, eu sodales tortor nisi vitae elit. Praesent pharetra tortor eu justo pretium, at commodo dui venenatis.
+			</p>
+		</div>
+	</li>
+	<li>
+		<h1>Topic D</h1>
+		<div class="content">
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat vel risus aliquam viverra. Maecenas varius eros et accumsan vulputate. Sed a elit ut metus bibendum vestibulum sed accumsan tortor. Ut mattis egestas arcu, convallis efficitur magna bibendum at. Fusce a augue sit amet ligula volutpat dictum. Quisque volutpat porta felis nec commodo. Aliquam erat volutpat.
+			</p>
+		</div>
+	</li>
+</ul>
+
+<script type="text/javascript" src="jquery-1.12.2.js"></script>
+<script type="text/javascript">
+
+$('.content')
+	.hide()
+	.prev()
+	.on('click', function() {
+		// show adjacent sublist
+		$(this)
+			.next()
+			.toggle();
+
+	});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+
+<script type="text/javascript" src="jquery-1.12.2.js"></script>
+<script type="text/javascript">
+
+var App = {};
+
+App.doOtherStuff = function() {
+	console.log(a);
+};
+
+(function(App) {
+	// any vars or functions defined in this scope are local
+	// to this scope
+	var a = 'Bar';
+
+	// functions defined inside a scope have access to that scope,
+	// EVEN when attached to external objects
+
+	// extend the global App object
+	App.doStuff = function() { 
+		var b = 'bar';
+		console.log(a, b);
+	};
+
+})(App); 
+
+App.doStuff();
+
+App.doOtherStuff();
+
+//console.log(a, b);
+
+
+</script>
+</body>
+</html>

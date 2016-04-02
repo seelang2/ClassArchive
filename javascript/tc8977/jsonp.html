@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.12.2.js"></script>
+<script type="text/javascript">
+// define callback function in global scope
+function runme(data) {
+	console.log(data);
+}
+
+
+$(document).ready(function() {
+
+/*
+
+// make ajax call to retrieve partial data
+$.ajax({
+	url: 		'partial.html',
+	method: 	'get',
+	dataType: 	'html',
+	success: 	function(response) {
+		// update page with content
+		$('#target').html(response);
+	} 
+});
+
+*/
+
+$('<script />')
+	.attr({
+		src: 	'http://10.1.10.18/tc8977/contacts.jsonp',
+		type: 	'text/javascript'
+	 })
+	.prependTo(document.body);
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

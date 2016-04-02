@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<script type="text/javascript">
+// is javascript pass by copy or pass by reference?
+
+function foo(a) {
+	a = {prop: 'value'};
+	return a;
+}
+
+function bar(a) {
+	a.newprop = 'new value';
+	return a;
+}
+
+function test() {
+	this.aprop = 'a property';
+}
+
+var x = 'Text';
+console.log(x);
+console.log(foo(x));
+console.log(x);
+
+console.log(x);
+console.log(bar(x));
+console.log(x);
+
+var y = { prop1: 'someval' };
+console.log(y);
+console.log(foo(y));
+console.log(y);
+
+console.log(y);
+console.log(bar(y));
+console.log(y);
+
+var z = new test();
+console.log(z);
+console.log(foo(z));
+console.log(z);
+
+console.log(z);
+console.log(bar(z));
+console.log(z);
+
+
+</script>
+</body>
+</html>

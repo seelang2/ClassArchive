@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.12.2.js"></script>
+<script type="text/javascript">
+
+var contactList = 
+[
+	{id:123, firstname:'John', lastname:'Doe', age:43},
+	{id:23, firstname:'Patrick', lastname:'Frank', age:23},
+	{id:44, firstname:'Alice', lastname:'Jones', age:56},
+	{id:743, firstname:'James', lastname:'Peters', age:23},
+	{id:231, firstname:'Mary', lastname:'Winston', age:34},
+	{id:1232, firstname:'Betty', lastname:'Cooper', age:53},
+	{id:42, firstname:'Mark', lastname:'Bane', age:27},
+	{id:11, firstname:'Alex', lastname:'King', age:31},
+	{id:6, firstname:'Jane', lastname:'Smith', age:41}
+];
+
+// set up table structure
+var $table = 
+$('<table />')							// create TABLE node
+
+var $thead = $('<thead />').appendTo($table);
+
+// loop through contact fields and add to TR
+$.each(contactList[0], function(fieldName, fieldValue) {
+	$thead.append('<th>'+ fieldName.toUpperCase() +'</th>');
+});
+
+
+var $tbody =							
+$('<tbody />')							// create TBODY node
+	.appendTo($table);					// append to TABLE
+
+// for each contact
+$.each(contactList, function(index, contact) {
+	var $tr = $('<tr />')				// create new TR
+	
+	// loop through contact fields and add to TR
+	$.each(contact, function(fieldName, fieldValue) {
+		$tr.append('<td>'+ fieldValue +'</td>');
+	});
+	
+	$tr.appendTo($tbody);				// add row to TBODY
+});
+
+// attach table to DOM
+$table.appendTo('#target');
+
+</script>
+</body>
+</html>

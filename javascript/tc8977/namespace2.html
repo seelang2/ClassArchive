@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<button id="button1">Click Me</button>
+
+<script type="text/javascript" src="jquery-1.12.2.js"></script>
+<script type="text/javascript">
+// simple namespacing - use an object in the global space
+var App = {}; // define App as empty object
+
+// add functions (methods) to App object to modularize behaviors
+App.startup = function() {
+
+	var someVal = 'something';
+
+	// attach handlers to buttons
+	$('#button1').on('click', App.buttonHandler);
+
+}; // App.startup
+
+App.buttonHandler = function(evt) {
+	alert('The button has been clicked.');
+}; // App.buttonHandler
+
+// launch App.startup on DOM ready
+$(document).ready(App.startup); // document.ready
+
+
+</script>
+</body>
+</html>

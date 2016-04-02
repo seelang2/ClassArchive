@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<fieldset>
+
+<p>
+<input placeholder="type something" />
+</p>
+
+<p>
+<select id="select1">
+	<option value="one">One</option>
+	<option value="two">Two</option>
+	<option value="three">Three</option>
+</select>
+</p>
+
+<p>
+	<textarea></textarea>
+</p>
+
+</fieldset>
+
+<script type="text/javascript" src="jquery-1.12.2.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+$('fieldset').on('change', ':input', function() {
+	console.log($(this).val());
+});
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

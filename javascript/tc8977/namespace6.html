@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+
+<script type="text/javascript" src="jquery-1.12.2.js"></script>
+<script type="text/javascript">
+// use IIFE to create namespace
+(function(App) {
+	// define private data
+	var data = {};
+
+	// define public App methods here
+	
+	// App startup - connect to dom ready handler
+	App.start = function() {
+
+	}; // App.start
+
+})(window.App = window.App || {});
+
+// start app on DOM ready
+$(document).ready(App.start); // document.ready
+
+
+</script>
+</body>
+</html>

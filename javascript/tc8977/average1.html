@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<form id="form1" action="#" method="get">
+<div>
+	<label>
+		<span>Field</span>
+		<input name="field1" />
+	</label>
+</div>
+<div>
+	<label>
+		<span>Field</span>
+		<input name="field2" />
+	</label>
+</div>
+<div>
+	<label>
+		<span>Field</span>
+		<input name="field3" />
+	</label>
+</div>
+<div>
+	<label>
+		<span>Field</span>
+		<input name="field4" />
+	</label>
+</div>
+<div>
+	<label>
+		<span>Field</span>
+		<input name="field5" />
+	</label>
+</div>
+<div>
+	<label>
+		<span>Field</span>
+		<input name="field6" />
+	</label>
+</div>
+<div><input type="submit" /></div>
+</form>
+
+<div id="output"></div>
+
+<script type="text/javascript" src="jquery-1.12.2.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+$('#form1').on('submit', function(evt) {
+	evt.preventDefault(); // prevent form from submitting
+
+	var total = 0;
+	var count = 0;
+	$(this)
+		.find(':input')
+		.each(function(index, element) {
+			if (!isNaN(parseFloat($(element).val()))) {
+				total += parseFloat($(element).val());
+				count++;
+			}
+		 });
+
+	var average = total / count;
+	console.log(total, count, average);
+});
+
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+
+	ul.multiaccordion {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	#set1 {
+		width: 450px;
+		margin: auto;
+		border: 1px solid #7a7a7a;
+	}
+
+	.multiaccordion h1 {
+		border-top: 1px solid #7a7a7a;
+		border-bottom: 1px solid #7a7a7a;
+		margin: 0;
+		padding: 1px 0;
+	}
+
+	.multiaccordion h1,
+	.multiaccordion h2 {
+		cursor: pointer;
+	}
+
+	</style>
+</head>
+<body>
+
+<ul id="set1" class="multiaccordion"></ul>
+
+<script type="text/javascript" src="jquery-1.12.2.js"></script>
+<script type="text/javascript">
+// use IIFE to create namespace
+(function(App) {
+
+// define private data
+var data = {};
+
+// define public App methods here
+
+// App startup - connect to dom ready handler
+App.start = function() {
+	data.accordionElem = $('#set1');
+
+	// load template into a jQuery collection object
+	$.ajax({
+		url: 		'contact-template.html',
+		method: 	'get',
+		dataType: 	'html'
+	}).done(function(response) {
+		data.contactTemplate = 
+		$('<div />')
+			.html(response)
+			.children();	// get rid of DIV container
+		App.getContactData();
+	});
+
+
+}; // App.start
+
+App.get = function(key) {
+	return data[key];
+};
+
+App.getContactData = function() {
+	// get contact data from server
+	$.ajax({
+		url: 		'contacts2.json',
+		method: 	'get',
+		dataType: 	'json'
+	}).done(App.updateView);
+
+}; // App.getContactData
+
+App.updateView = function(contactList) {
+	// for each contact
+	$.each(contactList, function(index, contact) {
+		// merge contact data into template
+		data.contactTemplate
+			.clone()		// copy template and work with copy
+			.find('[data-field]')	// find elements matched to fields
+			.each(function(i, element) {
+				// get field name from element
+				var field = $(element).attr('data-field');
+				// put contact field data into element
+				$(element).html(contact[field]);
+			 })
+			.end()		// revert back to clone
+			.appendTo(data.accordionElem);
+	});
+
+	// add accordion functionality
+	var $content =
+	$('.content')
+		.hide()
+		.prev()
+		.on('click', function() {
+			// show adjacent sublist
+			$(this)
+				.next()
+				.toggle();
+		});
+
+}; // App.updateView
+
+
+})(window.App = window.App || {});
+
+// start app on DOM ready
+$(document).ready(App.start); // document.ready
+
+</script>
+</body>
+</html>

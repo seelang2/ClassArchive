@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<p><a id="link1" href="http://www.google.com">Go to Google</a></p>
+<p><a id="link2" href="http://www.google.com">Go to Google</a></p>
+<p><a id="link3" href="http://www.google.com">Go to Google</a></p>
+
+<script type="text/javascript" src="jquery-1.12.2.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+$('#link1').on('click', function(evt) {
+	// returning a false value cancels the default action
+	return false;
+});
+
+$('#link2').on('click', function(evt) {
+	// confirm dialog box returns true or false
+	return confirm('You are leaving the site. Are you sure?');
+});
+
+$('#link3').on('click', function(evt) {
+	// calling preventDefault also cancels the default action
+	evt.preventDefault();
+
+	
+});
+
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

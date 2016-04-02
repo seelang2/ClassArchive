@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+
+	table, th, td {
+		border: 1px solid #7a7a7a;
+	}
+
+	table { border-collapse: collapse; }
+
+	td, th { padding: 0.5em; }
+
+	.hover { background: #FFC; }
+
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.12.2.js"></script>
+<script type="text/javascript">
+
+var contactList = 
+[
+	{firstname:'John', lastname:'Doe', age:43},
+	{firstname:'Patrick', lastname:'Frank', age:23},
+	{firstname:'Alice', lastname:'Jones', age:56},
+	{firstname:'James', lastname:'Peters', age:23},
+	{firstname:'Mary', lastname:'Winston', age:34},
+	{firstname:'Betty', lastname:'Cooper', age:53},
+	{firstname:'Mark', lastname:'Bane', age:27},
+	{firstname:'Alex', lastname:'King', age:31},
+	{firstname:'Jane', lastname:'Smith', age:41}
+];
+
+// set up table structure
+var $tbody =
+$('<table />')							// create TABLE node
+	.append('<thead><tr>' + 
+				'<th>First Name</th>' +
+				'<th>Last Name</th>' +
+				'<th>Age</th>' +
+			'</tr></thead>')			// append THEAD branch
+	.append('<tbody />')				// append TBODY
+	.find('tbody');
+
+// for each contact
+$.each(contactList, function(index, contact) {
+	$('<tr />')							// create new TR
+		.append('<td>'+ contact.firstname +'</td>')	// create TD
+		.append('<td>'+ contact.lastname +'</td>')	// create TD
+		.append('<td>'+ contact.age +'</td>')		// create TD
+		.appendTo($tbody);				// add row to TBODY
+});
+
+// better approach is to use named or assigned functions
+var doHover = function(evt) {
+	console.log(evt);
+	// using the selector filter on the .on() statement
+	// resets 'this' to point to the filtered element
+	$(this).toggleClass('hover');
+}; // doHover
+
+// attach table to DOM
+$tbody
+	.on('mouseover mouseout', 'td', doHover) // attach event to TBODY
+	.parent()				// traverse up to TABLE
+	.appendTo('#target');	// and attach to DOM
+
+</script>
+</body>
+</html>

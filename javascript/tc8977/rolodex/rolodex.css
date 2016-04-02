@@ -1,0 +1,51 @@
+body {
+	font-family: Verdana, Arial, sans-serif;
+	background-color: #dedede;
+}
+
+#appwrapper {
+	width: 450px;
+	margin: auto;
+	background: #ffffff;
+}
+
+ul.multiaccordion {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#set1 {
+	width: 450px;
+	margin: auto;
+	border: 1px solid #7a7a7a;
+}
+
+.multiaccordion h1 {
+	border-top: 1px solid #7a7a7a;
+	border-bottom: 1px solid #7a7a7a;
+	margin: 0;
+	padding: 1px 0;
+}
+
+.multiaccordion h1,
+.multiaccordion h2 {
+	cursor: pointer;
+}
+
+.contactitem h1 {
+	background: #ccc;
+	color: #fff;
+}
+
+form label {
+	display: block;
+	margin-bottom: 0.5em;
+}
+
+form label span {
+	display: inline-block;
+	width: 150px;
+	text-align: right;
+	margin-right: 0.5em;
+}

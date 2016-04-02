@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+
+<script type="text/javascript" src="jquery-1.12.2.js"></script>
+<script type="text/javascript">
+
+var App = {};
+
+// use IIFE to create a simple data registry
+(function(App) {
+	// the data object is private inside the IIFE
+	var data = {};
+	// define getters and setters to access data
+
+	App.set = function(key, value) {
+		data[key] = value;
+	};
+
+	App.get = function(key) {
+		return data[key];
+	};
+
+})(App); 
+
+App.set('name', 'John');
+
+console.log(App.get('name'));
+console.log(data);
+
+
+
+</script>
+</body>
+</html>

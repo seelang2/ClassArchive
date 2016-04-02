@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+
+<script type="text/javascript" src="jquery-1.12.2.js"></script>
+<script type="text/javascript">
+
+var a = 'foo';
+var b = 'foo2';
+
+(function() {
+	// this function scope can't be accessed from the outside
+	var a = 'bar';
+	b = 'bar2';
+	console.log(a, b);
+
+})(); // remember to put the parens after the expression to execute it
+
+console.log(a, b);
+
+</script>
+</body>
+</html>

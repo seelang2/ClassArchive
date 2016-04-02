@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+document.write('<p>This space for rent.</p>');
+
+var value = 'Your content here.';
+
+document.write('<p>' + value.toUpperCase() + '</p>');
+
+console.log('my data');
+
+var sideA = 7;
+var sideB = parseInt('10'); // use parseInt() or parseFloat()
+
+var area = sideA * sideB;
+var perimeter = sideA + sideB + sideA + sideB;
+
+console.log(area, perimeter);
+
+var weekdays = ['Sun','Mon','Tue'];
+
+console.log(weekdays);
+
+console.log(weekdays[1]);
+
+var pillbox = { 
+	Mon: 'white', 
+	Tue: 'none',
+	Wed: 'blue',
+	Thu: 'orange',
+	Fri: 'red',
+	Sat: 'green',
+	Sun: 'technicolor' 
+};
+
+pillbox['Bob'] = 'whoah';
+
+console.log(pillbox.Fri);
+console.log(pillbox['Fri']);
+
+var today = 'Mon';
+console.log(pillbox.today); // fails
+console.log(pillbox[today]);
+
+</script>
+</body>
+</html>

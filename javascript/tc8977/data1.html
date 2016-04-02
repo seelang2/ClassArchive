@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+
+	</style>
+</head>
+<body>
+
+<ul id="set1" class="multiaccordion"></ul>
+
+<script type="text/javascript" src="jquery-1.12.2.js"></script>
+<script type="text/javascript">
+// use IIFE to create namespace
+(function(App) {
+
+// define private data
+var data = {};
+
+// define public App methods here
+
+// App startup - connect to dom ready handler
+App.start = function() {
+	
+	// load template into a jQuery collection object
+	//data.contactTemplate = 
+	//$('<div />').load('contact-template.html');
+	$.ajax({
+		url: 		'contact-template.html',
+		method: 	'get',
+		dataType: 	'html',
+		success: 	function(response) {
+			// update page with content
+			data.contactTemplate = $('<div />').html(response);
+
+			$.ajax({
+				url: 		'contact-template2.html',
+				method: 	'get',
+				dataType: 	'html',
+				success: 	function(response) {
+					// update page with content
+					data.contactTemplate2 = $('<div />').html(response);
+
+					$.ajax({
+						url: 		'contact-template3.html',
+						method: 	'get',
+						dataType: 	'html',
+						success: 	function(response) {
+							// update page with content
+							data.contactTemplate3 = $('<div />').html(response);
+							
+							App.getContactData();
+						} 
+					});
+				} 
+			});
+		} 
+	});
+
+	//console.log(data.contactTemplate);
+
+	// get contacts
+	//App.getContactData();
+
+}; // App.start
+
+App.get = function(key) {
+	return data[key];
+};
+
+App.getContactData = function() {
+	// get contact data from server
+	$.ajax({
+		url: 		'contacts2.json',
+		method: 	'get',
+		dataType: 	'json',
+		success: 	App.updateView
+	});
+
+}; // App.getContactData
+
+App.updateView = function(contactList) {
+
+	// for each contact
+	$.each(contactList, function(index, contact) {
+		console.log(contact);
+	});
+
+
+}; // App.updateView
+
+
+})(window.App = window.App || {});
+
+// start app on DOM ready
+$(document).ready(App.start); // document.ready
+
+</script>
+</body>
+</html>

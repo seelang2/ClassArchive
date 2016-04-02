@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Sample Page</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-1.12.2.js"></script>
+<script type="text/javascript">
+
+var $target = $('#target'); // store collection
+
+$table = $('<table></table>');
+$tbody = 
+$('<tbody></tbody>')
+	.appendTo($table);
+
+$('<tr />')
+	.append('<td>Frank</td>')
+	.append('<td>Kern</td>')
+	.append('<td>45</td>')
+	.appendTo($tbody);
+
+$(document.createElement('TR'))
+	.append('<td>Alice</td>')
+	.append('<td>Cooper</td>')
+	.append('<td>65</td>')
+	.appendTo($tbody);
+
+
+
+$target.append($table);
+
+</script>
+</body>
+</html>
