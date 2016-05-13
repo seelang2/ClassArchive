@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page</title>
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 100%;
+	}
+
+	#wrapper {
+		width: 1000px;
+		margin: auto;
+		border: 1px solid #7a7a7a;
+	}
+
+	#regions, #data { float: left; }
+	#regions { width: 10%; }
+	#data { width: 90%; }
+
+	#data table { width: 99%; }
+
+	#regions ul {
+		list-style-type: none;
+	}
+
+	#regions ul { padding: 0 1.5em; }
+
+	/* clearfix ref: http://nicolasgallagher.com/micro-clearfix-hack/ */
+	.cf:before,
+	.cf:after {
+	    content: " "; /* 1 */
+	    display: table; /* 2 */
+	}
+	.cf:after {
+	    clear: both;
+	}
+
+	/* collapsible style */
+	.collapsible span {
+		position: relative;
+	}
+
+	.collapsible span.closed:before {
+		content: '[+]';
+		font-size: 75%;
+		position: absolute;
+		left:-1.75em;
+	}
+	.collapsible span.open:before {
+		content: '[-]';
+		font-size: 75%;
+		position: absolute;
+		left:-1.75em;
+	}
+
+	li ul li.active {
+		font-weight: bold;
+		color: #090;
+	}
+
+	#regions li {
+		cursor: pointer;
+	}
+	</style>
+</head>
+<body>
+
+<div id="wrapper" class="cf">
+	<div id="regions">
+		<ul class="collapsible">
+			<li>
+				<span>Pacific</span>
+				<ul>
+					<li>WA</li>
+					<li>OR</li>
+					<li>CA</li>
+					<li>NV</li>
+				</ul>
+			</li>
+			<li>
+				<span>Mountain</span>
+				<ul>
+					<li>MT</li>
+					<li>ID</li>
+					<li>WY</li>
+					<li>UT</li>
+					<li>AZ</li>
+					<li>CO</li>
+					<li>NM</li>
+				</ul>
+			</li>
+			<li>
+				<span>Central</span>
+				<ul>
+					<li>ND</li>
+					<li>SD</li>
+					<li>MN</li>
+					<li>WI</li>
+					<li>NE</li>
+					<li>IA</li>
+					<li>IL</li>
+					<li>MO</li>
+					<li>KS</li>
+					<li>OK</li>
+					<li>AR</li>
+					<li>TN</li>
+					<li>AL</li>
+					<li>MS</li>
+					<li>LA</li>
+					<li>TX</li>
+				</ul>
+			</li>
+			<li>
+				<span>Eastern</span>
+				<ul>
+					<li>ME</li>
+					<li>VT</li>
+					<li>NH</li>
+					<li>MA</li>
+					<li>RI</li>
+					<li>CT</li>
+					<li>NY</li>
+					<li>PA</li>
+					<li>NJ</li>
+					<li>DE</li>
+					<li>MD</li>
+					<li>DC</li>
+					<li>VA</li>
+					<li>NC</li>
+					<li>SC</li>
+					<li>WV</li>
+					<li>OH</li>
+					<li>MI</li>
+					<li>IN</li>
+					<li>KY</li>
+					<li>GA</li>
+					<li>FL</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div id="data"></div>
+</div>
+
+
+
+
+<script src="jquery-2.2.3.min.js"></script>
+<script src="MOCK_DATA100.js"></script>
+<script>
+/**
+ * Collapsible lists
+ */
+ $('.collapsible ul')
+ 	.hide()
+ 	.prev()
+ 	.addClass('closed')
+ 	.on('click', function(e) {
+ 		$(this)
+ 			.toggleClass('open closed')
+ 			.next('ul')
+ 			.toggle();
+ 	 });
+
+</script>
+<script>
+
+(function(App) {
+
+App.data = {};
+
+App.start = function() {
+	App.data.dataElem = $('#data');
+
+	App.buildTable(data, $('#data'));
+
+	// add region behavior
+	$('#regions li ul li')
+		.on('click', App.filterData);
+
+}; // App.start
+
+App.filterData = function(e) {
+	// get state from LI
+	var state = $(this).html();
+
+	$(this)
+		.toggleClass('active');
+
+	App.data.tbody
+		.children()
+		.not('[data-state='+ state +']')
+		.toggle();
+
+}; // App.filterData
+
+App.buildTable = function(data, targetElem) {
+	// build initial table structure
+	App.data.tbody = 
+	$('<table><thead /><tbody /></table>')
+		.find('thead')
+		.each(function(i, thead) {
+			var $tr = $('<tr />');
+			$.each(data[0], function(fieldName, fieldValue) {
+				$('<th>' + fieldName.toUpperCase() + '</th>')
+					.appendTo($tr);
+			});
+			$tr.appendTo(thead);
+		 })
+		.end()
+		.find('tbody');
+
+	// build tbody rows
+	$.each(data, function(index, row) {
+		var $tr = $('<tr />');
+		$.each(row, function(fieldName, fieldValue) {
+			$('<td>' + fieldValue + '</td>')
+				.appendTo($tr);
+			if (fieldName == 'gender') {
+				$tr.attr('data-gender', fieldValue);
+			}
+			if (fieldName == 'state') {
+				$tr.attr('data-state', fieldValue);
+			}
+		});
+		$tr.appendTo(App.data.tbody);
+	});
+
+	// attach to live DOM
+	App.data.tbody.closest('table').appendTo(targetElem);
+
+}; // App.buildTable
+
+
+})(window.App = window.App || {});
+
+$(document).ready(App.start);
+
+</script>
+</body>
+</html>

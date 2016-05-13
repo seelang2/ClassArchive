@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page</title>
+	<link href="http://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+
+	<style type="text/css">
+	.brokestate { background: #FF1919; color: #fff;}
+	</style>
+</head>
+<body>
+
+
+<div id="wrapper">
+	<div id="datatable"></div>
+</div>
+
+
+
+<script src="jquery-2.2.3.min.js"></script>
+<script src="http://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+<script>
+
+(function(App) {
+
+App.data = {};
+
+App.start = function() {
+	App.data.dataElem = $('#datatable');
+
+	App.getData();
+
+
+}; // App.start
+
+App.getData = function() {
+	// make Ajax request to server
+	$.ajax({
+		url: 		'MOCK_DATA1000.json',
+		method: 	'get',
+		dataType: 	'json',
+		success: 	function(response) {
+			App.buildTable(response, App.data.dataElem);
+		}
+	});
+
+}; // App.getData
+
+App.buildTable = function(data, targetElem) {
+	// build initial table structure
+	App.data.tbody = 
+	$('<table><thead /><tbody /></table>')
+		.find('thead')
+		.each(function(i, thead) {
+			var $tr = $('<tr />');
+			$.each(data[0], function(fieldName, fieldValue) {
+				$('<th>' + fieldName.toUpperCase() + '</th>')
+					.appendTo($tr);
+			});
+			$tr.appendTo(thead);
+		 })
+		.end()
+		.find('tbody');
+
+	// build tbody rows
+	$.each(data, function(index, row) {
+		var $tr = $('<tr />');
+		$.each(row, function(fieldName, fieldValue) {
+			var $td =
+			$('<td>' + fieldValue + '</td>')
+				.appendTo($tr);
+			if (fieldName == 'gender') {
+				$tr.attr('data-gender', fieldValue);
+			}
+			if (fieldName == 'state') {
+				$tr.attr('data-state', fieldValue);
+			}
+			if (fieldName == 'state' && fieldValue == 'IL') {
+				$td.addClass('brokestate');
+			}
+		});
+		$tr.appendTo(App.data.tbody);
+	});
+
+	// attach to live DOM
+	App.data.tbody.closest('table')
+		.appendTo(targetElem)
+		.DataTable();
+
+}; // App.buildTable
+
+
+})(window.App = window.App || {});
+
+$(document).ready(App.start);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+
+<div id="target"></div>
+
+<p>Static page content here.</p>
+
+
+<script src="jquery-2.2.3.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+	/*
+	$.ajax({
+		url: 		'partial.html',
+		method: 	'get',
+		dataType: 	'html',
+		success: 	function(content) {
+			// do the manipulation in the callback (or after it returns)
+			$('#target')
+				.html(content)
+				.find('p')
+				.addClass('test');
+	}
+	});
+
+	*/
+
+	// note that the chaining fails because the callback from the server hasn't executed yet
+	$('#target')
+		.load('partial.html')
+		.find('p')
+		.addClass('test');
+
+});
+
+</script>
+</body>
+</html>

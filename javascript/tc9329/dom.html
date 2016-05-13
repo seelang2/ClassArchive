@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<ul id="target">
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+</ul>
+
+<ul id="target2"><li>Item</li><li>Item</li><li>Item</li><li>Item</li><li>Item</li><li>Item</li></ul>
+
+
+
+
+<script src="jquery-2.2.3.min.js"></script>
+<script>
+
+// everything gets accounted for in the DOM. jQuery, however, disregards text nodes when processing traversal methods such as .next(), .prev(), .children(), and so on
+console.log(document.getElementById('target').childNodes.length);
+console.log($('#target').children().length);
+
+console.log(document.getElementById('target2').childNodes.length);
+console.log($('#target2').children().length);
+</script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page</title>
+	<style type="text/css">
+	body {
+		font-family: Verdana. Arial, sans-serif;
+		font-size: 100%;
+	}
+
+	.item { border: 1px solid #7a7a7a; margin-bottom: .75em; }
+
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="itemlist"></div>
+	<div id="controls">
+		<button class="btnAdd"</button>
+	</div>
+</div>
+
+
+
+
+<script src="jquery-2.2.3.min.js"></script>
+<script>
+// use an IIFE with a global object for namespacing
+(function(App) {
+
+var foo = function() { /* stuff... */ };
+var data = {} // private
+
+App.data = {}; // public
+
+// launches app
+App.start = function() {
+	foo();
+	// always cache collections if they're used more than once
+	App.data.itemListElem = $('#itemlist');
+
+	// attach handlers, etc
+	$('#wrapper')
+		.on('click', 'button', App.buttonHandler);
+
+	App.loadTemplate();
+	
+};
+
+App.loadTemplate = function() {
+	// make Ajax request to server
+	$.ajax({
+		url: 		'item-template.html',
+		method: 	'get',
+		dataType: 	'html',
+		success: 	function(response) {
+			App.data.itemTemplate = 
+			$('<div />').html(response);
+			//App.getData();
+			// make Ajax request to server
+			$.ajax({
+				url: 		'template_page1.html',
+				method: 	'get',
+				dataType: 	'html',
+				success: 	function(response) {
+					App.data.page1Template = 
+					$('<div />').html(response);
+					//App.getData();
+					// make Ajax request to server
+					$.ajax({
+						url: 		'template_page2.html',
+						method: 	'get',
+						dataType: 	'html',
+						success: 	function(response) {
+							App.data.page2Template = 
+							$('<div />').html(response);
+							App.getData();
+						}
+					});
+				}
+			});
+		}
+	});
+}; // App.loadTemplate
+
+App.getData = function() {
+	// make Ajax request to server
+	$.ajax({
+		url: 		'MOCK_DATA100.json',
+		method: 	'get',
+		dataType: 	'json',
+		success: 	function(response) {
+			App.buildItemList(response);
+		}
+	});
+
+}; // App.getData
+
+App.buildItemList = function(contacts) {
+	App.data.itemListElem.empty(); // clear out existing items
+
+	$.each(contacts, function(index, contact) {
+		App.data.itemTemplate
+			.clone()
+			.attr('data-index', contact.id)
+			.find('[data-field]')
+			.each(function(i, field) {
+				// get name of field from data-field attribute
+				var fieldName = $(field).attr('data-field');
+				$(field).html(contact[fieldName]);
+			 })
+			.end()
+			.appendTo(App.data.itemListElem);
+	});
+}; // App.buildItemList
+
+App.buttonHandler = function(e) {
+	// 'this' points to the button that was clicked
+	var $this = $(this);
+
+	switch(true) {
+		case $this.hasClass('btnEdit'):
+			// pass in the parent .item
+			App.edit($this.closest('.item'));
+		break;
+
+		case $this.hasClass('btnDelete'):
+			App.delete($this.closest('.item'));
+		break;
+	} // switch
+
+}; // App.buttonHandler
+
+App.edit = function($item) {
+	console.log($item.attr('data-index'));
+
+	$item
+		.find('button')
+		.filter('.btnEdit')
+		.html('Save')
+		.toggleClass('btnEdit btnSave')
+		.end()
+		.filter('.btnDelete')
+		.html('Cancel')
+		.toggleClass('btnDelete btnCancel')
+		.end();
+
+}; // App.edit
+
+})(window.App = window.App || {});
+
+$(document).ready(App.start);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+
+<div id="target"></div>
+
+<p>Static page content here.</p>
+
+
+<script src="jquery-2.2.3.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+	/*
+	$.ajax({
+		url: 		'partial.html',
+		method: 	'get',
+		dataType: 	'html',
+		success: 	function(content) {
+			$('#target').html(content);
+		}
+	});
+
+	*/
+
+	$('#target').load('partial.html');
+	
+});
+
+</script>
+</body>
+</html>

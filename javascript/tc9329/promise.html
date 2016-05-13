@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+
+
+
+
+
+<script src="jquery-2.2.3.min.js"></script>
+<script>
+
+// create a new Deferred (Promise) object
+var promise = $.Deferred();
+
+// add a resolve handler
+promise.done(function(data) {
+	console.log('Resolved. Data:',data);
+});
+
+// add a reject handler
+promise.fail(function() {
+	console.log('Rejected.');
+});
+
+// add progress handlers
+promise.progress(function() {
+	console.log('in progress...');
+});
+
+// use .notify() to trigger progress handlers
+promise.notify();
+
+// use .resolve(), .reject() to complete the Promise
+promise.resolve('The Data');
+
+
+// create more practical deferred object
+var tracker = $.Deferred();
+
+tracker.counter = 0;
+tracker.maxValue = 10;
+
+tracker.done(function(count) {
+	console.log('Completed tracking. Final count:',count);
+});
+
+tracker.progress(function(processed) {
+	tracker.counter += processed;
+	if (tracker.counter >= tracker.maxValue) {
+		tracker.resolve(tracker.counter); // reached quota
+	}
+});
+
+
+</script>
+</body>
+</html>

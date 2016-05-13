@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page</title>
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-weight: normal;
+		font-size: 100%;
+		margin: 25px 0;
+		background: #ccc;
+	}
+
+	#wrapper {
+		width: 900px;
+		border: 1px solid #cecece;
+		margin: auto;
+		background: #fff;
+	}
+
+	nav {
+		background: #cecece;
+	}
+	nav ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	nav > ul > li {
+		display: inline-block;
+		padding: 0.5em 1em;
+		background: #efefef;
+		margin-right: 5px;
+		border-radius: 10px 10px 0 0;
+	}
+
+	nav > ul > li.active {
+		background: #fff;
+	}
+
+	#content {
+		padding: 1px 30px;
+
+	}
+
+	.readertext {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+		height: 1px;
+		overflow: hidden;
+	}
+
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<nav>
+		<ul>
+			<li class="active"><a href="./">Page 1</a></li>
+			<li><a href="./page2">Page 2</a></li>
+			<li><a href="./page3">Page 3</a></li>
+			<li><a href="./page4?data=page4">Page 4</a></li>
+		</ul>
+	</nav>
+	<div id="content"><p>Placeholder.</p></div>
+</div>
+
+<script src="jquery-2.2.3.min.js"></script>
+<!-- SPA routing http://visionmedia.github.io/page.js/ -->
+<script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+<script>
+(function(App) {
+
+App.data = {};
+
+App.start = function() {
+
+	// init other data
+	App.data.contentElem = $('#content');
+
+	// set up page routing
+	page.base('/tc9329'); // set base routing path
+	page('/', App.staticPage);
+	page('/page2', App.staticPage);
+	page('/page3', App.page3);
+	page('/page4', App.page4);
+	page({
+		decodeURLComponents: true
+	}); // binds routing to history events
+
+	page('/'); // go to start page
+
+}; // App.start
+
+// define callback functions for page routing
+App.staticPage = function(ctx, n) {
+	console.log(ctx);
+	var page = ctx.path.substr(1);
+	if (page == '') page = 'page1';
+
+	console.log(page);
+	$.ajax({
+		url: 		'template_' + page + '.html',
+		method: 	'get',
+		dataType: 	'html'
+	}).done(function(content) {
+		App.data.contentElem.html(content);
+	});
+}; // App.staticPage
+
+App.page3 = function(ctx, n) {
+	App.data.contentElem.html('<h1>Page 3</h1>');
+	console.log(ctx);
+};
+
+App.page4 = function(ctx, n) {
+	App.data.contentElem.html('<h1>Page 4</h1>');
+	console.log(ctx);
+};
+
+
+})(window.App = window.App || {});
+
+$(document).ready(App.start);
+</script>
+</body>
+</html>

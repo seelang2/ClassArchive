@@ -1,0 +1,39 @@
+/* Feedback form */
+#feedback {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	width: 200px;
+	background: #efefef;
+	border: 1px solid #ababab;
+}
+
+#feedback .control {
+	font-family: Impact;
+	color: #fff;
+	text-align: center;
+	font-size: 115%;
+	background: #900;
+	padding: 0.5em;
+}
+
+#feedback form {
+	box-sizing: border-box;
+	padding: 10px 15px;
+	border: 1px solid #ccc;
+}
+
+#feedback textarea, 
+#feedback button,
+#feedback label 
+{ display: block; margin: 10px 0; }
+
+#feedback textarea,
+#feedback button {
+	width: 100%;
+	margin: auto;
+}
+
+#feedback .thankyoumessage {
+	display: none;
+}

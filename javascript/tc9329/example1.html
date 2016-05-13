@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page</title>
+	<style type="text/css">
+
+	td, table { border: 1px solid #7a7a7a; }
+	td { padding: 0.5em; }
+
+	tr.hover { background: #f00; }
+	</style>
+</head>
+<body>
+
+<table>
+	<tbody>
+		<tr><td><span><a href="#">Longer Line of Text</a></span></td></tr>
+		<tr><td><span><a href="#">Longer Line of Text</a></span></td></tr>
+		<tr><td><span><a href="#">Longer Line of Text</a></span></td></tr>
+		<tr><td><span><a href="#">Longer Line of Text</a></span></td></tr>
+		<tr><td><span><a href="#">Longer Line of Text</a></span></td></tr>
+		<tr><td><span><a href="#">Longer Line of Text</a></span></td></tr>
+		<tr><td><span><a href="#">Longer Line of Text</a></span></td></tr>
+		<tr><td><span><a href="#">Longer Line of Text</a></span></td></tr>
+		<tr><td><span><a href="#">Longer Line of Text</a></span></td></tr>
+		<tr><td><span><a href="#">Longer Line of Text</a></span></td></tr>
+		<tr><td><span><a href="#">Longer Line of Text</a></span></td></tr>
+		<tr><td><span><a href="#">Longer Line of Text</a></span></td></tr>
+	</tbody>
+</table>
+
+<script src="jquery-2.2.3.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+	$('tr')
+		.on('mouseover', function(e) {
+			$(this).addClass('hover');
+		})
+		.on('mouseout', function(e) {
+			$(this).removeClass('hover');
+		})
+
+}); // document.ready
+
+</script>
+</body>
+</html>
