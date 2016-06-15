@@ -1,0 +1,149 @@
+/* ABOMS Demo Stylesheet */
+
+/* Global styling goes here */
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Calibri, sans-serif;
+	font-size: 100%;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+	color: inherit;
+}
+
+nav a {
+	text-decoration: none;
+}
+
+#topmenu,
+#pagefooter,
+#bottommenu {
+	background: #344559;	
+	color: #acbaca;
+}
+
+#bottommenu {
+	background: #3c5675;
+	clear: both; /* force below floated pagefooter */
+}
+
+#masthead {
+	padding: 0.5em;
+	border-bottom: 1px solid #B1D938;
+}
+
+#pagefooter {
+	background: #2d3e52;
+	float: left;
+	width: 100%;
+}
+
+#pagefooter header {
+	font-size: 1.5em;
+}
+
+#pagefooter .grid {
+	float: left;
+}
+
+.alignleft { float: left; margin-right: 0.5em; }
+.alignright { float: right; margin-left: 0.5em; }
+
+
+#topmenu a:hover { background: #acbaca; color: #344559; }
+
+/* breakpoints at 550px, 800px */
+/* small */
+@media screen and (max-width:549px) {
+	/*
+		Stack the menu items in the small screen display mode
+		and make them larger to be more easily tappable
+	*/
+	#topmenu a, #bottommenu a {
+		display: block;
+		padding: 0.5em;
+	}
+	
+	#topmenu, #bottommenu { font-size: 140%; }
+
+	.columnar {
+		-webkit-column-count: 1;
+		-moz-column-count: 1;
+		column-count: 1;
+	}
+
+	/* single column */
+	#pagefooter .grid {
+		width: 100%;
+	}
+} 
+/* medium */
+@media screen and (min-width:550px) and (max-width:799px) {
+
+	.columnar {
+		-webkit-column-count: 2;
+		-moz-column-count: 2;
+		column-count: 2;
+	}
+
+	/* two column */
+	#pagefooter .grid {
+		width: 50%;
+	}
+
+} 
+/* medium/large overlap */
+@media screen and (min-width:550px) {
+	/* 
+		We use the :after pseudoclass to add the menu item separator text
+		after the menu items dynamically
+	*/
+	#topmenu .menu-a a:after, 
+	#bottommenu .menu-a a:after {
+		content: ' | ';
+	}
+	/* ...but we don't want the separator after the last menu item */
+	#topmenu .menu-a a:first-child:after, /* or the home icon either */
+	#topmenu .menu-a a:last-child:after, 
+	#bottommenu .menu-a a:last-child:after {
+		content: '';
+	}
+	
+	#topmenu,
+	#bottommenu {
+		float: left;
+		width: 100%;
+	}
+	
+	#topmenu .menu-a,
+	#bottommenu .menu-a {
+		float: left;
+	}
+	
+	#topmenu .menu-b,
+	#bottommenu .menu-b {
+		float: right;
+	}
+	
+	#masthead { clear: both; }
+
+} 
+/* large */
+@media screen and (min-width:800px) {
+	
+	.columnar {
+		-webkit-column-count: 4;
+		-moz-column-count: 4;
+		column-count: 4;
+	}
+
+	/* 4 column */
+	#pagefooter .grid {
+		width: 25%;
+	}
+
+} 
