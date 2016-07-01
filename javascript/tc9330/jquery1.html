@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<div id="target"><p>X</p></div>
+
+
+<script src="jquery-3.0.0.js"></script>
+<script type="text/javascript">
+
+/*
+// SUCKS - DO NOT DO
+$('#target').append('<p>append</p>');
+$('#target').prepend('<p>prepend</p>');
+$('#target').before('<p>before</p>');
+$('#target').after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo('#target');
+$('<p>prependTo</p>').prependTo('#target');
+$('<p>insertBefore</p>').insertBefore('#target');
+$('<p>insertAfter</p>').insertAfter('#target');
+*/
+/*
+// BETTER - always cache a lookup if used more than once
+var $target = $('#target');
+$target.append('<p>append</p>');
+$target.prepend('<p>prepend</p>');
+$target.before('<p>before</p>');
+$target.after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo($target);
+$('<p>prependTo</p>').prependTo($target);
+$('<p>insertBefore</p>').insertBefore($target);
+$('<p>insertAfter</p>').insertAfter($target);
+*/
+
+// BETTER STILL - take advantage of chaining
+var $target =
+$('#target')
+	.append('<p>append</p>')
+	.prepend('<p>prepend</p>')
+	.before('<p>before</p>')
+	.after('<p>after</p>');
+
+$('<p>appendTo</p>')
+	.addClass('hilite')
+	.appendTo($target)
+	.detach()
+	.insertAfter($target);
+
+$('<p>prependTo</p>')
+	.prependTo($target)
+	.clone()
+	.attr('id','thing1')
+	.insertBefore($target);
+
+$('<p>insertBefore</p>').insertBefore($target);
+$('<p>insertAfter</p>').insertAfter($target);
+
+
+
+</script>
+</body>
+</html>

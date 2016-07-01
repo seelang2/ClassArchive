@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+
+	#wrapper {
+		position: relative; /* element MUST be relative */
+		width: 600px;
+		height: 400px;
+		background: url('chicago1.jpg');
+		background-position: center;
+	}
+
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+</div>
+
+
+<script src="jquery-3.0.0.js"></script>
+<script type="text/javascript">
+
+(function($) {
+
+	$.fn.wipe = function(options) {
+		return this.each(function(i, elem) {
+			// dynamically create inner element 
+			var $tmpInner = 
+			$('<div />')
+				.css({
+					position: 'absolute',
+					width: 0,
+					height: 0,
+					top: '50%',
+					left: '50%',
+					'background-image': 'url('+ options.imageURL +')',
+					'background-clip': "border-box",
+					'background-position': 'center'
+				 })
+				.appendTo(elem)
+				.animate({
+					top: 0,
+					left: 0,
+					width: $(elem).innerWidth(),
+					height: $(elem).innerHeight()
+				},{
+					duration: options.duration || 400,
+					complete: function() {
+						$(elem).css('background-image', 'url('+ options.imageURL +')');
+						$tmpInner.remove();
+					}
+				});
+		});
+	};
+
+})(jQuery);
+
+//$('#wrapper').wipe({imageURL: 'chicago2.jpg', duration: 600});
+
+setTimeout(function() {
+	$('#wrapper').wipe({imageURL: 'chicago2.jpg', duration: 600});
+}, 1000);
+
+setTimeout(function() {
+	$('#wrapper').wipe({imageURL: 'chicago1.jpg', duration: 600});
+}, 2600);
+
+
+</script>
+</body>
+</html>

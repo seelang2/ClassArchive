@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<ul>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+</ul>
+
+<script src="jquery-3.0.0.js"></script>
+<script type="text/javascript">
+
+$('li')
+	.each(function(index, element) {
+		//element.id = 'item-'+(index + 1); // plain old javascript
+		$(element).attr('id', 'item-'+(index + 1));
+	 });
+
+</script>
+</body>
+</html>

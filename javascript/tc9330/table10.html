@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+	
+	table, th, td {
+		border: 1px solid #7a7a7a;
+	}
+
+	table { border-collapse: collapse; }
+
+	th, td {
+		padding: 0.5em 1em;
+	}
+
+	tr.hover,
+	td.hover { background: #FFC; }
+
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+<button id="getData">Update Table</button>
+
+<script src="jquery-3.0.0.js"></script>
+<script>
+/**
+ * Helper function to sort on object properties
+ * Passed to array.sort() when sorting an array of objects
+ */
+var sortBy = function(property, direction) {
+	direction = direction || 'ASC';
+	var sortOrder = direction.toUpperCase() == 'ASC' ? 1: -1;
+	return function(a, b) {
+		if (a[property] > b[property]) return sortOrder;
+		if (a[property] == b[property]) return 0;
+		if (a[property] < b[property]) return -1 * (sortOrder);
+	};
+};
+</script>
+<script type="text/javascript">
+// Use IIFE as a namespace
+(function(App) {
+
+// private scope
+var data = {}; // private data store accessible only by App
+
+App.start = function() {
+	data.tableBuilt= false;
+
+	$('#getData').on('click', App.getData);
+
+	App.getData();
+};
+
+App.getData = function() {
+
+	$.ajax({
+		url: 		'contacts.json',
+		method: 	'get',
+		dataType: 	'json',
+		cache: 		false,
+		success: 	App.update
+	});
+
+};
+
+App.update = function(response) {
+	if (!data.tableBuilt) App.buildTable(response);
+	App.renderTableBody(data.tbody, response);
+};
+
+App.buildTable = function(contactList) {
+	data.tableBuilt = true;
+	data.tbody = 
+	App.createTable(contactList)
+		.children('tbody')
+		.on('mouseover mouseout', 'tr', App.rowHover)	
+		.on('mouseover mouseout', 'td', App.columnHover)
+		.prev()												// move to THEAD
+		.on('click', 'th', App.sortColumn)
+		.end();	// revert to TBODY
+
+	$('#target').append(data.tbody.parent());
+
+}; // App.contactList
+
+App.rowHover = function(e) {
+	$(this).toggleClass('hover');
+}; // App.addHover
+
+App.columnHover = function(e) {
+	// 'this' points to the TD
+	var columnName = $(this).attr('data-fieldname');
+	$('[data-fieldname="'+ columnName +'"]').toggleClass('hover');
+}; // App.columnHover
+
+App.sortColumn = function(e) {
+	var columnName = $(this).attr('data-fieldname');
+	var sortDirection = $(this).attr('data-sortdirection');
+	switch(sortDirection) {
+		case undefined:
+		case 'DESC':
+			sortDirection = 'ASC';
+		break;
+		case 'ASC':
+			sortDirection = 'DESC';
+		break;
+	} // switch
+	
+	$(this)
+		.parent()
+		.children('th')
+		.removeAttr('data-sortdirection')
+		.end()
+		.end()
+		.attr('data-sortdirection', sortDirection);
+
+	contactList.sort(sortBy(columnName, sortDirection));
+
+	App.renderTableBody(data.tbody, contactList);
+
+}; // App.sortColumn
+
+App.createTable = function(contactList) {
+	return $('<table><tbody /></table>')
+		.prepend('<thead />')
+		.children('thead')
+		.each(function(i, thead) {
+			var $trElem = $('<tr />').appendTo(thead);
+			$.each(contactList[0], function( fieldName, fieldValue) {
+				$('<th />')
+					.attr('data-fieldname', fieldName)
+					.append(fieldName.toUpperCase())
+					.appendTo($trElem);
+			});
+		 })
+		.end();
+}; // App.createTable
+
+App.renderTableBody = function(targetElem, rowData) {
+	$(targetElem).empty();
+
+	$.each(rowData, function(index, rowItem) {
+		var $trElem = $('<tr />')
+			.appendTo(targetElem);
+		$.each(rowItem, function( fieldName, fieldValue) {
+			$('<td />')
+				.attr('data-fieldname', fieldName)
+				.append(fieldValue)
+				.appendTo($trElem);
+		});
+	});
+}; // App.renderTableBody
+
+})(window.App = window.App || {});
+
+// launch App.start on DOM ready
+$(document).ready(App.start);
+
+
+//console.log(contactList.sort(sortBy('age', 'sdasdfdfsd')));
+
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<ul>
+	<li id="item1">Item</li>
+	<li id="item2">Item</li>
+	<li id="item3">Item</li>
+	<li id="item4">Item</li>
+	<li id="item5">Item</li>
+</ul>
+
+<script src="jquery-3.0.0.js"></script>
+<script type="text/javascript">
+
+var x = $('li');
+
+x.addClass('listitem');
+x.attr('data-thing', 'x');
+
+console.log(x.eq(2).attr('id'));
+
+</script>
+</body>
+</html>

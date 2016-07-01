@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+	form label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+
+	form label input,
+	form label span {
+		display: inline-block;
+	}
+	form label span { width: 150px; }
+
+	</style>
+</head>
+<body>
+
+<p><a href="http://google.com">Go to Google</a></p>
+
+<form action="echopostasjson.php" method="post">
+	<label>
+		<span>First Name:</span>
+		<input type="text" name="firstname" />
+	</label>
+	<label>
+		<span>Last Name:</span>
+		<input type="text" name="lastname" />
+	</label>
+	<label>
+		<span>Email:</span>
+		<input type="text" name="email" />
+	</label>
+	<div><input type="submit" /></div>
+</form>
+
+
+<script src="jquery-3.0.0.js"></script>
+<script type="text/javascript">
+
+$('a').click(function(e) {
+	return confirm('Ae you sure you want to follow this link?');
+});
+
+$('form').on('submit', function(e) {
+	e.preventDefault(); // stops default action
+	// validate client data
+
+	// send data to server
+	$.ajax({
+		url: 		'echopostasjson.php',
+		method: 	'post',
+		dataType: 	'json',
+		data: 		$(this).serialize(),
+		success: 	function(response) {
+			console.log(response);
+		}
+	})
+});
+
+</script>
+</body>
+</html>

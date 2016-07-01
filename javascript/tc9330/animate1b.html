@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+	body { margin: 0; }
+
+	#box1 {
+		width: 50px;
+		height: 50px;
+		background: #f00;
+		position: fixed;
+		top: 50px;
+		left: 50px;
+	}
+
+	#box2 {
+		width: 50px;
+		height: 50px;
+		background: #00f;
+		position: fixed;
+		top: 100px;
+		left: 100px;
+	}
+	</style>
+</head>
+<body>
+
+<div id="box1"></div>
+<div id="box2"></div>
+
+
+<script src="jquery-3.0.0.js"></script>
+<script type="text/javascript">
+
+function move() {
+
+	$('#box1')
+		.animate({
+			width: '+=250',
+			height: '+=250'
+		},{
+			queue: false,
+			duration: 1500
+		})
+		.animate({
+			top: 400,
+			left: 650
+		},{
+			duration: 1000
+		})
+		.animate({
+			top: '-=200',
+			left: '+=200'
+		},{
+			duration: 500
+		})
+		.animate({
+			top: 50,
+			left: 50,
+			width: 50,
+			height: 50
+		},{
+			duration: 750,
+			complete: function() { setTimeout(move, 500); }
+		})
+}
+
+move();
+
+</script>
+</body>
+</html>

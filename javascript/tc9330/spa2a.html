@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="contactlist">
+	</div><!-- contactlist -->
+	<div id="itemlistcontrol">
+		<button>Add New Item</button>
+	</div><!-- itemlistcontrol -->
+</div><!-- wrapper -->
+
+<script src="jquery-3.0.0.js"></script>
+<script type="text/javascript">
+// App namespace IIFE
+(function(App) {
+
+var data = {}; // private data store
+
+App.start = function() {
+	data.$contactList = $('#contactlist');
+	// load template
+	$.ajax({
+		url: 		'template-contactitem.html',
+		method: 	'get',
+		dataType: 	'html'
+	}).done(function(templateHTML) {
+		data.contactItemTemplate = $(templateHTML);
+		App.getData();
+	});
+
+}; // App.start
+
+App.getData = function() {
+
+	$.ajax({
+		url: 		'contacts.json',
+		method: 	'get',
+		dataType: 	'json',
+		success: 	App.renderContactItems
+	});
+
+}; // App.getData
+
+App.renderContactItems = function(contacts) {
+	data.$contactList.empty(); 
+	// loop through contacts and merge into template
+	$.each(contacts,function(index,contact) {
+		data.contactItemTemplate
+			.clone()
+			.find('[data-fieldname]') // traverse to SPANs
+			.each(function(i, field) {
+				var fieldName = $(field).attr('data-fieldname');
+				$(field).html(contact[fieldName])
+			 })
+			.end() // revert back to template
+			.appendTo(data.$contactList);
+	});
+
+}; // App.renderContactItems
+
+})(window.App = window.App || {});
+// start app on DOM ready
+$(document).ready(App.start);
+
+</script>
+</body>
+</html>

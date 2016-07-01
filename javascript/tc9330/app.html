@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+
+<script src="jquery-3.0.0.js"></script>
+<script type="text/javascript">
+// Use IIFE as a namespace
+(function(App) {
+
+// private scope
+var data = {}; // private data store accessible only by App
+
+App.start = function() { 
+
+}; // App.start
+
+
+})(window.App = window.App || {});
+
+// launch App.start on DOM ready
+$(document).ready(App.start);
+
+
+</script>
+</body>
+</html>

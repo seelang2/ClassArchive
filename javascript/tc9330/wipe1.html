@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+
+	#wrapper {
+		position: relative;
+		width: 600px;
+		height: 400px;
+		background: url('chicago1.jpg');
+		background-position: center;
+	}
+
+	#inner {
+		position: absolute;
+		width: 0;
+		height: 0;
+		top: 50%;
+		left: 50%;
+		background: url('chicago2.jpg');
+		background-clip: border-box;
+		background-position: center;
+	}
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="inner"></div>
+</div>
+
+
+<script src="jquery-3.0.0.js"></script>
+<script type="text/javascript">
+
+$('#inner')
+	.animate({
+		top: 0,
+		left: 0,
+		width: 600,
+		height: 400
+	},{
+
+	});
+
+
+
+</script>
+</body>
+</html>

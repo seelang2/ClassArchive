@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script src="jquery-3.0.0.js"></script>
+<script type="text/javascript">
+
+$('<table><tbody /></table>')		// collection: TABLE
+	.children('tbody')				// collection: TBODY
+	.append('<tr />')				// collection: TBODY
+	.children(':last-child')		// c: TR
+	.append('<td>John</td>')		// c: TR
+	.append('<td>Doe</td>')			// c: TR
+	.append('<td>42</td>')			// c: TR
+	.end()							// reverts to TBODY
+	.append('<tr />')				// collection: TBODY
+	.children(':last-child')		// c: TR
+	.append('<td>Jane</td>')		// c: TR
+	.append('<td>Smith</td>')		// c: TR
+	.append('<td>36</td>')			// c: TR
+	.end()							// reverts to TBODY
+	.end()							// revert to TABLE
+	.appendTo('#target');
+
+
+
+</script>
+</body>
+</html>

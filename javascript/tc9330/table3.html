@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script src="jquery-3.0.0.js"></script>
+<script type="text/javascript">
+
+$('<table><tbody /></table>')		// collection: TABLE
+	.children('tbody')				// collection: TBODY
+	.each(function(i, tbody) {
+		// kinda like an IIFE, right?
+		$('<tr />')
+			.append('<td>John</td>')
+			.append('<td>Doe</td>')
+			.append('<td>42</td>')
+			.appendTo(tbody);
+	 })
+	.end()							// revert to TABLE
+	.appendTo('#target');
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<ul>
+</ul>
+
+<script src="jquery-3.0.0.js"></script>
+<script type="text/javascript">
+
+var list = [
+	'Chris',
+	'Bob',
+	'Alex',
+	'Sam'
+];
+
+var pillbox = {
+	'sun': 'white',
+	'mon': 'white',
+	'tue': 'none',
+	'wed': 'blue',
+	'thu': 'orange',
+	'fri': 'red',
+	'sat': 'green'
+};
+
+/*
+$.each(list, function(index, item) {
+	$('<li>' + item + '</li>').appendTo('ul');
+})
+*/
+
+$.each(pillbox, function(key, value) {
+	$('<li>' + key + ' -> ' + value + '</li>').appendTo('ul');
+})
+
+
+</script>
+</body>
+</html>

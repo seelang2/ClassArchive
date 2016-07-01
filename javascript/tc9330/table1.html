@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+
+<script src="jquery-3.0.0.js"></script>
+<script type="text/javascript">
+
+var $tableElem = $('<table />');
+var $tbodyElem = 
+$('<tbody />')
+	.appendTo($tableElem);
+
+$('<tr />')
+	.append('<td>John</td>')
+	.append('<td>Doe</td>')
+	.append('<td>42</td>')
+	.appendTo($tbodyElem);
+
+$('<tr />')
+	.append('<td>Jane</td>')
+	.append('<td>Smith</td>')
+	.append('<td>36</td>')
+	.appendTo($tbodyElem);
+
+$tableElem.appendTo('#target');
+
+
+</script>
+</body>
+</html>

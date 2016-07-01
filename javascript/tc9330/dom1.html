@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<!--
+<table>
+	<tbody>
+		<tr>
+			<td>John</td><td>Doe</td><td>42</td>
+		</tr>
+		<tr>
+			<td>Jane</td><td>Smith</td><td>36</td>
+		</tr>
+	</tbody>
+</table>
+-->
+
+<script type="text/javascript">
+// POJS
+
+// get reference to DOM node
+var targetElem = document.getElementById('target');
+
+var tableElem = document.createElement('TABLE');
+var tbodyElem = document.createElement('TBODY');
+tableElem.appendChild(tbodyElem);
+
+var trElem = document.createElement('TR');
+tbodyElem.appendChild(trElem);
+
+// first row
+var tdElem = document.createElement('TD');
+tdElem.appendChild(document.createTextNode('John'));
+trElem.appendChild(tdElem);
+
+tdElem = document.createElement('TD');
+tdElem.appendChild(document.createTextNode('Doe'));
+trElem.appendChild(tdElem);
+
+tdElem = document.createElement('TD');
+tdElem.appendChild(document.createTextNode('42'));
+trElem.appendChild(tdElem);
+
+// second row
+trElem = document.createElement('TR');
+tbodyElem.appendChild(trElem);
+
+tdElem = document.createElement('TD');
+tdElem.appendChild(document.createTextNode('Jane'));
+trElem.appendChild(tdElem);
+
+tdElem = document.createElement('TD');
+tdElem.appendChild(document.createTextNode('Smith'));
+trElem.appendChild(tdElem);
+
+tdElem = document.createElement('TD');
+tdElem.appendChild(document.createTextNode('36'));
+trElem.appendChild(tdElem);
+
+// add completed branch to DOM 
+targetElem.appendChild(tableElem);
+
+targetElem.innerHTML = '<p>Now I can enter HTML as a string instead of having to do all that DOM node method calling stuff.</p><p>AND this will completely replace the content of the element.</p>';
+
+</script>
+</body>
+</html>

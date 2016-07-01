@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+	
+	table, th, td {
+		border: 1px solid #7a7a7a;
+	}
+
+	table { border-collapse: collapse; }
+
+	th, td {
+		padding: 0.5em 1em;
+	}
+
+	tr.hover { background: #FFC; }
+
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script src="jquery-3.0.0.js"></script>
+<script type="text/javascript">
+
+var contactList = [
+	{"id":1,"firstname":"John","lastname":"Doe","age":42},
+	{"id":2,"firstname":"Alex","lastname":"Jones","age":23},
+	{"id":3,"firstname":"Phuong","lastname":"Kim","age":33}
+];
+
+
+$('<table><tbody /></table>')		// collection: TABLE
+	.prepend('<thead />')
+	.children('thead')
+	.each(function(i, thead) {
+		var $trElem = $('<tr />').appendTo(thead);
+		$.each(contactList[0], function( fieldName, fieldValue) {
+			$('<th />')
+				.append(fieldName.toUpperCase())
+				.appendTo($trElem);
+		});
+	 })
+	.end()
+	.children('tbody')				// collection: TBODY
+	.each(function(i, tbody) {
+		$.each(contactList, function(index, contact) {
+			var $trElem = $('<tr />')
+				.on('mouseover', function(e) {
+					// 'this' refers to the target element here
+					$(this).addClass('hover');
+				 })
+				.on('mouseout', function(e) {
+					// 'this' refers to the target element here
+					$(this).removeClass('hover');
+				 })
+				.appendTo(tbody);
+			$.each(contact, function( fieldName, fieldValue) {
+				$('<td />')
+					.append(fieldValue)
+					.appendTo($trElem);
+			});
+		});
+	 })
+	.end()							// revert to TABLE
+	.appendTo('#target');
+
+
+
+</script>
+</body>
+</html>

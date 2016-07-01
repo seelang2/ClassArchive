@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+function foo(obj) {
+	obj = { prop1: 'val1' };
+	console.log(obj);
+}
+
+function bar(obj) {
+	obj.newprop = 'newval';
+	console.log(obj);
+}
+
+var a = 'This space for rent.';
+console.log(a);
+foo(a);
+console.log(a);
+bar(a);
+console.log(a);
+
+var b = { someprop: 'someval' };
+console.log(b);
+foo(b);
+console.log(b);
+bar(b);
+console.log(b);
+
+</script>
+</body>
+</html>

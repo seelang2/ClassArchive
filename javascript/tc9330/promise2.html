@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 100%;
+	}
+
+	#wrapper {
+		width: 450px;
+		margin: auto;
+	}
+
+	.title {
+		font-size: 125%;
+		font-weight: bold;
+		color: #990000;
+		padding: 0.25em 0.5em;
+		border: 1px solid #7a7a7a;
+		display: inline-block;
+		border-radius: 5px 5px 0 0;
+		position: relative;
+		top: 1px;
+	}
+
+	.title.active {
+		border-bottom-color: #ffffff;
+	}
+
+	.content {
+		padding: 0.25em 0.5em;
+		border: 1px solid #7a7a7a;
+	}
+
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<div class="title">Tab 1</div>
+	<div class="title">Tab 2</div>
+	<div class="title">Tab 3</div>
+	<div class="title">Tab 4</div>
+	<div class="content"><p>Foo</p></div>
+</div>
+
+<script src="jquery-3.0.0.js"></script>
+<script type="text/javascript">
+// defer execution until DOM is ready
+$(document).ready(function() {
+
+	// hide content to collapse accordion and store in var
+	var $content = $('.content');
+
+	// use an array or object to store page mapping
+	var pageList = {
+		0: 'page1.html',
+		1: 'page2.html',
+		2: 'page3.html',
+		3: 'page4.html'		
+	};
+
+	// store cached page objects
+	var pages = {};
+
+	$.ajax({
+		url: 		'page1.html',
+		method: 	'get',
+		cache: 		false,
+		dataType: 	'html'
+	}).done(function(result) {
+		pages['0'] = result;
+		$.ajax({
+			url: 		'page2.html',
+			method: 	'get',
+			cache: 		false,
+			dataType: 	'html'
+		}).done(function(result) {
+			pages['1'] = result;
+			$.ajax({
+				url: 		'page3.html',
+				method: 	'get',
+				cache: 		false,
+				dataType: 	'html'
+			}).done(function(result) {
+				pages['2'] = result;
+				$.ajax({
+					url: 		'page4.html',
+					method: 	'get',
+					cache: 		false,
+					dataType: 	'html'
+				}).done(function(result) {
+					pages['3'] = result;
+					getOnWithIt();
+				});
+			});
+		});
+	});
+
+	var $titles =
+	$('.title')
+		.each(function(index, elem) {
+			// attach the node index to the element 
+			$(elem).attr('data-index',index)
+		 })
+		.on('click', function(e) {
+			var index = $(this).attr('data-index');
+			setPage(index);
+		 });
+
+	var setPage = function(pageIndex) {
+		$titles
+			.removeClass('active')
+			.eq(pageIndex)
+			.addClass('active');
+
+		// load page from cache
+		$content.html(pages[pageIndex]);
+
+	};
+
+	var getOnWithIt = function() {
+		// set a page as the default opened page at load
+		setPage(0);
+	};
+
+});
+
+
+</script>
+</body>
+</html>

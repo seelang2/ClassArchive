@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<h1>Some Content.</h1>
+<p>This is static content on the page.</p>
+
+<div id="target"></div>
+
+
+<script src="jquery-3.0.0.js"></script>
+<script type="text/javascript">
+
+function runme(data) {
+	console.log(data)
+}
+
+$(document).ready(function() {
+
+
+$.ajax({
+	url: 		'http://10.1.10.196/tc9330/getjsonp.php?file=contacts.json',
+	method: 	'get',
+	dataType: 	'json',
+	success: 	function(response) {
+		console.log(response);
+	}
+});
+
+
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

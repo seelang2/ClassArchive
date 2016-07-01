@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+	#messages {
+		height: 200px;
+		overflow-y: scroll;
+		border: 1px solid #000;
+	}
+	</style>
+</head>
+<body>
+
+<div id="messages">
+</div>
+<div>
+	<input id="input" />
+	<button id="thebutton" disabled>Send</button>
+</div>
+
+
+<script src="jquery-3.0.0.js"></script>
+<script type="text/javascript">
+
+var exampleSocket = new WebSocket("ws://10.1.10.196:8001");
+
+//exampleSocket.send("Here's some text that the server is urgently awaiting!");
+
+exampleSocket.onopen = function(e) {
+	console.log('connected');
+	$('#thebutton').removeAttr('disabled');
+};
+
+exampleSocket.onmessage = function (event) {
+  console.log('Received:',event.data);
+
+  var data = JSON.parse(event.data);
+  $('<div />')
+  	.append('<p>' + data.message + '</p>')
+  	.appendTo('#messages');
+
+};
+
+$('#thebutton').click(function(e) {
+	var data = {
+		timestamp: new Date().getTime(),
+		message: $('#input').val()
+	};
+	console.log('Sent:',JSON.stringify(data));
+	exampleSocket.send(JSON.stringify(data));
+	//exampleSocket.send(data);
+
+});
+
+
+</script>
+</body>
+</html>

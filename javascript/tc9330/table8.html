@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+	
+	table, th, td {
+		border: 1px solid #7a7a7a;
+	}
+
+	table { border-collapse: collapse; }
+
+	th, td {
+		padding: 0.5em 1em;
+	}
+
+	tr.hover,
+	td.hover { background: #FFC; }
+
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script src="jquery-3.0.0.js"></script>
+<script src="mylib.js"></script>
+<script type="text/javascript">
+var contactList = [
+	{"id":1,"firstname":"John","lastname":"Doe","age":42},
+	{"id":2,"firstname":"Alex","lastname":"Jones","age":23},
+	{"id":3,"firstname":"Mitchell","lastname":"Anders","age":45},
+	{"id":4,"firstname":"Raul","lastname":"Santos","age":34},
+	{"id":5,"firstname":"Evelyn","lastname":"Sander","age":22},
+	{"id":6,"firstname":"Kim","lastname":"Peters","age":67},
+	{"id":7,"firstname":"Peter","lastname":"Kim","age":47},
+	{"id":8,"firstname":"Nancy","lastname":"Jones","age":35},
+	{"id":9,"firstname":"Rashida","lastname":"Bahamut","age":29},
+	{"id":10,"firstname":"Phuong","lastname":"Kim","age":28}
+];
+</script>
+<script src="tableplugin.js"></script>
+<script type="text/javascript">
+// Use IIFE as a namespace
+(function(App) {
+
+// private scope
+var data = {}; // private data store accessible only by App
+
+App.start = function() {
+
+	data.tbody = 
+	App.createTable(contactList)
+		.children('tbody')
+		.on('mouseover mouseout', 'tr', App.rowHover)	
+		.on('mouseover mouseout', 'td', App.columnHover)
+		.prev()												// move to THEAD
+		.on('click', 'th', App.sortColumn)
+		.end();	// revert to TBODY
+
+	$('#target').append(data.tbody.parent());
+
+	App.renderTableBody(data.tbody, contactList);
+
+};
+
+App.rowHover = function(e) {
+	$(this).toggleClass('hover');
+}; // App.addHover
+
+App.columnHover = function(e) {
+	// 'this' points to the TD
+	var columnName = $(this).attr('data-fieldname');
+	$('[data-fieldname="'+ columnName +'"]').toggleClass('hover');
+}; // App.columnHover
+
+App.sortColumn = function(e) {
+	var columnName = $(this).attr('data-fieldname');
+	var sortDirection = $(this).attr('data-sortdirection');
+	switch(sortDirection) {
+		case undefined:
+		case 'DESC':
+			sortDirection = 'ASC';
+		break;
+		case 'ASC':
+			sortDirection = 'DESC';
+		break;
+	} // switch
+	
+	$(this)
+		.parent()
+		.children('th')
+		.removeAttr('data-sortdirection')
+		.end()
+		.end()
+		.attr('data-sortdirection', sortDirection);
+
+	contactList.sort(sortBy(columnName, sortDirection));
+
+	App.renderTableBody(data.tbody, contactList);
+
+}; // App.sortColumn
+
+App.createTable = function(contactList) {
+	return $('<table><tbody /></table>')
+		.prepend('<thead />')
+		.children('thead')
+		.each(function(i, thead) {
+			var $trElem = $('<tr />').appendTo(thead);
+			$.each(contactList[0], function( fieldName, fieldValue) {
+				$('<th />')
+					.attr('data-fieldname', fieldName)
+					.append(fieldName.toUpperCase())
+					.appendTo($trElem);
+			});
+		 })
+		.end();
+}; // App.createTable
+
+App.renderTableBody = function(targetElem, rowData) {
+	$(targetElem).redraw(rowData);
+	
+}; // App.renderTableBody
+
+})(window.App = window.App || {});
+
+// launch App.start on DOM ready
+$(document).ready(App.start);
+
+
+//console.log(contactList.sort(sortBy('age', 'sdasdfdfsd')));
+
+</script>
+</body>
+</html>

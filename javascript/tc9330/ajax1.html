@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<h1>Some Content.</h1>
+<p>This is static content on the page.</p>
+
+<div id="target"></div>
+
+
+<script src="jquery-3.0.0.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+/*
+$.ajax({
+	url: 		'content.html',
+	method: 	'get',
+	dataType: 	'html',
+	success: 	function(response) {
+		$('#target').html(response);
+	}
+});
+
+*/
+
+$('#target').load('content.html');
+
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

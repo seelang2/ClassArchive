@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+
+
+function foo() {
+	console.log('foo called.');
+	var x = 10;
+
+	return function() {
+		console.log('bar called.');
+		console.log(x++);
+	}
+
+}
+
+var y = foo();
+
+y();
+
+</script>
+</body>
+</html>

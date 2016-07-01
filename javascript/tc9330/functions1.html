@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+
+<script src="jquery-3.0.0.js"></script>
+<script type="text/javascript">
+
+var obj = {};
+obj.foo = function() {
+	console.log('foo');
+};
+
+obj.bar = function() {
+	console.log('bar');
+};
+
+obj.foo();
+
+var method = 'foo';
+obj[method]();
+
+obj['foo']();
+
+console.log(obj);
+
+for (method in obj) {
+	console.log(method);
+}
+
+var doMethod = function(method, params) {
+	obj[method](params);
+}
+
+doMethod('bar');
+
+</script>
+</body>
+</html>

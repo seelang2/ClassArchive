@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<ul>
+	<li>List Item 1</li>
+	<li>List Item 2</li>
+	<li>List Item 3</li>
+	<li>List Item 4</li>
+	<li>List Item 5</li>
+	<li>List Item 6</li>
+	<li>List Item 7</li>
+</ul>
+
+<script src="jquery-3.0.0.js"></script>
+<script type="text/javascript">
+// use an IIFE to isolate plugin code
+(function($) {
+
+// private private data and functions here
+
+// to create a top-level $.method
+// $.method = function() { }
+
+// to create a collection object method $().method
+// $.fn.method = function() {}
+$.fn.assignIDs = function() {
+	// 'this' refers to the collection object
+	return this.each(function(i, e) {
+		$(e).attr('id','item-'+i);
+	});
+}
+
+})(jQuery);
+
+//$.test();
+/*
+$('li')
+	.each(function(i, e) {
+		$(e).attr('id','item-'+i);
+	});
+*/
+
+$('li')
+	.assignIDs()
+	.addClass('item');
+
+</script>
+</body>
+</html>

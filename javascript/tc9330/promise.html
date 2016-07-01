@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+
+<script src="jquery-3.0.0.js"></script>
+<script type="text/javascript">
+
+// create new Promise object
+var thing1 = $.Deferred();
+thing1.counter = 0;
+
+thing1.done(function() {
+	console.log('resolved.');
+});
+
+thing1.fail(function() {
+	console.log('rejected.');
+});
+
+thing1.progress(function(value) {
+	thing1.counter += value;
+	console.log('updating thing1 to',thing1.counter);
+
+	if (thing1.counter >= 10) thing1.resolve();
+});
+
+
+
+</script>
+</body>
+</html>
