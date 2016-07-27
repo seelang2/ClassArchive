@@ -1,0 +1,115 @@
+
+XML - Extensible Markup Language
+
+Elements
+
+<element attribute="value">Content</element>
+
+<element att1="val1" />
+
+<contact>
+	<firstname>John</firstname>
+	<lastname>Doe</lastname>
+	<email>jdoe@email.com</email>
+</contact>
+
+XHTML
+
+<input type="checkbox" checked="checked" />
+
+HTML 5
+
+<input type="checkbox" checked />
+
+
+
+Absolute vs Relative URL/URIs
+
+URL: http://domain.com/file.html
+
+URI: http://domain.com/file.html?param1=val&param2=val2
+
+
+<a href="http://somedomain.com">Go to some domain</a>
+
+<a href="http://somedomain.com/index.html">Go to some domain</a>
+
+<a href="departmentA/page2.html">Jump to page 2</a>
+
+Doesn't work because images is not inside departmentA
+<a href="images/pic1.jpg">View image</a>
+
+./ refers to the current directory so still doesn't work
+<a href="./images/pic1.jpg">View image</a>
+
+Works because entire filepath is specified
+<a href="/images/pic1.jpg">View image</a>
+
+../ refers to the parent directory (of the current location)
+<a href="../images/pic1.jpg">View image</a>
+
+
+<a href="/departmentA/page4.html#section7a">Dept A Section 7a</a>
+
+
+Common HTML 5 Block Elements
+
+article
+aside
+section
+header
+footer
+nav
+
+
+article
+	header
+	div
+		h1
+			h2
+				h3
+		...
+	footer
+
+article
+	header
+	div..
+	aside
+	footer
+
+article
+	header
+	div..
+	footer
+
+
+section id="sports"
+	article
+	article
+	article
+
+section id="entertainment"
+	header
+	article
+	article
+	article
+	article
+		header
+		div..
+		footer
+	footer
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+

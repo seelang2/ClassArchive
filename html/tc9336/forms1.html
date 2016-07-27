@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Blank Page</title>
+	
+	<style type="text/css">
+	
+	form > label {
+		display: block;
+	}
+	
+	</style>
+</head>
+<body>
+
+
+<form action="process.php" method="get">
+	<div>
+		<label for="field-1">Field 1</label>
+		<input id="field-1" name="field1" type="text" />
+	</div>
+	
+	<label>
+		<span>Field 2</span>
+		<input name="field2" type="text" />
+	</label>
+	
+	<label>
+		<span>Field 3</span>
+		<input name="field3" type="text" />
+	</label>
+	
+	<label>
+		<span>Field 4</span>
+		<input name="field4" type="text" />
+	</label>
+	
+	<fieldset>
+		<legend>Interests</legend>
+		<p>Select your interests:</p>
+		<label>
+			<input name="field5" value="spores" type="checkbox" />
+			<span>Spores</span>
+		</label>
+		
+		<label>
+			<input name="field5" value="mold" type="checkbox" />
+			<span>Mold</span>
+		</label>
+		
+		<label>
+			<input name="field5" value="fungus" type="checkbox" />
+			<span>Fungus</span>
+		</label>
+	</fieldset>
+	
+	<p>Select your gender:</p>
+	<label>
+		<input name="gender" value="cismale" type="radio" />
+		<span>Cisgender Male</span>
+	</label>
+		
+	<label>
+		<input name="gender" value="cisfemale" type="radio" />
+		<span>Cisgender Female</span>
+	</label>
+		
+	<label>
+		<input name="gender" value="transmale" type="radio" />
+		<span>Trans Male</span>
+	</label>
+		
+	<label>
+		<input name="gender" value="transfemale" type="radio" />
+		<span>Trans Female</span>
+	</label>
+		
+	
+	<p>Type in some information:</p>
+	<textarea name="field6" ></textarea>
+	
+	<p>Choose an item:</p>
+	<select name="field7">
+		<option value="thing1">Thing1</option>
+		<option value="thing2">Thing2</option>
+		<option value="thing3">Thing3</option>
+		<option value="thing4">Thing4</option>
+		<option value="thing5">Thing5</option>
+	</select>
+	
+	<p>Choose an item:</p>
+	<select name="field7" multiple size="4">
+		<option value="thing1">Thing1</option>
+		<option value="thing2">Thing2</option>
+		<option value="thing3">Thing3</option>
+		<option value="thing4">Thing4</option>
+		<option value="thing5">Thing5</option>
+		<option value="thing6">Thing6</option>
+		<option value="thing7">Thing7</option>
+		<option value="thing8">Thing8</option>
+		<option value="thing9">Thing9</option>
+	</select>
+	
+	
+	<div>
+		<input type="submit" value="Continue" />
+	</div>
+</form>
+
+
+
+
+</body>
+</html>

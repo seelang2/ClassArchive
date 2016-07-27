@@ -1,0 +1,273 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Blank Page</title>
+	
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 1em;
+		background-color: #cccccc;
+	}
+	
+	#wrapper {
+		margin: 0 auto;
+		background-color: #ffffff;
+		box-sizing: border-box;
+		max-width: 900px;
+	}
+	
+	#masthead {
+		background-color: #F5DF6F;
+	}
+	
+	#pagefooter {
+		background-color: #8B9D65;
+		color: #ffffff;
+		font-size: 90%;
+	}
+	
+	/* common nav bar styling */
+	nav.navbar {
+	
+	}
+	
+	nav.navbar ul {
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+	}
+	
+	nav.navbar a {
+		text-decoration: none;
+		display: block;
+		padding: 0.5em 1em;
+		color: #4A3607;
+	}
+	
+	nav.navbar a:hover {
+		background: #F5DF6F;
+	}
+	
+	
+	/* vertical menu styling */
+	nav.vertical {
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
+	
+	nav.vertical ul {
+		border: 1px solid #7a7a7a;
+	}
+	
+	nav.vertical li {
+		border-top: 1px solid #7a7a7a;
+	}
+	
+	nav.vertical li:first-child {
+		border-top: none;
+	}
+	
+	nav.vertical a {
+	}
+	
+	nav.vertical a:hover {
+	}
+	
+	/* horizontal menu styling */
+	nav.horizontal li {
+		float: left;
+		border: 1px solid #7a7a7a;
+		border-left: none;
+	}
+	
+	nav.horizontal li:first-child {
+		border-left: 1px solid #7a7a7a;
+	}
+
+	
+	#topnav {
+		background: #F5DF6F;
+	}
+	
+	#topnav li {
+		background: #ffffff;
+		margin-left: 7px;
+		border: 1px solid #7a7a7a;
+	}
+	
+	#topnav a:hover {
+		background: #FDEDB9;
+	}
+	
+	#topnav li, 
+	#topnav a:hover {
+		border-radius: 10px 10px 0 0;
+	}
+	
+	#secondary nav {
+		width: 85%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+
+	
+	
+	/* 
+	  clearfix hack 
+	  ref: http://nicolasgallagher.com/micro-clearfix-hack/ 
+	*/
+	
+	.cf:before,
+	.cf:after {
+		content: " "; /* 1 */
+		display: table; /* 2 */
+	}
+
+	.cf:after {
+		clear: both;
+	}
+
+	/* breakpoints are 500 and 1200px */
+	@media screen and (max-width: 499px) {
+		
+		#wrapper {
+		}
+		
+		#masthead {
+			height: 50px;
+		}
+		
+		#pagefooter {
+			height: 50px;
+		}
+		
+		#content {
+			padding: 1px 1.5em;
+		}
+	
+	}
+	
+	@media screen and (min-width: 500px) and (max-width: 799px) {
+	
+	
+		#wrapper {
+		}
+		
+		#masthead {
+			height: 80px;
+		}
+		
+		#pagefooter {
+			height: 125px;
+		}
+		
+		#main {
+			width: 50%;
+			float: left;
+		}
+		
+		#secondary {
+			width: 50%;
+			float: left;
+		}
+	
+	}
+	
+	@media screen and (min-width: 800px) {
+	
+	
+		#wrapper {
+		}
+		
+		#masthead {
+			height: 80px;
+		}
+		
+		#pagefooter {
+			height: 125px;
+		}
+		
+		#main {
+			width: 66.64%;
+			float: left;
+		}
+		
+		#secondary {
+			width: 33.32%;
+			float: left;
+		}
+	
+	}
+
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="masthead">
+	</div><!-- #masthead -->
+	<nav id="topnav" class="navbar horizontal cf">
+		<ul>
+			<li><a href="#">Link 1</a></li>
+			<li><a href="#">Link 2</a></li>
+			<li><a href="#">Link 3</a></li>
+			<li><a href="#">Link 4</a></li>
+		</ul>
+	</nav>
+	<div id="content" class="cf">
+		<div id="main">
+			<h1>Lorem ipsum dolor sit amet</h1>
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at lacinia enim. Vestibulum ut nisi non urna semper facilisis in vel libero. In vehicula elementum libero ac dignissim. Nulla nec mauris eget urna gravida congue. Integer ac arcu nisi. Aliquam ante tortor, eleifend nec dolor vitae, malesuada accumsan enim. In feugiat, turpis et laoreet fringilla, risus eros luctus felis, quis feugiat velit tellus vitae dolor. Praesent quis vestibulum neque. Praesent ultrices elit diam, eget feugiat ipsum venenatis at. Integer varius at ligula ut consectetur. Nulla ac enim ac est tristique molestie eget a elit. Suspendisse a feugiat metus.
+			</p>
+			<p>
+			Duis aliquam ante eu mauris fringilla dictum. Cras quis auctor massa, non venenatis massa. Aenean in elementum leo, id malesuada sem. Sed ornare, libero ut interdum ornare, nibh urna eleifend nisi, id consectetur dui neque sed lacus. Curabitur dictum imperdiet augue eget dictum. Curabitur dignissim lacus mauris, non tincidunt enim venenatis quis. Vestibulum arcu quam, tempor quis commodo sed, dapibus ut justo.
+			</p>
+			
+			<nav class="navbar horizontal cf">
+				<ul>
+					<li><a href="#">Link 1</a></li>
+					<li><a href="#">Link 2</a></li>
+					<li><a href="#">Link 3</a></li>
+					<li><a href="#">Link 4</a></li>
+				</ul>
+			</nav>
+			
+			<p>
+			Praesent sit amet lectus mi. Nullam eu tincidunt risus, sodales tincidunt est. Nullam vestibulum elementum magna in eleifend. Proin lobortis felis id lectus eleifend scelerisque. Aenean et convallis augue. Suspendisse risus lacus, molestie sit amet leo eget, accumsan malesuada sem. Quisque auctor placerat nisl eget egestas. Etiam tincidunt in est id cursus. Maecenas sit amet malesuada enim. Suspendisse porttitor lobortis metus, quis rutrum quam dictum eu.
+			</p>
+			<p>
+			Nulla ex neque, placerat eu urna ut, posuere consectetur lectus. Nullam tristique ullamcorper dui, at lobortis velit tincidunt et. Donec imperdiet sagittis lacus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi maximus fermentum nulla, at feugiat lorem auctor eu. Sed gravida ac arcu a facilisis. Duis malesuada molestie augue. Sed lacus massa, dapibus ac dui fermentum, placerat luctus magna. Vestibulum vitae sapien id eros varius rhoncus.
+			</p>
+		</div>
+		<div id="secondary">
+			
+			<nav class="navbar vertical">
+				<ul>
+					<li><a href="#">Link 1</a></li>
+					<li><a href="#">Link 2</a></li>
+					<li><a href="#">Link 3</a></li>
+					<li><a href="#">Link 4</a></li>
+				</ul>
+			</nav>
+			
+			<h2>Morbi non felis sed urna tincidunt</h2>
+			<p>
+			Morbi non felis sed urna tincidunt tincidunt. In hac habitasse platea dictumst. Integer malesuada arcu lacus, consequat placerat mi fermentum id. Suspendisse potenti. Suspendisse bibendum vitae leo scelerisque porttitor. In rutrum quam ex, nec sagittis sem luctus nec. Duis vitae massa a erat bibendum commodo. Sed tempor viverra dolor, quis feugiat felis euismod eu. Quisque bibendum a urna sed interdum. Aliquam eu nisi vitae massa molestie porttitor ut nec nunc. Praesent non eleifend nunc. Donec sed tortor eu augue tincidunt ornare venenatis id dui.
+			</p>
+			<p>
+			Cras semper velit ac massa venenatis venenatis. Curabitur a tortor mollis, scelerisque turpis et, facilisis leo. Nullam hendrerit sit amet orci eget ultricies. Sed scelerisque urna est, vel viverra arcu commodo eu. In hac habitasse platea dictumst. Pellentesque nec mi finibus, auctor ligula in, venenatis massa. Nullam enim orci, placerat quis tincidunt vel, aliquam sit amet libero. Nullam consectetur feugiat nunc, ac viverra risus tincidunt vel. Integer vestibulum fermentum convallis.
+			</p>
+		</div>
+		
+	
+	</div><!-- #content -->
+	<div id="pagefooter">
+	</div><!-- #pagefooter -->
+</div><!-- #wrapper -->
+
+</body>
+</html>
