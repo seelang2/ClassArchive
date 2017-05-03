@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Scope Chain</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+// define variable in global scope
+var c = 1;
+
+var foo = function() {
+	var c = 10;
+	x = 15;
+
+
+	var z = function() { 
+		console.log('c:',c,'x:',x);
+	};
+
+	z();
+
+	var fn2 = function() {
+		console.log('c:',c);
+	};
+
+	return fn2;
+};
+
+console.log('c:',c);
+var bar = foo();
+console.log('c:',c,'x:',x);
+bar();
+
+</script>
+</body>
+</html>

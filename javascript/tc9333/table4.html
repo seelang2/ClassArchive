@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		color: #000000;
+		background: #ffffff;
+	}
+
+	table, th, td {
+		border: 1px solid #7a7a7a;
+	}
+
+	th, td { padding: 0.5em 1em; }
+
+	table { border-collapse: collapse; }
+
+	.oddrow { background: #BFC4C4; }
+	.evenrow { background: #77A4A9; }
+	tr.hover { background: #FFFFCC; }
+
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" src="mock_data.js"></script>
+<script type="text/javascript">
+
+
+$('<table><tbody /></table>')			// create TABLE structure
+	.find('tbody')						// traverse to TBODY
+	.each(function(i, tbody) {			// and open a 'bubble'
+		// build table rows
+
+		// loop through data and build rows
+		$.each(
+			apiResponse.booklist,
+			function(index, book) {
+
+				$('<tr />')
+					.append('<td>'+ book.title +'</td>')
+					.append('<td>'+ book.author +'</td>')
+					.append('<td>'+ book.publish_date +'</td>')
+					.appendTo(tbody);
+
+			}
+		);
+
+	 })
+	.children('tr:nth-child(odd)')		// look for odd rows
+	.addClass('oddrow')
+	.end()								// revert back to TBODY
+	.children('tr:nth-child(even)')		// look for even rows
+	.addClass('evenrow')
+	.end()								// revert back to TBODY
+	.children('tr')						// get all rows
+	.on('mouseover', function() {
+		// 'this' refers to object event is bound to
+		$(this).addClass('hover');
+	 })
+	.on('mouseout', function() {
+		$(this).removeClass('hover');
+	 })
+	.end() 								// revert back to TABLE
+	.appendTo('#target');				// and append table to DOM
+
+
+
+
+
+
+</script>
+</body>
+</html>

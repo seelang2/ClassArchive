@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+
+	<style type="text/css">
+	body { font-family: Verdana, Arial, sans-serif; }
+
+	table, th, td { border: 1px solid #7a7a7a; }
+	th, td { padding: 0.5em 1em; }
+	table { border-collapse: collapse; }
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+// mock data
+var contactList = 
+[
+	{"id":24,"firstname":"John","lastname":"Doe","age":21},
+	{"id":1,"firstname":"Alex","lastname":"Doe","age":21},
+	{"id":12,"firstname":"Peter","lastname":"Doe","age":21},
+	{"id":3,"firstname":"Teacy","lastname":"Doe","age":21},
+	{"id":41,"firstname":"Jen","lastname":"Doe","age":21},
+	{"id":66,"firstname":"Adam","lastname":"Doe","age":21},
+	{"id":11,"firstname":"Janet","lastname":"Doe","age":21},
+	{"id":62,"firstname":"Paulette","lastname":"Doe","age":21},
+	{"id":87,"firstname":"Liz","lastname":"Doe","age":21}
+];
+
+/*
+// example for loop (iterator)
+for (fieldName in contactList[0]) {
+	console.log(fieldName, contactList[0][fieldName]);
+}
+*/
+
+// first, build table structure
+var $tableElem = $('<table />');
+var $tbodyElem = $('<tbody />').appendTo($tableElem);
+
+// create table header row
+var $theadElem = $('<thead />').prependTo($tableElem);
+
+// use an IIFE to hold temp vars
+(function() {
+	var $trElem = $('<tr />');
+
+	// loop through contact fields
+	$.each(contactList[0], function(fieldName, fieldValue) {
+		$('<th>')
+			.append(fieldName)
+			.appendTo($trElem);
+	});
+
+	$trElem.appendTo($theadElem);
+	$trElem = null; // just in case to avoid closure/mem leaks
+})();
+
+// loop through contact list and create table rows
+$.each(contactList, function(index, contact) {
+	var $trElem = $('<tr />');
+
+	// loop through contact fields
+	$.each(contact, function(fieldName, fieldValue) {
+		$('<td>')
+			.append(fieldValue)
+			.appendTo($trElem);
+	});
+
+	$trElem.appendTo($tbodyElem);
+});
+
+// now attach table to DOM
+$tableElem.appendTo('#target');
+
+</script>
+</body>
+</html>

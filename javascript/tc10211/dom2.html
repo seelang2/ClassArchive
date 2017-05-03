@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+
+</head>
+<body>
+
+<div id="target"></div>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+var $target = $('#target');
+
+// var $p = $('<p>This space <b>for rent</b> NOW!</p>');
+var $p = $('<p />');
+$p.append('This space');
+$p.append('<b>for rent</b>');
+$p.append('NOW!');
+
+// A form
+$target.append($p);
+
+// B form
+$p.appendTo($target);
+
+</script>
+</body>
+</html>

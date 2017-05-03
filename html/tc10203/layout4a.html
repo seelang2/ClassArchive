@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title></title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 1em;
+		color: #000000;
+		background: #cccccc;
+		margin: 0;
+	}
+
+	#container {
+		width: 960px;
+		margin: auto;
+		border: 1px solid #7a7a7a;
+		background: #ffffff;
+	}
+
+	#masthead {
+		height: 50px;
+	}
+
+	#pagefooter {
+		height: auto;
+		background: #666666;
+		color: #efefef;
+		font-size: 75%;
+		-webkit-column-count: 4;
+		-moz-column-count: 4;
+		column-count: 4;
+
+	}
+
+	#pagefooter h1 {
+		font-size: 1.2em;
+	}
+
+	#pagefooter ul {
+	}
+
+	#herobar {
+		height: 250px;
+		background: #0F3FFF;
+		color: #ffffff;
+		overflow: hidden;
+	}
+
+	#topica, #topicb, #topicc {
+		height: 400px;
+		overflow: hidden;
+	}
+
+	.col-3 {
+		width: 33.3%;
+		float: left;
+	}
+
+	/* 
+	Use the clearfix technique instead of a separate clearing shim.
+	Ref: http://nicolasgallagher.com/micro-clearfix-hack/
+	*/
+	.cf:before,
+	.cf:after {
+	    content: " "; /* 1 */
+	    display: table; /* 2 */
+	}
+
+	.cf:after {
+	    clear: both;
+	}
+
+	</style>
+</head>
+<body>
+
+<div id="container">
+	<div id="masthead"></div>
+	<div id="content">
+		<div id="herobar">
+			<p>
+			5. Nunc arcu enim, tincidunt in scelerisque at, vulputate in dui. Fusce efficitur maximus augue, sed tincidunt enim laoreet vel. Cras eget euismod sem. Curabitur ullamcorper convallis pharetra. Curabitur non libero id lectus interdum tincidunt. Curabitur in metus purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed congue, sem et pretium egestas, est nisi maximus lectus, a pretium orci ante id sem.
+			</p>
+		</div><!-- herobar -->
+		<div id="section2" class="cf">
+			<div id="topica" class="col-3">
+				<p>1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam facilisis turpis convallis, ullamcorper diam ut, ornare neque. Nullam posuere lacinia diam eu accumsan. Mauris suscipit accumsan lacus sit amet volutpat. Quisque ultrices elit risus, ac cursus ipsum rutrum nec. Proin nec urna et nibh fringilla tincidunt. Sed eget pellentesque massa, consectetur ultrices ipsum. Integer libero nibh, venenatis at convallis non, congue sit amet elit. Cras elementum metus eu velit eleifend, sollicitudin consequat ante malesuada. Aliquam non magna ut augue dignissim placerat in ac urna. Donec vitae tristique felis, sed maximus magna. Integer eget tincidunt ligula, pellentesque lobortis dui. Fusce ac arcu id massa lacinia tristique sodales feugiat tellus. Nam ligula felis, accumsan eget libero sed, malesuada vulputate felis.
+			</div>
+			<div id="topicb" class="col-3">
+				<p>
+				2. Proin aliquet maximus nibh, sed fermentum felis porttitor in. Mauris quis neque diam. Praesent ornare, odio at suscipit lobortis, sem sem euismod lectus, vel tempus tortor ante eu lorem. Praesent efficitur dolor sit amet ante rutrum, eu consectetur arcu dapibus. Nam non rutrum sem, non dictum lorem. Aenean quam lorem, dictum sed tortor eu, porta suscipit justo. Nam malesuada, enim in tempor rutrum, leo massa maximus velit, et ornare sem odio sed lectus. Nunc nec sem mauris. Curabitur nec aliquam nibh. Etiam interdum et felis eget molestie. Integer tincidunt luctus ullamcorper.
+				</p>
+
+			</div>
+			<div id="topicc" class="col-3">
+				<p>
+				3. Etiam sollicitudin turpis ac tempus viverra. Maecenas ut dignissim mi. Nullam sagittis diam quis laoreet dapibus. Praesent tempor consectetur feugiat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas consequat ac nisi quis laoreet. Etiam eu lobortis sem. Suspendisse ac metus odio. Nam facilisis tellus in augue dapibus, quis aliquet nunc viverra.
+				</p>
+			</div>
+		</div><!-- section2 -->
+	</div><!-- content -->
+	<div id="pagefooter">
+		<h1>Lorem ipsum dolor sit amet</h1>
+		<ul>
+			<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+			<li>Phasellus facilisis nisl ac sem fringilla faucibus.</li>
+			<li>Donec pulvinar augue nec felis sollicitudin porttitor.</li>
+			<li>Praesent laoreet sem in risus maximus faucibus.</li>
+		</ul>
+
+		<h1>Donec tristique quam</h1>
+		<ul>
+			<li>Donec tristique quam eu porttitor fermentum.</li>
+			<li>Etiam eu magna ut nibh vestibulum blandit ut ut odio.</li>
+			<li>Ut eget neque scelerisque, tincidunt diam non, consectetur magna.</li>
+			<li>Mauris eget sem hendrerit, rutrum enim eu, commodo turpis.</li>
+			<li>Maecenas id dolor dictum, tincidunt erat nec, convallis augue.</li>
+		</ul>
+
+		<h1>Curabitur tincidunt</h1>
+		<ul>
+			<li>Curabitur tincidunt risus eget justo consectetur pretium.</li>
+			<li>Fusce porttitor mauris quis turpis pellentesque tincidunt at vel leo.</li>
+			<li>Integer eget augue non mi pellentesque blandit eu vitae nisi.</li>
+		</ul>
+
+		<h1>Curabitur tincidunt</h1>
+		<ul>
+			<li>Aliquam a libero nec justo tincidunt feugiat vitae et est.</li>
+			<li>Nam euismod diam sed posuere maximus.</li>
+		</ul>
+
+		<h1>Curabitur tincidunt</h1>
+		<ul>
+			<li>Curabitur eu libero vestibulum, lobortis metus eget, faucibus risus.</li>
+		</ul>
+
+		<h1>Curabitur tincidunt</h1>
+		<ul>
+			<li>Proin in arcu id turpis fringilla consectetur.</li>
+			<li>Pellentesque sagittis ipsum eu nunc dignissim efficitur.</li>
+			<li>Vivamus vitae ex vel leo suscipit luctus.</li>
+			<li>Vivamus non nisi tincidunt, placerat magna a, consequat risus.</li>
+			<li>Aenean vehicula sem sit amet nulla dictum ultricies.</li>
+			<li>Vivamus ullamcorper neque pharetra ullamcorper cursus.</li>
+		</ul>
+
+		<h1>Curabitur tincidunt</h1>
+		<ul>
+			<li>Mauris aliquet neque eu volutpat gravida.</li>
+			<li>Quisque sit amet leo id velit dictum porttitor.</li>
+			<li>Vivamus eget leo dignissim, bibendum sapien quis, congue orci.</li>
+		</ul>
+
+		<h1>Curabitur tincidunt</h1>
+		<ul>
+			<li>Vestibulum accumsan ipsum vitae nulla ultrices sodales.</li>
+			<li>Maecenas sit amet ex sit amet libero elementum euismod.</li>
+			<li>Integer id risus commodo, faucibus dui eget, imperdiet erat.</li>
+			<li>Aliquam dignissim nunc cursus ligula auctor, ac dictum dui rutrum.</li>
+			<li>Nam id leo quis nulla bibendum rutrum.</li>
+		</ul>
+	</div><!-- pagefooter -->
+</div><!-- container -->
+
+</body>
+</html>

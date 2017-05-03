@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+
+	<style type="text/css">
+	body { font-family: Verdana, Arial, sans-serif; }
+
+	table, th, td { border: 1px solid #7a7a7a; }
+	th, td { padding: 0.5em 1em; }
+	table { border-collapse: collapse; }
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+// mock data
+var contactList = 
+[
+	{"id":24,"firstname":"John","lastname":"Doe"},
+	{"id":1,"firstname":"Alex","lastname":"Doe"},
+	{"id":12,"firstname":"Peter","lastname":"Doe"},
+	{"id":3,"firstname":"Teacy","lastname":"Doe"},
+	{"id":41,"firstname":"Jen","lastname":"Doe"},
+	{"id":66,"firstname":"Adam","lastname":"Doe"},
+	{"id":11,"firstname":"Janet","lastname":"Doe"},
+	{"id":62,"firstname":"Paulette","lastname":"Doe"},
+	{"id":87,"firstname":"Liz","lastname":"Doe"}
+];
+
+/*
+// example for loop (iterator)
+for (fieldName in contactList[0]) {
+	console.log(fieldName, contactList[0][fieldName]);
+}
+*/
+
+// first, build table structure
+var $tableElem = $('<table />');
+var $tbodyElem = $('<tbody />').appendTo($tableElem);
+
+// loop through contact list and create table rows
+$.each(contactList, function(index, contact) {
+	//console.log(index, contact.id, contact.firstname, contact.lastname);
+	$('<tr />')
+		.append('<td>'+contact.id+'</td>')
+		.append('<td>'+contact.firstname+'</td>')
+		.append('<td>'+contact.lastname+'</td>')
+		.appendTo($tbodyElem);
+});
+
+// now attach table to DOM
+$tableElem.appendTo('#target');
+
+</script>
+</body>
+</html>

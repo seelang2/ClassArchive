@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		color: #000000;
+		background: #ffffff;
+	}
+
+	table, th, td {
+		border: 1px solid #7a7a7a;
+	}
+
+	th, td { padding: 0.5em 1em; }
+
+	table { border-collapse: collapse; }
+
+	.oddrow { background: #BFC4C4; }
+	.evenrow { background: #77A4A9; }
+	tr.hover { background: #FFFFCC; }
+
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+// defers execution until DOM is ready
+$(document).ready(function() {
+
+var doHover = function() {
+	// 'this' now refer to the elements matching the selected filter
+	$(this).toggleClass('hover');
+};
+
+var $tableElem = 
+$('<table><tbody /></table>')			// create TABLE structure
+	.appendTo('#target');				// attach empty structure to DOM
+
+var $tbodyElem = 
+$tableElem
+	.find('tbody')			// traverse to TBODY 
+	.on('mouseover mouseout', 'tr', doHover); 	// attach event to TBODY
+
+// get table row content
+$.ajax({
+	url: 		'mock_data_wrapped.json',
+	method: 	'get',
+	dataType: 	'json',
+	cache: 		false, 	// force browser to ignore cache
+	success: 	function(apiResponse) {
+		// detach TBODY from DOM to minimize repaints
+		$tbodyElem
+			.detach()	// detach node
+			.empty();	// and empty it
+
+		// loop through data and build rows
+		$.each(
+			apiResponse.booklist,
+			function(index, book) {
+
+				$('<tr />')
+					.addClass(index % 2 == 0 ? 'oddrow': 'evenrow')
+					.append('<td>'+ book.title +'</td>')
+					.append('<td>'+ book.author +'</td>')
+					.append('<td>'+ book.publish_date +'</td>')
+					.appendTo($tbodyElem);
+
+			}
+		);
+
+		// reattach TBODY
+		$tbodyElem
+			.appendTo($tableElem);
+
+	}
+}); // $.ajax
+
+
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

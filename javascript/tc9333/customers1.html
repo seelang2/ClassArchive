@@ -1,0 +1,219 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+
+	#wrapper {
+		width: 600px;
+		margin: auto;
+		border: 1px solid #ccc;
+		box-sizing: border-box;
+	}
+
+	.itemlist, form {
+		padding: 1px 30px;		
+	}
+
+	.itemlist:nth-child(odd) {
+		background: #ADFFCB;
+	}
+
+	form label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+
+	form label span, form label input {
+		display: inline-block;
+	}
+
+	form label span {
+		width: 25%;
+	}
+
+	#ajaxstatus {
+		width: 100px;
+		height: 100px;
+		background: url('ajax-loader.gif');
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		margin-top: -50px;
+		margin-left: -50px;
+	}
+
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="itemlist"></div>
+	<div id="controls">
+		<form id="addform" action="#" method="post">
+			<label>
+				<span>First Name:</span>
+				<input name="firstname" />
+			</label>
+			<label>
+				<span>Last Name:</span>
+				<input name="lastname" />
+			</label>
+			<label>
+				<span>Email:</span>
+				<input name="email" />
+			</label>
+			<div><input type="submit" value="Save" /></div>
+		</form>
+		<button class="btnAdd">Add New Item</button>
+	</div>
+</div>
+
+
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+var $itemsElem = $('#itemlist');
+var $controlElem = $('#controls');
+
+// get reference to form and detach form
+var $addFormElem = $('#addform').detach();
+
+// set up ajax status spinner
+var $ajaxstatusElem = 
+$('<div />').attr('id', 'ajaxstatus');
+
+var $wrapperElem = 
+$('#wrapper')
+	.on('click', 'button', function(evt) {
+
+		switch(true) {
+			case $(this).hasClass('btnAdd'):
+				$addFormElem
+					.clone()
+					.prependTo($controlElem)
+					.on('submit', function(evt) {
+						// prevent browser from submitting form data
+						evt.preventDefault();
+
+						// save reference to form
+						var form = this;
+
+						// validate code here, yadda yadda yadda
+
+						// save form data
+						$.ajax({
+							url: 		'backend/customers',
+							method: 	'post',
+							dataType: 	'json',
+							cache: 		false,
+							data: 		$(this).serialize(),
+							success: 	function(response, statusCode, req) {
+								// hide ajax spinner
+								hideAjaxSpinner();
+
+								console.log(req);
+
+								if (req.status == 201) {
+									// record was created
+									alert('Record created. New record id: '+response.id);
+
+									// remove form
+									$(form).remove();
+
+									// get updated record list from server
+									getCustomers();
+
+								} else {
+									// do stuff if there was an issue, etc
+								}
+
+							}
+						}); // $.ajax
+
+						// display ajax spinner
+						showAjaxSpinner();
+
+					 });
+
+			break; // btnAdd
+		} // switch
+
+	 });
+
+// get customers
+getCustomers();
+
+
+
+
+
+
+//////// These functions get hoisted to the top of the scope so they're
+//////// stuck down here out of the way
+
+// get customer data
+function getCustomers() {
+	$.ajax({
+		url: 		'http://127.0.0.1/tc9333/backend/customers',
+		method: 	'get',
+		dataType: 	'json',
+		cache: 		false,
+		success: 	updateCustomerList
+	});
+
+	// display ajax spinner
+	showAjaxSpinner();
+
+} 
+
+// update customer items
+function updateCustomerList(data) {
+	// hide ajax spinner
+	hideAjaxSpinner();
+
+	// detach and empty itemlist container
+	$itemsElem
+		.detach()
+		.empty();
+
+	// loop through data and display content
+	$.each(data, function(index, customer) {
+		$('<div />')
+			.addClass('itemlist')
+			.append('<p>'+customer.firstname+'</p>')
+			.append('<p>'+customer.lastname+'</p>')
+			.append('<p>'+customer.email+'</p>')
+			.append('<p>'+customer.id+'</p>')
+			.appendTo($itemsElem);
+	}); // $.each
+
+	// reattach itemlist container
+	$itemsElem.prependTo($wrapperElem);
+}
+
+function showAjaxSpinner() {
+	$ajaxstatusElem.prependTo(document.body);
+}
+
+function hideAjaxSpinner() {
+	$ajaxstatusElem.detach();
+}
+
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

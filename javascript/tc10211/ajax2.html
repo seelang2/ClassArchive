@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+	<title>Page Title</title>
+</head>
+<body>
+
+<h1>Demo</h1>
+<p>This is the static content on the page.</p>
+
+<div id="target"></div>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+var $targetElem = $('#target');
+
+// make ajax request
+$.ajax({
+	url: 		'contactlist.json',
+	method: 	'get',
+	dataType: 	'json',
+	success: 	function(data) {
+		// loop through data and display on page
+		$.each(data, function(index, contact) {
+			$('<div />')
+				.attr('data-index', index)
+				.append('<p><span>ID:</span>'+contact.id+'</p>')
+				.append('<p><span>First Name:</span>'+contact.firstname+'</p>')
+				.append('<p><span>Last Name:</span>'+contact.lastname+'</p>')
+				.append('<p><span>Age:</span>'+contact.age+'</p>')
+				.appendTo($targetElem);
+		});
+	}
+});
+
+
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

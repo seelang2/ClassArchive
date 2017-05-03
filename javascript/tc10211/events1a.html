@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+	<title>Page Title</title>
+</head>
+<body>
+
+<a href="http://google.com">Go to Google</a>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+$('a').on('click', function(e) {
+	// return false will cancel the element's default action
+	return confirm('Are you sure you want to follow this link?');
+
+});
+
+
+</script>
+</body>
+</html>

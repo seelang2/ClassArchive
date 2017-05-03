@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+foo(); // doesn't produce an error
+
+//foo2(); // produces error
+
+// named function declaration
+function foo() {
+	console.log('foo');
+}
+
+// anonymous functions are assignments
+var foo2 = function() {
+	console.log('foo2');
+};
+
+foo2(); // works
+
+</script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<form action="#" method="get">
+	<input type="hidden" name="data1" value="somedata" />
+
+	<!-- field can be inside the label element -->
+	<label>
+		<span>First Name</span>
+		<input type="text" name="firstname" value="John" />
+	</label>
+
+	<!-- associate field id with the label element -->
+	<label for="lastname">Last Name</label>
+	<input id="lastname" type="text" name="last-name" />
+
+	<label>
+		<span>Password</span>
+		<input type="password" name="field3" />
+	</label>
+
+	<div>
+		<p>Select interests:</p>
+		<label>
+			<input type="checkbox" name="interests" value="spores" />
+			<span>Spores</span>
+		</label>
+		<label>
+			<input type="checkbox" name="interests" value="mold" />
+			<span>Mold</span>
+		</label>
+		<label>
+			<input type="checkbox" name="interests" value="fungus" />
+			<span>Fungus</span>
+		</label>
+	</div>
+
+	<div>
+		<p>Select a gender identity:</p>
+		<label>
+			<input type="radio" name="gender" value="cismale" />
+			<span>Cis Male</span>
+		</label>
+		<label>
+			<input type="radio" name="gender" value="cisfemale" />
+			<span>Cis Female</span>
+		</label>
+		<label>
+			<input type="radio" name="gender" value="transmale" />
+			<span>Trans Male</span>
+		</label>
+		<label>
+			<input type="radio" name="gender" value="transfemale" />
+			<span>Trans Female</span>
+		</label>
+		<label>
+			<input type="radio" name="gender" value="fluid" />
+			<span>Fluid</span>
+		</label>
+	</div>
+
+	<div>
+		<label for="colorpicker">Choose from this arbitrary list of colors:</label>
+		<select id="colorpicker" name="color">
+			<option value="red">Red</option>
+			<option value="green">Green</option>
+			<option value="blue">Blue</option>
+			<option value="orange">Orange</option>
+			<option value="violet">Violet</option>
+			<option value="Yellow">Yellow</option>
+			<option value="magenta">Magenta</option>
+			<option value="black">Black</option>
+			<option value="fuscia">Fuscia</option>
+		</select>
+	</div>
+
+	<div>
+		<label for="colorpicker2">Choose from this arbitrary list of colors:</label>
+		<select id="colorpicker2" name="color2" size="4" multiple>
+			<option value="red">Red</option>
+			<option value="green">Green</option>
+			<option value="blue">Blue</option>
+			<option value="orange">Orange</option>
+			<option value="violet">Violet</option>
+			<option value="Yellow">Yellow</option>
+			<option value="magenta">Magenta</option>
+			<option value="black">Black</option>
+			<option value="fuscia">Fuscia</option>
+		</select>
+	</div>
+
+	<div>
+		<label for="textbox">Enter some text:</label>
+		<textarea id="textbox" name="sometext">Default Content</textarea>
+	</div>
+
+	<div>
+		<input type="submit" value="Continue" />
+	</div>
+
+</form>
+
+
+
+
+
+
+
+</body>
+</html>

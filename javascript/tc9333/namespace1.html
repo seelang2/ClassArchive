@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+// Use an IIFE for a namespace
+(function(App) {
+
+// define private data
+var data = {};
+
+App.start = function() {
+	console.log('app started.');
+	// methods defined in IIFE can access data because of scope chain
+	data.thing = 'foo.';
+};
+
+// set up a basic getter function
+App.getData = function(key) {
+	return data[key];
+};
+
+})(window.App = window.App || {});
+
+// start app on DOM ready
+$(document).ready(App.start);
+
+</script>
+</body>
+</html>

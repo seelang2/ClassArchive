@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<button id="button1">Click Me</button>
+<button id="button2">Click Me</button>
+<button id="button3">Click Me</button>
+<button id="button4">Click Me</button>
+
+
+<script type="text/javascript">
+
+var buttons = document.getElementsByTagName("BUTTON");
+
+for(var c = 0; c < buttons.length; c++) {
+
+	buttons[c].onclick = function() {
+
+		console.log('Button',c,'clicked');
+	}
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+
+
+$('<table><tbody /></table>')			// create TABLE structure
+	.find('tbody')						// traverse to TBODY
+	.each(function(i, tbody) {			// and open a 'bubble'
+
+		// build rows
+		$('<tr />')
+			.append('<td>John</td')
+			.append('<td>Doe</td')
+			.append('<td>42</td')
+			.appendTo(tbody);
+
+		$('<tr />')
+			.append('<td>Jane</td')
+			.append('<td>Smith</td')
+			.append('<td>36</td')
+			.appendTo(tbody);
+
+	 })
+	.end() 								// revert back to TABLE
+	.appendTo('#target');				// and append table to DOM
+
+
+
+
+
+
+</script>
+</body>
+</html>

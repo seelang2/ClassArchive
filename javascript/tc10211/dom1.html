@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript">
+// using plain old javascript
+// get reference to DOM node to modify
+var targetElem = document.getElementById('target');
+
+var pElem = document.createElement('P');
+
+pElem.appendChild(document.createTextNode('This space'));
+
+var bElem = document.createElement('B');
+bElem.appendChild(document.createTextNode('for rent'));
+pElem.appendChild(bElem);
+
+pElem.appendChild(document.createTextNode('NOW'));
+
+// connect branch to DOM after creation to minimize repaints
+targetElem.appendChild(pElem);
+
+// ...or, the quicker method
+targetElem.innerHTML = "<p>This space <b>for rent</b> NOW!";
+
+
+</script>
+</body>
+</html>

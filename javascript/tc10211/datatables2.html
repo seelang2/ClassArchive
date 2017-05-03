@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+
+	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.css">
+
+	<style type="text/css">
+	body { font-family: Verdana, Arial, sans-serif; }
+
+	table, th, td { border: 1px solid #7a7a7a; }
+	th, td { padding: 0.5em 1em; }
+	table { border-collapse: collapse; }
+
+	tr.hover { background: #FFC; }
+	.evenrow { background: #fefefe; }
+	.oddrow { background: #eee; }
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+
+function doHover(evt) {
+	// because we're using the selector filter, 
+	// 'this' will point to the TR instead of the TBODY
+	$(this).toggleClass('hover');
+
+ }
+
+// mock data
+var contactList = 
+[
+	{"id":24,"firstname":"John","lastname":"Doe","age":21},
+	{"id":1,"firstname":"Alex","lastname":"Doe","age":21},
+	{"id":12,"firstname":"Peter","lastname":"Doe","age":21},
+	{"id":3,"firstname":"Teacy","lastname":"Doe","age":21},
+	{"id":41,"firstname":"Jen","lastname":"Doe","age":21},
+	{"id":66,"firstname":"Adam","lastname":"Doe","age":21},
+	{"id":11,"firstname":"Janet","lastname":"Doe","age":21},
+	{"id":62,"firstname":"Paulette","lastname":"Doe","age":21},
+	{"id":87,"firstname":"Liz","lastname":"Doe","age":21}
+];
+
+
+
+// first, build table structure
+$('<table><thead /><tbody /></table>')
+	.children('thead')					// traverse to THEAD
+	.each(function(i, theadElem) {
+		/*
+		  This function acts as a 'mock' IIFE, allowing us to
+		  do side processing that 1) gets housecleaned via garbage
+		  collection when we're done and 2) doesn't disrupt the
+		  current statement chain. 
+		*/
+		var $trElem = $('<tr />');
+
+		// loop through contact fields
+		$.each(contactList[0], function(fieldName, fieldValue) {
+			$('<th>')
+				.append(fieldName)
+				.appendTo($trElem);
+		});
+
+		$trElem.appendTo(theadElem);
+
+	 })
+	.end()								// revert collection to TABLE
+	.children('tbody')					// traverse to TBODY
+	.each(function(i, tbodyElem) {
+		// loop through contact list and create table rows
+		$.each(contactList, function(index, contact) {
+			var $trElem = $('<tr />');
+
+			// loop through contact fields
+			$.each(contact, function(fieldName, fieldValue) {
+				$('<td>')
+					.append(fieldValue)
+					.appendTo($trElem);
+			});
+
+			$trElem.appendTo(tbodyElem);
+		});
+	 })
+	.end()								// revert to TABLE
+	.appendTo('#target')
+	.DataTable();
+
+
+}); // document.ready
+
+</script>
+</body>
+</html>

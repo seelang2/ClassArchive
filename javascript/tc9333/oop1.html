@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+var Car = {};
+Car.color = '';
+Car.make = '';
+Car.model = '';
+Car.status = 'off';
+Car.startEngine = function() {
+	this.status = 'running';
+};
+
+var myCar = Object.create(Car);
+
+
+var SUV = Object.create(Car);
+SUV.has4WD = true;
+
+var yourCar = Object.create(SUV);
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<ul>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+</ul>
+
+
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+// jQuery plugins use IIFE to isolate/privatize plugin code
+// we also explicitly pass in the jQuery object
+(function($) {
+
+// $.method = function() {} <= creates top-level method
+$.demoMethod = function() {
+	console.log('This is a (useless) utility function.');
+}
+
+// $.fn.method = function() {} <= creates collection object method
+// fn refers to collection object
+$.fn.assignIDs = function() {
+	// 'this' refers to the collection object
+	this.each(function(index, elem) {
+		// set id value
+		$(elem).attr('id', 'item' + index);
+
+		// example to retrieve (get) value
+		var value = $(elem).attr('id');
+	 });
+
+	// return the collection object to preserve chaining
+	return this;
+}
+
+})(jQuery);
+
+
+$('li')
+	.assignIDs()
+	.addClass('item');
+
+$.demoMethod();
+
+</script>
+</body>
+</html>

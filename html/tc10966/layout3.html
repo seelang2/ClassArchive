@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Layout</title>
+
+	<style type="text/css">
+	body {
+		color: #000000;
+		background-color: #0093B2;
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 1em;
+		margin: 0;
+	}
+
+	#wrapper {
+		max-width: 800px;
+		background-color: #ffffff;
+		margin: 0 auto;
+	}
+
+	#pageheader {
+		height: 80px;
+		background-color: #00D3FF;
+	}
+
+	#pagefooter {
+		height: 125px;
+		background-color: #B25300;
+	}
+
+	#pageheader, #pagefooter {
+		padding: 1px 0; /* prevent child element margin collapse */
+	}
+
+	#main {
+		/* padding: 1px 50px; */
+		/* rule of thumb is to put padding on innermost layout elements. */
+	}
+
+	#primary {
+		/*
+			Using default CSS box model content-box (box-sizing: content-box) means adjusting all dimensions to fit the desired total size:
+			width = element width
+			total width = width + padding + border + margin
+		*/
+		float: left;
+		width: 515px; /* remember to adjust width for padding */
+		padding: 1px 10px 1px 25px;
+		/* total width = 550px */
+	}
+
+	#secondary {
+		/* 
+			Using box-sizing: border-box instead of the default content-box makes the math a bit simpler:
+			total width = width + margin
+			element width = width - border - padding
+		*/
+		box-sizing: border-box;
+		float: right;
+		width: 250px;
+		padding: 1px 25px 1px 10px;
+	}
+
+	h2 {
+		margin-bottom: 0.25em;
+	}
+
+	h2 + p {
+		margin-top: 0;
+	}
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="pageheader">
+	</div><!-- pageheader -->
+
+	<div id="main">
+		<div id="primary">
+			<h1 id="top">Lorem ipsum dolor sit amet</h1>
+
+			<h2>Contents</h2>
+			<ul id="toc">
+				<li><a href="#section1">Section 1</a></li>
+				<li><a href="#section2">Section 2</a></li>
+				<li><a href="#section3">Section 3</a></li>
+			</ul>
+
+			<p><a href="http://www.lipsum.com/">Lorem ipsum dolor sit amet</a>, <br />consectetur adipiscing elit. Nam eu varius odio, vel feugiat tortor. Ut magna lorem, maximus a erat vel, fringilla sodales augue. In et euismod enim, non condimentum mi. <span class="highlight">Donec mollis purus arcu, eu bibendum diam consectetur id.</span> Nam et luctus orci, nec ultricies dolor. Phasellus pharetra metus eu quam vestibulum feugiat. Interdum et malesuada fames ac ante ipsum primis in faucibus. 
+			Praesent nisl risus, consectetur eget ornare sit amet, molestie quis velit. Nunc eros erat, ultricies vitae mi et, ornare venenatis quam. Morbi quis urna venenatis, commodo metus ut, suscipit ex. Nam libero ex, convallis ac tincidunt et, lacinia non velit. Duis congue nisi varius nulla viverra faucibus. Aenean in ornare purus, id vehicula elit.</p>
+
+			<h2 id="section1" style="color:red;">Cras turpis ligula</h2>
+			<p>Phasellus condimentum, ante ut tempus fringilla, lorem magna aliquam ante, in tempus felis nunc et est. Aenean molestie magna a enim fringilla, nec euismod neque interdum. Cras faucibus turpis sed justo pulvinar, et bibendum sem fermentum. In lorem sapien, cursus vitae euismod eget, suscipit id nulla. Cras sit amet neque nec magna blandit ornare. </p>
+			<blockquote>Fusce consectetur, leo aliquam gravida feugiat, dolor eros vestibulum magna, in feugiat mi augue in massa. Nullam tempor laoreet enim, semper commodo nulla faucibus a. Mauris eget nisi porta, lobortis ante sit amet, semper neque.</blockquote> 
+			<p>Donec ac libero non ipsum commodo suscipit. Cras turpis ligula, euismod et mattis eu, suscipit a nunc. Mauris hendrerit, elit ac sollicitudin euismod, mi ipsum maximus eros, at tincidunt massa purus eu magna. Ut sapien orci, scelerisque ut ipsum eget, vehicula pharetra felis. Donec molestie arcu nunc, et vulputate velit molestie sit amet.</p>
+
+			<ul>
+				<li class="highlight anotherclass">Phasellus hendrerit metus sed nibh commodo tincidunt.</li>
+				<li>Etiam eleifend orci non tortor sollicitudin sagittis vel vitae nulla.</li>
+				<li class="highlight">Duis elementum massa vulputate urna iaculis consectetur.</li>
+				<li>Donec posuere eros non faucibus malesuada.</li>
+				<li class="highlight">Aenean eu nibh eget mi aliquet efficitur.</li>
+				<li>Duis aliquet nisi ut blandit condimentum.</li>
+			</ul>
+
+			<ol>
+				<li>Phasellus hendrerit metus sed nibh commodo tincidunt.</li>
+				<li>Etiam eleifend orci non tortor sollicitudin sagittis vel vitae nulla.</li>
+				<li class="highlight">Duis elementum massa vulputate urna iaculis consectetur.</li>
+				<li>Donec posuere eros non faucibus malesuada.</li>
+				<li>Aenean eu nibh eget mi aliquet efficitur.</li>
+				<li class="highlight">Duis aliquet nisi ut blandit condimentum.</li>
+			</ol>
+
+			<p>This is another list:</p>
+
+			<ol start="7" reversed>
+				<li class="highlight">Phasellus hendrerit metus sed nibh commodo tincidunt.</li>
+				<li class="highlight">Etiam eleifend orci non tortor sollicitudin sagittis vel vitae nulla.</li>
+				<li>Duis elementum massa vulputate urna iaculis consectetur.</li>
+				<li>Donec posuere eros non faucibus malesuada.</li>
+				<li>Aenean eu nibh eget mi aliquet efficitur.</li>
+				<li>Duis aliquet nisi ut blandit condimentum.</li>
+			</ol>
+
+			<p>Etiam id mattis ligula. Morbi lobortis lorem volutpat, finibus nunc id, semper lacus. Phasellus varius augue et arcu placerat sodales. Nam posuere lectus eget arcu dapibus ornare. Vivamus nec nisi sit amet quam euismod porta eu non nunc. Nulla tempor mauris diam. Donec turpis mauris, ullamcorper eu molestie quis, aliquet eu eros. In eleifend, eros eget consequat egestas, nibh nibh elementum erat, vitae volutpat diam metus sed magna. Vestibulum molestie nulla quam, eu interdum nisi congue vitae. Phasellus et orci luctus, tempor odio pulvinar, lobortis diam. Nam gravida eu elit id pellentesque.</p>
+
+			<h2 id="section2">Praesent feugiat gravida nisl</h2>
+			<p>Praesent feugiat gravida nisl, id tempus ipsum. In hendrerit mi nec lectus facilisis, id bibendum dolor egestas. Etiam sagittis et justo nec finibus. Pellentesque sed interdum turpis, non convallis velit. Donec molestie massa non dui dignissim, sed blandit est ultrices. Quisque at neque vestibulum, placerat elit at, ullamcorper ante. Cras lacinia magna mauris, sed imperdiet turpis vehicula nec. Curabitur euismod libero at dictum tempor.</p>
+
+			<p>Etiam elementum, enim eget vulputate ullamcorper, erat tellus hendrerit odio, vel fringilla est lorem quis quam. Nulla congue mauris ut convallis imperdiet. Ut tristique et nulla in ullamcorper. Integer facilisis, urna eget tempor facilisis, orci mauris sagittis enim, et tristique orci nisl sit amet turpis. Praesent urna nulla, sagittis sit amet accumsan sit amet, pulvinar non mauris. Vivamus lobortis magna massa, in mattis massa blandit nec. Morbi vestibulum mattis venenatis. Donec sed lacus blandit, vehicula nibh a, tempor quam. Nunc eget enim vitae augue suscipit consectetur. Morbi auctor fringilla pharetra. Praesent scelerisque mattis dictum. Phasellus accumsan condimentum enim eu luctus. Maecenas egestas nisl sit amet risus laoreet placerat. Pellentesque sagittis aliquam metus id ultricies. Vivamus pretium metus sed nunc gravida volutpat.</p>
+
+			<h2 id="section3">Nulla eu velit tincidunt</h2>
+			<p>Quisque ultrices nunc non dui ornare faucibus. Etiam efficitur commodo ipsum, quis lacinia felis dignissim ac. Mauris viverra diam tortor. Morbi malesuada feugiat est, sit amet vehicula nibh tristique vitae. Pellentesque molestie convallis ligula sed imperdiet. Nulla eu velit tincidunt felis auctor maximus. Proin et quam ut nisi commodo auctor et ut erat. Mauris pharetra est nibh, non interdum ligula ornare eget.</p>
+
+			<p><a href="#top">Back to top</a></p>
+		</div><!-- primary -->
+
+		<div id="secondary">
+			<h3>Aliquam pretium leo massa</h3>
+			<p>Aliquam pretium leo massa, sed fringilla lacus molestie ac. Phasellus efficitur pellentesque fermentum. Duis risus sem, vehicula a aliquam vitae, efficitur viverra odio. Integer cursus semper est sit amet gravida. Donec vitae nisl ac risus porta viverra quis vel eros. Pellentesque sollicitudin tincidunt est luctus ultricies. Nunc efficitur porta lorem, sit amet tincidunt massa dapibus ac.</p>
+
+			<p>Proin suscipit commodo mi sed malesuada. Suspendisse potenti. Duis consequat dictum nisl. Suspendisse erat mi, luctus ut sapien ac, maximus ultrices urna. Proin vel sem dapibus, egestas diam id, tempus eros. In velit dolor, semper eget nibh non, gravida tempus lectus. Nam a convallis sapien, ac luctus ligula. Nam feugiat tortor at luctus feugiat. Phasellus congue augue eget dui consectetur, vel feugiat massa accumsan. Integer congue mi nec neque molestie hendrerit. Quisque urna neque, bibendum sit amet ullamcorper sed, porta vitae sem. Proin nec diam lorem. Sed ornare, dolor et pellentesque ornare, ex velit tempor nisl, non euismod orci metus eu diam. Nulla eleifend, odio eget vestibulum suscipit, massa lectus luctus dolor, sed feugiat orci nisi ac augue.</p>
+		</div><!-- secondary -->
+	</div><!-- main -->
+
+	<div id="pagefooter">
+		<p>This is footer content.</p>
+	</div><!-- pagefooter -->
+</div><!-- wrapper -->
+
+</body>
+</html>

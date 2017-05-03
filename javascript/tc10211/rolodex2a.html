@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body { font-family: Verdana, Arial, sans-serif; }
+
+	.contactitem {
+		padding: 1em 2em;
+		border: 1px solid #ccc;
+	}
+	</style>
+</head>
+<body>
+
+<div id="container">
+	<div id="items">
+		<!--
+		<div class="contactitem">
+			<div>
+				<p><span data-field="id"></span></p>
+				<p><span data-field="firstname"></span></p>
+				<p><span data-field="lastname"></span></p>
+				<p><span data-field="age"></span></p>
+			</div>
+			<div>
+				<button class="btnEdit">Edit</button>
+				<button class="btnDelete">Delete</button>
+			</div>
+		</div>
+		-->
+	</div>
+	<div id="controls">
+		<button class="btnAdd">Add New Contact</button>
+	</div>
+</div>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+// use IIFE as namespace 
+// App is defined in the global scope and passed into the IIFE
+(function(App) {
+
+// any variables and functions defined in here are private
+// mock data
+var contactList = 
+[
+	{"id":24,"firstname":"John","lastname":"Doe","age":21},
+	{"id":1,"firstname":"Alex","lastname":"Doe","age":21},
+	{"id":12,"firstname":"Peter","lastname":"Doe","age":21},
+	{"id":3,"firstname":"Teacy","lastname":"Doe","age":21},
+	{"id":41,"firstname":"Jen","lastname":"Doe","age":21},
+	{"id":66,"firstname":"Adam","lastname":"Doe","age":21},
+	{"id":11,"firstname":"Janet","lastname":"Doe","age":21},
+	{"id":62,"firstname":"Paulette","lastname":"Doe","age":21},
+	{"id":87,"firstname":"Liz","lastname":"Doe","age":21}
+];
+
+var data = {};
+
+// item template
+data.itemTemplate =
+$('<div class="contactitem">'+
+	'<div>'+
+		'<p><span data-field="id"></span></p>'+
+		'<p><span data-field="firstname"></span></p>'+
+		'<p><span data-field="lastname"></span></p>'+
+		'<p><span data-field="age"></span></p>'+
+	'</div>'+
+	'<div>'+
+		'<button class="btnEdit">Edit</button>'+
+		'<button class="btnDelete">Delete</button>'+
+	'</div>'+
+  '</div>');
+
+App.start = function() {
+	data.itemsElem = $('#items'); // store reference 
+
+	// display contacts in item template
+
+	// empty items element
+	data.itemsElem.empty();
+
+	// loop through contactlist
+	$.each(contactList, function(index, contact) {
+		data.itemTemplate		// populate item template
+			.clone()
+			.find('[data-field]')
+			.each(function(i, fieldElem) {
+				var fieldName = $(fieldElem).attr('data-field');
+				$(fieldElem).html(contact[fieldName]);
+			})
+			.end()
+			.appendTo(data.itemsElem);		// add to item container
+
+	});
+};
+
+
+})(window.App = window.App || {})
+
+
+
+// defer script execution
+$(document).ready(App.start); // document.ready
+
+</script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Full Height Layout Demo</title>
+
+	<style type="text/css">
+	
+	/* The trick to full-height layouts is to give all parents to the wrapper 100% height */
+	html, body { height: 100%; }
+	
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 1em;
+		color: #000000;
+		background-color: #bcbcbc;
+		margin: 0;
+	}
+
+	#wrapper {
+		min-height: 100%;
+		box-sizing: border-box;
+		background-color: #ffffff;
+		width: 800px;
+		margin: 0 auto;
+	}
+
+	#masthead {
+		height: 80px;
+		background-color: #174F7F;
+	}
+
+	#content {
+		background-color: #9a2b1f;
+		float: left;
+	}
+
+	#pagefooter {
+		height: 120px;
+		color: #efefef;
+		background-color: #0c2840;
+		clear: both;
+	}
+
+	#maincolumn {
+		box-sizing: border-box;
+		width: 500px;
+		float: left;
+		padding: 1px 10px 1px 25px;
+	}
+
+	#sidebar {
+		box-sizing: border-box;
+		width: 300px;
+		float: left;
+		padding: 1px 25px 1px 10px;
+	}
+
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="masthead">
+	</div><!-- #masthead -->
+
+	<div id="content">
+		<div id="maincolumn">
+			<h1>Lorem ipsum dolor sit amet</h1>
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla posuere condimentum ex vitae egestas. In ante arcu, rutrum sit amet commodo quis, aliquam fermentum erat. Pellentesque vitae tellus arcu. Sed rutrum sapien sed vestibulum convallis. Sed ut erat nisl. Nam bibendum quam lacus, at feugiat purus varius nec. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut nec sagittis arcu.
+			</p>
+			<p>
+			Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean cursus faucibus augue, id euismod urna vulputate a. Nam tincidunt a libero et dictum. Praesent vitae augue eleifend, lacinia felis vel, sodales enim. Ut sit amet elementum mi, non tempus mauris. Aenean non dui ultricies, egestas ligula vitae, porta lacus. Integer blandit vulputate lectus vel egestas. Vivamus pretium cursus neque in tempor. Mauris dapibus ut urna ut fringilla. Nunc condimentum justo eu feugiat auctor.
+			</p>
+
+			<h2>Curabitur quam leo</h2>
+			<p>
+			Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis sollicitudin dui congue orci interdum aliquam. In pharetra ligula sit amet rhoncus scelerisque. Maecenas consectetur orci leo, at maximus velit ornare sed. Aliquam malesuada dolor eu dolor molestie, blandit condimentum augue pharetra. Morbi tempor turpis sed mi aliquet posuere. Etiam suscipit nulla placerat nisi consequat congue. Curabitur quam leo, ornare sit amet nisi non, molestie elementum nibh. Nam ultrices sagittis arcu, a blandit metus placerat quis.
+			</p>
+			<p>
+			Vestibulum pellentesque purus in nulla ultricies condimentum. Morbi gravida sit amet tellus quis ultrices. Morbi erat sapien, elementum non ligula ut, tempor venenatis ipsum. Ut vel vulputate leo, a accumsan arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Curabitur sit amet elit sodales, convallis eros vel, blandit tellus. Sed eget mi sed lorem auctor semper sed sed enim. Pellentesque molestie dui in ligula pharetra, id ultricies purus sollicitudin. Cras in consequat leo, vitae vulputate arcu. Etiam vehicula urna at maximus rutrum.
+			</p>
+			<p>
+			Suspendisse auctor neque et orci laoreet, quis cursus orci scelerisque. Curabitur in mollis nulla, non dapibus leo. Vivamus ut magna sit amet arcu laoreet ornare. Integer ultricies et nisl at aliquet. Nullam lobortis scelerisque justo, a sagittis metus malesuada et. Sed volutpat orci sed laoreet convallis. Nunc vehicula feugiat pellentesque. Aenean sed euismod nibh. Curabitur pretium consectetur lobortis. Mauris a nulla congue, tempor mauris nec, maximus tellus. Nullam ac aliquam tortor. Curabitur pellentesque, lacus in lacinia porttitor, mi neque varius orci, vitae tempor ante sem in risus. Morbi a molestie mi, nec consectetur sem. Fusce finibus porttitor tortor, eu porta dui maximus eget. Vivamus eget maximus tortor.
+			</p>
+		</div><!-- #maincolumn -->
+
+		<div id="sidebar">
+			<h2>Duis quis eros luctus velit</h2>
+			<p>
+			In sit amet purus mattis, efficitur orci et, interdum nibh. Ut nunc sem, tincidunt vel mauris eu, viverra pellentesque justo. Curabitur ac dolor eu tellus hendrerit semper. Duis quis eros luctus velit euismod porta. In erat elit, cursus ac ornare id, congue vel velit. Cras volutpat tortor vitae euismod interdum. Nullam sed justo non eros pharetra blandit. Phasellus dictum eget enim eu imperdiet. Aenean pellentesque purus mauris, eget venenatis massa dapibus id. Maecenas luctus metus non neque bibendum, vitae euismod nisl molestie. Mauris ac convallis risus, a venenatis ipsum. Donec vitae leo tempor orci viverra posuere id in diam. Morbi tincidunt augue sed metus ultrices, eget ullamcorper ligula accumsan. Morbi quis dolor in mauris suscipit condimentum. Vestibulum convallis mattis maximus.
+			</p>
+			<p>
+			Curabitur odio mi, eleifend vitae lorem eu, accumsan mattis tellus. Fusce dignissim enim et libero bibendum vehicula. Duis porttitor tortor eget augue convallis aliquam. Donec lacinia imperdiet mi, a blandit neque fermentum sed. Aliquam sollicitudin auctor fermentum. Maecenas rhoncus nulla ipsum, et ornare justo pellentesque maximus. Ut est dolor, porta eu tincidunt non, suscipit sit amet quam. Maecenas neque nisl, scelerisque in ante in, lacinia ullamcorper nibh.
+			</p>
+		</div><!-- sidebar -->
+	</div><!-- #content -->
+
+	<div id="pagefooter">
+		<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae</p>
+	</div><!-- #pagefooter -->
+</div>
+
+</body>
+</html>

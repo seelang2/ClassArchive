@@ -1,0 +1,7 @@
+/*
+ This is a CSS ONLY comment
+*/
+h2 {
+	color: green; /* You can put this on a single line as well. */
+	font-weight: normal;
+}

@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+// Constructor functions
+function oldCar() {
+	this.make = '';
+	this.model = '';
+	this.status = 'off';
+	this.startEngine = function() {
+		this.status = 'on';
+	};
+}
+
+// all properties defined in constructor function are copied to instance
+var myCar = new oldCar();
+console.log(myCar.hasOwnProperty('status'));
+
+// we leave the constructor function blank UNLESS we want to define
+// local properties
+function newCar() {};
+newCar.prototype.make = '';
+newCar.prototype.model = '';
+newCar.prototype.status = 'off';
+newCar.prototype.startEngine = function() {
+	this.status = 'on';
+};
+
+var yourCar = new newCar();
+
+newCar.prototype.color = 'black';
+
+function SUV() {
+};
+
+var hisCar = new SUV();
+
+// force SUV to 'inherit' from newCar by setting its prototype
+// to an instance of newCar
+SUV.prototype = new newCar();
+SUV.prototype.has4WD = true;
+
+var herCar = new SUV();
+
+</script>
+</body>
+</html>

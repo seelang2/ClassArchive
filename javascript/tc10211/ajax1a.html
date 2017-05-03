@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+	<title>Page Title</title>
+</head>
+<body>
+
+<h1>Demo</h1>
+<p>This is the static content on the page.</p>
+
+<div id="target"></div>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+alert('Pause...');
+
+/*
+// make ajax request
+$.ajax({
+	url: 		'partial.html',
+	method: 	'get',
+	dataType: 	'html',
+	success: 	function(response) {
+		// update target element with data from request
+		$('#target').html(response);
+
+	}
+});
+*/
+
+$('#target').load('partial.html');
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

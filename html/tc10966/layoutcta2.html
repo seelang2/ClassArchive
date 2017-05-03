@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>CTA Layout Mockup</title>
+
+	<style type="text/css">
+
+	#top,
+	#bottom,
+	#left,
+	#right,
+	#main,
+	#do,
+	#re,
+	#mi,
+	#more {
+		padding-top: 1px;
+		padding-bottom: 1px;
+	}
+
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-weight: normal;
+		color: #000000;
+		font-size: 1em;
+		background-color: #A9B098;
+	}
+
+	#wrapper {
+		width: 800px;
+		background-color: #FFFFFF;
+		margin: auto;
+	}
+
+	#top {
+		height: 80px;
+		background: #DA6F54;
+	}
+
+	#bottom {
+		height: 100px;
+		background: #2A322D;
+		color: #ffffff;
+		font-size: 85%;
+	}
+
+	#middle {
+
+	}
+
+	#left {
+		float: left;
+		width: 500px;
+		background: green;
+	}
+
+	#right {
+		float: left;
+		width: 300px;
+	}
+
+	#main {
+		height: 200px;
+		background: #E7D2B7;
+	}
+
+	#more ul {
+		-webkit-column-count: 4;
+		-moz-column-count: 4;
+		column-count: 4;
+		list-style-type: none;
+		font-size: 85%;
+		padding: 0;
+	}
+
+	#more li {
+		padding-left: 1em;
+		position: relative;
+	}
+
+	#more li:before {
+		content: '-';
+		position: absolute;
+		left: 5px;
+	}
+
+	.col-3 {
+		width: 33.3%;
+		float: left;
+	}
+
+	/* clearfix virtual shim */
+	.cf:before,
+	.cf:after {
+	    content: " "; 
+	    display: table; 
+	}
+
+	.cf:after {
+	    clear: both;
+	}
+
+	.clear { clear: both; }
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="top">
+		<p>Top</p>
+	</div><!-- top -->
+
+	<div id="middle" class="cf">
+		<div id="left">
+			<div id="main">
+				<h2>Main</h2>
+				<p>Phasellus condimentum, ante ut tempus fringilla, lorem magna aliquam ante, in tempus felis nunc et est. Aenean molestie magna a enim fringilla, nec euismod neque interdum. Cras faucibus turpis sed justo pulvinar, et bibendum sem fermentum. In lorem sapien, cursus vitae euismod eget, suscipit id nulla. Cras sit amet neque nec magna blandit ornare. </p>
+			</div><!-- main -->
+
+			<div id="do" class="col-3">
+				<h2>Do</h2>
+				<p>Phasellus condimentum, ante ut tempus fringilla, lorem magna aliquam ante, in tempus felis nunc et est. Aenean molestie magna a enim fringilla, nec euismod neque interdum. Cras faucibus turpis sed justo pulvinar, et bibendum sem fermentum. In lorem sapien, cursus vitae euismod eget, suscipit id nulla. Cras sit amet neque nec magna blandit ornare. </p>
+			</div><!-- do -->
+
+			<div id="re" class="col-3">
+				<h2>Re</h2>
+				<p>Phasellus condimentum, ante ut tempus fringilla, lorem magna aliquam ante, in tempus felis nunc et est. Aenean molestie magna a enim fringilla, nec euismod neque interdum. Cras faucibus turpis sed justo pulvinar, et bibendum sem fermentum. In lorem sapien, cursus vitae euismod eget, suscipit id nulla. Cras sit amet neque nec magna blandit ornare. </p>
+			</div><!-- re -->
+
+			<div id="mi" class="col-3">
+				<h2>Mi</h2>
+				<p>Phasellus condimentum, ante ut tempus fringilla, lorem magna aliquam ante, in tempus felis nunc et est. Aenean molestie magna a enim fringilla, nec euismod neque interdum. Cras faucibus turpis sed justo pulvinar, et bibendum sem fermentum. In lorem sapien, cursus vitae euismod eget, suscipit id nulla. Cras sit amet neque nec magna blandit ornare. </p>
+			</div><!-- mi -->
+
+			<div id="more" class="clear">
+				<h2>More</h2>
+				<ul>
+					<li>Just a list item.</li>
+					<li>Just a list item.</li>
+					<li>Just a list item.</li>
+					<li>Just a list item.</li>
+					<li>Just a list item.</li>
+					<li>Just a list item.</li>
+					<li>Just a list item.</li>
+					<li>Just a list item.</li>
+					<li>Just a list item.</li>
+					<li>Just a list item.</li>
+					<li>Just a list item.</li>
+					<li>Just a list item.</li>
+					<li>Just a list item.</li>
+					<li>Just a list item.</li>
+					<li>Just a list item.</li>
+					<li>Just a list item.</li>
+					<li>Just a list item.</li>
+					<li>Just a list item.</li>
+					<li>Just a list item.</li>
+					<li>Just a list item.</li>
+					<li>Just a list item.</li>
+					<li>Just a list item.</li>
+				</ul>
+			</div><!-- more -->
+		</div><!-- left -->
+
+		<div id="right">
+		</div><!-- right -->
+	</div><!-- middle -->
+
+	<div id="bottom">
+		<p>Bottom</p>
+	</div><!-- bottom -->
+</div><!-- wrapper -->
+
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+	<title>Page Title</title>
+</head>
+<body>
+
+<form action="#" method="get">
+	<div><input name="firstname" /></div>
+	<div><input name="lastname" /></div>
+	<input type="submit" />
+</form>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+$('form').on('submit', function(e) {
+	e.preventDefault(); // disables default action
+
+	// submit form via ajax
+	$.ajax({
+		url: 		'partial.html',
+		method: 	'post',
+		dataType: 	'html',
+		data: 		$(this).serialize(),
+		success: 	function(response) {
+			// whatever
+		}
+	});
+
+	console.log('foo'); // runs right after the request
+});
+
+</script>
+</body>
+</html>

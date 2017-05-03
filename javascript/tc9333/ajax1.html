@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<h1>The Page</h1>
+<p>This is static content in the source file.</p>
+
+<div id="target"></div>
+
+
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+/*
+// make ajax request
+$.ajax({
+	url: 		'partial.html',
+	method: 	'get',
+	dataType: 	'html',
+	success: 	function(response) {
+		$('#target').html(response);
+	}
+});
+
+*/
+
+// the short version
+$('#target').load('partial.html');
+
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

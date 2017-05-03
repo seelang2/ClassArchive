@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	#box1 {
+		width: 400px;
+		height: 400px;
+		margin-left: 50%;
+		border: 2px solid #000000;
+		background: #3E2F1C;
+		position: fixed;
+	}
+	</style>
+</head>
+<body>
+
+<div id="box1"></div>
+
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+$('#box1')
+	.animate({
+		// CSS properties to animate
+		height: 0,
+		width: 0
+	 },{
+	 	// animation options
+	 	duration: 500,
+	 	queue: true
+	 })
+	.animate({
+		// CSS properties to animate
+		top: '+=600'
+	 },{
+	 	// animation options
+	 	duration: 500
+	 });
+
+});
+
+</script>
+</body>
+</html>

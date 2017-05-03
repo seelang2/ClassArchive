@@ -1,0 +1,214 @@
+<!doctype html>
+<html>
+<head>
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body { font-family: Verdana, Arial, sans-serif; }
+
+	.contactitem {
+		padding: 1em 2em;
+		border: 1px solid #ccc;
+	}
+	</style>
+</head>
+<body>
+<div id="container">
+	<div id="items">
+		<!--
+		<div class="contactitem">
+			<div>
+				<p><span data-field="id"></span></p>
+				<p><span data-field="firstname"></span></p>
+				<p><span data-field="lastname"></span></p>
+				<p><span data-field="age"></span></p>
+			</div>
+			<div>
+				<button class="btnEdit">Edit</button>
+				<button class="btnDelete">Delete</button>
+			</div>
+		</div>
+		-->
+	</div>
+	<div id="controls">
+		<button class="btnAdd">Add New Contact</button>
+	</div>
+</div>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+// use IIFE as namespace 
+// App is defined in the global scope and passed into the IIFE
+(function(App) {
+
+// any variables and functions defined in here are private
+var data = {};
+
+// item template
+data.itemTemplate =
+$('<div class="contactitem">'+
+	'<div>'+
+		'<p><span data-field="firstname"></span></p>'+
+		'<p><span data-field="lastname"></span></p>'+
+		'<p><span data-field="email"></span></p>'+
+	'</div>'+
+	'<div>'+
+		'<button class="btnEdit">Edit</button>'+
+		'<button class="btnDelete">Delete</button>'+
+	'</div>'+
+  '</div>');
+
+App.start = function() {
+	data.itemsElem = $('#items'); // store reference 
+
+	// set up button handler
+	$('#container').on('click', ':button', App.buttonHandler);
+
+	// get customer data
+	App.getCustomers();
+
+
+}; // App.start
+
+App.getCustomers = function() {
+
+	// make Ajax call
+	$.ajax({
+		url: 		'backend/customers',
+		method: 	'get',
+		dataType: 	'json',
+		success: 	App.displayItems
+	});
+
+}; // App.getCustomers
+
+App.buttonHandler = function(e) {
+	// 'this' points to the button that was clicked IF using 
+	// the selector filter. Otherwise, use the event.target
+	var $target = $(this);
+
+	switch(true) {
+		case $target.hasClass('btnEdit'):
+			App.editItem($target);
+		break;
+
+		case $target.hasClass('btnSave'):
+			App.saveItem($target);
+		break;
+
+		case $target.hasClass('btnDelete'):
+			App.deleteItem($target);
+		break;
+
+		case $target.hasClass('btnAdd'):
+			App.addItem();
+		break;
+
+	} // switch
+}; // App.buttonHandler
+
+App.editItem = function($target) {
+	var $itemElem =
+	$target							// from target element
+		.closest('.contactitem');	// traverse up to contactitem
+	var id = $itemElem.attr('data-index'); // and get the id
+
+	$itemElem
+		.find('.btnEdit')
+		.toggleClass('btnEdit btnSave')
+		.html('Save')
+		.end()
+		.find('.btnDelete')
+		.toggleClass('btnDelete btnCancel')
+		.html('Cancel')
+		.end()
+		.find('[data-field]')
+		.each(function(i, fieldElem) {
+			var fieldName = $(fieldElem).attr('data-field');
+			var fieldValue = $(fieldElem).html();
+			$('<input />')
+				.attr({
+					name: fieldName,
+					value: fieldValue
+				 })
+				.insertAfter(fieldElem);
+		 })
+		.remove();
+
+
+}; // App.editItem
+
+App.saveItem = function($target) {
+	var $itemElem = $target.closest('.contactitem');
+	var id = $itemElem.attr('data-index'); 
+
+	// get and serialize data to send to server
+	var data = 
+	$itemElem
+		.find(':input')	// get all the data elements
+		.serialize();
+
+	// send and save the data on the server
+	$.ajax({
+		url: 		'backend/customers/'+id,
+		method: 	'put',
+		data: 		data,
+		dataType: 	'json',
+		success: 	function(response, statusText, req) {
+			//console.log(response,statusText,req);
+			if (response.message == 'Ok') {
+				alert('The record has been saved.');
+				App.getCustomers(); // now reload the data
+			} else {
+				alert('The record was NOT saved.');
+			}
+		}
+	});
+
+}; // App.saveItem
+
+App.deleteItem = function($target) {
+	var $itemElem =
+	$target							// from target element
+		.closest('.contactitem');	// traverse up to contactitem
+	var index = $itemElem.attr('data-index'); // and get the id
+
+	// delete data
+	contactList.splice(index,1); // remove element from array
+	$itemElem.remove(); // now remove item from UI
+}; // App.deleteItem
+
+App.displayItems = function(contactList) {
+	// empty items element
+	data.itemsElem.empty();
+
+	// loop through contactlist
+	$.each(contactList, function(index, contact) {
+		data.itemTemplate		// populate item template
+			.clone() // copy it
+			.attr('data-index', contact.id)
+			.find('[data-field]')
+			.each(function(i, fieldElem) {
+				var fieldName = $(fieldElem).attr('data-field');
+				$(fieldElem).html(contact[fieldName]);
+			})
+			.end() // revert back to template top
+			.appendTo(data.itemsElem);		// add to item container
+	});
+
+}; // App.displayItems
+
+
+})(window.App = window.App || {}); // IIFE
+
+
+
+// defer script execution
+$(document).ready(App.start); // document.ready
+
+</script>
+</body>
+</html>

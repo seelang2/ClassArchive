@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<div id="target"><p>X</p></div>
+
+
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+/* THIS CODE SUCKS - DON'T DO
+$('#target').append('<p>append</p>');
+$('#target').prepend('<p>prepend</p>');
+$('#target').before('<p>before</p>');
+$('#target').after('<p>after</p>');
+*/
+
+// BETTER - make use of chaining
+// also store the #target collection object in a variable
+// to be used multiple times
+var $target = 
+$('#target')
+	.append('<p>append</p>')
+	.prepend('<p>prepend</p>')
+	.before('<p>before</p>')
+	.after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo($target);
+$('<p>prependTo</p>')
+	.prependTo($target)
+	.detach()
+	.insertAfter($target);
+$('<p>insertBefore</p>').insertBefore($target);
+$('<p>insertAfter</p>')
+	.attr('id', 'someitem')
+	.insertAfter($target)
+	.clone()
+	.attr('id', 'someitem2')
+	.prependTo($target);
+
+</script>
+</body>
+</html>

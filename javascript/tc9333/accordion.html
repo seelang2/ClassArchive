@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+
+	#target {
+		width: 600px;
+		margin: auto;
+		border: 1px solid #ccc;
+	}
+
+	h2.title {
+		font-weight: normal;
+		margin: 0;
+		padding: 0.25em;
+		background: #ffdede;
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+	}
+
+	h2.title:first-child { border-top: none; }
+
+	/*
+	don't do this here because of accessibility issues
+	.content { display: none; }
+	*/
+
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" src="mock_data.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+// store collection in variable
+var $target = $('#target');
+
+// loop through data and display it
+$.each(apiResponse.booklist, function(index, book) {
+	$target
+		.append('<h2 class="title">'+ book.title +'</h2>');
+
+	$('<div />')
+		.addClass('content')
+		.append('<p>Author: '+ book.author + '</p>')
+		.append('<p>'+ book.publish_date +'</p>')
+		.append('<p>'+ book.isbn +'</p>')
+		.append('<p>'+ book.description +'</p>')
+		.appendTo($target);
+});
+
+$target
+	.children('.content')
+	.hide();
+
+$target
+	.on('click', '.title', function(evt) {
+		// 'this' points to title element (selector filter)
+		$(this)
+			.next()				// traverse to adjacent .content
+			.slideToggle();		// and then toggle it
+
+	 });
+
+
+}); // document.ready
+</script>
+</body>
+</html>

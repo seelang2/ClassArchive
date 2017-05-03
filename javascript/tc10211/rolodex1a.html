@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body { font-family: Verdana, Arial, sans-serif; }
+
+	.contactitem {
+		padding: 1em 2em;
+		border: 1px solid #ccc;
+	}
+	</style>
+</head>
+<body>
+
+<div id="container">
+	<div id="items">
+		<!--
+		<div class="contactitem">
+			<div>
+				<p><span>ID</span></p>
+				<p><span>First Name</span></p>
+				<p><span>Last Name</span></p>
+				<p><span>Age</span></p>
+			</div>
+			<div>
+				<button>Edit</button>
+				<button>Delete</button>
+			</div>
+		</div>
+		-->
+	</div>
+	<div id="controls">
+		<button class="btnAdd">Add New Contact</button>
+	</div>
+</div>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+// set up App object as a namespace/container
+
+/*
+// using object syntax like this gets kinda clunky
+var App = {
+	data: {},
+	method1: function() {
+
+	}
+};
+*/
+// easier approach is to create an empty object and extend it later:
+var App = {};
+App.data = {};
+
+// mock data
+App.data.contactList = 
+[
+	{"id":24,"firstname":"John","lastname":"Doe","age":21},
+	{"id":1,"firstname":"Alex","lastname":"Doe","age":21},
+	{"id":12,"firstname":"Peter","lastname":"Doe","age":21},
+	{"id":3,"firstname":"Teacy","lastname":"Doe","age":21},
+	{"id":41,"firstname":"Jen","lastname":"Doe","age":21},
+	{"id":66,"firstname":"Adam","lastname":"Doe","age":21},
+	{"id":11,"firstname":"Janet","lastname":"Doe","age":21},
+	{"id":62,"firstname":"Paulette","lastname":"Doe","age":21},
+	{"id":87,"firstname":"Liz","lastname":"Doe","age":21}
+];
+
+// startup method
+App.start = function() {
+
+};
+
+// defer script execution
+$(document).ready(App.start); // document.ready
+
+</script>
+</body>
+</html>

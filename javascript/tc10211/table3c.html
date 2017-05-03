@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+
+	<style type="text/css">
+	body { font-family: Verdana, Arial, sans-serif; }
+
+	table, th, td { border: 1px solid #7a7a7a; }
+	th, td { padding: 0.5em 1em; }
+	table { border-collapse: collapse; }
+
+	tr.hover { background: #FFC; }
+	.evenrow { background: #fefefe; }
+	.oddrow { background: #eee; }
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+function doHover() {
+	// this is bound to the tr
+	$(this).toggleClass('hover');
+ }
+
+// mock data
+var contactList = 
+[
+	{"id":24,"firstname":"John","lastname":"Doe","age":21},
+	{"id":1,"firstname":"Alex","lastname":"Doe","age":21},
+	{"id":12,"firstname":"Peter","lastname":"Doe","age":21},
+	{"id":3,"firstname":"Teacy","lastname":"Doe","age":21},
+	{"id":41,"firstname":"Jen","lastname":"Doe","age":21},
+	{"id":66,"firstname":"Adam","lastname":"Doe","age":21},
+	{"id":11,"firstname":"Janet","lastname":"Doe","age":21},
+	{"id":62,"firstname":"Paulette","lastname":"Doe","age":21},
+	{"id":87,"firstname":"Liz","lastname":"Doe","age":21}
+];
+
+
+
+// first, build table structure
+$('<table><thead /><tbody /></table>')
+	.children('thead')					// traverse to THEAD
+	.each(function(i, theadElem) {
+		/*
+		  This function acts as a 'mock' IIFE, allowing us to
+		  do side processing that 1) gets housecleaned via garbage
+		  collection when we're done and 2) doesn't disrupt the
+		  current statement chain. 
+		*/
+		var $trElem = $('<tr />');
+
+		// loop through contact fields
+		$.each(contactList[0], function(fieldName, fieldValue) {
+			$('<th>')
+				.append(fieldName)
+				.appendTo($trElem);
+		});
+
+		$trElem.appendTo(theadElem);
+
+	 })
+	.end()								// revert collection to TABLE
+	.children('tbody')					// traverse to TBODY
+	.each(function(i, tbodyElem) {
+		// loop through contact list and create table rows
+		$.each(contactList, function(index, contact) {
+			var $trElem = $('<tr />');
+
+			// loop through contact fields
+			$.each(contact, function(fieldName, fieldValue) {
+				$('<td>')
+					.append(fieldValue)
+					.appendTo($trElem);
+			});
+
+			$trElem.appendTo(tbodyElem);
+		});
+	 })
+	.children('tr:nth-child(odd)')
+	.addClass('oddrow')
+	.end()								// revert back to TBODY
+	.children('tr:nth-child(even)')
+	.addClass('evenrow')
+	.end()								// revert back to TBODY
+	.children('tr')						// select all TRs
+	.on('mouseover mouseout', doHover)
+	.end()								// revert back to TBODY
+	.end()								// revert to TABLE
+	.appendTo('#target');
+
+</script>
+</body>
+</html>

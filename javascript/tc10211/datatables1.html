@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+	<title>Demo using DataTables Plugin</title>
+
+	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.css">
+  
+
+</head>
+<body>
+
+<table id="target">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+		</tr>
+	</thead>
+</table>
+
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+    $('#target').DataTable( {
+        ajaxSource: 'backend/customers?wrapvar=data',
+        columns: [
+        	{ data: 'id' },
+        	{ data: 'firstname' },
+        	{ data: 'lastname' },
+        	{ data: 'email' }
+        ]
+    } );
+} );
+
+</script>
+</body>
+</html>

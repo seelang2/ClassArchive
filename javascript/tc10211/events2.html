@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+	<title>Page Title</title>
+</head>
+<body>
+
+<form action="#" method="get">
+	<div><input name="firstname" /></div>
+	<div><input name="lastname" /></div>
+	<input type="submit" />
+</form>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+$('form').on('submit', function(e) {
+	// basic form validation
+	var formIsValid = true;
+	var validationErrors = '';
+
+	if ( $(this).find('[name=firstname]').val().length == 0 ) {
+		formIsValid = false; // flag form
+		validationErrors += 'First name is required.';
+	} 
+
+	if ( $(this).find('[name=lastname]').val().length == 0 ) {
+		formIsValid = false; // flag form
+		validationErrors += 'Last name is required.';
+	} 
+
+	if (!formIsValid) {
+		alert(validationErrors);
+		return false; // cancels submit action
+	}
+
+});
+
+</script>
+</body>
+</html>
