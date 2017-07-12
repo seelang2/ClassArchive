@@ -1,0 +1,28 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+</head>
+<body>
+
+<div id="main">
+	<h1>Some headline</h1>
+	<p>A simple paragraph.</p>
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+
+$('<p>New paragraph.</p>')
+	.attr('id', 'paragraph')
+	.appendTo('#main');
+
+$('<div />')
+	.append('<p>Paragraph 1.</p>')
+	.append('<p>Another paragraph.</p>')
+	.addClass('something')
+	.prependTo('#main');
+
+</script>
+</body>
+</html>

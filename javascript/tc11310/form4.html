@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Example</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+
+
+	form label {
+		display: block;
+		margin-bottom: 1em;
+	}
+
+	.verror {
+		color: red;
+		font-weight: bold;
+	}
+
+	</style>
+</head>
+<body>
+
+<form action="#" method="post">
+	<label>
+		<span>Field 1</span>
+		<input name="field1" data-vrule="required" />
+	</label>
+	<label>
+		<span>Field 2</span>
+		<input name="field2" data-vrule="minlength" data-minlength="4" />
+	</label>
+	<label>
+		<span>Field 3</span>
+		<input name="field3" data-vrule="maxlength" data-maxlength="4" />
+	</label>
+	<label>
+		<span>Field 4</span>
+		<input name="field4" data-vrule="between" data-minlength="4" data-maxlength="10" />
+	</label>
+	<label>
+		<span>Field 5</span>
+		<input name="field5" data-vrule="alpha" />
+	</label>
+	<label>
+		<span>Field 6</span>
+		<input name="field6" data-vrule="numeric" />
+	</label>
+	<label>
+		<span>Field 7</span>
+		<input name="field7" data-vrule="email" />
+	</label>
+	<label>
+		<span>Field 8</span>
+		<input name="field8" data-vrule="phone" />
+	</label>
+	<div>
+		<input type="submit" value="Save" />
+	</div>
+</form>
+
+<script type="text/javascript" src="jquery-3.2.1.js"></script>
+<script type="text/javascript" src="validatefields.js"></script>
+<script type="text/javascript">
+
+// defer execution until DOM is ready
+$(document).ready(function() {
+
+$('form').on('submit', function(e) {
+	// remove any validation error spans
+	$('.verror').remove();
+
+	var $invalidFields =
+	$(this)
+		.getInvalidFields() // get fields with validation errors
+		.each(function(i, field) {
+			var verror = $(field).attr('data-verror');
+			$('<span />')
+				.addClass('verror')
+				.append(verror)
+				.insertAfter(field);
+		});
+
+	if ($invalidFields.length == 0) {
+		// submit form
+		return true; 
+	} else {
+		// set focus on first field with error
+		$invalidFields.first().focus();
+
+		// stop form submission & terminate function
+		return false;
+	}
+});
+
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

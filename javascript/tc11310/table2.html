@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Example</title>
+
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-3.2.1.js"></script>
+<script type="text/javascript">
+
+var contactList = [
+	{ "firstname": "John", "lastname": "Doe", "age": 42 },
+	{ "firstname": "Peter", "lastname": "Griffin", "age": 23 },
+	{ "firstname": "Mary", "lastname": "Smith", "age": 35 },
+	{ "firstname": "Alice", "lastname": "Roberts", "age": 19 }
+];
+
+
+var tableElem = $('<table />');
+
+var tbodyElem = 
+$('<tbody />')					// create new TBODY
+	.appendTo(tableElem);		// append to TABLE (and store TBODY in var)
+
+$.each(
+	contactList,
+	function(index, contact) {
+
+		$('<tr />')						
+			.append('<td>'+ contact.firstname +'</td>')	
+			.append('<td>'+ contact.lastname +'</td>')		
+			.append('<td>'+ contact.age +'</td>')		
+			.appendTo(tbodyElem);		// attach to TBODY
+
+	}
+);
+
+// now that the branch is built, attach to the DOM
+$('#target').append(tableElem);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Example</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+
+	#container {
+		width: 600px;
+		margin: auto;
+		padding: 1em 50px;
+	}
+
+	#panels {
+		height: 250px;
+		overflow: hidden;
+	}
+
+	#panels fieldset {
+		height: 250px;
+		box-sizing: border-box;
+		margin: 0;
+		text-align: center;
+	}
+
+	#panels fieldset button {
+		font-size: 200%;
+	}
+
+	#panels fieldset div {
+		font-size: 200%;
+		padding: 1em;
+	}
+
+	form label {
+		display: block;
+		margin-bottom: 1em;
+	}
+
+	#panelcontrol {
+		text-align: center;
+		padding: 1em;
+	}
+
+	</style>
+</head>
+<body>
+
+<div id="container">
+	<form action="#" method="post">
+		<div id="panels">
+			<fieldset>
+				<legend>Panel 1</legend>
+				<button class="generator">A</button>
+				<button class="generator">B</button>
+				<button class="generator">C</button>
+				<div><input name="char1" value="" /></div>
+			</fieldset>
+			<fieldset>
+				<legend>Panel 2</legend>
+				<button class="generator">D</button>
+				<button class="generator">E</button>
+				<button class="generator">F</button>
+				<div><input name="char2" value="" /></div>
+			</fieldset>
+			<fieldset>
+				<legend>Panel 3</legend>
+				<button class="generator">G</button>
+				<button class="generator">H</button>
+				<button class="generator">I</button>
+				<div><input name="char3" value="" /></div>
+			</fieldset>
+			<fieldset>
+				<legend>Panel 4</legend>
+				<button class="generator">J</button>
+				<button class="generator">K</button>
+				<button class="generator">L</button>
+				<div><input name="char4" value="" /></div>
+			</fieldset>
+		</div><!-- #panels -->
+		<div id="panelcontrol">
+			<button class="btnPrev">Prev</button>
+			<button class="btnNext">Next</button>
+		</div>
+
+		<div id="otherstuff">
+			<label>
+				<span>Field 1</span>
+				<input name="field1" />
+			</label>
+			<label>
+				<span>Field 2</span>
+				<input name="field2" />
+			</label>
+			<label>
+				<span>Field 3</span>
+				<input name="field3" />
+			</label>
+			<label>
+				<span>Field 4</span>
+				<input name="field4" />
+			</label>
+			<div>
+				<input type="submit" value="Save" />
+			</div>
+		</div><!-- #otherstuff -->
+	</form>
+</div><!-- #container -->
+
+
+<script type="text/javascript" src="jquery-3.2.1.js"></script>
+<script type="text/javascript">
+
+// defer execution until DOM is ready
+$(document).ready(function() {
+
+var $fieldsets = 
+$('#panels fieldset')			// get collection of all fieldsets
+	.first()					// go to the first fieldset
+	.addClass('active')			// set as active panel
+	.end()						// revert back to all fieldsets
+	.not(':first')				// select all but the first
+	.hide()						// hide them
+	.end();						// revert back to all fieldsets
+
+var $panelControlButtons = 
+$('#panelcontrol button')		// get all buttons in panelcontrol
+	.filter('.btnPrev')			// find the Prev button
+	.prop('disabled', true)		// disable prev button
+	.end();						// revert back to all buttons
+
+
+// set up panel control handler
+$('#panelcontrol')
+	.on('click', 'button', function(e) {
+		e.preventDefault(); // prevent buttons from submitting form
+
+		switch(true) {
+			case $(this).hasClass('btnNext'):
+				var $newFieldset = 
+				$fieldsets
+					.filter('.active')		// select the active fieldset
+					.hide()					// hide it
+					.removeClass('active')	// remove active flag
+					.next()					// move to the next fieldset
+					.addClass('active')		// flag as active
+					.show();				// and show it
+
+				// enable Prev button
+				$panelControlButtons
+					.filter('.btnPrev')
+					.prop('disabled', false);
+
+				// disable Next button
+				if ($newFieldset.is(':last-child')) {
+					$panelControlButtons
+						.filter('.btnNext')
+						.prop('disabled', true);
+				}
+
+			break; // btnNext
+
+			case $(this).hasClass('btnPrev'):
+				var $newFieldset = 
+				$fieldsets
+					.filter('.active')		// select the active fieldset
+					.hide()					// hide it
+					.removeClass('active')	// remove active flag
+					.prev()					// move to the previous fieldset
+					.addClass('active')		// flag as active
+					.show();				// and show it
+
+				// enable Next button
+				$panelControlButtons
+					.filter('.btnNext')
+					.prop('disabled', false);
+
+				// disable Prev button
+				if ($newFieldset.is(':first-child')) {
+					$panelControlButtons
+						.filter('.btnPrev')
+						.prop('disabled', true);
+				}
+
+			break; // btnPrev
+		}
+
+	 }); // panelcontrol button handler
+
+$('#panels')
+	.on('click', '.generator', function(e) {
+		e.preventDefault(); 
+
+		var value = $(this).text();
+
+		$(this)							// select this button
+			.closest('fieldset')		// traverse up to closest fieldset ancestor
+			.find('input')				// find the input field for the fieldset
+			.val(value.charCodeAt(0));	// and set its value
+
+	 });
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Example</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+
+
+	form label {
+		display: block;
+		margin-bottom: 1em;
+	}
+
+
+	</style>
+</head>
+<body>
+
+<form action="#" method="post">
+	<label>
+		<span>Field 1</span>
+		<input name="field1" data-vrule="required" />
+	</label>
+	<label>
+		<span>Field 2</span>
+		<input name="field2" data-vrule="minlength" data-minlength="4" />
+	</label>
+	<label>
+		<span>Field 3</span>
+		<input name="field3" data-vrule="maxlength" data-maxlength="4" />
+	</label>
+	<label>
+		<span>Field 4</span>
+		<input name="field4" data-vrule="between" data-minlength="4" data-maxlength="10" />
+	</label>
+	<label>
+		<span>Field 5</span>
+		<input name="field5" data-vrule="alpha" />
+	</label>
+	<label>
+		<span>Field 6</span>
+		<input name="field6" data-vrule="numeric" />
+	</label>
+	<label>
+		<span>Field 7</span>
+		<input name="field7" data-vrule="email" />
+	</label>
+	<label>
+		<span>Field 8</span>
+		<input name="field8" data-vrule="phone" />
+	</label>
+	<div>
+		<input type="submit" value="Save" />
+	</div>
+</form>
+
+<script type="text/javascript" src="jquery-3.2.1.js"></script>
+<script type="text/javascript">
+
+// defer execution until DOM is ready
+$(document).ready(function() {
+
+$('form').on('submit', function(e) {
+	// clear out any existing error spans
+	$(this).find('.error').remove();
+
+	/*
+	innocent until proven guilty approach:
+	assume form is valid and look for exceptions invalidating the data
+	*/
+
+	var formIsValid = true;
+
+	/*
+	data-vrule - name of rule to apply to field:
+		required - field can't be blank (required)
+		minlength - field has minimum length
+		maxlength - field has maximum length
+		between - field has min and max length
+		alpha - field is alpha only
+		alphanumeric - field is alphanumeric
+		numeric - field is numeric only
+		email - field is valid email address
+		phone - field is valid phone number (US)
+
+	*/
+
+	$(this)
+		.find(':input')
+		.each(function(index, field) {
+
+			var vrule = $(field).attr('data-vrule');
+			var fieldVal = $(field).val();
+			var minlength = $(field).attr('data-minlength');
+			var maxlength = $(field).attr('data-maxlength');
+
+			// field can't be blank (required)
+			if (vrule == 'required' && fieldVal.length == 0) {
+				// exception found
+				formIsValid = false; // invalidate form
+				$(field)
+					.after('<span class="error">Field is required</span>');
+
+			}
+
+			// field has minimum length
+			if (vrule == 'minlength' && fieldVal.length < minlength) {
+				// exception found
+				formIsValid = false; // invalidate form
+				$(field)
+					.after('<span class="error">Min length is '+ minlength +'</span>');
+
+			}
+
+			// field is numeric only
+			if (vrule == 'numeric' && 
+				(isNaN(parseFloat(fieldVal)) || !isFinite(fieldVal)) ) {
+				// exception found
+				formIsValid = false; // invalidate form
+				$(field)
+					.after('<span class="error">Must be numeric</span>');
+
+			}
+			
+			// process other rules...
+
+		 }); // each field
+
+
+	if (formIsValid) {
+		// submit form
+		return true; 
+	} else {
+		// set focus on first field with error
+		$(this).find('.error').first().prev().focus();
+
+		// stop form submission & terminate function
+		return false;
+	}
+
+});
+
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

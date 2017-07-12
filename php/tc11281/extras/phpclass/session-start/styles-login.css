@@ -1,0 +1,55 @@
+#reportStory {
+	width: 425px;
+	margin-top: 10px;
+	padding-top: 10px;
+	padding-right: 20px;
+	padding-bottom: 15px;
+	padding-left: 20px;
+	border: 1px solid #999;
+}
+#reportStory legend {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 24px;
+	line-height: 24px;
+	font-weight: bold;
+	color: #664317;
+}
+#reportStory label {
+	display: block;
+	margin-bottom: 5px;
+}
+#reportStory p {
+	margin-bottom: 15px;
+}
+#submit {
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFF;
+	background-image: url(img/bg-form-button.gif);
+	background-repeat: repeat-x;
+	background-position: left center;
+	padding-top: 5px;
+	padding-right: 15px;
+	padding-bottom: 5px;
+	padding-left: 15px;
+	border: 2px solid #FCB959;
+}
+#submit:hover {
+	border: 2px solid #FF6600;
+}
+.textfield {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 14px;
+	background-image: url(img/bg-inner-shadow.png);
+	padding-top: 7px;
+	padding-bottom: 5px;
+	padding-left: 7px;
+	border: 1px solid #AEA386;
+}
+.textfield:focus {
+	background-color: #FCF186;
+	background-image: none;
+}.error {
+	font-weight: bold;
+	color: #F00;
+}

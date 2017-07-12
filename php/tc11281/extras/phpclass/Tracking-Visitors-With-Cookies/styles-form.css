@@ -1,0 +1,80 @@
+#reportStory {
+	width: 425px;
+	margin-top: 10px;
+	padding-top: 10px;
+	padding-right: 20px;
+	padding-bottom: 15px;
+	padding-left: 20px;
+	border: 1px solid #999;
+}
+#reportStory legend {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 24px;
+	line-height: 24px;
+	font-weight: bold;
+	color: #664317;
+}
+#firstNameColumn , #lastNameColumn{
+	width: 205px;
+	padding-top: 10px;
+	float: left;
+}
+#emailLabel , #scoopLabel{
+	display: block;
+	clear: both;
+	padding-top: 15px;
+}
+#submit , #clearCookie {
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFF;
+	background-image: url(img/form-button-bg.gif);
+	background-repeat: repeat-x;
+	background-position: left center;
+	padding-top: 5px;
+	padding-right: 15px;
+	padding-bottom: 5px;
+	padding-left: 15px;
+	border: 2px solid #FCB959;
+}
+#scoop {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 14px;
+	line-height: 21px;
+	height: 270px;
+	width: 386px;
+	background-image: url(img/bg-yellow-lined-paper.png);
+	margin-top: 5px;
+	margin-right: 0px;
+	margin-bottom: 10px;
+	margin-left: 0px;
+	padding-top: 3px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 35px;
+	border: 1px solid #AEA386;
+}
+.textfield {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 14px;
+	background-image: url(img/bg-inner-shadow.png);
+	padding-top: 7px;
+	padding-right: 0px;
+	padding-bottom: 5px;
+	padding-left: 7px;
+	border: 1px solid #AEA386;
+}
+.textfield:focus {
+	background-color: #FCF186;
+	background-image: none;
+}
+#firstName, #lastName {
+	width: 195px;
+	margin-bottom: 15px;
+}
+#lastNameColumn {
+	padding-left: 15px;
+}
+#email {
+	width: 414px;
+}

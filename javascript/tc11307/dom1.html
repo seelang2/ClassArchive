@@ -1,0 +1,36 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+</head>
+<body>
+
+<div id="main">
+	<h1>Some headline</h1>
+	<p>A simple paragraph.</p>
+</div>
+
+<script type="text/javascript">
+/*
+ref: https://www.w3schools.com/jsref/dom_obj_document.asp
+*/
+
+// create new paragraph branch
+var pElem = document.createElement('P'); // create P element
+
+// create text node and attach to P element
+pElem.appendChild(document.createTextNode('New paragraph.')); 
+
+// attach newly built branch to DOM
+document
+	.getElementById('main') // get reference to DIV element
+	.appendChild(pElem);	// append the new P branch to live DOM
+
+var pList = document.getElementsByTagName('P');
+
+pList[1].id = 'paragraph2';
+
+
+</script>
+</body>
+</html>

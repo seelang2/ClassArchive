@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Example</title>
+
+</head>
+<body>
+
+<ul>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+</ul>
+
+<script type="text/javascript" src="jquery-3.2.1.js"></script>
+<script type="text/javascript">
+
+// .each allows us to explicitly loop through the elements in the collection
+$('li').each(function(index, element) {
+	// take the DOM node element and put it in a jQuery collection object
+	$(element).attr('id', 'item' + (index + 1));
+
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+@charset "utf-8";
+#wrapper {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #FFFFFF;
+}
+body {
+	background-color: #E0CDA7;
+	color: #000000;
+	font-family: Verdana, Arial, sans-serif;
+}
+#theitem {
+}

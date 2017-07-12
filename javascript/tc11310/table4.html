@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Example</title>
+
+	<style type="text/css">
+	table, th, td { border: 1px solid #000; }
+	table { border-collapse: collapse; }
+	th, td { padding: 0.5em 1em; }
+
+
+	tr.hover { background: #ffc; }
+	</style>
+
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-3.2.1.js"></script>
+<script type="text/javascript">
+/*
+var contactList = [
+	{ "id": 0, "firstname": "John", "lastname": "Doe", "fage": 42, "score": 234 },
+	{ "id": 1, "firstname": "Peter", "lastname": "Griffin", "fage": 23, "score": 11 },
+	{ "id": 2, "firstname": "Mary", "lastname": "Smith", "fage": 35, "score": 342 },
+	{ "id": 3, "firstname": "Alice", "lastname": "Roberts", "fage": 19, "score": null }
+];
+*/
+
+var data = {
+	"columnnames": ["ID", "First Name", "Last Name", "Age", "Score"],
+	"contactList": [
+		{ "id": 0, "firstname": "John", "lastname": "Doe", "fage": 42, "score": 234 },
+		{ "id": 1, "firstname": "Peter", "lastname": "Griffin", "fage": 23, "score": 11 },
+		{ "id": 2, "firstname": "Mary", "lastname": "Smith", "fage": 35, "score": 342 },
+		{ "id": 3, "firstname": "Alice", "lastname": "Roberts", "fage": 19, "score": null }
+	]
+};
+
+</script>
+<script type="text/javascript">
+// Use IIFE namespace
+(function(App) {
+
+App.start = function() {
+	// app init stuff
+	App.drawTable(data);
+}; // App.start
+
+App.doHover = function(e) {
+	// 'this' refers to element specified in the selector filter in the .on()
+	$(this)						
+		.toggleClass('hover');		// and toggle class
+
+}; // App.doHover
+
+App.drawTable = function(data) {
+	var contactList = data.contactList;
+	$('<table><thead /><tbody /></table>')	// TABLE
+		.children('thead')					// traverse to THEAD
+		.each(function(i, thead) {			// IIFE-esque function
+
+			var $trElem = 
+			$('<tr />') // create TR
+				.appendTo(thead);
+
+			$.each(
+				data.columnnames,
+				function(Ren, Stimpy) {
+					$('<th />')
+						.append(Stimpy)
+						.appendTo(thead);
+				}
+			);
+
+		 })
+		.find('tr')
+		.addClass('header-row')
+		.end()								// revert back to THEAD
+		.end()								// reverts back to TABLE
+		.children('tbody')					// traverse to TBODY
+		.each(function(i, tbody) {			// IIFE-esque function
+
+			// loop through each row in dataset
+			$.each(
+				contactList,
+				function(index, contact) {
+					// create row
+					var $trElem = $('<tr />');
+
+					// loop through each element in row
+					$.each(
+						contact,
+						function(fieldName, fieldValue) {
+							console.log(fieldName, fieldValue);
+
+							// create column cell
+							$('<td />')
+								.append(fieldValue == null ? 'Not available' : fieldValue)
+								.appendTo($trElem);
+						}
+					);
+
+					$trElem.appendTo(tbody);
+
+				}
+			);
+
+		 })
+		.on('mouseover mouseout', 'tr', App.doHover)	// bind event handler to TBODY
+		.end()								// reverts to TABLE
+		.appendTo('#target');				// attach completed tree to DOM
+}; // App.drawTable
+
+}(window.App = window.App || {}));
+
+// launch App
+$(document).ready(App.start);
+
+
+
+
+</script>
+</body>
+</html>

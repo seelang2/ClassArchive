@@ -1,0 +1,29 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+</head>
+<body>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+var App = {}; // create an App container object in the global scope
+
+// use an immediately-invoked function expression to create a secure scope object
+(function(App) {
+
+// any variables and functions defined in this scope can't be accessed from outside
+var data = 'foo';
+
+App.start = function() {
+	console.log(data); // the data within the IIFE can be accessed 
+}; // App. start
+
+})(App);
+
+$(document).ready(App.start); // launch App on DOM ready
+
+
+</script>
+</body>
+</html>

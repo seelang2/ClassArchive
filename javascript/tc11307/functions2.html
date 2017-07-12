@@ -1,0 +1,29 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+
+// function declarations are hoisted to the top of the scope
+console.log(foo());
+
+function foo() {
+	return 'Stuff';
+}
+
+// produces a fatal error because assignment statements are not hoisted
+console.log(bar());
+
+var bar = function() {
+	return 'More stuff';
+};
+
+
+
+</script>
+</body>
+</html>

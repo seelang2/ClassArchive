@@ -1,0 +1,14 @@
+
+https://www.sublimetext.com/
+https://www.apachefriends.org/index.html
+http://caniuse.com
+https://github.com/seelang2/ClassArchive
+https://a11y.nicolas-hoffmann.net/
+
+
+https://www.w3.org/WAI/GL/wiki/Using_the_WAI-ARIA_aria-expanded_state_to_mark_expandable_and_collapsible_regions
+https://www.w3.org/WAI/GL/wiki/Using_aria-expanded_to_indicate_the_state_of_a_collapsible_element
+https://en.wikipedia.org/wiki/WAI-ARIA
+http://heydonworks.com/practical_aria_examples/
+https://www.w3.org/WAI/PF/adaptable/HTML4/embedding-20061212.html
+https://idpf.github.io/a11y-guidelines/content/meta/schema.org.html

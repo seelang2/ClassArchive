@@ -1,0 +1,173 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+
+	label {
+		display: block;
+		margin-bottom: 1em;
+	}
+
+	label span {
+		display: inline-block;
+	}
+
+	.errormsg {
+		color: #ff0000;
+		font-weight: bold;
+	}
+
+	</style>
+</head>
+<body>
+
+<form id="theform" action="#" method="get">
+	<label>
+		<span>Enter a value:</span>
+		<input name="field1" type="text" />
+		<span class="errormsg"></span>
+	</label>
+	<label>
+		<span>Enter 4-10 characters:</span>
+		<input name="field2" type="text" />
+		<span class="errormsg"></span>
+	</label>
+	<label>
+		<span>Enter a number:</span>
+		<input name="field3" type="text" />
+		<span class="errormsg"></span>
+	</label>
+	<div id="formcontrols">
+		<input id="btnSubmit" type="submit" />
+	</div>
+</form>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+
+$('#theform').on('submit', function(e) {
+	e.preventDefault();
+
+	// clear out any existing error messages
+	$('.errormsg').empty();
+
+	// set up basic validation system - guilty until proven innocent
+	var formIsValid = true;
+
+	// validation rules look for exceptions to invalidate form data
+	// field1 can't be blank
+	var $field = $('[name="field1"]');
+	if ($field.val().length == 0) {
+		formIsValid = false;
+		$field
+			.next()
+			.html('Field cannot be blank');
+	}
+
+	// field2 must be between 4 and 10 characters
+	$field = $('[name="field2"]');
+	if ($field.val().length < 4 || $field.val().length > 10) {
+		formIsValid = false;
+		$field
+			.next()
+			.html('Field must be between 4 and 10 characters');
+	}
+
+	// now check form validity to continue processing
+	if (formIsValid) {
+		//console.log('form is valid.');
+	} else {
+		//	console.log('There are errors on the form.');
+	}
+
+}); // .on()
+
+
+////////////////////////////////////////////////////////////////
+
+/* Testing Application */
+
+// test data/parameters
+testData = [
+	{
+		fieldName: 'field1',
+		validFieldData: 'Some data',
+		invalidFieldData: '',
+		validationMessage: 'Field cannot be empty'
+	},
+	{
+		fieldName: 'field2',
+		validFieldData: 'More data',
+		invalidFieldData: 'x',
+		validationMessage: 'Field must be between 4 and 10 characters'
+	},
+	{
+		fieldName: 'field3',
+		validFieldData: 7,
+		invalidFieldData: 'sdfgsdfg',
+		validationMessage: 'Field must be numeric'
+	}
+];
+
+
+
+var $formElem = $('#theform');
+
+
+for (var c = 0; c < testData.length; c++) {
+	// TEST 1: Positive Response
+	console.log('#' + (c+1) + ': Field ' + 
+				testData[c].fieldName +  
+				' TEST 1: valid data using data ' + testData[c].validFieldData);
+
+	var $fieldElem = $('[name="'+testData[c].fieldName+'"]');
+	$fieldElem.val(testData[c].validFieldData); // populate field
+	formElem.trigger('submit'); // trigger form submit event handlers
+	if (fieldElem.nextElementSibling.innerHTML == '') {
+		console.log('Affirmative - field valid; No error message displayed');
+	} else {
+		console.log('Negative - field valid; Error message displayed');
+	}
+
+	// TEST 2: Negative Response
+	console.log('#' + (c+1) + ': Field ' + 
+				testData[c].fieldName +  
+				' TEST 2: invalid data using data ' + testData[c].invalidFieldData);
+
+	var fieldElem = document.getElementsByName(testData[c].fieldName)[0];
+	fieldElem.value = testData[c].invalidFieldData; // populate field
+	formElem.trigger('submit'); // trigger form submit event handlers
+	if (fieldElem.nextElementSibling.innerHTML == '') {
+		console.log('Negative - field invalid; No error message displayed');
+	}
+
+	if (fieldElem.nextElementSibling.innerHTML == testData[c].validationMessage) {
+		console.log('Affirmative - field invalid; Correct error message displayed');
+	} else {
+		console.log('Negative - field invalid; Incorrect error message displayed');
+	}
+
+} // for testData
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+body, h1, h2, h3, h4, h5, h6, p, img, ol, ul, li,
+form, fieldset, label, legend, blockquote,
+table, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+img {
+	vertical-align: bottom;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}

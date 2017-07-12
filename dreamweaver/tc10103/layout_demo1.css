@@ -1,0 +1,88 @@
+@charset "utf-8";
+#masthead {
+	height: 80px;
+	background-color: #E31459;
+	background-image: url(donut1.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: 1px;
+	color: #FFFFFF;
+}
+#about {
+	font-size: 90%;
+}
+#topnav ul {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	float: right;
+}
+.col {
+	float: left;
+	width: 236px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.centertext {
+	text-align: center;
+}
+
+
+
+
+#topnav {
+	height: 30px;
+	background-color: #E31459;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+#topnav ul li {
+	float: left;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+#topnav ul li a {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+
+#content {
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+#pagefooter {
+	background-color: #3D0606;
+	height: 125px;
+	color: #FFFFFF;
+	clear: both;
+	padding-top: 1px;
+	padding-left: 1px;
+	padding-bottom: 1px;
+	padding-right: 1px;
+	font-size: 90%;
+}
+#wrapper {
+	width: 800px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #FFFFFF;
+	border: 1px solid #B27012;
+}
+body {
+	background-image: -webkit-linear-gradient(270deg,rgba(250,227,195,1.00) 0%,rgba(178,112,18,1.00) 100%);
+	background-image: -moz-linear-gradient(270deg,rgba(250,227,195,1.00) 0%,rgba(178,112,18,1.00) 100%);
+	background-image: -o-linear-gradient(270deg,rgba(250,227,195,1.00) 0%,rgba(178,112,18,1.00) 100%);
+	background-image: linear-gradient(180deg,rgba(250,227,195,1.00) 0%,rgba(178,112,18,1.00) 100%);
+	background-repeat: no-repeat;
+	min-height: 100%;
+	background-attachment: fixed;
+	font-family: Verdana, Arial, sans-serif;
+}
+html {
+	min-height: 100%;
+}

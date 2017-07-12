@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Example</title>
+
+	<style type="text/css">
+	#wrapper, #pic {
+		width: 736px;
+		height: 537px;
+		margin: auto;
+	}
+
+	#pic {
+		background: url('pic1.jpg');
+	}
+
+	#cta {
+		text-align: center;
+		padding-top: 330px;
+		/* display: none; */
+		text-indent: 0;
+	}
+	#pic, #cta { position: absolute; }
+
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="pic">
+	</div>
+	<div id="cta">
+		<button id="thebutton">Click Me!</button>
+	</div>
+</div>
+
+<script type="text/javascript" src="jquery-3.2.1.js"></script>
+<script type="text/javascript">
+
+//$('#cta').hide();
+
+var timer = setTimeout(function() {
+	$('#pic')
+		.animate({
+			opacity: 0
+		}, {
+			duration: 2000,
+			complete: function() {
+				$('#cta').fadeIn();
+			}
+		})
+}, 2000);
+
+
+</script>
+</body>
+</html>

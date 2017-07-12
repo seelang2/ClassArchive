@@ -1,0 +1,53 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+</head>
+<body>
+
+<input id="filepicker" type="file" />
+
+<script type="text/javascript">
+// parses CSV file (as a string) into an array
+function parseCSV(data) {
+
+	var rows = data.split("\n"); // split data into rows
+
+	// loop through rows and parse each row
+	for (var c = 0; c < rows.length; c++) {
+		rows[c] = rows[c].split(',');
+		// remove outer quotes from each column
+		for (var i = 0; i < rows[c].length; i++) {
+			rows[c][i] = rows[c][i].replace(/["']/g, ''); // remove quotes and resave
+		}
+	}
+
+	return rows;
+}
+
+document.getElementById('filepicker').addEventListener('change', function(e) {
+
+	//console.log(e.target.files);
+	var srcFile = e.target.files[0];
+
+	// create instance of the FileReader object
+	var reader = new FileReader();
+	// set up process handler when file has been loaded
+	reader.onload = function(e) {
+
+		// dump contents of file to console
+		console.log(e.target.result);
+
+		console.log(parseCSV(e.target.result));
+
+	};
+
+	// now load the file
+	reader.readAsText(srcFile);
+
+});
+
+
+</script>
+</body>
+</html>

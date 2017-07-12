@@ -1,0 +1,30 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+</head>
+<body>
+
+<a id="thelink" href="http://www.google.com">Go to Google</a>
+
+<script type="text/javascript">
+
+/*
+document.getElementById('thelink').onclick = function() {
+
+	return confirm('Are you sure you want to leave this site?');
+
+};
+*/
+
+document.getElementById('thelink').addEventListener('click', function(e) {
+
+	e.preventDefault();
+
+});
+
+
+
+</script>
+</body>
+</html>

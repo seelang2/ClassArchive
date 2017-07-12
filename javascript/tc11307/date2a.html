@@ -1,0 +1,51 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+var weekdays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+var months = [
+	'January',
+	'February',
+	'March',
+	'April',
+	'May',
+	'June',
+	'July',
+	'August',
+	'September',
+	'October',
+	'November',
+	'December'
+];
+
+var today = new Date(); // get new date object based on right now
+
+
+//var ordinal = ?
+var dayNum = today.getDate();
+if (dayNum == 1 || dayNum == 21 || dayNum == 31) {
+	var ordinal = 'st';
+} else if (dayNum == 2 || dayNum == 22) {
+	var ordinal = 'nd';
+} else if (dayNum == 3 || dayNum == 23) {
+	var ordinal = 'rd';
+} else {
+	var ordinal = 'th';
+}
+
+
+
+document.write('<p>Today is ' + weekdays[today.getDay()] + ', ' +
+				 months[today.getMonth()] + ' ' + 
+				 today.getDate() + ordinal + ', ' + 
+				 today.getFullYear() + 
+			   '</p>');
+
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Example</title>
+
+</head>
+<body>
+
+<ul>
+	<li>List Item</li>
+	<li>List Item</li>
+	<li>List Item</li>
+	<li>List Item</li>
+	<li>List Item</li>
+	<li>List Item</li>
+	<li>List Item</li>
+	<li>List Item</li>
+	<li>List Item</li>
+</ul>
+
+<script type="text/javascript" src="jquery-3.2.1.js"></script>
+<script type="text/javascript">
+/*
+	jQuery plugins use IIFE to create the plugin namespace
+*/
+(function($) {
+
+	// create a collection-object method
+	$.fn.assignIDs = function() {
+		// 'this' refers to current jQuery collection object
+		// loop through each element in the collection and do stuff
+		return this.each(function(i, elem) {
+			$(elem).attr('id','item-' + (i+1));
+		});
+
+		//return this; // return the collection to enable chaining
+	}
+
+})(jQuery);
+
+
+$('li')
+	.assignIDs()
+	.addClass('listitem');
+
+</script>
+</body>
+</html>

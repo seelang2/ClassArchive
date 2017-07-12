@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Example</title>
+
+</head>
+<body>
+
+<ul>
+	<li id="item1">Item</li>
+	<li id="item2">Item</li>
+	<li id="item3">Item</li>
+	<li id="item4">Item</li>
+	<li id="item5">Item</li>
+	<li id="item6">Item</li>
+</ul>
+
+<script type="text/javascript" src="jquery-3.2.1.js"></script>
+<script type="text/javascript">
+
+// anything done to the collection is done to every element in the collection
+// (implicit iteration)
+
+$('li')
+	.addClass('listitem')
+	.attr('data-someval', '22');
+
+// getters will return the value from the first element in the collection
+// ONLY
+console.log($('li').attr('id'));
+
+
+
+</script>
+</body>
+</html>

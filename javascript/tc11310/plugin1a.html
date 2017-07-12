@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Example</title>
+
+</head>
+<body>
+
+<ul>
+	<li>List Item</li>
+	<li>List Item</li>
+	<li>List Item</li>
+	<li>List Item</li>
+	<li>List Item</li>
+	<li>List Item</li>
+	<li>List Item</li>
+	<li>List Item</li>
+	<li>List Item</li>
+</ul>
+
+<script type="text/javascript" src="jquery-3.2.1.js"></script>
+<script type="text/javascript">
+
+function assignIDs(selector) {
+	$(selector)
+		.each(function(i, elem) {
+			$(elem).attr('id','item-' + (i+1));
+		});
+}
+
+assignIDs('li');
+
+</script>
+</body>
+</html>

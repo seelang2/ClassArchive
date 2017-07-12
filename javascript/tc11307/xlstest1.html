@@ -1,0 +1,64 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+</head>
+<body>
+
+<input type="file" id="files" name="files"/>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.7.7/xlsx.core.min.js"></script>
+<script type="text/javascript">
+/**
+	ref: 
+	https://aspdotnetcodehelp.wordpress.com/2016/08/13/how-to-read-excel-files-in-javascriptjquery-and-convert-the-value-to-json/
+	https://github.com/SheetJS/js-xlsx
+	https://developer.mozilla.org/en-US/docs/Web/API/FileReader
+
+ */
+
+   function handleFile(e) {
+     //Get the files from Upload control
+        var files = e.target.files;
+        console.log('files:',files);
+        var i, f;
+     //Loop through files
+        for (i = 0, f = files[i]; i != files.length; ++i) {
+            var reader = new FileReader();
+            var name = f.name;
+            reader.onload = function (e) {
+                var data = e.target.result;
+
+                var result;
+                var workbook = XLSX.read(data, { type: 'binary' });
+
+                //console.log(workbook); return;
+                
+                var sheet_name_list = workbook.SheetNames;
+                sheet_name_list.forEach(function (y) { /* iterate through sheets */
+                    //Convert the cell value to Json
+                    var roa = XLSX.utils.sheet_to_json(workbook.Sheets[y]);
+                    if (roa.length > 0) {
+                        result = roa;
+                    }
+                });
+               //Get the first column first cell value
+               //alert(result[0].Column1);
+               console.log(result); // just dump entire data content
+            };
+            reader.readAsArrayBuffer(f);
+        }
+    }
+
+  //Change event to dropdownlist
+  $(document).ready(function(){
+    $('#files').change(handleFile);
+  });
+</script>
+
+
+
+</script>
+</body>
+</html>

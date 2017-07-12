@@ -1,0 +1,36 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+</head>
+<body>
+
+<form action="#" method="get">
+	<label>
+		<span>Field 1</span>
+		<input name="field1" type="text" />
+	</label>
+	<div id="formcontrols">
+		<input type="submit" />
+	</div>
+</form>
+
+
+<script type="text/javascript">
+
+//var elems = document.getElementsByName('field1');
+//elems[0].value = 'This space for rent';
+
+document.getElementsByName('field1')[0].value = 'This space for rent';
+
+document.getElementsByTagName('SPAN')[0].innerHTML = 'First Name';
+
+var resetButton = document.createElement('INPUT');
+resetButton.type = 'reset';
+
+document.getElementById('formcontrols').appendChild(resetButton);
+
+
+</script>
+</body>
+</html>

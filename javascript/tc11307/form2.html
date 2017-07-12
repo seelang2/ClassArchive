@@ -1,0 +1,97 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+
+	form {
+		width: 350px;
+		margin: auto;
+		border: 1px solid #cccccc;
+		padding: 1em 2em;
+	}
+
+	label {
+		display: block;
+		margin-bottom: 1em;
+		padding: 0.5em 2em;
+		text-align: center;
+	}
+
+	label span {
+		display: block;
+		margin-bottom: 0.25em;
+	}
+
+	form input { 
+		font-size: 120%;
+		border-radius: 5px;
+		border-style: solid;
+		border-color: #cccccc;
+		padding: 5px;
+	}
+
+	form div {
+		text-align: center;
+	}
+	</style>
+</head>
+<body>
+
+<form action="#" method="get">
+	<label>
+		<span>Field 1</span>
+		<input name="field1" type="text" />
+	</label>
+	<label>
+		<span>Field 2</span>
+		<input name="field2" type="text" />
+	</label>
+	<label>
+		<span>Field 3</span>
+		<input name="field3" type="text" />
+	</label>
+	<label>
+		<span>Field 4</span>
+		<input name="field4" type="text" />
+	</label>
+	<div id="formcontrols">
+		<input id="btnSubmit" type="submit" />
+	</div>
+</form>
+
+
+<script type="text/javascript">
+
+var formElem = document.getElementsByTagName('FORM')[0];
+
+/*
+
+var currentChild = formElem.firstElementChild;
+
+do {
+	currentChild.appendChild(document.createElement('BR'));
+	currentChild = currentChild.nextElementSibling;
+} while (currentChild);
+
+*/
+
+for (var c = 0; c < formElem.children.length; c++) {
+	formElem.children[c].appendChild(document.createElement('BR'));
+}
+
+document
+	.getElementsByTagName('FORM')[0]
+	.addEventListener('submit', function(e) {
+		e.preventDefault();
+		alert('Form is submitted');
+	});
+
+
+</script>
+</body>
+</html>

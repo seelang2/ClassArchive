@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<form action="#" method="get">
+<input type="hidden" name="data1" value="somedata" />
+
+<div>
+	<label>
+		<span>First Name</span>
+		<input type="text" name="firstname" placeholder="Enter your name" />
+	</label>
+</div>
+
+<div>
+	<label for="field2">Last Name</label>
+	<input id="field2" name="lastname" type="text" />
+</div>
+
+<div>
+	<label for="field3">Password</label>
+	<input id="field3" name="password" type="password" />
+</div>
+
+<fieldset>
+	<legend>Interests</legend>
+	<p>Check all that apply:</p>
+	<label>
+		<input type="checkbox" name="interest" value="spores" checked />
+		<span>Spores</span>
+	</label>
+	<label>
+		<input type="checkbox" name="interest" value="mold" />
+		<span>Mold</span>
+	</label>
+	<label>
+		<input type="checkbox" name="interest" value="fungus" />
+		<span>Fungus</span>
+	</label>
+</fieldset>
+
+<fieldset>
+	<legend>Gender</legend>
+	<p>Select your gender:</p>
+
+	<label>
+		<input type="radio" name="gender" value="cismale" />
+		<span>Cis male</span>
+	</label>
+	<label>
+		<input type="radio" name="gender" value="cisfemale" />
+		<span>Cis female</span>
+	</label>
+	<label>
+		<input type="radio" name="gender" value="transmale" />
+		<span>Trans male</span>
+	</label>
+	<label>
+		<input type="radio" name="gender" value="transfemale" />
+		<span>Trans female</span>
+	</label>
+	<label>
+		<input type="radio" name="gender" value="other" checked />
+		<span>Other</span>
+	</label>
+</fieldset>
+
+<div>
+	<label>
+		<span>Select a month:</span>
+		<select name="month">
+			<option value="01">January</option>
+			<option value="02">February</option>
+			<option value="03">March</option>
+			<option value="04">April</option>
+			<option value="05">May</option>
+			<option value="06" selected>June</option>
+			<option value="07">July</option>
+			<option value="08">August</option>
+			<option value="09">September</option>
+			<option value="10">October</option>
+			<option value="11">November</option>
+			<option value="12">December</option>
+		</select>
+	</label>
+</div>
+
+<div>
+	<label>
+		<span>Select one or more times:</span>
+		<select name="time" multiple size="6">
+			<option value="0000">12am</option>
+			<option value="0100">1am</option>
+			<option value="0200">2am</option>
+			<option value="0300">3am</option>
+			<option value="0400">4am</option>
+			<option value="0500">5am</option>
+			<option value="0600">6am</option>
+			<option value="0700">7am</option>
+			<option value="0800">8am</option>
+			<option value="0900">9am</option>
+			<option value="1000">10am</option>
+			<option value="1100">11am</option>
+			<option value="1200">12pm</option>
+			<option value="1300">1pm</option>
+			<option value="1400">2pm</option>
+			<option value="1500">3pm</option>
+			<option value="1600">4pm</option>
+			<option value="1700">5pm</option>
+			<option value="1800">6pm</option>
+			<option value="1900">7pm</option>
+			<option value="2000">8pm</option>
+			<option value="2100">9pm</option>
+			<option value="2200">10pm</option>
+			<option value="2300">11pm</option>
+		</select>
+	</label>
+</div>
+
+<div>
+	<p>Tell a story:</p>
+	<textarea name="story">Type in here</textarea>
+</div>
+
+<div>
+	<input type="submit" />
+</div>
+</form>
+
+</body>
+</html>

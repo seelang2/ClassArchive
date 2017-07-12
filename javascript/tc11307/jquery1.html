@@ -1,0 +1,67 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+</head>
+<body>
+
+
+<div id="target"><p>X</p></div>
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+
+/*
+// THIS CODE SUCKS! DON'T DO THIS
+$('#target').append('<p>append</p>');
+$('#target').prepend('<p>prepend</p>');
+$('#target').before('<p>before</p>');
+$('#target').after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo('#target');
+$('<p>prependTo</p>').prependTo('#target');
+$('<p>insertBefore</p>').insertBefore('#target');
+$('<p>insertAfter</p>').insertAfter('#target');
+*/
+
+/*
+// BETTER - cache collections for reuse as a variable
+var $target = $('#target');
+
+$target.append('<p>append</p>');
+$target.prepend('<p>prepend</p>');
+$target.before('<p>before</p>');
+$target.after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo($target);
+$('<p>prependTo</p>').prependTo($target);
+$('<p>insertBefore</p>').insertBefore($target);
+$('<p>insertAfter</p>').insertAfter($target);
+*/
+
+// EVEN BETTER - leverage chaining as well
+var $target =
+$('#target')
+	.append('<p>append</p>')
+	.prepend('<p>prepend</p>')
+	.before('<p>before</p>')
+	.after('<p>after</p>');
+
+$('<p>appendTo</p>')
+	.appendTo($target)
+	.detach()
+	.insertBefore($target);
+$('<p>prependTo</p>').prependTo($target);
+$('<p>insertBefore</p>')
+	.attr('id','thing1')
+	.insertBefore($target)
+	.clone()
+	.attr('id','thing2')
+	.appendTo($target);
+$('<p>insertAfter</p>').insertAfter($target);
+
+
+</script>
+</body>
+</html>

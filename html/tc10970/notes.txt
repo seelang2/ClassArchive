@@ -1,0 +1,149 @@
+notes.txt
+
+3 Layers of the Web (Client side)
+Content - HTML (HyperText Markup Language)
+Presentation - CSS (Cascading Style Sheets)
+Behavior - Javascript
+
+HTML
+Uses XML (extensible Markup Language) structure
+
+Elements make up components of the document
+Elements are expressed as tags
+	<ELEMENT> ... </ELEMENT>
+
+	<CONTACT key = "42" moredata="whatever">
+		<FIRSTNAME>John</FIRSTNAME>
+		<LASTNAME>Doe</LASTNAME>
+	</CONTACT>
+
+	<INPUT type="text" name="firstname" />
+
+XHTML is XML-strict version of HTML
+
+	Pre-XHTML: <input type="checkbox" checked>
+	XHTML: <input type="checkbox" checked="checked" />
+
+HTML5
+
+	<input type="checkbox" checked>
+	<input type="checkbox" checked />
+
+H1-H6
+
+H1
+	H2
+		H3
+			H4
+				H5
+					H6
+
+H1
+	H2
+	H2
+		H3
+	H2
+H1
+
+Creating lists
+OL, UL, LI
+
+Absolute vs Relative links
+domain.com
+/	<-- document root
+	index.html
+	members/
+		page1.html
+		page2.html
+
+
+<a href="http://domain.com/members/page1.html"> ... </a>
+
+(inside page1.html)
+href="http://domain.com/members/page2.html"
+href="page2.html" => http://domain.com/members/page2.html
+
+href="index.html" => http://domain.com/members/index.html <- doesn't work
+href="/index.html" => http://domain.com/index.html
+href="../index.html" => http://domain.com/index.html
+
+.. refers to parent directory
+
+(inside index.html)
+href="/members/page1.html" <= http://domain.com/members/page1.html
+href="members/page1.html" <= http://domain.com/members/page1.html
+href="./members/page1.html" <= http://domain.com/members/page1.html
+
+. refers to current directory
+
+
+Common Elements used:
+P
+H1-H6
+A
+UL, OL, LI
+BLOCKQUOTE
+DIV
+SPAN
+IMG
+
+
+
+
+CSS
+
+selector {
+	property: value;
+	property: value;
+	property: value;
+}
+
+Three ways to use CSS on a web document:
+
+Inline styles - Directly attach a style to an element using the style attribute
+Embedded stylesheet - Stylesheet is embedded in document via STYLE element
+External stylesheet - Stylesheet file is linked to document
+
+
+CSS Selectors
+
+Element 	- Element names (p, h1, a, div, etc)
+IDs 		- #id
+Classes		- .classname
+
+Colors
+
+color: red;
+color: #FF0000; #RRGGBB hex values #00-FF (0-255 in decimal)
+color: rgb(255, 0, 0);  rgb(R, G, B)
+color: rgba(255, 0, 0, 1); rgb(R, G, B, A) where A = 0-1 (70% opaque = 0.7)
+
+
+
+margin: 20px; 					/* All 4 sides */
+margin: 10px 50px; 				/* vertical horizontal */
+margin: 10px 20px 30px 40px;	/* All 4 sides clockwise from top  - T R B L */
+
+Padding works same way as margin
+
+
+Table structure
+
+TABLE
+	THEAD | TFOOT | TBODY
+		TR
+			TH | TD
+
+
+Forms
+
+FORM
+
+INPUT
+SELECT / OPTION
+TEXTAREA
+
+LABEL
+FIELDSET / LEGEND
+
+

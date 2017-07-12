@@ -1,0 +1,36 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+</head>
+<body>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+
+
+function Car() {
+
+	this.make = 'BMW';
+	this.color = 'Black';
+	this.startEngine = function() {
+		console.log('engine started.');
+	};
+}
+
+var myCar = new Car();
+
+
+function Car2() {};
+Car2.prototype.make = 'Mercedes';
+Car2.prototype.color = 'Silver';
+Car2.prototype.startEngine = function() {
+	console.log('engine started.');
+};
+
+var yourCar = new Car2();
+
+
+</script>
+</body>
+</html>

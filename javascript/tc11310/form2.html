@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Example</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+
+
+	form label {
+		display: block;
+		margin-bottom: 1em;
+	}
+
+
+	</style>
+</head>
+<body>
+
+	<form action="#" method="post">
+		<div id="otherstuff">
+			<label>
+				<span>Field 1</span>
+				<input name="field1" />
+			</label>
+			<label>
+				<span>Field 2</span>
+				<input name="field2" />
+			</label>
+			<label>
+				<span>Field 3</span>
+				<input name="field3" />
+			</label>
+			<label>
+				<span>Field 4</span>
+				<input name="field4" />
+			</label>
+			<div>
+				<input type="submit" value="Save" />
+			</div>
+		</div><!-- #otherstuff -->
+	</form>
+
+<script type="text/javascript" src="jquery-3.2.1.js"></script>
+<script type="text/javascript">
+
+// defer execution until DOM is ready
+$(document).ready(function() {
+
+$('form').on('submit', function(e) {
+	// clear out any existing error spans
+	$(this).find('.error').remove();
+
+	/*
+	innocent until proven guilty approach:
+	assume form is valid and look for exceptions invalidating the data
+	*/
+
+	var formIsValid = true;
+
+	// field has maximum length
+	// field has min and max length
+	// field is alpha only
+	// field is alphanumeric
+	// field is valid email address
+	// field is valid phone number (US)
+
+	// field can't be blank (required)
+	var field1Value = $('[name=field1]').val(); // extract field value
+
+	if (field1Value.length == 0) {
+		// exception found
+		formIsValid = false; // invalidate form
+		$('[name=field1]').after('<span class="error">Field is required</span>');
+	}
+
+	// field has minimum length
+	var field2Value = $('[name=field2]').val(); // extract field value
+
+	if (field2Value.length < 4) {
+		// exception found
+		formIsValid = false; // invalidate form
+		$('[name=field2]').after('<span class="error">Minimum 4 characters</span>');
+	}
+
+	// field is numeric only
+	var field3Value = $('[name=field3]').val(); // extract field value
+
+	if ( isNaN(parseFloat(field3Value)) || !isFinite(field3Value) ) {
+		// exception found
+		formIsValid = false; // invalidate form
+		$('[name=field3]').after('<span class="error">Must be a number</span>');
+	}
+
+	// process other rules...
+
+	if (formIsValid) {
+		// submit form
+		return true; 
+	} else {
+		// set focus on first field with error
+		$(this).find('.error').first().prev().focus();
+
+		// stop form submission & terminate function
+		return false;
+	}
+
+});
+
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+</head>
+<body>
+
+<script type="text/javascript" src="functionlib.js"></script>
+<script type="text/javascript">
+
+// our first function.
+// does direct output (which isn't all that great)
+function foo() {
+	document.write('<p>foo.</p>');
+}
+
+foo(); // executes function foo
+
+function foo2() {
+	return 'foo.';
+}
+
+var x = foo2();
+document.write('<h1>' + x.toUpperCase() + '</h1>');
+
+document.write(bar2('bar'));
+
+
+function doStuff(a) {
+	var c = a * 100;
+	a = 100;
+	return c;
+}
+
+var c = 10;
+console.log(c); // 10
+console.log(doStuff(c)); // 1000
+console.log(c); // 10
+
+function doStuff2(a) {
+	c = a * 100;
+	a = 100;
+	return c;
+}
+
+var c = 10;
+console.log(c); // 10
+console.log(doStuff2(c)); // 1000
+console.log(c); // 1000
+
+function newFunction() {
+	return 'Stuff';
+}
+
+var x = newFunction(); // x contains the return value of the function - 'Stuff'
+
+var y = newFunction; // y contains a reference to newFunction
+
+var z = y(); // contains 'Stuff'
+
+var newFunction2 = function() {
+	return 'Stuff';
+}; // note that a semicolon is needed here because this is part of an assignment statement
+
+
+
+</script>
+</body>
+</html>

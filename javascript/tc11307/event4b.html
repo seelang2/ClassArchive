@@ -1,0 +1,74 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+
+	table, th, td {
+		border: 1px solid #7a7a7a;
+	}
+
+	table { border-collapse: collapse; }
+
+	th, td { padding: 0.5em 1em; }
+
+	.hover { background: #ffffcc; }
+
+	</style>
+</head>
+<body>
+
+<table>
+	<tbody>
+		<tr>
+			<td>John</td><td>Doe</td><td>42</td>
+		</tr>
+		<tr>
+			<td>Jane</td><td>Doe</td><td>23</td>
+		</tr>
+		<tr>
+			<td>Peter</td><td>Doe</td><td>54</td>
+		</tr>
+	</tbody>
+</table>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+
+// defer script execution until DOM ready
+$(document).ready(function() {
+
+	function doHover(e) {
+		// 'this' points to the object the event is bound to by default
+		// BUT since we're using the filter selector, 'this' instead points
+		// to the filtered item
+		$(this).toggleClass('hover');
+	}
+
+	$('tbody')
+		.on('mouseover mouseout', 'tr', doHover);
+
+	$('tr')
+		.each(function(index, element) {
+
+			$(element).attr('id','item-' + (index + 1));
+
+		});
+
+
+}); // document.ready
+
+
+// alternate version of the ready handler
+$(function() {
+
+});
+
+
+</script>
+</body>
+</html>

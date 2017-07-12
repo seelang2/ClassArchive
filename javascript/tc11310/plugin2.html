@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Example</title>
+
+</head>
+<body>
+
+<ul>
+	<li>List Item</li>
+	<li>List Item</li>
+	<li>List Item</li>
+	<li>List Item</li>
+	<li>List Item</li>
+	<li>List Item</li>
+	<li>List Item</li>
+	<li>List Item</li>
+	<li>List Item</li>
+</ul>
+
+<script type="text/javascript" src="jquery-3.2.1.js"></script>
+<script type="text/javascript">
+/*
+	jQuery plugins use IIFE to create the plugin namespace
+*/
+(function($) {
+	// IIFE becomes a closure because of the external reference to string
+	var string = 'It works!';
+
+	// create a top-level method extending the jQuery
+	// (not that useful)
+	$.newMethod = function() {
+		alert(string);
+	};
+})(jQuery);
+
+
+$.newMethod();
+
+</script>
+</body>
+</html>

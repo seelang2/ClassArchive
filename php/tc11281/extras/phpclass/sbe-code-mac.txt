@@ -1,0 +1,5 @@
+{
+    "/Applications/MAMP/htdocs/phpclass":{
+        "url_testing":"http://localhost:8888/phpclass"
+    }
+}

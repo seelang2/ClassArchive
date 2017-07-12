@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Example</title>
+
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript" src="jquery-3.2.1.js"></script>
+<script type="text/javascript">
+
+var tableElem = $('<table />');
+
+var tbodyElem = 
+$('<tbody />')					// create new TBODY
+	.appendTo(tableElem);		// append to TABLE (and store TBODY in var)
+
+$('<tr />')						// create new TR
+	.append('<td>John</td>')	// append 1st TD and text node
+	.append('<td>Doe</td>')		// append 2nd TD and text node
+	.append('<td>42</td>')		// append 3rd TD and text node
+	.appendTo(tbodyElem);		// attach to TBODY
+
+/*
+// trying to do this from the tbodyElem (target) perspective is 
+// more difficult
+tbodyElem
+	.append('<tr />')
+*/
+
+$('<tr />')						// create new TR
+	.append('<td>Jane</td>')	// append 1st TD and text node
+	.append('<td>Smith</td>')	// append 2nd TD and text node
+	.append('<td>37</td>')		// append 3rd TD and text node
+	.appendTo(tbodyElem);		// attach to TBODY
+
+// now that the branch is built, attach to the DOM
+$('#target').append(tableElem);
+
+</script>
+</body>
+</html>

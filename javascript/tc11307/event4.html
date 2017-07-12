@@ -1,0 +1,51 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+	}
+
+	table, th, td {
+		border: 1px solid #7a7a7a;
+	}
+
+	table { border-collapse: collapse; }
+
+	th, td { padding: 0.5em 1em; }
+
+	.hover { background: #ffffcc; }
+
+	</style>
+</head>
+<body>
+
+<table>
+	<tbody>
+		<tr>
+			<td>John</td><td>Doe</td><td>42</td>
+		</tr>
+		<tr>
+			<td>Jane</td><td>Doe</td><td>23</td>
+		</tr>
+		<tr>
+			<td>Peter</td><td>Doe</td><td>54</td>
+		</tr>
+	</tbody>
+</table>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+function doHover(e) {
+	// 'this' points to the object the event is bound to by default
+	$(this).toggleClass('hover');
+}
+
+$('tr')
+	.on('mouseover mouseout', doHover);
+
+</script>
+</body>
+</html>

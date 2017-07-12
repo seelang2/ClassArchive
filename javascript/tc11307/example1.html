@@ -1,0 +1,89 @@
+<html>
+<head>
+
+</head>
+<body>
+
+<script type="text/javascript">
+document.write('<p>This paragraph comes immediately after the script element.</p>');
+</script>
+
+<p>Just a paragraph.</p>
+
+<script type="text/javascript">
+
+console.log('This message gets sent to the console.');
+
+document.write('<p>Some text.</p>');
+
+var someValue = 'This space for rent.';
+
+document.write('<p class="something">' + someValue + '</p>');
+
+document.write("<p>Don't do this.</p>");
+document.write('<p>Don\'t do this.</p>');
+
+// line comment.
+/*
+	Block comment.
+*/
+
+var a = 1;
+console.log(a++); // 1
+console.log(a); // 2
+
+var b = 1;
+console.log(++b); // 2
+console.log(b); // 2
+
+var c = 1;
+++c;
+console.log(c);
+
+
+var sideA = parseInt('fluffyhamster'); // use parseInt() or parseFloat() to convert to a number
+var sideB = '3';
+
+var area = sideA * sideB;
+var perimeter = sideA + sideB + sideA + sideB;
+
+console.log('The area is ' + area);
+console.log('The perimeter is ' + perimeter);
+
+// arrays are variables that contain multiple values (elements)
+var weekdays = ['Mon','Tue','Wed'];
+
+console.log(weekdays[1]); // Tue
+
+weekdays.unshift('Sun');
+console.log(weekdays[1]); // Mon
+
+weekdays.push('Thu','Fri','Sat');
+
+// objects are buckets of properties
+var pillbox = {
+	Sun: 'white',
+	Mon: 'white',
+	Tue: 'none',
+	Wed: 'blue',
+	Thu: 'orange',
+	Fri: 'red',
+	Sat: 'green'
+};
+
+console.log(pillbox.Mon);
+console.log(pillbox['Mon']);
+
+var day = 'Mon';
+console.log(pillbox[day]);
+console.log(pillbox.day); // returns undefined because day is not a property of pillbox
+
+pillbox.bob = 'technicolor';
+
+var myThing = {};
+myThing.prop1 = 'red';
+
+
+</script>
+</body>
+</html>
