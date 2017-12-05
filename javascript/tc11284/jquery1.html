@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	div { margin-left: 2em; }
+	</style>
+</head>
+<body>
+
+
+<div id="target"><p>X</p></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+/*
+// THIS CODE SUCKS - DON'T DO THIS
+$('#target').append('<p>append</p>');
+$('#target').prepend('<p>prepend</p>');
+$('#target').before('<p>before</p>');
+$('#target').after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo('#target');
+$('<p>prependTo</p>').prependTo('#target');
+$('<p>insertBefore</p>').insertBefore('#target');
+$('<p>insertAfter</p>').insertAfter('#target');
+*/
+
+/*
+// BETTER - always cache items you're using more than once
+var $target = $('#target');
+
+$target.append('<p>append</p>');
+$target.prepend('<p>prepend</p>');
+$target.before('<p>before</p>');
+$target.after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo($target);
+$('<p>prependTo</p>').prependTo($target);
+$('<p>insertBefore</p>').insertBefore($target);
+$('<p>insertAfter</p>').insertAfter($target);
+*/
+
+var $target =
+$('#target')
+	.append('<p>append</p>')
+	.prepend('<p>prepend</p>')
+	.before('<p>before</p>')
+	.after('<p>after</p>');
+
+$('<p>appendTo</p>')
+	.appendTo($target)
+	.clone()
+	.insertBefore($target);
+$('<p>prependTo</p>').prependTo($target);
+$('<p>insertBefore</p>')
+	.insertBefore($target)
+	.detach()
+	.appendTo($target);
+$('<p>insertAfter</p>').insertAfter($target);
+
+
+/*
+// to delete permanently, use remove() instead of detach():
+$target.remove();
+// also set $target to null to dereference the variable and release the memory:
+$target = null;
+*/
+
+</script>
+</body>
+</html>

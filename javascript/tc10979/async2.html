@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 100%;
+		color: #000000;
+	}
+
+	</style>
+</head>
+<body>
+
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+
+// select 1
+$.ajax({
+	url: 				'latentresponse.php?tag=request1',
+	method: 		'get',
+	dataType: 	'text'
+}).done(function(response) {
+	console.log(response);
+});
+
+// select 2
+$.ajax({
+	url: 				'latentresponse.php?tag=request2',
+	method: 		'get',
+	dataType: 	'text'
+}).done(function(response) {
+	console.log(response);
+});
+
+// select 3
+$.ajax({
+	url: 				'latentresponse.php?tag=request3',
+	method: 		'get',
+	dataType: 	'text'
+}).done(function(response) {
+	console.log(response);
+});
+
+console.log('next step.');
+
+
+
+
+</script>
+</body>
+</html>

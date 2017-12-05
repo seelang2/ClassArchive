@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Grid Layout 1</title>
+
+	<style type="text/css">
+	body {
+		margin: 0;
+		background-color: #dedede;
+		font-family: Arial, Helvetica, Verdana, sans-serif;
+	}
+
+	#outerwrapper {
+		width: 960px;
+		margin: auto;
+		background-color: #ffffff;
+		display: grid;
+		/* grid-template-columns: 33.3% 33.3% 33.3%; */
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-rows: 100px 250px auto;
+	}
+
+	#masthead {
+		background-color: #D6F7C3;
+		grid-column: 1 / 4;
+		grid-row: 1;
+
+		background-image: url(http://via.placeholder.com/960x100/cccccc/000000);
+	}
+
+	#section1 {
+		background-color: #F7CAC3;
+		grid-column: 1 / 3;
+		grid-row: 2;
+	}
+
+	#section2 {
+		background-color: #F2FFC9;
+		grid-column: 1 / 2;
+		grid-row: 3;
+	}
+
+	#section3 {
+		background-color: #FFD1F4;
+		grid-column: 2 / 3;
+		grid-row: 3;
+	}
+
+	#section4 {
+		background-color: #FFEED1;
+		grid-column: 1 / 4;
+		grid-row: 5;
+		
+		display: flex;
+		flex-direction: row;
+	}
+
+	#section4 > div {
+		flex-basis: 33.3%;
+	}
+
+	#section5 {
+		background-color: #FFDBDB;
+		grid-column: 1 / 4;
+		grid-row: 4;
+	}
+
+	#section6 {
+		background-color: #DBFFFE;
+		grid-column: 3 / 4;
+		grid-row: 2 / 4;
+	}
+
+	#pagefooter {
+		background-color: #C3F0F7;
+		grid-column: 1 / 4;
+		grid-row: 6;
+
+		display: flex;
+		flex-direction: row;
+	}
+
+	#pagefooter > div {
+		flex-basis: 25%;
+	}
+
+	#section1 img {
+		width: 100%;
+	}
+
+	</style>
+
+</head>
+<body>
+
+<div id="outerwrapper">
+	<header id="masthead">
+		#masthead
+	</header><!-- #masthead -->
+	<section id="section1">
+		<img src="http://via.placeholder.com/800x400/000099/ffffff" />
+	</section><!-- #section1 -->
+	<section id="section2">
+		<p>
+		Maecenas a magna accumsan, scelerisque tellus at, posuere erat. Donec tempor venenatis lectus, sed vestibulum eros porttitor congue. Pellentesque scelerisque blandit tincidunt. Integer id aliquet tortor. Pellentesque sagittis urna sapien, quis euismod odio volutpat ut. Nam ac accumsan augue. Fusce tincidunt suscipit neque, id molestie risus posuere sit amet. Cras porta lorem et nisl vulputate ornare. Nulla id quam efficitur, posuere quam a, blandit arcu. Aliquam erat volutpat. Mauris semper ultricies tortor, non accumsan urna tincidunt quis. Vestibulum fermentum aliquam arcu, sed iaculis augue faucibus non. Curabitur tristique, tellus sit amet ullamcorper maximus, sapien metus dictum enim, ut sodales libero turpis sed sem. In hac habitasse platea dictumst. Suspendisse ac orci nisi. Maecenas suscipit nulla neque, ac iaculis turpis efficitur eget.
+		</p>
+	</section><!-- #section2 -->
+	<section id="section3">
+		<p>
+		Curabitur purus purus, mollis consequat interdum in, pharetra porta massa. Curabitur bibendum et urna vel faucibus. Nulla cursus sagittis pharetra. Aenean facilisis, nisl sit amet semper molestie, nibh lectus lobortis felis, eget consectetur lectus risus et nulla. Praesent quam mauris, rhoncus eget urna vitae, condimentum vulputate tellus. Curabitur egestas, urna a imperdiet bibendum, dolor nunc gravida nisl, a ultrices diam nulla vel orci. Vivamus vel eros sed nibh molestie gravida. Ut convallis eu dolor vel aliquet. Donec ac finibus purus, vitae dapibus lacus.
+		</p>
+	</section><!-- #section3 -->
+	<section id="section4">
+		<div>
+			A section.
+		</div>
+		<div>
+			A section.
+		</div>
+		<div>
+			A section.
+		</div>
+	</section><!-- #section4 -->
+	<section id="section5">
+		#section 5
+	</section><!-- #section5 -->
+	<section id="section6">
+		#section 6
+	</section><!-- #section6 -->
+	<footer id="pagefooter">
+		<div>
+			A section.
+		</div>
+		<div>
+			A section.
+		</div>
+		<div>
+			A section.
+		</div>
+		<div>
+			A section.
+		</div>
+	</footer><!-- #pagefooter -->
+</div><!-- #outerwrapper -->
+
+
+
+</body>
+</html>

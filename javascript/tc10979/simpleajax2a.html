@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<button id="thebutton">Start</button>
+
+<div>
+	<select id="target" name="contact" readonly>
+		<option value="">Please select a name</option>
+		<option value="1">Name 1</option>
+		<option value="2">Name 2</option>
+		<option value="3">Name 3</option>
+		<option value="4">Name 4</option>
+	</select>
+</div>
+<div>
+	<input id="theinput" value="14" />
+</div>
+
+<div id="buttonholder">
+	<button data-index="1">Click Me</button>
+	<button data-index="2">Click Me</button>
+	<button data-index="3">Click Me</button>
+	<button data-index="4">Click Me</button>
+	<button data-index="5">Click Me</button>
+	<button data-index="6">Click Me</button>
+	<button data-index="7">Click Me</button>
+	<button data-index="8">Click Me</button>
+	<button data-index="9">Click Me</button>
+	<button data-index="10">Click Me</button>
+	<button data-index="11">Click Me</button>
+	<button data-index="12">Click Me</button>
+	<button data-index="13">Click Me</button>
+</div>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+/*
+	function buttonHandler(e) {
+		console.log(this);
+		console.log(e.target);
+
+		alert($(this).attr('data-index'));
+	}
+
+	$('#buttonholder button')
+		.on('click', buttonHandler);
+*/
+
+/*
+	function buttonHandler(e) {
+		console.log(this);
+		console.log(e.target);
+
+		alert($(this).attr('data-index'));
+	}
+
+	$('#buttonholder')
+		.on('click', buttonHandler);
+*/
+
+	function buttonHandler(e) {
+		console.log(this);
+		console.log(e.target);
+
+		alert($(this).attr('data-index'));
+	}
+
+	$('#buttonholder')
+		.on('click', 'button', buttonHandler);
+
+
+
+
+
+
+
+	$('#target').on('change', function() {
+
+		alert($(this).val());
+	})
+	
+	$('#thebutton').on('click', function(e) {
+
+		$.ajax({
+			url: 		'data1.json',
+			method: 	'get',
+			dataType: 	'json',
+			success: 	function(data) {
+				//console.log(data);
+
+				var selectElem = $('#target');
+
+				selectElem
+					.empty(); // get rid of existing option elements
+					//.append('<option value="">Please select a name</option>');
+
+				$.each(
+					data,
+					function(index, contact) {
+						$('<option />')
+							.attr('value', contact.id)
+							.append(contact.firstname + ' ' + contact.lastname)
+							.appendTo(selectElem);
+					}
+				);
+
+				selectElem.trigger('change'); // manually fire off the event handler
+
+			}
+		});
+
+	}); // #thebutton.on.click
+
+
+}); // document.ready
+
+/*
+function foo() {
+	alert('start');
+}
+
+function bar() {
+	console.log('bar');
+}
+
+// obsolete
+window.onload = function() {
+	foo();
+	bar();
+};
+
+
+*/
+
+</script>
+</body>
+</html>

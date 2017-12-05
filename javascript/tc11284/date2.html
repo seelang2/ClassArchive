@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+function getOrdinal(n) {
+	var x = n % 10; // get last digit
+	var y = n % 100; // get last 2 digits
+
+	// calculate ordinal
+	if ( x == 1 && y != 11 ) {
+		var ordinal = 'st';
+	} else if ( x == 2 && y != 12 ) {
+		var ordinal = 'nd';
+	} else if ( x == 3 && y != 13 ) {
+		var ordinal = 'rd';
+	} else {
+		var ordinal = 'th';
+	}
+
+	return ordinal;
+
+} // getOrdinal()
+
+var weekdays = [
+	'Sunday',
+	'Monday',
+	'Tuesday',
+	'Wednesday',
+	'Thursday',
+	'Friday',
+	'Saturday'
+];
+
+var today = new Date();
+
+console.log(today.getDay());
+
+console.log(weekdays[1]);
+
+
+var months = [
+	'January',
+	'February',
+	'March',
+	'April',
+	'May',
+	'June',
+	'July',
+	'August',
+	'September',
+	'October',
+	'November',
+	'December'
+];
+
+var today = new Date();
+
+console.log(today.getMonth());
+
+console.log(weekdays[1]);
+
+
+document.write('<p>Today is ' + weekdays[today.getDay()] + ', ' + 
+				months[today.getMonth()] + ' ' + 
+				today.getDate() + getOrdinal(today.getDate()) + ', ' + 
+				today.getFullYear() + '</p>');
+
+
+
+
+
+
+</script>
+</body>
+</html>

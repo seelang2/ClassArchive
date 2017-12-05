@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 100%;
+		color: #000000;
+	}
+
+	</style>
+</head>
+<body>
+
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+
+function getTracker(totalTasks, nextFunction) {
+	var tasksCompleted = 0;
+	
+	// create a deferred object to serve as a tracker
+	var tracker = $.Deferred();
+
+	tracker
+		.progress(function() {
+			tasksCompleted++;
+			console.log(tasksCompleted + ' tasks completed.');
+
+			if (tasksCompleted == totalTasks) {
+				tracker.resolve(); // work is done so complete tracker
+			}
+		})
+		.done(function() {
+			nextFunction(); // proceed to the app next step
+		})
+
+	return tracker;
+}
+
+var next = function() {
+
+	console.log('next step.');
+
+};
+
+
+// get new tracker
+var tracker = getTracker(3, next);
+
+
+// select 1
+$.ajax({
+	url: 				'latentresponse.php?tag=request1',
+	method: 		'get',
+	dataType: 	'text'
+}).done(function(response) {
+	console.log(response);
+	tracker.notify();
+});
+
+// select 2
+$.ajax({
+	url: 				'latentresponse.php?tag=request2',
+	method: 		'get',
+	dataType: 	'text'
+}).done(function(response) {
+	console.log(response);
+	tracker.notify();
+});
+
+// select 3
+$.ajax({
+	url: 				'latentresponse.php?tag=request3',
+	method: 		'get',
+	dataType: 	'text'
+}).done(function(response) {
+	console.log(response);
+	tracker.notify();
+});
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+
+</head>
+<body>
+
+<a id="link1" href="http://www.google.com">Go to Google</a><br />
+<a id="link2" href="http://www.google.com">Go to Google</a>
+
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+$('#link1').on('click', function(e) {
+	// returning false will cancel the default event action
+	//return false;
+
+	return confirm('Are you sure you wish to leave this site?');
+});
+
+$('#link2').on('click', function(e) {
+	e.preventDefault(); // deactivates the default action, period.
+
+	return true; // who cares
+});
+
+
+</script>
+</body>
+</html>

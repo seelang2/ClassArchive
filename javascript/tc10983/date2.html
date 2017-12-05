@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+// define array to store labels
+
+var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'Sept', 'Oct', 'Nov', 'Dec'];
+
+
+// get current date
+var today = new Date();
+
+// advance date to a week from now
+//today.setDate(today.getDate() + 30);
+
+// determine ordinal
+switch(today.getDate()) {
+	case 1: case 21: case 31:
+		var ordinal = 'st';
+	break;
+	case 2: case 22: 
+		var ordinal = 'nd';
+	break;
+	case 3: case 23: 
+		var ordinal = 'rd';
+	break;
+	default:
+		var ordinal = 'th';
+	break;
+} 
+
+
+
+//console.log(today.getDay());
+
+document.write('<p>Today is ' + weekdays[today.getDay()] + ', ' + 
+			    months[today.getMonth()] + ' ' + today.getDate() + ordinal + ', ' + 
+			    today.getFullYear() + '.</p>');
+
+
+
+
+</script>
+</body>
+</html>

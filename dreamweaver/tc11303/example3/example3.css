@@ -1,0 +1,20 @@
+@charset "utf-8";
+p {
+	color: #363636;
+}
+body {
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #0E6E00;
+}
+h2 {
+	margin-bottom: 0.25em;
+}
+h2 + p {
+	margin-top: 0px;
+
+}
+#section1 {
+}
+.highlight {
+	background-color: #FFE500;
+}

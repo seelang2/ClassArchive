@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+// define array to store labels
+
+var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'Sept', 'Oct', 'Nov', 'Dec'];
+
+
+
+/*
+var weekdays = ['nichiyoubi', 'getsuyoubi', 'kayoubi', 'suiyoubi', 'mokuyoubi', 'kinyoubi', 'doyoubi'];
+var months = ['ichigatsu', 'nigatsu', 'sangatsu', 'yongatsu', 'gogatsu', 'rokugatsu', 'nanagatsu', 'yogatsu', 'kugatsu', 'jugatsu', 'juichigatsu', 'junigatsu'];
+*/
+
+// get current date
+var today = new Date();
+
+// advance date to a week from now
+//today.setDate(today.getDate() + 30);
+
+
+//console.log(today.getDay());
+
+document.write('<p>Today is ' + weekdays[today.getDay()] + ', ' + 
+			    months[today.getMonth()] + ' ' + today.getDate() + ', ' + 
+			    today.getFullYear() + '.</p>');
+
+
+
+
+</script>
+</body>
+</html>

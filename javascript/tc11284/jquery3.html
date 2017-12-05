@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<ul>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+</ul>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+// $('li').attr('id','item1'); // doesn't work the way we want
+
+// explicitly loop through collection
+$('li')
+	.each(function(annie, millicent) {
+
+		$(millicent).attr('id', 'item' + (annie + 1) );
+
+	 })
+
+
+
+</script>
+</body>
+</html>

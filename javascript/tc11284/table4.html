@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+
+var $table = $('<table />');
+
+var $tbody = 
+$('<tbody />')
+	.appendTo($table);
+
+$('<tr />')
+	.append('<td>John</td>')
+	.append('<td>Doe</td>')
+	.append('<td>42</td>')
+	.appendTo($tbody);
+
+$('<tr />')
+	.append('<td>Jane</td>')
+	.append('<td>Smith</td>')
+	.append('<td>37</td>')
+	.appendTo($tbody);
+
+$table.appendTo('#target');
+
+
+</script>
+</body>
+</html>

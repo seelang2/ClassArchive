@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Simple Fixed-width Layout Demo</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		color: #000000;
+		font-size: 100%;
+		background-color: #dedede;
+		margin: 0;
+	}
+
+	#outer {
+		width: 800px;
+		background-color: #ffffff;
+		margin: 0 auto; /* auto LR centers block in parent */
+		border: 1px solid #cccccc;
+	}
+
+	#masthead {
+		height: 100px;
+		background: #8C8669;
+	}
+
+	#pagefooter {
+		height: 125px;
+		background: #242625;
+		color: #ffffff;
+	}
+
+	#content {
+		padding: 1px 50px;
+
+	}
+
+	h2 {
+		margin-bottom: 0.25em;
+	}
+
+	h2 + p {
+		margin-top: 0;
+	}
+
+	</style>
+</head>
+<body>
+
+<div id="outer">
+	<div id="masthead">
+	</div><!-- masthead -->
+
+	<div id="content">
+		<h1>Lorem ipsum dolor sit amet</h1>
+
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/Od6EeCWytZo" frameborder="0" allowfullscreen></iframe>
+
+	</div><!-- content -->
+
+	<div id="pagefooter">
+	</div><!-- pagefooter -->
+</div><!-- outer -->
+
+</body>
+</html>

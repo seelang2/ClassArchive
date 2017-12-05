@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+
+</head>
+<body>
+
+<div id="target"></div>
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+// create table structure
+var $tbodyElem = 
+$('<table><tbody><tr><th>#</th><th>Month</th></tr></tbody></table>')
+	.children('tbody');
+
+// loop through months array and create table rows
+$.each(months, function(index, monthName) {
+	$('<tr />')
+		.append('<td>' + index + '</td>')
+		.append('<td>' + monthName + '</td>') // create columns for index and month name
+		.appendTo($tbodyElem);
+});
+
+$tbodyElem
+	.parent() // move up to TABLE element
+	.appendTo('#target');
+
+
+</script>
+</body>
+</html>

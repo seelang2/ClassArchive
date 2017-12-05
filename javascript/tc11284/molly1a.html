@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<form action="#" method="get">
+	<label>
+		<span>Enter your name:</span>
+		<input name="firstname" />
+	</label>
+	<input type="submit" />
+</form>
+
+<div id="output"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+$('form').on('submit', function(e) {
+
+	e.preventDefault(); // prevent form from submitting
+
+	var name = 
+	$(this)							// get the form as a collection
+		.find('[name="firstname"]')	// find the input field
+		.val();						// and get the value
+
+	$('<p>This is the line that you want to display, ' + name + '.</p>')
+		.appendTo('#output');
+
+});
+
+
+
+
+</script>
+</body>
+</html>

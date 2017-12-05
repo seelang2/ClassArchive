@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+
+</head>
+<body>
+
+<div id="target"></div>
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+
+var tableElem = $('<table />');
+var tbodyElem = $('<tbody />');
+
+tbodyElem.appendTo(tableElem);
+
+$('<tr />')
+	.append('<td>John</td>')
+	.append('<td>Doe</td>')
+	.append('<td>42</td>')
+	.appendTo(tbodyElem);
+ 
+$('<tr />')
+	.append('<td>Jane</td><td>Smith</td><td>34</td>')
+	.appendTo(tbodyElem);
+
+$('#target').append(tableElem); // or tableElem.appendTo('#target');
+
+
+$('<table><tbody><tr><td>Alex</td><td>Ross</td><td>48</td><td>aross@email.com</td></tr></tbody></table>').appendTo('#target');
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<button id="thebutton">Start</button>
+
+<div>
+	<select id="target" name="contact">
+		<option value="1">Name 1</option>
+		<option value="2">Name 2</option>
+		<option value="3">Name 3</option>
+		<option value="4">Name 4</option>
+	</select>
+</div>
+<div>
+	<input id="theinput" value="14" />
+</div>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$('#thebutton').on('click', function(e) {
+
+		$.ajax({
+			url: 		'data1.json',
+			method: 	'get',
+			dataType: 	'json',
+			success: 	function(data) {
+				//console.log(data);
+
+				var selectElem = $('#target');
+				
+				selectElem.empty(); // get rid of existing option elements
+
+				$.each(
+					data,
+					function(index, contact) {
+						$('<option />')
+							.attr('value', contact.id)
+							.append(contact.firstname + ' ' + contact.lastname)
+							.appendTo(selectElem);
+					}
+				);
+
+			}
+		});
+
+	}); // #thebutton.on.click
+
+
+}); // document.ready
+
+
+
+</script>
+</body>
+</html>

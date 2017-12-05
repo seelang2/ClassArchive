@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+
+var someValue = 'This space for rent.';
+
+document.write('<p>' + someValue + '</p>'); // basic method for outputting content
+
+console.log(someValue); // sends output to console window
+
+
+var a = 1;
+console.log(a++); // 1
+console.log(a); // 2
+
+var b = 1;
+console.log(++b); // 2
+console.log(b); // 2
+
+var name = 'John';
+name = name + ' Doe';
+
+document.write( '<p>Welcome, ' + name.toUpperCase() + '!</p>');
+
+document.write("<p>We've been waiting a long time for you, " + name + '...</p>');
+
+
+//var sideA = parseFloat('fluffyhamster'); // use parseInt() or parseFloat() to convert to a number
+
+var sideA = '10';
+var sideB = 3;
+
+var area = sideA * sideB;
+var perimeter = sideA + sideB + sideA + sideB;
+
+document.write('<p>The area is ' + area + ' and the perimeter is ' + perimeter + '</p>');
+
+var weekdays = ['Mon','Tue','Wed'];
+
+document.write('<p>The second element is ' + weekdays[1] + '</p>');
+
+weekdays.push('Thu','Fri','Sat');
+weekdays.unshift('Sun');
+
+console.log(weekdays);
+
+var pillbox = {
+	Sun: 'white',
+	Mon: 'white',
+	Tue: 'none',
+	Wed: 'blue',
+	Thu: 'orange',
+	Fri: 'red',
+	Sat: 'green'
+};
+
+console.log(pillbox.Mon);
+
+console.log(pillbox['Mon']);
+var today = 'Mon';
+console.log(pillbox[today]);
+
+
+
+var movie = [
+	'1986',
+	'Action',
+	'Pat Morita',
+	'The Karate Kid Part II'
+];
+
+var movie2 = {
+	year: '1986',
+	genre: 'Action',
+	actors: 'Pat Morita',
+	title: 'The Karate Kid Part II'
+};
+
+//movie[3]
+//movie2.title
+
+
+
+var movieList = [
+	{
+		year: '1984',
+		genre: 'Action',
+		actors: ['Pat Morita', 'Ralph Macchio'],
+		title: 'The Karate Kid'
+	},
+	{
+		year: '1986',
+		genre: 'Action',
+		actors: {
+			name: 'Pat Morita',
+			imgURL: 'https://images-na.ssl-images-amazon.com/images/M/MV5BODIyNzYwNjE4NV5BMl5BanBnXkFtZTcwNzA3MzQ3Mw@@._V1_.jpg'
+		},
+		title: 'The Karate Kid Part II'
+	},
+	{
+		year: '1989',
+		genre: 'Action',
+		actors: 'Pat Morita',
+		title: 'The Karate Kid Part III'
+	}
+];
+
+//movieList[0].year
+
+
+document.write('<img src="' + movieList[1].actors.imgURL + '" />');
+
+
+</script>
+</body>
+</html>

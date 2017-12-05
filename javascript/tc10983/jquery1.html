@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+
+</head>
+<body>
+
+<div id="target"><p>X</p></div>
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+/*
+// THIS CODE SUCKS AS WRITTEN - DON'T DO
+$('#target').append('<p>append</p>');
+$('#target').prepend('<p>prepend</p>');
+$('#target').before('<p>before</p>');
+$('#target').after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo('#target');
+$('<p>prependTo</p>').prependTo('#target');
+$('<p>insertBefore</p>').insertBefore('#target');
+$('<p>insertAfter</p>').insertAfter('#target');
+*/
+
+/*
+// BETTER - cache collections in a variable if needed more than once
+var $target = $('#target');
+$target.append('<p>append</p>');
+$target.prepend('<p>prepend</p>');
+$target.before('<p>before</p>');
+$target.after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo($target);
+$('<p>prependTo</p>').prependTo($target);
+$('<p>insertBefore</p>').insertBefore($target);
+$('<p>insertAfter</p>').insertAfter($target);
+*/
+
+// BETTER STILL - take advantage of chaining
+var $target = // oh, and store the collection as a variable when we're done...
+$('#target')
+	.append('<p>append</p>')
+	.prepend('<p>prepend</p>')
+	.before('<p>before</p>')
+	.after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo($target); // ...so we can reuse the collection here
+$('<p>prependTo</p>')
+	.attr('id', 'item1')
+	.prependTo($target)
+	.clone()
+	.attr('id', 'item2')
+	.insertBefore($target);
+$('<p>insertBefore</p>').insertBefore($target);
+$('<p>insertAfter</p>').insertAfter($target);
+
+
+
+
+</script>
+</body>
+</html>

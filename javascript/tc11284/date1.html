@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+var weekdays = [
+	'Sunday',
+	'Monday',
+	'Tuesday',
+	'Wednesday',
+	'Thursday',
+	'Friday',
+	'Saturday'
+];
+
+var today = new Date();
+
+console.log(today.getDay());
+
+console.log(weekdays[1]);
+
+
+var months = [
+	'January',
+	'February',
+	'March',
+	'April',
+	'May',
+	'June',
+	'July',
+	'August',
+	'September',
+	'October',
+	'November',
+	'December'
+];
+
+var today = new Date();
+
+console.log(today.getMonth());
+
+console.log(weekdays[1]);
+
+// calculate ordinal
+if ( today.getDate() % 10 == 1 && today.getDate() % 100 != 11 ) {
+	var ordinal = 'st';
+} else if ( today.getDate() % 10 == 2 && today.getDate() % 100 != 12 ) {
+	var ordinal = 'nd';
+} else if ( today.getDate() % 10 == 3 && today.getDate() % 100 != 13 ) {
+	var ordinal = 'rd';
+} else {
+	var ordinal = 'th';
+}
+
+document.write('<p>Today is ' + weekdays[today.getDay()] + ', ' + 
+				months[today.getMonth()] + ' ' + 
+				today.getDate() + ordinal + ', ' + 
+				today.getFullYear() + '</p>');
+
+
+
+
+
+
+</script>
+</body>
+</html>

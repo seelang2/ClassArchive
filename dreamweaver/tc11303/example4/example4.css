@@ -1,0 +1,90 @@
+@charset "utf-8";
+body {
+	margin: 0;
+	background-color: #AAA293;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #2E2E2E;
+	background-image: url(nutella1.jpg);
+	background-size: cover;
+	background-attachment: fixed;
+}
+#wrapper {
+	background-color: #FFFFFF;
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid #827866;
+	background-image: url(nutella1.jpg);
+	background-size: cover;
+}
+#top {
+	height: 100px;
+	background-color: #D9C6BA;
+	background-image: url(imagelarge.jpg);
+	background-position: -374px -319px;
+	background-size: 129% auto;
+}
+h1 {
+	color: #BF754B;
+}
+h2 {
+	color: #1D1E42;
+}
+
+
+#bottom {
+	height: 150px;
+	background-color: #54574E;
+	color: #FFFFFF;
+	font-size: 85%;
+}
+#content {
+	display: inline-block;
+	background-color: rgba(255,255,255,0.80);
+
+}
+#left {
+	width: 550px;
+	float: left;
+}
+#right {
+	width: 250px;
+	float: right;
+}
+.alignleft {
+	float: left;
+	margin-right: 15px;
+}
+.alignright {
+	float: right;
+	margin-left: 15px;
+}
+.captiontext {
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
+	font-size: 80%;
+	font-weight: bold;
+	text-align: center;
+}
+#topnav ul {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+#topnav li {
+	float: left;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+#topnav a {
+	text-decoration: none;
+	color: rgba(113,66,40,1.00);
+}
+#topnav {
+	display: inline-block;
+}
+#topnav a img {
+	padding-right: 7px;
+}

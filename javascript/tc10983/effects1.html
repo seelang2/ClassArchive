@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	
+	#thebox {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		width: 100px;
+		height: 100px;
+		background: #ff0000;
+		z-index: 5;
+	}
+
+	#anotherbox {
+		position: fixed;
+		top: 250px;
+		left: 800px;
+		width: 100px;
+		height: 100px;
+		background: #0000ff;
+		z-index: 10;
+	}
+
+	</style>
+
+</head>
+<body>
+
+<div id="thebox"></div>
+<div id="anotherbox"></div>
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+$('#thebox')
+	.animate({
+		width: 		'+=250',
+		height: 	'+=250'
+	 },{
+	 	duration: 	2000,
+	 	queue: 		false
+	 })
+	.animate({
+		top: 		10,
+		left: 		10
+	 },{
+	 	duration: 	500
+	 })
+	.animate({
+		top: 		50,
+		left: 		800
+	 },{
+	 	duration: 	1000
+	 })
+	.animate({
+		top: 		'+=500',
+		left: 		'-=400'
+	 },{
+	 	duration: 	500
+	 });
+
+$('#anotherbox')
+	.animate({
+		top: 		50,
+		left: 		10
+	 },{
+	 	duration: 	750
+	 })
+	.animate({
+		top: 		'+=500',
+		left: 		800
+	 },{
+	 	duration: 	1000,
+	 	start: 		function() { $('#anotherbox').css('z-index', 1); }
+	 });
+
+
+</script>
+</body>
+</html>

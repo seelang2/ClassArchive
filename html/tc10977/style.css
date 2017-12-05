@@ -1,0 +1,93 @@
+
+body {
+	font-family: Verdana, Arial, sans-serif;
+	color: #000000;
+	font-size: 100%;
+	background-image: url('map1.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center;
+}
+
+#outerwrapper {
+	max-width: 1200px;
+	margin: auto;
+	border: 1px solid #cccccc;
+	background-color: rgba(255, 255, 255, 0.6);
+}
+
+#masthead {
+	text-align: center;
+	background-image: url('eritrea_flag1.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+
+#inner {}
+
+#pagefooter {
+	background-color: #E9ECF0;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 25px;
+	padding-right: 25px;
+	clear: both;
+}
+
+#menu {}
+
+#maincontent {}
+
+
+#menu ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+#menu li {
+	display: inline-block;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+
+.title { 
+	font-size: 150%; 
+	font-weight: bold; 
+	background-color: rgba(255, 255, 255, .5); 
+	margin: 0;
+	padding-top: 7px;
+	padding-bottom: 4px;
+}
+.tagline { 
+	font-weight: bold; 
+	background-color: rgba(255, 255, 255, .5); 
+	margin: 0;
+	padding-top: 4px;
+	padding-bottom: 7px;
+}
+
+.alignleft { float: left; margin-right: 10px; }
+.alignright { float: right; margin-left: 10px; }
+
+
+/* 
+	Clearfix class is used to make parent blocks enclose floated children
+	ref: http://cssmojo.com/the-very-latest-clearfix-reloaded/
+ */
+.clearfix:after {
+    content:" ";
+    display:block;
+    clear:both;
+}	
+
+
+

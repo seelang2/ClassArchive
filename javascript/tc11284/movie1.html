@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		background: #efefef;
+	}
+
+	#container {
+		background: #fff;
+		width: 600px;
+		margin: auto;
+		border: 1px solid #ccc;
+	}
+
+	.title {
+		font-size: 160%;
+		font-weight: bold;
+		font-family: Impact, Helvetica;
+		text-align: center;
+		background: #580A06;
+		color: #F5DF87;
+		padding: 0.25em 0;
+		letter-spacing: 1px;
+		border-bottom: 1px solid #290A06;
+	}
+
+	.content {
+		padding: 0.5em 2em;
+	}
+
+	.content p {
+		font-weight: bold;
+	}
+
+	.content p span {
+		font-weight: normal;
+	}
+
+	.content p img {
+		max-width: 25%;
+		display: block;
+	}
+
+	.content { 
+		/* don't hide here for accessibility reasons */
+		/* display: none; */
+	}
+
+	</style>
+</head>
+<body>
+
+<div id="container">
+<!--
+	<div class="title">Movie Title</div>
+	<div class="content">
+		<p>Year: <span>1984</span></p> 
+		<p>Genre: <span>xxxx</span></p> 
+		<p><img src="" /><span>Lead Actor Name</span></p> 
+	</div>
+-->
+</div><!-- container-->
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+var movieList = [
+	{
+		year: '1984',
+		genre: 'Action',
+		actors: {
+			name: 'Pat Morita',
+			imgURL: 'https://images-na.ssl-images-amazon.com/images/M/MV5BODIyNzYwNjE4NV5BMl5BanBnXkFtZTcwNzA3MzQ3Mw@@._V1_.jpg'
+		},
+		title: 'The Karate Kid'
+	},
+	{
+		year: '1986',
+		genre: 'Action',
+		actors: {
+			name: 'Pat Morita',
+			imgURL: 'https://images-na.ssl-images-amazon.com/images/M/MV5BODIyNzYwNjE4NV5BMl5BanBnXkFtZTcwNzA3MzQ3Mw@@._V1_.jpg'
+		},
+		title: 'The Karate Kid Part II'
+	},
+	{
+		year: '1989',
+		genre: 'Action',
+		actors: {
+			name: 'Pat Morita',
+			imgURL: 'https://images-na.ssl-images-amazon.com/images/M/MV5BODIyNzYwNjE4NV5BMl5BanBnXkFtZTcwNzA3MzQ3Mw@@._V1_.jpg'
+		},
+		title: 'The Karate Kid Part III'
+	}
+];
+
+/*
+	<div class="title">Movie Title</div>
+	<div class="content">
+		<p>Year: <span>1984</span></p> 
+		<p>Genre: <span>xxxx</span></p> 
+		<p><img src="" /><span>Lead Actor Name</span></p> 
+	</div>
+
+*/
+
+var $container = $('#container');
+
+$.each(movieList, function(index, movie) {
+
+	// create title div
+	$('<div />')
+		.addClass('title')
+		.append(movie.title)
+		.appendTo($container)
+		.on('click', function() {
+
+			// 'this' point to the element the event is bound to
+			$(this)
+				.next()			// traverse to the content div
+				.slideToggle();			// and show it
+
+		 });
+
+	// create content div
+	$('<div />')
+		.addClass('content')
+		//.append('<p>Year: <span>1984</span></p>')
+		//.append('<p>Genre: <span>xxxx</span></p>')
+		//.append('<p><img src="" /><span>Lead Actor Name</span></p> ')
+		.append('<p>Year: <span>'+ movie.year +'</span></p>' +
+				'<p>Genre: <span>'+ movie.genre +'</span></p>' + 
+				'<p><img src="'+ movie.actors.imgURL +'" />' + 
+				'<span>'+ movie.actors.name +'</span></p>')
+		.appendTo($container);
+});
+
+$('.content').hide();
+
+
+
+</script>
+</body>
+</html>

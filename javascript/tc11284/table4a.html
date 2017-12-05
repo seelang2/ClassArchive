@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+/*
+
+var x =
+$('<p>This is <b>a new</b> paragraph.</p>');
+
+var y =
+$('<p>Paragraph <span>ONE</span></p><p>Paragraph <span>Two</span></p>');
+
+console.log(x.length); // 1 element in collection
+console.log(y.length); // 2 elements in collection
+
+*/
+
+
+var $branch = 
+$('<table><tbody><tr><td>John</td><td>Doe</td><td>42</td></tr><tr><td>Jane</td><td>Smith</td><td>37</td></tr></tbody></table>');
+
+console.log($branch.length);
+
+$branch.appendTo('#target');
+
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+
+</head>
+<body>
+
+<ul>
+	<li data-index="1">Item</li>
+	<li data-index="2">Item</li>
+	<li data-index="3">Item</li>
+	<li data-index="4">Item</li>
+	<li data-index="5">Item</li>
+	<li data-index="6">Item</li>
+</ul>
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+// to work with elements individually, we have to set up an explicit loop.
+// we can use jQuery's .each() method instead of setting up a for loop
+$('li')
+	.each(function(index, element) {
+		// element is a bare DOM node, so we put it in a jQuery collection object to do jQuery stuff to it
+		$(element)
+			.attr('id','item-' + index); // set the id on each element individually
+
+	 });
+
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+// looping through an array with a standard for loop
+for (var c = 0; c < months.length; c++) {
+	console.log(months[c]);
+}
+
+// create a new bullet list
+var $newList = $('<ul />');
+
+// looping jQuery's way
+$.each(months, function(index, element) {
+	$('<li />')
+		.append(element)
+		.appendTo($newList);
+});
+
+// remember to attach branch to DOM AFTER completing the work to minimize repaints
+$newList.prependTo(document.body); 
+
+
+
+//////////
+// This is an example of the $.each implementation
+
+function myEach(sourceCollection, callbackFunction) {
+
+	for (var c = 0; c < sourceCollection.length; c++) {
+		callbackFunction(c, sourceCollection[c]);
+	}
+
+}
+
+myEach(months, function(index, element) {
+	console.log(index,element);
+});
+
+
+
+
+
+
+</script>
+</body>
+</html>

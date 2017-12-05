@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 100%;
+		color: #000000;
+	}
+
+	</style>
+</head>
+<body>
+
+
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+
+// select 2
+$.ajax({
+	url: 				'XXXXlatentresponse.php?tag=request2',
+	method: 		'get',
+	dataType: 	'text',
+	success: 		function(response) {
+		console.log('Ajax success handler');
+	},
+	error: 		function(response) {
+		console.log('Ajax error handler');
+	}
+}).success(function(response) {
+	console.log('Deferred success handler.');
+})
+.error(function(response) {
+	console.log('Deferred error handler.');
+});
+
+
+
+
+</script>
+</body>
+</html>

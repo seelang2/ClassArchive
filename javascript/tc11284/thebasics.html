@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+/*
+
+Variables
+Variables are containers used to store values. They can contain objects such as the basic
+data types (strings, numbers, and booleans) as well as arrays, objects 
+
+
+
+*/
+
+var someValue; // declaring an empty variable called someValue
+
+// assign values to a variable using the assignment operator =
+someValue = 'This is a string.'; 
+
+// it's common to declare and assign a value to a variable in the same statement
+var anotherValue = 'This is another value.';
+
+// note that you only use the assignment operator to assign or change the value
+// of the variable.
+
+// to use a value in the variable, reference the variable by name (no quotes)
+console.log(anotherValue);
+
+/* 
+Types of data
+
+strings (text enclosed in quotes)
+numbers (both integers and floating point)
+boolean (true or false)
+
+*/
+
+var fullName = 'John Doe'; // strings are text enclosed in quotes
+var age = 26; // numbers don't require quotes
+var isSingle = true; // boolean values are NOT strings, so they don't use quotes
+
+// a shortcut is to declare and assign multiple variables in the same var statement:
+// (it's considered better practice to avoid this)
+var fullName = 'John Doe', age = 26, isSingle = true;
+
+var snake_case_variable_name;
+var camelCasedVariableName;
+var UPPERCASE_IS_USUALLY_RESERVED_TO_DENOTE_CONSTANTS;
+
+/*
+Arrays
+Arrays allow you to store multiple values (a list) within a single variable
+Each compartment in the list is referred to as an element. Elements are given indices 
+starting from zero.
+
+Arrays can contain mixed data types 
+*/
+
+// define an array using javascript's object literal notation:
+var userData = ['John Doe', 26, true];
+
+// reference the value of a specific element in the array by its index:
+console.log(userData[1]);
+
+// element values can be changed directly:
+userData[1] = 32;
+
+/*
+Functions
+Functions are a way of making code modular and reusable.
+
+*/
+
+// creating a named function
+function greeting() {
+	// the stuff the function should do goes into the function body here
+	document.write('Hello');
+}
+
+// defining the function does not execute it. We call (execute) the function
+// using the function name followed by the parens
+// the function must be defined before you call it or an error will occur
+greeting(); // call/execute function
+
+// functions can have zero or more parameters, meaning they can accept
+// data being passed into them when called
+function betterGreeting(text) {
+	// text is a variable that is part of the function
+	document.write(text);
+}
+
+// we can now pass values into the function for processing
+betterGreeting('A fine day to you');
+
+// the return statement terminates the function. It can also 'return'
+// a value back to the calling statement
+
+function getArea(sideA, sideB) {
+	return sideA * sideB;
+}
+
+// calling the function and doing nothing else is not useful:
+getArea(5, 25); // nothing useful happens because we're ignoring the return value
+
+// the returned value is available where we called the function, so we can
+// do additional processing:
+document.write(getArea(5, 25)); // output the value returned by the function
+var area = getArea(7, 11); 
+
+// anonymous functions are unnamed functions assigned to a variable
+var calculateSum = function(a, b) {
+	return a + b;
+}; // the semicolon is required here to complete the assignment statement
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

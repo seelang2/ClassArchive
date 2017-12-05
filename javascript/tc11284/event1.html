@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<button id="thebutton">Click Me</button>
+<button id="thebutton2">Click Me</button>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+// old school
+document.getElementById('thebutton').onclick = function() {
+	alert('Click!');
+};
+
+// new method
+$('#thebutton2').on('click', function() {
+	alert('Click2!');
+})
+
+</script>
+</body>
+</html>

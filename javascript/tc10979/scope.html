@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 100%;
+		color: #000000;
+	}
+
+	</style>
+</head>
+<body>
+
+
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+function foo() {
+	var x = 1;
+	console.log(x);
+}
+
+function bar(x) {
+	x = 50;
+	console.log(x);
+}
+
+function fie() {
+	x = 1000;
+	console.log(x);
+}
+
+var x = 100;
+console.log(x); // 100
+foo();
+console.log(x); // 100
+bar(x);
+console.log(x); // 100
+fie();
+console.log(x); // 1000
+
+
+</script>
+</body>
+</html>

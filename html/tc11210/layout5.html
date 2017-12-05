@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Layout 5</title>
+
+	<style type="text/css">
+
+	body {
+		background-color: #BFBCBA;
+		margin: 0;
+		color: #000000;
+		font-family: Helvetica, Arial, sans-serif;
+		font-size: 1em;
+	}
+
+	#wrapper {
+		width: 900px;
+		margin: auto; /* centers the block within the parent */
+		background-color: #ffffff;
+	}
+
+	#masthead {
+		height: 100px;
+		background-color: #1C588C;
+	}
+
+	#pagefooter {
+		height: 130px;
+		background-color: #222F40;
+		color: #ffffff;
+	}
+
+	#content {
+		background-color: #a94c3b;
+		display: flex;
+		flex-direction: row;
+	}
+
+	#primary {
+		width: 60%;
+		background-color: #95DDF5;
+		padding: 1px 20px 1px 50px;
+	}
+
+	#secondary {
+		width: 40%;
+		background-color: #C8FFA8;
+		padding: 1px 50px 1px 20px;
+	}
+
+
+	p { color: #0000ff; }
+
+	#target { color: pink; }
+
+	.highlight { background-color: #ffffcc; }
+
+	/* 
+	  clearfix technique 
+	  Forces a non-floated parent to enclose its floated descendants,
+	  which doesn't happen by default
+	*/
+	.clearfix:after {
+		content: ' ';
+		display: block;
+		clear: both;
+	}
+
+	</style>
+
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="masthead">
+	</div><!-- #masthead -->
+
+	<div id="content">
+		<div id="primary">
+			<p style="color: #ff0000;">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a hendrerit sem, volutpat faucibus purus. Pellentesque bibendum lorem quis erat scelerisque, sit amet commodo sem tincidunt. <span class="highlight">Aliquam ut turpis sit amet ligula tempus dapibus.</span> Donec et lectus orci. Donec sit amet sapien dui. Pellentesque iaculis sollicitudin mollis. Quisque ut nulla a ligula pulvinar venenatis. Suspendisse eleifend velit odio, sagittis pulvinar purus bibendum sed. Sed non nisl mi. Proin condimentum nec lorem et pharetra. Suspendisse at metus sodales, pulvinar diam ac, <span class="highlight">ullamcorper</span> enim. Nulla facilisi. Quisque sed molestie arcu. Pellentesque nulla mauris, tincidunt nec pulvinar non, gravida eget lectus. Suspendisse ante augue, tristique id diam nec, volutpat consequat nisl.
+			</p>
+			<p>
+			<span class="highlight">Nam vel elit ut sapien pulvinar pellentesque.</span> Vivamus ornare enim nunc, eu posuere lacus ultrices et. Sed et eleifend orci, eu fermentum quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla volutpat iaculis lectus vitae placerat. Curabitur nec tempus urna, nec facilisis lacus. Nullam in blandit libero, in placerat lacus. Ut sodales turpis mauris, eu bibendum leo imperdiet eget. Quisque rhoncus quam sed eros vehicula, accumsan tempor neque posuere. Praesent ligula mi, ultricies vestibulum aliquet a, maximus eu mi. Praesent fringilla urna at mollis porta. Sed viverra tristique risus, a porta augue sagittis quis. Etiam at accumsan augue. Sed porttitor quam ut accumsan aliquet.
+			</p>
+			<p id="target">
+			Maecenas faucibus ante quis nulla maximus volutpat. Ut scelerisque eros sit amet nibh eleifend pulvinar eget eu nibh. Fusce vehicula, sapien ut suscipit luctus, sapien sem vestibulum arcu, vitae viverra est erat in nisl. Integer lobortis odio dignissim elementum iaculis. Proin magna eros, ultrices in nisl non, suscipit imperdiet eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras condimentum massa tellus, nec porttitor eros tempor commodo. Nunc lacinia ut nunc non malesuada. Fusce dignissim metus eu interdum blandit. Aliquam velit dolor, lacinia sit amet augue sed, pulvinar fermentum lorem. Vestibulum sed libero rutrum, blandit dui eu, sagittis nisl. Curabitur id ante sed turpis ultrices pretium. Sed blandit arcu eget leo ornare dapibus. Pellentesque in dui metus.
+			</p>
+			<p>
+			Maecenas a magna accumsan, scelerisque tellus at, posuere erat. Donec tempor venenatis lectus, sed vestibulum eros porttitor congue. Pellentesque scelerisque blandit tincidunt. Integer id aliquet tortor. Pellentesque sagittis urna sapien, quis euismod odio volutpat ut. Nam ac accumsan augue. Fusce tincidunt suscipit neque, id molestie risus posuere sit amet. Cras porta lorem et nisl vulputate ornare. Nulla id quam efficitur, posuere quam a, blandit arcu. Aliquam erat volutpat. Mauris semper ultricies tortor, non accumsan urna tincidunt quis. Vestibulum fermentum aliquam arcu, sed iaculis augue faucibus non. Curabitur tristique, tellus sit amet ullamcorper maximus, sapien metus dictum enim, ut sodales libero turpis sed sem. In hac habitasse platea dictumst. Suspendisse ac orci nisi. Maecenas suscipit nulla neque, ac iaculis turpis efficitur eget.
+			</p>
+		</div><!-- #primary -->
+
+		<div id="secondary">
+			<p>
+			Curabitur purus purus, mollis consequat interdum in, pharetra porta massa. Curabitur bibendum et urna vel faucibus. Nulla cursus sagittis pharetra. Aenean facilisis, nisl sit amet semper molestie, nibh lectus lobortis felis, eget consectetur lectus risus et nulla. Praesent quam mauris, rhoncus eget urna vitae, condimentum vulputate tellus. Curabitur egestas, urna a imperdiet bibendum, dolor nunc gravida nisl, a ultrices diam nulla vel orci. Vivamus vel eros sed nibh molestie gravida. Ut convallis eu dolor vel aliquet. Donec ac finibus purus, vitae dapibus lacus.
+			</p>
+		</div><!-- #secondary -->
+	</div><!-- #content -->
+
+	<div id="pagefooter">
+		Copyright &copy; Training Connection Class 11210. Creative Commons License.
+	</div><!-- #pagefooter -->
+
+</div><!-- #wrapper -->
+
+
+</body>
+</html>

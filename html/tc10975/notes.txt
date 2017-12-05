@@ -1,0 +1,130 @@
+notes.txt
+
+References:
+https://www.w3.org/TR/html51/
+https://www.w3schools.com/tags/default.asp
+https://www.w3schools.com/cssref/default.asp
+https://dummyimage.com/
+http://www.hostingadvice.com/reviews/
+
+HTML Email references
+https://templates.mailchimp.com/resources/inline-css/
+http://kb.mailchimp.com/campaigns/previews-and-tests/my-campaign-looks-bad-in-outlook
+https://www.emailonacid.com/blog/article/email-development/tips_and_tricks_outlook.com
+https://litmus.com/blog/a-guide-to-rendering-differences-in-microsoft-outlook-clients
+https://www.campaignmonitor.com/css/
+https://templates.mailchimp.com/resources/email-client-css-support/
+https://www.email-standards.org/
+https://github.com/leemunroe/responsive-html-email-template
+https://litmus.com/community/templates
+https://www.smashingmagazine.com/2017/01/introduction-building-sending-html-email-for-web-developers/
+http://labs.actionrocket.co/the-hybrid-coding-approach
+https://webdesign.tutsplus.com/tutorials/creating-a-future-proof-responsive-email-without-media-queries--cms-23919
+https://www.campaignmonitor.com/resources/guides/video-in-email/
+
+HTML Email Template:
+https://github.com/leemunroe/responsive-html-email-template
+
+
+ELEMENT
+
+<ELEMENT>Content</ELEMENT>
+
+<ROLODEX>
+	<CONTACTLIST>
+		<CONTACT index="2342">
+			<IMG src="pic.jpg" />
+			<FIRSTNAME>John</FIRSTNAME>
+			<LASTNAME>Doe</LASTNAME>
+			<PHONE>123-456-7890</PHONE>
+		</CONTACT>
+	</CONTACTLIST>
+</ROLODEX>
+
+
+<input type="checkbox" checked>  <-- HTML4
+
+<!-- HTML comment -->
+
+XHTML: <input type="checkbox" checked="checked" />
+
+HTML5: <input type="checkbox" checked>
+
+<input type="checkbox" checked />
+
+HTML Entities
+&pound;
+&gt;
+&lt;
+&nbsp;
+
+UTF-8 character encoding
+
+3 Web Layers
+Content - HTML
+Presentation - CSS
+Behavior - Javascript
+
+Absolute vs Relative URL/URIs
+
+Absolute: 
+https://www.google.com
+http://www.mydomain.com/page1.html
+
+<a href="http://www.mydomain.com/page1.html">Go to page 1</a>
+
+Relative:
+
+<a href="page2.html">Go to page 2</a>
+
+Assume we're on page 1
+
+page2.html -> http://www.mydomain.com/page2.html
+
+mydomain.com/
+	index.html
+	page1.html
+	members/
+		page2.html
+
+You are here -> http://mydomain.com/index.html
+
+<a href="page1.html">Go to page 1</a>
+
+page1.html -> http://mydomain.com/page1.html
+
+<a href="/page1.html"> -> http://mydomain.com/page1.html
+
+<a href="page2.html"> -> http://mydomain.com/page2.html doesn't work
+<a href="members/page2.html"> -> http://mydomain.com/members/page2.html
+<a href="/members/page2.html"> -> http://mydomain.com/members/page2.html
+
+You are here -> http://mydomain.com/members/page2.html
+<a href="/page1.html"> -> http://mydomain.com/page1.html
+<a href="page1.html"> -> http://mydomain.com/members/page1.html doesn't work
+
+CSS Rule
+
+
+selector {
+	property: value;
+	property: value;
+	property: value;
+}
+
+Inline styles - use style attribute to set properties
+Embedded stylesheet - use STYLE element to define local stylesheet
+External stylesheet - linked to document
+
+
+margin and padding use the same shortcuts:
+
+margin-left
+margin-top
+margin-right
+margin-bottom
+
+margin: 25px; /* all four sides */
+margin: 10px 25px; /* TB LR /*
+margin: 1px 2px 3px 4px; /* T R B L */
+

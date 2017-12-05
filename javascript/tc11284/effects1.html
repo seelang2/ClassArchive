@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	#box1 { 
+		width: 75px;
+		height: 75px;
+		background: red;
+		position: fixed;
+		top: 25px;
+		left: 10px;
+	}
+	#box2 { 
+		width: 75px;
+		height: 75px;
+		background: blue;
+		position: fixed;
+		top: 500px;
+		left: 900px;
+	}
+	</style>
+</head>
+<body>
+
+<div id="box1"></div>
+<div id="box2"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+$('#box1')
+	.animate({
+		width: '+=250',
+		height: '+=250'
+	 }, {
+	 	queue: false,
+	 	duration: 1750
+	 })
+	.animate({
+		top: 550,
+		left: 850
+	 }, {
+	 	duration: 1000
+	 })
+	.animate({
+		top: '-=300',
+		left: '+=150'
+	 }, {
+	 	duration: 750
+	 });
+
+$('#box2')
+	.animate({
+		top: '-=200',
+		left: '-=850'
+	 }, {
+	 	duration: 2500
+	 });
+
+</script>
+</body>
+</html>

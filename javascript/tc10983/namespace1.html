@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+
+</head>
+<body>
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+var App = {};
+App.data = {}; // poor man's registry
+App.startUp = function() {
+	// startup and init code
+	App.data.color = 'red';
+
+	App.doMainStuff();
+};
+
+App.doMainStuff = function() {
+	console.log(App.data.color);
+};
+
+var a = 1000; // global var
+
+$(document).ready(App.startUp); // start app on DOM ready
+
+
+$(document).ready(function() {
+
+	var c = 100;
+	var b = 10;
+
+	console.log(App.data.color);
+	console.log('a:',a);
+	console.log('b:',b);
+	console.log('c:',c);
+
+	a = 5000;
+
+});
+
+$(document).ready(function() {
+
+	var c = 5;
+	d = 7;
+
+	console.log(App.data.color);
+	console.log('a:',a);
+	console.log('c:',c);
+	console.log('b:',b);
+
+});
+
+console.log(App.data.color); // undefined
+console.log('a:',a);
+//console.log('d:',d); // d is not defined yet because of the deferred execution of the DOM ready handlers
+
+setTimeout(function() {
+	//console.log('c:',c); // c is not defined
+	console.log(App.data.color);
+	console.log('d:',d);
+}, 2000);
+
+</script>
+</body>
+</html>

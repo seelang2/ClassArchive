@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 100%;
+		color: #000000;
+	}
+
+	</style>
+</head>
+<body>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+// select 1
+$.ajax({
+	url: 				'yaddayaddayadda',
+	method: 		'get',
+	dataType: 	'json',
+	success: 		function(response) {
+		// select 2
+		$.ajax({
+			url: 				'yaddayaddayadda',
+			method: 		'get',
+			dataType: 	'json',
+			success: 		function(response) {
+				// select 3
+				$.ajax({
+					url: 				'yaddayaddayadda',
+					method: 		'get',
+					dataType: 	'json',
+					success: 		function(response) {
+
+					}
+				});
+
+			}
+		});
+
+	}
+});
+
+// same thing using the promise/deferred object
+// select 1
+$.ajax({
+	url: 				'yaddayaddayadda',
+	method: 		'get',
+	dataType: 	'json'
+}).done(function(response) {
+		// select 2
+	$.ajax({
+		url: 				'yaddayaddayadda',
+		method: 		'get',
+		dataType: 	'json'
+	}).done(function(response) {
+		// select 3
+		$.ajax({
+			url: 				'yaddayaddayadda',
+			method: 		'get',
+			dataType: 	'json'
+		}).done(function(response) {
+			
+		});
+
+	});
+
+});
+
+$.ajax({
+	url: 				'yaddayaddayadda',
+	method: 		'get',
+	dataType: 	'json'
+}).done(getThing2);
+
+var getThing2 = function() {
+	$.ajax({
+		url: 				'yaddayaddayadda',
+		method: 		'get',
+		dataType: 	'json'
+	}).done(getThing3);
+}
+
+var getThing3 = function() {
+	$.ajax({
+		url: 				'yaddayaddayadda',
+		method: 		'get',
+		dataType: 	'json'
+	}).done(moarStuff);
+}
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="target">
+	<p>Existing content.</p>
+</div>
+
+
+<script type="text/javascript">
+
+/*
+document.createElement() // creates new element
+document.createTextNode() // creates new text node
+
+parentNode.appendChild(newNode) // adds newNode as the last child of parentNode
+parentNode.insertBefore(newNode, refNode) // adds newNode as child in front of refNode
+
+document.getElementById()
+document.getElementsByTagName()
+document.getElementsByClassName()
+document.getElementsByName()
+
+*/
+
+
+var pElem = document.createElement('P'); // create new paragraph element
+
+var text = document.createTextNode('The new paragraph.'); // create new text node
+
+pElem.appendChild(text);
+
+var targetElem = document.getElementById('target'); // get reference to target elem
+
+targetElem.appendChild(pElem);
+
+
+document.getElementById('target')
+	.appendChild(
+		document.createElement('P')
+			.appendChild(document.createTextNode('Yet another paragraph')
+	)
+);
+
+
+
+</script>
+</body>
+</html>

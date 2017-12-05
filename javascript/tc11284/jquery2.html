@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<ul>
+	<li id="item1">Item</li>
+	<li id="item2">Item</li>
+	<li id="item3">Item</li>
+	<li id="item4">Item</li>
+	<li id="item5">Item</li>
+	<li id="item6">Item</li>
+	<li id="item7">Item</li>
+</ul>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+// amything you do to the collection gets done to every item in the collection
+$('li')
+	.addClass('listitem thing1');
+
+
+// getters will only retrieve the value from the first element in the collection
+console.log($('li').attr('id'));
+
+
+
+</script>
+</body>
+</html>

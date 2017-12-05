@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 100%;
+		color: #000000;
+	}
+
+	</style>
+</head>
+<body>
+
+<div>Stuff</div>
+<div>Stuff</div>
+<div>Stuff</div>
+<div>Stuff</div>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+function foo() {
+	return 'foo';
+}
+
+var bar = function() {
+	alert('bar');
+};
+
+$('div').on('click', function(e) {
+	alert('foo');
+});
+
+$('div').on('click', bar);
+
+
+
+abc(); // works because function declarations are hoisted to the top of the scope
+
+function abc() {
+	console.log('abc');
+}
+
+xyz(); // doesn't work because assignment statements are NOT hoisted
+
+var xyz = function() {
+	console.log('xyz');
+}
+
+
+
+</script>
+</body>
+</html>

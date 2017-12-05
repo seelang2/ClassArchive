@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Simple Fixed-width Layout Demo</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		color: #000000;
+		font-size: 100%;
+		background-color: #dedede;
+		margin: 0;
+	}
+
+	#outer {
+		width: 800px;
+		background-color: #00ff00;
+		margin: 0 auto; /* auto LR centers block in parent */
+		border: 1px solid #cccccc;
+	}
+
+	#masthead {
+		height: 100px;
+		background: #8C8669;
+	}
+
+	#pagefooter {
+		height: 125px;
+		background: #242625;
+		color: #ffffff;
+	}
+
+	#content {
+		/* padding: 1px 50px; */
+		background: #ffffff;
+	}
+
+	main {
+		float: left;
+		width: 505px; /* we have to make sure total width is 550 */
+		padding: 1px 15px 1px 30px;
+		box-sizing: content-box; /* default CSS box model */
+	}
+
+	aside {
+		float: right;
+		width: 250px;
+		padding: 1px 5% 1px 1em;
+		box-sizing: border-box;
+	}
+
+	h2 {
+		margin-bottom: 0.25em;
+	}
+
+	h2 + p {
+		margin-top: 0;
+	}
+
+	/*
+	The clearfix technique allows us to force non-floated parent
+	elements to enclose their floated children without the use
+	of any additional html element shims.
+
+	ref:
+	Modern browsers:
+	http://cssmojo.com/the-very-latest-clearfix-reloaded/
+	Older browsers:
+	http://nicolasgallagher.com/micro-clearfix-hack/
+	*/
+	.clearfix:after {
+	    content:"";
+	    display:block;
+	    clear:both;
+	}
+
+	</style>
+</head>
+<body>
+
+<div id="outer">
+	<div id="masthead"></div><!-- masthead -->
+	<div id="content" class="clearfix">
+		<main>
+			<h1>Lorem ipsum dolor sit amet</h1>
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque eros. Aenean est nisi, mattis at elit eget, eleifend egestas magna. Vestibulum sed neque lectus. Vestibulum rhoncus sodales nisl. Sed nulla eros, finibus mattis fringilla sed, lobortis ac diam. Vivamus non tincidunt ligula. Integer ac mollis lorem. Praesent nisl felis, facilisis quis nibh eget, porttitor posuere augue. Duis id interdum ex. Duis lacinia tincidunt enim, et accumsan risus faucibus ac. Curabitur tristique, felis at posuere posuere, est nisi elementum dolor, bibendum dignissim risus risus posuere diam. Mauris nibh ligula, ornare nec ex ac, aliquam suscipit mi.
+			</p>
+
+			<h2>Maecenas tincidunt mauris nec</h2>
+			<p>
+			Phasellus laoreet, lectus eget viverra fermentum, urna metus fermentum tellus, vitae vestibulum magna enim in leo. Nullam maximus, leo eu hendrerit consequat, arcu nisi volutpat urna, eu semper dolor lectus ut quam. Nulla feugiat dolor non neque volutpat imperdiet. Maecenas tincidunt mauris nec elit dignissim, a consequat tortor rhoncus. Vivamus a metus egestas, lobortis libero rhoncus, facilisis felis. Aliquam ultricies porttitor pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi sodales arcu tortor, nec fermentum mauris imperdiet volutpat. Ut vel gravida nisi, accumsan rutrum odio. Curabitur id erat vitae lorem feugiat mollis quis id arcu. Pellentesque eget enim posuere justo placerat laoreet. In convallis ut magna eget scelerisque. Vivamus nisl diam, pharetra sed lectus rhoncus, luctus fringilla mauris. Etiam ornare nunc leo, vitae pretium ipsum blandit vitae.
+			</p>
+			<p>
+			Quisque fermentum eros nisi, sed cursus metus fringilla non. In at fermentum nunc. Fusce feugiat, sem eu imperdiet dictum, risus magna feugiat eros, vel ullamcorper metus mi eu lectus. Sed viverra rhoncus odio, nec viverra nulla luctus nec. Donec tempor nibh eu arcu convallis gravida. Etiam quis euismod lacus. Cras eget volutpat dui. Proin scelerisque pulvinar libero at pharetra. Praesent imperdiet quam eu elit lacinia, et aliquet felis efficitur. Mauris facilisis metus vulputate auctor maximus.
+			</p>
+
+			<h2>Nullam non tincidunt metus</h2>
+			<p>
+			Mauris sed molestie ante, id cursus nunc. Mauris eu eros nec felis scelerisque pulvinar. Nullam non tincidunt metus. Ut finibus justo eget lectus vehicula, non imperdiet lacus feugiat. Proin dignissim erat quis dui ornare tempus. Pellentesque nunc urna, placerat et lectus eget, placerat semper nibh. Nunc a enim nulla. Aenean ac posuere felis. Maecenas neque dui, fringilla sed metus suscipit, placerat consectetur dolor. Quisque ultricies velit a aliquet placerat. Aenean vel pellentesque turpis. Nulla maximus pharetra nisi ut tempus.
+			</p>
+			<p>
+			In hac habitasse platea dictumst. Curabitur eleifend tortor ante, ut laoreet dolor placerat sed. Proin justo dolor, viverra in tincidunt eu, malesuada id libero. Sed nec ultrices ligula. Sed congue vehicula nisl a scelerisque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nibh justo, efficitur vel interdum ac, porttitor eu nulla. Aenean placerat nisl ut interdum commodo. Morbi a sem nec justo cursus commodo ac id ex. Sed est est, consequat vitae sagittis at, interdum sed ante. Donec ut eros sed ipsum euismod efficitur ut at quam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+			</p>
+		</main>
+		<aside>
+			<h2>Sed non sollicitudin nulla</h2>
+			<p>
+			Sed non sollicitudin nulla, quis pretium orci. Duis elementum vehicula metus, a elementum diam maximus nec. Phasellus euismod odio quis est consectetur scelerisque id ut purus. Aliquam pharetra, justo ut vehicula suscipit, urna nisl ornare lectus, ut pretium odio lectus nec mauris. Sed lobortis eu ante nec tempor. Ut eu erat ut diam dignissim fermentum. In non euismod lacus. Donec id tellus quis justo maximus venenatis nec sed nisl. Praesent suscipit, erat eu vulputate aliquet, quam turpis consectetur nisl, finibus blandit metus elit ut neque. Nulla nec lectus faucibus nisl euismod malesuada. Donec vel mauris ipsum.
+			</p>
+			<p>
+			Pellentesque finibus justo a nulla sollicitudin mattis. Aliquam id massa orci. Maecenas sagittis iaculis nisi, sed feugiat erat. Pellentesque efficitur at ligula eu volutpat. Vestibulum auctor elit in vulputate auctor. Aenean rhoncus mi mi, dapibus aliquam leo convallis sed. Etiam imperdiet ut nulla at tincidunt. Sed sit amet dignissim libero. Ut at rhoncus magna.
+			</p>
+		</aside>
+	</div><!-- content -->
+	<div id="pagefooter">
+		<span>Vestibulum auctor elit in vulputate auctor.</span>
+	</div><!-- pagefooter -->
+</div><!-- outer -->
+
+
+</body>
+</html>

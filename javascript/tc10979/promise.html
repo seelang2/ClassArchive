@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 100%;
+		color: #000000;
+	}
+
+	</style>
+</head>
+<body>
+
+
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+
+var promise = $.Deferred(); // create a new deferred object
+
+promise.done(function() {
+	console.log('Promise is resolved.');
+});
+
+promise.fail(function() {
+	console.log('Promise is rejected.');
+});
+
+promise.always(function() {
+	console.log('This callback always runs.');
+});
+
+promise.then(function() {
+	console.log('This is the then callback.');
+});
+
+promise.progress(function() {
+	console.log('Promise is in progress.');
+});
+
+
+
+
+</script>
+</body>
+</html>

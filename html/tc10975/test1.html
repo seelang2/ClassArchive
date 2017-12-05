@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Simple Fixed-width Layout Demo</title>
+
+	<style type="text/css">
+	body {
+		background: #cccccc;
+	}
+
+	#wrapper {
+		background: #ffffff;
+		width: 700px;
+		margin: auto;
+		border: 1px solid #7a7a7a;
+		padding: 20px 50px;
+		text-align: center;
+	}
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<video width="480" controls src="vid00001.mp4">
+		<!-- <source src="vid00001.mp4" />-->
+		<!-- 
+		https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API
+		-->
+		<track default src="test.vtt" />
+	</video>
+</div>
+
+</body>
+</html>

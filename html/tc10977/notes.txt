@@ -1,0 +1,167 @@
+notes.txt
+
+
+Content - HTML (HyperText Markup Language)
+Presentation - CSS (Cascading Style Sheets)
+Behavior - JavaScript
+
+
+1. Register a domain name
+	godaddy.com, namecheap.com
+
+2. Get a Web Hosting account
+	https://www.pcmag.com/article2/0,2817,2424725,00.asp
+	- link domain to host account
+
+3. Set up nameservers on domain
+
+4. Upload web files to host account
+
+5. Get noticed by the search engines and other marketing
+
+
+
+HTML
+Markup that describes content and structure of the document
+
+ELEMENT
+
+Elements are expressed using opening and closing tags:
+
+<ELEMENT>content</ELEMENT>
+
+<B><U>content</U></B> <- always nest elements
+
+<B><U>content</B></U> <- won't work
+
+<INPUT type="checkbox" name="fullname" checked />
+
+Attributes are data that belong to an element that are not part of the element's content
+
+Attributes ALWAYS are placed in the opening tag
+
+<a href="http://google.com">Go to Google</a> <-- correct
+
+<a>Go to Google</a href="http://google.com"> <-- won't work
+
+Some elements do not require an explicit closing tag. These are called "self-closing" or "void" tags.
+
+Best practice is to put a slash just before the ending > bracket:
+
+<INPUT type="text" />
+                   ^--- Marks this as a self-closing element
+
+Links (Anchor A element)
+
+Two types of links:
+Links to external pages
+Links to specific location in a page
+
+<a href="TARGET_URL">Click to follow link</a>
+
+Use target="_blank" to open a new tab
+
+
+Absolute vs Relative URLs/URIs
+
+Absolute URL is a complete URL, like http://www.embassyeritrea.org/id_cards.htm
+
+	1. Protocol (http://)
+	2. Domain (www.embassyeritrea.org)
+	3. Path (/)
+	4. Filename (id_cards.htm)
+
+Example: <a href="http://www.embassyeritrea.org/id_cards.htm">ID Cards</a>
+
+Relative URLs are incomplete
+
+Example: <a href="id_cards.htm">ID Cards</a>
+
+
+Links to specific locations in a page
+
+What you're actually doing is linking to a specific element
+
+1. Give the target element an id
+
+2. Reference the element's id in the href using #id
+
+CSS
+---
+
+CSS is based on rules that get applied to element nodes in the DOM.
+
+Basic style rule syntax:
+
+selector {
+	property: value;
+	property: value;
+	...
+}
+
+Example: 
+
+p {
+	color: black;
+}
+
+Three ways to apply CSS in an HTML document:
+
+1. Inline style - Uses style attribute to attach properties directly to an element
+
+2. Embedded stylesheet - A style sheet local to the HTML document using the STYLE element
+
+3. External stylesheet - Stylesheet is in a separate document that is attached to the HTML document
+
+
+Color codes
+Red, green, blue value range 0-255 (decimal), #00-#FF (hexadecimal)
+
+color: red;
+color: #FF0000;  RRGGBB
+color: rgb(255, 0, 0); 	R, G, B
+color: rgba(255, 0, 0, 1); 	R, G, B, A 
+
+Alpha channel is transparency; values are from 0 (transparent) to 1 (opaque)
+
+Identifying elements
+
+Unique - Assign an id using id attribute
+Groups - Assign a group name using class attribute
+
+CSS Selectors
+
+Three common selectors:
+
+Element - p, h1, span, etc.
+ID - #id
+Class - .classname
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

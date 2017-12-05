@@ -1,0 +1,53 @@
+body, input, button {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 100%;
+	color: #000000;
+}
+
+form label {
+	display: block;
+	margin-bottom: 0.5em;
+}
+
+label span:after {
+	content: ':';
+}
+
+.contactitem {
+	border: 1px solid #ccc;
+	margin-bottom: 0.5em;
+}
+
+.contactitem .title {
+	font-weight: bold;
+}
+
+/*search box styling */
+#search span {
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+}
+
+#search span > div {
+	position: absolute;
+	z-index: 1000;
+	background-color: #ffffff;
+	width: 100%;
+	box-sizing: border-box;
+	border: 1px solid #dedede;
+	display: none;
+}
+
+#search div div {
+	padding: 0.25em;
+}
+
+#search div div:hover {
+	cursor: pointer;
+}
+
+#search .active {
+	background-color: #FFC;
+}
+
