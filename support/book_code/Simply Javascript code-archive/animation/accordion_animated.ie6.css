@@ -1,5 +1,0 @@
-/* Fixes the unwanted spacing between list items 
-    Side effect: only the text of each heading is clickable. */
-ul.accordion li {
-  display: inline;
-}
