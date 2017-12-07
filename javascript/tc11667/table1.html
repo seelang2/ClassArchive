@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+
+	<style type="text/css">
+	table, th, td {
+		border: 1px solid #7a7a7a;
+	}
+	table { border-collapse: collapse; }
+	th, td { padding: 0.5em 1em; }
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+
+
+
+
+<script>
+
+var contactList = [
+	{ firstname: 'John', lastname: 'Doe', age: 43},
+	{ firstname: 'Tom', lastname: 'Doe', age: 23},
+	{ firstname: 'Peter', lastname: 'Doe', age: 54},
+	{ firstname: 'Kim', lastname: 'Doe', age: 11},
+	{ firstname: 'Betty', lastname: 'Doe', age: 44},
+	{ firstname: 'Alex', lastname: 'Doe', age: 32}
+];
+
+// build table structure from contact list
+
+// create base table structure
+var tableHTML = '<table><tbody>';
+
+// for each contact
+for (var c = 0; c < contactList.length; c++) {
+	// create new row
+	tableHTML += '<tr>';
+	// for each contact field
+	/*
+	tableHTML += '<td>'+contactList[c].firstname + '</td>' +
+				 '<td>'+contactList[c].lastname + '</td>' +
+				 '<td>'+contactList[c].age + '</td>';
+	*/
+	for (var fieldName in contactList[c]) {
+		// create new column
+		tableHTML += '<td>' + contactList[c][fieldName] + '</td>';
+	}
+	// close row
+	tableHTML += '</tr>';
+}
+// close table markup
+tableHTML += '</tbody></table>';
+
+// output table markup
+var targetElem = document.getElementById('target'); // get reference to target node
+
+// put our table markup into the target div
+targetElem.innerHTML = tableHTML;
+
+
+</script>
+</body>
+</html>

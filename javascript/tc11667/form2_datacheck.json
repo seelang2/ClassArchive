@@ -1,0 +1,5 @@
+[
+	{"fieldname":"firstname","fieldvalue":"John"},
+	{"fieldname":"lastname","fieldvalue":"Doe"},
+	{"fieldname":"age","fieldvalue":34}
+]

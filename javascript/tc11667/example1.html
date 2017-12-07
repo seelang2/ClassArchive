@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<script>
+
+var sideA = parseFloat('fluffyhamster');
+var sideB = 3;
+
+var area = sideA * sideB;
+var perimeter = sideA + sideB + sideA + sideB;
+
+document.write('<p>The area is ' + area + ' and the perimeter is ' + perimeter + '.</p>');
+
+var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'];
+
+document.write('<p>The third day is ' + weekdays[2] + '</p>');
+weekdays[3] = 'Bob';
+
+weekdays.push('Friday', 'Saturday');
+
+console.log(weekdays);
+
+console.log(weekdays.shift());
+console.log(weekdays);
+
+weekdays[weekdays.length] = 'Bob';
+
+/*
+var pillbox = {
+	Sun: 'white',
+	Mon: 'white',
+	Tue: 'none'
+}
+*/
+var pillbox = {};
+pillbox.Sun = 'white';
+pillbox.Mon = 'white';
+pillbox.Tue = 'none';
+pillbox['Wed'] = 'blue';
+
+var today = 'Tue';
+
+// we can't use pillbox.today because today is not a property of pillbox
+// today actually contains the text name of a property inside pillbox
+document.write('<p>Today\'s pill is ' + pillbox[today] + '</p>');
+
+
+
+</script>
+</body>
+</html>

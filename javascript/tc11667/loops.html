@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+
+	<style type="text/css">
+	table, th, td {
+		border: 1px solid #7a7a7a;
+	}
+	table { border-collapse: collapse; }
+	th, td { padding: 0.5em 1em; }
+	</style>
+</head>
+<body>
+
+
+<script>
+
+var months = [
+	'January','February','March',
+	'April','May','June',
+	'July','August','September',
+	'October','November','December'
+];
+
+// loop through months using for
+for(var c = 0; c < months.length; c++) {
+	document.write('<p>'+ months[c] +'</p>');
+}
+
+var contact = {
+	firstname: 'John',
+	lastname: 'Doe',
+	age: 43,
+	email: 'jdoe@email.com',
+	employeenum: 32767
+};
+
+// iterator form of for loop
+// for (var iterator in object)
+for (var fieldName in contact) {
+	document.write('<p>'+ fieldName +' = '+ contact[fieldName] + '</p>');
+}
+
+var contactList = [
+	{ firstname: 'John', lastname: 'Doe', age: 43},
+	{ firstname: 'Tom', lastname: 'Doe', age: 23},
+	{ firstname: 'Peter', lastname: 'Doe', age: 54},
+	{ firstname: 'Kim', lastname: 'Doe', age: 11},
+	{ firstname: 'Betty', lastname: 'Doe', age: 44},
+	{ firstname: 'Alex', lastname: 'Doe', age: 32}
+];
+
+console.log(contactList[0].age);
+console.log(contactList[0]['age']);
+
+// build table structure from contact list
+
+// create base table structure
+var tableHTML = '<table><tbody>';
+
+// for each contact
+for (var c = 0; c < contactList.length; c++) {
+	// create new row
+	tableHTML += '<tr>';
+	// for each contact field
+	/*
+	tableHTML += '<td>'+contactList[c].firstname + '</td>' +
+				 '<td>'+contactList[c].lastname + '</td>' +
+				 '<td>'+contactList[c].age + '</td>';
+	*/
+	for (var fieldName in contactList[c]) {
+		// create new column
+		tableHTML += '<td>' + contactList[c][fieldName] + '</td>';
+	}
+	// close row
+	tableHTML += '</tr>';
+}
+// close table markup
+tableHTML += '</tbody></table>';
+
+// output table markup
+document.write(tableHTML);
+
+
+/* 
+  Simple example of a function that uses a callback function
+
+*/
+var each = function(srcArray, callback) {
+	for (var c = 0; c < srcArray.length; c++) {
+		callback(c, srcArray[c]);
+	}
+};
+
+each(contactList, function(index, element) {
+	document.write('<p>Index: ' + index + ' => ' + element.firstname + '</p>');
+});
+
+var callback = function(element, index) {
+	document.write('<p>Index: ' + index + ' => ' + element.firstname + '</p>');
+};
+
+contactList.forEach(callback);
+
+</script>
+</body>
+</html>

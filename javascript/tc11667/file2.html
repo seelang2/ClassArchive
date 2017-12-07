@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script type="text/javascript">
+/*
+	Return a file picker INPUT element node that will read the file and 
+	pass the file contents to the callback function.
+
+	options is an optional object that allows you to set a few parameters
+	on the file picker element:
+
+	id - Set the element id.
+	class - Set the element class(es).
+*/
+function getFileReader(callback, options) {
+	var pickerElem = document.createElement('INPUT');
+	pickerElem.type = 'file';
+	if (typeof options.id != "undefined") pickerElem.id = options.id;
+	if (typeof options.class != "undefined") pickerElem.className = options.class;
+
+	pickerElem.addEventListener('change', function(e) {
+		var srcFile = e.target.files[0];
+		// create instance of the FileReader object
+		var reader = new FileReader();
+		// set up process handler when file has been loaded
+		reader.onload = function(e) {
+			// hand off file data to callback function for processing
+			callback(e.target.result);
+		};
+		// now load the file
+		reader.readAsText(srcFile);
+	});
+	return pickerElem;
+}
+
+
+/* Demo */
+
+var doStuff = function(fileData) {
+	console.log(fileData);
+};
+
+var params = {
+	id: 'testfilepicker',
+	class: 'picker'
+};
+
+document.getElementById('target').appendChild( getFileReader(doStuff, params) );
+
+
+
+</script>
+</body>
+</html>

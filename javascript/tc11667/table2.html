@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+
+	<style type="text/css">
+	table, th, td {
+		border: 1px solid #7a7a7a;
+	}
+	table { border-collapse: collapse; }
+	th, td { padding: 0.5em 1em; }
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+
+
+
+
+<script>
+
+var contactList = [
+	{ firstname: 'John', lastname: 'Doe', age: 43},
+	{ firstname: 'Tom', lastname: 'Doe', age: 23},
+	{ firstname: 'Peter', lastname: 'Doe', age: 54},
+	{ firstname: 'Kim', lastname: 'Doe', age: 11},
+	{ firstname: 'Betty', lastname: 'Doe', age: 44},
+	{ firstname: 'Alex', lastname: 'Doe', age: 32}
+];
+
+// build table structure from contact list
+// create base table structure
+var tableElem = document.createElement('TABLE');
+var tbodyElem = document.createElement('TBODY');
+
+// connect TBODY to TABLE
+tableElem.appendChild(tbodyElem);
+
+// for each contact
+for (var c = 0; c < contactList.length; c++) {
+	// create new row
+	var trElem = document.createElement('TR');
+
+	// for each contact field
+	for (var fieldName in contactList[c]) {
+		// create new column (TD)
+		var tdElem = document.createElement('TD');
+		// create text node and append into TD
+		tdElem.appendChild(document.createTextNode(contactList[c][fieldName]));
+		// append TD into TR
+		trElem.appendChild(tdElem);
+	}
+	// append row into tbody
+	tbodyElem.appendChild(trElem);
+}
+
+// put our table branch into the target div
+document.getElementById('target').appendChild(tableElem);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+
+<script>
+/*
+function doStuff() {
+	return 'foo';
+}
+
+var doMoarStuff = function() {
+
+};
+
+var x = doStuff();
+console.log(doStuff());
+
+var foo = doStuff;
+
+console.log(foo());
+
+
+var bar = function() {
+	c = 5;
+	console.log('bar c:',c);
+};
+
+var c = 100;
+console.log(c); // 100
+bar(); // 5
+console.log(c); // 5
+
+var one = function(c) {
+	c = 7;
+	console.log('one:',c);
+}
+
+var c = 100;
+console.log(c); // 
+one(5); // 
+console.log(c); //
+
+
+var one = function(c) {
+	var two = function() {
+		c = 13;
+		console.log('two',c); //
+	}
+
+	console.log('one',c); //
+	two(); // 
+}
+
+var c = 100;
+console.log(c); // 
+one(c); 
+newTwo();
+console.log(c); //
+
+*/
+
+
+var one = function(c) {
+	var two = function() {
+		c = 13;
+		console.log('two',c); //
+	}
+
+	console.log('one',c); //
+	return two; // return the function
+}
+
+var c = 100;
+console.log(c); // 
+var newTwo = one(c); 
+newTwo();
+console.log(c); //
+
+
+
+</script>
+</body>
+</html>

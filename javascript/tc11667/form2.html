@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+
+	<style type="text/css">
+	body {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	#wrapper {
+		width: 300px;
+		border: 2px solid #7a7a7a;
+		margin: auto;
+		padding: 10px 20px;
+		box-sizing: border-box;
+	}
+
+	form label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<form id="form1" action="#" method="get">
+		<label>
+			<span>Field 1:</span>
+			<input name="firstname" type="text" value="John" />
+		</label>
+		<label>
+			<span>Field 2:</span>
+			<input name="lastname" type="text" value="Deo" />
+		</label>
+		<label>
+			<span>Field 3:</span>
+			<input name="age" type="text" value="34" />
+		</label>
+		<div><input type="submit" /></div>
+	</form>
+</div>
+
+<script>
+// see file2.html for more detail
+function getFileReader(callback, options) {
+	var pickerElem = document.createElement('INPUT');
+	pickerElem.type = 'file';
+	if (typeof options.id != "undefined") pickerElem.id = options.id;
+	if (typeof options.class != "undefined") pickerElem.className = options.class;
+
+	pickerElem.addEventListener('change', function(e) {
+		var srcFile = e.target.files[0];
+		// create instance of the FileReader object
+		var reader = new FileReader();
+		// set up process handler when file has been loaded
+		reader.onload = function(e) {
+			// hand off file data to callback function for processing
+			callback(e.target.result);
+		};
+		// now load the file
+		reader.readAsText(srcFile);
+	});
+	return pickerElem;
+}
+
+
+function validate(fileData) {
+	// convert file data from a JSON string into an object structure
+	var data = JSON.parse(fileData);
+	console.log(data);
+
+	for (var c = 0; c < data.length; c++) {
+
+		// find the field [name=fieldname]
+		var field = document.querySelectorAll('[name='+ data[c].fieldname +']')[0];
+
+		console.log(field);
+
+		// check the field value
+		if (field.value == data[c].fieldvalue) {
+			// SUCCESS
+			console.log('Field ' + data[c].fieldname + ': PASS');
+		} else {
+			// FAIL
+			console.log('Field ' + data[c].fieldname + ': FAIL');
+		}
+	}
+
+}
+
+document.body.appendChild(getFileReader(validate, {}));
+
+</script>
+</body>
+</html>

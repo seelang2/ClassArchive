@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+
+	<style type="text/css">
+	body {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	#wrapper {
+		width: 300px;
+		border: 2px solid #7a7a7a;
+		margin: auto;
+		padding: 10px 20px;
+		box-sizing: border-box;
+	}
+
+	form label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<form id="theform" action="#" method="get">
+		<label>
+			<span>Field 1:</span>
+			<input name="field1" type="text" />
+		</label>
+		<label>
+			<span>Field 2:</span>
+			<input name="field2" type="text" value="default value" />
+		</label>
+		<label>
+			<span>Field 3:</span>
+			<textarea name="field3">This space for rent</textarea>
+		</label>
+		<div><input type="submit" /></div>
+	</form>
+</div>
+
+<script>
+
+var fields = document.querySelectorAll('input[type=text]');
+
+console.log(fields);
+
+var field2 = document.querySelectorAll('[name=field2]');
+
+field2 = field2[0]; // get first item out of array since we only expect a single element
+
+console.log(field2.value);
+
+field2.value = 'A new value';
+
+var field3 = document.querySelectorAll('[name=field3]')[0];
+
+console.log(field3.value);
+field3.value = 'Some other text string.';
+
+</script>
+</body>
+</html>

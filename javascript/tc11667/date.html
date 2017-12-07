@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+
+<script>
+
+// define arrays for weekdays and months
+var weekdays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+var months = [
+	'January','February','March',
+	'April','May','June',
+	'July','August','September',
+	'October','November','December'
+];
+
+var ordinal = ['X', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th', 'th', 'st'];
+
+// create instance of the Date() object for current date
+var today = new Date();
+
+// output the completed string (ex: Today is Tuesday, December 5th, 2017.)
+document.write('<p>Today is ' + 
+					weekdays[today.getDay()] + ', ' +
+					months[today.getMonth()] + ' ' +
+					today.getDate() + ordinal[today.getDate()] + ', ' +
+					today.getFullYear() + 
+			   '.</p>');
+
+
+</script>
+</body>
+</html>

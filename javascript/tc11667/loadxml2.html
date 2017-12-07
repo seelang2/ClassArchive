@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+
+<script>
+
+function loadXMLDocFromLocalFile(file, callback) {
+	var fr = new FileReader();
+
+	fr.addEventListener("load", callback);
+	fr.readAsText(file);
+
+}
+
+
+loadXMLDocFromLocalFile('file:///C:/xampp/htdocs/tc11667/contacts.xml', function(e) {
+	console.log(this, e);
+})
+
+
+</script>
+</body>
+</html>

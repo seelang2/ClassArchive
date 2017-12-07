@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+
+<script>
+
+document.write('<p>Some basic output to the user agent');
+
+var message; // declared variable message - default value is undefined
+message = 'This space for rent.'; // assign a string as the value of the variable
+
+document.write('<h1>' + message + '</h1>');
+
+var contacts = ['John Kelly', 'Patrick Morgan', 'June Rivas', 'Lindsey Moungahan', 'Jesse Rose', 'Peter Thomas'];
+
+document.write('<p>Contact ' + contacts[2] + '</p>');
+
+var contactInfo = [
+	'June',
+	'Rivas',
+	'312-123-4567',
+	'jjr@email.com'
+];
+
+document.write('<p>' + contactInfo[3] + '</p>');
+
+var betterContactInfo = {
+	firstName: 'Jonathan',
+	lastName: 'Mercedes',
+	phone: '312-588-2300',
+	email: 'thatcarpetguy@email.com'
+};
+
+document.write('<p>' + betterContactInfo.email + '</p>');
+document.write('<p>' + betterContactInfo['email'] + '</p>');
+
+document['write']('<p>Yes, this works as well.</p>');
+
+var x = 'write';
+document[x]('<p>Yes, this works too.</p>');
+
+var contactList = [
+	{ firstname: 'John', lastname: 'Doe', age: 43},
+	{ firstname: 'Tom', lastname: 'Doe', age: 23},
+	{ firstname: 'Peter', lastname: 'Doe', age: 54},
+	{ firstname: 'Kim', lastname: 'Doe', age: 11},
+	{ firstname: 'Betty', lastname: 'Doe', age: 44},
+	{ firstname: 'Alex', lastname: 'Doe', age: 32}
+];
+
+
+//var target = contactList[3];
+//console.log(target.firstname);
+console.log(contactList[3].firstname); // chaining example
+
+
+
+</script>
+</body>
+</html>

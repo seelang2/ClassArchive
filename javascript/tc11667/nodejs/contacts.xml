@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contactlist>
+	<contact>
+		<firstname>John</firstname>
+		<lastname>Doe</lastname>
+		<age>34</age>
+	</contact>
+	<contact>
+		<firstname>Jane</firstname>
+		<lastname>Smith</lastname>
+		<age>23</age>
+	</contact>
+	<contact>
+		<firstname>Alex</firstname>
+		<lastname>Peters</lastname>
+		<age>33</age>
+	</contact>
+	<contact>
+		<firstname>Peter</firstname>
+		<lastname>Thomas</lastname>
+		<age>54</age>
+	</contact>
+</contactlist>

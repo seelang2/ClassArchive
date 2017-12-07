@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+
+	<style type="text/css">
+	table, th, td {
+		border: 1px solid #7a7a7a;
+	}
+	table { border-collapse: collapse; }
+	th, td { padding: 0.5em 1em; }
+	</style>
+</head>
+<body>
+
+<table id="thetable">
+	<tbody>
+		<tr id="row1">
+			<td data-name="firstname">John</td>
+			<td data-name="lastname">Doe</td>
+			<td data-name="age">23</td>
+		</tr>
+		<tr id="row2">
+			<td data-name="firstname">Jane</td>
+			<td data-name="lastname">Jones</td>
+			<td data-name="age">27</td>
+		</tr>
+		<tr id="row3">
+			<td data-name="firstname">Pat</td>
+			<td data-name="lastname">Michaels</td>
+			<td data-name="age">43</td>
+		</tr>
+	</tbody>
+</table>
+
+<script>
+/*
+window.onload = function() {
+
+}
+*/
+
+// defer script execution until after window loads
+window.addEventListener('load', function(e) { 
+
+	function getElement(selector) {
+		return document.querySelectorAll(selector)[0];
+	}
+
+	function setElement(selector, value) {
+		getElement(selector).innerText = value;
+	}
+
+	var sensitiveData = 'foo';
+
+	setElement('#row2 [data-name=firstname]', 'Paul');
+	setElement('#row2 [data-name=lastname]', 'Thompson');
+	setElement('#row2 [data-name=age]', '57');
+
+});
+
+
+
+</script>
+</body>
+</html>

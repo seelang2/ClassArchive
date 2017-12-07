@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Page</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+
+<script>
+
+// uses XmlHTTPRequest to load from URL and pass into callback
+function loadXMLDocFromURL(fileURL, callback) {
+	var req = new XMLHttpRequest();
+	req.addEventListener("load", callback);
+	req.open("GET", fileURL);
+	req.send();
+}
+
+loadXMLDocFromURL('contacts.xml', function() {
+	// this contains the request object
+	console.log(this.responseXML);
+
+	var XMLDoc = this.responseXML;
+
+	var contacts = XMLDoc.getElementsByTagName('contact');
+
+	console.log(contacts);
+
+});
+
+
+</script>
+</body>
+</html>
