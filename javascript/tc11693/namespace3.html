@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script>
+// namespace pattern using IIFE
+(function(App) {
+	// private scope is not accessible from the outside
+
+	var data = {}; // private and accessible only within the scope
+
+	var getData = function() { return data; }
+
+	App.start = function() {
+		console.log(getData());
+	};
+
+
+})(window.App = window.App || {});
+
+$(document).ready(App.start); // launches App.start on DOM ready
+
+</script>
+</body>
+</html>

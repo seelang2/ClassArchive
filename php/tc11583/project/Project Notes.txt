@@ -1,0 +1,25 @@
+Project Notes.txt
+
+This document tracks changes to the project made since the original class presentation. 
+
+In this first iteration, we first complete the login and authentication system described in class and outlined in the whiteboard note image. Refer back to the whiteboard diagram to help understand the flow. I also rewrote the logic in Auth::check() to flow better.
+
+Also, I've made a few changes to the Auth class structure. Instead of hardcoding the ACL table into the Auth class itself, I added a setter method to add entries. In similar fashion, I added setters to set a login url and logout url, and any other values Auth may need moving forward. This way, rather than have to configure the application in several locations, the static components can be configured in one place - in this case, inside init.php.
+
+I also implemented a system for 'forwarding' data for the next request. I created a new static class called Flash that uses a session variable to store data. Immediately after defining the class the init() method is called, which checks to see if a value has been set. If so, it extracts the value from the session and clears the session element. The get() and set() methods are used to get and set the data values respectively.
+
+You can see this in action by looking at the Auth::check() method after the database check. Also look at the login template (tpl_users_login.php) to see how the flash value is used.
+
+TODO (i.e. additional homework):
+-------------------------------
+Define a default page when the user requests /users/login.
+
+Make sure the system properly redirects to the default page when logging in from /users/login.
+
+When a user is saved, redirect the user to a different page other than /users/save and display a 
+message about the status of the save operation.
+
+Non-superuser users should not be able to assign admin-level rights to themselves. Change the user add template so that non-admin users do NOT get the permissions select dropdown.
+
+...?
+

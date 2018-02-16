@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: Helvetica, Arial, sans-serif;
+	}
+
+	div { box-sizing: border-box; }
+
+
+	.row, .header, .body {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.row {
+		flex-direction: row;
+		margin-bottom: 1em;
+		border-top: 1px solid #7a7a7a;
+		border-bottom: 1px solid #7a7a7a;
+	}
+
+
+	.row > * {
+		flex: 1 1 auto;/**/
+	}
+
+	.column {
+	}
+
+	.cell {
+		padding: 0.5em 1em;
+		border-top: 1px solid #cccccc;
+	}
+	.cell:first-child { border-top: none; }
+
+
+	.header {
+		font-weight: bold;
+		background: #ececec;
+	}
+
+
+	@media (min-width: 500px) {
+
+		.row {
+			flex-direction: column;
+			margin-bottom: 0;
+			border-top: none;
+		}
+
+		.header, .body {
+			flex-direction: row;
+		}
+
+		.header > *, .body > * {
+			flex: 0 0 25%;
+		}
+
+		.row:not(:first-child) .header {
+			display: none;
+		}
+
+		.cell {
+			border: none;
+		}
+
+	}
+
+	</style>
+</head>
+<body>
+
+
+<div id="wrapper"></div>
+
+
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script>
+
+var customerData = [
+	{
+		id: 		'123',
+		firstname: 	'John',
+		lastname: 	'Doe',
+		email: 		'jdoe@email.com',
+		balance: 	237.86
+	},
+	{
+		id: 		'289934',
+		firstname: 	'Jane',
+		lastname: 	'Doe',
+		email: 		'jdoe1@email.com',
+		balance: 	284.65
+	},
+	{
+		id: 		'3363',
+		firstname: 	'Alex',
+		lastname: 	'Doe',
+		email: 		'adoe@email.com',
+		balance: 	1132.99
+	},
+	{
+		id: 		'5676',
+		firstname: 	'Robert',
+		lastname: 	'Doe',
+		email: 		'rdoe@email.com',
+		balance: 	17.29
+	}
+];
+
+var $wrapper = $('#wrapper');
+
+var $header = 
+$('<div />')
+	.addClass('header')
+	.append('<div class="cell">ID</div>')
+	.append('<div class="cell">First Name</div>')
+	.append('<div class="cell">Last Name</div>')
+	.append('<div class="cell">Email</div>')
+	.append('<div class="cell">Balance</div>')
+
+// loop through customer data
+$.each(customerData, function(index, customer) {
+
+	var $body = 
+	$('<div />')
+		.addClass('body')
+		.append('<div class="cell">' + customer.id + '</div>')
+		.append('<div class="cell">' + customer.firstname + '</div>')
+		.append('<div class="cell">' + customer.lastname + '</div>')
+		.append('<div class="cell">' + customer.email + '</div>')
+		.append('<div class="cell">' + customer.balance + '</div>');
+
+	$('<div />')
+		.addClass('row')
+		.append($header.clone())
+		.append($body)
+		.appendTo($wrapper);
+
+});
+
+
+</script>
+</body>
+</html>

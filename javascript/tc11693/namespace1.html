@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script>
+// basic namespace pattern: Global Application object
+
+/*
+var App = {
+
+	data: {},
+
+	start: function() {
+
+	}
+
+};
+*/
+
+var App = App || {};
+App.data = {};
+
+App.start = function() {
+
+};
+
+$(document).ready(App.start); // launch app on DOM ready
+
+
+</script>
+</body>
+</html>

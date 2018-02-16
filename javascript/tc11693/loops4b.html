@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+
+	<style type="text/css">
+	
+	body {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+
+	table, th, td { border: 1px solid #7a7a7a; }
+	thead { background: #dfdfdf; }
+	table { border-collapse: collapse; }
+	th, td { padding: 0.5em 1em; }
+	tbody td:last-child { text-align: right; }
+
+	@media (max-width: 500px) {
+		th, td {
+			display: table-row-group;
+		}
+		table, tbody, thead, tr { width: 100%; }
+	}
+
+
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+
+<script>
+
+var customerData = [
+	{
+		id: 		'123',
+		firstname: 	'John',
+		lastname: 	'Doe',
+		email: 		'jdoe@email.com',
+		balance: 	237.86
+	},
+	{
+		id: 		'289934',
+		firstname: 	'Jane',
+		lastname: 	'Doe',
+		email: 		'jdoe1@email.com',
+		balance: 	284.65
+	},
+	{
+		id: 		'3363',
+		firstname: 	'Alex',
+		lastname: 	'Doe',
+		email: 		'adoe@email.com',
+		balance: 	1132.99
+	},
+	{
+		id: 		'5676',
+		firstname: 	'Robert',
+		lastname: 	'Doe',
+		email: 		'rdoe@email.com',
+		balance: 	17.29
+	},
+];
+
+// create var to hold running balance total
+var totalBalance = 0;
+
+// create table structure
+var tableHTML = '<table class="table table-responsive">';
+
+// add header section
+tableHTML += '<thead>';
+
+// loop through the fields of first record
+for (fieldName in customerData[0]) {
+	tableHTML += '<th>' + fieldName.toUpperCase() + '</th>';
+}
+
+tableHTML +='</thead><tbody>';
+
+// create a row for each customer
+for (var c = 0; c < customerData.length; c++) {
+	tableHTML += '<tr>';
+
+	// create column (TD) for each customer field
+	for (fieldName in customerData[c]) {
+		tableHTML += '<td>' + customerData[c][fieldName] + '</td>';
+		// add balance to total
+		if (fieldName == 'balance') {
+			totalBalance += customerData[c][fieldName];
+		}
+	}
+
+	// close row
+	tableHTML += '</tr>';
+}
+
+// figure out how many properties are inside the object
+var numberOfFields = Object.keys(customerData[0]).length;
+
+// add balance row to table
+tableHTML += '<tr><td colspan="'+ (numberOfFields - 1) +'">Total customer balance:</td><td>'+ totalBalance +'</td></tr>';
+
+// close out table tags
+tableHTML += '</tbody></table>';
+
+console.log(tableHTML);
+
+// add the table to the DOM
+document.getElementById('target').innerHTML = tableHTML;
+
+
+
+</script>
+</body>
+</html>

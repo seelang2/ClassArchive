@@ -1,0 +1,13 @@
+# Used for single point of entry into our application
+# Route requests to index.php at this directory level
+# Any request URL that's not a file (!-f) or a directory (!-d)
+# is rewritten to index.php
+
+# ref: http://httpd.apache.org/docs/current/mod/mod_rewrite.html
+#	     https://codex.wordpress.org/htaccess
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . ./index.php [L,QSA]
+

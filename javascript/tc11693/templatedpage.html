@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="wrapper"></div>
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script>
+
+var customerData = [
+	{
+		id: 		'123',
+		firstname: 	'John',
+		lastname: 	'Doe',
+		email: 		'jdoe@email.com',
+		balance: 	237.86
+	},
+	{
+		id: 		'289934',
+		firstname: 	'Jane',
+		lastname: 	'Doe',
+		email: 		'jdoe1@email.com',
+		balance: 	284.65
+	},
+	{
+		id: 		'3363',
+		firstname: 	'Alex',
+		lastname: 	'Doe',
+		email: 		'adoe@email.com',
+		balance: 	1132.99
+	},
+	{
+		id: 		'5676',
+		firstname: 	'Robert',
+		lastname: 	'Doe',
+		email: 		'rdoe@email.com',
+		balance: 	17.29
+	}
+];
+
+var App = {};
+App.data = {};
+App.start = function() {
+
+	App.data.customerTemplate = $('<div />').load('template-customeritem.html', App.updatePage);
+	
+}; // App.start
+
+App.updatePage = function() {
+
+	$.each(customerData, function(index, customer) {
+
+		App.data.customerTemplate
+			.clone()		// make a copy
+			.find('[data-field]')
+			.each(function(i, field) {
+
+				var fieldName = $(field).attr('data-field');
+
+				$(field)
+					.html(customer[fieldName]);
+
+			 })
+			.end() // revert back to full template instead of just the fields
+			.appendTo('#wrapper');
+
+	});
+
+}; // App.updatePage
+
+
+
+$(document).ready(App.start);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+
+
+<script>
+
+var urls = [
+	{ url: 'https://www.google.com', label: 'Google' },
+	{ url: 'http://www.w3schools.com', label: 'W3Schools' },
+	{ url: 'http://www.lipsum.com', label: 'Lipsum.com' },
+	{ url: 'https://www.sitebabble.com', label: 'SiteBabble' },
+	{ url: 'https://www.trainingconnection.com', label: 'Training Connection' }
+];
+
+
+var targetElem = document.getElementById('target');
+
+for (var c = 0; c < urls.length; c++) {
+	var link = '<a href="'+ urls[c].url +'">'+ urls[c].label +'</a><br />';
+	targetElem.innerHTML += link;
+}
+
+
+</script>
+</body>
+</html>

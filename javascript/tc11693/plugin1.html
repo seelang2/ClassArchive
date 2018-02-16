@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script>
+// Use IIFE to create private namespace
+(function($) {
+
+// any variables or functions defined in here are private
+// and accessible only from methods defined in here
+var privateData = {};
+var privateFunction = function() { };
+
+// defines new top-level method in the jQuery object
+$.newMethod = function() { 
+	// do stuff
+};
+
+// defines new collection object method
+$.fn.newMethod = function() {
+	// de stuff
+};
+
+
+})(jQuery);
+
+
+
+</script>
+</body>
+</html>

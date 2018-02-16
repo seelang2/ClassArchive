@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<table>
+	<tbody id="target">
+	</tbody>
+</table>
+
+
+<script>
+
+var customerRecord = {
+	id: 		'289934',
+	firstname: 	'John',
+	lastname: 	'Doe',
+	email: 		'jdoe@email.com',
+	balance: 	237.86
+};
+
+var tbodyElem = document.getElementById('target');
+
+var rowHTML = '<tr>';
+
+// create column for each field in contact record
+for (var fieldName in customerRecord) {
+	rowHTML += '<td>' + customerRecord[fieldName] + '</td>';
+}
+
+rowHTML += '</tr>';
+
+tbodyElem.innerHTML = rowHTML;
+
+</script>
+</body>
+</html>

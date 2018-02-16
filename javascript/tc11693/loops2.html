@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="target">dfghdhgsfgsfgnsfghdn fhx b</div>
+
+
+
+<script>
+
+var urls = [
+	'https://www.google.com',
+	'http://www.w3schools.com',
+	'http://www.lipsum.com',
+	'https://www.sitebabble.com',
+	'https://www.trainingconnection.com'
+];
+
+// find target and save reference to it
+var targetElem = document.getElementById('target');
+// empty the element before adding our links
+targetElem.innerHTML = '';
+
+// for each url in array
+for (var c = 0; c < urls.length; c++) {
+	// create link html
+	var link = '<a href="'+ urls[c] +'">'+ urls[c] +'</a><br />';
+	// add it to target element
+	targetElem.innerHTML += link;
+}
+
+
+
+
+
+</script>
+</body>
+</html>

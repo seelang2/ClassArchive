@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script>
+/*
+	Is JavaScript pass by value or pass by reference?
+*/
+
+// EXAMPLE 1
+var foo = function(obj) {
+	obj.newMember = 'foo';
+	console.log('obj.newMember:', obj.newMember);
+};
+
+var a = 'A string'; // string object
+foo(a);
+console.log('a.newMember:', a.newMember);
+
+/*
+	Both console logs return undefined because system objects like String, Number, Array. etc
+	are immutable and can't be changed directly 
+*/
+
+// EXAMPLE 2
+var bar = function(obj) {
+	obj = { prop1: 'foo' };
+	console.log('obj:', obj);
+};
+
+var b = 'A string'; // string object
+bar(b);
+console.log('b:', b);
+
+/*
+	bar outputs the NEW object referenced by obj, which is separate from the String being
+	referenced by b in the window scope, which remains unchanged.
+*/
+
+// EXAMPLE 3
+console.log('EXAMPLE 3');
+var c = { cprop1: 'thing' };
+foo(c);
+console.log('c:', c);
+
+// EXAMPLE 4
+console.log('EXAMPLE 4');
+var d = { dprop: 'blah' };
+bar(d);
+console.log('d:', d);
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

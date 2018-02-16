@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+
+	div { box-sizing: border-box; }
+
+
+	#parent {
+		border: 5px solid #000000;
+		display: flex;
+		flex-direction: row;
+	}
+
+	.child {
+		/*width: 100px;
+		height: 100px;*/
+		flex: 1 0 0;
+	}
+
+	#parent > div:nth-child(1) { background: red; flex: 0 0 25%; }
+	#parent > div:nth-child(2) { 
+		background: green; 
+	}
+	#parent > div:nth-child(2) > div { 
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+	}
+	#parent > div:nth-child(2) > div > div {
+		flex: 0 0 25%;
+	}
+
+	#parent > div:nth-child(2) > div > div:nth-child(1) { 
+		background: yellow;
+	}
+	#parent > div:nth-child(2) > div > div:nth-child(2) { 
+		background: purple;
+	}
+	#parent > div:nth-child(2) > div > div:nth-child(3) { 
+		background: orange;
+	}
+
+
+	#parent > div:nth-child(3) { background: blue; }
+
+
+	</style>
+</head>
+<body>
+
+<div id="parent">
+	<div class="child">
+		Curabitur congue, leo id accumsan tempus, ex libero scelerisque ex, eget lacinia lorem augue auctor leo. In non mollis nunc, ac elementum massa. Sed porttitor tellus eu nibh ornare, non consectetur mi cursus. Donec mollis purus ac porttitor gravida. Ut tellus ex, pulvinar auctor finibus a, bibendum nec justo. Vivamus ultrices porttitor felis nec mollis. Curabitur sollicitudin euismod erat, ut rhoncus arcu. Maecenas augue tortor, molestie sed lobortis a, commodo non mi. Aenean non convallis sapien. Maecenas at massa id enim egestas sodales ut at nunc. Nulla id sodales urna. Morbi sit amet lobortis metus, id varius libero. Morbi porttitor risus eget laoreet facilisis. Pellentesque ornare semper leo ut blandit. In hac habitasse platea dictumst. Donec porta posuere sagittis.
+	</div>
+	<div class="child">
+		<div>
+			<div>Curabitur congue, leo id accumsan tempus, ex libero scelerisque ex, eget lacinia lorem augue auctor leo.</div>
+			<div>Curabitur congue, leo id accumsan tempus, ex libero scelerisque ex, eget lacinia lorem augue auctor leo.</div>
+			<div>Curabitur congue, leo id accumsan tempus, ex libero scelerisque ex, eget lacinia lorem augue auctor leo.</div>
+		</div>
+	</div>
+	<!--<div class="child">
+		Curabitur congue, leo id accumsan tempus, ex libero scelerisque ex, eget lacinia lorem augue auctor leo. In non mollis nunc, ac elementum massa. Sed porttitor tellus eu nibh ornare, non consectetur mi cursus. Donec mollis purus ac porttitor gravida. Ut tellus ex, pulvinar auctor finibus a, bibendum nec justo. Vivamus ultrices porttitor felis nec mollis. Curabitur sollicitudin euismod erat, ut rhoncus arcu. 
+	</div>-->
+</div>
+
+</body>
+</html>

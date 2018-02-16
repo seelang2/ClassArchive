@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+	<style type="text/css">
+	body {
+		font-family: Helvetica, Arial, sans-serif;
+	}
+
+	div { box-sizing: border-box; }
+
+
+	.row {
+		margin-bottom: 1em;
+		border-top: 1px solid #7a7a7a;
+		border-bottom: 1px solid #7a7a7a;
+	}
+
+	.row > * {
+		flex: 1 1 auto;
+	}
+/*
+*/
+	.column {
+	}
+
+	.cell {
+		padding: 0.5em 1em;
+		border-top: 1px solid #cccccc;
+	}
+	.cell:first-child { border-top: none; }
+
+
+	.header {
+		font-weight: bold;
+		background: #ececec;
+	}
+
+
+	@media (min-width: 768px) {
+
+		.row {
+			margin-bottom: 0;
+			border-top: none;
+		}
+
+		.header > *, .body > * {
+			flex: 0 0 25%;
+		}
+/*
+		.row:not(:first-child) .header {
+			display: none;
+		}
+
+		.cell {
+			border: none;
+		}
+*/
+
+	}
+
+	</style>
+</head>
+<body>
+<!--
+<div class="row">
+		<div class="header">First Name</div>
+		<div class="header">Last Name</div>
+		<div class="header">Customer #</div>
+		<div class="header">Balance</div>
+</div>
+-->
+
+	<div class="row d-flex flex-row flex-md-column">
+		<div class="header d-flex flex-column flex-md-row">
+			<div class="cell">First Name</div>
+			<div class="cell">Last Name</div>
+			<div class="cell">Customer #</div>
+			<div class="cell">Balance</div>
+		</div>
+		<div class="body d-flex flex-column flex-md-row">
+			<div class="cell">John</div>
+			<div class="cell">Jones</div>
+			<div class="cell">123124</div>
+			<div class="cell">123.43</div>
+		</div>
+	</div>
+	<div class="row d-flex flex-row flex-md-column">
+		<div class="header d-flex flex-column flex-md-row d-md-none">
+			<div class="cell">First Name</div>
+			<div class="cell">Last Name</div>
+			<div class="cell">Customer #</div>
+			<div class="cell">Balance</div>
+		</div>
+		<div class="body d-flex flex-column flex-md-row">
+			<div class="cell">Mary</div>
+			<div class="cell">Smith</div>
+			<div class="cell">122132</div>
+			<div class="cell">3523.32</div>
+		</div>
+	</div>
+	<div class="row d-flex flex-row flex-md-column">
+		<div class="header d-flex flex-column flex-md-row d-md-none">
+			<div class="cell">First Name</div>
+			<div class="cell">Last Name</div>
+			<div class="cell">Customer #</div>
+			<div class="cell">Balance</div>
+		</div>
+		<div class="body flex-column flex-md-row d-flex">
+			<div class="cell">Janet</div>
+			<div class="cell">Rogers</div>
+			<div class="cell">235323</div>
+			<div class="cell">11.34</div>
+		</div>
+	</div>
+	<div class="row d-flex flex-row flex-md-column">
+		<div class="header d-flex flex-column flex-md-row d-md-none">
+			<div class="cell">First Name</div>
+			<div class="cell">Last Name</div>
+			<div class="cell">Customer #</div>
+			<div class="cell">Balance</div>
+		</div>
+		<div class="body d-flex flex-column flex-md-row">
+			<div class="cell">Bill</div>
+			<div class="cell">Willams</div>
+			<div class="cell">111232</div>
+			<div class="cell">145.99</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

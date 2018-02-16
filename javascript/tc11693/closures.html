@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<button id="button1">Click Me 1</button>
+<button id="button2">Click Me 2</button>
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script>
+/*
+var counter = 0;
+
+document.getElementById('button1').onclick = function() {
+	counter++;
+	alert('Button has been clicked ' + counter + ' times.');
+};
+
+*/
+
+function makeClicker() {
+	var counter = 0;
+
+	return function() {
+		counter++;
+		alert('Button has been clicked ' + counter + ' times.');
+	};
+
+};
+
+
+document.getElementById('button1').onclick = makeClicker();
+document.getElementById('button2').onclick = makeClicker();
+
+
+
+</script>
+</body>
+</html>

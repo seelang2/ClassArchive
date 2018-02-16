@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Grid Demo</title>
+
+	<style type="text/css">
+	div { box-sizing: border-box; }
+
+	#mainbox {
+		width: 80%;
+		border: 4px solid #000000;
+		margin: auto;
+
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-template-rows: 200px 200px 200px 200px;
+	}
+
+	#box1 { background: #ff0000 url(candy1.jpg); 
+		grid-column: 2 / 4; grid-row: 2 / 4; }
+	#box2 { background: #00ff00 url(candy2.jpg); 
+		grid-column: 1; grid-row: 3; }
+	#box3 { background: #0000ff url(candy3.jpg); 
+		grid-column: 4 / 5; grid-row: 2 / 5; }
+	#box4 { background: #f0f000 url(candy4.jpg); 
+		grid-column: 1 / 4; grid-row: 4; }
+	#box5 { background: #8c91aa url(candy5.jpg); 
+		grid-column: 1; grid-row: 1 / 3; }
+	#box6 { background: #5f9a2c url(candy6.jpg); 
+		grid-column: 2 / 5; grid-row: 1; }
+
+	</style>
+</head>
+<body>
+
+<div id="mainbox">
+	<div id="box1">1</div>
+	<div id="box2">2</div>
+	<div id="box3">3</div>
+	<div id="box4">4</div>
+	<div id="box5">5</div>
+	<div id="box6">6</div>
+</div>
+
+</body>
+</html>
