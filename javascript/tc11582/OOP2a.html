@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 16px;
+	}
+	</style>
+
+</head>
+<body>
+
+<script type="text/javascript">
+
+// Constructor function version
+
+// start with empty constructor function
+function Car() {};
+Car.prototype.make = 'Chevy';
+Car.prototype.model = 'Nova';
+Car.prototype.color = 'blue';
+Car.prototype.status = 'off';
+Car.prototype.start = function() {
+		this.status = 'on';
+	}
+
+var yourCar = new Car();
+
+function SUV() {};
+SUV.prototype.manualTrans = true;
+
+var randomCarA = new SUV();
+
+SUV.prototype = new Car();
+
+var randomCarB = new SUV();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	/* 
+		Define the "system" font family 
+		Ref: https://css-tricks.com/snippets/css/system-font-stack/;
+	*/
+	@font-face {
+	  font-family: system;
+	  font-style: normal;
+	  font-weight: 300;
+	  src: local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Ubuntu Light"), local("Segoe UI Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma");
+	}
+
+
+	body {
+		font-family: system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	}
+
+	</style>
+</head>
+<body>
+
+<div id="target"><p>X</p></div>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+/*
+// THIS CODE SUCKS! DO NOT DO THIS!
+$('#target').append('<p>append</p>');
+$('#target').prepend('<p>prepend</p>');
+$('#target').before('<p>before</p>');
+$('#target').after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo('#target');
+$('<p>prependTo</p>').prependTo('#target');
+$('<p>insertBefore</p>').insertBefore('#target');
+$('<p>insertAfter</p>').insertAfter('#target');
+
+*/
+
+/*
+// BETTER - always store a collection if needed more than once
+var $target = $('#target');
+
+$target.append('<p>append</p>');
+$target.prepend('<p>prepend</p>');
+$target.before('<p>before</p>');
+$target.after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo($target);
+$('<p>prependTo</p>').prependTo($target);
+$('<p>insertBefore</p>').insertBefore($target);
+$('<p>insertAfter</p>').insertAfter($target);
+*/
+
+// EVEN BETTER - take advantage of chaining when possible
+var $target = 
+$('#target')
+	.append('<p>append</p>')
+	.prepend('<p>prepend</p>')
+	.before('<p>before</p>')
+	.after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo($target);
+$('<p>prependTo</p>')
+	.prependTo($target)
+	.detach()
+	.insertBefore($target);
+$('<p>insertBefore</p>')
+	.insertBefore($target)
+	.attr('id','originalItem')
+	.clone()
+	.attr('id','itemCopy')
+	.prependTo($target);
+$('<p>insertAfter</p>').insertAfter($target);
+
+
+
+
+</script>
+</body>
+</html>

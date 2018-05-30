@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	/* 
+		Define the "system" font family 
+		Ref: https://css-tricks.com/snippets/css/system-font-stack/;
+	*/
+	@font-face {
+	  font-family: System;
+	  font-style: normal;
+	  font-weight: 300;
+	  src: local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Ubuntu Light"), local("Segoe UI Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma");
+	}
+
+
+	body {
+		font-family: System, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	}
+
+	table, th, td { border: 1px solid #7a7a7a; }
+	table { border-collapse: collapse; }
+	th, td { padding: 0.5em 1em; }
+
+	.oddrow { background: #efefef; }
+	.evenrow { background: #efffef; }
+
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+var data = 
+[
+	{ "id": 1, "firstname": "John", "lastname": "Doe", "age": 45 },
+	{ "id": 2, "firstname": "Mary", "lastname": "Smith", "age": 32 },
+	{ "id": 3, "firstname": "Peter", "lastname": "Gabriel", "age": 28 },
+	{ "id": 4, "firstname": "Mark", "lastname": "Daniels", "age": 54 },
+	{ "id": 5, "firstname": "Alex", "lastname": "Roberts", "age": 23 },
+	{ "id": 6, "firstname": "Beth", "lastname": "Lang", "age": 35 },
+	{ "id": 7, "firstname": "Amy", "lastname": "Pue", "age": 32 },
+	{ "id": 8, "firstname": "Paul", "lastname": "Tracy", "age": 28 },
+	{ "id": 9, "firstname": "Tracy", "lastname": "Paul", "age": 49 },
+	{ "id": 10, "firstname": "Janet", "lastname": "Lee", "age": 44 }
+];
+
+function buildTable(data) {
+	var $tbody = 
+	$('<table><tbody /></table>')
+		.children('tbody');
+
+	// loop through data and build rows for each element
+	$.each(data, function(index, employee) {
+		// create row
+		$('<tr />')
+			.append('<td>' + employee.id + '</td>')
+			.append('<td>' + employee.firstname + '</td>')
+			.append('<td>' + employee.lastname + '</td>')
+			.append('<td>' + employee.age + '</td>')
+			.appendTo($tbody);
+	});
+	// return completed table
+	return $tbody.parent();
+} // buildTable
+
+/*
+var $table = buildTable(data);
+$('#target').append($table);
+*/
+
+buildTable(data)
+	.find('tr:nth-child(odd)')
+		.addClass('oddrow')
+		.end()
+	.find('tr:nth-child(even)')
+		.addClass('evenrow')
+		.end()
+	.appendTo('#target');
+
+
+
+</script>
+</body>
+</html>

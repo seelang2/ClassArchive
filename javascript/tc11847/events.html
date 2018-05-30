@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	/* 
+		Define the "system" font family 
+		Ref: https://css-tricks.com/snippets/css/system-font-stack/;
+	*/
+	@font-face {
+	  font-family: System;
+	  font-style: normal;
+	  font-weight: 300;
+	  src: local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Ubuntu Light"), local("Segoe UI Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma");
+	}
+
+
+	body {
+		font-family: System, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	}
+
+	</style>
+</head>
+<body>
+
+<button id="button1">Click Me!</button>
+<button id="button2">Click Me!</button>
+<button id="button3">Click Me!</button>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+function doStuff() {
+	alert('Ouch!');
+}
+
+// bind an event to the button
+$('#button2').on('click', doStuff);
+
+
+
+</script>
+</body>
+</html>

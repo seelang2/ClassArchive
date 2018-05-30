@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 16px;
+	}
+
+	table, th, td { border: 1px solid #7a7a7a; }
+	table { border-collapse: collapse; }
+	th, td { padding: 0.5em 1em; }
+
+
+	table tbody tr.hover { background: #FFC; }
+
+	tbody tr:nth-child(odd) {
+		background: #96E5FF;
+	}
+	tbody tr:nth-child(even) {
+		background: #D7EFF7;
+	}
+
+	</style>
+
+</head>
+<body>
+
+<div id="target"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+// implement namespace using IIFE
+(function(App) {
+
+// define private data
+var data = {};
+
+data.profileData = [
+	{ 
+		"epa": "1",
+		"approval": "3/16/2017",
+		"tsdf": "17",
+		"facility": "Texas",
+		"client": "3M",
+		"hazardous": "N"
+	},
+	{ 
+		"epa": "2",
+		"approval": "4/19/2017",
+		"tsdf": "37",
+		"facility": "Idaho",
+		"client": "DuPont",
+		"hazardous": "Y"
+	},
+	{ 
+		"epa": "3",
+		"approval": "3/18/2017",
+		"tsdf": "17",
+		"facility": "Texas",
+		"client": "Argonne",
+		"hazardous": "N"
+	},
+	{ 
+		"epa": "4",
+		"approval": "4/11/2017",
+		"tsdf": "37",
+		"facility": "Idaho",
+		"client": "Mosanto",
+		"hazardous": "Y"
+	},
+	{ 
+		"epa": "5",
+		"approval": "4/19/2017",
+		"tsdf": "17",
+		"facility": "Texas",
+		"client": "3M",
+		"hazardous": "N"
+	},
+	{ 
+		"epa": "6",
+		"approval": "4/27/2017",
+		"tsdf": "37",
+		"facility": "Idaho",
+		"client": "DuPont",
+		"hazardous": "Y"
+	}
+];
+
+
+App.start = function() {
+	console.log(data);
+}
+
+})(window.App = window.App || {}); // IIFE
+
+
+App.outsider = function() {
+	console.log(data);
+};
+
+
+
+$(document).ready(function() {
+
+var data = [];
+
+
+// named function so we don't have multiple copies lying about
+// one ring to rule them all
+var doHover = function(e) {
+	//console.log(e);
+	// 'this' refers to element event is bound to (usually)
+	// when using the selector filter, 'this' is bound to the
+	// element being filtered (listened for) instead - the TR
+	$(this).toggleClass('hover');
+
+}; // doHover
+
+var buttonHandler = function(e) {
+	// 'this' points to filtered BUTTON
+	var $lineItem = $(this).closest('tr');
+
+	switch(true) {
+		case $(this).hasClass('btnEdit'): // EDIT button
+			console.log('Editing item ' + $lineItem.attr('data-index'));
+			console.log('Data:', $lineItem.data('profileData'));
+
+			$(this)
+				.toggleClass('btnEdit btnCancel')
+				.html('Cancel');
+
+		break;
+		case $(this).hasClass('btnDelete'): // DELETE button
+			console.log('Deleting item ' + $lineItem.attr('data-index'));
+			console.log('Data:', $lineItem.data('profileData'));
+		break;
+		case $(this).hasClass('btnCancel'): // CANCEL button
+			console.log('Canceling operation');
+
+			$(this)
+				.toggleClass('btnEdit btnCancel')
+				.html('Edit');
+				
+		break;
+	} // switch
+
+}; // buttonHandler
+
+var $tbody =
+$('<table>')												// create TABLE element
+	.append('<thead />')							// add THEAD to TABLE
+	.children('thead')								// traverse to THEAD
+	.each(function(i, thead) {				// do something on the side
+		var rowHTML = '<tr>';						// start TR HTML string
+
+		$.each(data[0], function(fieldName, fieldValue) {
+			rowHTML += '<th>' + fieldName.toUpperCase() + '</th>';
+		});
+
+		rowHTML += '<th>Options</th></tr>';
+		$(thead).html(rowHTML);					// set inner HTML of THEAD
+
+	 })
+	.end()														// revert collection back to TABLE
+	.append('<tbody />')							// add TBODY
+	.children('tbody')								// traverse to TBODY
+	.each(function(i, tbody) {
+
+		// loop through data
+		$.each(data, function(index, profile) {
+
+			$('<tr />')
+				.addClass('item')
+				.attr('data-index', profile.epa)
+				.data('profileData', profile)
+				.each(function(i, trElem) {
+					// kind of like a pseudo-IIFE bubble aside
+					$.each(profile, function(fieldName, fieldValue) {
+						$('<td />')
+							.append(fieldValue)
+							.appendTo(trElem);
+					});
+				 })
+				.append('<td />') 					// for option buttons
+				.children(':last-child') 		// traverse to last TD added
+					.append('<button />')
+						.children(':last-child')
+						.append('Edit')
+						.addClass('btnEdit')
+						.end()									// revert back to TD
+					.append('<button />')
+						.children(':last-child')
+						.append('Delete')
+						.addClass('btnDelete')
+						.end()									// revert back to TD
+					.end()										// revert back to TR
+				.appendTo(tbody);
+
+		}); // $.each data
+	 })																// each
+	.on('mouseover mouseout', 'tr', doHover)
+	.on('click', 'button', buttonHandler)
+	.end()														// revert back to TABLE
+	.appendTo('#target')							// add table to DOM
+	.children('tbody');								// traverse back to TBODY for var
+
+
+
+// example retrieving data content
+console.log($tbody.children('tr').eq(1).data('profileData'));
+
+
+}); // document.ready
+
+$(document).ready(function() {
+	console.log('Other system ready');
+});
+
+</script>
+</body>
+</html>

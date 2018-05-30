@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 16px;
+	}
+	</style>
+
+</head>
+<body>
+
+<script type="text/javascript">
+
+// Prototypal Inheritance Model
+
+/*
+var Car = {
+	make: 'Mercedes',
+	model: '725i',
+	status: 'off',
+	start: function() {
+		this.status = 'on';
+	}
+};
+*/
+var Car = {};
+Car.make = 'Mercedes';
+Car.model = '725i';
+Car.status = 'off';
+Car.start = function() {
+	this.status = 'on';
+};
+
+// create derivative object from Car
+var myCar = Object.create(Car);
+
+var SUV = Object.create(Car);
+SUV.has4WD = true;
+
+var yourCar = Object.create(SUV);
+
+
+</script>
+</body>
+</html>

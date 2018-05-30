@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="EN">
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 16px;
+	}
+	</style>
+
+</head>
+<body>
+
+<script type="text/javascript">
+var lang = 'EN';
+
+var localization = {
+	EN: {
+		weekdays: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+		months: ['Ja','Fe','Ma','Ap','Ma','J','J','A','S','O','N','D']
+	},
+	JP: {
+		weekdays: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+		months: ['Ja','Fe','Ma','Ap','Ma','J','J','A','S','O','N','D']
+	}
+};
+
+var today = new Date(); 
+
+console.log(localization[lang].weekdays[today.getDay()]);
+
+
+
+</script>
+</body>
+</html>

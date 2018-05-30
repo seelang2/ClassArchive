@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	/* 
+		Define the "system" font family 
+		Ref: https://css-tricks.com/snippets/css/system-font-stack/;
+	*/
+	@font-face {
+	  font-family: System;
+	  font-style: normal;
+	  font-weight: 300;
+	  src: local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Ubuntu Light"), local("Segoe UI Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma");
+	}
+
+
+	body {
+		font-family: System, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	}
+
+	table, th, td { border: 1px solid #7a7a7a; }
+	table { border-collapse: collapse; }
+	th, td { padding: 0.5em 1em; }
+
+	.oddrow { background: #efefef; }
+	.evenrow { background: #efffef; }
+	tr.hover { background: #ffffcc; }
+
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+var data = 
+[
+	{ "key": 1, "firstname": "John", "lastname": "Doe", "age": 45, "dept": 1 },
+	{ "key": 2, "firstname": "Mary", "lastname": "Smith", "age": 32, "dept": 1 },
+	{ "key": 3, "firstname": "Peter", "lastname": "Gabriel", "age": 28, "dept": 1 },
+	{ "key": 4, "firstname": "Mark", "lastname": "Daniels", "age": 54, "dept": 1 },
+	{ "key": 5, "firstname": "Alex", "lastname": "Roberts", "age": 23, "dept": 1 },
+	{ "key": 6, "firstname": "Beth", "lastname": "Lang", "age": 35, "dept": 1 },
+	{ "key": 7, "firstname": "Amy", "lastname": "Pue", "age": 32, "dept": 1 },
+	{ "key": 8, "firstname": "Paul", "lastname": "Tracy", "age": 28, "dept": 1 },
+	{ "key": 9, "firstname": "Tracy", "lastname": "Paul", "age": 49, "dept": 1 },
+	{ "key": 10, "firstname": "Janet", "lastname": "Lee", "age": 44, "dept": 1 }
+];
+
+function buildTable(data) {
+	var $tbody = 
+	$('<table><tbody /></table>')
+		.children('tbody');
+
+	// loop through data and build rows for each element
+	$.each(data, function(index, employee) {
+		// create row
+		var $tr = $('<tr />').appendTo($tbody);
+		// loop through fields in object and create cells
+		$.each(employee, function(fieldName, fieldValue) {
+			$('<td>' + fieldValue + '</td>').appendTo($tr);
+		});
+			
+	});
+	// return completed table
+	return $tbody.parent();
+} // buildTable
+
+function doHover() {
+	$(this).toggleClass('hover');
+}
+
+/*
+var $table = buildTable(data);
+$('#target').append($table);
+*/
+
+buildTable(data)
+	.find('tr:nth-child(odd)')
+		.addClass('oddrow')
+		.end()
+	.find('tr:nth-child(even)')
+		.addClass('evenrow')
+		.end()
+	.find('tr')
+		.on('mouseover mouseout', doHover)
+	.appendTo('#target');
+
+
+
+</script>
+</body>
+</html>

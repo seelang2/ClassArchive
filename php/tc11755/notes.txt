@@ -1,0 +1,16 @@
+notes.txt
+
+Event Planning System
+Calendar/List of Events
+Event Categories
+Pay for Events
+API for 3rd party integration
+
+Dynamic forms
+
+User registration/Authentication
+Event registration
+Event creation
+
+
+https://xkcd.com/327/

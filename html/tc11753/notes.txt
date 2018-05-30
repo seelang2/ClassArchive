@@ -1,0 +1,100 @@
+notes.txt
+
+Three layers of the web
+Content - Hypertext Markup Language (HTML)
+Presentation - Cascading Style Sheets (CSS)
+Behavior - JavaScript
+
+HTML
+Known elements the browser understands
+Uses eXtensible Markup Language (XML) to describe content
+
+ELEMENT
+<ELEMENT>Content</ELEMENT>
+
+<ROLODEX>
+	<CONTACT index="42" category="VIP">
+		<FIRSTNAME>John</FIRSTNAME>
+		<LASTNAME>Doe</LASTNAME>
+		<PHONE>(312)588-2300</PHONE>
+	</CONTACT>
+</ROLODEX>
+
+Always NEST tags, never cross them:
+
+<B><EM>Some stuff</B></EM> <-- Never do this
+<B><EM>Some stuff</EM></B> <-- Make sure elements are nested
+
+<INPUT name="firstname" type="text" /> <-- Self-closing or "void" tag
+<INPUT type="checkbox" checked />
+
+<!-- 
+HTML/XML comment 
+-->
+
+
+
+
+https://www.google.com/search?source=hp&ei=TgPeWqvGCY3KsQXd-YmYBg&q=This+space+for+rent&oq=This+space+for+rent&gs_l=psy-ab.3..0l4j0i22i30k1l6.8939.11364.0.11518.19.18.0.1.1.0.124.1548.13j5.18.0....0...1c.1.64.psy-ab..0.19.1556...0i131k1.0.6-gSQsm4V6o
+
+https://www.yourdomain.com/sales/products.html
+
+(while at products.html)
+
+<a href="https://www.yourdomain.com/sales/pricing.html">
+href="pricing.html" <-- https://www.yourdomain.com/sales/pricing.html
+
+href="/page1.html" <-- https://www.yourdomain.com/sales/page1.html X
+
+(while at page1.html)
+
+href="sales/pricing.html"
+href="/sales/pricing.html"
+
+(while at pricing.html)
+href="/support/help.html" <-- https://www.yourdomain.com/support/help.html
+href="support/help.html" <-- https://www.yourdomain.com/sales/support/help.html X
+
+Identifying Elements
+Use IDs to uniquely identify a single element on a page
+Use classes to identify elements as a group on a page
+
+<p id="theonething">.....</p>
+<p class="secondary">...</p>
+<p class="secondary">...</p>
+<p class="secondary">...</p>
+
+CSS
+
+selector {
+	property1: value;
+	property2: value;
+}
+
+Three ways to apply CSS rules to HTML document:
+
+Inline style (style directly on element):
+<h1 style="color:red;">Heading</h1>
+
+Embedded stylesheet (stylesheet is part of HTML document):
+<style type="text/css">
+	h1 { color: red; }
+</style>
+
+External stylesheet (stylesheet is separate and linked to HTML document):
+
+
+margin-left
+margin-right
+margin-top
+margin-bottom
+
+margin: 25px; /* All 4 sides - TRBL */
+margin: 10px 25px; /* Vertical Horizontal */
+margin: 10px 15px 10px 25px; /* T R B L */
+
+
+
+Clearfix info
+http://cssmojo.com/the-very-latest-clearfix-reloaded/
+

@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	}
+
+
+	</style>
+</head>
+<body>
+
+<h1>Page Heading</h1>
+
+<p>This is the page content.</p>
+
+
+<script type="text/javascript">
+
+var text = 'This space for rent.'; // assign string object to text
+var something; // undefined by default
+
+document.write('<p>' + text.toUpperCase() + '</p>');
+
+text = text.toUpperCase() // reassign text to NEW string object
+
+
+var a = 1;
+console.log(a); 		// 1
+console.log(a++); 	// 1
+console.log(a);			// 2
+
+var a = 1;
+console.log(a); 		// 1
+console.log(++a); 	// 2
+console.log(a);			// 2
+
+x = undefined;
+if (!x) console.log('Not X is true');
+if (x == false) console.log('X is falsy');
+
+firstnames = ['Tom', 'Dick', 'Harry', 2341, text];
+
+console.log(firstnames[1]); // Dick
+
+var contact = {
+	firstname: 'John',
+	lastname: 'Doe',
+	email: 'jdoe@email.com'
+	//hashkey: contact.firstname + contact.lastname //doesn't work
+};
+
+var contact2 = {};
+contact2.firstname = 'Jane';
+contact2.lastname = 'Smith';
+contact2.hashkey = contact.firstname + contact.lastname
+contact2.email = 'jsmith@email.com';
+contact2.age = 32;
+
+console.log(contact.firstname);
+console.log(contact['firstname']); // can use array notation as well
+
+var fieldName = 'email';
+
+// can't use dot notation with variable
+console.log(contact.fieldName); 
+// use array notation instead
+console.log(contact[fieldName]); 
+
+
+if (false) 
+console.log('Line 1');
+else 
+console.log('Line 2');
+
+console.log('Line 3');
+console.log('Line 4');
+
+
+
+
+
+</script>
+</body>
+</html>

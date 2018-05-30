@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 16px;
+	}
+
+	table, th, td { border: 1px solid #7a7a7a; }
+	table { border-collapse: collapse; }
+	th, td { padding: 0.5em 1em; }
+	</style>
+
+</head>
+<body>
+
+<table id="thetable">
+	<tbody id="target">
+	</tbody>
+</table>
+
+<script type="text/javascript">
+var data = [
+	{ 
+		"epa": "1",
+		"approval": "3/16/2017",
+		"tsdf": "17",
+		"facility": "Texas",
+		"client": "3M",
+		"hazardous": "N"
+	},
+	{ 
+		"epa": "2",
+		"approval": "4/19/2017",
+		"tsdf": "37",
+		"facility": "Idaho",
+		"client": "DoPont",
+		"hazardous": "Y"
+	}
+];
+
+
+// get reference to DOM node we're attaching stuff to
+var tbodyElem = document.getElementById('target');
+var trElem;
+var tdElem;
+
+// detach node from live DOM before building branch
+tbodyElem.parentNode.removeChild(tbodyElem);
+
+// loop through data and create rows for each data record
+for (var c = 0; c < data.length; c++) {
+	// add rows to tbody
+	trElem = document.createElement('TR'); // create TR
+	tbodyElem.appendChild(trElem); // attach TR to TBODY
+
+	// create TDs for each field in record
+	for (var fieldName in data[c]) {
+		// create TD
+		tdElem = document.createElement('TD');
+		// append TD to TR
+		trElem.appendChild(tdElem);
+		// create text node and append to TD
+		tdElem.appendChild(document.createTextNode(data[c][fieldName]));
+	}
+}
+
+// create header
+var tHeadElem = document.createElement('THEAD');
+tHeadElem.id = 'thethead';
+
+trElem = document.createElement('TR'); // create TR
+tHeadElem.appendChild(trElem); // attach TR to THEAD
+// create THs for each field in record
+for (var fieldName in data[0]) {
+	// create TH
+	tdElem = document.createElement('TH');
+	// append TH to TR
+	trElem.appendChild(tdElem);
+	// create text node and append to TH
+	tdElem.appendChild(document.createTextNode(fieldName.toUpperCase()));
+}
+
+
+// reattach completed branch to DOM
+document
+	.getElementById('thetable')
+	.appendChild(tHeadElem);
+
+document
+	.getElementById('thetable')
+	.appendChild(tbodyElem);
+
+
+</script>
+</body>
+</html>

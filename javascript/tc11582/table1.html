@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 16px;
+	}
+
+	table, th, td { border: 1px solid #7a7a7a; }
+	table { border-collapse: collapse; }
+	th, td { padding: 0.5em 1em; }
+	</style>
+
+</head>
+<body>
+
+<table id="thetable">
+	<tbody id="target">
+	</tbody>
+</table>
+
+<script type="text/javascript">
+
+// get reference to DOM node we're attaching stuff to
+var tbodyElem = document.getElementById('target');
+
+// detach node from live DOM before building branch
+tbodyElem.parentNode.removeChild(tbodyElem);
+
+// add rows to tbody
+var trElem = document.createElement('TR'); // create TR
+tbodyElem.appendChild(trElem); // attach TR to TBODY
+
+// create TD
+var tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('1'));
+
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('3/16/2017'));
+
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('17'));
+
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('Texas'));
+
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('3M'));
+
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('N'));
+
+// now do next row
+// add rows to tbody
+trElem = document.createElement('TR'); // create TR
+tbodyElem.appendChild(trElem); // attach TR to TBODY
+
+// create TD
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('2'));
+
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('4/19/2017'));
+
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('37'));
+
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('Idaho'));
+
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('DuPont'));
+
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('Y'));
+
+// reattach completed branch to DOM
+document
+	.getElementById('thetable')
+	.appendChild(tbodyElem);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 16px;
+	}
+	</style>
+
+</head>
+<body>
+
+<script type="text/javascript">
+
+var foo = function(obj) {
+	obj.newProp = 'New Property';
+	console.log('foo:',obj);
+	console.log('foo:', typeof obj.newProp);
+};
+
+var bar = function(obj) {
+	obj = { prop1: 'Value 1', prop2: 'Value 2' };
+	console.log('bar:',obj);
+	console.log('bar:', typeof obj.prop1);
+}
+
+var a = 'Some text';
+console.log('a:',a);
+foo(a);
+console.log('a:',a);
+console.log('a:',typeof a.newProp);
+console.log('a:',a);
+bar(a);
+console.log('a:',a);
+console.log('a:',typeof a.newProp);
+
+
+var b = { oldProp: 'Original Property'};
+console.log('b:',b);
+foo(b);
+console.log('b:',b);
+console.log('b:',typeof b.newProp);
+console.log('b:',b);
+bar(b);
+console.log('b:',b);
+console.log('b:',typeof b.newProp);
+
+
+var c = { content: 'Stuff' };
+
+var x = function(obj) {
+	obj = { foo: 'bar' };
+	console.log('x:',obj);
+	c = obj;
+	d = obj;
+	console.log('x:',c);
+	console.log('x:',d);
+};
+
+console.log('c:',c);
+x(c);
+console.log('c:',c);
+console.log('d:',d);
+
+d.bar = 'foo';
+console.log('d:',d);
+console.log('c:',c);
+
+</script>
+</body>
+</html>

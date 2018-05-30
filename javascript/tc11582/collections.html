@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 16px;
+	}
+	</style>
+
+</head>
+<body>
+
+<ul>
+	<li>List item</li>
+	<li>List item</li>
+	<li>List item</li>
+	<li>List item</li>
+	<li>List item</li>
+	<li>List item</li>
+	<li>List item</li>
+	<li>List item</li>
+</ul>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+var $liList = 
+$('li');
+
+$liList
+	.addClass('listitem')
+	.each(function(index, element) {
+		// element is just a DOM node, so we need to pass it into
+		// the $() to get a collection object again
+		$(element).attr('id', 'item-' + (index + 1) );
+
+	 });
+
+
+
+</script>
+</body>
+</html>

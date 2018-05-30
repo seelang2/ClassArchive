@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	/* 
+		Define the "system" font family 
+		Ref: https://css-tricks.com/snippets/css/system-font-stack/;
+	*/
+	@font-face {
+	  font-family: System;
+	  font-style: normal;
+	  font-weight: 300;
+	  src: local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Ubuntu Light"), local("Segoe UI Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma");
+	}
+
+
+	body {
+		font-family: System, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	}
+
+	table, th, td { border: 1px solid #7a7a7a; }
+	table { border-collapse: collapse; }
+	th, td { padding: 0.5em 1em; }
+
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+
+$('<table />')									// collection is the TABLE
+	.prepend('<thead />') 				// add THEAD as first child
+	.children('thead') 						// traverse to THEAD
+		.append('<tr />')						// add TR to THEAD
+		.children('tr')							// traverse to TR
+			.append('<th>First</th>')	// append TD
+			.append('<th>Last</th>')	// append TD
+			.append('<th>Age</th>')		// append TD
+			.end() 										// revert to THEAD
+		.end() 											// revert to TABLE
+	.append('<tbody />')					// append TBODY to TABLE
+	.children('tbody')						// traverse to TBODY
+		.append('<tr />') 					// append TR to TBODY
+		.children(':last-child')		// traverse to TR
+			.append('<td>John</td>') 	// append TD
+			.append('<td>Doe</td>') 	// append TD
+			.append('<td>45</td>') 		// append TD
+			.end() 										// revert to TBODY
+		.append('<tr />') 					// append TR to TBODY
+		.children(':last-child') 		// traverse to the last TR
+			.append('<td>Jane</td>') 	// append TD
+			.append('<td>Smith</td>') // append TD
+			.append('<td>37</td>') 		// append TD
+			.end() 										// revert to TBODY
+		.append('<tr />') 					// append TR to TBODY
+		.children(':last-child') 		// traverse to the last TR
+			.append('<td>Edgar</td>') // append TD
+			.append('<td>Jones</td>') // append TD
+			.append('<td>24</td>') 		// append TD
+			.end() 										// revert to TBODY
+		.end() 											// revert to TABLE
+	.appendTo('#target'); 				// and attach to DOM
+
+</script>
+</body>
+</html>

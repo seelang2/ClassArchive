@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+
+	label span,
+	label input {
+		display: inline-block;
+	}
+
+	label span { width: 120px; text-align: right; }
+	input + span { text-align: left; }
+	
+	</style>
+
+</head>
+<body>
+
+<form action="#" method="get">
+	<input type="hidden" name="field3" value="some value" />
+
+<!--
+	<label for="fieldone">Field 1:</label>
+	<input id="fieldone" type="text" name="field1" />
+-->
+
+	<label>
+		<span>Field 2:</span>
+		<input name="field2" type="password" />
+	</label>
+
+	<label>
+		<span>Field 3:</span>
+		<input name="field3" type="text" />
+	</label>
+
+	<label>
+		<span>Field sdfsdf 4:</span>
+		<input name="field4" type="text" />
+	</label>
+
+	<label>
+		<span>Field  sdfd s 5:</span>
+		<input name="field5" type="text" />
+	</label>
+
+	<p>Select your interests:</p>
+
+	<fieldset>
+		<legend>Interests</legend>
+		<label>
+			<input type="checkbox" name="interests" value="spores" checked />
+			<span>Spores</span>
+		</label>
+
+		<label>
+			<input type="checkbox" name="interests" value="mold" />
+			<span>Mold</span>
+		</label>
+
+		<label>
+			<input type="checkbox" name="interests" value="fungus" />
+			<span>Fungus</span>
+		</label>
+	</fieldset>
+
+	<p>Select your gender:</p>
+	<fieldset>
+		<legend>Gender</legend>
+
+		<label>
+			<input type="radio" name="gender" value="cismale" />
+			<span>Cisgender Male</span>
+		</label>
+
+		<label>
+			<input type="radio" name="gender" value="cisfemale" />
+			<span>Cisgender Female</span>
+		</label>
+
+		<label>
+			<input type="radio" name="gender" value="transmale" />
+			<span>Trans Male</span>
+		</label>
+
+		<label>
+			<input type="radio" name="gender" value="transfemale" />
+			<span>Trans Female</span>
+		</label>
+
+		<label>
+			<input type="radio" name="gender" value="fluid" />
+			<span>Fluid</span>
+		</label>
+
+		<label>
+			<input type="radio" name="gender" value="other" />
+			<span>Other</span>
+		</label>
+	</fieldset>
+
+	<p>Pick a month:</p>
+
+	<div>
+		<select name="month">
+			<option value="Jan">January</option>
+			<option value="Feb">February</option>
+			<option value="Mar">March</option>
+			<option value="Apr">April</option>
+			<option value="May">May</option>
+			<option value="Jun">June</option>
+		</select>
+	</div>
+
+	<p>Select one or more years:</p>
+
+	<div>
+		<select name="year" size="6" multiple>
+			<option value="2018">2018</option>
+			<option value="2017">2017</option>
+			<option value="2017">2017</option>
+			<option value="2016">2016</option>
+			<option value="2015">2015</option>
+			<option value="2014">2014</option>
+			<option value="2013">2013</option>
+			<option value="2012">2012</option>
+			<option value="2011">2011</option>
+			<option value="2010">2010</option>
+			<option value="2009">2009</option>
+			<option value="2008">2008</option>
+			<option value="2007">2007</option>
+		</select>
+	</div>
+
+	<p>Describe yourself in 300 words or more:</p>
+
+	<textarea name="bio">Tell us about your childhood...</textarea>
+
+	<div>
+		<input type="submit" />
+		<button>Click Me To Submit Too</button>
+	</div>
+</form>
+
+
+</body>
+</html>

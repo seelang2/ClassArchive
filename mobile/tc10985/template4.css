@@ -1,0 +1,36 @@
+/* CSS Document */
+
+
+#masthead {
+	background: #47617F;
+	color: #ffffff;
+	height: 80px;
+}
+
+#pagefooter {
+	background: #151924;
+	color: #ffffff;
+	min-height: 125px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+
+#first {
+	background: #ff0000;
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+
+#second {
+	background: #00ff00;
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+
+#third {
+	background: #0000ff;
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+
+

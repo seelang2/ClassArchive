@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 16px;
+	}
+	</style>
+
+</head>
+<body>
+
+<script type="text/javascript">
+
+
+foo();
+
+// function declarations are hoisted to the top of the scope
+// by the interpreter
+function foo() {
+	console.log('foo');
+}
+
+
+//bar(); // exception because bar is not defined
+
+// statements are NOT hoisted like declarations
+var bar = function() {
+	console.log('bar');
+};
+
+bar();
+
+//xyz(); // throws exception because hoisting breaks(?!)
+
+if (typeof xyz == "undefined") {
+	console.log('undefined function');
+
+	function xyz() {
+		console.log('xyz');
+	}
+
+	xyz();
+
+}
+
+
+</script>
+</body>
+</html>

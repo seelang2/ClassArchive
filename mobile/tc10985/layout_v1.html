@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Template File</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="flexbox example of layout without bootstrap classes" />
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+	<link href="layout_v1.css" rel="stylesheet" type="text/css" />	
+
+
+</head>
+<body>
+
+<header id="masthead">
+	
+	<nav class="navbar navbar-expand-md navbar-dark">
+
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navcontent1">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<a class="navbar-brand" href="#">[Us.]</a>
+		<div class="collapse navbar-collapse" id="navcontent1">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" href="#">A Link</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">A Link</a></li>
+				<li class="nav-item dropdown">
+					<a class="nav-link" href="#" data-toggle="dropdown">A Link</a>
+					<ul class="dropdown-menu">
+						<li class="dropdown-item"><a class="nav-link" href="#">A Link</a></li>
+						<li class="dropdown-item"><a class="nav-link" href="#">A Link</a></li>
+						<li class="dropdown-item"><a class="nav-link" href="#">A Link</a></li>
+						<li class="dropdown-item"><a class="nav-link" href="#">A Link</a></li>
+					</ul>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="#">A Link</a></li>
+			</ul>
+		</div>
+
+		<div class="collapse navbar-collapse justify-content-end" id="navsearch">
+			<form class="form-inline">
+				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+			</form>
+		</div>
+
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navsearch">
+			<img src="open-iconic/svg/magnifying-glass.svg" />
+		</button>
+	</nav>
+</header>
+
+<div id="wrapper" class="container">
+
+	<div class="d-flex flex-column flex-md-row">
+		<section id="first" class="col-md-7">
+			<h1>Lorem ipsum dolor sit amet</h1>
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel ex metus. Suspendisse aliquet gravida bibendum. Duis magna dolor, sagittis id neque et, feugiat pulvinar felis. In mollis, arcu sit amet consequat gravida, orci ipsum iaculis turpis, in mollis elit nibh at augue. Duis cursus accumsan nisi nec pharetra. 
+			</p>
+			<p>
+			Fusce maximus nulla sed fermentum consequat. Etiam nunc diam, ornare eget tempor at, rutrum id arcu. Mauris vel tincidunt nisl, vel placerat nisl. Aliquam euismod magna eu odio sagittis, a aliquet risus euismod. Vestibulum mattis sagittis risus eget volutpat. Vestibulum enim orci, malesuada ut turpis quis, molestie accumsan quam. 
+			</p>
+		</section><!-- #first -->
+
+		<div class="d-flex flex-column flex-xl-row">
+
+			<section id="second" class="col-xl-6">
+				<h2>Praesent imperdiet lacus eget ex rhoncus</h2>
+				<p>
+				Aliquam dictum dapibus turpis et vulputate. Donec malesuada urna sit amet massa laoreet imperdiet. Morbi ullamcorper sed tellus a gravida. Pellentesque lobortis efficitur nunc quis dictum. Praesent imperdiet lacus eget ex rhoncus, vitae eleifend nunc imperdiet. Pellentesque gravida, tortor quis tincidunt ullamcorper, nulla erat bibendum mi, at faucibus turpis justo eu turpis. Sed sit amet convallis orci, id vulputate magna. Fusce fermentum arcu lorem, eget rutrum odio consequat ac. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce et aliquet justo, a ornare nisl. Vestibulum eget quam ullamcorper velit vehicula placerat. Etiam consectetur porta nulla non consectetur. Aenean at venenatis magna.
+				</p>
+
+				<h3>Nulla et laoreet nunc</h3>
+				<p>
+				Cras ex orci, consectetur eu cursus et, tempus sit amet nunc. Vestibulum commodo sodales urna in rhoncus. Cras enim risus, malesuada sagittis accumsan nec, malesuada ut justo. Sed et tortor non nibh lobortis tempus. Nulla et laoreet nunc, non bibendum sem. Praesent eu magna at lectus vulputate rhoncus sit amet id erat. Vivamus eu neque ac leo condimentum porttitor. Donec est tellus, varius eget quam eget, tempor aliquam augue. Etiam aliquet vulputate nunc, pretium tempor dolor rhoncus mattis. In pretium accumsan odio sit amet condimentum.
+				</p>
+			</section><!-- #second -->
+				
+			<section id="third" class="col-xl-6">
+				<h2>Vestibulum a justo sed est tincidunt</h2>
+				<p>
+				Vivamus commodo eros quis eros mattis, at maximus lacus auctor. Nullam at lectus sed nibh imperdiet porttitor nec nec sapien. Praesent eget iaculis augue. In vitae tortor tincidunt, dapibus lorem a, tristique urna. Vestibulum nibh ipsum, pharetra eget elementum eget, commodo at neque. Donec maximus molestie felis quis bibendum. Mauris vitae leo fringilla, convallis dui et, dapibus ex. Donec nisl orci, egestas non gravida eget, pellentesque ut nisi. Mauris vitae pretium eros. Vestibulum a justo sed est tincidunt ullamcorper. Integer pellentesque quam metus, eu tempor ante ornare non. Etiam at sagittis dui. Praesent at varius lacus, vitae sodales purus.
+				</p>
+
+				<h3>Fusce nec tristique risus</h3>
+				<p>
+				Fusce nec tristique risus. Mauris in convallis erat, sed euismod augue. 
+				</p>
+			</section><!-- #third -->
+
+		</div>
+	</div>
+
+</div><!-- #wrapper -->
+
+<footer id="pagefooter">
+	<p>Vivamus commodo eros quis eros mattis</p>
+</footer>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
+</html>

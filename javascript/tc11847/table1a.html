@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	}
+
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+
+<script type="text/javascript">
+
+var tableElem = document.createElement('TABLE');
+var tbodyElem = document.createElement('TBODY');
+
+tableElem.appendChild(tbodyElem); // attach tbody to table
+
+// row 1
+var trElem = document.createElement('TR');
+tbodyElem.appendChild(trElem);
+
+var tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('John'));
+
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('Doe'));
+
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.innerHTML = '45';
+
+
+// row 2
+trElem = document.createElement('TR');
+tbodyElem.appendChild(trElem);
+
+trElem.innerHTML = '<td>Jane</td><td>Smith</td><td>37</td>';
+
+
+// attach the table to the DOM at the end
+document.getElementById('target').appendChild(tableElem);
+
+</script>
+</body>
+</html>

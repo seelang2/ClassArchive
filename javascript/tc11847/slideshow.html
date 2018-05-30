@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	/* 
+		Define the "system" font family 
+		Ref: https://css-tricks.com/snippets/css/system-font-stack/;
+	*/
+	@font-face {
+	  font-family: System;
+	  font-style: normal;
+	  font-weight: 300;
+	  src: local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Ubuntu Light"), local("Segoe UI Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma");
+	}
+
+
+	body {
+		font-family: System, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	}
+
+	#slideshow {
+		width: 400px;
+		height: 300px;
+		border: 5px solid #00ff00;
+		margin: auto;
+		position: relative;
+		overflow: hidden;
+	}
+
+	#strip {
+		width: 1600px;
+		height: 300px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: flex;
+	}
+
+	</style>
+</head>
+<body>
+
+<div id="slideshow">
+	<div id="strip">
+		<img src="img1.jpg" />
+		<img src="img2.png" />
+		<img src="img3.jpg" />
+		<img src="img4.jpg" />
+	</div>
+</div>
+
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+$(document).ready(function(e){
+
+function moveLeft(strip) {
+	$(strip)
+		.animate({
+			left: '-=400'
+		},{
+			duration: 350
+		});
+}
+
+function rewind(strip) {
+	$(strip)
+		.animate({
+			left: 0
+		},{
+			duration: 250
+		});
+}
+
+var $strip = $('#strip');
+var slideCount = $strip.children().length;
+var slide = 1;
+
+setInterval(function() {
+	slide++;
+	if (slide > slideCount) {
+		slide = 1;
+		rewind($strip);
+	} else {
+		moveLeft($strip);
+	}
+
+}, 2000);
+
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

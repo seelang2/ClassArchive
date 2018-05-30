@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 16px;
+	}
+
+	table, th, td { border: 1px solid #7a7a7a; }
+	table { border-collapse: collapse; }
+	th, td { padding: 0.5em 1em; }
+	</style>
+
+</head>
+<body>
+
+<table id="thetable">
+	<tbody id="target">
+	</tbody>
+</table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+var data = [
+	{ 
+		"epa": "1",
+		"approval": "3/16/2017",
+		"tsdf": "17",
+		"facility": "Texas",
+		"client": "3M",
+		"hazardous": "N"
+	},
+	{ 
+		"epa": "2",
+		"approval": "4/19/2017",
+		"tsdf": "37",
+		"facility": "Idaho",
+		"client": "DoPont",
+		"hazardous": "Y"
+	}
+];
+
+// get reference to TBODY
+var $tbody = 
+$('#target')
+	.detach();		// ...and disconnect it from the DOM
+
+// loop through data
+$.each(data, function(index, profile) {
+
+	var $tr = 
+	$('<tr />')
+		.append('<td>' + profile.epa + '</td>')
+		.append('<td>' + profile.approval + '</td>')
+		.append('<td>' + profile.tsdf + '</td>')
+		.appendTo($tbody);
+
+}); // $.each data
+
+$tbody.appendTo('#thetable');
+
+
+</script>
+</body>
+</html>

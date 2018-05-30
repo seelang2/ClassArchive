@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Pagination Demo</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="flexbox example of layout without bootstrap classes" />
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+
+<div id="container">
+</div><!-- #container -->
+<nav id="pagedemonav" aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" data-page="prev" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" data-page="1" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" data-page="2" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" data-page="3" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" data-page="next" href="#">Next</a></li>
+  </ul>
+</nav>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script>
+function paginator(contentParent) {
+
+	var pagedData = {};
+	var children = {};
+	var itemsPerPage = 10;
+	var currentPage = 0;
+	var totalPages = 0;
+
+	pagedData.paginate = function(parent) {
+		children = $(parent).children().detach();
+		totalPages = Math.ceil(children.length / itemsPerPage);
+		console.log('total pages',totalPages);
+	};
+
+	pagedData.goToPage = function(pageNumber) {
+		contentParent.empty(); // get rid of current rows
+
+		console.log('old page',pageNumber);
+
+		if (pageNumber == "prev") {
+			pageNumber = currentPage - 1;
+			if (pageNumber == 0) pageNumber = 1;
+		}
+
+		if (pageNumber == "next") {
+			pageNumber = currentPage + 1;
+			if (pageNumber > totalPages) pageNumber = totalPages;
+		}
+
+		console.log('new page',pageNumber);
+
+		// calculate offset
+		var offset = (pageNumber - 1) * itemsPerPage;
+		var rangeLimit = offset + (itemsPerPage - 1);
+
+		for(var c = offset; c <= rangeLimit; c++) {
+			contentParent.append(children[c]);
+		}
+
+		currentPage = pageNumber;
+	};
+
+	pagedData.paginate(contentParent);
+	pagedData.goToPage(1);
+	return pagedData;
+}
+
+
+
+
+$(document).ready(function() {
+
+// dynamically create a LOT of div rows
+var $container = $('#container'); // get reference to container element
+
+for (var c = 0; c < 100; c++) {
+	var text = 'Item ' + c;
+	$('<div />')
+		.addClass('item')
+		.append(text)
+		.appendTo($container);
+}
+
+
+
+var pageObject = paginator($container);
+
+$('#pagedemonav').on('click', '.page-link', function(e) {
+	e.preventDefault(); // stop click action
+	var page = $(this).attr('data-page');
+
+	pageObject.goToPage(page);
+});
+
+
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

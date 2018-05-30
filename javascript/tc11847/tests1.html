@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	body {
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	}
+
+	</style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+function getPlaceValue(number, place) {
+	return Math.trunc(number / (10 * (place - 1))) % 10;
+}
+
+function getNumberV3(number, position) {
+	return parseInt(number.toString()[position - 1]);
+}
+
+var value = 34652346;
+var position = 4;
+
+var x, avgTime;
+
+/*
+*/
+
+// Round 1
+avgTime = 0;
+for(var i = 0; i < 20; i++) {
+	var start = new Date().getTime();
+	for(var c = 0; c < 1000000; c++) {
+		x = getPlaceValue(value, position);
+	}
+	var stop = new Date().getTime();
+	avgTime += (stop - start);
+}
+	avgTime = avgTime / (i - 1);
+	console.log('getPlaceValue average elapsed time in ms:', avgTime);
+
+
+// Round 2
+avgTime = 0;
+for(var i = 0; i < 20; i++) {
+	var start = new Date().getTime();
+	for(var c = 0; c < 1000000; c++) {
+		x = getNumberV3(value, position);
+	}
+	var stop = new Date().getTime();
+	avgTime += (stop - start);
+}
+	avgTime = avgTime / (i - 1);
+console.log('getNumberV3 elapsed time in ms:', avgTime);
+
+
+
+</script>
+</body>
+</html>

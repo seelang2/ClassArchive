@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Collapse Demo</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="flexbox example of layout without bootstrap classes" />
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+	<style type="text/css">
+
+	#accordion {
+		width: 450px;
+		margin: auto;
+		border: 1px solid #7a7a7a;
+	}
+
+	.title {
+		font-weight: bold;
+		font-size: 1.6em;
+		text-align: center;
+		background: #EBADFF;
+		border-top: 1px solid #7a7a7a;
+		border-bottom: 1px solid #7a7a7a;
+	}
+
+	.content {
+		padding: 1px 1.5em;
+		/* height: 150px;
+		overflow-y: scroll; */
+	}
+
+	</style>
+</head>
+<body>
+
+
+<button class="btn btn-primary" data-toggle="collapse" data-target="#target">Click Me</button>
+
+<div id="target" class="collapse">
+	<h1>Lorem ipsum dolor sit amet</h1>
+	<p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel ex metus. Suspendisse aliquet gravida bibendum. Duis magna dolor, sagittis id neque et, feugiat pulvinar felis. In mollis, arcu sit amet consequat gravida, orci ipsum iaculis turpis, in mollis elit nibh at augue. Duis cursus accumsan nisi nec pharetra. 
+	</p>
+	<p>
+	Fusce maximus nulla sed fermentum consequat. Etiam nunc diam, ornare eget tempor at, rutrum id arcu. Mauris vel tincidunt nisl, vel placerat nisl. Aliquam euismod magna eu odio sagittis, a aliquet risus euismod. Vestibulum mattis sagittis risus eget volutpat. Vestibulum enim orci, malesuada ut turpis quis, molestie accumsan quam. 
+	</p>
+</div>
+
+<!-- Example: Multiple selections to show/hide -->
+<hr />
+
+
+<button class="btn btn-primary" data-toggle="collapse" data-target=".target-item">Click Me</button>
+
+<div class="collapse show target-item">
+	<h1>Lorem ipsum dolor sit amet</h1>
+	<p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel ex metus. Suspendisse aliquet gravida bibendum. Duis magna dolor, sagittis id neque et, feugiat pulvinar felis. In mollis, arcu sit amet consequat gravida, orci ipsum iaculis turpis, in mollis elit nibh at augue. Duis cursus accumsan nisi nec pharetra. 
+	</p>
+	<p>
+	Fusce maximus nulla sed fermentum consequat. Etiam nunc diam, ornare eget tempor at, rutrum id arcu. Mauris vel tincidunt nisl, vel placerat nisl. Aliquam euismod magna eu odio sagittis, a aliquet risus euismod. Vestibulum mattis sagittis risus eget volutpat. Vestibulum enim orci, malesuada ut turpis quis, molestie accumsan quam. 
+	</p>
+</div>
+
+<div class="collapse target-item">
+	<h1>Lorem ipsum dolor sit amet</h1>
+	<p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel ex metus. Suspendisse aliquet gravida bibendum. Duis magna dolor, sagittis id neque et, feugiat pulvinar felis. In mollis, arcu sit amet consequat gravida, orci ipsum iaculis turpis, in mollis elit nibh at augue. Duis cursus accumsan nisi nec pharetra. 
+	</p>
+	<p>
+	Fusce maximus nulla sed fermentum consequat. Etiam nunc diam, ornare eget tempor at, rutrum id arcu. Mauris vel tincidunt nisl, vel placerat nisl. Aliquam euismod magna eu odio sagittis, a aliquet risus euismod. Vestibulum mattis sagittis risus eget volutpat. Vestibulum enim orci, malesuada ut turpis quis, molestie accumsan quam. 
+	</p>
+</div>
+
+
+<!-- Example: Basic accordion -->
+<hr />
+
+<div id="accordion">
+	<div class="title" data-toggle="collapse" data-target="#content1" aria-expanded="false" aria-controls="content1">Item One</div>
+	<div id="content1" class="content collapse">
+		<p>Item One</p>
+		<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel ex metus. Suspendisse aliquet gravida bibendum. Duis magna dolor, sagittis id neque et, feugiat pulvinar felis. In mollis, arcu sit amet consequat gravida, orci ipsum iaculis turpis, in mollis elit nibh at augue. Duis cursus accumsan nisi nec pharetra. 
+		</p>
+		<p>
+		Fusce maximus nulla sed fermentum consequat. Etiam nunc diam, ornare eget tempor at, rutrum id arcu. Mauris vel tincidunt nisl, vel placerat nisl. Aliquam euismod magna eu odio sagittis, a aliquet risus euismod. Vestibulum mattis sagittis risus eget volutpat. Vestibulum enim orci, malesuada ut turpis quis, molestie accumsan quam. 
+		</p>
+	</div>
+
+	<div class="title" data-toggle="collapse" data-target=".content:nth-child(4)" aria-expanded="false">Item Two</div>
+	<div class="content collapse">
+		<p>Item Two</p>
+		<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel ex metus. Suspendisse aliquet gravida bibendum. Duis magna dolor, sagittis id neque et, feugiat pulvinar felis. In mollis, arcu sit amet consequat gravida, orci ipsum iaculis turpis, in mollis elit nibh at augue. Duis cursus accumsan nisi nec pharetra. 
+		</p>
+		<p>
+		Fusce maximus nulla sed fermentum consequat. Etiam nunc diam, ornare eget tempor at, rutrum id arcu. Mauris vel tincidunt nisl, vel placerat nisl. Aliquam euismod magna eu odio sagittis, a aliquet risus euismod. Vestibulum mattis sagittis risus eget volutpat. Vestibulum enim orci, malesuada ut turpis quis, molestie accumsan quam. 
+		</p>
+	</div>
+
+	<div class="title" data-toggle="collapse" data-target=".content:nth-child(6)" aria-expanded="false">Item Three</div>
+	<div class="content collapse">
+		<p>Item Three</p>
+		<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel ex metus. Suspendisse aliquet gravida bibendum. Duis magna dolor, sagittis id neque et, feugiat pulvinar felis. In mollis, arcu sit amet consequat gravida, orci ipsum iaculis turpis, in mollis elit nibh at augue. Duis cursus accumsan nisi nec pharetra. 
+		</p>
+		<p>
+		Fusce maximus nulla sed fermentum consequat. Etiam nunc diam, ornare eget tempor at, rutrum id arcu. Mauris vel tincidunt nisl, vel placerat nisl. Aliquam euismod magna eu odio sagittis, a aliquet risus euismod. Vestibulum mattis sagittis risus eget volutpat. Vestibulum enim orci, malesuada ut turpis quis, molestie accumsan quam. 
+		</p>
+	</div>
+
+	<div class="title" data-toggle="collapse" data-target="#content4" aria-expanded="false">Item Four</div>
+	<div id="content4" class="content collapse">
+		<p>Item Four</p>
+		<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel ex metus. Suspendisse aliquet gravida bibendum. Duis magna dolor, sagittis id neque et, feugiat pulvinar felis. In mollis, arcu sit amet consequat gravida, orci ipsum iaculis turpis, in mollis elit nibh at augue. Duis cursus accumsan nisi nec pharetra. 
+		</p>
+		<p>
+		Fusce maximus nulla sed fermentum consequat. Etiam nunc diam, ornare eget tempor at, rutrum id arcu. Mauris vel tincidunt nisl, vel placerat nisl. Aliquam euismod magna eu odio sagittis, a aliquet risus euismod. Vestibulum mattis sagittis risus eget volutpat. Vestibulum enim orci, malesuada ut turpis quis, molestie accumsan quam. 
+		</p>
+	</div>
+</div><!-- #accordion -->
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script>
+
+/*
+// defer execution until after DOM loads
+$(document).ready(function() {
+	var $contentElems = 
+	$('.content').on('shown.bs.collapse', function(e) {
+		console.log('this is',this);
+		$contentElems
+			.not(this)
+			.collapse();
+	 });
+});
+*/
+
+
+</script>
+</body>
+</html>
