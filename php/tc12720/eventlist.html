@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>"Multi Page" Form Demo</title>
+
+	<style type="text/css">
+	/* layout  */
+	body {
+		margin: 0;
+		background: #dedede;
+	}
+
+	#wrapper {
+		width: 80%;
+		background: #ffffff;
+		margin: auto;
+		border: 2px solid #7a7a7a;
+	}
+
+	#masthead {
+		height: 80px;
+		background: #000099;
+		color: #ffffff;
+		padding: 1px 0;
+	}
+
+	#pagefooter {
+		color: #efefef;
+		background: #666666;
+		font-size: 85%;
+		padding: 1px 0;
+	}
+
+	#content {
+		padding: 10px 40px;
+		margin: auto;
+	}
+
+	/* ref: https://css-tricks.com/snippets/css/system-font-stack/ */
+	/* Define the "system" font family */
+	@font-face {
+	  font-family: system;
+	  font-style: normal;
+	  font-weight: 300;
+	  src: local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Ubuntu Light"), local("Segoe UI Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma");
+	}
+	body, input, select, textarea {
+	  font-family: "system";
+	  font-size: 18px;
+	}
+
+	.button {
+		font-weight: bold;
+		border: 2px solid #7a7a7a;
+		border-radius: 7px;
+		display: inline-block;
+		padding: 0.5em 1em;
+		cursor: pointer;
+	}
+
+	label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+
+	label span, label input {
+		display: inline-block;
+	}
+
+	label span:first-child {
+		width: 200px;
+		text-align: right;
+	}
+
+	label span:first-child:after {
+		content: ':';
+		margin-right: 1em;
+	}
+
+	fieldset {
+		margin-bottom: 0.5em;
+	}
+
+	table, th, td { border: 1px solid #7a7a7a; }
+	table { border-collapse: collapse; }
+	th, td { padding: 0.5em 1em; }
+
+
+	.error { 
+		color: #ff0000;
+		font-weight: bold;
+	}
+
+	#flashmessage {
+		background: #ffcccc;
+		border: 1px solid #990000;
+		padding: 1em;
+	}
+
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<header id="masthead">
+	</header>
+	<nav id="topnav">
+	</nav>
+	<div id="content">
+		<!-- begin content -->
+
+		<div id="eventtable"></div>
+		
+		<!-- end content -->
+	</div><!-- #content -->
+	<footer id="pagefooter">
+		
+	</footer>
+</div><!-- #wrapper -->
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+var doHover = function(evt) {
+	$(evt.target)
+		.closest('tr')
+		.toggleClass('hover');
+};
+
+var updateTable = function(contactList) {
+	$tbody.detach(); // disconnect TBODY from DOM before updating rows
+	// loop through contact list and create TRs
+	$.each(contactList, function(index, contact) {
+		// create table row
+		var $tr = $('<tr />')
+			.attr('data-index', contact.id)
+			.data('itemData', contact)
+			.appendTo($tbody);
+		// loop through contact fields
+		$.each(contact, function(fieldName, fieldValue) {
+			$('<td>' + fieldValue + '</td>')
+				.appendTo($tr);
+		});
+	});
+	$tbody.appendTo($table); // reconnect TBODY
+}; // updateTable
+
+// build table using contact list
+var $tbody = 
+$('<table><tbody /></table>')
+	.appendTo('#eventtable')
+	.children('tbody');
+
+$tbody
+	.on('mouseover mouseout', doHover);
+
+var $table = $tbody.parent(); 
+
+
+$.ajax({
+	url: 			'dataservice.php?model=events&action=list',
+	method: 	'get',
+	dataType: 'json',
+	cache: 		false,
+	success: 	function(response) {
+		console.log(response);
+
+		updateTable(response);
+	}
+});
+
+
+
+
+
+
+
+
+}); // document.ready
+
+
+</script>
+</body>
+</html>

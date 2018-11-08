@@ -1,0 +1,302 @@
+notes.txt
+
+
+Multi-purpose form/processing page:
+
+User visits page
+
+If form data present
+	Process form data 
+Else
+	Display blank form
+
+isset() - checks whether var or key exists
+empty() - checks whether var or key is set AND not empty/blank
+
+
+facebook.com?action=viewprofile&pid=xxxxxxx
+
+(HTTP) Redirects
+
+header('Location: newuri.com/newpage');
+exit();
+
+MUST be done BEFORE sending output to user agent!
+
+
+
+Event Registration System
+-------------------------
+Event Tracking
+	Add/Edit/Delete
+	Event details (location, name, dates, spaces available, etc)
+
+Attendees
+	Attendee info
+	Associate with events ('register' for event)
+
+
+Events
+	id (PK)
+	name
+	start_datetime
+	end_datetime
+	contact_name
+	contact_phone
+	contact_email
+	max_attendees
+	location_id (FK)
+
+Locations
+	id (PK)
+	location_name
+	location_address
+	location_city
+	location_state
+	location_zip
+
+Attendees_Events
+	attendee_id (FK)
+	event_id (FK)
+
+Attendees
+	id (PK)
+	firstname
+	lastname
+	email
+	phone
+	address_line1
+	address_line2
+	city
+	state
+	zip
+
+Relational DataBase Management Systems (RDBMS)
+Data is stored in one or more related tables
+
+Database Normalization
+- Eliminates errors caused by redundancy, duplication
+- Make data resilient and easy to retrieve/process
+
+- Eliminate redundant data
+	Repeating groups
+	Duplicate content
+- Each field/column contains a single unit of data
+- Group like data together
+- Efficient connections between tables (only link two tables in a link table)
+
+Primary Key (PK) - Unique Identifier that identifies a single record in a table
+Foreign Key (FK) - Contains the PK of a related record
+
+Three types of table relationships:
+One to One - FK goes into 'belongs to' table
+One to Many - FK goes into 'many' table
+Many to Many - Use a 'link table' to connect tables together
+
+has/belongs to
+
+
+CREATE
+READ
+UPDATE
+DELETE
+
+Create records
+
+INSERT INTO table SET 
+	column = value,
+	...
+	column = value;
+
+INSERT INTO table 
+	(`column1`,`column2`,`column3`...)
+VALUES
+	('value1','value2','value3'...),
+	('value1','value2','value3'...),
+	...
+	('value1','value2','value3'...);
+
+
+Update (edit) records
+
+UPDATE table SET 
+	column = value,
+	...
+	column = value
+WHERE expression
+AND | OR expression
+
+UPDATE contacts SET
+	name = 'Joe Doe'
+WHERE id = 12;
+
+INSERT INTO table 
+	(`column1`,`column2`,`column3`...)
+VALUES
+	('value1','value2','value3'...)
+WHERE expression;
+
+
+Deleting records
+DELETE FROM table WHERE expression;
+
+DELETE FROM contacts WHERE id = 17;
+
+
+Reading records
+
+SELECT
+	<expressions to be included in result set>
+FROM
+	table, table, ...
+WHERE expression
+	AND | OR 
+GROUP BY expr
+HAVING expr
+ORDER BY expr
+LIMIT expr
+
+
+
+INSERT INTO `events` (`name`, `start_datetime`, `end_datetime`, `contact_name`, `contact_phone`, `contact_email`, `max_attendees`, `location_id`)
+VALUES 
+('Event A', '2018-11-24 09:00:00', '2018-11-24 17:00:00', 'John Doe', '(123) 456-7890', 'jdoe@email.com', '20', '1'),
+('Event A', '2018-11-25 09:00:00', '2018-11-25 17:00:00', 'John Doe', '(123) 456-7890', 'jdoe@email.com', '20', '4'),
+('Event A', '2018-11-29 09:00:00', '2018-11-29 17:00:00', 'John Doe', '(123) 456-7890', 'jdoe@email.com', '20', '3'),
+('Event A', '2018-12-07 09:00:00', '2018-12-07 17:00:00', 'John Doe', '(123) 456-7890', 'jdoe@email.com', '20', '1'),
+('Event A', '2018-12-09 09:00:00', '2018-12-09 17:00:00', 'John Doe', '(123) 456-7890', 'jdoe@email.com', '20', '1'),
+('Event A', '2018-12-119 09:00:00', '2018-12-19 17:00:00', 'John Doe', '(123) 456-7890', 'jdoe@email.com', '20', '3');
+
+
+Joining multiple tables in a query
+
+Join types
+Inner
+Outer
+Left (outer)
+Right (outer)
+Cross
+
+A X JOIN B
+
+SQL qualified names
+database.table.column
+tc12720.locations.id
+
+
+SELECT
+  events.name AS eventname,
+  events.start_datetime,
+  events.end_datetime,
+  locations.name AS locationname,
+  locations.city
+FROM locations 
+LEFT JOIN events 
+ON events.location_id = locations.id;
+
+SELECT
+  locations.name AS locationname,
+  locations.city,
+  count(events.id) AS num_events
+FROM locations 
+LEFT JOIN events 
+ON events.location_id = locations.id
+GROUP BY locations.id
+ORDER BY num_events DESC, locationname ASC
+
+
+SELECT
+	events.name AS eventname,
+	events.start_datetime,
+	events.end_datetime,
+	locations.name AS location,
+	locations.city,
+	locations.state,
+	attendees.firstname,
+	attendees.lastname,
+	attendees.phone
+FROM
+	events
+LEFT JOIN locations
+ON locations.id = events.location_id
+LEFT JOIN attendees_events
+ON events.id = attendees_events.event_id
+LEFT JOIN attendees
+ON attendees_events.attendee_id = attendees.id;
+
+
+SELECT
+	events.name AS eventname,
+	events.start_datetime,
+	events.end_datetime,
+	locations.name AS location,
+	locations.city,
+	locations.state,
+	count(attendees.id) as attendee_count
+FROM
+	events
+LEFT JOIN locations
+ON locations.id = events.location_id
+LEFT JOIN attendees_events
+ON events.id = attendees_events.event_id
+LEFT JOIN attendees
+ON attendees_events.attendee_id = attendees.id
+GROUP BY events.id
+
+
+Working with db in PHP
+1. Connect to database server
+2. Select database to use
+3. Build query
+4. Send query to database server
+5. Check query result
+6. Process results/provide feedback
+
+
+$myCar = new Mercedes('760','leather');
+$myCar->color = 'Silver';
+$myCar->startEngine();
+
+
+
+
+scp -r . root@192.168.1.45:/var/www/tc12720
+
+
+include
+include_once
+require
+require_once
+
+
+
+cars
+----
+id
+vin
+make
+model
+...
+
+users
+-----
+id
+name
+email
+
+schedule
+--------
+id
+user_id
+start_date
+end_date
+car_id
+
+
+
+
+
+
+
+
+

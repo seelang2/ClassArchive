@@ -1,0 +1,328 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>"Multi Page" Form Demo</title>
+
+	<style type="text/css">
+	/* ref: https://css-tricks.com/snippets/css/system-font-stack/ */
+	/* Define the "system" font family */
+	@font-face {
+	  font-family: system;
+	  font-style: normal;
+	  font-weight: 300;
+	  src: local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Ubuntu Light"), local("Segoe UI Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma");
+	}
+	body, input, select, textarea {
+	  font-family: "system";
+	  font-size: 18px;
+	}
+
+	.button {
+		font-weight: bold;
+		border: 2px solid #7a7a7a;
+		border-radius: 7px;
+		display: inline-block;
+		padding: 0.5em 1em;
+		cursor: pointer;
+	}
+
+	.page {
+		box-sizing: border-box;
+		padding: 30px 50px;
+	}
+
+	.page nav {
+		font-size: 110%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+
+	label span, label input {
+		display: inline-block;
+	}
+
+	#foods div {
+		margin-bottom: 0.5em;
+	}
+
+	#foods .button {
+		font-size: 90%;
+		padding: 0.25em;
+		margin-left: 0.25em;
+	}
+
+	.error { 
+		color: #ff0000;
+		font-weight: bold;
+	}
+
+	</style>
+</head>
+<body>
+
+<form id="theform" action="#" method="get">
+	<div id="page1" class="page">
+		<nav>
+			<div class="button btnPrev">Back</div>
+			<div class="button btnNext">Next</div>
+		</nav>
+
+		<p>Page 1</p>
+		<p>
+			What is your name?
+			<input name="name" />
+		</p>
+
+	</div>
+	<div id="page2" class="page">
+		<nav>
+			<div class="button btnPrev">Back</div>
+			<div class="button btnNext">Next</div>
+		</nav>
+
+		<p>Page 2</p>
+
+		<p>
+			<span>Select Gender:</span>
+			<select name="gender">
+				<option value="male">Male</option>
+				<option value="female">Female</option>
+				<option value="other">Other (please specify)</option>
+			</select>
+		</p>
+		<fieldset id="othergender" class="starthidden">
+			<span>Please specify your gender orientation (or leave blank)</span>
+			<input name="othergender" />
+		</fieldset>
+
+
+	</div>
+	<div id="page3" class="page">
+		<nav>
+			<div class="button btnPrev">Back</div>
+			<div class="button btnNext">Next</div>
+		</nav>
+
+		<p>Page 3</p>
+		<p>Enter your favorite foods (at least one):</p>
+		<div id="foods">
+			<div><input name="food[]" /></div>
+		</div>
+		<div>
+			<div class="button btnAddFood">Add Another Food</div>
+		</div>
+
+
+	</div>
+	<div id="page4" class="page">
+		<nav>
+			<div class="button btnPrev">Back</div>
+			<div class="button btnNext">Next</div>
+		</nav>
+
+		<p>Page 4</p>
+		<fieldset>
+			<legend>
+				Choose your interests:
+				<input type="checkbox" class="checkall" />
+				<span>Check/uncheck All</span>
+			</legend>
+			<label>
+				<input type="checkbox" name="interests[]" value="spores" />
+				<span>Spores</span>
+			</label>
+			<label>
+				<input type="checkbox" name="interests[]" value="mold" />
+				<span>Mold</span>
+			</label>
+			<label>
+				<input type="checkbox" name="interests[]" value="fungus" />
+				<span>Fungus</span>
+			</label>
+		</fieldset>
+
+
+	</div>
+	<div id="page5" class="page">
+		<nav>
+			<div class="button btnPrev">Back</div>
+			<div class="button btnNext">Next</div>
+		</nav>
+
+		<p>Page 5</p>
+		<p>Submit Form <input type="submit" /></p>
+
+	</div>
+</form>
+
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+// defer script execution after DOM init
+$(document).ready(function() {
+
+// validate forms fields on a page
+function validateFormPage($page) {
+
+	$page
+		.find('.error')
+		.remove(); // clear out previous error messages
+	var formIsValid = true; // assume form is valid
+
+	switch($page.attr('id')) {
+		case 'page1':
+
+			var field = $('[name="name"]');
+			// field can't be empty
+			if (field.val().length == 0) {
+				// exception found
+				formIsValid = false;
+				$('<span>Field cannot be empty</span>')
+					.addClass('error')
+					.insertAfter(field);
+			}
+
+		break;
+		case 'page2':
+			
+			// if gender is 'other', othergender is required
+			var field = $('[name="othergender"]');
+			if ($('[name="gender"]').val() == "other" && 
+				field.val().length == 0) {
+				// exception found
+				formIsValid = false;
+				$('<span>Field is required</span>')
+					.addClass('error')
+					.insertAfter(field);
+			}
+
+
+		break;
+		case 'page3':
+		break;
+		case 'page4':
+		break;
+		case 'page5':
+		break;
+	} // switch id
+
+	return formIsValid;
+
+} // validateFormPage
+
+// handle form page navigation
+$('form .page')
+	.not(':first-child')
+	.hide();
+
+$('form')
+	.on('click', '.button', function(evt) {
+
+		switch(true) {
+			case $(this).hasClass('btnPrev'):
+				if ($(this).closest('.page').is('.page:first-child')) {
+					break; // terminate case
+				}
+
+				if (!validateFormPage($(this).closest('.page'))) {
+					break;
+				}
+
+				// go to previous page
+				$(this)
+					.closest('.page')
+					.hide()
+					.prev()
+					.show();
+			break;
+			case $(this).hasClass('btnNext'):
+				if ($(this).closest('.page').is('.page:last-child')) {
+					break; // terminate case
+				}
+
+				if (!validateFormPage($(this).closest('.page'))) {
+					break;
+				}
+
+				// go to next page
+				$(this)
+					.closest('.page')
+					.hide()
+					.next()
+					.show();
+				
+			break;
+
+			case $(this).hasClass('btnAddFood'):
+				$('#foods')
+					.append('<div />')
+					.children('div:last-child')
+						.append('<input name="food[]" />')
+						.append('<div class="button btnDelFood">X</div>');
+			break;
+
+			case $(this).hasClass('btnDelFood'):
+				$(this)
+					.parent()
+					.remove();
+			break;
+
+		} // switch
+	});
+
+// hide any form parts that start out hidden
+$('form .starthidden').hide();
+
+// custom behaviors
+
+/*
+	Check/uncheck control will check or uncheck checkboxes
+	in the same fieldset
+*/
+$('.checkall').on('change', function(evt) {
+	if ($(this).is(':checked')) {
+		// check all
+		$(this)
+			.closest('fieldset')
+			.find('[type="checkbox"]')
+			.prop('checked', true);
+	} else {
+		// uncheck all
+		$(this)
+			.closest('fieldset')
+			.find('[type="checkbox"]')
+			.prop('checked', false);
+	}
+});
+
+/*
+	Show 'othergender' fieldset when gender field selects 'other'
+*/
+$('[name=gender]').on('change', function(evt) {
+	if ($(this).val() == 'other') {
+		$('#othergender')
+			.show()
+			.find('input')
+			.val('');
+	} else {
+		$('#othergender').hide();
+	}
+});
+
+
+}); // document.ready
+
+</script>
+</body>
+</html>

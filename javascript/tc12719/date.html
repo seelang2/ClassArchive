@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Date Demo</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+// define text labels for date components
+var weekdays = [
+	'Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'
+];
+
+var months = [
+	'January',
+	'February',
+	'March',
+	'April',
+	'May',
+	'June',
+	'July',
+	'August',
+	'September',
+	'October',
+	'November',
+	'December'
+];
+
+// get instance of the Date object
+var today = new Date();
+
+// determine ordinal for number
+var lastDigit = today.getDate() % 10; // get last digit
+var last2Digits = today.getDate() % 100;// get last 2 digits
+
+switch(true) {
+	case lastDigit == 1 && last2Digits != 11:
+		var ordinal = 'st';
+	break;
+	case lastDigit == 2 && last2Digits != 12:
+		var ordinal = 'nd';
+	break;
+	case lastDigit == 3 && last2Digits != 13:
+		var ordinal = 'rd';
+	break;
+	default:
+		var ordinal = 'th';
+	break;
+} // switch
+
+
+document.write('<p>Today is ' + 
+				  weekdays[today.getDay()] + ', ' +
+				  months[today.getMonth()] + ' ' + 
+				  today.getDate() + ordinal + ', ' +
+				  today.getFullYear() + 
+			   '</p>');
+
+</script>
+</body>
+</html>

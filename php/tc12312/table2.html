@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Table building demo</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+/*
+	TABLE
+		THEAD | TFOOT | TBODY
+			TR
+				TH | TD
+
+name 	age 	empid
+name 	age 	empid
+
+*/
+
+$('<table><tbody /></table>') 			// note that TABLE is only in coll
+	.children('tbody') 								// traverse to TBODY
+		.append('<tr />') 							// append TR to TBODY
+		.children(':last-child') 				// traverse to last TR
+			.append('<td>John Doe</td>') 	// add TD to TR
+			.append('<td>43</td>') 				// ...
+			.append('<td>12345</td>') 		// ...
+			.end() 												// revert back to TBODY
+		.append('<tr />') 							// append another TR to TBODY
+		.children(':last-child') 				// traverse to last TR
+			.append('<td>Jane Smith</td>')// add TD to TR
+			.append('<td>23</td>') 				// ...
+			.append('<td>83742</td>') 		// ...
+			.end() 												// revert back to TBODY
+		.end()													// revert to TABLE
+	.appendTo('#target');							// attach branch to DOM
+
+
+</script>
+</body>
+</html>

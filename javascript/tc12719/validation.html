@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Demo</title>
+
+	<style type="text/css">
+	label {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+
+	label span, label input {
+		display: inline-block;
+	}
+
+	label span:first-child { 
+		width: 150px; 
+		text-align: right; 
+	}
+
+	.error { 
+		color: #ff0000;
+		font-weight: bold;
+	}
+	</style>
+</head>
+<body>
+
+<form action="#" method="get">
+
+	<label>
+		<span>Enter something:</span>
+		<input name="field1" />
+	</label>
+
+	<label>
+		<span>Enter at least 5 characters:</span>
+		<input name="field2" />
+	</label>
+
+	<label>
+		<span>Enter between 4 and 8 characters:</span>
+		<input name="field3" />
+	</label>
+
+	<div><input type="submit" /></div>
+
+</form>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+// form validation
+$('form').on('submit', function(evt) {
+
+	$('.error').remove(); // clear out previous error messages
+	var formIsValid = true; // assume form is valid
+
+	// check fields against validation rules
+	
+	var field = $('[name="field1"]');
+	// field can't be empty
+	if (field.val().length == 0) {
+		// exception found
+		formIsValid = false;
+		$('<span>Field cannot be empty</span>')
+			.addClass('error')
+			.insertAfter(field);
+	}
+
+	field = $('[name="field2"]');
+	// field minimum 5 chars
+	if (field.val().length < 5) {
+		// exception found
+		formIsValid = false;
+		$('<span>Field must be at least 5 characters</span>')
+			.addClass('error')
+			.insertAfter(field);
+	}
+
+	var field3Val = $('[name="field3"]').val();
+	// field between 4 and 8 chars 
+	if (field3Val.length < 4 || field3Val.length > 8) {
+		// exception found
+		formIsValid = false;
+		$('<span>Field must be between 4 and 8 characters</span>')
+			.addClass('error')
+			.insertAfter('[name="field3"]');
+	}
+
+	// check form status
+	if (formIsValid) {
+		return true;
+	}
+	// form isn't valid so abort submit
+	return false;
+
+}); // on.submit
+
+
+}); // document.ready
+
+</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Contact App Demo</title>
+
+	<style type="text/css">
+	body {
+		font-family: Arial, Verdana, Helvetica, sans-serif;
+	}
+
+	table, th, td { border: 1px solid #7a7a7a; }
+	table { border-collapse: collapse; }
+	th, td { padding: 0.5em 1em; }
+
+	.hover { background: #ffffcc; }
+	</style>
+</head>
+<body>
+
+<div id="contacttable"></div>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+// wait until DOM is ready before executing code
+$(document).ready(function() {
+
+function parseCSV(text) {
+	var data = []; // use to store data
+	// split data by line
+	var rows = text.split(/\n/);
+	// loop through lines and split each line by comma
+	rows.forEach(function(row, index) {
+		// split each row into columns
+		var columns = row.split(",");
+
+		// loop through columns and clean up data
+		columns.forEach(function(field, i) {
+			// check if value is a number or string
+			if (!isNaN(field)) {
+				// convert to number type
+				columns[i] = parseFloat(field);
+			} else {
+				// strip quotes off string
+				// ref: https://stackoverflow.com/questions/19156148/i-want-to-remove-double-quotes-from-a-string
+				columns[i] = field.replace(/^"(.+(?="$))"$/, '$1');
+			}
+		})
+		data.push(columns);
+	});
+	return data;
+} // parseCSV
+
+var doHover = function(evt) {
+	$(evt.target)
+		.closest('tr')
+		.toggleClass('hover');
+};
+
+var updateTable = function(contactList) {
+	$tbody.detach(); // disconnect TBODY from DOM before updating rows
+	// loop through contact list and create TRs
+	$.each(contactList, function(index, contact) {
+		// create table row
+		var $tr = $('<tr />')
+			.attr('data-index', contact.id)
+			.data('itemData', contact)
+			.appendTo($tbody);
+		// loop through contact fields
+		$.each(contact, function(fieldName, fieldValue) {
+			$('<td>' + fieldValue + '</td>')
+				.appendTo($tr);
+		});
+	});
+	$tbody.appendTo($table); // reconnect TBODY
+}; // updateTable
+
+// build table using contact list
+var $tbody = 
+$('<table><tbody /></table>')
+	.appendTo('#contacttable')
+	.children('tbody');
+
+$tbody
+	.on('mouseover mouseout', doHover);
+
+var $table = $tbody.parent(); 
+
+
+$.ajax({
+	url: 		'contacts.csv',
+	method: 	'get',
+	dataType: 	'text',
+	cache: 		false,
+	success: 	function(response) {
+		var data = parseCSV(response);
+
+		updateTable(data);
+	}
+});
+
+
+
+
+}); // document.ready
+
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Demo</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+var $table = $('<table />');
+
+var $tbody = $('<tbody></tbody>').appendTo($table);
+
+// build row
+$('<tr />')
+	.append('<td>John</td>')
+	.append('<td>Doe</td>')
+	.append('<td>jdoe@email.com</td>')
+	.appendTo($tbody);
+
+// build row
+$('<tr />')
+	.append('<td>Jane</td>')
+	.append('<td>Smith</td>')
+	.append('<td>jsmith@email.com</td>')
+	.appendTo($tbody);
+
+$table.appendTo('#target'); // attach to DOM
+
+</script>
+</body>
+</html>

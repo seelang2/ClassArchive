@@ -1,0 +1,8 @@
+2018-09-11 - DB connection error: Access denied for user 'root'@'localhost' (using password: YES)
+2018-09-11 - DB connection error: Access denied for user 'root'@'localhost' (using password: YES)
+2018-09-11 - DB connection error: Access denied for user 'root'@'localhost' (using password: YES)
+2018-09-11 - DB connection error: Access denied for user 'root'@'localhost' (using password: YES)
+2018-09-11 - DB connection error: Access denied for user 'root'@'localhost' (using password: YES)
+2018-09-11 - DB connection error: Access denied for user 'root'@'localhost' (using password: YES)
+2018-09-11 - Query error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 SELECT update_date, price_usd, price_gbp, price_euro, price_change FROM pricing WHERE fund_id = 
+2018-09-12 - Query error: Unknown column 'price_change' in 'field list' SELECT update_date, price_usd, price_gbp, price_euro, price_change FROM pricing WHERE fund_id = 1

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Title</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="target"><p>X</p></div>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+/*
+// THIS CODE SUCKS
+$('#target').append('<p>append</p>');
+$('#target').prepend('<p>prepend</p>');
+$('#target').before('<p>before</p>');
+$('#target').after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo('#target');
+$('<p>prependTo</p>').prependTo('#target');
+$('<p>insertBefore</p>').insertBefore('#target');
+$('<p>insertAfter</p>').insertAfter('#target');
+*/
+
+/*
+// BETTER - store reused values in a variable for efficiency
+var $target = $('#target'); // store collection in var
+
+$target.append('<p>append</p>');
+$target.prepend('<p>prepend</p>');
+$target.before('<p>before</p>');
+$target.after('<p>after</p>');
+
+$('<p>appendTo</p>').appendTo($target);
+$('<p>prependTo</p>').prependTo($target);
+$('<p>insertBefore</p>').insertBefore($target);
+$('<p>insertAfter</p>').insertAfter($target);
+*/
+
+// EVEN BETTER - leverage chaining
+var $target = 
+$('#target')
+	.append('<p>append</p>')
+	.prepend('<p>prepend</p>')
+	.before('<p>before</p>')
+	.after('<p>after</p>');
+
+$('<p>appendTo</p>')
+	.appendTo($target)
+	.detach() // disconnect node from DOM
+	.insertBefore($target); // moves element to new position 
+$('<p>prependTo</p>').prependTo($target);
+$('<p>insertBefore</p>')
+	.attr('id','newItem')
+	.insertBefore($target)
+	.clone()
+	.attr('id','copyofnewItem')
+	.appendTo($target);
+$('<p>insertAfter</p>').insertAfter($target);
+
+//$target.remove(); // remove #target from DOM and purge
+//$target = null; // dereference $target from memory
+
+
+/*
+
+Multi-value getter and setter methods (.attr(), .prop(), .css() )
+.attr('id') 					- Getter (returns value of id attribute)
+.attr('id', 'newID') 	- Setter (sets value of id attribute)
+
+Single-value getter and setter methods (.html(), .val(), .text() )
+.html() 			 				- Getter
+.html('new val') 			- Setter
+
+*/
+
+
+
+</script>
+</body>
+</html>

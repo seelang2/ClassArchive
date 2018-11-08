@@ -1,0 +1,378 @@
+notes.txt
+
+chris@sitebabble.com
+https://www.linkedin.com/in/chris-langtiw-72b3325
+
+
+Progams are made up of statements
+
+Statements (commands) are terminated with a semicolon (;)
+
+Basic output: Use ECHO or PRINT
+
+Data Types
+
+String - Simple mixed text. Must enclose inside quotes ' or " 
+Numbers - Integers or floating point
+Boolean - logical true or false
+Arrays - List of values. Keys can be numeric or text
+Objects - Custom complex structures
+
+Variables
+
+A variable is a container to store a value
+Begins with a $, can contain letters, numbers, underscores, and dashes
+Case sensitive
+Values are assigned using the = operator
+Referencing a variable that doesn't exist will produce a warning or error
+
+Operators
++ - * / % () = 
+++ -- += -= *= /= %=
+. .=
+
+$a = 1;
+$a = $a + 1; 	$a++; ++$a;
+
+$a = $a + 9; 	$a+=9;
+
+$name = 'John';
+$name = $name . ' Doe'; 	$name .= ' Doe';
+
+Arrays
+Allows you to store multiple values (called elements) in a single name
+Array keys can be numeric or text-based
+Numeric keys are always numbered starting from 0
+
+Program Flow
+
+Branching
+Looping
+
+
+Branching
+
+Conditional Operators
+== > < >= <= ! !=
+&& (AND) || (OR)
+=== !==
+
+Example:
+
+if ($door == 1) {
+	// do stuff
+}
+
+'Falsy' values:
+false
+0
+''
+null
+
+3 == 3 		T
+3 == '3'	T
+3 === '3'	F
+
+0 == false 	T
+0 === false F
+
+Compound conditional expressions
+
+	A && B (LOGICAL AND)
+T 	T 	 T
+F 	T 	 F
+F 	F 	 T
+F 	F 	 F
+
+	A || B (LOGICAL OR)
+T 	T 	 T
+T 	T 	 F
+T 	F 	 T
+F 	F 	 F
+
+
+Optional Path: IF statement
+
+if (condition) {
+	statement
+	statement
+	statement
+}
+
+Either/Or: IF..ELSE
+
+if (condition) {
+	statement(s)
+} else {
+	statement(s)
+}
+
+Multiple Choice: 
+
+Method 1: Chained IF..ELSE
+
+if (condition) {
+	statement(s)
+} else if (condition) {
+	statement(s)
+} else {
+	statement(s)
+}
+
+Method 2: SWITCH 
+
+switch(value) {
+	case 1:
+		// do stuff
+	break;
+	case 2:
+		// do stuff
+
+	case 3: case 4: case 5:
+		// do more stuff
+	break;
+	default:
+		// if all else fails do this
+	break;
+}
+
+Alternate form of SWITCH
+
+switch(true) {
+	case $age < 5:
+		// no school for you *snap*
+	break;
+	case $age > 4 && $age < 13:
+		// grade school
+
+	case $age == 14:
+		// do stuff
+	break;
+	case $age > 12 && $age < 18:
+		// high school
+	break;
+	case $age > 17:
+		// higher/adult ed
+	break;
+	default:
+		// get a job you bum
+	break;
+}
+
+Looping
+
+FOR loop:
+
+for ($c = 0; $c < 10; $c++) {
+	echo $c;
+}
+
+WHILE loop:
+
+$c = 0;
+while ($c < 10) {
+	echo $c;
+	$c++;
+}
+
+DO..WHILE loop:
+
+$c = 0;
+do {
+	echo $c;
+	$c++;
+} while ($c < 10);
+
+
+foreach ($sourceArray as $value) {
+	// do stuff
+}
+
+foreach ($sourceArray as $key => $value) {
+	// do stuff
+}
+
+
+PHP System Arrays
+
+$_GET		Parameters from the URI query string
+$_POST		Parameters from mime-attached query string
+$_REQUEST	Aggregate of GET and POST query strings. Not recommended to use
+$_COOKIE	Contains client cookie data
+$_SESSION	More secure state data than cookies. Server-based rather than client
+$_FILES		Contains any uploaded file information
+$_SERVER	Information about the current request
+$_ENV		Information about the web server environment
+
+
+Functions
+
+Functions are just bits of modular code
+Modular = reusable; Write the module once and then execute as often as needed
+
+function greeting() {
+	echo '<h1>Hello!</h1>';
+}
+
+greeting();
+
+-----
+
+function betterGreeting() {
+	return 'Hello!';
+}
+
+$greeting = betterGreeting(); // $greeting contains 'Hello!'
+
+echo '<p>' . betterGreeting() . '</p>';
+
+$greeting .= ' Some Name Here!';
+
+echo '<h1>' . $greeting . '</h1>';
+
+-----
+
+function namedGreeting($name) {
+	return 'Hello ' . $name . '!';
+}
+
+echo '<h1>' . namedGreeting('John') . '</h1>'; // 'Hello John!'
+
+-----
+
+function sum($a, $b, $c = 0) {
+	return $a + $b + $c;
+}
+
+echo sum(1, 2, 3); // 6
+echo sum(1, 2); // 3
+
+-----
+
+function foo() {
+	$c = 100;
+	echo $c;
+}
+
+$c = 10;
+
+foo(); // 100
+
+echo $c; // 10
+
+function foo2($c) {
+	$c = $c * 100;
+	echo $c;
+}
+
+$c = 10;
+
+foo2($c); // 1000
+echo $c; // 10
+
+
+function bar(&$b) {
+	$b *= 100;
+	echo $b;
+}
+
+$c = 10;
+bar ($c); // 1000
+echo $c; // 1000
+
+
+CREATE TABLE `tc12315`.`properties` 
+( 
+	`id` INT UNSIGNED NOT NULL AUTO_INCREMENT , 
+	`name` VARCHAR(100) NOT NULL , 
+	`lease_amount` DECIMAL(5,2) NOT NULL , 
+	`lease_period` TINYINT UNSIGNED NOT NULL , 
+	`lease_duration` SMALLINT UNSIGNED NOT NULL , 
+	`tenant_id` INT UNSIGNED NOT NULL , 
+	PRIMARY KEY (`id`)
+) ENGINE = InnoDB;
+
+Create records
+Read records
+Update records
+Delete records
+
+Creating records
+
+INSERT INTO properties SET name = 'ABC Property', lease_amount = 1500.00, lease_period = 12, lease_duration = 60, tenant_id = 0;
+
+INSERT INTO properties (`name`,`lease_amount`,`lease_period`,`lease_duration`,`tenant_id`) VALUES 
+('XYZ Property', 2500.00, 3, 60, 0),
+('Park Place', 5500.00, 12, 60, 0),
+('Baltic Avenue', 950.00, 12, 60, 0);
+
+Updating records
+
+UPDATE properties SET name = 'JKL Property' WHERE id = '1';
+
+Deleting records
+
+DELETE FROM properties WHERE id = '2';
+
+Reading records
+
+SELECT <what> FROM <table(s)> <clauses to qualify selection>
+
+SELECT id, name, lease_amount FROM properties;
+
+SELECT 
+properties.id as property_id,
+properties.name,
+addresses.id as address_id,
+addresses.city,
+addresses.state
+FROM properties, addresses 
+WHERE addresses.owner_id = properties.id;
+
+SELECT
+properties.id,
+properties.name as property_name,
+tenants.name as tenant_name
+FROM properties, tenants
+WHERE properties.tenant_id = tenants.id;
+
+JOIN Syntax
+
+SELECT * FROM TABLE_A XXXX JOIN TABLE_B ON <relation>
+
+SELECT
+properties.id,
+properties.name as property_name,
+tenants.name as tenant_name
+FROM properties LEFT JOIN tenants ON properties.tenant_id = tenants.id;
+
+SELECT
+properties.id,
+properties.name,
+addresses.city,
+addresses.state,
+tenants.name as tenant
+FROM properties
+LEFT JOIN addresses ON properties.id = addresses.owner_id
+LEFT JOIN tenants ON properties.tenant_id = tenants.id;
+
+
+Connecting to a database using PHP
+
+1. Connect to database server
+2. Select database to use
+3. Build query string
+4. Send query to database server
+5. Check query result
+6. Process any results
+
+PHP Includes
+include()
+include_once()
+require()
+require_once()
+
+
+
+
+

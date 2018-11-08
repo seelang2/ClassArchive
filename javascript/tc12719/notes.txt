@@ -1,0 +1,173 @@
+var text = 'something';
+
+var a = 1;
+a = a + 1;
+
+a++;
+
+var b = 1;
+b = b - 1;
+b--;
+
+a = a + 5		a += 5
+
+var name = 'John';
+var name = name + ' Doe'
+
+name += ' Doe';
+
+var pillbox = {
+	"Sun": "white",
+	Mon: 'white',
+	Tue: 'none',
+	Wed: 'blue',
+	Thu: 'orange',
+	Fri: 'blue',
+	Sat: 'green'
+};
+
+pillbox.Bob = 'rainbow';
+
+var thing = {};
+thing.property1 = 'foo';
+thing.property2 = 'bar';
+
+pillbox.Mon
+pillbox['Mon']
+
+var today = 'Mon';
+pillbox[today];
+
+
+if (door = 1) {
+	
+}
+
+Falsy values:
+false
+0
+''
+null
+undefined
+NaN
+
+
+switch(door) {
+	 case 1:
+	 	// do stuff
+	 break;
+	 case 2:
+	 	// do stuff
+	 case 3: case 4: case 5:
+	 	// do other stuff
+	 break;
+	 default:
+	 	// if no matching case label do this stuff
+	 break;
+ }
+
+
+TABLE
+	THEAD | TFOOT | TBODY
+		TR
+			TH | TD
+
+document.createElement('TAG')
+document.createTextNode('text')
+
+parentNode.appendChild(newNode)
+parentNode.insertBefore(newNode, refNode)
+
+document.getElementById('id')
+node.getElementsByTagName('TAG')
+node.getElementsByClassName('class')
+document.querySelectorAll('CSS')
+
+node.innerHTML
+
+<input type="checkbox" checked />
+
+
+HTML
+	BODY
+		H1
+		P 1
+		P 2
+		H2
+		P 3
+		P 4
+		DIV#main
+			H2
+			P 5
+			P 6
+			UL
+				LI
+				LI
+					P 9
+				LI
+		DIV
+			P 7
+			P 8
+
+
+
+
+$('div')				div#main div		
+	.find('p')			p5 p6 p9 p7 p8
+	.parent()			div#main li2 div
+	.parents()			body html ul div#main
+	.prev()				p6 p4
+	.end() 				revert to previous collection
+	.end()
+	.end()
+
+
+$('div')				div#main div
+	.add('li')			div#main div li li li
+	.not('#main')
+
+
+Multi-value getter/settters: .attr(), .prop(), .css(), .data()
+
+SETTER - .attr('attribute', 'value')
+GETTER - .attr('attribute')
+
+.method() -> $().method()
+jQuery.method() -> $.method()
+
+Single-value getter/setters: .html(), .text(), val()
+
+SETTER - .html('value')
+GETTER - .html()
+
+
+
+element.onclick = function() { };
+element.onclick = doStuff;
+
+element.attachEvent
+element.addEventListener
+
+
+https://www.webwhiteboard.com/board/68t4kr72
+
+<button class="btnEdit">...</button>
+
+$('#outer').on('click', 'button', buttonHandler)
+
+function buttonHandler(evt) {
+	var index = 
+	$(evt.target)
+		.closest('[data-index]')
+		.attr('data-index');
+
+	if ($(evt.target).hasClass('btnEdit')) {
+		// edit button functionality
+	}
+	...
+}
+
+
+
+
+

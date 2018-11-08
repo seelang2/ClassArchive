@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Demo</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+$('<table />')
+	.append('<tbody />')				// add TBODY to TABLE
+	.children('tbody') 					// traverse to TBODY
+		.append('<tr />') 				// append TR to TBODY
+		.children('tr')					// move to TR
+			.append('<td>John</td>')	// append TDs to TR
+			.append('<td>Doe</td>')
+			.append('<td>jdoe@email.com</td>')
+			.end()						// revert back to TBODY
+		.append('<tr />')
+		.children('tr:last-child') 		// move to new TR
+			.append('<td>Jane</td>')
+			.append('<td>Smith</td>')
+			.append('<td>jsmith@email.com</td>')
+			.end() 						// revert back to TBODY
+		.end() 							// revert back to TABLE
+	.appendTo('#target'); 				// attach TABLE to DOM
+
+
+
+
+
+</script>
+</body>
+</html>

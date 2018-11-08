@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Contact App Demo</title>
+
+	<style type="text/css">
+	body {
+		font-family: Arial, Verdana, Helvetica, sans-serif;
+	}
+
+	table, th, td { border: 1px solid #7a7a7a; }
+	table { border-collapse: collapse; }
+	th, td { padding: 0.5em 1em; }
+
+	.hover { background: #ffffcc; }
+	</style>
+</head>
+<body>
+
+<div id="contacttable"></div>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+// contact data
+var contactList = [
+	{
+		id: '001',
+		firstname: 'John',
+		lastname: 'Doe',
+		email: 'jdoe@email.com',
+		city: 'Chicago, IL'
+	},
+	{
+		id: '012',
+		firstname: 'Jane',
+		lastname: 'Smith',
+		email: 'jsmith@email.com',
+		city: 'Chicago, IL'
+	},
+	{
+		id: '042',
+		firstname: 'Alex',
+		lastname: 'Roberts',
+		email: 'arob@email.com',
+		city: 'Memphis, TN'
+	},
+	{
+		id: '011',
+		firstname: 'Pete',
+		lastname: 'Ross',
+		email: 'pr11@email.com',
+		city: 'Olive Branch, MS'
+	},
+	{
+		id: '002',
+		firstname: 'Alice',
+		lastname: 'Byrd',
+		email: 'byrrdie@email.com',
+		city: 'West Memphis, AR'
+	}
+];
+
+var doHover = function(evt) {
+	$(evt.target)
+		.closest('tr')
+		.toggleClass('hover');
+};
+
+// build table using contact list
+var $tbody = 
+$('<table><tbody /></table>')
+	.appendTo('#contacttable')
+	.children('tbody');
+
+$tbody
+	.on('mouseover mouseout', doHover);
+
+var $table = $tbody.parent(); 
+
+$tbody.detach(); // disconnect TBODY from DOM before updating rows
+
+// loop through contact list and create TRs
+$.each(contactList, function(index, contact) {
+	// create table row
+	var $tr = $('<tr />')
+		.attr('data-index', contact.id)
+		.data('itemData', contact)
+		.appendTo($tbody);
+	// loop through contact fields
+	$.each(contact, function(fieldName, fieldValue) {
+		$('<td>' + fieldValue + '</td>')
+			.appendTo($tr);
+	});
+});
+
+
+$tbody.appendTo($table); // reconnect TBODY
+
+
+</script>
+</body>
+</html>

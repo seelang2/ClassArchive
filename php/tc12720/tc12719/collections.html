@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Demo</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<ul>
+	<li data-index="1">Item</li>
+	<li data-index="2">Item</li>
+	<li data-index="3">Item</li>
+	<li data-index="4">Item</li>
+	<li data-index="5">Item</li>
+</ul>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+$('li')
+	.each(function(index, item) {
+		$(item)
+			.attr('id', 'item-' + (index + 1));
+	});
+
+var list = ['brisket','ribs','shoulder','wings','links'];
+
+$.each(list, function(index, item) {
+	$('li')
+		.eq(index)
+		.html(item);
+});
+
+var contact = {
+	firstname: 'John',
+	lastname: 'Doe',
+	email: 'jdoe@email.com',
+	location: 'Chicago, IL'
+};
+
+$('ul').after('<div />'); // add DIV container for contact elements
+
+$.each(contact, function(fieldName, fieldValue) {
+	$('div')
+		.append('<p>' + fieldName + ': ' + fieldValue + '</p>');
+})
+
+</script>
+</body>
+</html>

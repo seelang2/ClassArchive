@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Page Demo</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<p><a href="http://www.google.com">Go to Google</a></p>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+$('a').on('click', function(e) {
+	e.preventDefault(); // prevents default action regardless of return value
+
+	//return false; // return false cancels default action
+	
+	return confirm('Do you want to follow this link and leave the site?');
+});
+
+</script>
+</body>
+</html>

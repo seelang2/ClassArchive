@@ -1,0 +1,66 @@
+notes.txt
+
+Sample reports
+
+Employee reports
+
+Employee order count:
+SELECT 
+	employees.last_name as employeeln,
+    employees.first_name as employeefn,
+    count(orders.order_date) as ordercount
+FROM
+	employees
+LEFT JOIN
+	orders
+ON employees.id = orders.employee_id
+GROUP BY employees.id
+
+Employee order count with total order dollar amount:
+SELECT 
+	employees.last_name as employeeln,
+    employees.first_name as employeefn,
+    count(orders.order_date) as ordercount,
+    (orders.shipping_fee + 
+    	orders.taxes + 
+    	sum(order_details.unit_price * order_details.quantity)
+       ) as total
+FROM employees
+LEFT JOIN orders ON employees.id = orders.employee_id
+LEFT JOIN order_details ON orders.id = order_details.order_id
+GROUP By employees.id
+ORDER By total DESC
+
+
+Employee customer list
+	- may or may not include order totals
+
+Customer list with order count:
+SELECT
+	customers.last_name,
+    customers.first_name,
+    count(orders.id) as ordercount
+FROM customers
+LEFT JOIN orders ON orders.customer_id = customers.id
+GROUP BY customers.id
+ORDER BY ordercount DESC
+
+
+Customer reports
+Order list - may include order totals
+
+Order view for single order
+	- includes order totals
+
+SELECT
+	orders.order_date,
+    (orders.shipping_fee + 
+     orders.taxes + 
+     sum(order_details.unit_price * order_details.quantity)
+     ) as total
+FROM orders
+LEFT JOIN order_details ON orders.id = order_details.order_id
+WHERE orders.id = 30
+
+
+	

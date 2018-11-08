@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Effects Demo</title>
+
+	<style type="text/css">
+	body { margin: 0; }
+
+	#box1 {
+		position: fixed;
+		width: 50px;
+		height: 50px;
+		background: #ff0000;
+		top: 50px;
+		left: 640px;
+		border-radius: 25px;
+	}
+	</style>
+</head>
+<body>
+
+<div id="box1"></div>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+$('#box1')
+	.animate({
+		width: '+=150',
+		height: '+=150'
+	},{
+		duration: 500,
+		queue: 'size'
+	})
+	.animate({
+		width: '-=150',
+		height: '-=150'
+	},{
+		duration: 500,
+		queue: 'size'
+	})
+	.animate({
+		width: '+=150',
+		height: '+=150'
+	},{
+		duration: 500,
+		queue: 'size'
+	})
+	.animate({
+		width: '-=150',
+		height: '-=150'
+	},{
+		duration: 500,
+		queue: 'size'
+	})
+	.animate({
+		width: '+=150',
+		height: '+=150'
+	},{
+		duration: 500,
+		queue: 'size'
+	})
+	.animate({
+		width: '-=150',
+		height: '-=150'
+	},{
+		duration: 500,
+		queue: 'size'
+	})
+	.animate({
+		width: '+=150',
+		height: '+=150'
+	},{
+		duration: 500,
+		queue: 'size'
+	})
+	.animate({
+		width: '-=150',
+		height: '-=150'
+	},{
+		duration: 500,
+		queue: 'size'
+	})
+	.animate({
+		width: '+=150',
+		height: '+=150'
+	},{
+		duration: 500,
+		queue: 'size'
+	})
+	.animate({
+		width: '-=150',
+		height: '-=150'
+	},{
+		duration: 500,
+		queue: 'size'
+	})
+	.animate({
+		top: 700,
+		left: '+=250'
+	},{
+		duration: 1000,
+		queue: 'move'
+	})
+	.animate({
+		top: 300,
+		left: '-=550'
+	},{
+		duration: 1000,
+		queue: 'move'
+	})
+	.animate({
+		left: '+=600'
+	},{
+		duration: 1000,
+		queue: 'move'
+	})
+	.animate({
+		top: 700,
+		left: '-=550'
+	},{
+		duration: 1000,
+		queue: 'move'
+	})
+	.animate({
+		top: 50,
+		left: 640
+	},{
+		duration: 1000,
+		queue: 'move'
+	})
+	//.dequeue('size')
+	.dequeue('move');
+
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Table building demo</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+/*
+	TABLE
+		THEAD | TFOOT | TBODY
+			TR
+				TH | TD
+
+name 	age 	empid
+name 	age 	empid
+
+*/
+
+// build entire node branch BEFORE attach to live DOM
+var $tableElem = $('<table></table>');
+
+var $tbodyElem = $('<tbody />');
+$tbodyElem.appendTo($tableElem); // attach TBODY to TABLE
+
+// create first row
+$('<tr />')											// create TR
+	.append('<td>John Doe</td>')	// add TD cell
+	.append('<td>43</td>')
+	.append('<td>12345</td>')
+	.appendTo($tbodyElem); 				// and add to TBODY
+
+// create next row
+$('<tr />')												// create TR
+	.append('<td>Jane Smith</td>')	// add TD cell
+	.append('<td>37</td>')
+	.append('<td>23453</td>')
+	.appendTo($tbodyElem); 				// and add to TBODY
+
+// attach branch to DOM
+$tableElem.appendTo('#target');
+
+</script>
+</body>
+</html>

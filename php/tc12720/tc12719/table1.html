@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>POS Table Demo</title>
+
+	<style type="text/css">
+	</style>
+</head>
+<body>
+
+<div id="target"></div>
+
+
+<script type="text/javascript">
+
+// create branch first
+var tableElem = document.createElement('TABLE');
+var tbodyElem = document.createElement('TBODY');
+// connect TBODY to TABLE
+tableElem.appendChild(tbodyElem);
+
+// create first row
+var trElem = document.createElement('TR');
+tbodyElem.appendChild(trElem);
+
+var tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('John'));
+
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('Doe'));
+
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('jdoe@email.com'));
+
+// create second row
+var trElem = document.createElement('TR');
+tbodyElem.appendChild(trElem);
+
+var tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('Jane'));
+
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('Smith'));
+
+tdElem = document.createElement('TD');
+trElem.appendChild(tdElem);
+tdElem.appendChild(document.createTextNode('jsmith@email.com'));
+
+// connect completed branch to live DOM
+document.getElementById('target').appendChild(tableElem);
+
+
+</script>
+</body>
+</html>
