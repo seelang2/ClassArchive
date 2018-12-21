@@ -1,0 +1,111 @@
+notes.txt
+
+
+
+facebook.com?action=viewProfile&id=xxxxxxxx
+
+$_GET
+$_POST
+$_REQUEST
+$_FILES
+$_COOKIE
+$_SESSION
+$_SERVER
+$_ENV
+
+
+Terminating a session
+
+NEVER DO unset($_SESSION)
+
+$_SESSION = []; // set session to empty array
+session_destroy();
+session_regenerate_id();
+
+Can't be empty: if (empty($field))
+Minimum length: if (strlen($field) < 5)
+
+
+include
+include_once
+require
+require_once
+
+
+/www
+	index.php
+/app
+	...
+/config
+	config.php
+
+
+Order Form Data:
+
+$_SESSION['orders']
+	id
+	customer_id
+	competitor_id
+	original_total
+	competitor_total
+	adjusted_total
+	status
+
+$_SESSION['lineitems']
+	order_id
+	product_id
+	our_price
+	competitor_price
+	qty
+
+
+Fun with queries...
+
+SELECT count(id) AS count_dmg
+FROM dmr
+WHERE incident_date BETWEEN '2018-12-01' AND '2018-12-07'
+
+SELECT SUM(stops) AS total_stops
+FROM dispatch
+WHERE delivery_date BETWEEN '2018-12-01' AND '2018-12-07'
+
+SELECT DISTINCT 
+(SELECT count(id) AS count_dmg
+ FROM dmr 
+ WHERE incident_date BETWEEN '2018-12-01' AND '2018-12-07')  /
+(SELECT SUM(stops) AS total_stops
+ FROM dispatch
+ WHERE delivery_date BETWEEN '2018-12-01' AND '2018-12-07') * 100
+as result
+
+SELECT 
+count_dmg,
+total_stops
+FROM
+(SELECT count(id) AS count_dmg
+ FROM dmr 
+ WHERE incident_date BETWEEN '2018-12-01' AND '2018-12-07') AS table1,
+(SELECT SUM(stops) AS total_stops
+ FROM dispatch
+ WHERE delivery_date BETWEEN '2018-12-01' AND '2018-12-07') AS table2
+
+
+SELECT 
+count_dmg,
+total_stops,
+count_dmg / total_stops * 100 AS result
+FROM
+(SELECT count(id) AS count_dmg
+ FROM dmr 
+ WHERE incident_date BETWEEN '2018-12-01' AND '2018-12-07') AS table1,
+(SELECT SUM(stops) AS total_stops
+ FROM dispatch
+ WHERE delivery_date BETWEEN '2018-12-01' AND '2018-12-07') AS table2
+
+
+
+
+
+
+
+
